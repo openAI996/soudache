@@ -51,23 +51,23 @@ function ontimer2(player)
 
     local hp,mp = 0,0
     if ServerCache.Players[player].OtherEquip["魔血石(1级)"] ~= nil then
-        hp,mp = 3,8
+        hp,mp = 10,10
     end
 
     if ServerCache.Players[player].OtherEquip["魔血石(2级)"] ~= nil then
-        hp,mp = 6,11
+        hp,mp = 20,20
     end
 
     if ServerCache.Players[player].OtherEquip["魔血石(3级)"] ~= nil then
-        hp,mp = 9,15
+        hp,mp = 30,30
     end
 
     if ServerCache.Players[player].OtherEquip["魔血石(4级)"] ~= nil then
-        hp,mp = 12,18
+        hp,mp = 50,50
     end
 
     if ServerCache.Players[player].OtherEquip["魔血石(5级)"] ~= nil then
-        hp,mp = 15,21
+        hp,mp = 100,100
     end
 
     if hp > 0 or mp > 0 then

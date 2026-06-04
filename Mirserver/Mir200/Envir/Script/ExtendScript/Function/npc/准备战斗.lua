@@ -349,5 +349,6 @@ end
 GameEvent.add(EventCfg.onEnterMap,_onEnterMap,zhunBeiZhanDou)
 Message.RegisterClickMsg("准备战斗", zhunBeiZhanDou)
 setFormAllowFunc("准备战斗", {"main","click","daojishi","zudui"})
+setNpcRangeAllowFunc("准备战斗", {"main","click","daojishi","zudui"}, 10)
 
 return zhunBeiZhanDou

@@ -1672,7 +1672,7 @@ function func(player,param)
 			lualib:MsgBox(player,"当前不是攻城状态，是否开启","@open_castle","@no")
 		end
 	elseif num == 2 then
-		cangPin.main(player)
+		click(player, "藏品_main")
 	elseif num == 3 then
 		local tablePlayerList = getplayerlst()
 		for _, v in ipairs(tablePlayerList) do

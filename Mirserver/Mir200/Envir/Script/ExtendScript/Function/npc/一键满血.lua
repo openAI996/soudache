@@ -18,5 +18,6 @@ end
 
 Message.RegisterClickMsg("Ò»¼üÂúÑª", hpMax)
 setFormAllowFunc("Ò»¼üÂúÑª", {"main"})
+setNpcRangeAllowFunc("Ò»¼üÂúÑª", {"main"}, 10)
 
 return hpMax

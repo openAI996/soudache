@@ -42,5 +42,6 @@ end
 
 Message.RegisterClickMsg("买道具", buyZhuangBei)
 setFormAllowFunc("买道具", {"main","click","change"})
+setNpcRangeAllowFunc("买道具", {"main","click","change"}, 10)
 
 return buyZhuangBei

@@ -230,6 +230,6 @@ end
 GameEvent.add(EventCfg.onLogin,_onLogin,cangPin)
 Message.RegisterClickMsg("藏品", cangPin)
 setFormAllowFunc("藏品", {"main","click"})
-setNpcRangeAllowFunc("藏品","藏品_main",10)
+setNpcRangeAllowFunc("藏品", {"main","click"}, 10)
 
 return cangPin

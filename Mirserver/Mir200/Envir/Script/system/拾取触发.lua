@@ -33,7 +33,7 @@ end
 --添加背包触发
 function addbag(player,item)
     local r1,r2 = checkhumanstate(player,10)
-    if tonumber(lualib:GetVar(player,VarCfg["负重"])) <= tonumber(getconst(player,"<$BW>")) then
+    if lualib:Attr(player,229) <= tonumber(getconst(player,"<$BW>")) then
         if not r1 then
             makeposion(player,13,65535)
         end

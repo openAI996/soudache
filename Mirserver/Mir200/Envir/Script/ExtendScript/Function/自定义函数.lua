@@ -3438,7 +3438,13 @@ end
 ---@var 变量名
 function lualib:GetVar(player,var)
     if not lualib:Player_IsPlayer(player) then return "" end
-    return getplaydef(player,var)
+    local num = getplaydef(player,var)
+    if var == VarCfg["负重"] then
+        ---实际负重统一由229属性提供，U13只作为永久基础负重存档
+        return lualib:Attr(player,229)
+    end
+
+    return num
 end
 ---设置全局变量
 ---@var 变量名

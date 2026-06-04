@@ -1,6 +1,9 @@
 zhiYeQieHuan = {}
 
 function zhiYeQieHuan.main(player)
+    if true then
+        return
+    end
     zhiYeQieHuan.window(player)
 end
 

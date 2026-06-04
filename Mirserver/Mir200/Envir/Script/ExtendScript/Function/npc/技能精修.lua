@@ -52,6 +52,9 @@ jiNengJingXiu.icon = {
 }
 
 function jiNengJingXiu.main(player)
+    if true then
+        return
+    end
     jiNengJingXiu.window(player)
 end
 

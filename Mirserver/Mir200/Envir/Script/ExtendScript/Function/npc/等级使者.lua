@@ -2,6 +2,9 @@ dengJiShiZhe = {}
 dengJiShiZhe.config = include("Script/ExtendScript/cfgcsv/npc/cfg_等级使者.lua")
 
 function dengJiShiZhe.main(player)
+    if true then
+        return
+    end
     dengJiShiZhe.window(player)
 end
 

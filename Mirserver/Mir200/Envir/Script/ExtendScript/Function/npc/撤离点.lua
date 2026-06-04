@@ -316,7 +316,7 @@ function cheLiDian.cheLi3(player)
         return ""
     end
 
-    if tonumber(getconst(player,"<$BW>"))/tonumber(lualib:GetVar(player,VarCfg["负重"])) > 0.5 then
+    if tonumber(getconst(player,"<$BW>"))/lualib:Attr(player,229) > 0.5 then
         lualib:MsgBox(player,"背包负重超过50%，无法撤离")
         return ""
     end
@@ -337,7 +337,7 @@ function cheli_3_ok(player)
         return ""
     end
 
-    if tonumber(getconst(player,"<$BW>"))/tonumber(lualib:GetVar(player,VarCfg["负重"])) > 0.5 then
+    if tonumber(getconst(player,"<$BW>"))/lualib:Attr(player,229) > 0.5 then
         lualib:MsgBox(player,"背包负重超过50%，无法撤离")
         return ""
     end

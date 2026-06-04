@@ -41,17 +41,22 @@ sheZhiDengJi.job = {
 }
 
 function sheZhiDengJi.setFuZhong(player)
-    local level = lualib:GetVar(player,VarCfg["负重"])
+    ---U13只保存永久基础负重，实际生效和显示统一走229属性
+    local level = tonumber(getplaydef(player,VarCfg["负重"])) or 0
     local job = lualib:Job(player)
-    if level < sheZhiDengJi.job[job][1] then
-        lualib:SetVar(player,VarCfg["负重"],sheZhiDengJi.job[job][1])
-        lualib:AddAttrList(player,"负重","=","3#229#"..sheZhiDengJi.job[job][1])
+    local minLevel = 100
+    if sheZhiDengJi.job[job] ~= nil and sheZhiDengJi.job[job][1] ~= nil then
+        minLevel = sheZhiDengJi.job[job][1]
     end
 
-    local txt = lualib:GetAttrList(player,"负重")
-    level = lualib:GetVar(player,VarCfg["负重"])
-    if txt ~= "3#229#"..(level).."|" then
-        lualib:AddAttrList(player,"负重","=","3#229#"..(level))
+    if level < minLevel then
+        level = minLevel
+        setplaydef(player,VarCfg["负重"],level)
+    end
+
+    local attrStr = "3#229#"..level
+    if lualib:GetAttrList(player,"负重") ~= attrStr.."|" then
+        lualib:AddAttrList(player,"负重","=",attrStr)
     end
 end
 

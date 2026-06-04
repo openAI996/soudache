@@ -121,7 +121,7 @@ function mengZhongLaoBing.window(player,page)
 <Img|x=58.0|y=333.0|esc=0|img=public/btn_npcfh_03.png>
 <Text|x=80.0|y=331.0|color=249|size=20|text=说明：成功提升后，背包负重格子数量增加1格>
 <Text|x=80.0|y=260.0|color=249|size=20|text=提升负重>
-<RText|x=80.0|y=290.0|width=340|height=28|color=255|size=20|text=<背包负重/FCOLOR=249>     <]]..(tonumber(getconst(player,"<$BW>")))..[[/]]..lualib:GetVar(player,VarCfg["负重"])..[[/FCOLOR=250>>
+<RText|x=80.0|y=290.0|width=340|height=28|color=255|size=20|text=<背包负重/FCOLOR=249>     <]]..(tonumber(getconst(player,"<$BW>")))..[[/]]..lualib:Attr(player,229)..[[/FCOLOR=250>>
 <Text|x=168.0|y=260.0|color=255|size=20|text=所需消耗：>
 <Button|x=411.0|y=248.0|size=18|nimg=public/1900000660.png|text=确定提升|link=@click,盟重老兵_click,3>
         ]]
@@ -168,9 +168,12 @@ function mengZhongLaoBing.click(player,page)
     elseif page == 2 then
         changestorage(player,1)
     elseif page == 3 then
-        ---print(lualib:GetVar(player,VarCfg["负重"]))
-        lualib:SetVar(player,VarCfg["负重"],lualib:GetVar(player,VarCfg["负重"])+1)
-        sheZhiDengJi.setFuZhong(player)
+        ---只提升U13保存的基础负重，实际负重由setFuZhong写入229属性
+        local fuZhong = tonumber(getplaydef(player,VarCfg["负重"])) or 0
+        if fuZhong < 100 then
+            fuZhong = 100
+        end
+        lualib:SetVar(player,VarCfg["负重"],fuZhong + 1)
     end
     mengZhongLaoBing.window(player,page)
     return ""
@@ -191,5 +194,6 @@ end
 
 Message.RegisterClickMsg("盟重老兵", mengZhongLaoBing)
 setFormAllowFunc("盟重老兵", {"main","click","window"})
+setNpcRangeAllowFunc("盟重老兵", {"main","click","window"}, 10)
 
 return mengZhongLaoBing

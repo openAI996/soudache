@@ -286,16 +286,46 @@ function Message.RegisterNetMsg(msgType, target)
 end
 
 
----检查模块是否需要 NPC 距离限制，白名单模块的所有允许回调都会走这里
-function Message.checkNpcRangeAllow(player, module)
+---检查模块是否需要 NPC 距离限制，只有 setNpcRangeAllowFunc 登记的方法会校验
+function Message.checkNpcRangeAllow(player, module, method)
     local config = Message.npcRangeAllowFunc[module]
     if config == nil then
         return true
     end
 
-    local npcIdx = NPC.getNpcIdxByScript(config.script)
-    if npcIdx ~= nil and UCheckNPCRange(player,nil,npcIdx,config.range) then
+    if config.methods == nil or config.methods[method] ~= true then
         return true
+    end
+
+    local npcConfig = nil
+    for _,v in pairs(NPC.config) do
+        if v.script == config.script then
+            npcConfig = v
+            break
+        end
+    end
+
+    if npcConfig == nil then
+        lualib:dbg("npc range config not found:" .. tostring(module) .. " " .. tostring(config.script))
+        lualib:SendMsgGetColor(player,9,"#ff0800|请靠近NPC后操作！")
+        return false
+    end
+
+    local range = config.range or 10
+    local myMapId = getbaseinfo(player, ConstCfg.gbase.mapid)
+    if tostring(myMapId) ~= tostring(npcConfig.sMapName) then
+        lualib:SendMsgGetColor(player,9,"#ff0800|请靠近NPC后操作！")
+        return false
+    end
+
+    local myX = getbaseinfo(player, ConstCfg.gbase.x)
+    local myY = getbaseinfo(player, ConstCfg.gbase.y)
+    local npcX = tonumber(npcConfig.sX)
+    local npcY = tonumber(npcConfig.sY)
+    if npcX ~= nil and npcY ~= nil then
+        if myX >= npcX - range and myX <= npcX + range and myY >= npcY - range and myY <= npcY + range then
+            return true
+        end
     end
 
     lualib:SendMsgGetColor(player,9,"#ff0800|请靠近NPC后操作！")
@@ -331,7 +361,7 @@ function click(player, msgName, ...)
     end
 
     if Message.formAllowFunc[module][method] ~= nil then
-        if not Message.checkNpcRangeAllow(player,module) then
+        if not Message.checkNpcRangeAllow(player,module,method) then
             return
         end
 
@@ -361,18 +391,52 @@ function setFormAllowFunc(msgType, funcTb)
 end
 
 
----设置需要 NPC 距离校验的表单模块，模块下 setFormAllowFunc 允许的函数都会统一校验
+---设置需要 NPC 距离校验的表单方法，默认用第一个方法拼出 NPC 配置表中的 script
 ---@param msgType string 表单模块名，例如 "藏品"
----@param npcScript string NPC 配置表中的 script，例如 "藏品_main"
+---@param funcTb table|string 需要校验的函数名表，例如 {"main","click"}；兼容旧字符串写法
 ---@param range number 检查范围，默认 10
-function setNpcRangeAllowFunc(msgType,npcScript,range)
+function setNpcRangeAllowFunc(msgType,funcTb,range)
     if not msgType then
         print("setNpcRangeAllowFunc msgType is nil", tostring(msgType))
         return
     end
 
-    npcScript = npcScript or (msgType.."_main")
-    Message.npcRangeAllowFunc[msgType] = {script = npcScript,range = range or 10}
+    local methods = {}
+    local npcScript = nil
+    if type(funcTb) == "table" then
+        for i=1,#funcTb do
+            local method = funcTb[i]
+            if method ~= nil then
+                methods[method] = true
+                if npcScript == nil then
+                    if string.find(method,"_",1,true) then
+                        npcScript = method
+                    else
+                        npcScript = msgType .. "_" .. method
+                    end
+                end
+            end
+        end
+    elseif type(funcTb) == "string" then
+        if string.find(funcTb,"_",1,true) then
+            npcScript = funcTb
+            local _,method = funcTb:match("([^_]*)_(.*)")
+            methods[method or funcTb] = true
+        else
+            npcScript = msgType .. "_" .. funcTb
+            methods[funcTb] = true
+        end
+    else
+        print("setNpcRangeAllowFunc func is not table", tostring(msgType))
+        return
+    end
+
+    if npcScript == nil then
+        print("setNpcRangeAllowFunc npcScript is nil", tostring(msgType))
+        return
+    end
+
+    Message.npcRangeAllowFunc[msgType] = {methods = methods,script = npcScript,range = range or 10}
 end
 --- 注册点击分发实体
 --- @param msgType string 消息类型
