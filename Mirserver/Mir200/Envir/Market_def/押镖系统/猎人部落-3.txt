@@ -1,0 +1,191 @@
+[@MAIN]
+<Img|x=-0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01039.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|outline=1|outlinecolor=0|size=17|text=我们山谷部落的首领，在此驻扎阻挡野兽的侵袭>
+<Text|x=45.0|y=95.0|color=255|outline=1|outlinecolor=0|size=17|text=同时也为来往的镖师提供加货的服务。>
+<RText|x=45.0|y=120.0|color=255|outline=1|outlinecolor=0|size=17|text=每次加货需要<10万金币！/FCOLOR=11003>>
+<Layout|x=45.0|y=185.0|width=100|height=40|link=@加载货物2>
+<Text|x=70.0|y=190.0|color=11008|size=18|text=加货|link=@加载货物2>
+<Layout|x=235.0|y=185.0|width=100|height=40|link=@传送>
+<Text|x=265.0|y=190.0|color=11008|size=18|text=传送|link=@传送>
+<Img|x=45.0|y=193.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=240.0|y=193.0|width=20|height=20|esc=0|img=public/00012.png>
+
+
+[@加载货物2]
+#IF
+NOT CHECKGOLD 100000
+#ACT
+SENDMSG 9 你没有10万金币叫我怎么给你装载货物呢！
+BREAK
+
+#IF
+LARGE J26 0
+#ACT
+SENDMSG 9 每个驿站只能加货一次
+BREAK
+
+
+#IF
+CheckSlaveInRange 镖车1 5
+#ACT
+GOTO @加货一次
+BREAK
+#IF
+CheckSlaveInRange 镖车2 5
+#ACT
+GOTO @加货二次
+BREAK
+#IF
+CheckSlaveInRange 镖车3 5
+#ACT
+GOTO @加货三次
+BREAK
+#ELSEACT
+SENDMSG 9 你的镖车呢？大概是离我太远了，请靠近一些。
+BREAK
+
+[@加货一次]
+#IF
+#ACT
+MOV N$当前时间 <$UTCNOW8>
+MOV N$镖车时间 <$HUMAN(镖车时间)>
+
+#IF
+LARGE N$镖车时间 <$STR(N$当前时间)>
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[猎人部落]消耗100000金币，剩余金币：<$MONEY(金币)>。
+DEC N$镖车时间 N$当前时间
+KillCallMob 镖车1 1 1
+RECALLMOB 镖车2 0 60 0
+DartTime <$STR(N$镖车时间)> 1
+CALCVAR HUMAN 镖车次数 + 1
+SAVEVAR HUMAN 镖车次数
+INC J26 1
+ChangeSlaveNameColor 镖车2 250
+SENDMSG 9 加货成功，祝您押镖顺利！
+BREAK
+#ELSEACT
+SENDMSG 9 押镖时间已经超时了，明天速度要快点哦！
+BREAK
+
+
+[@加货二次]
+#IF
+#ACT
+MOV N$当前时间 <$UTCNOW8>
+MOV N$镖车时间 <$HUMAN(镖车时间)>
+
+#IF
+LARGE N$镖车时间 <$STR(N$当前时间)>
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[猎人部落]消耗100000金币，剩余金币：<$MONEY(金币)>。
+DEC N$镖车时间 N$当前时间
+KillCallMob 镖车2 1 1
+RECALLMOB 镖车3 0 60 0
+DartTime <$STR(N$镖车时间)> 1
+CALCVAR HUMAN 镖车次数 + 1
+SAVEVAR HUMAN 镖车次数
+INC J26 1
+ChangeSlaveNameColor 镖车3 253
+SENDMSG 9 加货成功，祝您押镖顺利！
+BREAK
+#ELSEACT
+SENDMSG 9 押镖时间已经超时了，明天速度要快点哦！
+BREAK
+
+
+[@加货三次]
+#IF
+#ACT
+MOV N$当前时间 <$UTCNOW8>
+MOV N$镖车时间 <$HUMAN(镖车时间)>
+
+#IF
+LARGE N$镖车时间 <$STR(N$当前时间)>
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[猎人部落]消耗100000金币，剩余金币：<$MONEY(金币)>。
+DEC N$镖车时间 N$当前时间
+KillCallMob 镖车3 1 1
+RECALLMOB 镖车4 0 60 0
+DartTime <$STR(N$镖车时间)> 1
+CALCVAR HUMAN 镖车次数 + 1
+SAVEVAR HUMAN 镖车次数
+INC J26 1
+ChangeSlaveNameColor 镖车4 70
+SENDMSG 9 加货成功，祝您押镖顺利！
+BREAK
+#ELSEACT
+SENDMSG 9 押镖时间已经超时了，明天速度要快点哦！
+BREAK
+
+
+
+
+
+[@传送]
+<Img|x=-0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=为了镖车的安全，镖局和驿站之间有着互助协议！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=你可以在3个驿站<互相传送/FCOLOR=11008>，每次需要支付<10万金币/FCOLOR=11003>。>
+<Img|x=45.0|y=154.0|width=20|height=20|esc=0|img=public/00012.png>
+<Layout|x=60.0|y=145.0|width=100|height=40|link=@传送老杨营地>
+<Text|x=70.0|y=151.0|color=11008|size=18|text=比奇营地|link=@传送老杨营地>
+<Img|x=215.0|y=155.0|width=20|height=20|esc=0|img=public/00012.png>
+<Layout|x=230.0|y=145.0|width=100|height=40|link=@传送冒险军团>
+<Text|x=240.0|y=152.0|color=11008|size=18|text=山谷军团|link=@传送冒险军团>
+<Img|x=385.0|y=155.0|width=20|height=20|esc=0|img=public/00012.png>
+<Layout|x=400.0|y=145.0|width=100|height=40|link=@传送土城镖师>
+<Text|x=410.0|y=152.0|color=11008|size=18|text=土城镖师|link=@传送土城镖师>
+<Img|x=45.0|y=208.0|width=20|height=20|esc=0|img=public/00024.png>
+<Layout|x=62.0|y=200.0|width=60|height=40|rotate=0|link=@MAIN>
+<Text|x=70.0|y=205.0|color=11008|size=18|text=返回|link=@MAIN>
+
+
+
+
+[@传送老杨营地]
+#IF
+CHECKMONEY 金币 > 99999
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[猎人部落]消耗100000金币，剩余金币：<$MONEY(金币)>。
+MAPMOVE 3 425 382 3
+close
+BREAK
+#ELSEACT
+MESSAGEBOX 传送费是10万金币，你无法支付足够费用！
+BREAK
+
+
+[@传送土城镖师]
+#IF
+CHECKMONEY 金币 > 99999
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[猎人部落]消耗100000金币，剩余金币：<$MONEY(金币)>。
+MAPMOVE 3 405 328 2
+BREAK
+#ELSEACT
+MESSAGEBOX 传送费是10万金币，你无法支付足够费用！
+BREAK
+
+
+[@传送冒险军团]
+#IF
+CHECKMONEY 金币 > 99999
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[猎人部落]消耗100000金币，剩余金币：<$MONEY(金币)>。
+MAPMOVE 3 634 382 2
+BREAK
+#ELSEACT
+MESSAGEBOX 传送费是10万金币，你无法支付足够费用！
+BREAK

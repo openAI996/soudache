@@ -1,0 +1,1081 @@
+[@攻略]
+{
+#IF
+#ACT
+MOV S$主页标识 新手进阶
+MOV S$副页标识 挂机系统
+GOTO @加载界面数据
+BREAK
+
+[@指南界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|show=4|move=0|bg=1|reset=1|esc=1|img=private/psllz/00070.png|loadDelay=0>
+<Layout|x=595.0|y=-25.0|width=80|height=80|link=@exit>
+<Button|x=625.0|y=15.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=145.0|y=60.0|width=15|height=398|img=private/psllz/00010.png|esc=0>
+<Img|x=242.0|y=60.0|width=15|height=398|img=private/psllz/00010.png|esc=0>
+<Img|x=280.0|y=58.0|width=367|height=397|scale9r=30|scale9t=30|scale9l=30|img=public/1851400083.png|scale9b=30|esc=0>
+<ListView|children={2,3,4,5,6,7,8,9,10}|x=37.0|y=72.0|width=140|height=395|direction=1|bounce=0|margin=1|reload=0>
+<Img|x=281.0|y=7.0|img=private/biaoti/01047.png|esc=0>
+<Img|x=252.0|y=71.0|width=390|height=35|esc=0|img=private/psllz/05016.png>
+<Text|x=390.0|y=75.0|color=11009|size=18|outlinecolor=0|outline=1|text=【<$str(S$副页标识)>】>
+<$STR(S$主页内容)>
+<$STR(S$副页内容)>
+<$STR(S$内容详情)>
+
+
+[@加载界面数据]
+#IF
+#ACT
+MOV S$主页内容
+MOV S$副页内容
+INC S$主页内容 <Layout|id=2|children={21,22}|x=0.0|y=0.0|width=110|height=38|color=x|link=@加载界面数据#主页标识=新手进阶#副页标识=挂机系统>
+INC S$主页内容 <Button|id=21|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=新手进阶|link=@加载界面数据#主页标识=新手进阶#副页标识=挂机系统>
+
+INC S$主页内容 <Layout|id=3|children={31,32}|x=0.0|y=0.0|width=110|height=38|color=*|link=@加载界面数据#主页标识=装备介绍#副页标识=勋章>
+INC S$主页内容 <Button|id=31|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=装备介绍|link=@加载界面数据#主页标识=装备介绍#副页标识=勋章>
+
+INC S$主页内容 <Layout|id=4|children={41,42}|x=0.0|y=0.0|width=110|height=38|color=*|link=@加载界面数据#主页标识=装备提升#副页标识=装备强化>
+INC S$主页内容 <Button|id=41|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=装备提升|link=@加载界面数据#主页标识=装备提升#副页标识=装备强化>
+
+INC S$主页内容 <Layout|id=5|children={51,52}|x=0.0|y=0.0|width=110|height=38|color=*|link=@加载界面数据#主页标识=人物成长#副页标识=升级系统>
+INC S$主页内容 <Button|id=51|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=人物成长|link=@加载界面数据#主页标识=人物成长#副页标识=升级系统>
+
+INC S$主页内容 <Layout|id=6|children={61,62}|x=0.0|y=0.0|width=110|height=38|color=*|link=@加载界面数据#主页标识=游戏活动#副页标识=新区庆典>
+INC S$主页内容 <Button|id=61|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=游戏活动|link=@加载界面数据#主页标识=游戏活动#副页标识=新区庆典>
+
+INC S$主页内容 <Layout|id=7|children={71,72}|x=0.0|y=0.0|width=110|height=38|color=*|link=@加载界面数据#主页标识=其他物品#副页标识=精修卷轴>
+INC S$主页内容 <Button|id=71|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=其他物品|link=@加载界面数据#主页标识=其他物品#副页标识=精修卷轴>
+
+INC S$主页内容 <Layout|id=8|children={81,82}|x=0.0|y=0.0|width=110|height=38|color=*|link=@加载界面数据#主页标识=游戏玩法#副页标识=寄售行>
+INC S$主页内容 <Button|id=81|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=游戏玩法|link=@加载界面数据#主页标识=游戏玩法#副页标识=寄售行>
+
+INC S$主页内容 <Layout|id=9|children={91,92}|x=0.0|y=0.0|width=110|height=38|color=*|link=@加载界面数据#主页标识=社交系统#副页标识=师徒系统>
+INC S$主页内容 <Button|id=91|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=社交系统|link=@加载界面数据#主页标识=社交系统#副页标识=师徒系统>
+
+INC S$主页内容 <Layout|id=10|children={101,102}|x=0.0|y=0.0|width=110|height=38|color=*|link=@加载界面数据#主页标识=交易规则#副页标识=交易规则>
+INC S$主页内容 <Button|id=101|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=交易规则|link=@加载界面数据#主页标识=交易规则#副页标识=交易规则>
+
+
+#IF
+EQUAL S$主页标识 新手进阶
+#ACT
+DEC S$主页内容 <Button|id=21|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=新手进阶|link=@加载界面数据#主页标识=新手进阶#副页标识=挂机系统>
+INC S$主页内容 <Button|id=21|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=新手进阶|link=@加载界面数据#主页标识=新手进阶#副页标识=挂机系统>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800}|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=10|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=0.0|width=80|height=30|link=@加载界面数据#副页标识=挂机系统>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=挂机系统|link=@加载界面数据#副页标识=挂机系统>
+INC S$副页内容 <Layout|id=1100|children={1101}|x=0.0|y=00.0|width=90|height=30|link=@加载界面数据#副页标识=分解系统>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=分解系统|link=@加载界面数据#副页标识=分解系统>
+INC S$副页内容 <Layout|id=1200|children={1201}|x=0.0|y=0.0|width=90|height=30|link=@加载界面数据#副页标识=武器改造>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=武器改造|link=@加载界面数据#副页标识=武器改造>
+
+#IF
+EQUAL S$主页标识 装备介绍
+#ACT
+DEC S$主页内容 <Button|id=31|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=装备介绍|link=@加载界面数据#主页标识=装备介绍#副页标识=勋章>
+INC S$主页内容 <Button|id=31|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=装备介绍|link=@加载界面数据#主页标识=装备介绍#副页标识=勋章>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800}|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=10|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=0.0|width=80|height=30|link=@加载界面数据#副页标识=勋章>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=勋章|link=@加载界面数据#副页标识=勋章>
+
+INC S$副页内容 <Layout|id=1100|children={1101}|x=0.0|y=00.0|width=80|height=30|link=@加载界面数据#副页标识=佩饰>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=佩饰|link=@加载界面数据#副页标识=佩饰>
+
+INC S$副页内容 <Layout|id=1200|children={1201}|x=0.0|y=0.0|width=80|height=30|link=@加载界面数据#副页标识=灵兽>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=灵兽|link=@加载界面数据#副页标识=灵兽>
+
+INC S$副页内容 <Layout|id=1300|children={1301}|x=0.0|y=0.0|width=80|height=30|link=@加载界面数据#副页标识=毒符>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=毒符|link=@加载界面数据#副页标识=毒符>
+
+INC S$副页内容 <Layout|id=1400|children={1401}|x=0.0|y=0.0|width=80|height=30|link=@加载界面数据#副页标识=包裹>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=包裹|link=@加载界面数据#副页标识=包裹>
+
+
+
+#IF
+EQUAL S$主页标识 装备提升
+#ACT
+DEC S$主页内容 <Button|id=41|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=装备提升|link=@加载界面数据#主页标识=装备提升#副页标识=装备强化>
+INC S$主页内容 <Button|id=41|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=装备提升|link=@加载界面数据#主页标识=装备提升#副页标识=装备强化>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800}|color=|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=10|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=装备强化>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=装备强化|link=@加载界面数据#副页标识=装备强化>
+
+INC S$副页内容 <Layout|id=1100|children={1101}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=宝石镶嵌>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=宝石镶嵌|link=@加载界面数据#副页标识=宝石镶嵌>
+
+INC S$副页内容 <Layout|id=1200|children={1201}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=灵兽训练>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=灵兽训练|link=@加载界面数据#副页标识=灵兽训练>
+
+INC S$副页内容 <Layout|id=1300|children={1301}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=装备合成>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=装备合成|link=@加载界面数据#副页标识=装备合成>
+
+INC S$副页内容 <Layout|id=1400|children={1401}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=装备洗炼>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=装备洗炼|link=@加载界面数据#副页标识=装备洗炼>
+
+INC S$副页内容 <Layout|id=1500|children={1501}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=装备鉴定>
+INC S$副页内容 <Button|id=1501|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=剑甲淬炼|link=@加载界面数据#副页标识=装备鉴定>
+
+INC S$副页内容 <Layout|id=1600|children={1601}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=武器升级>
+INC S$副页内容 <Button|id=1601|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=武器升级|link=@加载界面数据#副页标识=武器升级>
+
+
+#IF
+EQUAL S$主页标识 人物成长
+#ACT
+DEC S$主页内容 <Button|id=51|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=人物成长|link=@加载界面数据#主页标识=人物成长#副页标识=升级系统>
+INC S$主页内容 <Button|id=51|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=人物成长|link=@加载界面数据#主页标识=人物成长#副页标识=升级系统>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800}|color=|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=10|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=升级系统>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=升级系统|link=@加载界面数据#副页标识=升级系统>
+INC S$副页内容 <Layout|id=1100|children={1101}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=技能系统>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=技能精修|link=@加载界面数据#副页标识=技能系统>
+INC S$副页内容 <Layout|id=1200|children={1201}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=八门遁甲>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=八门遁甲|link=@加载界面数据#副页标识=八门遁甲>
+INC S$副页内容 <Layout|id=1300|children={1301}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=装备图鉴>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=装备图鉴|link=@加载界面数据#副页标识=装备图鉴>
+INC S$副页内容 <Layout|id=1400|children={1401}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=灵兽图鉴>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=灵兽图鉴|link=@加载界面数据#副页标识=灵兽图鉴>
+INC S$副页内容 <Layout|id=1500|children={1501}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=天材地宝>
+INC S$副页内容 <Button|id=1501|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=天材地宝|link=@加载界面数据#副页标识=天材地宝>
+
+
+
+
+#IF
+EQUAL S$主页标识 游戏活动
+#ACT
+DEC S$主页内容 <Button|id=61|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=游戏活动|link=@加载界面数据#主页标识=游戏活动#副页标识=新区庆典>
+INC S$主页内容 <Button|id=61|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=游戏活动|link=@加载界面数据#主页标识=游戏活动#副页标识=新区庆典>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800}|color=|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=10|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=新区庆典>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=新区庆典|link=@加载界面数据#副页标识=新区庆典>
+
+INC S$副页内容 <Layout|id=1200|children={1201}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=世界BOSS>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=世界BOSS|link=@加载界面数据#副页标识=世界BOSS>
+
+INC S$副页内容 <Layout|id=1300|children={1301}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=护送镖车>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=护送镖车|link=@加载界面数据#副页标识=护送镖车>
+
+INC S$副页内容 <Layout|id=1400|children={1401}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=夺宝活动>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=夺宝活动|link=@加载界面数据#副页标识=夺宝活动>
+
+INC S$副页内容 <Layout|id=1600|children={1601}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=沙城争霸>
+INC S$副页内容 <Button|id=1601|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=沙城争霸|link=@加载界面数据#副页标识=沙城争霸>
+
+
+#IF
+EQUAL S$主页标识 其他物品
+#ACT
+DEC S$主页内容 <Button|id=71|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=其他物品|link=@加载界面数据#主页标识=其他物品#副页标识=精修卷轴>
+INC S$主页内容 <Button|id=71|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=其他物品|link=@加载界面数据#主页标识=其他物品#副页标识=精修卷轴>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400,2500,2600,2700,2800,2900,3000,3100}|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=10|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=精修卷轴>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=精修卷轴|link=@加载界面数据#副页标识=精修卷轴>
+
+INC S$副页内容 <Layout|id=1100|children={1101}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=紫薇星石>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=紫薇星石|link=@加载界面数据#副页标识=紫薇星石>
+
+INC S$副页内容 <Layout|id=1200|children={1201}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=星石碎片>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=星石碎片|link=@加载界面数据#副页标识=星石碎片>
+
+INC S$副页内容 <Layout|id=1300|children={1301}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=女儿红>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=女儿红|link=@加载界面数据#副页标识=女儿红>
+
+INC S$副页内容 <Layout|id=1400|children={1401}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=封印石>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=封印石|link=@加载界面数据#副页标识=封印石>
+
+
+INC S$副页内容 <Layout|id=1700|children={1701}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=黑铁矿石>
+INC S$副页内容 <Button|id=1701|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=黑铁矿石|link=@加载界面数据#副页标识=黑铁矿石>
+
+INC S$副页内容 <Layout|id=1800|children={1801}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=绿晶矿>
+INC S$副页内容 <Button|id=1801|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=绿晶矿|link=@加载界面数据#副页标识=绿晶矿>
+
+INC S$副页内容 <Layout|id=1900|children={1901}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=女娲石>
+INC S$副页内容 <Button|id=1901|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=女娲石|link=@加载界面数据#副页标识=女娲石>
+
+INC S$副页内容 <Layout|id=2000|children={2001}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=天命神石>
+INC S$副页内容 <Button|id=2001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=天命神石|link=@加载界面数据#副页标识=天命神石>
+
+INC S$副页内容 <Layout|id=2100|children={2101}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=灵兽碎片>
+INC S$副页内容 <Button|id=2101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=灵兽碎片|link=@加载界面数据#副页标识=灵兽碎片>
+
+INC S$副页内容 <Layout|id=2200|children={2201}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=上古卷轴>
+INC S$副页内容 <Button|id=2201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=上古卷轴|link=@加载界面数据#副页标识=上古卷轴>
+
+INC S$副页内容 <Layout|id=2300|children={2301}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=神之卷轴>
+INC S$副页内容 <Button|id=2301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=神之卷轴|link=@加载界面数据#副页标识=神之卷轴>
+
+INC S$副页内容 <Layout|id=2400|children={2401}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=经验卷>
+INC S$副页内容 <Button|id=2401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=经验卷|link=@加载界面数据#副页标识=经验卷>
+
+INC S$副页内容 <Layout|id=2700|children={2701}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=百炼龙魂石>
+INC S$副页内容 <Button|id=2701|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=龙魂石|link=@加载界面数据#副页标识=百炼龙魂石>
+
+INC S$副页内容 <Layout|id=2800|children={2801}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=混元晶石>
+INC S$副页内容 <Button|id=2801|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=混元晶石|link=@加载界面数据#副页标识=混元晶石>
+
+INC S$副页内容 <Layout|id=2900|children={2901}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=天外陨铁>
+INC S$副页内容 <Button|id=2901|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=天外陨铁|link=@加载界面数据#副页标识=天外陨铁>
+
+
+#IF
+EQUAL S$主页标识 游戏玩法
+#ACT
+DEC S$主页内容 <Button|id=81|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=游戏玩法|link=@加载界面数据#主页标识=游戏玩法#副页标识=寄售行>
+INC S$主页内容 <Button|id=81|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=游戏玩法|link=@加载界面数据#主页标识=游戏玩法#副页标识=寄售行>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800}|color=|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=5|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=寄售行>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=寄售行|link=@加载界面数据#副页标识=寄售行>
+
+INC S$副页内容 <Layout|id=1100|children={1101}|x=0.0|y=00.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=美食烹饪>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=美食烹饪|link=@加载界面数据#副页标识=美食烹饪>
+
+INC S$副页内容 <Layout|id=1400|children={1401}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=比武擂台>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=比武擂台|link=@加载界面数据#副页标识=比武擂台>
+
+#IF
+EQUAL S$主页标识 社交系统
+#ACT
+DEC S$主页内容 <Button|id=91|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=社交系统|link=@加载界面数据#主页标识=社交系统#副页标识=师徒系统>
+INC S$主页内容 <Button|id=91|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=社交系统|link=@加载界面数据#主页标识=社交系统#副页标识=师徒系统>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800}|color=|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=10|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=师徒系统>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=师徒系统|link=@加载界面数据#副页标识=师徒系统>
+INC S$副页内容 <Layout|id=1100|children={1101}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=结婚系统>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=结婚系统|link=@加载界面数据#副页标识=结婚系统>
+
+#IF
+EQUAL S$主页标识 交易规则
+#ACT
+DEC S$主页内容 <Button|id=101|x=0.0|y=0.0|color=87|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/001.png|pimg=private/pmh/002.png|text=交易规则|link=@加载界面数据#主页标识=交易规则#副页标识=交易规则>
+INC S$主页内容 <Button|id=101|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|width=110|height=38|nimg=private/pmh/002.png|pimg=private/pmh/001.png|text=交易规则|link=@加载界面数据#主页标识=交易规则#副页标识=交易规则>
+MOV S$副页内容 <ListView|children={1000,1100,1200,1300,1400,1500,1600,1700,1800}|color=|x=162.0|y=72.0|width=110|height=370|direction=1|bounce=0|margin=10|reload=0>
+
+INC S$副页内容 <Layout|id=1000|children={1001}|x=0.0|y=0.0|width=80|height=32|color=*|link=@加载界面数据#副页标识=交易规则>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=交易规则|link=@加载界面数据#副页标识=交易规则>
+
+
+#IF
+EQUAL S$副页标识 挂机系统
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|width=80|height=30|color=11022|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=挂机系统|link=@加载界面数据#副页标识=挂机系统>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|width=80|height=30|color=11008|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=挂机系统|link=@加载界面数据#副页标识=挂机系统>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|color=255|size=17|outlinecolor=0|outline=1|text=<挂机/FCOLOR=70>是你练级和赚取金币的不二之选，游戏中各>
+INC S$内容详情 <RText|x=260.0|y=135.0|color=255|size=17|outlinecolor=0|outline=1|text=大地图均可<挂机/FCOLOR=250>，部分高级地图以及活动地图除>
+INC S$内容详情 <Text|x=260.0|y=160.0|color=255|size=17|outlinecolor=0|outline=1|text=外。每手动击杀1只怪物就可以增加1分钟的挂机>
+INC S$内容详情 <Text|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=时间，最多可累计12小时。从此解放双手，轻松>
+INC S$内容详情 <Text|x=260.0|y=210.0|outlinecolor=0|color=255|outline=1|size=17|text=打怪。>
+INC S$内容详情 <Text|x=260.0|y=245.0|color=70|size=17|outlinecolor=0|outline=1|text=【自由挂机卡】>
+INC S$内容详情 <Text|x=260.0|y=270.0|outlinecolor=0|color=255|outline=1|size=17|text=购买悦享礼包使用自由挂机卡的玩家，不再增加\和减少挂机时间>
+
+
+#IF
+EQUAL S$副页标识 分解系统
+#ACT
+DEC S$副页内容 <Button|id=1101|x=0.0|y=5.0|width=80|height=30|color=11022|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=分解系统|link=@加载界面数据#副页标识=分解系统>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|width=80|height=30|color=11008|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=分解系统|link=@加载界面数据#副页标识=分解系统>
+
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<分解系统/FCOLOR=70>可以将多余的装备分解为珍贵的材料。>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=土城<[紫金炉]/FCOLOR=251>处可以进行分解，根据装备的等级你>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=可以获得不同数量的<绿晶矿/FCOLOR=70>、<女娲石/FCOLOR=70>和<天命神石/FCOLOR=70>。>
+INC S$内容详情 <RText|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=其中绿晶矿可以用来强化装备，女娲石可以开出>
+INC S$内容详情 <Text|x=260.0|y=210.0|outlinecolor=0|color=255|outline=1|size=17|text=宝石并镶嵌到装备上，天命神石可以锻造神器和>
+INC S$内容详情 <RText|x=260.0|y=235.0|outlinecolor=0|color=255|outline=1|size=17|text=兑换紫薇星石。>
+INC S$内容详情 <Text|x=260.0|y=282.0|outlinecolor=0|color=11019|outline=1|size=18|text=道具展示：>
+INC S$内容详情 <ItemShow|x=260.0|y=315.0|width=70|height=70|itemid=10462|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=355.0|y=315.0|width=70|height=70|itemid=10463|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=450.0|y=316.0|width=70|height=70|itemid=10464|itemcount=1|showtips=1|bgtype=1>
+
+
+#IF
+EQUAL S$副页标识 武器改造
+#ACT
+DEC S$副页内容 <Button|id=1201|x=0.0|y=5.0|width=80|height=30|color=11022|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=武器改造|link=@加载界面数据#副页标识=武器改造>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|width=80|height=30|color=11008|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=武器改造|link=@加载界面数据#副页标识=武器改造>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|color=255|size=17|outlinecolor=0|outline=1|text=你在土城(324:320)的<[装备强化]/FCOLOR=251>处可以对武器进行>
+INC S$内容详情 <Text|x=260.0|y=135.0|color=255|size=17|outlinecolor=0|outline=1|text=改造，从而提升自身武器实力，变得更加强力！>
+INC S$内容详情 <Text|x=260.0|y=175.0|outlinecolor=0|color=255|outline=1|size=17|text=如有你有幸遇到各种世外高人，将有机会锻造出>
+INC S$内容详情 <Text|x=260.0|y=200.0|outlinecolor=0|color=255|outline=1|size=17|text=传说中各种神级武器！>
+
+#IF
+EQUAL S$副页标识 勋章
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=勋章|link=@加载界面数据#副页标识=勋章>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|width=80|height=30|color=11008|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=勋章|link=@加载界面数据#副页标识=勋章>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|color=255|size=17|outlinecolor=0|outline=1|text=勋章象征着人类的至高荣誉，如果你能收集全一>
+INC S$内容详情 <RText|x=260.0|y=135.0|color=255|size=16|outlinecolor=0|outline=1|text=套装备，就可以去土城仓库处寻找<[王师教头]/FCOLOR=251>兑换相>
+INC S$内容详情 <RText|x=260.0|y=160.0|color=255|size=17|outlinecolor=0|outline=1|text=应的勋章，兑换勋章还需要一定的声望，声望的获>
+INC S$内容详情 <RText|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=取方式有两种：>
+INC S$内容详情 <RText|x=260.0|y=216.0|outlinecolor=0|color=255|outline=1|size=17|text=1、游戏中各种怪物都会掉落<声望令牌/FCOLOR=250>>
+INC S$内容详情 <RText|x=260.0|y=245.0|outlinecolor=0|color=255|outline=1|size=17|text=2、<师徒系统/FCOLOR=250>，徒弟出师后师傅将获得一定声望！>
+
+
+#IF
+EQUAL S$副页标识 佩饰
+#ACT
+DEC S$副页内容 <Button|id=1101|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=佩饰|link=@加载界面数据#副页标识=佩饰>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|width=80|height=30|color=11008|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=佩饰|link=@加载界面数据#副页标识=佩饰>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=佩饰是游戏中能大幅度提升玩家属性道具！>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=佩饰等级分为1-4级，你可以使用游戏中获得的玉>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=胚在土城(328;341)<[佩饰兑换]/FCOLOR=251>处免费去兑换他们。>
+INC S$内容详情 <RText|x=260.0|y=200.0|outlinecolor=0|color=255|outline=1|size=17|text=苍月岛的<[佩饰工匠]/FCOLOR=251>掌握着神秘的佩饰洗练方法。>
+INC S$内容详情 <RText|x=260.0|y=225.0|outlinecolor=0|color=255|outline=1|size=17|text=苍月岛的<[神秘商人]/FCOLOR=251>可以分解多余的佩饰。>
+
+#IF
+EQUAL S$副页标识 灵兽
+#ACT
+DEC S$副页内容 <Button|id=1201|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=灵兽|link=@加载界面数据#副页标识=灵兽>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|width=80|height=30|color=11008|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=灵兽|link=@加载界面数据#副页标识=灵兽>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=灵兽虽然无法出战也无法骑乘，但是会给主人带>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=来属性加成。打开<上古卷轴/FCOLOR=70>可以随机获得一只灵>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=兽，打开<神之卷轴/FCOLOR=70>必定获得一只橙色灵兽。>
+INC S$内容详情 <Text|x=260.0|y=191.0|outlinecolor=0|color=11004|outline=1|size=18|text=获得方式：>
+INC S$内容详情 <Text|x=260.0|y=220.0|outlinecolor=0|color=255|outline=1|size=16|text=1、游戏关注福利礼包均有概率获得上古卷轴。>
+INC S$内容详情 <Text|x=260.0|y=245.0|outlinecolor=0|color=255|outline=1|size=16|text=2、购买悦享礼包免费赠送一个上古卷轴。>
+INC S$内容详情 <RText|x=260.0|y=270.0|outlinecolor=0|color=255|outline=1|size=16|text=3、参与<[新区]/FCOLOR=251>的冲级活动可免费获得上古卷轴>
+INC S$内容详情 <Text|x=285.0|y=295.0|outlinecolor=0|color=255|outline=1|size=17|text=以及神之卷轴。>
+INC S$内容详情 <RText|x=260.0|y=320.0|outlinecolor=0|color=255|outline=1|size=16|text=4、灵兽碎片可在<[灵兽师]/FCOLOR=251>兑换上古卷轴以及神之卷轴。>
+INC S$内容详情 <Text|x=260.0|y=345.0|outlinecolor=0|color=255|outline=1|size=16|text=5、累计充值福利将赠送两只极品灵兽。>
+INC S$内容详情 <Text|x=260.0|y=370.0|outlinecolor=0|color=255|outline=1|size=16|text=6、游戏商城上架上古卷轴，可直接购买。>
+INC S$内容详情 <Text|x=260.0|y=395.0|outlinecolor=0|color=255|outline=1|size=16|text=7、每充值2000元可领取一个神之卷轴。>
+
+#IF
+EQUAL S$副页标识 毒符
+#ACT
+DEC S$副页内容 <Button|id=1301|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=毒符|link=@加载界面数据#副页标识=符咒>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|width=80|height=30|color=11008|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=毒符|link=@加载界面数据#副页标识=符咒>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=盟重土城<[流浪汉]/FCOLOR=251>处可使用金币购买护身符和毒药。>
+INC S$内容详情 <Text|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=道士职业在PK、打怪前一定要确保护身符和毒药>
+INC S$内容详情 <Text|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=的数量充足。>
+INC S$内容详情 <RText|x=260.0|y=195.0|outlinecolor=0|color=255|outline=1|size=17|text=土城<[药店老板]/FCOLOR=251>处还可以炼制道玄灵毒，但是只有>
+INC S$内容详情 <RText|x=260.0|y=220.0|outlinecolor=0|color=255|outline=1|size=17|text=<[道玄]/FCOLOR=250>才能制作。>
+
+
+#IF
+EQUAL S$副页标识 包裹
+#ACT
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|width=80|height=30|color=11023|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=包裹|link=@加载界面数据#副页标识=包裹>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|width=80|height=30|color=11008|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=包裹|link=@加载界面数据#副页标识=包裹>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|color=255|size=17|outlinecolor=0|outline=1|text=你是否觉得你的包裹太小了，还没装什么东西就>
+INC S$内容详情 <RText|x=260.0|y=135.0|color=255|size=17|outlinecolor=0|outline=1|text=满了？<红袖/FCOLOR=251>可是玛法大陆最好的裁缝了，她或许>
+INC S$内容详情 <Text|x=260.0|y=162.0|color=255|size=17|outlinecolor=0|outline=1|text=可以满足你的需求。>
+INC S$内容详情 <RText|x=260.0|y=200.0|outlinecolor=0|color=255|outline=1|size=17|text=如果你有幸成为一名<裁缝师/FCOLOR=250>，红袖将帮助你制作>
+INC S$内容详情 <Text|x=260.0|y=225.0|outlinecolor=0|color=255|outline=1|size=17|text=出更强大的包裹袋！>
+
+
+#IF
+EQUAL S$副页标识 装备强化
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=装备强化|link=@加载界面数据#副页标识=装备强化>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=装备强化|link=@加载界面数据#副页标识=装备强化>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=盟重土城的<[装备强化]/FCOLOR=251>NPC可以为你强化装备，获>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=得更强大的属性加成。但并非每次强化都会成功>
+INC S$内容详情 <RText|x=259.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=你最好多准备一些<绿晶矿/FCOLOR=250>。>
+
+
+#IF
+EQUAL S$副页标识 宝石镶嵌
+#ACT
+DEC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=宝石镶嵌|link=@加载界面数据#副页标识=宝石镶嵌>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=宝石镶嵌|link=@加载界面数据#副页标识=宝石镶嵌>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=分解装备获得女娲石后，找<[开石镶嵌]/FCOLOR=251>NPC即可免>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=费为你开石，从而获得不同属性的<宝石/FCOLOR=70>，宝石能够>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=镶嵌在装备上。如果有多余的宝石，就拿去分解为>
+INC S$内容详情 <RText|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=<女娲石碎片/FCOLOR=70>，女娲石碎片还可以再次合成女娲石。>
+
+#IF
+EQUAL S$副页标识 灵兽训练
+#ACT
+DEC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=灵兽训练|link=@加载界面数据#副页标识=灵兽训练>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=灵兽训练|link=@加载界面数据#副页标识=灵兽训练>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=随着主人打怪升级，灵兽也将获得经验、增加属>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=性。而对于达到<25级/FCOLOR=250>的灵兽，<[灵兽师]/FCOLOR=251>的训练每>
+INC S$内容详情 <RText|x=258.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=次还可以为它增加<1-1的攻魔道/FCOLOR=250>属性。>
+
+
+#IF
+EQUAL S$副页标识 装备合成
+#ACT
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=装备合成|link=@加载界面数据#副页标识=装备合成>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=装备合成|link=@加载界面数据#副页标识=装备合成>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<[紫金炉]/FCOLOR=251>汇聚着天地灵气，可以将五件同等级>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=的<T级装备/FCOLOR=250>合成为更高级的装备。>
+
+
+#IF
+EQUAL S$副页标识 装备洗炼
+#ACT
+DEC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=装备洗炼|link=@加载界面数据#副页标识=装备洗炼>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=装备洗炼|link=@加载界面数据#副页标识=装备洗炼>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=项链洗炼可以使项链获得<幸运/FCOLOR=250>，土城的<[辛夫人]/FCOLOR=251>>
+INC S$内容详情 <Text|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=对此尤为擅长。每次洗炼成功幸运都会增加1点。>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=运2后再次洗炼成功将获得超强：<对怪增伤/FCOLOR=250>属性。>
+INC S$内容详情 <Text|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=她还可以为蓝魔之泪开光，消耗一瓶幸运油就可>
+INC S$内容详情 <RText|x=260.0|y=210.0|outlinecolor=0|color=255|outline=1|size=17|text=以获得不同属性的<幸运项链/FCOLOR=70>和<诅咒吊坠/FCOLOR=70>。>
+INC S$内容详情 <Text|x=260.0|y=243.0|outlinecolor=0|color=11004|outline=1|size=18|text=道具展示：>
+INC S$内容详情 <ItemShow|x=355.0|y=240.0|width=70|height=70|itemid=50640|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=420.0|y=240.0|width=70|height=70|itemid=50641|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=485.0|y=240.0|width=70|height=70|itemid=50642|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=550.0|y=240.0|width=70|height=70|itemid=50643|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=355.0|y=310.0|width=70|height=70|itemid=50644|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=420.0|y=310.0|width=70|height=70|itemid=50645|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=485.0|y=310.0|width=70|height=70|itemid=50646|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=550.0|y=310.0|width=70|height=70|itemid=50647|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=355.0|y=380.0|width=70|height=70|itemid=50648|itemcount=1|showtips=1|bgtype=1>
+
+#IF
+EQUAL S$副页标识 装备鉴定
+#ACT
+DEC S$副页内容 <Button|id=1501|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=剑甲淬炼|link=@加载界面数据#副页标识=装备鉴定>
+INC S$副页内容 <Button|id=1501|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=剑甲淬炼|link=@加载界面数据#副页标识=装备鉴定>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=土城(320;321)处<剑甲淬炼/FCOLOR=70>NPC可以化腐朽为神奇。>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=即使是一把普通的武器，如果被<[淬炼成功]/FCOLOR=251>激发出>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=潜在的属性，同样可以成为无数勇士所向往的神器。>
+INC S$内容详情 <RText|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=但是只有<武器/FCOLOR=250>和<衣服/FCOLOR=250>才能进行淬炼。>
+
+
+#IF
+EQUAL S$副页标识 武器升级
+#ACT
+DEC S$副页内容 <Button|id=1601|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=武器升级|link=@加载界面数据#副页标识=武器升级>
+INC S$副页内容 <Button|id=1601|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=武器升级|link=@加载界面数据#副页标识=武器升级>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<武器升级/FCOLOR=70>能将你手中的兵器变得更加锋利。武器店>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=内的<[武器库管理员]/FCOLOR=251>一生专注于升级武器，是当之>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=无愧的武器大师，找他之前记得一定要准备好<黑铁/FCOLOR=250>>
+INC S$内容详情 <RText|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=<矿石和首饰/FCOLOR=250>。>
+INC S$内容详情 <RText|x=260.0|y=220.0|outlinecolor=0|color=255|outline=1|size=17|text=<注意事项/FCOLOR=70>>
+INC S$内容详情 <RText|x=260.0|y=245.0|outlinecolor=0|color=255|outline=1|size=17|text=武器最高可升级7次，升级失败武器将会破碎消失！>
+
+#IF
+EQUAL S$副页标识 升级系统
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=升级系统|link=@加载界面数据#副页标识=升级系统>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=升级系统|link=@加载界面数据#副页标识=升级系统>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=254.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=《搜打撤传奇》是一款升级非常轻松的游戏，仅需>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=3分钟即可达到30级，之后可以使用<经验卷/FCOLOR=70>快速>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=升级，打怪时服用<女儿红/FCOLOR=70>后还可额外获得<45%的/FCOLOR=250>>
+INC S$内容详情 <RText|x=258.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=<经验值/FCOLOR=250>。游戏内自带挂机功能，无论是升级还是>
+INC S$内容详情 <Text|x=258.0|y=210.0|outlinecolor=0|color=255|outline=1|size=17|text=刷怪都更加轻松。>
+
+
+
+#IF
+EQUAL S$副页标识 技能系统
+#ACT
+DEC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=技能精修|link=@加载界面数据#副页标识=技能系统>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=技能精修|link=@加载界面数据#副页标识=技能系统>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<技能精修/FCOLOR=70>至关重要，一定不要错过。<[技能大师]/FCOLOR=251>正>
+INC S$内容详情 <Text|x=259.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=在土城传授技能精修，他会根据你的职业为你选择>
+INC S$内容详情 <Text|x=259.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=合适的技能，你可以从中选择一个流派精修，精修>
+INC S$内容详情 <Text|x=259.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=后不可以再精修其他流派的技能，每个流派有各自>
+INC S$内容详情 <Text|x=259.0|y=210.0|outlinecolor=0|color=255|outline=1|size=17|text=的优点，请谨慎选择。>
+INC S$内容详情 <Text|x=260.0|y=250.0|outlinecolor=0|color=255|outline=1|size=17|text=各职业可选择的流派为：>
+INC S$内容详情 <RText|x=260.0|y=280.0|outlinecolor=0|color=255|outline=1|size=17|text=战士：<战将、武宗、暴君。/FCOLOR=11003>>
+INC S$内容详情 <RText|x=260.0|y=305.0|outlinecolor=0|color=255|outline=1|size=17|text=法师：<魔神、赤焰、冰雪。/FCOLOR=11003>>
+INC S$内容详情 <RText|x=260.0|y=330.0|outlinecolor=0|color=255|outline=1|size=17|text=道士：<天尊、道玄、御灵。/FCOLOR=11003>>
+
+
+
+#IF
+EQUAL S$副页标识 八门遁甲
+#ACT
+DEC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=八门遁甲|link=@加载界面数据#副页标识=八门遁甲>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=八门遁甲|link=@加载界面数据#副页标识=八门遁甲>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<八门遁甲/FCOLOR=70>是提升个人实力的重要途径，角色修为等>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=级达到<35级/FCOLOR=250>即可感悟八门遁甲的开门，完成开门>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=试炼即可领悟开门能力。之后每10级即可领悟下一>
+INC S$内容详情 <Text|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=命门，详细信息可以在角色-八门栏内查看，如果你>
+INC S$内容详情 <RText|x=261.0|y=210.0|outlinecolor=0|color=255|outline=1|size=17|text=对某个命门领悟的能力不满意可以使用<紫薇星石/FCOLOR=70>>
+INC S$内容详情 <Text|x=261.0|y=238.0|outlinecolor=0|color=255|outline=1|size=17|text=重铸功法，重选已有属性。>
+INC S$内容详情 <Text|x=260.0|y=280.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=360.0|y=280.0|width=70|height=70|itemid=10404|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 装备图鉴
+#ACT
+DEC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=装备图鉴|link=@加载界面数据#副页标识=装备图鉴>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=装备图鉴|link=@加载界面数据#副页标识=装备图鉴>
+
+MOV S$内容详情
+
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<装备图鉴/FCOLOR=70>激活后会获得属性加成。打开装备图鉴>
+INC S$内容详情 <Text|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=面板，可以查看游戏内的“装备图鉴”。全部提交>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=并激活后会获得<属性增益/FCOLOR=250>(一旦提交，装备不可取>
+INC S$内容详情 <Text|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=回)。>
+
+
+#IF
+EQUAL S$副页标识 灵兽图鉴
+#ACT
+DEC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=灵兽图鉴|link=@加载界面数据#副页标识=灵兽图鉴>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=灵兽图鉴|link=@加载界面数据#副页标识=灵兽图鉴>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=点开装备图鉴中的<灵兽图鉴/FCOLOR=70>可以查看灵兽图腾。>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=收录灵兽可以获得<属性加成/FCOLOR=250>，集齐不同的灵兽还>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=可以获得<图鉴属性/FCOLOR=250>(灵兽一旦收录，不可取回)。>
+
+
+#IF
+EQUAL S$副页标识 天材地宝
+#ACT
+DEC S$副页内容 <Button|id=1501|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=天材地宝|link=@加载界面数据#副页标识=天材地宝>
+INC S$副页内容 <Button|id=1501|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=天材地宝|link=@加载界面数据#副页标识=天材地宝>
+
+MOV S$内容详情 
+INC S$内容详情 <ListView|children={5018,5019,5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5014,5015,5016,5017}|x=260.0|y=110.0|width=367|height=330|direction=1|bounce=0|margin=2|reload=0>
+INC S$内容详情 <Text|id=5018|x=285.0|y=440.0|color=70|size=17|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|id=5019|children={5020,5021,5022,5023}|x=70.0|y=10.0|width=70|height=70|itemid=10403|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|id=5020|x=70.0|y=0.0|width=70|height=70|itemid=10400|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|id=5021|x=140.0|y=0.0|width=70|height=70|itemid=10399|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|id=5022|x=210.0|y=0.0|width=70|height=70|itemid=10401|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|id=5023|x=280.0|y=0.0|width=70|height=70|itemid=10402|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <RText|id=5004|x=285.0|y=140.0|color=255|size=17|outlinecolor=0|outline=1|text=<蟠桃/FCOLOR=70>：桃身红晕，味甜汁多。服用后永久增加1%>
+INC S$内容详情 <Text|id=5005|x=0.0|y=20.0|color=255|size=17|outlinecolor=0|outline=1|text=的暴击率，每人限吃10个。>
+INC S$内容详情 <RText|id=5006|x=0.0|y=40.0|color=255|size=17|outlinecolor=0|outline=1|text=<千年人参/FCOLOR=70>：生长在山林深处的千年人参，有延年>
+INC S$内容详情 <Text|id=5007|x=0.0|y=60.0|color=255|size=17|outlinecolor=0|outline=1|text=益寿，活血化瘀的作用。服用后永久增加1%HP，>
+INC S$内容详情 <Text|id=5008|x=0.0|y=80.0|color=255|size=17|outlinecolor=0|outline=1|text=每人限吃10个。>
+INC S$内容详情 <RText|id=5009|x=285.0|y=260.0|color=255|size=17|outlinecolor=0|outline=1|text=<灵芝/FCOLOR=70>：汲天地之灵气，取日月之精华，所谓仙丹>
+INC S$内容详情 <Text|id=5010|x=285.0|y=280.0|color=255|size=17|outlinecolor=0|outline=1|text=妙药灵芝草。服用后永久增加1%双防，每人限吃>
+INC S$内容详情 <Text|id=5011|x=285.0|y=300.0|color=255|size=17|outlinecolor=0|outline=1|text=10个。>
+INC S$内容详情 <RText|id=5012|x=285.0|y=330.0|color=255|size=17|outlinecolor=0|outline=1|text=<菩提果/FCOLOR=70>：菩提果形似孩童。生长百年方可成熟，>
+INC S$内容详情 <Text|id=5013|x=285.0|y=350.0|color=255|size=17|outlinecolor=0|outline=1|text=服用后能强身健体，延年益寿，并永久增加1%攻>
+INC S$内容详情 <Text|id=5014|x=285.0|y=370.0|color=255|size=17|outlinecolor=0|outline=1|text=魔道，每人限吃10个。>
+INC S$内容详情 <RText|id=5015|x=285.0|y=400.0|color=255|size=17|outlinecolor=0|outline=1|text=<天山雪莲/FCOLOR=70>：生于极寒环境的天山雪莲，秉性傲寒>
+INC S$内容详情 <Text|id=5016|x=285.0|y=420.0|color=255|size=17|outlinecolor=0|outline=1|text=，洁白晶莹。服用后被暴击概率永久降低2%，每>
+INC S$内容详情 <Text|id=5017|x=285.0|y=440.0|color=255|size=17|outlinecolor=0|outline=1|text=人限吃10个。>
+
+#IF
+EQUAL S$副页标识 新区庆典
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=新区庆典|link=@加载界面数据#副页标识=新区庆典>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=新区庆典|link=@加载界面数据#副页标识=新区庆典>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<[每个新区]/FCOLOR=251>都会举办新区专属庆典活动：>
+INC S$内容详情 <RText|x=260.0|y=140.0|outlinecolor=0|color=255|outline=1|size=17|text=<冲级奖励：/FCOLOR=70>到达一定等级后，可以领取丰厚的奖>
+INC S$内容详情 <Text|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=励：女儿红、精修卷轴、上古卷轴、紫薇星石、沃>
+INC S$内容详情 <Text|x=260.0|y=180.0|outlinecolor=0|color=255|outline=1|size=17|text=玛封印石、祖玛封印石、赤月封印石、神之卷轴、>
+INC S$内容详情 <Text|x=260.0|y=200.0|outlinecolor=0|color=255|outline=1|size=17|text=神甲盒、神器盒。>
+INC S$内容详情 <RText|x=262.0|y=230.0|outlinecolor=0|color=255|outline=1|size=17|text=<BOSS悬赏：/FCOLOR=70>新区首个击杀悬赏名单内的BOSS的玩>
+INC S$内容详情 <Text|x=262.0|y=250.0|outlinecolor=0|color=255|outline=1|size=17|text=家，可以获得大量元宝奖励！>
+INC S$内容详情 <Text|x=262.0|y=280.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=260.0|y=310.0|width=70|height=70|itemid=10396|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=335.0|y=310.0|width=70|height=70|itemid=10202|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=410.0|y=310.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=485.0|y=310.0|width=70|height=70|itemid=10404|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=560.0|y=310.0|width=70|height=70|itemid=10407|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=260.0|y=380.0|width=70|height=70|itemid=10409|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=335.0|y=380.0|width=70|height=70|itemid=10411|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=410.0|y=380.0|width=70|height=70|itemid=10430|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=485.0|y=380.0|width=70|height=70|itemid=10550|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=560.0|y=380.0|width=70|height=70|itemid=10551|itemcount=1|showtips=1|bgtype=1>
+
+#IF
+EQUAL S$副页标识 世界BOSS
+#ACT
+DEC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=世界BOSS|link=@加载界面数据#副页标识=世界BOSS>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=世界BOSS|link=@加载界面数据#副页标识=世界BOSS>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=世界BOSS会在每天的<13:00/FCOLOR=250>和<23:00/FCOLOR=250>出现，届时大>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=量的勇士会前往征讨。世界BOSS携带者<诸多极品/FCOLOR=70>>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=<装备/FCOLOR=70>和<珍贵材料/FCOLOR=70>。>
+
+
+#IF
+EQUAL S$副页标识 护送镖车
+#ACT
+DEC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=护送镖车|link=@加载界面数据#副页标识=护送镖车>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=护送镖车|link=@加载界面数据#副页标识=护送镖车>
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=护送镖车可以获得<不菲的经验奖励/FCOLOR=70>和<押镖礼盒/FCOLOR=70>。>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=<50级/FCOLOR=250>以上的玩家可以前往<[镖师]/FCOLOR=251>处接取护送镖车>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=任务，你可以选择在中途去驿站为镖车加货，加>
+INC S$内容详情 <RText|x=260.0|y=188.0|outlinecolor=0|color=255|outline=1|size=17|text=货会使你获得更丰厚的奖励。>
+INC S$内容详情 <Text|x=260.0|y=250.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=360.0|y=250.0|width=70|height=70|itemid=10537|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <RText|x=260.0|y=330.0|outlinecolor=0|color=255|outline=1|size=17|text=<接镖地点：/FCOLOR=250>土城书店(408;325)>
+INC S$内容详情 <RText|x=260.0|y=355.0|outlinecolor=0|color=255|outline=1|size=17|text=<送镖地点：/FCOLOR=250>沙城大门(669;338)>
+
+#IF
+EQUAL S$副页标识 夺宝活动
+#ACT
+DEC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=夺宝活动|link=@加载界面数据#副页标识=夺宝活动>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=夺宝活动|link=@加载界面数据#副页标识=夺宝活动>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=夺宝活动可以获得顶级装备。每天<19点整/FCOLOR=250>，通过>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=<[夺宝NPC]/FCOLOR=251>前往夺宝神殿地图，击败宝盒教主将掉>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=落宝盒，保护宝盒30分钟即可获得<顶级首饰、武器/FCOLOR=70>>
+INC S$内容详情 <RText|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=<、衣服、高级材料/FCOLOR=70>等随机一件道具！>
+
+
+
+#IF
+EQUAL S$副页标识 沙城争霸
+#ACT
+DEC S$副页内容 <Button|id=1601|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=沙城争霸|link=@加载界面数据#副页标识=沙城争霸>
+INC S$副页内容 <Button|id=1601|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=沙城争霸|link=@加载界面数据#副页标识=沙城争霸>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=每次合区的当天晚上<20:00-22:00/FCOLOR=250>，玛法大陆会发>
+INC S$内容详情 <Text|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=起攻城活动，占领沙巴克将获得大量元宝奖励，在>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=土城<[剑指沙城]/FCOLOR=251>NPC处可以查看详细说明。>
+
+
+#IF
+EQUAL S$副页标识 精修卷轴
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=精修卷轴|link=@加载界面数据#副页标识=精修卷轴>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=精修卷轴|link=@加载界面数据#副页标识=精修卷轴>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=神秘的<精修卷轴/FCOLOR=70>，无人知晓它的来历，似乎从玛>
+INC S$内容详情 <Text|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=法大陆诞生之时它就存在着。集齐一定数量的精>
+INC S$内容详情 <RText|x=262.0|y=161.0|outlinecolor=0|color=255|outline=1|size=17|text=修卷轴，可在<[技能大师]/FCOLOR=251>处精修高级技能。>
+INC S$内容详情 <Text|x=260.0|y=190.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=215.0|outlinecolor=0|color=255|outline=1|size=16|text=1、充值回馈免费赠送;>
+INC S$内容详情 <Text|x=260.0|y=235.0|outlinecolor=0|color=255|outline=1|size=16|text=2、新区冲级奖励领取;>
+INC S$内容详情 <Text|x=260.0|y=255.0|color=255|size=16|outlinecolor=0|outline=1|text=3、击杀怪物掉落;>
+INC S$内容详情 <Text|x=260.0|y=275.0|color=255|size=16|outlinecolor=0|outline=1|text=4、师徒系统获取;>
+INC S$内容详情 <Text|x=260.0|y=295.0|outlinecolor=0|color=255|outline=1|size=16|text=5、悦享礼包每日领取;>
+INC S$内容详情 <Text|x=260.0|y=315.0|outlinecolor=0|color=255|outline=1|size=16|text=6、寄售行内购买;>
+INC S$内容详情 <Text|x=260.0|y=345.0|outlinecolor=0|color=11002|outline=1|size=16|text=材料用途：精修高级技能，寄售行出售。>
+INC S$内容详情 <Text|x=260.0|y=375.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=355.0|y=375.0|width=70|height=70|itemid=10202|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 紫薇星石
+#ACT
+DEC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=紫薇星石|link=@加载界面数据#副页标识=紫薇星石>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=紫薇星石|link=@加载界面数据#副页标识=紫薇星石>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=来历神秘，可以逆天改命，重塑<八门/FCOLOR=70>，书写不同>
+INC S$内容详情 <Text|x=260.0|y=135.0|color=255|size=16|outlinecolor=0|outline=1|text=的人生。>
+INC S$内容详情 <Text|x=260.0|y=162.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=190.0|outlinecolor=0|color=255|outline=1|size=16|text=1、活动BOSS、红色BOSS和世界BOSS均有概率掉落;>
+INC S$内容详情 <RText|x=260.0|y=215.0|outlinecolor=0|color=255|outline=1|size=16|text=2、使用天命神石找土城<[屠夫]/FCOLOR=251>兑换;>
+INC S$内容详情 <Text|x=260.0|y=240.0|color=255|size=16|outlinecolor=0|outline=1|text=3、冲级奖励活动免费领取;>
+INC S$内容详情 <Text|x=260.0|y=265.0|outlinecolor=0|color=255|outline=1|size=16|text=4、寄售行内交易获得;>
+INC S$内容详情 <Text|x=260.0|y=290.0|outlinecolor=0|color=255|outline=1|size=16|text=5、累计回馈礼包赠送;>
+INC S$内容详情 <Text|x=260.0|y=320.0|outlinecolor=0|color=11002|outline=1|size=16|text=材料用途：重塑已有命门，可在寄售行出售。>
+INC S$内容详情 <Text|x=260.0|y=360.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=355.0|y=360.0|width=70|height=70|itemid=10404|itemcount=1|showtips=1|bgtype=1>
+
+
+#IF
+EQUAL S$副页标识 星石碎片
+#ACT
+DEC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=星石碎片|link=@加载界面数据#副页标识=星石碎片>
+INC S$副页内容 <Button|id=1201|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=星石碎片|link=@加载界面数据#副页标识=星石碎片>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=经历漫长岁月后遗留下来的星石碎片>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=可在<[书店老板]/FCOLOR=251>处兑换为紫薇星石>
+INC S$内容详情 <Text|x=260.0|y=165.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=190.0|outlinecolor=0|color=255|outline=1|size=17|text=学习过全部高级技能后，每日悦享礼包领取精修>
+INC S$内容详情 <Text|x=260.0|y=215.0|outlinecolor=0|color=255|outline=1|size=17|text=卷轴将变为星石碎片。>
+INC S$内容详情 <Text|x=260.0|y=250.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：兑换紫薇星石。>
+INC S$内容详情 <Text|x=260.0|y=290.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=350.0|y=290.0|width=70|height=70|itemid=10405|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 女儿红
+#ACT
+DEC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=女儿红|link=@加载界面数据#副页标识=女儿红>
+INC S$副页内容 <Button|id=1301|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=女儿红|link=@加载界面数据#副页标识=女儿红>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=烈酒女儿红，开坛十里香。使用后打怪可额外获>
+INC S$内容详情 <RText|x=257.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=得<45%经验值/FCOLOR=250>，持续60分钟。>
+INC S$内容详情 <Text|x=260.0|y=160.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=16|text=1、累计回馈赠送;>
+INC S$内容详情 <Text|x=260.0|y=205.0|outlinecolor=0|color=255|outline=1|size=16|text=2、冲级活动包领取;>
+INC S$内容详情 <Text|x=260.0|y=225.0|outlinecolor=0|color=255|outline=1|size=16|text=3、土城药店每日可以兑换5瓶;>
+INC S$内容详情 <Text|x=260.0|y=245.0|outlinecolor=0|color=255|outline=1|size=16|text=4、悦享礼包获得;>
+INC S$内容详情 <Text|x=260.0|y=265.0|outlinecolor=0|color=255|outline=1|size=16|text=5、商铺购买;>
+INC S$内容详情 <Text|x=260.0|y=292.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：使用后打怪可额外获得45%经验值。>
+INC S$内容详情 <Text|x=260.0|y=330.0|outlinecolor=0|color=1025|outline=1|size=17|text=道具展示：>
+INC S$内容详情 <ItemShow|x=350.0|y=330.0|width=70|height=70|itemid=10396|itemcount=1|showtips=1|bgtype=1>
+
+
+#IF
+EQUAL S$副页标识 封印石
+#ACT
+DEC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=封印石|link=@加载界面数据#副页标识=封印石>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=封印石|link=@加载界面数据#副页标识=封印石>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<[万魔秘境]/FCOLOR=251>中的三大魔王正在密谋提炼恶魔的神力>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=携带<封印石/FCOLOR=70>可以安全进入万魔秘境，挑战三大魔>
+INC S$内容详情 <Text|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=王。使用的封印石越高级，挑战的恶魔便更强大。>
+INC S$内容详情 <Text|x=260.0|y=195.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=220.0|outlinecolor=0|color=255|outline=1|size=16|text=1、使用封印碎片兑换;>
+INC S$内容详情 <Text|x=260.0|y=245.0|outlinecolor=0|color=255|outline=1|size=16|text=2、冲级活动处领取;>
+INC S$内容详情 <Text|x=260.0|y=284.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：进入万魔秘境副本。>
+INC S$内容详情 <Text|x=260.0|y=330.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=350.0|y=330.0|width=70|height=70|itemid=10407|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=430.0|y=330.0|width=70|height=70|itemid=10409|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=510.0|y=330.0|width=70|height=70|itemid=10411|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 黑铁矿石
+#ACT
+DEC S$副页内容 <Button|id=1701|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=黑铁矿石|link=@加载界面数据#副页标识=黑铁矿石>
+INC S$副页内容 <Button|id=1701|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=黑铁矿石|link=@加载界面数据#副页标识=黑铁矿石>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<黑铁矿石/FCOLOR=70>可在武器店<[武器库管理员]/FCOLOR=251>处购买。带上>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=黑铁矿石和首饰去找<[武器库管理员]/FCOLOR=251>，他可以为你>
+INC S$内容详情 <Text|x=261.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=的武器升级，使你的武器更加锋利。>
+INC S$内容详情 <Text|x=260.0|y=215.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=350.0|y=215.0|width=70|height=70|itemid=10456|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=430.0|y=215.0|width=70|height=70|itemid=10457|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=510.0|y=215.0|width=70|height=70|itemid=10458|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 绿晶矿
+#ACT
+DEC S$副页内容 <Button|id=1801|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=绿晶矿|link=@加载界面数据#副页标识=绿晶矿>
+INC S$副页内容 <Button|id=1801|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=绿晶矿|link=@加载界面数据#副页标识=绿晶矿>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<绿晶矿/FCOLOR=70>是分解绿色、紫色装备得到的珍贵材料。>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=可以在<[装备强化]/FCOLOR=251>NPC处为装备强化，也可以作>
+INC S$内容详情 <Text|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=为改造武器的材料。>
+INC S$内容详情 <Text|x=260.0|y=195.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=220.0|outlinecolor=0|color=255|outline=1|size=16|text=1、分解装备获得;>
+INC S$内容详情 <Text|x=260.0|y=262.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：装备强化，武器改造。>
+INC S$内容详情 <Text|x=260.0|y=300.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=355.0|y=300.0|width=70|height=70|itemid=10462|itemcount=1|showtips=1|bgtype=1>
+
+
+#IF
+EQUAL S$副页标识 女娲石
+#ACT
+DEC S$副页内容 <Button|id=1901|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=女娲石|link=@加载界面数据#副页标识=女娲石>
+INC S$副页内容 <Button|id=1901|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=女娲石|link=@加载界面数据#副页标识=女娲石>
+
+MOV S$内容详情
+
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<女娲石/FCOLOR=70>是分解极品装备得到的珍贵材料。可以>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=在<[开石镶嵌]/FCOLOR=251>处进行开石，获得随机属性的<宝石/FCOLOR=70>。>
+INC S$内容详情 <Text|x=260.0|y=165.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <RText|x=260.0|y=195.0|outlinecolor=0|color=255|outline=1|size=16|text=1、在<[紫金炉]/FCOLOR=251>处分解装备获得;>
+INC S$内容详情 <Text|x=260.0|y=220.0|outlinecolor=0|color=255|outline=1|size=16|text=2、使用女娲石碎片找开石镶嵌NPC兑换;>
+INC S$内容详情 <Text|x=260.0|y=260.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：开石获得宝石，锻造神兵，武器改造。>
+INC S$内容详情 <Text|x=260.0|y=300.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=355.0|y=300.0|width=70|height=70|itemid=10463|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 天命神石
+#ACT
+DEC S$副页内容 <Button|id=2001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=天命神石|link=@加载界面数据#副页标识=天命神石>
+INC S$副页内容 <Button|id=2001|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=天命神石|link=@加载界面数据#副页标识=天命神石>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=<天命神石/FCOLOR=70>是分解橙色、红色装备得到的珍贵材料。>
+INC S$内容详情 <RText|x=258.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=可以在<[屠夫]/FCOLOR=251>处兑换<紫薇星石/FCOLOR=70>。>
+INC S$内容详情 <Text|x=260.0|y=170.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=200.0|outlinecolor=0|color=255|outline=1|size=16|text=1、在紫金炉处分解装备获得;>
+INC S$内容详情 <Text|x=260.0|y=255.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：在屠夫处可兑换紫薇星石，锻造神兵。>
+INC S$内容详情 <Text|x=258.0|y=285.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=350.0|y=288.0|width=70|height=70|itemid=10464|itemcount=1|showtips=1|bgtype=1>
+
+#IF
+EQUAL S$副页标识 灵兽碎片
+#ACT
+DEC S$副页内容 <Button|id=2101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=灵兽碎片|link=@加载界面数据#副页标识=灵兽碎片>
+INC S$副页内容 <Button|id=2101|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=灵兽碎片|link=@加载界面数据#副页标识=灵兽碎片>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=出售灵兽可以获得<灵兽碎片/FCOLOR=70>，根据灵兽的品质可>
+INC S$内容详情 <Text|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=以获得不同数量的灵兽碎片，数量由灵兽的品质>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=决定。灵兽碎片可在<[灵兽师]/FCOLOR=251>处兑换上古卷轴和>
+INC S$内容详情 <Text|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=神之卷轴。>
+INC S$内容详情 <Text|x=260.0|y=238.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=360.0|y=235.0|width=70|height=70|itemid=10428|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=450.0|y=235.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=540.0|y=235.0|width=70|height=70|itemid=10430|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 上古卷轴
+#ACT
+DEC S$副页内容 <Button|id=2201|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=上古卷轴|link=@加载界面数据#副页标识=上古卷轴>
+INC S$副页内容 <Button|id=2201|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=上古卷轴|link=@加载界面数据#副页标识=上古卷轴>
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=封印者各种灵兽的珍贵卷轴，打开可随机获得一>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=16|text=个<灵兽/FCOLOR=70>。>
+INC S$内容详情 <Text|x=260.0|y=160.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=16|text=1、获得关注礼包后有概率获得;>
+INC S$内容详情 <Text|x=260.0|y=205.0|outlinecolor=0|color=255|outline=1|size=16|text=2、购买悦享礼包免费赠送一个上古卷轴;>
+INC S$内容详情 <RText|x=260.0|y=225.0|outlinecolor=0|color=255|outline=1|size=16|text=3、参与<[新区]/FCOLOR=251>的冲级活动可免费获得上古卷轴;>
+INC S$内容详情 <RText|x=260.0|y=245.0|outlinecolor=0|color=255|outline=1|size=16|text=4、用灵兽碎片可与<[灵兽师]/FCOLOR=251>兑换上古卷轴以及神之>
+INC S$内容详情 <Text|x=285.0|y=270.0|outlinecolor=0|color=255|outline=1|size=16|text=卷轴;>
+INC S$内容详情 <Text|x=260.0|y=295.0|color=255|size=16|outlinecolor=0|outline=1|text=5、师徒系统获取;>
+INC S$内容详情 <Text|x=260.0|y=315.0|outlinecolor=0|color=255|outline=1|size=16|text=6、商铺可直接购买上古卷轴，或找灵兽师购买;>
+INC S$内容详情 <Text|x=260.0|y=345.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：打开后获得灵兽。>
+INC S$内容详情 <Text|x=260.0|y=370.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=350.0|y=375.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 神之卷轴
+#ACT
+DEC S$副页内容 <Button|id=2301|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=神之卷轴|link=@加载界面数据#副页标识=神之卷轴>
+INC S$副页内容 <Button|id=2301|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=神之卷轴|link=@加载界面数据#副页标识=神之卷轴>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=散发着上古气息的卷轴，其内封印者恐怖的上古>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=灵兽。打开后必定获得<橙色灵兽/FCOLOR=70>(优先出没有出过>
+INC S$内容详情 <Text|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=的橙色灵兽)。>
+INC S$内容详情 <Text|x=260.0|y=190.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <RText|x=260.0|y=215.0|outlinecolor=0|color=255|outline=1|size=16|text=1、在<[灵兽师]/FCOLOR=251>处使用灵兽碎片兑换;>
+INC S$内容详情 <Text|x=260.0|y=235.0|outlinecolor=0|color=255|outline=1|size=16|text=2、充值回馈赠送;>
+INC S$内容详情 <Text|x=260.0|y=255.0|outlinecolor=0|color=255|outline=1|size=16|text=3、参与冲级活动领取;>
+;INC S$内容详情 <Text|x=260.0|y=275.0|color=255|size=16|outlinecolor=0|outline=1|text=4、BOSS悬赏活动获得;>
+INC S$内容详情 <Text|x=260.0|y=305.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：打开后可获得橙色灵兽。>
+INC S$内容详情 <Text|x=260.0|y=345.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=350.0|y=345.0|width=70|height=70|itemid=10430|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 经验卷
+#ACT
+DEC S$副页内容 <Button|id=2401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=经验卷|link=@加载界面数据#副页标识=经验卷>
+INC S$副页内容 <Button|id=2401|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=经验卷|link=@加载界面数据#副页标识=经验卷>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=蕴含着先人智慧的神奇卷轴，使用后可获得<对应的/FCOLOR=250>>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=<经验值/FCOLOR=250>。>
+INC S$内容详情 <Text|x=260.0|y=170.0|outlinecolor=0|color=255|outline=1|size=17|text=材料来源：打怪掉落、寄售行内购买>
+INC S$内容详情 <Text|x=260.0|y=195.0|outlinecolor=0|color=255|outline=1|size=17|text=材料用途：使用后增加人物升级经验。>
+INC S$内容详情 <Text|x=260.0|y=244.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=365.0|y=240.0|width=70|height=70|itemid=10388|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=525.0|y=240.0|width=70|height=70|itemid=10390|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=445.0|y=240.0|width=70|height=70|itemid=10389|itemcount=1|showtips=1|bgtype=1>
+
+
+#IF
+EQUAL S$副页标识 百炼龙魂石
+#ACT
+DEC S$副页内容 <Button|id=2701|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=龙魂石|link=@加载界面数据#副页标识=百炼龙魂石>
+INC S$副页内容 <Button|id=2701|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=龙魂石|link=@加载界面数据#副页标识=百炼龙魂石>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=埋藏在寒冰世界中万年的矿石，晶莹剔透，散发着>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=寒气。能承受烈焰灼烧，是<锻造神器/FCOLOR=250>不可缺少的材>
+INC S$内容详情 <Text|x=260.0|y=165.0|outlinecolor=0|color=255|outline=1|size=17|text=料。>
+INC S$内容详情 <Text|x=260.0|y=210.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料来源：打怪掉落>
+INC S$内容详情 <Text|x=260.0|y=240.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：锻造神兵，武器改造。>
+INC S$内容详情 <Text|x=260.0|y=290.0|outlinecolor=0|color=1025|outline=1|size=17|text=道具展示：>
+INC S$内容详情 <ItemShow|x=345.0|y=290.0|width=70|height=70|itemid=10431|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 混元晶石
+#ACT
+DEC S$副页内容 <Button|id=2801|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=混元晶石|link=@加载界面数据#副页标识=混元晶石>
+INC S$副页内容 <Button|id=2801|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=混元晶石|link=@加载界面数据#副页标识=混元晶石>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=产自古神之地的千年火山，世间少有能吸收烈焰>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=的矿石。吸取了天地精华，是<锻造神器/FCOLOR=250>不可缺少>
+INC S$内容详情 <Text|x=260.0|y=165.0|outlinecolor=0|color=255|outline=1|size=17|text=的材料。>
+INC S$内容详情 <Text|x=260.0|y=210.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料来源：打怪掉落>
+INC S$内容详情 <Text|x=260.0|y=240.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：锻造神兵，武器改造。>
+INC S$内容详情 <Text|x=260.0|y=290.0|outlinecolor=0|color=1025|outline=1|size=17|text=道具展示：>
+INC S$内容详情 <ItemShow|x=345.0|y=290.0|width=70|height=70|itemid=10432|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 天外陨铁
+#ACT
+DEC S$副页内容 <Button|id=2901|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=天外陨铁|link=@加载界面数据#副页标识=天外陨铁>
+INC S$副页内容 <Button|id=2901|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=天外陨铁|link=@加载界面数据#副页标识=天外陨铁>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=随着阿修罗降临，大陆的矿物质也发生了异变。>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=<天外陨铁/FCOLOR=70>成为了打造装备必不可少的材料之一。>
+INC S$内容详情 <Text|x=260.0|y=170.0|outlinecolor=0|color=11009|outline=1|size=17|text=材料来源：>
+INC S$内容详情 <Text|x=260.0|y=200.0|outlinecolor=0|color=255|outline=1|size=16|text=1、活动BOSS掉落;>
+INC S$内容详情 <Text|x=260.0|y=220.0|outlinecolor=0|color=255|outline=1|size=16|text=2、游戏商铺购买;>
+INC S$内容详情 <Text|x=260.0|y=240.0|outlinecolor=0|color=255|outline=1|size=16|text=3、悦享礼包每日领取;>
+INC S$内容详情 <RText|x=260.0|y=260.0|color=255|size=16|outlinecolor=0|outline=1|text=4、完成<[屠夫]/FCOLOR=251>处的任务获得;>
+INC S$内容详情 <Text|x=260.0|y=290.0|outlinecolor=0|color=11002|outline=1|size=17|text=材料用途：锻造神兵，武器改造。>
+INC S$内容详情 <Text|x=260.0|y=330.0|outlinecolor=0|color=1025|outline=1|size=17|text=道具展示：>
+INC S$内容详情 <ItemShow|x=350.0|y=330.0|width=70|height=70|itemid=10433|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 寄售行
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=寄售行|link=@加载界面数据#副页标识=寄售行>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=寄售行|link=@加载界面数据#副页标识=寄售行>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=261.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=使用<畅玩交易卷/FCOLOR=250>后会获得寄售行的使用权，你可以>
+INC S$内容详情 <RText|x=261.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=在<[寄售行]/FCOLOR=251>处寄售物品。>
+INC S$内容详情 <RText|x=261.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=可寄售物品：<精修卷轴、紫薇星石、100万经验卷/FCOLOR=70>>
+INC S$内容详情 <RText|x=261.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=<及各种稀有材料。/FCOLOR=70>>
+INC S$内容详情 <Text|x=260.0|y=225.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=345.0|y=225.0|width=70|height=70|itemid=10202|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=525.0|y=226.0|width=70|height=70|itemid=10404|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=435.0|y=225.0|width=70|height=70|itemid=10390|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=345.0|y=300.0|width=70|height=70|itemid=10407|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=435.0|y=300.0|width=70|height=70|itemid=10409|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=525.0|y=300.0|width=70|height=70|itemid=10411|itemcount=1|showtips=1|bgtype=1>
+
+
+
+#IF
+EQUAL S$副页标识 美食烹饪
+#ACT
+DEC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=美食烹饪|link=@加载界面数据#副页标识=美食烹饪>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=美食烹饪|link=@加载界面数据#副页标识=美食烹饪>
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=魔龙城的<[厨师]/FCOLOR=251>一生游历四方，尝遍天下美食！>
+INC S$内容详情 <Text|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=精通美食烹饪，是当之无愧的食神。在他那制作>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=出来的食物不仅味道鲜美，还可以<恢复HP和MP/FCOLOR=250>。>
+INC S$内容详情 <Text|x=260.0|y=210.0|color=1025|size=18|outlinecolor=0|outline=1|text=道具展示：>
+INC S$内容详情 <ItemShow|x=345.0|y=210.0|width=70|height=70|itemid=10420|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=435.0|y=210.0|width=70|height=70|itemid=10421|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=525.0|y=210.0|width=70|height=70|itemid=10422|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=345.0|y=290.0|width=70|height=70|itemid=10423|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=435.0|y=290.0|width=70|height=70|itemid=10424|itemcount=1|showtips=1|bgtype=1>
+
+#IF
+EQUAL S$副页标识 比武擂台
+#ACT
+DEC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=比武擂台|link=@加载界面数据#副页标识=比武擂台>
+INC S$副页内容 <Button|id=1401|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=比武擂台|link=@加载界面数据#副页标识=比武擂台>
+
+MOV S$内容详情
+INC S$内容详情 <Text|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=比武擂台是勇士们证明自己实力的地方，也是解>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=决仇怨最光明正大的场所。比武双方各扣除<500/FCOLOR=70>>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=16|text=<元宝/FCOLOR=70>，比武结束后胜利方可以获得<1000元宝/FCOLOR=70>(奖金将>
+INC S$内容详情 <RText|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=16|text=扣掉5%的税收)。<[土城左边]/FCOLOR=251>处可直接进入比武擂台。>
+
+
+#IF
+EQUAL S$副页标识 师徒系统
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=师徒系统|link=@加载界面数据#副页标识=师徒系统>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=师徒系统|link=@加载界面数据#副页标识=师徒系统>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=徒弟的等级不能超过<48级/FCOLOR=250>，师傅的等级不能低于>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=<50级/FCOLOR=250>，徒弟升级师傅会获得声望，在徒弟到达65>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=级时师傅可以获得<100万经验卷、上古卷轴、精修/FCOLOR=70>>
+INC S$内容详情 <RText|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=<卷轴*10/FCOLOR=70>。如果你有心仪的师傅或徒弟就去土城仓>
+INC S$内容详情 <RText|x=259.0|y=210.0|outlinecolor=0|color=255|outline=1|size=16|text=库处找<[王师教头]/FCOLOR=251>吧。>
+INC S$内容详情 <Text|x=260.0|y=260.0|outlinecolor=0|color=1025|outline=1|size=17|text=道具展示：>
+INC S$内容详情 <ItemShow|x=345.0|y=260.0|width=70|height=70|itemid=10390|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=440.0|y=260.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=1>
+INC S$内容详情 <ItemShow|x=535.0|y=259.0|width=70|height=70|itemid=10202|itemcount=1|showtips=1|bgtype=1>
+
+
+#IF
+EQUAL S$副页标识 结婚系统
+#ACT
+DEC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=结婚系统|link=@加载界面数据#副页标识=结婚系统>
+INC S$副页内容 <Button|id=1101|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=结婚系统|link=@加载界面数据#副页标识=结婚系统>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=结婚乃是人生中的一件大事，月老说过如果你有>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=中意之人，而他/她又恰巧中意你的概率是<0.5%/FCOLOR=250>>
+INC S$内容详情 <RText|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=17|text=。如果你遇到了那个人，还等什么，<[土城传送员]/FCOLOR=251>>
+INC S$内容详情 <RText|x=261.0|y=185.0|outlinecolor=0|color=255|outline=1|size=17|text=会带你们去婚姻神殿见月老。>
+
+
+
+#IF
+EQUAL S$副页标识 交易规则
+#ACT
+DEC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11023|size=18|width=80|height=32|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=交易规则|link=@加载界面数据#副页标识=交易规则>
+INC S$副页内容 <Button|id=1001|x=0.0|y=5.0|color=11008|size=18|width=80|height=32|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=交易规则|link=@加载界面数据#副页标识=交易规则>
+
+MOV S$内容详情
+INC S$内容详情 <RText|x=260.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=为防止挂机工作室外挂扰乱游戏环境，使用<畅玩交/FCOLOR=250>>
+INC S$内容详情 <RText|x=260.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=<易卷/FCOLOR=250>后才可以获得交易、摆摊资格。>
+INC S$内容详情 <Text|x=260.0|y=160.0|outlinecolor=0|color=255|outline=1|size=16|text=没有使用畅玩交易卷的玩家，也能畅玩《搜打撤传奇》>
+INC S$内容详情 <Text|x=260.0|y=185.0|outlinecolor=0|color=255|outline=1|size=16|text=但不能进行交易、摆摊等操作。>
+
+#IF
+#ACT
+GOTO @指南界面
+BREAK
+
+
+
+
+}

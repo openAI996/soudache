@@ -1,0 +1,160 @@
+[@私人变量]
+{
+#IF
+#ACT
+VAR Integer HUMAN 礼包申请状态
+VAR Integer HUMAN 礼包领取状态
+VAR Integer HUMAN 礼包码申请状态
+VAR Integer HUMAN 礼包码领取状态
+VAR String   HUMAN 礼包领取日期
+VAR Integer HUMAN 首次开通称号
+
+VAR String   HUMAN 回收数据
+VAR Integer HUMAN 徒弟出师
+VAR Integer HUMAN 传承头盔
+VAR Integer HUMAN 关注礼包
+VAR Integer HUMAN 悦享礼包
+VAR Integer HUMAN 男战士比武胜场
+VAR Integer HUMAN 女战士比武胜场
+VAR Integer HUMAN 男法师比武胜场
+VAR Integer HUMAN 女法师比武胜场
+VAR Integer HUMAN 男道士比武胜场
+VAR Integer HUMAN 女道士比武胜场
+VAR Integer HUMAN 兑换书页总次数
+VAR Integer HUMAN 兑换女儿红次数
+VAR Integer HUMAN 女儿红时间
+VAR Integer HUMAN 人气值
+VAR Integer HUMAN 苗疆蛊毒
+VAR Integer HUMAN 叫花鸡
+VAR Integer HUMAN 东坡肉
+VAR Integer HUMAN 烤鱼
+VAR Integer HUMAN 天书次数
+VAR Integer HUMAN 镖车次数
+VAR Integer HUMAN 镖车时限
+VAR Integer HUMAN 镖车时间
+VAR Integer HUMAN 拜师消息
+VAR Integer HUMAN 每日扔物品次数
+VAR Integer HUMAN 天书交换次数
+
+VAR Integer HUMAN 天书任务1
+VAR Integer HUMAN 天书任务2
+VAR Integer HUMAN 天书任务3
+VAR Integer HUMAN 天书任务4
+VAR Integer HUMAN 天书任务5
+VAR Integer HUMAN 天书任务接取
+VAR Integer HUMAN 天书任务杀怪
+VAR Integer HUMAN 天书任务次数
+VAR Integer HUMAN 天书当日次数
+
+VAR Integer HUMAN 回收极品
+
+;如果自动回收标识为开启则清空回收数据后重新整理各项回收数据开启自动回收
+#IF
+CHECK [98] 1
+#ACT
+MOV S$回收数据
+DELRECYCLINGTYPE -1
+
+#IF
+NOT CHECKTITLE 双倍金币回收
+#ACT
+INC S$回收数据 1;
+#IF
+CHECKTITLE 双倍金币回收
+#ACT
+INC S$回收数据 10;
+
+#IF
+CHECK [401] 1
+#ACT
+INC S$回收数据 11;
+#IF
+CHECK [402] 1
+#ACT
+INC S$回收数据 12;
+#IF
+CHECK [403] 1
+#ACT
+INC S$回收数据 13;
+#IF
+CHECK [404] 1
+#ACT
+INC S$回收数据 14;
+#IF
+CHECK [405] 1
+#ACT
+INC S$回收数据 15;
+#IF
+CHECK [406] 1
+#ACT
+INC S$回收数据 16;
+#IF
+CHECK [407] 1
+#ACT
+INC S$回收数据 17;
+#IF
+CHECK [408] 1
+#ACT
+INC S$回收数据 18;
+
+#IF
+CHECK [98] 1
+#ACT
+ADDRECYCLINGTYPE <$STR(S$回收数据)>
+AUTORECYCLING 1 5
+
+#IF
+CheckContainsText <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)> 坚韧不拔
+#ACT
+INC N$韧性基础值  10
+#IF
+CHECK [143] 1
+#ACT
+INC N$韧性基础值  1
+#IF
+CHECK [148] 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,1)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,2)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,3)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,4)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,5)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,6)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,7)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,8)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+CHECK [167] 1
+#ACT
+INC N$韧性基础值  10
+
+#IF
+LARGE N$韧性基础值 0
+#ACT
+ChangeHumNewValue 226 <$STR(N$韧性基础值)>  65535
+
+}

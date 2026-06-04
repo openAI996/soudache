@@ -1,0 +1,35 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=40.0|y=72.0|size=18|color=11073|text=想要挑战远古祖玛，需要吹响战斗号角，召唤信众才可以>
+<Text|x=40.0|y=97.0|size=18|color=11073|text=是否挑战？>
+<RText|x=40.0|y=125.0|size=18|color=255|text=挑战需要门票：<沃玛号角*1/FCOLOR=249>>
+<Layout|x=197.0|y=194.0|width=150|height=45|rotate=0|color=*|link=@挑战远古祖玛>
+<Text|x=219.0|y=209.0|color=251|size=18|text=挑战远古祖玛|link=@挑战远古祖玛>
+
+[@挑战远古祖玛]
+#IF
+CHECKITEM 沃玛号角 1
+SMALL J63 5
+#ACT
+TAKE 沃玛号角 1
+MAPMOVE ygzmg 14 32
+INC J63 5
+INC J65 5
+INC U43 5
+BREAK
+
+
+#IF
+CHECKITEM 沃玛号角 1
+#ACT
+TAKE 沃玛号角 1
+MAPMOVE ygzmg 14 32
+BREAK
+#ELSEACT
+SENDMSG 9 进入失败，需求一个沃玛号角才能进入！
+BREAK
+
+
+

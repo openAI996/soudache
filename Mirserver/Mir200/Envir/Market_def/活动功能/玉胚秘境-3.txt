@@ -1,0 +1,678 @@
+[@MAIN]
+#IF
+SMALL J114 100
+#SAY
+<Img|x=0.0|y=20.0|height=275|img=public/bg_npc_01.png|scale9t=50|move=0|reset=1|show=0|scale9l=50|scale9b=50|loadDelay=1|bg=1|scale9r=50|esc=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01072.png|esc=0>
+<Text|x=40.0|y=70.0|size=18|color=11073|text=你可以在我这里进入玉胚秘境，挑战对应秘境的怪物>
+<Text|x=40.0|y=95.0|size=18|color=11073|text=通过秘境试炼即可获得对应玉胚奖励。>
+<Text|x=40.0|y=145.0|size=18|color=11043|text=注意：中途死亡、回城、退出游戏视为自动放弃,无任何奖励>
+<Text|x=40.0|y=120.0|size=18|color=11003|text=地图内怪物比较凶猛，只有等级达到52级的勇士才能挑战！>
+<Text|x=42.0|y=170.0|size=18|color=11043|text=注意：玉胚秘境每天只有1次挑战机会。>
+<Layout|x=38.0|y=199.0|width=150|height=35|rotate=0|color=*|link=@1级秘境>
+<Text|x=43.0|y=205.0|color=11009|size=18|text=挑战1级玉胚秘境|link=@1级秘境>
+<Layout|x=288.0|y=199.0|width=150|height=35|rotate=0|color=*|link=@2级秘境>
+<Text|x=293.0|y=205.0|color=11009|size=18|text=挑战2级玉胚秘境|link=@2级秘境>
+<Layout|x=38.0|y=244.0|width=150|height=35|rotate=0|color=*|link=@3级秘境>
+<Text|x=43.0|y=250.0|color=11009|size=18|text=挑战3级玉胚秘境|link=@3级秘境>
+<Layout|x=288.0|y=244.0|width=150|height=35|rotate=0|color=*|link=@4级秘境>
+<Text|x=293.0|y=250.0|color=11009|size=18|text=挑战4级玉胚秘境|link=@4级秘境>
+#ACT
+BREAK
+
+#IF
+EQUAL J114 100
+#SAY
+<Img|x=0.0|y=20.0|height=275|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01072.png|esc=0>
+<Text|x=40.0|y=70.0|size=18|color=11073|text=看来你已经完成了今日的1级玉胚秘境试炼。>
+<Text|x=40.0|y=95.0|size=18|color=11073|text=你用自己的实力证明了你自己，接下来就是你应得的奖励了！>
+<Text|x=40.0|y=130.0|size=18|color=11003|text=通关奖励经验：250000>
+<Text|x=40.0|y=155.0|size=18|color=11003|text=通关奖励道具：1级玉胚*1>
+<Layout|x=30.0|y=205.0|width=150|height=40|color=*|link=@一级奖励>
+<Text|x=45.0|y=210.0|color=11009|size=18|text=领取通关奖励|link=@一级奖励>
+<Layout|x=260.0|y=205.0|width=230|height=40|color=*|link=@一级双倍奖励>
+<Text|x=270.0|y=210.0|color=11009|size=18|text=使用188元宝领取双倍奖励|link=@一级双倍奖励>
+<Text|x=36.0|y=256.0|size=18|color=11043|text=注意：等级被桎梏的玩家只能获得道具，无法获得经验奖励！>
+#ACT
+BREAK
+
+#IF
+EQUAL J114 200
+#SAY
+<Img|x=0.0|y=20.0|height=275|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01072.png|esc=0>
+<Text|x=40.0|y=70.0|size=18|color=11073|text=看来你已经完成了今日的2级玉胚秘境试炼。>
+<Text|x=40.0|y=95.0|size=18|color=11073|text=你用自己的实力证明了你自己，接下来就是你应得的奖励了！>
+<Text|x=40.0|y=130.0|size=18|color=11003|text=通关奖励经验：250000>
+<Text|x=40.0|y=155.0|size=18|color=11003|text=通关奖励道具：2级玉胚*1>
+<Layout|x=30.0|y=205.0|width=150|height=40|color=*|link=@二级奖励>
+<Text|x=45.0|y=210.0|color=11009|size=18|text=领取通关奖励|link=@二级奖励>
+<Layout|x=260.0|y=205.0|width=230|height=40|color=*|link=@一级双倍奖励>
+<Text|x=270.0|y=210.0|color=11009|size=18|text=使用188元宝领取双倍奖励|link=@二级双倍奖励>
+<Text|x=36.0|y=256.0|size=18|color=11043|text=注意：等级被桎梏的玩家只能获得道具，无法获得经验奖励！>
+#ACT
+BREAK
+
+#IF
+EQUAL J114 300
+#SAY
+<Img|x=0.0|y=20.0|height=275|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01072.png|esc=0>
+<Text|x=40.0|y=70.0|size=18|color=11073|text=看来你已经完成了今日的3级玉胚秘境试炼。>
+<Text|x=40.0|y=95.0|size=18|color=11073|text=你用自己的实力证明了你自己，接下来就是你应得的奖励了！>
+<Text|x=40.0|y=130.0|size=18|color=11003|text=通关奖励经验：250000>
+<Text|x=40.0|y=155.0|size=18|color=11003|text=通关奖励道具：3级玉胚*1>
+<Layout|x=30.0|y=205.0|width=150|height=40|color=*|link=@三级奖励>
+<Text|x=45.0|y=210.0|color=11009|size=18|text=领取通关奖励|link=@三级奖励>
+<Layout|x=260.0|y=205.0|width=230|height=40|color=*|link=@三级双倍奖励>
+<Text|x=270.0|y=210.0|color=11009|size=18|text=使用188元宝领取双倍奖励|link=@三级双倍奖励>
+<Text|x=36.0|y=256.0|size=18|color=11043|text=注意：等级被桎梏的玩家只能获得道具，无法获得经验奖励！>
+#ACT
+BREAK
+
+#IF
+EQUAL J114 400
+#SAY
+<Img|x=0.0|y=20.0|height=275|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01072.png|esc=0>
+<Text|x=40.0|y=70.0|size=18|color=11073|text=看来你已经完成了今日的4级玉胚秘境试炼。>
+<Text|x=40.0|y=95.0|size=18|color=11073|text=你用自己的实力证明了你自己，接下来就是你应得的奖励了！>
+<Text|x=40.0|y=130.0|size=18|color=11003|text=通关奖励经验：250000>
+<Text|x=40.0|y=155.0|size=18|color=11003|text=通关奖励道具：4级玉胚*1>
+<Layout|x=30.0|y=205.0|width=150|height=40|color=*|link=@四级奖励>
+<Text|x=45.0|y=210.0|color=11009|size=18|text=领取通关奖励|link=@四级奖励>
+<Layout|x=260.0|y=205.0|width=230|height=40|color=*|link=@四级双倍奖励>
+<Text|x=270.0|y=210.0|color=11009|size=18|text=使用188元宝领取双倍奖励|link=@四级双倍奖励>
+<Text|x=36.0|y=256.0|size=18|color=11043|text=注意：等级被桎梏的玩家只能获得道具，无法获得经验奖励！>
+#ACT
+BREAK
+
+#IF
+LARGE J114 400
+#SAY
+<Img|x=0.0|y=20.0|height=220|show=0|scale9t=50|scale9l=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01072.png|esc=0>
+<Text|x=40.0|y=70.0|size=18|color=11073|text=看来你已经完成了今日的玉胚秘境试炼>
+<Text|x=40.0|y=95.0|size=18|color=11073|text=你用自己的实力证明了你自己。>
+<Text|x=40.0|y=120.0|size=18|color=11073|text=如果还想参与试炼的话，可以等到明天再来参与！>
+#ACT
+BREAK
+
+
+
+
+[@1级秘境]
+#IF
+CHECKLEVELEX < 52
+#ACT
+SENDMSG 9 你的等级还未达到52级，不能进入挑战！
+BREAK
+
+#IF
+SMALL J114 1
+#ACT
+MOV J114 50
+AddMirrorMap zlg101 <$USERNAME>yp1 1级玉胚秘境 1802 3 0 330 330
+MonGenEx <$USERNAME>yp1 20 17 玉胚使者1 1 1 0 249
+SendCenterMsg 180 251 玉胚秘境停留剩余时间还有%d... 0 1800 @玉胚回城
+MAP <$USERNAME>yp1
+BREAK
+#ELSEACT
+SENDMSG 9 你今天已经进入过玉胚秘境的试炼了！
+BREAK
+
+[@2级秘境]
+#IF
+CHECKLEVELEX < 52
+#ACT
+SENDMSG 9 你的等级还未达到52级，不能进入挑战！
+BREAK
+
+#IF
+SMALL J114 1
+#ACT
+MOV J114 50
+AddMirrorMap zlg101 <$USERNAME>yp2 2级玉胚秘境 1802 3 0 330 330
+MonGenEx <$USERNAME>yp2 20 17 玉胚使者2 1 1 0 249
+SendCenterMsg 180 251 玉胚秘境停留剩余时间还有%d... 0 1800 @玉胚回城
+MAP <$USERNAME>yp2
+BREAK
+#ELSEACT
+SENDMSG 9 你今天已经进入过玉胚秘境的试炼了！
+BREAK
+
+[@3级秘境]
+#IF
+CHECKLEVELEX < 52
+#ACT
+SENDMSG 9 你的等级还未达到52级，不能进入挑战！
+BREAK
+
+#IF
+SMALL J114 1
+#ACT
+MOV J114 50
+AddMirrorMap zlg101 <$USERNAME>yp3 3级玉胚秘境 1802 3 0 330 330
+MonGenEx <$USERNAME>yp3 20 17 玉胚使者3 1 1 0 249
+SendCenterMsg 180 251 玉胚秘境停留剩余时间还有%d... 0 1800 @玉胚回城
+MAP <$USERNAME>yp3
+BREAK
+#ELSEACT
+SENDMSG 9 你今天已经进入过玉胚秘境的试炼了！
+BREAK
+
+
+[@4级秘境]
+#IF
+CHECKLEVELEX < 52
+#ACT
+SENDMSG 9 你的等级还未达到52级，不能进入挑战！
+BREAK
+
+#IF
+SMALL J114 1
+#ACT
+MOV J114 50
+AddMirrorMap zlg101 <$USERNAME>yp4 4级玉胚秘境 1802 3 0 330 330
+MonGenEx <$USERNAME>yp4 20 17 玉胚使者4 1 1 0 249
+SendCenterMsg 180 251 玉胚秘境停留剩余时间还有%d... 0 1800 @玉胚回城
+MAP <$USERNAME>yp4
+BREAK
+#ELSEACT
+SENDMSG 9 你今天已经进入过玉胚秘境的试炼了！
+BREAK
+
+[@一级奖励]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$秘境完成)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+CHANGEEXP + 250000
+GiveStateItem 1级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV N$升级经验 <$cfg_jing_yan(<$LEVEL>_1)>
+DEC N$升级经验 250000
+
+#IF
+SMALL <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+CHANGEEXP + 250000
+GiveStateItem 1级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+LARGE <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GiveStateItem 1级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+SENDMSG 9 提示：由于等级桎梏的限制，本次试炼无法获得经验！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+[@一级双倍奖励]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$秘境完成)>
+#ACT
+BREAK
+
+#IF
+CHECKGAMEGOLD < 188
+#ACT
+SENDMSG 9 领取失败，元宝数量不足188颗！
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+CHANGEEXP + 500000
+GiveStateItem 1级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV N$升级经验 <$cfg_jing_yan(<$LEVEL>_1)>
+DEC N$升级经验 500000
+
+#IF
+SMALL <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+CHANGEEXP + 500000
+GiveStateItem 1级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+#IF
+LARGE <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+GiveStateItem 1级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+SENDMSG 9 提示：由于等级桎梏的限制，本次试炼无法获得经验！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+[@二级奖励]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$秘境完成)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+CHANGEEXP + 250000
+GiveStateItem 2级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV N$升级经验 <$cfg_jing_yan(<$LEVEL>_1)>
+DEC N$升级经验 250000
+
+#IF
+SMALL <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+CHANGEEXP + 250000
+GiveStateItem 2级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+#IF
+LARGE <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GiveStateItem 2级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+SENDMSG 9 提示：由于等级桎梏的限制，本次试炼无法获得经验！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+[@二级双倍奖励]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKGAMEGOLD < 100
+#ACT
+SENDMSG 9 领取失败，元宝数量不足100颗！
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$秘境完成)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+CHANGEEXP + 500000
+GiveStateItem 2级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV N$升级经验 <$cfg_jing_yan(<$LEVEL>_1)>
+DEC N$升级经验 500000
+
+#IF
+SMALL <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+CHANGEEXP + 500000
+GiveStateItem 2级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+#IF
+LARGE <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+GiveStateItem 2级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+SENDMSG 9 提示：由于等级桎梏的限制，本次试炼无法获得经验！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+
+
+
+
+
+[@三级奖励]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$秘境完成)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+CHANGEEXP + 250000
+GiveStateItem 3级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV N$升级经验 <$cfg_jing_yan(<$LEVEL>_1)>
+DEC N$升级经验 250000
+
+#IF
+SMALL <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+CHANGEEXP + 250000
+GiveStateItem 3级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+#IF
+LARGE <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GiveStateItem 3级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+SENDMSG 9 提示：由于等级桎梏的限制，本次试炼无法获得经验！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+[@三级双倍奖励]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKGAMEGOLD < 188
+#ACT
+SENDMSG 9 领取失败，元宝数量不足188颗！
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$秘境完成)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+CHANGEEXP + 500000
+GiveStateItem 3级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV N$升级经验 <$cfg_jing_yan(<$LEVEL>_1)>
+DEC N$升级经验 500000
+
+#IF
+SMALL <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+CHANGEEXP + 500000
+GiveStateItem 3级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+#IF
+LARGE <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+GiveStateItem 3级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+SENDMSG 9 提示：由于等级桎梏的限制，本次试炼无法获得经验！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+
+
+
+[@四级奖励]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$秘境完成)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+CHANGEEXP + 250000
+GiveStateItem 4级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV N$升级经验 <$cfg_jing_yan(<$LEVEL>_1)>
+DEC N$升级经验 250000
+
+#IF
+SMALL <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+CHANGEEXP + 250000
+GiveStateItem 4级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+#IF
+LARGE <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GiveStateItem 4级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+SENDMSG 9 提示：由于等级桎梏的限制，本次试炼无法获得经验！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+[@四级双倍奖励]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKGAMEGOLD < 188
+#ACT
+SENDMSG 9 领取失败，元宝数量不足188颗！
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$秘境完成)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+CHANGEEXP + 500000
+GiveStateItem 4级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV N$升级经验 <$cfg_jing_yan(<$LEVEL>_1)>
+DEC N$升级经验 500000
+
+#IF
+SMALL <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+CHANGEEXP + 500000
+GiveStateItem 4级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+#IF
+LARGE <$EXP> <$STR(N$升级经验)>
+#ACT
+MOV N$秘境完成 <$UTCNOW8>
+MOV J114 999
+GAMEGOLD - 188
+GiveStateItem 4级玉胚 2 1 1 0 0 1 1 1 1
+SENDMSG 6 玉胚秘境试炼的奖励已发放至包裹，请注意查收！
+SENDMSG 9 提示：由于等级桎梏的限制，本次试炼无法获得经验！
+GOTO @玉胚活跃任务
+CLOSE
+BREAK
+
+[@玉胚活跃任务]
+#IF
+EQUAL S$活跃达人 激活
+#act
+INC J105 1
+
+#IF
+#ACT
+MOV J64 10
+INC J65 10
+INC U43 10
+BREAK

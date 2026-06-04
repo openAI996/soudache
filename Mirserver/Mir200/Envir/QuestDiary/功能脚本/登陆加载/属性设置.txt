@@ -1,0 +1,1415 @@
+[@属性计算]
+
+{
+
+;逻辑思路，部分功能涉及到减属性。为防止属性为负数导致数据崩溃，脚本写法采用先加后减原则
+;-----------------------------------------------------变量复位;-----------------------------------------------------
+#IF
+#ACT
+MOV N$加血量上限 0
+MOV N$加攻击下限 0
+MOV N$加攻击上限 0
+MOV N$加魔法下限 0
+MOV N$加魔法上限 0
+MOV N$加道术下限 0
+MOV N$加道术上限 0
+MOV N$加防御下限 0
+MOV N$加防御上限 0
+MOV N$加魔防下限 0
+MOV N$加魔防上限 0
+
+MOV N$生命百分比 0
+MOV N$增加暴击率 0
+MOV N$降低暴击率 0
+MOV N$增加暴击伤 0
+MOV N$加吸血比例 0
+MOV N$加攻击穿透 0
+
+MOV N$加敏捷 0
+MOV N$减敏捷 0
+MOV N$受怪减伤 0
+MOV N$减魔法躲避 0
+MOV N$魔法减伤比 0
+MOV N$物理减伤比 0
+MOV N$每秒回血量 0
+MOV N$每秒回蓝量 0
+MOV N$防御百分比 0
+MOV N$魔御百分比 0
+MOV N$诅咒数值 0
+
+MOV N$减攻击下限 0
+MOV N$减攻击上限 0
+MOV N$减魔法下限 0
+MOV N$减魔法上限 0
+MOV N$减道术下限 0
+MOV N$减道术上限 0
+MOV N$减防御下限 0
+MOV N$减防御上限 0
+MOV N$减魔防下限 0
+MOV N$减魔防上限 0
+
+MOV N$韧性概率值 100
+MOV N$韧性基础值 0
+MOV N$异常值  0
+CHANGESPEED 3 0
+
+
+#IF
+SMALL N$冰龙套装 2
+#ACT
+MOV N$冰冻时长 2
+MOV N$寒霜时长 7
+;----------------------------------------------------计算命格属性;-----------------------------------------------------
+;昼伏夜行：在晚上19:00到5:00时全属性(不含HP)增加6-6，在白天5:00到19:00时，全属性减少3-3
+#IF
+EQUAL S$昼伏夜行 激活
+HOUR 5 18
+MIN 0 59
+#ACT
+DELbuff 50105
+DELbuff 50106
+addbuff 50105
+INC N$减攻击下限 3
+INC N$减攻击上限 3
+INC N$减魔法下限 3
+INC N$减魔法上限 3
+INC N$减道术下限 3
+INC N$减道术上限 3
+INC N$减防御下限 3
+INC N$减防御上限 3
+INC N$减魔防下限 3
+INC N$减魔防上限 3
+
+#IF
+EQUAL <$WEAPONLUCKY> -1
+#ACT
+INC N$诅咒数值 1
+#IF
+EQUAL <$WEAPONLUCKY> -2
+#ACT
+INC N$诅咒数值 2
+#IF
+EQUAL <$WEAPONLUCKY> -3
+#ACT
+INC N$诅咒数值 3
+#IF
+EQUAL <$WEAPONLUCKY> -4
+#ACT
+INC N$诅咒数值 4
+#IF
+EQUAL <$WEAPONLUCKY> -5
+#ACT
+INC N$诅咒数值 5
+#IF
+EQUAL <$WEAPONLUCKY> -6
+#ACT
+INC N$诅咒数值 6
+#IF
+EQUAL <$WEAPONLUCKY> -7
+#ACT
+INC N$诅咒数值 7
+#IF
+EQUAL <$WEAPONLUCKY> -8
+#ACT
+INC N$诅咒数值 8
+#IF
+EQUAL <$WEAPONLUCKY> -9
+#ACT
+INC N$诅咒数值 9
+#IF
+EQUAL <$WEAPONLUCKY> -10
+#ACT
+INC N$诅咒数值 10
+#IF
+CHECKITEMW 蓝魔项链【暗】
+#ACT
+INC N$诅咒数值 1
+#IF
+CHECKITEMW 蓝魔项链【妖】
+#ACT
+INC N$诅咒数值 2
+#IF
+CHECKITEMW 蓝魔项链【魔】
+#ACT
+INC N$诅咒数值 3
+#IF
+CHECKITEMW 蓝魔项链【仙】
+#ACT
+INC N$诅咒数值 4
+
+#IF
+EQUAL S$神魔之体 激活
+#ACT
+INC N$加防御下限 30
+INC N$加防御上限 30
+INC N$加魔防下限 30
+INC N$加魔防上限 30
+INC N$减攻击下限 10
+INC N$减攻击上限 10
+INC N$减魔法下限 10
+INC N$减魔法上限 10
+INC N$减道术下限 10
+INC N$减道术上限 10
+
+#IF
+EQUAL S$御兽天师 激活
+#ACT
+INC N$减攻击下限 10
+INC N$减攻击上限 10
+INC N$减魔法下限 10
+INC N$减魔法上限 10
+INC N$减道术下限 10
+INC N$减道术上限 10
+
+#IF
+EQUAL S$韧性十足 激活
+#ACT
+INC N$韧性基础值  10
+
+;暴走战神：每提高4%暴击概率，则提高1%暴击伤害
+#IF
+#ACT
+DELbuff 50116
+
+#IF
+EQUAL S$暴走战神 激活
+#act
+MOV N$暴伤计算 0
+CalcPer <$VALUE0> 25 N$暴伤计算
+#IF
+EQUAL S$暴走战神 激活
+LARGE N$暴伤计算 0
+#ACT
+addbuff 50116 0 <$str(N$暴伤计算)>
+
+#IF
+EQUAL S$无相神功 激活
+#ACT
+addbuff 50439
+CHANGESPEED 3 2
+#ELSEACT
+DELbuff 50439
+
+#IF
+NOT EQUAL S$无相神功 激活
+CHECKJOB Warrior
+#ACT
+CHANGESPEED 3 2
+
+#IF
+EQUAL S$无相神功 激活
+CHECKJOB Warrior
+#ACT
+CHANGESPEED 3 3
+
+;老当益壮65级以后每提高一级增加1点攻魔道
+#IF
+EQUAL S$老当益壮 激活
+CheckLevelex > 65
+#ACT
+MOV N$计算属性 <$LEVEL>
+DEC N$计算属性 65
+delbuff 50429
+addbuff 50429 0 <$STR(N$计算属性)>
+#elseact
+delbuff 50429
+
+#IF
+EQUAL S$恶贯满盈 激活
+LARGE N$诅咒数值 0
+#ACT
+DELBUFF 50411
+addbuff  50411 0 <$STR(N$诅咒数值)>
+#ELSEACT
+DELBUFF 50411
+
+#IF
+EQUAL S$活跃达人 激活
+LARGE J105 7
+#act
+addbuff  50482 
+#elseact
+delbuff 50482
+
+#IF
+EQUAL S$阴阳逆转 激活
+CHECKJOB Warrior
+CheckContainsText  落魄神兵|鬼炎|莫邪|黄金鬼炎|上古鬼炎|至尊鬼炎|寒冰鬼炎|炽焰鬼炎|冰焰至尊剑 <$WEAPON>
+#ACT
+FORMULATION (<$MAXDC>/4) N$阴阳逆转加成
+DELBUFF 50488
+addbuff 50488 0 <$str(N$阴阳逆转加成)>
+#ELSEACT
+DELBUFF 50488
+
+;-----------------------------------------------------计算装备图鉴属性;-----------------------------------------------------
+#IF
+CHECK [101] 1
+#ACT
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+CHECK [102] 1
+#ACT
+INC N$加防御上限 1
+INC N$加魔防上限 1
+#IF
+CHECK [103] 1
+#ACT
+INC N$加血量上限 2
+#IF
+CHECK [104] 1
+#ACT
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+CHECK [105] 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+#IF
+CHECK [106] 1
+#ACT
+INC N$加血量上限 3
+#IF
+CHECK [107] 1
+#ACT
+INC N$加攻击上限 2
+INC N$加魔法上限 2
+INC N$加道术上限 2
+#IF
+CHECK [108] 1
+#ACT
+INC N$加防御上限 2
+INC N$加魔防上限 2
+#IF
+CHECK [109] 1
+#ACT
+INC N$加血量上限 5
+#IF
+CHECK [110] 1
+#ACT
+INC N$加攻击下限 1
+INC N$加攻击上限 2
+INC N$加魔法下限 1
+INC N$加魔法上限 2
+INC N$加道术下限 1
+INC N$加道术上限 2
+#IF
+CHECK [111] 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 2
+INC N$加魔防下限 1
+INC N$加魔防上限 2
+#IF
+CHECK [112] 1
+#ACT
+INC N$加血量上限 8
+#IF
+CHECK [113] 1
+#ACT
+INC N$加攻击下限 2
+INC N$加攻击上限 2
+INC N$加魔法下限 2
+INC N$加魔法上限 2
+INC N$加道术下限 2
+INC N$加道术上限 2
+#IF
+CHECK [114] 1
+#ACT
+INC N$加防御下限 2
+INC N$加防御上限 2
+INC N$加魔防下限 2
+INC N$加魔防上限 2
+#IF
+CHECK [115] 1
+#ACT
+INC N$加血量上限 10
+#IF
+CHECK [116] 1
+#ACT
+INC N$加攻击上限 3
+INC N$加魔法上限 3
+INC N$加道术上限 3
+#IF
+CHECK [117] 1
+#ACT
+INC N$加防御上限 3
+INC N$加魔防上限 3
+#IF
+CHECK [118] 1
+#ACT
+INC N$加血量上限 12
+#IF
+CHECK [119] 1
+#ACT
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+CHECK [120] 1
+#ACT
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+CHECK [121] 1
+#ACT
+INC N$加攻击下限 1
+INC N$加攻击上限 1
+INC N$加魔法下限 1
+INC N$加魔法上限 1
+INC N$加道术下限 1
+INC N$加道术上限 1
+#IF
+CHECK [122] 1
+#ACT
+INC N$增加暴击率 1
+#IF
+CHECK [123] 1
+#ACT
+INC N$加防御上限 1
+INC N$加魔防上限 1
+#IF
+CHECK [124] 1
+#ACT
+INC N$加防御上限 1
+INC N$加魔防上限 1
+#IF
+CHECK [125] 1
+#ACT
+INC N$加防御上限 1
+INC N$加魔防上限 1
+
+#IF
+CHECK [127] 1
+#ACT
+INC N$加血量上限 3
+
+#IF
+CHECK [129] 1
+#ACT
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+
+#IF
+CHECK [130] 1
+#ACT
+INC N$加吸血比例 100
+
+#IF
+CHECK [133] 1
+#ACT
+INC N$加攻击穿透 2
+#IF
+CHECK [134] 1
+#ACT
+INC N$增加暴击率 1
+
+#IF
+CHECK [137] 1
+#ACT
+INC N$加敏捷 1
+
+#IF
+CHECK [140] 1
+#ACT
+INC N$加攻击上限 3
+INC N$加魔法上限 3
+INC N$加道术上限 3
+#IF
+CHECK [141] 1
+#ACT
+INC N$每秒回血量 1
+INC N$每秒回蓝量 1
+#IF
+CHECK [142] 1
+#ACT
+INC N$受怪减伤 100
+#IF
+CHECK [143] 1
+#ACT
+INC N$韧性基础值  1
+#IF
+CHECK [144] 1
+#ACT
+INC N$加攻击下限 1
+INC N$加攻击上限 1
+INC N$加魔法下限 1
+INC N$加魔法上限 1
+INC N$加道术下限 1
+INC N$加道术上限 1
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+#IF
+CHECK [145] 1
+#ACT
+INC N$降低暴击率 1
+#IF
+CHECK [146] 1
+#ACT
+INC N$物理减伤比 1
+INC N$魔法减伤比 1
+
+#IF
+CHECK [149] 1
+#ACT
+INC N$加攻击下限 3
+INC N$加魔法下限 3
+INC N$加道术下限 3
+#IF
+CHECK [150] 1
+#ACT
+INC N$增加暴击伤 1
+#IF
+CHECK [151] 1
+#ACT
+INC N$增加暴击率 1
+#IF
+CHECK [152] 1
+#ACT
+INC N$加攻击下限 1
+INC N$加魔法下限 1
+INC N$加道术下限 1
+INC N$加攻击上限 3
+INC N$加魔法上限 3
+INC N$加道术上限 3
+#IF
+CHECK [153] 1
+#ACT
+INC N$加防御下限 1
+INC N$加魔防下限 1
+INC N$加防御上限 3
+INC N$加魔防上限 3
+#IF
+CHECK [154] 1
+#ACT
+INC N$生命百分比 100
+#IF
+CHECK [155] 1
+#ACT
+INC N$加攻击下限 2
+INC N$加魔法下限 2
+INC N$加道术下限 2
+INC N$加攻击上限 3
+INC N$加魔法上限 3
+INC N$加道术上限 3
+#IF
+CHECK [156] 1
+#ACT
+INC N$加防御下限 2
+INC N$加魔防下限 2
+INC N$加防御上限 3
+INC N$加魔防上限 3
+#IF
+CHECK [157] 1
+#ACT
+INC N$生命百分比 200
+#IF
+CHECK [158] 1
+#ACT
+INC N$加攻击下限 3
+INC N$加魔法下限 3
+INC N$加道术下限 3
+INC N$加攻击上限 3
+INC N$加魔法上限 3
+INC N$加道术上限 3
+#IF
+CHECK [159] 1
+#ACT
+INC N$加防御下限 3
+INC N$加魔防下限 3
+INC N$加防御上限 3
+INC N$加魔防上限 3
+
+;------------宠物单件图鉴收录
+#IF
+EQUAL <$GETSTRVALUE(T240,1)> 1
+#ACT
+INC N$加攻击下限 1
+INC N$加魔法下限 1
+INC N$加道术下限 1
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+EQUAL <$GETSTRVALUE(T240,2)> 1
+#ACT
+INC N$加攻击下限 1
+INC N$加魔法下限 1
+INC N$加道术下限 1
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+EQUAL <$GETSTRVALUE(T240,3)> 1
+#ACT
+INC N$加攻击下限 1
+INC N$加魔法下限 1
+INC N$加道术下限 1
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+EQUAL <$GETSTRVALUE(T240,4)> 1
+#ACT
+INC N$加攻击下限 1
+INC N$加魔法下限 1
+INC N$加道术下限 1
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+EQUAL <$GETSTRVALUE(T240,5)> 1
+#ACT
+INC N$加攻击下限 1
+INC N$加魔法下限 1
+INC N$加道术下限 1
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+EQUAL <$GETSTRVALUE(T240,6)> 1
+#ACT
+INC N$加攻击下限 1
+INC N$加魔法下限 1
+INC N$加道术下限 1
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+#IF
+EQUAL <$GETSTRVALUE(T240,7)> 1
+#ACT
+INC N$加攻击下限 1
+INC N$加魔法下限 1
+INC N$加道术下限 1
+INC N$加攻击上限 1
+INC N$加魔法上限 1
+INC N$加道术上限 1
+
+#IF
+EQUAL <$GETSTRVALUE(T241,1)> 1
+#ACT
+INC N$加敏捷 1
+#IF
+EQUAL <$GETSTRVALUE(T241,2)> 1
+#ACT
+INC N$加敏捷 1
+#IF
+EQUAL <$GETSTRVALUE(T241,3)> 1
+#ACT
+INC N$加敏捷 1
+#IF
+EQUAL <$GETSTRVALUE(T241,4)> 1
+#ACT
+INC N$加敏捷 1
+#IF
+EQUAL <$GETSTRVALUE(T241,5)> 1
+#ACT
+INC N$加敏捷 1
+#IF
+EQUAL <$GETSTRVALUE(T241,6)> 1
+#ACT
+INC N$加敏捷 1
+#IF
+EQUAL <$GETSTRVALUE(T241,7)> 1
+#ACT
+INC N$加敏捷 1
+
+#IF
+EQUAL <$GETSTRVALUE(T242,1)> 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+#IF
+EQUAL <$GETSTRVALUE(T242,2)> 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+#IF
+EQUAL <$GETSTRVALUE(T242,3)> 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+#IF
+EQUAL <$GETSTRVALUE(T242,4)> 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+#IF
+EQUAL <$GETSTRVALUE(T242,5)> 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+#IF
+EQUAL <$GETSTRVALUE(T242,6)> 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+#IF
+EQUAL <$GETSTRVALUE(T242,7)> 1
+#ACT
+INC N$加防御下限 1
+INC N$加防御上限 1
+INC N$加魔防下限 1
+INC N$加魔防上限 1
+
+#IF
+EQUAL <$GETSTRVALUE(T245,1)> 1
+#ACT
+INC N$增加暴击率 1
+#IF
+EQUAL <$GETSTRVALUE(T245,2)> 1
+#ACT
+INC N$增加暴击率 1
+#IF
+EQUAL <$GETSTRVALUE(T245,3)> 1
+#ACT
+INC N$增加暴击率 1
+#IF
+EQUAL <$GETSTRVALUE(T245,4)> 1
+#ACT
+INC N$增加暴击率 1
+#IF
+EQUAL <$GETSTRVALUE(T245,5)> 1
+#ACT
+INC N$增加暴击率 1
+#IF
+EQUAL <$GETSTRVALUE(T245,6)> 1
+#ACT
+INC N$增加暴击率 1
+#IF
+EQUAL <$GETSTRVALUE(T246,1)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,2)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,3)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,4)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,5)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,6)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,7)> 1
+#ACT
+INC N$韧性基础值  1
+#IF
+EQUAL <$GETSTRVALUE(T246,8)> 1
+#ACT
+INC N$韧性基础值  1
+;------------宠物套装图鉴收录
+#IF
+CHECK [162] 1
+#ACT
+INC N$受怪减伤 500
+
+#IF
+CHECK [163] 1
+#ACT
+INC N$防御百分比 500
+INC N$魔御百分比 500
+
+#IF
+CHECK [165] 1
+#ACT
+INC N$加吸血比例 1000
+#IF
+CHECK [166] 1
+#ACT
+INC N$增加暴击伤 10
+#IF
+CHECK [167] 1
+#ACT
+INC N$韧性基础值  10
+
+;----------------------------------------技能门派----------------------
+;#IF
+;EQUAL U50 2
+;LARGE U56 0
+;CHECKLEVELEX < 50
+;#ACT
+;INC N$每秒回血量 5
+
+;#IF
+;EQUAL U50 2
+;LARGE U56 0
+;CHECKLEVELEX > 49
+;CHECKLEVELEX < 60
+;#ACT
+;INC N$每秒回血量 10
+
+;#IF
+;EQUAL U50 2
+;LARGE U56 0
+;CHECKLEVELEX > 59
+;CHECKLEVELEX < 70
+;#ACT
+;INC N$每秒回血量 15
+
+;#IF
+;EQUAL U50 2
+;LARGE U56 0
+;CHECKLEVELEX > 69
+;CHECKLEVELEX < 80
+;#ACT
+;INC N$每秒回血量 20
+
+;#IF
+;EQUAL U50 2
+;LARGE U56 0
+;CHECKLEVELEX > 79
+;CHECKLEVELEX < 90
+;#ACT
+;INC N$每秒回血量 25
+
+;#IF
+;EQUAL U50 2
+;LARGE U56 0
+;CHECKLEVELEX > 89
+;#ACT
+;INC N$每秒回血量 30
+
+;狂魔暴走减35点双防
+#IF
+HASBUFF 50025
+#ACT
+INC N$减防御下限 20
+INC N$减防御上限 20
+INC N$减魔防下限 20
+INC N$减魔防上限 20
+
+;------------------------------------------------------------开始增加百分比属性
+;一马当先佩戴马类宝宝获得属性加成
+#OR
+EQUAL <$HORSE> 绝影
+EQUAL <$HORSE> 赤兔
+EQUAL <$HORSE> 乌骓
+EQUAL <$HORSE> 天马
+EQUAL <$HORSE> 【神】天马
+EQUAL <$HORSE> 赤烟驹
+EQUAL <$HORSE> 幽影铁骑
+EQUAL <$HORSE> 黄金宝马
+EQUAL <$HORSE> 【神】黄金宝马
+#ACT
+MOV S$坐骑类型 马类宝宝
+#ELSEACT
+MOV S$坐骑类型
+
+#IF
+EQUAL S$一马当先 激活
+EQUAL S$坐骑类型 马类宝宝
+#ACT
+MOV N$计算攻击下限 0
+MOV N$计算攻击上限 0
+MOV N$计算魔法下限 0
+MOV N$计算魔法上限 0
+MOV N$计算道术下限 0
+MOV N$计算道术上限 0
+MOV N$计算物防下限 0
+MOV N$计算物防上限 0
+MOV N$计算魔防下限 0
+MOV N$计算魔防上限 0
+CalcPer <$DC> 4 N$计算攻击下限
+CalcPer <$MAXDC> 4 N$计算攻击上限
+CalcPer <$MC> 4 N$计算魔法下限
+CalcPer <$MAXMC> 4 N$计算魔法上限
+CalcPer <$SC> 4 N$计算道术下限
+CalcPer <$MAXSC> 4 N$计算道术上限
+CalcPer <$AC> 4 N$计算物防下限
+CalcPer <$MAXAC> 4 N$计算物防上限
+CalcPer <$MAC> 4 N$计算魔防下限
+CalcPer <$MAXMAC> 4 N$计算魔防上限
+INC N$加攻击下限 N$计算攻击下限
+INC N$加攻击上限 N$计算攻击上限
+INC N$加魔法下限 N$计算魔法下限
+INC N$加魔法上限 N$计算魔法上限
+INC N$加道术下限 N$计算道术下限
+INC N$加道术上限 N$计算道术上限
+INC N$加防御下限 N$计算物防下限
+INC N$加防御上限 N$计算物防上限
+INC N$加魔防下限 N$计算魔防下限
+INC N$加魔防上限 N$计算魔防上限
+INC N$生命百分比 400
+
+;-----------------------------------------------------计算道具类属性;-----------------------------------------------------
+;计算苗疆蛊毒BUFF
+#IF
+HASBUFF 50201
+#ACT
+MOV N$计算攻击下限 0
+MOV N$计算攻击上限 0
+MOV N$计算魔法下限 0
+MOV N$计算魔法上限 0
+MOV N$计算道术下限 0
+MOV N$计算道术上限 0
+MOV N$计算防御下限 0
+MOV N$计算防御上限 0
+MOV N$计算魔防下限 0
+MOV N$计算魔防上限 0
+CalcPer <$DC> 5 N$计算攻击下限
+CalcPer <$MAXDC> 5 N$计算攻击上限
+CalcPer <$MC> 5 N$计算魔法下限
+CalcPer <$MAXMC> 5 N$计算魔法上限
+CalcPer <$SC> 5 N$计算道术下限
+CalcPer <$MAXSC> 5 N$计算道术上限
+CalcPer <$AC> 5 N$计算防御下限
+CalcPer <$MAXAC> 5 N$计算防御上限
+CalcPer <$MAC> 5 N$计算魔防下限
+CalcPer <$MAXMAC> 5 N$计算魔防上限
+INC N$减攻击下限 N$计算攻击下限
+INC N$减攻击上限 N$计算攻击上限
+INC N$减魔法下限 N$计算魔法下限
+INC N$减魔法上限 N$计算魔法上限
+INC N$减道术下限 N$计算道术下限
+INC N$减道术上限 N$计算道术上限
+INC N$减防御下限 N$计算防御下限
+INC N$减防御上限 N$计算防御上限
+INC N$减魔防下限 N$计算魔防下限
+INC N$减魔防上限 N$计算魔防上限
+
+;破伤风BUFF
+#IF
+HASBUFF 50019
+#ACT
+MOV N$计算攻击下限 0
+MOV N$计算攻击上限 0
+MOV N$计算魔法下限 0
+MOV N$计算魔法上限 0
+MOV N$计算道术下限 0
+MOV N$计算道术上限 0
+MOV N$计算防御下限 0
+MOV N$计算防御上限 0
+MOV N$计算魔防下限 0
+MOV N$计算魔防上限 0
+CalcPer <$DC> 5 N$计算攻击下限
+CalcPer <$MAXDC> 5 N$计算攻击上限
+CalcPer <$MC> 5 N$计算魔法下限
+CalcPer <$MAXMC> 5 N$计算魔法上限
+CalcPer <$SC> 5 N$计算道术下限
+CalcPer <$MAXSC> 5 N$计算道术上限
+CalcPer <$AC> 5 N$计算防御下限
+CalcPer <$MAXAC> 5 N$计算防御上限
+CalcPer <$MAC> 5 N$计算魔防下限
+CalcPer <$MAXMAC> 5 N$计算魔防上限
+INC N$减攻击下限 N$计算攻击下限
+INC N$减攻击上限 N$计算攻击上限
+INC N$减魔法下限 N$计算魔法下限
+INC N$减魔法上限 N$计算魔法上限
+INC N$减道术下限 N$计算道术下限
+INC N$减道术上限 N$计算道术上限
+INC N$减防御下限 N$计算防御下限
+INC N$减防御上限 N$计算防御上限
+INC N$减魔防下限 N$计算魔防下限
+INC N$减魔防上限 N$计算魔防上限
+
+;百劈刀残废减50%攻魔道
+#IF
+HASBUFF 50055
+#ACT
+MOV N$计算攻击下限 0
+MOV N$计算攻击上限 0
+MOV N$计算魔法下限 0
+MOV N$计算魔法上限 0
+MOV N$计算道术下限 0
+MOV N$计算道术上限 0
+MOV N$计算物防下限 0
+MOV N$计算物防上限 0
+MOV N$计算魔防下限 0
+MOV N$计算魔防上限 0
+CalcPer <$DC> 50 N$计算攻击下限
+CalcPer <$MAXDC> 50 N$计算攻击上限
+CalcPer <$MC> 50 N$计算魔法下限
+CalcPer <$MAXMC> 50 N$计算魔法上限
+CalcPer <$SC> 50 N$计算道术下限
+CalcPer <$MAXSC> 50 N$计算道术上限
+CalcPer <$AC> 50 N$计算物防下限
+CalcPer <$MAXAC> 50 N$计算物防上限
+CalcPer <$MAC> 50 N$计算魔防下限
+CalcPer <$MAXMAC> 50 N$计算魔防上限
+INC N$减攻击下限 N$计算攻击下限
+INC N$减攻击上限 N$计算攻击上限
+INC N$减魔法下限 N$计算魔法下限
+INC N$减魔法上限 N$计算魔法上限
+INC N$减道术下限 N$计算道术下限
+INC N$减道术上限 N$计算道术上限
+INC N$减防御下限 N$计算物防下限
+INC N$减防御上限 N$计算物防上限
+INC N$减魔防下限 N$计算魔防下限
+INC N$减魔防上限 N$计算魔防上限
+
+;鲲鹏吞噬防御
+;#IF
+;HASBUFF 50302
+;#ACT
+;MOV N$计算物防下限 0
+;MOV N$计算物防上限 0
+;MOV N$计算魔防下限 0
+;MOV N$计算魔防上限 0
+;CalcPer <$AC> 60 N$计算物防下限
+;CalcPer <$MAXAC> 60 N$计算物防上限
+;CalcPer <$MAC> 60 N$计算魔防下限
+;CalcPer <$MAXMAC> 60 N$计算魔防上限
+;INC N$减防御下限 N$计算物防下限
+;INC N$减防御上限 N$计算物防上限
+;INC N$减魔防下限 N$计算魔防下限
+;INC N$减魔防上限 N$计算魔防上限
+
+#IF
+CHECK [128] 1
+#ACT
+MOV N$计算攻击上限 0
+MOV N$计算魔法上限 0
+MOV N$计算道术上限 0
+CalcPer <$MAXDC> 1 N$计算攻击上限
+CalcPer <$MAXMC> 1 N$计算魔法上限
+CalcPer <$MAXSC> 1 N$计算道术上限
+INC N$加攻击上限 N$计算攻击上限
+INC N$加魔法上限 N$计算魔法上限
+INC N$加道术上限 N$计算道术上限
+
+#IF
+CHECK [131] 1
+#ACT
+INC N$生命百分比 200
+
+#IF
+CHECK [132] 1
+#ACT
+INC N$防御百分比 300
+INC N$魔御百分比 300
+
+#IF
+CHECK [138] 1
+#ACT
+MOV N$计算攻击下限 0
+MOV N$计算魔法下限 0
+MOV N$计算道术下限 0
+CalcPer <$DC> 2 N$计算攻击下限
+CalcPer <$MC> 2 N$计算魔法下限
+CalcPer <$SC> 2 N$计算道术下限
+INC N$加攻击下限 N$计算攻击下限
+INC N$加魔法下限 N$计算魔法下限
+INC N$加道术下限 N$计算道术下限
+#IF
+CHECK [139] 1
+#ACT
+MOV N$计算攻击上限 0
+MOV N$计算魔法上限 0
+MOV N$计算道术上限 0
+CalcPer <$MAXDC> 2 N$计算攻击上限
+CalcPer <$MAXMC> 2 N$计算魔法上限
+CalcPer <$MAXSC> 2 N$计算道术上限
+INC N$加攻击上限 N$计算攻击上限
+INC N$加魔法上限 N$计算魔法上限
+INC N$加道术上限 N$计算道术上限
+
+#IF
+CHECK [147] 1
+#ACT
+INC N$防御百分比 300
+
+#IF
+CHECK [160] 1
+#ACT
+INC N$生命百分比 300
+
+#IF
+EQUAL <$GETSTRVALUE(T243,1)> 1
+#ACT
+INC N$生命百分比 200
+#IF
+EQUAL <$GETSTRVALUE(T243,2)> 1
+#ACT
+INC N$生命百分比 200
+#IF
+EQUAL <$GETSTRVALUE(T243,3)> 1
+#ACT
+INC N$生命百分比 200
+#IF
+EQUAL <$GETSTRVALUE(T243,4)> 1
+#ACT
+INC N$生命百分比 200
+#IF
+EQUAL <$GETSTRVALUE(T243,5)> 1
+#ACT
+INC N$生命百分比 200
+#IF
+EQUAL <$GETSTRVALUE(T243,6)> 1
+#ACT
+INC N$生命百分比 200
+
+#IF
+CHECK [161] 1
+#ACT
+MOV N$计算攻击下限 0
+MOV N$计算攻击上限 0
+MOV N$计算魔法下限 0
+MOV N$计算魔法上限 0
+MOV N$计算道术下限 0
+MOV N$计算道术上限 0
+CalcPer <$DC> 3 N$计算攻击下限
+CalcPer <$MAXDC> 3 N$计算攻击上限
+CalcPer <$MC> 3 N$计算魔法下限
+CalcPer <$MAXMC> 3 N$计算魔法上限
+CalcPer <$SC> 3 N$计算道术下限
+CalcPer <$MAXSC> 3 N$计算道术上限
+INC N$加攻击下限 N$计算攻击下限
+INC N$加攻击上限 N$计算攻击上限
+INC N$加魔法下限 N$计算魔法下限
+INC N$加魔法上限 N$计算魔法上限
+INC N$加道术下限 N$计算道术下限
+INC N$加道术上限 N$计算道术上限
+
+;血灵芝
+#IF
+LARGE U20 0
+#ACT
+MOV N$计算物防下限 0
+MOV N$计算魔防下限 0
+CalcPer <$AC>  <$str(u20)>  N$计算物防下限
+CalcPer <$MAC> <$str(u20)>  N$计算魔防下限
+INC N$加防御下限 N$计算物防下限
+INC N$加魔防下限 N$计算魔防下限
+
+;血菩提
+#IF
+LARGE U21 0
+#ACT
+MOV N$计算攻击下限 0
+MOV N$计算魔法下限 0
+MOV N$计算道术下限 0
+CalcPer <$DC> <$str(u21)> N$计算攻击下限
+CalcPer <$MC> <$str(u21)> N$计算魔法下限
+CalcPer <$SC> <$str(u21)> N$计算道术下限
+INC N$加攻击下限 N$计算攻击下限
+INC N$加魔法下限 N$计算魔法下限
+INC N$加道术下限 N$计算道术下限
+
+;战神基本剑术攻击上下限加成
+#IF
+EQUAL U50 1
+NOT CHECKITEMW 战将佩饰 1 
+CHECKBAGSIZE 1
+#ACT
+GiveOnItem 21 战将佩饰
+
+#IF
+not EQUAL U50 1
+CHECKITEMW 战将佩饰 1 
+#ACT
+takew 战将佩饰 1 
+
+;CalcPer <$DC> 10 N$战神攻击下限
+;CalcPer <$MAXDC> 10 N$战神攻击上限
+;INC N$加攻击下限 N$战神攻击下限
+;INC N$加攻击上限 N$战神攻击上限
+
+;医圣灵毒攻击降低
+#IF
+HASBUFF 50033
+#ACT
+MOV N$计算攻击下限 0
+MOV N$计算攻击上限 0
+MOV N$计算魔法下限 0
+MOV N$计算魔法上限 0
+MOV N$计算道术下限 0
+MOV N$计算道术上限 0
+CalcPer <$DC> 10 N$计算攻击下限
+CalcPer <$MAXDC> 10 N$计算攻击上限
+CalcPer <$MC> 10 N$计算魔法下限
+CalcPer <$MAXMC> 10 N$计算魔法上限
+CalcPer <$SC> 10 N$计算道术下限
+CalcPer <$MAXSC> 10 N$计算道术上限
+INC N$减攻击下限 N$计算攻击下限
+INC N$减攻击上限 N$计算攻击上限
+INC N$减魔法下限 N$计算魔法下限
+INC N$减魔法上限 N$计算魔法上限
+INC N$减道术下限 N$计算道术下限
+INC N$减道术上限 N$计算道术上限
+INC N$减魔法躲避 2
+
+;道尊精通
+#IF
+EQUAL U50 7
+NOT CHECKITEMW 天尊佩饰 1 
+CHECKBAGSIZE 1
+#ACT
+GiveOnItem 21 天尊佩饰
+
+#IF
+not EQUAL U50 7
+CHECKITEMW 天尊佩饰 1 
+#act
+takew 天尊佩饰 1 
+
+;MOV N$计算道术下限 0
+;MOV N$计算道术上限 0
+;CalcPer <$SC> 10 N$计算道术下限
+;CalcPer <$MAXSC> 10 N$计算道术上限
+;INC N$加道术下限 N$计算道术下限
+;INC N$加道术上限 N$计算道术上限
+;-------------------------------------------统计所有增加的基础属性--------------------------
+#IF
+#ACT
+ChangeHumAbility 1  = 0 0
+ChangeHumAbility 2  = 0 0
+ChangeHumAbility 3  = 0 0
+ChangeHumAbility 4  = 0 0
+ChangeHumAbility 5  = 0 0
+ChangeHumAbility 6  = 0 0
+ChangeHumAbility 7  = 0 0
+ChangeHumAbility 8  = 0 0
+ChangeHumAbility 9  = 0 0
+ChangeHumAbility 10 = 0 0
+ChangeHumAbility 11 = 0 0
+ChangeHumAbility 12 = 0 0
+ChangeHumAbility 17 = 0 0
+ChangeHumAbility 19 = 0 0
+
+#IF
+LARGE N$加血量上限 0
+#ACT
+ChangeHumAbility 11 + <$STR(N$加血量上限)> 65535
+
+#IF
+LARGE N$加攻击下限 0
+#ACT
+ChangeHumAbility 5 + <$STR(N$加攻击下限)> 65535
+
+#IF
+LARGE N$减攻击下限 0
+#ACT
+ChangeHumAbility 5 - <$STR(N$减攻击下限)> 65535
+
+#IF
+LARGE N$加攻击上限 0
+#ACT
+ChangeHumAbility 6 + <$STR(N$加攻击上限)> 65535
+
+#IF
+LARGE N$减攻击上限 0
+#ACT
+ChangeHumAbility 6 - <$STR(N$减攻击上限)> 65535
+
+#IF
+LARGE N$加魔法下限 0
+#ACT
+ChangeHumAbility 7 + <$STR(N$加魔法下限)> 65535
+
+#IF
+LARGE N$减魔法下限 0
+#ACT
+ChangeHumAbility 7 - <$STR(N$减魔法下限)> 65535
+
+#IF
+LARGE N$加魔法上限 0
+#ACT
+ChangeHumAbility 8 + <$STR(N$加魔法上限)> 65535
+
+#IF
+LARGE N$减魔法上限 0
+#ACT
+ChangeHumAbility 8 - <$STR(N$减魔法上限)> 65535
+
+#IF
+LARGE N$加道术下限 0
+#ACT
+ChangeHumAbility 9 + <$STR(N$加道术下限)> 65535
+
+#IF
+LARGE N$减道术下限 0
+#ACT
+ChangeHumAbility 9 - <$STR(N$减道术下限)> 65535
+
+#IF
+LARGE N$加道术上限 0
+#ACT
+ChangeHumAbility 10 + <$STR(N$加道术上限)> 65535
+
+#IF
+LARGE N$减道术上限 0
+#ACT
+ChangeHumAbility 10 - <$STR(N$减道术上限)> 65535
+
+#IF
+LARGE N$加防御下限 0
+#ACT
+ChangeHumAbility 1 + <$STR(N$加防御下限)> 65535
+
+#IF
+LARGE N$减防御下限 0
+#ACT
+ChangeHumAbility 1 - <$STR(N$减防御下限)> 65535
+
+#IF
+LARGE N$加防御上限 0
+#ACT
+ChangeHumAbility 2 + <$STR(N$加防御上限)> 65535
+
+#IF
+LARGE N$减防御上限 0
+#ACT
+ChangeHumAbility 2 - <$STR(N$减防御上限)> 65535
+
+#IF
+LARGE N$加魔防下限 0
+#ACT
+ChangeHumAbility 3 + <$STR(N$加魔防下限)> 65535
+
+#IF
+LARGE N$减魔防下限 0
+#ACT
+ChangeHumAbility 3 - <$STR(N$减魔防下限)> 65535
+
+#IF
+LARGE N$加魔防上限 0
+#ACT
+ChangeHumAbility 4 + <$STR(N$加魔防上限)> 65535
+
+#IF
+LARGE N$减魔防上限 0
+#ACT
+ChangeHumAbility 4 - <$STR(N$减魔防上限)> 65535
+
+#IF
+LARGE N$加敏捷 0
+#ACT
+ChangeHumAbility 19 + <$STR(N$加敏捷)>  65535
+
+#IF
+LARGE N$减敏捷 0
+#ACT
+ChangeHumAbility 19 - <$STR(N$减敏捷)>  65535
+
+#IF
+LARGE N$减魔法躲避 0
+#ACT
+ChangeHumAbility 17 - <$STR(N$减魔法躲避)>  65535
+
+#if
+#act
+ChangeHumNewValue 89 0 0
+ChangeHumNewValue 78 0 0
+ChangeHumNewValue 21 0 0
+ChangeHumNewValue 22 0 0
+ChangeHumNewValue 23 0 0
+ChangeHumNewValue 71 0 0
+ChangeHumNewValue 82 0 0
+ChangeHumNewValue 91 0 0
+ChangeHumNewValue 75 0 0
+ChangeHumNewValue 226 0 0
+
+#IF
+LARGE N$生命百分比 0
+#ACT
+ChangeHumNewValue 89 <$STR(N$生命百分比)>  65535
+
+#IF
+LARGE N$加攻击穿透 0
+#ACT
+ChangeHumNewValue 78 <$STR(N$加攻击穿透)>  65535
+
+#IF
+LARGE N$增加暴击率 0
+#ACT
+ChangeHumNewValue 21 <$STR(N$增加暴击率)>  65535
+
+#IF
+LARGE N$增加暴击伤 0
+#ACT
+ChangeHumNewValue 22 <$STR(N$增加暴击伤)>  65535
+
+#IF
+LARGE N$降低暴击率 0
+#ACT
+ChangeHumNewValue 23 <$STR(N$降低暴击率)>  65535
+
+#IF
+LARGE N$每秒回血量 0
+#ACT
+ChangeHumNewValue 71 <$STR(N$每秒回血量)>  65535
+
+#IF
+LARGE N$每秒回蓝量 0
+#ACT
+ChangeHumNewValue 91 <$STR(N$每秒回蓝量)>  65535
+
+#IF
+LARGE N$加吸血比例 0
+#ACT
+ChangeHumNewValue 34 <$STR(N$加吸血比例)>  65535
+
+#IF
+LARGE N$防御百分比 0
+#ACT
+ChangeHumNewValue 36 <$STR(N$防御百分比)>  65535
+
+#IF
+LARGE N$魔御百分比 0
+#ACT
+ChangeHumNewValue 37 <$STR(N$魔御百分比)>  65535
+
+#IF
+LARGE N$物理减伤比 0
+#ACT
+ChangeHumNewValue 26 <$STR(N$物理减伤比)>  65535
+
+#IF
+LARGE N$魔法减伤比 0
+#ACT
+ChangeHumNewValue 27 <$STR(N$魔法减伤比)>  65535
+
+#IF
+LARGE N$受怪减伤 0
+#ACT
+ChangeHumNewValue 82 <$STR(N$受怪减伤)>  65535
+
+#IF
+LARGE N$韧性基础值 0
+#ACT
+ChangeHumNewValue 226 <$STR(N$韧性基础值)>  65535
+INC N$异常值  <$CUSTABIL[226]>
+MUL N$异常值 N$异常值 100
+ChangeHumNewValue 45 <$STR(N$异常值)> 65535
+ChangeHumNewValue 51 <$STR(N$异常值)> 65535
+ChangeHumNewValue 52 <$STR(N$异常值)> 65535
+
+#IF
+LARGE N$诅咒数值 12
+#ACT
+ChangeHumNewValue 75 500 65535
+
+}

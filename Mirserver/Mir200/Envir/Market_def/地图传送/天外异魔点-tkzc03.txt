@@ -1,0 +1,26 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01023.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=18|outlinecolor=0|outline=1|text=想要进入九重云霄，击杀天外异魔，必须闯过>
+<Text|x=45.0|y=95.0|color=255|size=18|outlinecolor=0|outline=1|text=长老阵。只要给我一块天外陨铁，我便可送你进入>
+<Text|x=45.0|y=120.0|color=255|size=18|outlinecolor=0|outline=1|text=长老阵，此乃上古圣仙所设，变幻莫测，九死一生>
+<RText|x=45.0|y=145.0|color=255|size=18|outlinecolor=0|outline=1|text=请慎重前往！>
+<Layout|x=80.0|y=185.0|width=100|height=35|color=*|link=@传送地图>
+<Button|x=85.0|y=186.0|color=251|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=传送|link=@传送地图>
+<Layout|x=305.0|y=185.0|width=100|height=35|color=*|link=@EXIT>
+<Button|x=310.0|y=186.0|color=251|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=我害怕|link=@EXIT>
+
+[@传送地图]
+#IF
+CHECKITEM 天外陨铁 1
+#ACT
+TAKE 天外陨铁 1
+MAPMOVE zlz01 37 39
+SENDMSG 0 %s成功进入长老阵，开始寻找通往九重云霄的的入口！
+BREAK
+#ELSEACT
+SENDMSG 9 进入失败，你没有天外陨铁！
+BREAK
+

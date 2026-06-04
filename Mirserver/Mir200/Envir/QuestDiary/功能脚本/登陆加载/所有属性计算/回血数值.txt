@@ -1,0 +1,133 @@
+[@特殊属性增加]
+{
+#IF
+#ACT
+MOV N$杀怪回血量 0
+MOV N$杀怪回蓝量 0
+MOV N$物理伤减免 <$CUSTABIL[217]>
+MOV N$魔法伤减免 <$CUSTABIL[218]>
+MOV N$物理伤反弹 <$CUSTABIL[214]>
+MOV N$魔法伤反弹 <$CUSTABIL[215]>
+MOV N$吸蓝属性值 0
+MOV N$吸血属性值 <$CUSTABIL[213]>
+
+#IF
+LARGE <$CUSTABIL[249]> 0
+#ACT
+INC N$物理伤反弹 <$CUSTABIL[249]>
+INC N$魔法伤反弹 <$CUSTABIL[249]>
+
+#IF
+CHECK [135] 1
+#ACT
+INC N$物理伤减免 2
+INC N$魔法伤减免 2
+
+#IF
+CHECKITEMW 蝴蝶头盔
+#ACT
+INC N$杀怪回血量 10
+INC N$杀怪回蓝量 10
+#IF
+CHECKITEMW 蝴蝶项链
+#ACT
+INC N$杀怪回血量 10
+INC N$杀怪回蓝量 10
+#IF
+CHECKITEMW 蝴蝶腰带
+#ACT
+INC N$杀怪回血量 10
+INC N$杀怪回蓝量 10
+#IF
+CHECKITEMW 蝴蝶靴子
+#ACT
+INC N$杀怪回血量 10
+INC N$杀怪回蓝量 10
+#IF
+EQUAL <$ARMRING_R> 蝴蝶手镯
+#ACT
+INC N$杀怪回血量 10
+INC N$杀怪回蓝量 10
+#IF
+EQUAL <$ARMRING_L> 蝴蝶手镯
+#ACT
+INC N$杀怪回血量 10
+INC N$杀怪回蓝量 10
+#IF
+EQUAL <$RING_R> 蝴蝶戒指
+#ACT
+INC N$杀怪回血量 10
+INC N$杀怪回蓝量 10
+#IF
+EQUAL <$RING_L> 蝴蝶戒指
+#ACT
+INC N$杀怪回血量 10
+INC N$杀怪回蓝量 10
+
+;朱雀7件套属性：每杀死一个怪物回复50点HP和50点MP
+#IF
+LARGE N$朱雀套装 0
+#ACT
+INC N$杀怪回血量 50
+INC N$杀怪回蓝量 50
+
+;炎帝火系精通
+#IF
+EQUAL U50 5
+#ACT
+INC N$吸血属性值 5
+INC N$吸蓝属性值 3
+
+;赤血魔剑吸蓝+3
+#IF
+CHECKITEMW 赤血魔剑
+#ACT
+INC N$吸蓝属性值 3
+
+;谛听吸蓝+5
+#IF
+CHECKITEMW 谛听
+#ACT
+INC N$吸蓝属性值 5
+
+;月光镯吸蓝4
+#IF
+CHECKITEMW 月光镯
+#ACT
+INC N$吸蓝属性值 4
+
+#IF
+EQUAL <$GETSTRVALUE(T244,1)> 1
+#ACT
+INC N$吸血属性值 1
+#IF
+EQUAL <$GETSTRVALUE(T244,2)> 1
+#ACT
+INC N$吸血属性值 1
+#IF
+EQUAL <$GETSTRVALUE(T244,3)> 1
+#ACT
+INC N$吸血属性值 1
+#IF
+EQUAL <$GETSTRVALUE(T244,4)> 1
+#ACT
+INC N$吸血属性值 1
+#IF
+EQUAL <$GETSTRVALUE(T244,5)> 1
+#ACT
+INC N$吸血属性值 1
+#IF
+EQUAL <$GETSTRVALUE(T244,6)> 1
+#ACT
+INC N$吸血属性值 1
+#IF
+EQUAL <$GETSTRVALUE(T244,7)> 1
+#ACT
+INC N$吸血属性值 1
+
+#IF
+CHECK [126] 1
+#ACT
+INC N$吸血属性值 1
+
+}

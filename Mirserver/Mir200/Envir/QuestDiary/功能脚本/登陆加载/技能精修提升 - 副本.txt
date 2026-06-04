@@ -1,0 +1,625 @@
+[@技能精修效果]
+{
+
+;战神基本剑术
+#IF
+EQUAL U50 1
+CHECKSKILL 基本剑术 = 0 1
+#ACT
+SKILLLEVEL 基本剑术 = 1 1
+
+;战神刺杀加成
+#IF
+EQUAL U50 1
+EQUAL U51 1
+CHECKSKILL 刺杀剑术 = 0 1
+#ACT
+SKILLLEVEL 刺杀剑术 = 1 1
+
+#IF
+EQUAL U50 1
+EQUAL U51 1
+not hasbuff  50043
+#act
+ADDBUFF 50043
+
+;战神野蛮冲撞距离加成
+#IF
+EQUAL U50 1
+EQUAL U52 1
+CHECKSKILL 野蛮冲撞 = 3 0
+#ACT
+SKILLLEVEL 野蛮冲撞 = 5 0
+SKILLLEVEL 野蛮冲撞 = 1 1
+
+;战神烈火学习
+#IF
+EQUAL U50 1
+EQUAL U53 1
+NOT CheckMagicName 斩月烈火
+#ACT
+DELSKILL 烈火剑法
+ADDSKILL 斩月烈火  3 
+SKILLLEVEL 斩月烈火 = 1 1
+
+;战神龙啸功学习
+#IF
+EQUAL U50 1
+EQUAL U54 1
+NOT CheckMagicName 龙啸功
+#ACT
+ADDSKILL 龙啸功  3 
+SKILLLEVEL 龙啸功 = 1 1
+
+;战神开天斩学习
+#IF
+EQUAL U50 1
+EQUAL U55 1
+NOT CheckMagicName 开天斩
+#ACT
+ADDSKILL 开天斩  3 
+SKILLLEVEL 开天斩 = 1 1
+
+;=======================================================================
+
+;武圣基本剑术血量上限加成
+#IF
+EQUAL U50 2
+CHECKSKILL 基本剑术 = 0 1
+#ACT
+SKILLLEVEL 基本剑术 = 1 1
+
+;武圣回血学习
+#IF
+EQUAL U50 2
+EQUAL U56 1
+NOT CheckMagicName 回血精通
+#ACT
+ADDSKILL 回血精通  3 
+SKILLLEVEL 回血精通 = 1 1
+
+#IF
+EQUAL U50 2
+EQUAL U56 1
+NOT hasbuff 50455
+#ACT
+addbuff 50455
+
+;武圣攻杀学习
+#IF
+EQUAL U50 2
+EQUAL U57 1
+CHECKSKILL 攻杀剑术 = 0 1
+#ACT
+SKILLLEVEL 攻杀剑术 = 1 1
+
+;武圣防御精通学习
+#IF
+EQUAL U50 2
+EQUAL U58 1
+NOT CheckMagicName 防御精通
+#ACT
+ADDSKILL 防御精通  3 
+
+#IF
+EQUAL U50 2
+EQUAL U58 1
+not hasbuff  50042
+#act
+ADDBUFF 50042
+
+;武圣狮子吼学习
+#IF
+EQUAL U50 2
+EQUAL U59 1
+NOT CheckMagicName 狮子吼
+#ACT
+ADDSKILL 狮子吼  3
+SKILLLEVEL 狮子吼 = 1 1
+
+;武圣开天斩学习
+#IF
+EQUAL U50 2
+EQUAL U60 1
+NOT CheckMagicName 开天斩
+#ACT
+ADDSKILL 开天斩  3
+SKILLLEVEL 开天斩 = 1 1
+
+;=========================================================================
+
+;狂魔攻杀学习
+#IF
+EQUAL U50 3
+NOT HASBUFF 50433
+#ACT
+ADDBUFF 50433
+SKILLLEVEL 攻杀剑术 = 0 1
+
+;狂魔刺杀学习
+#IF
+EQUAL U50 3
+EQUAL U61 1
+NOT CheckMagicName 攻速精通
+#ACT
+ADDSKILL 攻速精通  3
+
+#IF
+EQUAL U50 3
+EQUAL U61 1
+NOT HASBUFF 50434
+#ACT
+ADDBUFF 50434
+
+;狂魔半月学习
+#IF
+EQUAL U50 3
+EQUAL U62 1
+CHECKSKILL 刺杀剑术 = 1 1
+#ACT
+SKILLLEVEL 刺杀剑术 = 0 1
+
+#IF
+EQUAL U50 3
+EQUAL U62 1
+NOT CheckMagicName 刺杀强化
+#ACT
+ADDSKILL 刺杀强化  3
+
+;狂魔烈火学习
+#IF
+EQUAL U50 3
+EQUAL U63 1
+CHECKSKILL 烈火剑法 = 1 1
+#ACT
+SKILLLEVEL 烈火剑法 = 0 1
+
+#IF
+EQUAL U50 3
+EQUAL U63 1
+CHECKSKILL 刺杀剑术 = 0 1
+#ACT
+SKILLLEVEL 刺杀剑术 = 1 1
+
+;狂魔暴走学习
+#IF
+EQUAL U50 3
+EQUAL U64 1
+NOT CheckMagicName 狂暴
+#ACT
+ADDSKILL 狂暴  3
+SKILLLEVEL 狂暴 = 1 1
+
+;狂魔暴走学习
+#IF
+EQUAL U50 3
+EQUAL U65 1
+NOT CheckMagicName 十步一杀
+#ACT
+ADDSKILL 十步一杀  3
+SKILLLEVEL 十步一杀 = 1 1
+
+
+;================================================================
+
+;法师雷系精通提升5%暴击率
+#IF
+EQUAL U50 4
+NOT HASBUFF 50041
+#ACT
+ADDBUFF 50041
+
+#IF
+EQUAL U50 4
+NOT CheckMagicName 雷系精通
+#ACT
+ADDSKILL 雷系精通  3
+SKILLLEVEL 雷系精通 = 1 1
+
+;雷神雷电强化
+#IF
+EQUAL U50 4
+EQUAL U66 1
+NOT CheckMagicName 感电精通
+#ACT
+ADDSKILL 感电精通  3
+SKILLLEVEL 感电精通 = 1 1
+
+;雷神疾光强化
+#IF
+EQUAL U50 4
+EQUAL U67 1
+CHECKSKILL 雷电术 = 0 1
+#ACT
+SKILLLEVEL 雷电术 = 1 1
+
+;雷神魔法盾等级提升
+#IF
+EQUAL U50 4
+EQUAL U68 1
+CHECKSKILL 魔法盾 = 3
+#ACT
+SKILLLEVEL 魔法盾 = 4
+SKILLLEVEL 魔法盾 = 1 1
+
+;雷神魔法盾防暴击
+#IF
+EQUAL U50 4
+EQUAL U68 1
+NOT HASBUFF 50039
+#ACT
+ADDBUFF 50039
+
+;雷神·狂龙紫电
+#IF
+EQUAL U50 4
+LARGE U69 0
+NOT CheckMagicName 狂龙紫电
+#ACT
+ADDSKILL 狂龙紫电 3
+SKILLLEVEL 狂龙紫电 = 1 1
+
+;雷神·流星火雨
+#IF
+EQUAL U50 4
+LARGE U70 0
+NOT CheckMagicName 群雷域
+#ACT
+ADDSKILL 群雷域 3
+SKILLLEVEL 群雷域 = 1 1
+
+;=======================================================================
+
+;炎帝火系精通
+#IF
+EQUAL U50 5
+NOT CheckMagicName 火系精通
+#ACT
+ADDSKILL 火系精通  3
+SKILLLEVEL 火系精通 = 1 1
+
+;炎帝·火墙
+#IF
+EQUAL U50 5
+LARGE U71 0
+CHECKSKILL 火墙 = 0 1
+#ACT
+SKILLLEVEL 火墙 = 1 1
+
+;炎帝·赤焰疾光
+#IF
+EQUAL U50 5
+LARGE U72 0
+NOT CheckMagicName 灭天火
+#ACT
+ADDSKILL 灭天火 3
+SKILLLEVEL 灭天火 = 1 1
+
+;炎帝魔法盾等级提升
+#IF
+EQUAL U50 5
+EQUAL U73 1
+CHECKSKILL 魔法盾 = 3
+#ACT
+SKILLLEVEL 魔法盾 = 4
+SKILLLEVEL 魔法盾 = 1 1
+
+;炎帝·三头火蛇
+#IF
+EQUAL U50 5
+LARGE U74 0
+NOT CheckMagicName 神之召唤
+#ACT
+ADDSKILL 神之召唤 3
+SKILLLEVEL 神之召唤 = 1 1
+
+;炎帝·流星火雨
+#IF
+EQUAL U50 5
+LARGE U75 0
+NOT CheckMagicName 流星火雨
+#ACT
+ADDSKILL 流星火雨 3
+SKILLLEVEL 流星火雨 = 1 1
+
+;========================================================
+
+;冰皇精通
+#IF
+EQUAL U50 6
+NOT HASBUFF 50028
+#ACT
+ADDBUFF 50028
+DELSKILL 冰系精通 
+
+;冰皇诱惑
+#IF
+EQUAL U50 6
+LARGE U76 0
+CHECKSKILL 诱惑之光 = 1 1
+#ACT
+SKILLLEVEL 诱惑之光 = 0 1
+
+;冰皇冰锥
+#IF
+EQUAL U50 6
+LARGE U76 0
+NOT CheckMagicName 冰霜雷电
+#ACT
+DELSKILL 雷电术
+ADDSKILL 冰霜雷电 3
+SKILLLEVEL 冰霜雷电 = 1 1
+
+#IF
+EQUAL U50 6
+LARGE U77 0
+NOT CheckMagicName 冰系精通
+#ACT
+ADDSKILL 冰系精通 3
+SKILLLEVEL 冰系精通 = 1 1
+
+;冰皇·玄冰刃
+#IF
+EQUAL U50 6
+LARGE U78 0
+NOT CheckMagicName 玄冰刃
+#ACT
+ADDSKILL 玄冰刃 3
+SKILLLEVEL 玄冰刃 = 1 1
+
+;冰皇魔法盾敏捷+5
+#IF
+EQUAL U50 6
+EQUAL U79 1
+NOT HASBUFF 50040
+#act
+addbuff 50040
+
+;冰皇魔法盾等级提升
+#IF
+EQUAL U50 6
+EQUAL U79 1
+CHECKSKILL 魔法盾 = 3
+#ACT
+SKILLLEVEL 魔法盾 = 4
+SKILLLEVEL 魔法盾 = 1 1
+
+#IF
+EQUAL U50 6
+LARGE U80 0
+CheckMagicName 旧寒冰掌
+#act
+DELSKILL 旧寒冰掌
+ADDSKILL 寒冰掌 3
+SKILLLEVEL 寒冰掌 = 1 1
+
+;冰皇·玄冰掌
+#IF
+EQUAL U50 6
+LARGE U80 0
+NOT CheckMagicName 寒冰掌
+#ACT
+ADDSKILL 寒冰掌 3
+SKILLLEVEL 寒冰掌 = 1 1
+
+
+
+;=======================================================
+
+
+;战力法
+#IF
+EQUAL U50 7
+CHECKSKILL 精神力战法 = 0 1
+#ACT
+SKILLLEVEL 精神力战法 = 1 1
+
+
+
+
+;道尊·群毒术
+#IF
+EQUAL U50 7
+LARGE U81 0
+NOT CheckMagicName 群体施毒术
+#ACT
+ADDSKILL 群体施毒术 3
+SKILLLEVEL 群体施毒术 = 1 1
+
+;道尊·灵魂火符
+#IF
+EQUAL U50 7
+LARGE U82 0
+CHECKSKILL 灵魂火符 = 0 1
+#ACT
+SKILLLEVEL 灵魂火符 = 1 1
+
+;道尊·无极真气
+#IF
+EQUAL U50 7
+LARGE U83 0
+NOT CheckMagicName 元阳道术
+#ACT
+ADDSKILL 元阳道术 3
+SKILLLEVEL 元阳道术 = 1 1
+
+;道尊·气功波
+#IF
+EQUAL U50 7
+LARGE U84 0
+NOT CheckMagicName 无极真气
+#ACT
+ADDSKILL 无极真气 3
+SKILLLEVEL 无极真气 = 5
+SKILLLEVEL 无极真气 = 1 1
+
+;道尊·召唤月灵
+#IF
+EQUAL U50 7
+LARGE U85 0
+NOT CheckMagicName 召唤月灵
+#ACT
+DELSKILL 召唤神兽
+ADDSKILL 召唤月灵 3
+SKILLLEVEL 召唤月灵 = 1 1
+
+;===========================================================
+
+;战力法
+#IF
+EQUAL U50 8
+CHECKSKILL 精神力战法 = 0 1
+#ACT
+SKILLLEVEL 精神力战法 = 1 1
+
+;医圣·群疗
+#IF
+EQUAL U50 8
+LARGE U86 0
+NOT CheckMagicName 群体治疗术
+#ACT
+ADDSKILL 群体治疗术 3
+SKILLLEVEL 群体治疗术 = 1 1
+
+;医圣·施毒术
+#IF
+EQUAL U50 8
+LARGE U87 0
+CHECKSKILL 施毒术 = 0 1
+#ACT
+SKILLLEVEL 施毒术 = 4
+SKILLLEVEL 施毒术 = 1 1
+
+#IF
+EQUAL U50 8
+LARGE U87 0
+CHECKSKILL 施毒术 = 3 
+#ACT
+SKILLLEVEL 施毒术 = 4
+
+;医圣·战甲
+#IF
+EQUAL U50 8
+LARGE U88 0
+CHECKSKILL 神圣战甲术 = 0 1
+#ACT
+SKILLLEVEL 神圣战甲术 = 1 1
+
+;医圣·定身术
+#IF
+EQUAL U50 8
+LARGE U89 0
+NOT CheckMagicName 定身术
+#ACT
+ADDSKILL 定身术 3
+SKILLLEVEL 定身术 = 1 1
+
+;医圣·移形换位
+#IF
+EQUAL U50 8
+LARGE U90 0
+NOT CheckMagicName 移形换影
+#ACT
+ADDSKILL 移形换影 3
+SKILLLEVEL 移形换影 = 1 1
+
+;医圣·召唤麒麟
+#IF
+EQUAL U50 8
+LARGE U91 0
+NOT CheckMagicName 召唤麒麟
+#ACT
+KillCallMob 神兽 99
+KillCallMob 神兽1 99
+DELSKILL 召唤神兽
+ADDSKILL 召唤麒麟 3
+SKILLLEVEL 召唤麒麟 = 1 1
+
+;======================================================================
+
+;战力法
+#IF
+EQUAL U50 9
+CHECKSKILL 精神力战法 = 0 1
+#ACT
+SKILLLEVEL 精神力战法 = 1 1
+
+;兽神·群毒术
+#IF
+EQUAL U50 9
+LARGE U92 0
+CHECKSKILL 神圣战甲术 = 0 1
+#ACT
+SKILLLEVEL 神圣战甲术 = 1 1
+
+;兽神·战甲术
+#IF
+EQUAL U50 9
+LARGE U93 0
+NOT CheckMagicName 召唤精通
+#ACT
+ADDSKILL 召唤精通 3
+
+;兽神·无极真气
+#IF
+EQUAL U50 9
+LARGE U94 0
+NOT CheckMagicName 兽灵之心
+#ACT
+ADDSKILL 兽灵之心 3
+SKILLLEVEL 兽灵之心 = 1 1
+
+;兽神·心灵召唤
+#IF
+EQUAL U50 9
+LARGE U95 0
+NOT CheckMagicName 无极真气
+#ACT
+ADDSKILL 无极真气 3
+SKILLLEVEL 无极真气 = 1 1
+
+;兽神·召唤圣兽
+#IF
+EQUAL U50 9
+LARGE U96 0
+NOT CheckMagicName 御灵圣兽
+#ACT
+KillCallMob 神兽 99
+KillCallMob 神兽1 99
+KillCallMob 圣兽 99
+KillCallMob 圣兽1 99
+KillCallMob 圣兽王 99
+KillCallMob 圣兽王1 99
+DELSKILL 召唤神兽
+ADDSKILL 御灵圣兽 3
+SKILLLEVEL 御灵圣兽 = 1 1
+;-----------------------------------------------------计算职业专精属性;-----------------------------------------------------
+;武圣基本剑术生命值上限提升20%
+#IF
+EQUAL U50 2
+#ACT
+ADDBUFF 50022
+#ELSEACT
+DELBUFF 50022 
+
+;医圣精通
+#IF
+EQUAL U50 8
+NOT hasbuff 50031
+#ACT
+addbuff 50031
+
+;兽神精通
+#IF
+EQUAL U50 9
+NOT hasbuff 50032
+#ACT
+addbuff 50032
+
+#IF
+EQUAL U50 9
+LARGE U96 0
+NOT hasbuff 50480
+#act
+addbuff 50480
+}

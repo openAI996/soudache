@@ -1,0 +1,107 @@
+[@MAIN]
+#IF
+CHECK [1] 0
+#ACT
+Navigation 0 22 进入“新手村”
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=477.0|y=8.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Text|x=46.0|y=70.0|color=255|size=18|outline=1|outlinecolor=0|text=欢迎来到《搜打撤传奇》，公司运营，品牌大服！>
+<Text|x=45.0|y=95.0|color=255|size=18|outline=1|outlinecolor=0|text=手机电脑三端互通，上班、在家都能打宝PK！>
+<Text|x=45.0|y=120.0|color=255|size=18|outline=1|outlinecolor=0|text=经典版本，带您重温2001年网吧通宵的激情岁月！>
+<Text|x=45.0|y=145.0|color=255|size=18|outline=1|outlinecolor=0|text=新区刚刚开放，快去“新手村”打稻草人、杀鹿升级吧！>
+<Layout|x=40.0|y=197.0|width=150|height=40|color=x|link=@开始游戏>
+<Img|x=50.0|y=207.0|img=public/00010.png|esc=0>
+<Text|id=22|x=70.0|y=202.0|size=18|color=11009|text=新入”新手村“|link=@开始游戏>
+#ELSESAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=477.0|y=8.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Text|x=46.0|y=70.0|color=255|size=18|outline=1|outlinecolor=0|text=欢迎来到《搜打撤传奇》，公司运营，品牌大服！>
+<Text|x=45.0|y=95.0|color=255|size=18|outline=1|outlinecolor=0|text=手机电脑三端互通，上班、在家都能打宝PK！>
+<Text|x=45.0|y=120.0|color=255|size=18|outline=1|outlinecolor=0|text=经典版本，带您重温2001年网吧通宵的激情岁月！>
+<Text|x=45.0|y=145.0|color=255|size=18|outline=1|outlinecolor=0|text=新区刚刚开放，快去“新手村”打稻草人、杀鹿升级吧！>
+<Layout|x=40.0|y=197.0|width=150|height=40|color=x|link=@开始游戏>
+<Img|x=50.0|y=207.0|img=public/00010.png|esc=0>
+<Text|id=22|x=70.0|y=202.0|size=18|color=11009|text=新入”新手村“|link=@开始游戏>
+
+
+[@开始游戏]
+#IF
+#ACT
+RANSJSTR 落点1#200|落点2#200|落点3#200|落点4#200|落点5#200 1 3 S$落点权重 S$无效
+
+
+
+#IF
+CHECK [1] 0
+EQUAL S$落点权重 落点1
+#ACT
+SET [1] 1
+ADDBUFF 50202
+MAPMOVE lgf 96 99
+NEWDELETETASK 1
+NEWPICKTASK 2
+SetOnTimer 80 3
+StartAutoPlayGame
+BREAK
+#IF
+CHECK [1] 0
+EQUAL S$落点权重 落点2
+#ACT
+SET [1] 1
+ADDBUFF 50202
+MAPMOVE lgf 56 83
+NEWDELETETASK 1
+NEWPICKTASK 2
+SetOnTimer 80 3
+StartAutoPlayGame
+BREAK
+#IF
+CHECK [1] 0
+EQUAL S$落点权重 落点3
+#ACT
+SET [1] 1
+ADDBUFF 50202
+MAPMOVE lgf 70 69
+NEWDELETETASK 1
+NEWPICKTASK 2
+SetOnTimer 80 3
+StartAutoPlayGame
+BREAK
+#IF
+CHECK [1] 0
+EQUAL S$落点权重 落点4
+#ACT
+SET [1] 1
+ADDBUFF 50202
+MAPMOVE lgf 88 54
+NEWDELETETASK 1
+NEWPICKTASK 2
+SetOnTimer 80 3
+StartAutoPlayGame
+BREAK
+#IF
+CHECK [1] 0
+EQUAL S$落点权重 落点2
+#ACT
+SET [1] 1
+ADDBUFF 50202
+MAPMOVE lgf 55 56
+NEWDELETETASK 1
+NEWPICKTASK 2
+SetOnTimer 80 3
+StartAutoPlayGame
+BREAK
+#IF
+CHECK [1] 0
+#ACT
+SET [1] 1
+ADDBUFF 50202
+MAPMOVE lgf 55 56
+NEWDELETETASK 1
+NEWPICKTASK 2
+SetOnTimer 80 3
+StartAutoPlayGame
+BREAK

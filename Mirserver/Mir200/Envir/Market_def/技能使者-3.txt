@@ -1,0 +1,393 @@
+[@main]
+<Img|width=500|height=280|esc=1|reset=1|img=public/bg_npc_04.jpg|bg=1|loadDelay=1|show=0|move=0>
+<Layout|x=498.0|y=0.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=0.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Button|x=15.0|y=75.0|color=255|size=20|nimg=public/1900000660.png|text=触发羁绊|link=@触发羁绊>
+<Button|x=135.0|y=75.0|color=246|size=20|nimg=public/1900000660.png|text=查看自己|link=@查看自己>
+<Button|x=255.0|y=75.0|color=246|size=20|nimg=public/1900000660.png|text=查看别人|link=@查看别人>
+<Button|x=15.0|y=15.0|color=255|size=20|nimg=public/1900000660.png|text=技能查看|link=@技能查看>
+<Button|x=375.0|y=75.0|color=255|size=20|nimg=public/1900000660.png|text=职业切换|link=@职业切换>
+<Button|x=375.0|y=125.0|color=255|size=20|nimg=public/1900000660.png|text=技能强化|link=@技能强化>
+
+
+
+;<Button|x=375.0|y=125.0|color=255|size=20|nimg=public/1900000660.png|text=流派切换|link=@流派切换>
+
+[@技能强化]
+<Img|width=546|height=220|reset=1|move=0|scale9t=10|esc=1|img=public/bg_npc_04.jpg|scale9r=10|scale9l=10|scale9b=10|bg=1|loadDelay=1|show=4>
+<Button|x=546.0|y=1.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=159.0|y=22.0|img=public/101.png|esc=0>
+<Img|x=315.0|y=22.0|img=public/102.png|esc=0>
+<Text|ax=0.5|ay=0.5|x=264.0|y=31.0|color=251|size=18|text=技能强化>
+<Img|x=34.0|y=48.0|img=public/103.png|esc=0>
+<RText|x=22.0|y=60.0|color=255|size=18|text=在玛法大陆的修行之路上，等级的突破只是基础，真正的强者>
+<RText|x=22.0|y=85.0|color=255|size=18|text=更注重对武学与魔法的极致雕琢。>
+<EquipShow|width=70|height=70|index=1|showtips=1|bgtype=1>
+<Img|x=31.0|y=125.0|width=63|height=63|img=public/1900000651_2.png|esc=0>
+<Img|x=131.0|y=125.0|width=63|height=63|img=public/1900000651_2.png|esc=0>
+<Img|x=231.0|y=125.0|width=63|height=63|img=public/1900000651_2.png|esc=0>
+<Img|x=331.0|y=125.0|width=63|height=63|img=public/1900000651_2.png|esc=0>
+<Frames|x=98.0|y=153.0|width=30|height=10|speed=15|loop=-1|prefix=public/jinengqianghua/1_|suffix=.png|count=10>
+<Frames|x=198.0|y=153.0|width=30|height=10|speed=15|loop=-1|prefix=public/jinengqianghua/2_|suffix=.png|count=1>
+<Frames|x=298.0|y=153.0|width=30|height=10|speed=15|loop=-1|prefix=public/jinengqianghua/2_|suffix=.png|count=1>
+<ItemShow|x=29.0|y=124.0|width=70|height=70|itemcount=1|showtips=1|itemname=刺杀剑术|bgtype=0>
+<ItemShow|x=129.0|y=124.0|width=70|height=70|itemcount=1|showtips=1|itemname=半月弯刀|bgtype=0|grey=1>
+<ItemShow|x=229.0|y=124.0|width=70|height=70|itemcount=1|showtips=1|itemname=野蛮冲撞|bgtype=0|grey=1>
+<ItemShow|x=329.0|y=124.0|width=70|height=70|itemcount=1|showtips=1|itemname=烈火剑法|bgtype=0|grey=1>
+<Effect|x=64.0|y=159.0|scale=1|speed=1|dir=5|effectid=4004|effecttype=0|act=0>
+
+
+[@流派切换]
+<Img|width=400|height=600|scale9l=10|bg=1|reset=1|esc=1|img=public/bg_npc_06.jpg|move=0|scale9b=10|show=0|scale9r=10|scale9t=10|loadDelay=1>
+<Button|x=400.0|y=1.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=94.0|y=22.0|esc=0|img=public/101.png>
+<Text|ax=0.5|ay=0.5|x=189.0|y=31.0|size=18|color=251|text=职业流派>
+<Img|x=230.0|y=22.0|esc=0|img=public/102.png>
+<Img|x=11.0|y=48.0|width=378|height=2|img=public/103.png|esc=0>
+<Layout|children={11,12,13,14,15,16}|x=44.0|y=-2.0|width=30|height=30|link=@exit>
+<Img|id=11|x=-23.0|y=60.0|width=67|height=14|img=public/104.png|esc=0>
+<Text|id=12|x=45.0|y=57.0|size=18|color=250|text=雷法>
+<Img|id=13|x=84.0|y=59.0|width=67|height=14|img=public/105.png|esc=0>
+<Text|id=14|x=25.0|y=81.0|color=249|size=17|text=[爆法流派]>
+<Img|id=15|x=24.0|y=55.0|esc=0|img=public/lizi.png>
+<Img|id=16|x=82.0|y=55.0|esc=0|img=public/lizi.png>
+<Layout|children={101,102,103,104,105,106,107}|x=0.0|y=4.0|width=30|height=30|link=@exit>
+<Frames|id=101|x=58.0|y=163.0|speed=15|prefix=public/liupai/1_|suffix=.png|count=10|loop=-1>
+<Img|id=102|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=103|x=32.0|y=102.0|esc=0|img=skill_icon/20_3.jpg|tips=<被动技能：/FCOLOR=92><法术暴击/FCOLOR=251>\<需要书页：/FCOLOR=92><20书页激活/FCOLOR=251>\<雷法追求极致的爆发伤害！/FCOLOR=92>\<法术暴击+10%/FCOLOR=251>|tipsx=45|tipsy=78>
+<Img|id=104|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=105|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=106|x=97.0|y=109.0|color=244|size=17|text=法术暴击>
+<Text|id=107|x=97.0|y=138.0|color=243|size=17|text=20书页激活>
+<Layout|children={201,202,203,204,205,206,207}|x=0.0|y=87.0|width=30|height=30|link=@exit>
+<Frames|id=201|x=58.0|y=163.0|speed=15|prefix=public/liupai/1_|suffix=.png|count=10|loop=-1>
+<Img|id=202|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=203|x=32.0|y=102.0|esc=0|img=skill_icon/10_3.jpg>
+<Img|id=204|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=205|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=206|x=97.0|y=109.0|color=244|size=17|text=法术连击>
+<Text|id=207|x=97.0|y=138.0|color=243|size=17|text=40书页激活>
+<Layout|children={301,302,303,304,305,306,307}|x=0.0|y=170.0|width=30|height=30|link=@exit>
+<Frames|id=301|x=58.0|y=163.0|speed=15|prefix=public/liupai/2_|suffix=.png|count=1|loop=-1>
+<Img|id=302|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=303|x=32.0|y=102.0|esc=0|img=skill_icon/21_3.jpg>
+<Img|id=304|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=305|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=306|x=97.0|y=109.0|color=244|size=17|text=快速施法>
+<Text|id=307|x=97.0|y=138.0|color=243|size=17|text=80书页激活>
+<Layout|children={401,402,403,404,405,406,407,408}|x=0.0|y=253.0|width=30|height=30|link=@exit>
+<Frames|id=401|x=58.0|y=163.0|speed=15|prefix=public/liupai/2_|suffix=.png|count=1|loop=-1>
+<Img|id=402|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=403|x=32.0|y=102.0|esc=0|img=skill_icon/11_3.jpg|grey=1>
+<Effect|id=408|x=63.0|y=133.0|scale=1|speed=1|act=0|effecttype=0|dir=5|effectid=4004>
+<Img|id=404|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=405|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=406|x=97.0|y=109.0|color=244|size=17|text=狂龙紫电>
+<Text|id=407|x=97.0|y=138.0|color=243|size=17|text=200书页激活>
+<Layout|children={501,502,503,504,505,506,507}|x=0.0|y=336.0|width=30|height=30|link=@exit>
+<Frames|id=501|x=58.0|y=163.0|speed=15|prefix=public/liupai/2_|suffix=.png|count=1|loop=-1>
+<Img|id=502|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=503|x=32.0|y=102.0|esc=0|img=skill_icon/18_3.jpg|grey=1>
+<Img|id=504|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=505|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=506|x=97.0|y=109.0|color=244|size=17|text=雷法精通>
+<Text|id=507|x=97.0|y=138.0|color=243|size=17|text=400书页激活>
+<Layout|children={602,603,604,605,606,607}|x=0.0|y=419.0|width=30|height=30|link=@exit>
+<Img|id=602|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=603|x=32.0|y=102.0|esc=0|img=skill_icon/24_3.jpg|grey=1>
+<Img|id=604|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=605|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=606|x=97.0|y=109.0|color=244|size=17|text=群体雷电>
+<Text|id=607|x=97.0|y=138.0|color=243|size=17|text=800书页激活>
+
+<Layout|children={21,22,23,24}|x=229.0|y=-2.0|width=30|height=30|link=@exit>
+<Img|id=21|x=-25.0|y=60.0|width=67|height=14|img=public/104.png|esc=0>
+<Text|id=22|x=45.0|y=57.0|size=18|color=250|text=冰法>
+<Img|id=23|x=84.0|y=59.0|width=67|height=14|img=public/105.png|esc=0>
+<Text|id=24|x=25.0|y=81.0|color=249|size=17|text=[控制流派]>
+
+<Layout|children={1001,1002,1003,1004,1005,1006,1007}|x=183.0|y=4.0|width=30|height=30|link=@exit>
+<Frames|id=1001|x=58.0|y=163.0|speed=15|prefix=public/liupai/2_|suffix=.png|count=1|loop=-1>
+<Img|id=1002|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=1003|x=32.0|y=102.0|esc=0|img=skill_icon/308_3.jpg|grey=1>
+<Img|id=1004|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=1005|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=1006|x=97.0|y=109.0|color=244|size=17|text=生命强化>
+<Text|id=1007|x=97.0|y=138.0|color=243|size=17|text=20书页激活>
+
+<Layout|children={1201,1202,1203,1204,1205,1206,1207}|x=183.0|y=87.0|width=30|height=30|link=@exit>
+<Frames|id=1201|x=58.0|y=163.0|speed=15|suffix=.png|prefix=public/liupai/2_|count=1|loop=-1>
+<Img|id=1202|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=1203|x=33.0|y=102.0|esc=0|img=skill_icon/303_3.jpg|grey=1>
+<Img|id=1204|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=1205|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=1206|x=97.0|y=109.0|color=244|size=17|text=冰箭术>
+<Text|id=1207|x=97.0|y=138.0|color=243|size=17|text=40书页激活>
+
+<Layout|children={1301,1302,1303,1304,1305,1306,1307}|x=183.0|y=170.0|width=30|height=30|link=@exit>
+<Frames|id=1301|x=58.0|y=163.0|speed=15|suffix=.png|prefix=public/liupai/2_|count=1|loop=-1>
+<Img|id=1302|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=1303|x=33.0|y=102.0|esc=0|img=skill_icon/305_3.jpg|grey=1>
+<Img|id=1304|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=1305|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=1306|x=97.0|y=109.0|color=244|size=17|text=冰法精通>
+<Text|id=1307|x=97.0|y=138.0|color=243|size=17|text=80书页激活>
+
+<Layout|children={1401,1402,1403,1404,1405,1406,1407}|x=183.0|y=253.0|width=30|height=30|link=@exit>
+<Frames|id=1401|x=58.0|y=163.0|speed=15|suffix=.png|prefix=public/liupai/2_|count=1|loop=-1>
+<Img|id=1402|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=1403|x=32.0|y=102.0|esc=0|img=skill_icon/58_3.jpg|grey=1>
+<Img|id=1404|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=1405|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=1406|x=97.0|y=109.0|color=244|size=17|text=魔法盾精通>
+<Text|id=1407|x=97.0|y=138.0|color=243|size=17|text=200书页激活>
+
+<Layout|children={1501,1502,1503,1504,1505,1506,1507}|x=183.0|y=336.0|width=30|height=30|link=@exit>
+<Frames|id=1501|x=58.0|y=163.0|speed=15|suffix=.png|prefix=public/liupai/2_|count=1|loop=-1>
+<Img|id=1502|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=1503|x=32.0|y=102.0|esc=0|img=skill_icon/92_3.jpg|grey=1>
+<Img|id=1504|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=1505|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=1506|x=97.0|y=109.0|color=244|size=17|text=冰霜群雨>
+<Text|id=1507|x=97.0|y=138.0|color=243|size=17|text=400书页激活>
+
+<Layout|children={1602,1603,1604,1605,1606,1607}|x=183.0|y=419.0|width=30|height=30|link=@exit>
+<Img|id=1602|x=31.0|y=100.0|width=64|height=64|img=public/1900000651_2.png|esc=0>
+<Img|id=1603|x=32.0|y=102.0|esc=0|img=skill_icon/47_3.jpg|grey=1>
+<Img|id=1604|x=88.0|y=102.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Img|id=1605|x=88.0|y=131.0|width=110|height=31|img=public/bg_hhzy_01_3.png|esc=0>
+<Text|id=1606|x=97.0|y=109.0|color=244|size=17|text=寒冰掌>
+<Text|id=1607|x=97.0|y=138.0|color=243|size=17|text=800书页激活>
+
+[@职业切换];男
+<Img|width=546|height=286|scale9l=10|bg=1|img=public/bg_npc_04.jpg|reset=1|esc=1|move=0|scale9b=10|show=0|scale9r=10|scale9t=10|loadDelay=1>
+<Button|x=546.0|y=1.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=159.0|y=22.0|esc=0|img=public/101.png>
+<Img|x=315.0|y=22.0|esc=0|img=public/102.png>
+<Text|ax=0.5|ay=0.5|x=264.0|y=31.0|size=18|color=251|text=职业流派>
+<Img|x=34.0|y=48.0|esc=0|img=public/103.png>
+<RText|x=22.0|y=60.0|size=18|color=255|text=在这里，你可以自由切换职业流派！>
+<RText|x=66.0|y=90.0|size=20|color=250|text=战士　　　　　　　法师　　　　　　　道士>
+<Img|x=59.0|y=131.0|esc=0|img=private/monster_belong_netplayer/job_0_0.png>
+<Img|x=56.0|y=126.0|esc=0|img=private/monster_belong_netplayer/icon_bg.png>
+<RText|x=64.0|y=205.0|size=20|color=249|text=当前>
+<RText|x=65.0|y=227.0|size=20|color=249|text=职业>
+;<Button|x=55.0|y=194.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=切换|link=@444>
+;<Button|x=55.0|y=233.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=流派|link=@444>
+<Img|x=240.0|y=131.0|esc=0|img=private/monster_belong_netplayer/job_0_1.png>
+<Img|x=237.0|y=126.0|esc=0|img=private/monster_belong_netplayer/icon_bg.png>
+<Button|x=235.0|y=194.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=切换|link=@444>
+;<Button|x=235.0|y=233.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=流派|link=@444>
+<Img|x=422.0|y=131.0|esc=0|img=private/monster_belong_netplayer/job_0_2.png>
+<Img|x=419.0|y=126.0|esc=0|img=private/monster_belong_netplayer/icon_bg.png>
+<Button|x=418.0|y=194.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=切换|link=@444>
+;<Button|x=418.0|y=233.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=流派|link=@444>
+
+[@职业切换11];女
+<Img|width=546|height=286|scale9l=10|bg=1|img=public/bg_npc_04.jpg|reset=1|esc=1|move=0|scale9b=10|show=0|scale9r=10|scale9t=10|loadDelay=1>
+<Button|x=546.0|y=1.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=159.0|y=22.0|esc=0|img=public/101.png>
+<Img|x=315.0|y=22.0|esc=0|img=public/102.png>
+<Text|ax=0.5|ay=0.5|x=264.0|y=31.0|size=18|color=251|text=职业流派>
+<Img|x=34.0|y=48.0|esc=0|img=public/103.png>
+<RText|x=22.0|y=60.0|size=18|color=255|text=在这里，你可以自由切换职业流派！>
+<RText|x=66.0|y=90.0|size=20|color=250|text=战士　　　　　　　法师　　　　　　　道士>
+<Img|x=59.0|y=131.0|esc=0|img=private/monster_belong_netplayer/job_1_0.png>
+<Img|x=56.0|y=126.0|esc=0|img=private/monster_belong_netplayer/icon_bg.png>
+<RText|x=64.0|y=205.0|size=20|color=249|text=当前>
+<RText|x=65.0|y=227.0|size=20|color=249|text=职业>
+;<Button|x=55.0|y=194.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=切换|link=@444>
+;<Button|x=55.0|y=233.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=流派|link=@444>
+<Img|x=240.0|y=131.0|esc=0|img=private/monster_belong_netplayer/job_1_1.png>
+<Img|x=237.0|y=126.0|esc=0|img=private/monster_belong_netplayer/icon_bg.png>
+<Button|x=235.0|y=194.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=切换|link=@444>
+<Button|x=235.0|y=233.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=流派|link=@444>
+<Img|x=422.0|y=131.0|esc=0|img=private/monster_belong_netplayer/job_1_2.png>
+<Img|x=419.0|y=126.0|esc=0|img=private/monster_belong_netplayer/icon_bg.png>
+<Button|x=418.0|y=194.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=切换|link=@444>
+<Button|x=418.0|y=233.0|width=60|height=30|color=246|nimg=public/1900000611.png|size=18|text=流派|link=@444>
+
+[@触发羁绊]
+<Img|x=-120.0|y=-120.0|width=2000|height=2000|loadDelay=1|esc=1|show=0|reset=1|img=public/1900000651_1.png|move=0|bg=1>
+<Img|x=-120.0|y=-120.0|width=2000|height=2000|show=0|reset=1|esc=1|img=public/1900000651_1.png|loadDelay=1|move=0>
+<Layout|x=545|y=0|width=80|height=80|link=@exit>
+<Button|x=997.0|y=1.0|width=26|nimg=public/1900000510.png|link=@exit>
+<Button|x=178.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@111>
+<Img|x=176.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=307.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=183.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=233.0|y=278.0|outline=1|color=154|outlinecolor=0|size=19|text=体格Lv1>
+<Text|x=225.0|y=377.0|outline=1|color=154|outlinecolor=0|size=18|text=生命值+20>
+<Button|x=418.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@222>
+<Img|x=416.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=547.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=423.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=473.0|y=278.0|outline=1|color=250|outlinecolor=0|size=19|text=破势Lv2>
+<Text|x=470.0|y=377.0|outline=1|color=250|outlinecolor=0|size=18|text=攻击力+5>
+<Button|x=658.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@333>
+<Img|x=656.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=787.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=664.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=711.0|y=278.0|outline=1|color=249|outlinecolor=0|size=19|text=神通觉醒>
+<Text|x=671.0|y=377.0|outline=1|color=249|outlinecolor=0|size=18|text=全技能等级增加3级>
+<Img|x=164.0|y=250.0|width=208|height=252|img=public/1900000678_1.png|esc=0>
+<Img|x=285.0|y=533.0|width=450|height=1|img=public/1900000667_1.png|esc=0>
+<Img|x=285.0|y=566.0|width=450|height=1|img=public/1900000667_1.png|esc=0>
+<Text|x=332.0|y=539.0|outline=1|color=246|outlinecolor=0|size=19|text=刷新次数：5>
+<Text|x=516.0|y=539.0|outline=1|color=246|outlinecolor=0|size=19|text=刷新条件：1000金币>
+<Button|x=312.0|y=606.0|color=251|size=20|nimg=public/1900000660.png|text=选择羁绊|link=@444>
+<Button|x=600.0|y=606.0|color=246|size=20|nimg=public/1900000660.png|text=刷新羁绊|link=@444>
+
+[@查看自己]
+<Img|x=-120.0|y=-120.0|width=2000|height=2000|loadDelay=1|reset=1|img=public/1900000651_1.png|esc=1|show=0|bg=1|move=0>
+<Img|x=-120.0|y=-120.0|width=2000|height=2000|reset=1|move=0|img=public/1900000651_1.png|show=0|loadDelay=1|esc=1>
+<Layout|x=545|y=0|width=80|height=80|link=@exit>
+<Button|x=997.0|y=1.0|width=26|nimg=public/1900000510.png|link=@exit>
+<Button|x=178.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@111>
+<Img|x=176.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=307.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=183.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=233.0|y=278.0|outline=1|color=154|outlinecolor=0|size=19|text=体格Lv1>
+<Text|x=225.0|y=377.0|outline=1|color=154|outlinecolor=0|size=18|text=生命值+20>
+<Button|x=418.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@222>
+<Img|x=416.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=547.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=423.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=473.0|y=278.0|outline=1|color=250|outlinecolor=0|size=19|text=破势Lv2>
+<Text|x=470.0|y=377.0|outline=1|color=250|outlinecolor=0|size=18|text=攻击力+5>
+<Button|x=658.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@333>
+<Img|x=656.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=787.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=664.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=711.0|y=278.0|outline=1|color=249|outlinecolor=0|size=19|text=神通觉醒>
+<Text|x=671.0|y=377.0|outline=1|color=249|outlinecolor=0|size=18|text=全技能等级增加3级>
+<Img|x=164.0|y=250.0|width=208|height=252|img=public/1900000678_1.png|esc=0>
+<Img|x=285.0|y=173.0|width=450|height=1|img=public/1900000667_1.png|esc=0>
+<Img|x=285.0|y=203.0|width=450|height=1|img=public/1900000667_1.png|esc=0>
+<Text|x=468.0|y=177.0|outline=1|color=251|outlinecolor=0|size=20|text=我的羁绊>
+<Text|x=50.0|y=548.0|outline=1|color=255|outlinecolor=0|size=30|text=羁绊可左右滑动，羁绊可左右滑动，羁绊可左右滑动，羁绊可左右滑动>
+
+[@查看别人]
+<Img|x=-120.0|y=-120.0|width=2000|height=2000|loadDelay=1|reset=1|img=public/1900000651_1.png|esc=1|show=0|bg=1|move=0>
+<Img|x=-120.0|y=-120.0|width=2000|height=2000|reset=1|move=0|img=public/1900000651_1.png|show=0|loadDelay=1|esc=1>
+<Layout|x=545|y=0|width=80|height=80|link=@exit>
+<Button|x=997.0|y=1.0|width=26|nimg=public/1900000510.png|link=@exit>
+<Button|x=178.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@111>
+<Img|x=176.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=307.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=183.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=233.0|y=278.0|outline=1|color=154|outlinecolor=0|size=19|text=体格Lv1>
+<Text|x=225.0|y=377.0|outline=1|color=154|outlinecolor=0|size=18|text=生命值+20>
+<Button|x=418.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@222>
+<Img|x=416.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=547.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=423.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=473.0|y=278.0|outline=1|color=250|outlinecolor=0|size=19|text=破势Lv2>
+<Text|x=470.0|y=377.0|outline=1|color=250|outlinecolor=0|size=18|text=攻击力+5>
+<Button|x=658.0|y=266.0|width=180|height=220|nimg=public/bg_npc_02.png|color=255|size=18|link=@333>
+<Img|x=656.0|y=280.0|esc=0|img=public/101.png>
+<Img|x=787.0|y=280.0|esc=0|img=public/102.png>
+<Img|x=664.0|y=309.0|width=170|height=2|img=public/103.png|esc=0>
+<Text|x=711.0|y=278.0|outline=1|color=249|outlinecolor=0|size=19|text=神通觉醒>
+<Text|x=671.0|y=377.0|outline=1|color=249|outlinecolor=0|size=18|text=全技能等级增加3级>
+<Img|x=164.0|y=250.0|width=208|height=252|img=public/1900000678_1.png|esc=0>
+<Img|x=285.0|y=173.0|width=450|height=1|img=public/1900000667_1.png|esc=0>
+<Img|x=285.0|y=203.0|width=450|height=1|img=public/1900000667_1.png|esc=0>
+<Text|x=458.0|y=177.0|outline=1|color=251|outlinecolor=0|size=20|text=XXXX的羁绊>
+<Text|x=50.0|y=548.0|outline=1|color=255|outlinecolor=0|size=30|text=羁绊可左右滑动，羁绊可左右滑动，羁绊可左右滑动，羁绊可左右滑动>
+
+[@技能查看]
+#IF
+CHECKJOB Warrior
+#SAY
+<Img|width=500|height=280|reset=1|bg=1|move=0|esc=1|loadDelay=1|img=public/bg_npc_04.jpg|show=0>
+<Layout|x=498.0|y=0.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=20.0|y=20.0|color=255|outline=1|size=18|outlinecolor=0|text=说明：人物等级达到，自动学习对应技能！>
+<Text|x=20.0|y=45.0|color=250|outline=1|size=18|outlinecolor=0|text=基本剑术　　等级达到：7级，自动学习>
+<Text|x=20.0|y=70.0|color=250|outline=1|size=18|outlinecolor=0|text=攻杀剑术　　等级达到：19级，自动学习>
+<Text|x=20.0|y=95.0|color=250|outline=1|size=18|outlinecolor=0|text=刺杀剑术　　等级达到：25级，自动学习>
+<Text|x=20.0|y=120.0|color=250|outline=1|size=18|outlinecolor=0|text=半月弯刀　　等级达到：28级，自动学习>
+<Text|x=20.0|y=145.0|color=250|outline=1|size=18|outlinecolor=0|text=野蛮冲撞　　等级达到：30级，自动学习>
+<Text|x=20.0|y=170.0|color=250|outline=1|size=18|outlinecolor=0|text=烈火剑法　　等级达到：35级，自动学习>
+<Text|x=20.0|y=195.0|color=250|outline=1|size=18|outlinecolor=0|text=狮子吼　　　等级达到：42级，自动学习>
+<Text|x=20.0|y=220.0|color=250|outline=1|size=18|outlinecolor=0|text=开天斩　　　等级达到：47级，自动学习>
+<Text|x=20.0|y=245.0|color=250|outline=1|size=18|outlinecolor=0|text=逐日剑法　　等级达到：52级，自动学习>
+<Button|x=385.0|y=236.0|tips=佩戴不同级别装备，可提升人物等级|tipsy=70|color=255|size=18|nimg=public/1900001024.png>
+
+#IF
+CHECKJOB Wizard
+#SAY
+<Img|width=500|height=280|bg=1|reset=1|move=0|show=0|loadDelay=1|img=public/bg_npc_04.jpg|esc=1>
+<Layout|x=498.0|y=0.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=20.0|y=20.0|color=255|outline=1|size=18|outlinecolor=0|text=说明：人物等级达到，自动学习对应技能！>
+<Text|x=20.0|y=45.0|color=250|outline=1|size=18|outlinecolor=0|text=火球术　　　等级达到：7级，自动学习>
+<Text|x=20.0|y=70.0|color=250|outline=1|size=18|outlinecolor=0|text=抗拒火环　　等级达到：12级，自动学习>
+<Text|x=20.0|y=95.0|color=250|outline=1|size=18|outlinecolor=0|text=诱惑之光　　等级达到：13级，自动学习>
+<Text|x=20.0|y=120.0|color=250|outline=1|size=18|outlinecolor=0|text=地狱火　　　等级达到：16级，自动学习>
+<Text|x=20.0|y=145.0|color=250|outline=1|size=18|outlinecolor=0|text=雷电术　　　等级达到：17级，自动学习>
+<Text|x=20.0|y=170.0|color=250|outline=1|size=18|outlinecolor=0|text=大火球　　　等级达到：19级，自动学习>
+<Text|x=20.0|y=195.0|color=250|outline=1|size=18|outlinecolor=0|text=瞬息移动　　等级达到：19级，自动学习>
+<Text|x=20.0|y=220.0|color=250|outline=1|size=18|outlinecolor=0|text=爆裂火焰　　等级达到：22级，自动学习>
+<Text|x=20.0|y=245.0|color=250|outline=1|size=18|outlinecolor=0|text=火墙　　　　等级达到：24级，自动学习>
+<Text|x=436.0|y=245.0|size=18|outlinecolor=0|color=251|outline=1|text=下一页|link=@法师2>
+<Button|x=385.0|y=236.0|tips=佩戴不同级别装备，可提升人物等级|tipsy=70|color=255|size=18|nimg=public/1900001024.png>
+
+#IF
+CHECKJOB Taoist
+#SAY
+<Img|width=500|height=280|bg=1|reset=1|move=0|show=0|loadDelay=1|img=public/bg_npc_04.jpg|esc=1>
+<Layout|x=498.0|y=0.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=20.0|y=20.0|color=255|outline=1|size=18|outlinecolor=0|text=说明：人物等级达到，自动学习对应技能！>
+<Text|x=20.0|y=45.0|color=250|outline=1|size=18|outlinecolor=0|text=治愈术　　　　等级达到：7级，自动学习>
+<Text|x=20.0|y=70.0|color=250|outline=1|size=18|outlinecolor=0|text=精神力战法　　等级达到：9级，自动学习>
+<Text|x=20.0|y=95.0|color=250|outline=1|size=18|outlinecolor=0|text=施毒术　　　　等级达到：14级，自动学习>
+<Text|x=20.0|y=120.0|color=250|outline=1|size=18|outlinecolor=0|text=灵魂火符　　　等级达到：18级，自动学习>
+<Text|x=20.0|y=145.0|color=250|outline=1|size=18|outlinecolor=0|text=召唤骷髅　　　等级达到：19级，自动学习>
+<Text|x=20.0|y=170.0|color=250|outline=1|size=18|outlinecolor=0|text=隐身术　　　　等级达到：20级，自动学习>
+<Text|x=20.0|y=195.0|color=250|outline=1|size=18|outlinecolor=0|text=集体隐身术　　等级达到：21级，自动学习>
+<Text|x=20.0|y=220.0|color=250|outline=1|size=18|outlinecolor=0|text=幽灵盾　　　　等级达到：22级，自动学习>
+<Text|x=20.0|y=245.0|color=250|outline=1|size=18|outlinecolor=0|text=神圣战甲术　　等级达到：25级，自动学习>
+<Text|x=436.0|y=245.0|size=18|outlinecolor=0|color=251|outline=1|text=下一页|link=@道士2>
+<Button|x=385.0|y=236.0|tips=佩戴不同级别装备，可提升人物等级|tipsy=70|color=255|size=18|nimg=public/1900001024.png>
+
+[@法师2]
+#IF
+CHECKJOB Wizard
+#SAY
+<Img|width=500|height=280|reset=1|bg=1|move=0|esc=1|loadDelay=1|img=public/bg_npc_04.jpg|show=0>
+<Layout|x=498.0|y=0.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=20.0|y=20.0|color=255|outline=1|size=18|outlinecolor=0|text=说明：人物等级达到，自动学习对应技能！>
+<Text|x=20.0|y=45.0|color=250|outline=1|size=18|outlinecolor=0|text= 疾光电影　　等级达到：26级，自动学习>
+<Text|x=20.0|y=70.0|color=250|outline=1|size=18|outlinecolor=0|text= 地狱雷光　　等级达到：30级，自动学习>
+<Text|x=20.0|y=95.0|color=250|outline=1|size=18|outlinecolor=0|text= 魔法盾　　　等级达到：31级，自动学习>
+<Text|x=20.0|y=120.0|color=250|outline=1|size=18|outlinecolor=0|text=圣言术　　　等级达到：32级，自动学习>
+<Text|x=20.0|y=145.0|color=250|outline=1|size=18|outlinecolor=0|text=冰咆哮　　　等级达到：35级，自动学习>
+<Text|x=20.0|y=170.0|color=250|outline=1|size=18|outlinecolor=0|text=寒冰掌　　　等级达到：42级，自动学习>
+<Text|x=20.0|y=195.0|color=250|outline=1|size=18|outlinecolor=0|text=灭天火　　　等级达到：42级，自动学习>
+<Text|x=20.0|y=220.0|color=250|outline=1|size=18|outlinecolor=0|text=流星火雨　　等级达到：52级，自动学习>
+<Text|x=436.0|y=245.0|size=18|outlinecolor=0|color=251|outline=1|text=上一页|link=@main>
+<Button|x=385.0|y=236.0|tips=佩戴不同级别装备，可提升人物等级|tipsy=70|color=255|size=18|nimg=public/1900001024.png>
+
+[@道士2]
+#IF
+CHECKJOB Taoist
+#SAY
+<Img|width=500|height=280|reset=1|bg=1|move=0|esc=1|loadDelay=1|img=public/bg_npc_04.jpg|show=0>
+<Layout|x=498.0|y=0.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=0.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=20.0|y=20.0|color=255|outline=1|size=18|outlinecolor=0|text=说明：人物等级达到，自动学习对应技能！>
+<Text|x=20.0|y=45.0|color=250|outline=1|size=18|outlinecolor=0|text=心灵启示　　　等级达到：26级，自动学习>
+<Text|x=20.0|y=70.0|color=250|outline=1|size=18|outlinecolor=0|text=困魔咒　　　　等级达到：28级，自动学习>
+<Text|x=20.0|y=95.0|color=250|outline=1|size=18|outlinecolor=0|text=群体治疗术　　等级达到：33级，自动学习>
+<Text|x=20.0|y=120.0|color=250|outline=1|size=18|outlinecolor=0|text=召唤神兽　　　等级达到：35级，自动学习>
+<Text|x=20.0|y=145.0|color=250|outline=1|size=18|outlinecolor=0|text=气功波　　　　等级达到：42级，自动学习>
+<Text|x=20.0|y=170.0|color=250|outline=1|size=18|outlinecolor=0|text=无极真气　　　等级达到：42级，自动学习>
+<Text|x=20.0|y=195.0|color=250|outline=1|size=18|outlinecolor=0|text=群体施毒术　　等级达到：43级，自动学习>
+<Text|x=20.0|y=220.0|color=250|outline=1|size=18|outlinecolor=0|text=召唤月灵　　　等级达到：47级，自动学习>
+<Text|x=20.0|y=245.0|color=250|outline=1|size=18|outlinecolor=0|text=噬血术　　　　等级达到：52级，自动学习>
+<Text|x=436.0|y=245.0|size=18|outlinecolor=0|color=251|outline=1|text=上一页|link=@main>
+<Button|x=385.0|y=236.0|tips=佩戴不同级别装备，可提升人物等级|tipsy=70|color=255|size=18|nimg=public/1900001024.png>

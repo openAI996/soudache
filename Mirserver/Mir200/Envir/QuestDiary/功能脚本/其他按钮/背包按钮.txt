@@ -1,0 +1,17 @@
+[@背包按钮]
+{
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+Mov  s$背包按钮 <Button|x=300|y=343|nimg=private/bag_ui/bag_ui_mobile/1900015210.png|pimg=private/bag_ui/bag_ui_mobile/1900015211.png|size=16|color=251|outline=2|outlinecolor=0|text=整理|link=@刷新>
+;INC  s$背包按钮 <Button|x=400|y=343|nimg=private/bag_ui/bag_ui_mobile/1900015210.png|pimg=private/bag_ui/bag_ui_mobile/1900015211.png|size=16|color=251|outline=2|outlinecolor=0|text=回收|link=@回收>
+INC  s$背包按钮 <Text|text=$STM(MONEY_1)|x=70|y=345|size=18|outline=2|outlinecolor=0>
+addbutton 7 1 <$STR(s$背包按钮)>
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+Mov  s$背包按钮 <Button|x=255|y=242|nimg=private/bag_ui/bag_ui_mobile/1900015210.png|pimg=private/bag_ui/bag_ui_mobile/1900015211.png|size=16|color=251|outline=2|outlinecolor=0|text=整理|link=@刷新>
+;INC   s$背包按钮 <Button|x=255|y=300|nimg=private/bag_ui/bag_ui_mobile/1900015210.png|pimg=private/bag_ui/bag_ui_mobile/1900015211.png|size=16|color=251|outline=2|outlinecolor=0|text=回收|link=@回收>
+INC  s$背包按钮 <Text|text=元宝：$STM(MONEY_2)|x=80|y=303|size=16|outline=2|outlinecolor=0>
+addbutton 7 1 <$STR(s$背包按钮)>
+}

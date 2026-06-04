@@ -1,0 +1,352 @@
+[@寄售行登陆补发]
+{
+#IF
+#ACT
+MOV N$寄售货币计算 0
+MOV N$手续费计算  0
+
+#IF
+NOT EQUAL T1
+#ACT
+MOV S$1号商品检测 <$STR(T1)>
+GETVALIDSTRSUPER <$STR(S$1号商品检测)> | S$1号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T2
+#ACT
+MOV S$2号商品检测 <$STR(T2)>
+GETVALIDSTRSUPER <$STR(S$2号商品检测)> | S$2号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T3
+#ACT
+MOV S$3号商品检测 <$STR(T3)>
+GETVALIDSTRSUPER <$STR(S$3号商品检测)> | S$3号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T4
+#ACT
+MOV S$4号商品检测 <$STR(T4)>
+GETVALIDSTRSUPER <$STR(S$4号商品检测)> | S$4号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T5
+#ACT
+MOV S$5号商品检测 <$STR(T5)>
+GETVALIDSTRSUPER <$STR(S$5号商品检测)> | S$5号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T6
+#ACT
+MOV S$6号商品检测 <$STR(T6)>
+GETVALIDSTRSUPER <$STR(S$6号商品检测)> | S$6号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T7
+#ACT
+MOV S$7号商品检测 <$STR(T7)>
+GETVALIDSTRSUPER <$STR(S$7号商品检测)> | S$7号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T8
+#ACT
+MOV S$8号商品检测 <$STR(T8)>
+GETVALIDSTRSUPER <$STR(S$8号商品检测)> | S$8号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T9
+#ACT
+MOV S$9号商品检测 <$STR(T9)>
+GETVALIDSTRSUPER <$STR(S$9号商品检测)> | S$9号商品数据分割 N$无用
+
+#IF
+NOT EQUAL T10
+#ACT
+MOV S$10号商品检测 <$STR(T10)>
+GETVALIDSTRSUPER <$STR(S$10号商品检测)> | S$10号商品数据分割 N$无用
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$1号商品数据分割4)>分类.txt <$STR(S$1号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$1号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$1号商品检测)>
+MOV N$寄售货币计算  <$STR(S$1号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$1号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$1号商品数据分割5)>个<$STR(S$1号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$1号商品数据分割5)>个<$STR(S$1号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T1 
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$2号商品数据分割4)>分类.txt <$STR(S$2号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$2号商品检测)>
+#ACT
+MOV N$寄售货币计算  <$STR(S$2号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$2号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$2号商品数据分割5)>个<$STR(S$2号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$2号商品数据分割5)>个<$STR(S$2号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$2号商品检测)>
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T2
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$3号商品数据分割4)>分类.txt <$STR(S$3号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$3号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$3号商品检测)>
+MOV N$寄售货币计算  <$STR(S$3号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$3号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$3号商品数据分割5)>个<$STR(S$3号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$3号商品数据分割5)>个<$STR(S$3号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T3
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$4号商品数据分割4)>分类.txt <$STR(S$4号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$4号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$4号商品检测)>
+MOV N$寄售货币计算  <$STR(S$4号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$4号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$4号商品数据分割5)>个<$STR(S$4号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$4号商品数据分割5)>个<$STR(S$4号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T4
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$5号商品数据分割4)>分类.txt <$STR(S$5号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$5号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$5号商品检测)>
+MOV N$寄售货币计算  <$STR(S$5号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$5号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$5号商品数据分割5)>个<$STR(S$5号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$5号商品数据分割5)>个<$STR(S$5号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T5
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$6号商品数据分割4)>分类.txt <$STR(S$6号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$6号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$6号商品检测)>
+MOV N$寄售货币计算  <$STR(S$6号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$6号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$6号商品数据分割5)>个<$STR(S$6号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$6号商品数据分割5)>个<$STR(S$6号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T6
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$7号商品数据分割4)>分类.txt <$STR(S$7号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$7号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$7号商品检测)>
+MOV N$寄售货币计算  <$STR(S$7号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$7号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$7号商品数据分割5)>个<$STR(S$7号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$7号商品数据分割5)>个<$STR(S$7号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T7
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$8号商品数据分割4)>分类.txt <$STR(S$8号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$8号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$8号商品检测)>
+MOV N$寄售货币计算  <$STR(S$8号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$8号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$8号商品数据分割5)>个<$STR(S$8号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$8号商品数据分割5)>个<$STR(S$8号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T8
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$9号商品数据分割4)>分类.txt <$STR(S$9号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$9号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$9号商品检测)>
+MOV N$寄售货币计算  <$STR(S$9号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$9号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$9号商品数据分割5)>个<$STR(S$9号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$9号商品数据分割5)>个<$STR(S$9号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T9
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$10号商品数据分割4)>分类.txt <$STR(S$10号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$10号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$10号商品检测)>
+MOV N$寄售货币计算  <$STR(S$10号商品数据分割6)>
+MOV N$手续费计算    <$STR(S$10号商品数据分割6)>
+DIV N$手续费计算  5
+DEC N$寄售货币计算 <$str(N$手续费计算)>
+MailGIVE 元宝  <$STR(N$寄售货币计算)> 
+logact 10002 通过[寄售行]出售<$STR(S$10号商品数据分割5)>个<$STR(S$10号商品数据分割4)>获得邮寄<$STR(N$寄售货币计算)>元宝。
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$10号商品数据分割5)>个<$STR(S$10号商品数据分割4)>，已成功寄售。寄售行收取20%手续费，你获利<$STR(N$寄售货币计算)>元宝！
+DelText ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(N0)> 0
+DEC U205 1
+MOV T10
+
+;==============================================================================================服务器重启退还段
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$1号商品数据分割4)>分类.txt <$STR(S$1号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$1号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$1号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$1号商品检测)>
+MailGIVE <$STR(S$1号商品数据分割4)> <$STR(S$1号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$1号商品数据分割5)>个<$STR(S$1号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T1
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$2号商品数据分割4)>分类.txt <$STR(S$2号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$2号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$2号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$2号商品检测)>
+MailGIVE <$STR(S$2号商品数据分割4)> <$STR(S$2号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$2号商品数据分割5)>个<$STR(S$2号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T2
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$3号商品数据分割4)>分类.txt <$STR(S$3号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$3号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$3号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$3号商品检测)>
+MailGIVE <$STR(S$3号商品数据分割4)> <$STR(S$3号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$3号商品数据分割5)>个<$STR(S$3号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T3
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$4号商品数据分割4)>分类.txt <$STR(S$4号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\备份文件\离线记录.txt <$STR(S$4号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$4号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$4号商品检测)>
+MailGIVE <$STR(S$4号商品数据分割4)> <$STR(S$4号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$4号商品数据分割5)>个<$STR(S$4号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T4
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$5号商品数据分割4)>分类.txt <$STR(S$5号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$5号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$5号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$5号商品检测)>
+MailGIVE <$STR(S$5号商品数据分割4)> <$STR(S$5号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$5号商品数据分割5)>个<$STR(S$5号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T5
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$6号商品数据分割4)>分类.txt <$STR(S$6号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$6号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$6号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$6号商品检测)>
+MailGIVE <$STR(S$6号商品数据分割4)> <$STR(S$6号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$6号商品数据分割5)>个<$STR(S$6号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T6
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$7号商品数据分割4)>分类.txt <$STR(S$7号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$7号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$7号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$7号商品检测)>
+MailGIVE <$STR(S$7号商品数据分割4)> <$STR(S$7号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$7号商品数据分割5)>个<$STR(S$7号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T7
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$8号商品数据分割4)>分类.txt <$STR(S$8号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$8号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$8号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$8号商品检测)>
+MailGIVE <$STR(S$8号商品数据分割4)> <$STR(S$8号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$8号商品数据分割5)>个<$STR(S$8号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T8
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$9号商品数据分割4)>分类.txt <$STR(S$9号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$9号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$9号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$9号商品检测)>
+MailGIVE <$STR(S$9号商品数据分割4)> <$STR(S$9号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$9号商品数据分割5)>个<$STR(S$9号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T9
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$10号商品数据分割4)>分类.txt <$STR(S$10号商品检测)>
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt <$STR(S$10号商品检测)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$10号商品检测)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$10号商品检测)>
+MailGIVE <$STR(S$10号商品数据分割4)> <$STR(S$10号商品数据分割5)>
+SendMail 1 寄售行 你好：<$USERNAME>！你在寄售行寄售的<$STR(S$10号商品数据分割5)>个<$STR(S$10号商品数据分割4)>，因无人购买。现已退还给您，如需继续寄售，请重新在寄售行上架该物品！
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+DEC U205 1
+MOV T10
+
+
+
+}

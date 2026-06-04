@@ -1,0 +1,1061 @@
+[@豪礼界面]
+
+{
+
+
+;G变量：G201
+;U变量：U140--七日豪礼任务完成数量,U141-U147，七日豪礼1-7天任务进度
+;个人标识：313-319，七日豪礼1-7天任务奖励领取状态，320-322，任务目标3/5/7奖励领取状态
+
+;第一天：86400
+;第二天：172800
+;第三天：259200
+;第四年：345600
+;第五天：432000
+;第六天：518400
+;第七天：604800
+
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+MOV N$记录时间2 <$STR(G201)>
+MOV N$记录时间3 <$STR(G201)>
+MOV N$记录时间4 <$STR(G201)>
+MOV N$记录时间5 <$STR(G201)>
+MOV N$记录时间6 <$STR(G201)>
+MOV N$记录时间7 <$STR(G201)>
+MOV N$当前时间 <$UTCNOW8>
+FORMULATION (<$STR(N$记录时间2)>+86400-<$STR(N$当前时间)>)/86400 N$新区时间2
+FORMULATION (<$STR(N$记录时间3)>+172800-<$STR(N$当前时间)>)/86400 N$新区时间3
+FORMULATION (<$STR(N$记录时间4)>+259200-<$STR(N$当前时间)>)/86400 N$新区时间4
+FORMULATION (<$STR(N$记录时间5)>+345600-<$STR(N$当前时间)>)/86400 N$新区时间5
+FORMULATION (<$STR(N$记录时间6)>+432000-<$STR(N$当前时间)>)/86400 N$新区时间6
+FORMULATION (<$STR(N$记录时间7)>+518400-<$STR(N$当前时间)>)/86400 N$新区时间7
+MOV S$内容显示
+
+#IF
+LARGE N$时间差数 604800
+#ACT
+SENDMSG 9 新区豪礼活动已结束！
+BREAK
+
+#IF
+#ACT
+MOV N$激活数量 0
+MOV N$八门激活数量 0
+
+#IF
+CHECK [101] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [102] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [103] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [104] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [105] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [106] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [107] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [108] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [109] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [110] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [111] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [112] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [113] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [114] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [115] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [116] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [117] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [118] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [119] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [120] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [121] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [122] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [123] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [124] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [125] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [126] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [127] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [128] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [129] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [130] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [131] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [132] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [133] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [134] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [135] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [136] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [137] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [138] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [139] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [140] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [141] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [142] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [143] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [144] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [145] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [146] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [147] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [148] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [149] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [150] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [151] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [152] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [153] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [154] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [155] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [156] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [157] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [158] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [159] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [160] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [161] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [162] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [163] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [164] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [165] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [166] 1
+#ACT
+INC N$激活数量 1
+#IF
+CHECK [167] 1
+#ACT
+INC N$激活数量 1
+
+#IF
+SMALL N$新区时间6 1
+#ACT
+MOV U146 <$STR(N$激活数量)>
+
+#IF
+NOT EQUAL T20
+#ACT
+INC N$八门激活数量 1
+#IF
+NOT EQUAL T21
+#ACT
+INC N$八门激活数量 1
+#IF
+NOT EQUAL T22
+#ACT
+INC N$八门激活数量 1
+#IF
+NOT EQUAL T23
+#ACT
+INC N$八门激活数量 1
+#IF
+NOT EQUAL T24
+#ACT
+INC N$八门激活数量 1
+#IF
+NOT EQUAL T25
+#ACT
+INC N$八门激活数量 1
+#IF
+NOT EQUAL T26
+#ACT
+INC N$八门激活数量 1
+
+#IF
+SMALL N$新区时间7 1
+#ACT
+MOV U147 <$STR(N$八门激活数量)>
+
+
+;第一天任务内容
+#IF
+CHECK [313] 1
+#ACT
+INC S$内容显示 <Text|id=25|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=26|x=38.0|y=140.0|color=11043|size=18|text=已领取>
+#IF
+CHECK [313] 0
+SMALL U141 1
+#ACT
+INC S$内容显示 <Text|id=25|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U141)>/1)>
+INC S$内容显示 <Text|id=26|x=38.0|y=140.0|color=11023|size=18|text=未达成>
+#IF
+CHECK [313] 0
+LARGE U141 0
+#ACT
+INC S$内容显示 <Text|id=25|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=26|x=38.0|y=140.0|color=251|size=17|text=可领取|link=@任务奖励1>
+
+;第二天任务内容
+#IF
+LARGE N$新区时间2 0
+#ACT
+INC S$内容显示 <Text|id=35|x=45.0|y=110.0|color=11002|size=18|text=(0/1)>
+INC S$内容显示 <Text|id=36|x=27.0|y=140.0|color=11023|size=18|text=<$STR(N$新区时间2)>天后解锁>
+#IF
+SMALL N$新区时间2 1
+CHECK [314] 1
+#ACT
+INC S$内容显示 <Text|id=35|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=36|x=38.0|y=140.0|color=11043|size=18|text=已领取>
+#IF
+SMALL N$新区时间2 1
+CHECK [314] 0
+SMALL U142 1
+#ACT
+INC S$内容显示 <Text|id=35|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U142)>/1)>
+INC S$内容显示 <Text|id=36|x=38.0|y=140.0|color=11023|size=18|text=未达成>
+#IF
+SMALL N$新区时间2 1
+CHECK [314] 0
+LARGE U142 0
+#ACT
+INC S$内容显示 <Text|id=35|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=36|x=38.0|y=140.0|color=251|size=18|text=可领取|link=@任务奖励2>
+
+
+;第三天任务内容
+#IF
+LARGE N$新区时间3 0
+#ACT
+INC S$内容显示 <Text|id=45|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U143)>/1)>
+INC S$内容显示 <Text|id=46|x=27.0|y=140.0|color=11023|size=18|text=<$STR(N$新区时间3)>天后解锁>
+#IF
+SMALL N$新区时间3 1
+CHECK [315] 1
+#ACT
+INC S$内容显示 <Text|id=45|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=46|x=38.0|y=140.0|color=11043|size=18|text=已领取>
+#IF
+SMALL N$新区时间3 1
+CHECK [315] 0
+SMALL U143 1
+#ACT
+INC S$内容显示 <Text|id=45|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U143)>/1)>
+INC S$内容显示 <Text|id=46|x=38.0|y=140.0|color=11023|size=18|text=未达成>
+#IF
+SMALL N$新区时间3 1
+CHECK [315] 0
+LARGE U143 0
+#ACT
+INC S$内容显示 <Text|id=45|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=46|x=38.0|y=140.0|color=251|size=18|text=可领取|link=@任务奖励3>
+
+
+
+;第四天任务内容
+#IF
+LARGE N$新区时间4 0
+#ACT
+INC S$内容显示 <Text|id=55|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U144)>/1)>
+INC S$内容显示 <Text|id=56|x=27.0|y=140.0|color=11023|size=18|text=<$STR(N$新区时间4)>天后解锁>
+#IF
+SMALL N$新区时间4 1
+CHECK [316] 1
+#ACT
+INC S$内容显示 <Text|id=55|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=56|x=38.0|y=140.0|color=11043|size=18|text=已领取>
+#IF
+SMALL N$新区时间4 1
+CHECK [316] 0
+SMALL U144 1
+#ACT
+INC S$内容显示 <Text|id=55|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U144)>/1)>
+INC S$内容显示 <Text|id=56|x=38.0|y=140.0|color=11023|size=18|text=未达成>
+#IF
+SMALL N$新区时间4 1
+CHECK [316] 0
+LARGE U144 0
+#ACT
+INC S$内容显示 <Text|id=55|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=56|x=38.0|y=140.0|color=251|size=18|text=可领取|link=@任务奖励4>
+
+
+
+;第五天任务内容
+#IF
+LARGE N$新区时间5 0
+#ACT
+INC S$内容显示 <Text|id=65|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U145)>/1)>
+INC S$内容显示 <Text|id=66|x=27.0|y=140.0|color=11023|size=18|text=<$STR(N$新区时间5)>天后解锁>
+#IF
+SMALL N$新区时间5 1
+CHECK [317] 1
+#ACT
+INC S$内容显示 <Text|id=65|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=66|x=38.0|y=140.0|color=11043|size=18|text=已领取>
+#IF
+SMALL N$新区时间5 1
+CHECK [317] 0
+SMALL U145 1
+#ACT
+INC S$内容显示 <Text|id=65|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U145)>/1)>
+INC S$内容显示 <Text|id=66|x=38.0|y=140.0|color=11023|size=18|text=未达成>
+#IF
+SMALL N$新区时间5 1
+CHECK [317] 0
+LARGE U145 0
+#ACT
+INC S$内容显示 <Text|id=65|x=45.0|y=110.0|color=11002|size=18|text=(1/1)>
+INC S$内容显示 <Text|id=66|x=38.0|y=140.0|color=251|size=18|text=可领取|link=@任务奖励5>
+
+
+;第六天任务内容
+#IF
+LARGE N$新区时间6 0
+#ACT
+INC S$内容显示 <Text|id=75|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U146)>/12)>
+INC S$内容显示 <Text|id=76|x=27.0|y=140.0|color=11023|size=18|text=<$STR(N$新区时间6)>天后解锁>
+#IF
+SMALL N$新区时间6 1
+CHECK [318] 1
+#ACT
+INC S$内容显示 <Text|id=75|x=45.0|y=110.0|color=11002|size=18|text=(12/12)>
+INC S$内容显示 <Text|id=76|x=38.0|y=140.0|color=11043|size=18|text=已领取>
+#IF
+SMALL N$新区时间6 1
+CHECK [318] 0
+SMALL U146 12
+#ACT
+INC S$内容显示 <Text|id=75|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U146)>/12)>
+INC S$内容显示 <Text|id=76|x=38.0|y=140.0|color=11023|size=18|text=未达成>
+#IF
+SMALL N$新区时间6 1
+CHECK [318] 0
+LARGE U146 11
+#ACT
+INC S$内容显示 <Text|id=75|x=45.0|y=110.0|color=11002|size=18|text=(12/12)>
+INC S$内容显示 <Text|id=76|x=38.0|y=140.0|color=251|size=18|text=可领取|link=@任务奖励6>
+
+
+;第七天任务内容
+#IF
+LARGE N$新区时间7 0
+#ACT
+INC S$内容显示 <Text|id=85|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U147)>/4)>
+INC S$内容显示 <Text|id=86|x=27.0|y=140.0|color=11023|size=18|text=<$STR(N$新区时间7)>天后解锁>
+#IF
+SMALL N$新区时间7 1
+CHECK [319] 1
+#ACT
+INC S$内容显示 <Text|id=85|x=45.0|y=110.0|color=11002|size=18|text=(4/4)>
+INC S$内容显示 <Text|id=86|x=38.0|y=140.0|color=11043|size=18|text=已领取>
+#IF
+SMALL N$新区时间7 1
+CHECK [319] 0
+SMALL U147 4
+#ACT
+INC S$内容显示 <Text|id=85|x=45.0|y=110.0|color=11002|size=18|text=(<$STR(U147)>/4)>
+INC S$内容显示 <Text|id=86|x=38.0|y=140.0|color=11023|size=18|text=未达成>
+#IF
+SMALL N$新区时间7 1
+CHECK [319] 0
+LARGE U147 3
+#ACT
+INC S$内容显示 <Text|id=85|x=45.0|y=110.0|color=11002|size=18|text=(4/4)>
+INC S$内容显示 <Text|id=86|x=38.0|y=140.0|color=251|size=18|text=可领取|link=@任务奖励7>
+
+;完成三个任务目标
+#IF
+CHECK [320] 1
+#ACT
+INC S$内容显示 <Text|x=223.0|y=420.0|color=11042|size=18|text=(3/3)>
+INC S$内容显示 <Text|x=212.0|y=445.0|color=11043|size=18|text=已领取>
+#IF
+SMALL U140 3
+CHECK [320] 0
+#ACT
+INC S$内容显示 <Text|x=223.0|y=420.0|color=11042|size=18|text=(<$STR(U140)>/3)>
+INC S$内容显示 <Text|x=212.0|y=445.0|color=11023|size=18|text=未达到>
+#IF
+LARGE U140 2
+CHECK [320] 0
+#ACT
+INC S$内容显示 <Text|x=223.0|y=420.0|color=11042|size=18|text=(3/3)>
+INC S$内容显示 <Text|x=212.0|y=445.0|color=251|size=18|text=可领取|link=@目标奖励1>
+
+;完成五个任务目标
+#IF
+CHECK [321] 1
+#ACT
+INC S$内容显示 <Text|x=325.0|y=420.0|color=11042|size=18|text=(5/5)>
+INC S$内容显示 <Text|x=320.0|y=445.0|color=11043|size=18|text=已领取>
+#IF
+SMALL U140 5
+CHECK [321] 0
+#ACT
+INC S$内容显示 <Text|x=372.0|y=420.0|color=11042|size=18|text=(<$STR(U140)>/5)>
+INC S$内容显示 <Text|x=362.0|y=445.0|color=11023|size=18|text=未达到>
+#IF
+LARGE U140 4
+CHECK [321] 0
+#ACT
+INC S$内容显示 <Text|x=325.0|y=420.0|color=11042|size=18|text=(5/5)>
+INC S$内容显示 <Text|x=320.0|y=445.0|color=251|size=18|text=可领取|link=@目标奖励2>
+
+;完成七个任务目标
+#IF
+CHECK [322] 1
+#ACT
+INC S$内容显示 <Text|x=525.0|y=420.0|color=11042|size=18|text=(7/7)>
+INC S$内容显示 <Text|x=520.0|y=445.0|color=11043|size=18|text=已领取>
+#IF
+SMALL U140 7
+CHECK [322] 0
+#ACT
+INC S$内容显示 <Text|x=522.0|y=420.0|color=11042|size=18|text=(<$STR(U140)>/7)>
+INC S$内容显示 <Text|x=515.0|y=445.0|color=11023|size=18|text=未达到>
+#IF
+LARGE U140 6
+CHECK [322] 0
+#ACT
+INC S$内容显示 <Text|x=522.0|y=420.0|color=11042|size=18|text=(7/7)>
+INC S$内容显示 <Text|x=520.0|y=445.0|color=251|size=18|text=可领取|link=@目标奖励3>
+
+#IF
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=770|height=500|move=0|bg=1|esc=1|scale9t=100|scale9b=100|img=private/xlxl/0000.png|show=4|loadDelay=0|scale9r=100|scale9l=100|reset=1>
+<Layout|x=713.0|y=-16.0|width=80|height=80|link=@exit>
+<Button|x=725.0|y=20.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=53.0|y=86.0|width=665|height=390|rotate=0|scale9l=40|scale9r=40|scale9t=40|scale9b=40|img=private/xlxl/zzhl01.png|esc=0>
+<Img|x=56.0|y=132.0|width=660|height=200|rotate=0|scale9l=5|scale9r=5|scale9t=5|scale9b=5|img=private/xlxl/0018.png|esc=0>
+<Img|x=116.0|y=81.0|width=150|height=55|esc=0|img=private/xlxl/00010.png>
+<Img|x=242.0|y=86.0|img=private/xlxl/zzhl03.png|esc=0>
+<Img|x=332.0|y=6.0|img=private/biaoti/01062.png|esc=0>
+<ListView|children={2,3,4,5,6,7,8}|x=67.0|y=145.0|width=638|height=180|direction=2|bounce=0|margin=3|reload=0>
+
+<Layout|id=2|children={20,21,22,23,24,25,26}|x=0.0|y=0.0|width=130|height=170|color=x>
+<Img|id=20|x=-10.0|y=-12.0|width=148|height=192|esc=0|img=private/xlxl/zzhl05.png>
+<Text|id=21|x=39.0|y=0.0|size=18|color=11008|text=第一天>
+<Img|id=22|x=37.0|y=25.0|img=public/02128.png|esc=0>
+<ItemShow|id=23|x=30.0|y=18.0|width=70|height=70|itemid=10259|itemcount=10|showtips=1|bgtype=0>
+<Text|id=24|x=5.0|y=85.0|size=16|color=11072|text=兑换任意1个勋章>
+
+<Layout|id=3|children={30,31,32,33,34,35,36}|x=183.0|y=4.0|width=130|height=170|color=x>
+<Img|id=30|x=-10.0|y=-12.0|width=148|height=192|scale9r=10|scale9t=10|scale9l=10|img=private/xlxl/zzhl05.png|scale9b=10|esc=0>
+<Text|id=31|x=39.0|y=0.0|size=18|color=11008|text=第二天>
+<Img|id=32|x=37.0|y=25.0|img=public/02128.png|esc=0>
+<ItemShow|id=33|x=30.0|y=18.0|width=70|height=70|itemid=10202|itemcount=5|showtips=1|bgtype=0>
+<Text|id=34|x=5.0|y=85.0|color=11072|size=16|text=完成1次押镖任务>
+
+<Layout|id=4|children={40,41,42,43,44,45,46}|x=0.0|y=0.0|width=130|height=170|color=x>
+<Img|id=40|x=-10.0|y=-12.0|width=148|height=192|esc=0|img=private/xlxl/zzhl05.png>
+<Text|id=41|x=39.0|y=0.0|color=11008|size=18|text=第三天>
+<Img|id=42|x=37.0|y=25.0|img=public/02128.png|esc=0>
+<ItemShow|id=43|x=30.0|y=18.0|width=70|height=70|itemid=10396|itemcount=10|showtips=1|bgtype=0>
+<Text|id=44|x=3.0|y=85.0|color=11072|size=16|text=获得1个灵兽碎片>
+
+<Layout|id=5|children={50,51,52,53,54,55,56}|x=0.0|y=0.0|width=130|height=170|color=x>
+<Img|id=50|x=-10.0|y=-12.0|width=148|height=192|esc=0|img=private/xlxl/zzhl05.png>
+<Text|id=51|x=39.0|y=0.0|color=11008|size=18|text=第四天>
+<Img|id=52|x=37.0|y=25.0|img=public/02128.png|esc=0>
+<ItemShow|id=53|x=30.0|y=18.0|width=70|height=70|itemid=10154|itemcount=1|showtips=1|bgtype=0>
+<Text|id=54|x=3.0|y=85.0|color=11072|size=16|text=完成1次美食制作>
+
+<Layout|id=6|children={60,61,62,63,64,65,66}|x=0.0|y=0.0|width=130|height=170|color=x>
+<Img|id=60|x=-10.0|y=-12.0|width=148|height=192|esc=0|img=private/xlxl/zzhl05.png>
+<Text|id=61|x=39.0|y=0.0|color=11008|size=18|text=第五天>
+<Img|id=62|x=37.0|y=25.0|img=public/02128.png|esc=0>
+<ItemShow|id=63|x=30.0|y=18.0|width=70|height=70|itemid=10407|itemcount=3|showtips=1|bgtype=0>
+<Text|id=64|x=15.0|y=85.0|color=11072|size=16|text=佩戴紫色灵兽>
+
+<Layout|id=7|children={70,71,72,73,74,75,76}|x=0.0|y=0.0|width=130|height=170|color=x>
+<Img|id=70|x=-10.0|y=-12.0|width=148|height=192|esc=0|img=private/xlxl/zzhl05.png>
+<Text|id=71|x=39.0|y=0.0|color=11008|size=18|text=第六天>
+<Img|id=72|x=37.0|y=25.0|img=public/02128.png|esc=0>
+<ItemShow|id=73|x=30.0|y=18.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=0>
+<Text|id=74|x=0.0|y=85.0|color=11072|size=16|text=激活任意12组图鉴>
+
+<Layout|id=8|children={80,81,82,83,84,85,86}|x=0.0|y=0.0|width=130|height=170|color=x>
+<Img|id=80|x=-10.0|y=-12.0|width=148|height=192|esc=0|img=private/xlxl/zzhl05.png>
+<Text|id=81|x=39.0|y=0.0|color=11008|size=18|text=第七天>
+<Img|id=82|x=37.0|y=25.0|img=public/02128.png|esc=0>
+<ItemShow|id=83|x=30.0|y=18.0|width=70|height=70|itemid=10447|itemcount=1|showtips=1|bgtype=0>
+<Text|id=84|x=3.0|y=85.0|color=11072|size=16|text=激活4个八门属性>
+
+<Img|x=205.0|y=330.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<ItemShow|x=205.0|y=332.0|width=70|height=70|itemid=10389|itemcount=10|showtips=1|bgtype=0>
+<Text|x=198.0|y=398.0|color=11013|size=18|text=完成3个目标>
+
+<Img|x=355.0|y=330.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<ItemShow|x=353.0|y=330.0|width=70|height=70|itemid=10155|itemcount=1|showtips=1|bgtype=0>
+<Text|x=341.0|y=400.0|color=11013|size=18|text=完成5个目标>
+
+<Img|x=505.0|y=330.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<ItemShow|x=505.0|y=332.0|width=70|height=70|itemid=10328|itemcount=1|showtips=1|bgtype=0>
+<Text|x=495.0|y=399.0|color=11013|size=18|text=完成7个目标>
+
+<$STR(S$内容显示)>
+
+[@任务奖励1]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [313] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U141 1
+#ACT
+SENDMSG 9 你尚未完成本项任务进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 声望令牌 10 1 1 0 0 1 1 1 1
+SET [313] 1
+INC U140 1
+ADDSTRVALUE T40 七日任务1 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+[@任务奖励2]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [314] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U142 1
+#ACT
+SENDMSG 9 你尚未完成本项任务进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 精修卷轴 5 1 1 0 0 1 1 1 1
+SET [314] 1
+INC U140 1
+ADDSTRVALUE T40 七日任务2 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+[@任务奖励3]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [315] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U143 1
+#ACT
+SENDMSG 9 你尚未完成本项任务进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 女儿红 10 1 1 0 0 1 1 1 1
+SET [315] 1
+INC U140 1
+ADDSTRVALUE T40 七日任务3 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+
+[@任务奖励4]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [316] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U144 1
+#ACT
+SENDMSG 9 你尚未完成本项任务进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 金条 1 1 1 0 0 1 1 1 1
+SET [316] 1
+INC U140 1
+ADDSTRVALUE T40 七日任务4 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+[@任务奖励5]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [317] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U145 1
+#ACT
+SENDMSG 9 你尚未完成本项任务进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 沃玛封印石 3 1 1 0 0 1 1 1 1
+SET [317] 1
+INC U140 1
+ADDSTRVALUE T40 七日任务5 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+[@任务奖励6]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [318] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U146 12
+#ACT
+SENDMSG 9 你尚未完成本项任务进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+SET [318] 1
+INC U140 1
+ADDSTRVALUE T40 七日任务6 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+
+[@任务奖励7]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [319] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U147 4
+#ACT
+SENDMSG 9 你尚未完成本项任务进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 4级佩饰盒 1 1 1 0 0 1 1 1 1
+SET [319] 1
+INC U140 1
+ADDSTRVALUE T40 七日任务7 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+
+
+[@目标奖励1]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [320] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U140 3
+#ACT
+SENDMSG 9 完成任务数量尚未达到当前进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 10万经验卷 10 1 1 0 0 1 1 1 1
+SET [320] 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+
+[@目标奖励2]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [321] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U140 5
+#ACT
+SENDMSG 9 完成任务数量尚未达到当前进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 金砖 1 1 1 0 0 1 1 1 1
+SET [321] 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+
+[@目标奖励3]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [322] 1
+#ACT
+SENDMSG 9 你已经领取过本项奖励了！
+BREAK
+
+#IF
+SMALL U140 7
+#ACT
+SENDMSG 9 完成任务数量尚未达到当前进度！
+BREAK
+
+#IF
+#ACT
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+#ACT
+GiveStateItem 绫罗袋(18格) 1 1 1 0 0 1 1 1 1
+SET [322] 1
+GOTO @豪礼界面
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，活动已经结束！
+GOTO @豪礼界面
+BREAK
+
+
+}

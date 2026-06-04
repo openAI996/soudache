@@ -1,0 +1,514 @@
+[@移动端盒子展示]
+{
+#IF
+NOT EQUAL <$HUMAN(礼包领取日期)> <$YEAR>-<$MONTH>-<$DAY>
+#ACT
+CALCVAR HUMAN 礼包领取日期 = <$YEAR>-<$MONTH>-<$DAY>
+SAVEVAR HUMAN 礼包领取日期
+CALCVAR HUMAN 礼包申请状态  = 0
+SAVEVAR HUMAN 礼包申请状态
+CALCVAR HUMAN 礼包领取状态  = 0
+SAVEVAR HUMAN 礼包领取状态
+#IF
+EQUAL <$BOXTILEOPEN> 1
+#ACT
+MOV S$按钮序号 1
+MOV N$按钮位置 50
+#ELSEACT
+MOV S$按钮序号 2
+MOV N$按钮位置 65
+#IF
+#ACT
+MOV S$盒子按钮_1_默认 nimg=private/hzlb/hz_tqch0.png|pimg=private/hzlb/hz_tqch1.png
+MOV S$盒子按钮_1_激活 nimg=private/hzlb/hz_tqch1.png|pimg=private/hzlb/hz_tqch0.png
+
+MOV S$盒子按钮_2_默认 nimg=private/hzlb/hz_mrlb0.png|pimg=private/hzlb/hz_mrlb1.png
+MOV S$盒子按钮_2_激活 nimg=private/hzlb/hz_mrlb1.png|pimg=private/hzlb/hz_mrlb0.png
+
+MOV S$盒子按钮_3_默认 nimg=private/hzlb/hz_cjlb0.png|pimg=private/hzlb/hz_cjlb1.png
+MOV S$盒子按钮_3_激活 nimg=private/hzlb/hz_cjlb1.png|pimg=private/hzlb/hz_cjlb0.png
+GOTO @取礼包内容
+
+[@取礼包内容]
+#IF
+#ACT
+MOV S$盒子按钮1 <$STR(S$盒子按钮_1_默认)>
+MOV S$盒子按钮2 <$STR(S$盒子按钮_2_默认)>
+MOV S$盒子按钮3 <$STR(S$盒子按钮_3_默认)>
+MOV S$盒子按钮<$str(S$按钮序号)> <$STR(S$盒子按钮_<$str(S$按钮序号)>_激活)>
+MOV S$盒子按钮显示
+MOV S$盒子内容显示
+#IF
+EQUAL S$按钮序号 1
+#ACT
+GOTO @特权获取
+
+#IF
+EQUAL S$按钮序号 2
+#ACT
+GOTO @每日礼包获取
+
+#IF
+EQUAL S$按钮序号 3
+#ACT
+GOTO @超级礼包获取
+
+#IF
+EQUAL <$BOXTILEOPEN> 1
+#ACT
+INC S$盒子按钮显示 <Button|id=20|<$STR(S$盒子按钮1)>|link=@取礼包内容#按钮序号=1>
+
+#IF
+#ACT
+INC S$盒子按钮显示 <Button|id=21|<$STR(S$盒子按钮2)>|link=@取礼包内容#按钮序号=2>
+INC S$盒子按钮显示 <Button|id=22|<$STR(S$盒子按钮3)>|link=@取礼包内容#按钮序号=3>
+Goto @盒子界面显示
+
+[@特权获取]
+#IF
+NOT EQUAL S$按钮序号 1
+#ACT
+BREAK
+#IF
+EQUAL <$BOXTILE>
+#ACT
+MOV S$称号状态 未激活
+MOV S$称号状态颜色 250
+#ELSEACT
+MOV S$称号状态 称号已激活
+MOV S$称号状态颜色 218
+MOV N$称号ID <$BOXTILE>
+INC N$称号ID 5099
+#IF
+#ACT
+MOV S$盒子内容显示
+INC S$盒子内容显示 <Img|id=3|children={31}|a=4|percentx=53|percenty=32|img=private/hzlb/hz_chd.png|height=60>
+INC S$盒子内容显示 <Effect|id=31|a=4|percentx=50|percenty=81|effectid=<$STR(N$称号ID)>|effecttype=0|scale=0.7>
+INC S$盒子内容显示 <RText|id=4|a=4|text=当前状态：<称号已激活/FCOLOR=58>|color=255|size=14|outline=2|outlinecolor=0|percentx=53|percenty=44>
+INC S$盒子内容显示 <Img|id=5|children={51}|a=4|percentx=53|percenty=64|img=private/hzlb/hz_wzd.png>
+INC S$盒子内容显示 <ListView|id=51|a=4|percentx=50|percenty=50|children={510,511,512,513,514,515}|direction=1|bounce=0|margin=0|width=264|height=115|color=x>
+INC S$盒子内容显示 <RText|id=6|a=4|percentx=53|percenty=86|text=使用当前账号登录996传奇盒子\启动游戏,<即可使用获得称号/FCOLOR=218>|color=255|size=14|outline=2|outlinecolor=0>
+#IF
+EQUAL <$BOXLOGIN> 0
+#ACT
+INC S$盒子内容显示 <Img|id=7|children={71}|a=4|percentx=80|percenty=87|img=private/hzlb/hz_anniu.png>
+INC S$盒子内容显示 <Effect|id=71|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=8|a=4|percentx=80|percenty=87|nimg=private/hzlb/hz_xzhz0.png|pimg=private/hzlb/hz_xzhz1.png|link=@下载盒子#按钮序号=1>
+
+#IF
+EQUAL <$BOXLOGIN> 1
+EQUAL N$盒子称号显隐 1
+#ACT
+INC S$盒子内容显示 <Img|id=7|children={71}|a=4|percentx=80|percenty=87|img=private/hzlb/hz_anniu.png>
+INC S$盒子内容显示 <Effect|id=71|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=8|a=4|percentx=80|percenty=87|nimg=private/hzlb/hz_ycch0.png|pimg=private/hzlb/hz_ycch1.png|link=@隐藏盒子称号>
+#IF
+EQUAL <$BOXLOGIN> 1
+EQUAL N$盒子称号显隐 0
+#ACT
+INC S$盒子内容显示 <Img|id=7|children={71}|a=4|percentx=80|percenty=87|img=private/hzlb/hz_anniu.png>
+INC S$盒子内容显示 <Effect|id=71|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=8|a=4|percentx=80|percenty=87|nimg=private/hzlb/hz_xsch0.png|pimg=private/hzlb/hz_xsch1.png|link=@显示盒子称号>
+
+#IF
+LARGE <$BOXTILEADVVALUE1> 0
+#ACT
+INC S$盒子内容显示 <RText|id=510|text=1、<<$BOXTILEADVDESC1>/FCOLOR=250>|color=255|size=14|outline=2|outlinecolor=0>
+#IF
+LARGE <$BOXTILEADVVALUE2> 0
+#ACT
+INC S$盒子内容显示 <RText|id=511|text=2、<<$BOXTILEADVDESC2>/FCOLOR=254>|color=255|size=14|outline=2|outlinecolor=0>
+#IF
+LARGE <$BOXTILEADVVALUE3> 0
+#ACT
+INC S$盒子内容显示 <RText|id=512|text=3、<<$BOXTILEADVDESC3>/FCOLOR=70>|color=255|size=14|outline=2|outlinecolor=0>
+#IF
+LARGE <$BOXTILEADVVALUE4> 0
+#ACT
+INC S$盒子内容显示 <RText|id=513|text=4、<<$BOXTILEADVDESC4>/FCOLOR=58>|color=255|size=14|outline=2|outlinecolor=0>
+#IF
+LARGE <$BOXTILEADVVALUE5> 0
+#ACT
+INC S$盒子内容显示 <RText|id=514|text=5、<<$BOXTILEADVDESC5>/FCOLOR=253>|color=255|size=14|outline=2|outlinecolor=0>
+
+[@显示盒子称号]
+;称号固定特效ID，请勿修改
+#IF
+EQUAL <$BOXTILEOPEN> 0
+#ACT
+BREAK
+#IF
+EQUAL <$BOXLOGIN> 1
+EQUAL N$盒子称号显隐 0
+#ACT
+MOV N$称号ID <$BOXTILE>
+INC N$称号ID 5099
+SetIcon 10 1 <$STR(N$称号ID)> 0 0 0 0
+MOV N$盒子称号显隐 1
+GOTO @取礼包内容
+
+[@隐藏盒子称号]
+;称号固定特效ID，请勿修改
+#IF
+EQUAL N$盒子称号显隐 1
+#ACT
+SENDMSG 6 隐藏称号
+SetIcon 10 -1
+MOV N$盒子称号显隐 0
+GOTO @取礼包内容
+
+
+[@每日礼包获取]
+;如需显示礼包物品名称，请删掉下面的注释" ; "即可
+#IF
+NOT EQUAL S$按钮序号 2
+#ACT
+BREAK
+#IF
+#ACT
+MOV N$盒子展示宽度 0
+MOV S$盒子内容显示 <Layout|id=9|a=4|percentx=53|percenty=45|children={93}|width=240|height=90|color=X>
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,0]>
+#ACT
+INC S$盒子内容显示 <Layout|id=30|children={301,302,303}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=303|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=301|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,0]>|itemcount=<$ARRGIFTITECOUNT[1,0]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=302|a=4|text=<$ARRGIFTITEMNAME[1,0]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+INC N$盒子展示宽度 80
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,1]>
+#ACT
+INC S$盒子内容显示 <Layout|id=31|children={311,312,313}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=313|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=311|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,1]>|itemcount=<$ARRGIFTITECOUNT[1,1]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=312|a=4|text=<$ARRGIFTITEMNAME[1,1]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+INC N$盒子展示宽度 80
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,2]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,2]>|itemcount=<$ARRGIFTITECOUNT[1,2]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[1,2]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+INC N$盒子展示宽度 80
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,3]>
+#ACT
+INC S$盒子内容显示 <Layout|id=33|children={331,332,333}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=333|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=331|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,3]>|itemcount=<$ARRGIFTITECOUNT[1,3]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=332|a=4|text=<$ARRGIFTITEMNAME[1,3]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,4]>
+#ACT
+INC S$盒子内容显示 <Layout|id=34|children={341,342,343}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=343|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=341|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,4]>|itemcount=<$ARRGIFTITECOUNT[1,4]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=342|a=4|text=<$ARRGIFTITEMNAME[1,4]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,5]>
+#ACT
+INC S$盒子内容显示 <Layout|id=35|children={351,352,353}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=353|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=351|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,5]>|itemcount=<$ARRGIFTITECOUNT[1,5]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=352|a=4|text=<$ARRGIFTITEMNAME[1,5]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,6]>
+#ACT
+INC S$盒子内容显示 <Layout|id=36|children={361,362,363}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=363|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=361|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,6]>|itemcount=<$ARRGIFTITECOUNT[1,6]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=362|a=4|text=<$ARRGIFTITEMNAME[1,6]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,7]>
+#ACT
+INC S$盒子内容显示 <Layout|id=37|children={371,372,373}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=373|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=371|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,7]>|itemcount=<$ARRGIFTITECOUNT[1,7]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=372|a=4|text=<$ARRGIFTITEMNAME[1,7]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,8]>
+#ACT
+INC S$盒子内容显示 <Layout|id=38|children={381,382,383}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=383|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=381|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,8]>|itemcount=<$ARRGIFTITECOUNT[1,8]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=382|a=4|text=<$ARRGIFTITEMNAME[1,8]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[1,9]>
+#ACT
+INC S$盒子内容显示 <Layout|id=39|children={391,392,393}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=393|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=391|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[1,9]>|itemcount=<$ARRGIFTITECOUNT[1,9]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=392|a=4|text=<$ARRGIFTITEMNAME[1,9]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+#ACT
+INC S$盒子内容显示 <ListView|id=93|a=4|percentx=50|percenty=50|children={30,31,32,33,34,35,36,37,38,39}|direction=2|bounce=0|margin=10|width=<$STR(N$盒子展示宽度)>|height=90|color=X>
+INC S$盒子内容显示 <Text|id=4|a=4|text=使用当前账号登录996传奇盒子|color=255|size=14|outline=2|outlinecolor=0|percentx=53|percenty=60>
+INC S$盒子内容显示 <Text|id=5|a=4|text=即可领取省钱福利,每天登录每天领|color=218|size=14|outline=2|outlinecolor=0|percentx=53|percenty=66>
+
+;不是盒子用户显示下载
+#IF
+EQUAL <$BOXLOGIN> 0
+#ACT
+INC S$盒子内容显示 <Img|id=6|children={61}|a=4|percentx=53|percenty=80|img=private/hzlb/hz_anniu.png>
+INC S$盒子内容显示 <Effect|id=61|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=7|a=4|percentx=53|percenty=80|nimg=private/hzlb/hz_xzhz0.png|pimg=private/hzlb/hz_xzhz1.png|link=@下载盒子#按钮序号=2>
+BREAK
+
+;已领取
+#IF
+CHECKVAR HUMAN 礼包领取状态 = 1
+#ACT
+INC S$盒子内容显示 <Img|id=6|children={61}|a=4|percentx=53|percenty=80|img=private/hzlb/hz_anniu.png|grey=1>
+INC S$盒子内容显示 <Effect|id=61|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=7|a=4|percentx=53|percenty=80|nimg=private/hzlb/hz_ylq0.png|pimg=private/hzlb/hz_ylq1.png|link=@空>
+BREAK
+
+;复位检测灰度
+#IF
+CHECKVAR HUMAN 礼包领取状态 = 0
+LARGE N$每日复位时间 0
+LARGE <$STR(N$每日复位时间)> <$UTCNOW8>
+#ACT
+INC S$盒子内容显示 <Img|id=6|children={61}|a=4|percentx=53|percenty=80|img=private/hzlb/hz_anniu.png|grey=1>
+INC S$盒子内容显示 <Effect|id=61|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Img|id=7|a=4|percentx=53|percenty=80|img=private/hzlb/hz_lqhz0.png|grey=1>
+BREAK
+
+;可领取
+#IF
+EQUAL <$BOXLOGIN> 1
+#ACT
+INC S$盒子内容显示 <Img|id=6|children={61}|a=4|percentx=53|percenty=80|img=private/hzlb/hz_anniu.png>
+INC S$盒子内容显示 <Effect|id=61|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=7|a=4|percentx=53|percenty=80|nimg=private/hzlb/hz_lqhz0.png|pimg=private/hzlb/hz_lqhz1.png|link=@领取每日礼包#按钮序号=2>
+BREAK
+
+
+[@超级礼包获取]
+;如需显示礼包物品名称，请删掉下面的注释" ; "即可
+#IF
+NOT EQUAL S$按钮序号 3
+#ACT
+BREAK
+#IF
+#ACT
+MOV N$盒子展示宽度 0
+MOV S$盒子内容显示 <Layout|id=9|a=4|percentx=53|percenty=45|children={93}|width=240|height=90|color=X>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,0]>
+#ACT
+INC S$盒子内容显示 <Layout|id=30|children={301,302,303}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=303|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=301|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,0]>|itemcount=<$ARRGIFTITECOUNT[3,0]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=302|a=4|text=<$ARRGIFTITEMNAME[3,0]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+INC N$盒子展示宽度 80
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,1]>
+#ACT
+INC S$盒子内容显示 <Layout|id=31|children={311,312,313}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=313|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=311|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,1]>|itemcount=<$ARRGIFTITECOUNT[3,1]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=312|a=4|text=<$ARRGIFTITEMNAME[3,1]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+INC N$盒子展示宽度 80
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,2]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,2]>|itemcount=<$ARRGIFTITECOUNT[3,2]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[3,2]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+INC N$盒子展示宽度 80
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,3]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,3]>|itemcount=<$ARRGIFTITECOUNT[3,3]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[3,3]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,4]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,4]>|itemcount=<$ARRGIFTITECOUNT[3,4]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[3,4]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,5]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,5]>|itemcount=<$ARRGIFTITECOUNT[3,5]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[3,5]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,6]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,6]>|itemcount=<$ARRGIFTITECOUNT[3,6]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[3,6]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,7]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,7]>|itemcount=<$ARRGIFTITECOUNT[3,7]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[3,7]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,8]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,8]>|itemcount=<$ARRGIFTITECOUNT[3,8]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[3,8]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+#IF
+NOT EQUAL <$ARRGIFTITEMNAME[3,9]>
+#ACT
+INC S$盒子内容显示 <Layout|id=32|children={321,322,323}|width=70|height=90|color=X>
+INC S$盒子内容显示 <Effect|id=323|a=4|percentx=48|percenty=63|effectid=5111|effecttype=0>
+INC S$盒子内容显示 <ItemShow|id=321|a=4|percentx=50|percenty=38|itemid=<$ARRGIFTITEMIDX[3,9]>|itemcount=<$ARRGIFTITECOUNT[3,9]>|showtips=1|bgtype=1>
+;INC S$盒子内容显示 <Text|id=322|a=4|text=<$ARRGIFTITEMNAME[3,9]>|color=255|size=14|outline=2|outlinecolor=0|percentx=50|percenty=85>
+
+
+#IF
+#ACT
+INC S$盒子内容显示 <ListView|id=93|a=4|percentx=50|percenty=50|children={30,31,32,33,34,35,36,37,38,39}|direction=2|bounce=0|margin=10|width=<$STR(N$盒子展示宽度)>|height=90|color=X>
+INC S$盒子内容显示 <Text|id=4|a=4|text=使用当前账号登录996传奇盒子|color=255|size=14|outline=2|outlinecolor=0|percentx=53|percenty=60>
+INC S$盒子内容显示 <Text|id=5|a=4|text=前往游戏详情页复制礼包码即可领取礼包|color=218|size=14|outline=2|outlinecolor=0|percentx=53|percenty=66>
+
+#IF
+EQUAL <$BOXLOGIN> 0
+#ACT
+INC S$盒子内容显示 <Img|id=6|children={61}|a=4|percentx=53|percenty=80|img=private/hzlb/hz_anniu.png>
+INC S$盒子内容显示 <Effect|id=61|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=7|a=4|percentx=53|percenty=80|nimg=private/hzlb/hz_xzhz0.png|pimg=private/hzlb/hz_xzhz1.png|link=@下载盒子#按钮序号=3>
+BREAK
+
+#IF
+CHECKVAR HUMAN 礼包码领取状态 = 1
+#ACT
+INC S$盒子内容显示 <Img|id=6|children={61}|a=4|percentx=53|percenty=80|img=private/hzlb/hz_anniu.png|grey=1>
+INC S$盒子内容显示 <Effect|id=61|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=7|a=4|percentx=53|percenty=80|nimg=private/hzlb/hz_ylq0.png|pimg=private/hzlb/hz_ylq1.png|link=@空>
+BREAK
+
+#IF
+EQUAL <$BOXLOGIN> 1
+LARGE N$超级复位时间 0
+NOT SMALL <$STR(N$超级复位时间)> <$UTCNOW8>
+#ACT
+INC S$盒子内容显示 <Img|id=8|children={80}|a=4|percentx=50|percenty=80|img=private/hzlb/hz_srk.png>
+INC S$盒子内容显示 <Input|id=80|a=4|percentx=50|percenty=50||inputid=1|type=0|width=193|height=23|outline=2|outlinecolor=0|color=251|size=17|mincount=1|maxcount=30|errortips=|place=请输入礼包码|placecolor=255>
+INC S$盒子内容显示 <Img|id=6|children={61}|a=4|percentx=80|percenty=80|img=private/hzlb/hz_anniu.png|grey=1>
+INC S$盒子内容显示 <Effect|id=61|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Img|id=7|a=4|percentx=80|percenty=80|img=private/hzlb/hz_lqhz0.png|grey=1>
+BREAK
+
+#IF
+EQUAL <$BOXLOGIN> 1
+#ACT
+INC S$盒子内容显示 <Img|id=8|children={80}|a=4|percentx=50|percenty=80|img=private/hzlb/hz_srk.png>
+INC S$盒子内容显示 <Input|id=80|a=4|percentx=50|percenty=50||inputid=1|type=0|width=193|height=23|outline=2|outlinecolor=0|color=251|size=17|mincount=1|maxcount=30|errortips=|place=请输入礼包码|placecolor=255>
+INC S$盒子内容显示 <Img|id=6|children={61}|a=4|percentx=80|percenty=80|img=private/hzlb/hz_anniu.png>
+INC S$盒子内容显示 <Effect|id=61|a=4|percentx=49|percenty=93|effectid=5110|effecttype=0>
+INC S$盒子内容显示 <Button|id=7|a=4|percentx=80|percenty=80|submitInput=1|nimg=private/hzlb/hz_lqhz0.png|pimg=private/hzlb/hz_lqhz1.png|link=@领取超级礼包#按钮序号=3>
+BREAK
+
+
+
+
+[@盒子界面显示]
+#IF
+#ACT
+#SAY
+<Img|children={0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19}|img=private/hzlb/hz_ui.png|bg=1|move=1|reset=1|show=4>
+<Layout|id=0|children={1}|x=671|y=65|width=50|height=50|color=x|link=@exit>
+<Button|id=1|x=3|y=9|nimg=private/hzlb/hz_gb.png|pimg=private/hzlb/hz_gb.png|link=@exit>
+
+<ListView|id=2|a=4|percentx=82|percenty=<$STR(N$按钮位置)>|children={20,21,22}|direction=1|bounce=0|margin=3|width=110|height=180|color=x>
+<$STR(S$盒子按钮显示)>
+<$STR(S$盒子内容显示)>
+
+
+
+
+[@领取每日礼包]
+#IF
+CHECKVAR HUMAN 礼包申请状态 = 0
+#ACT
+MOV N$每日复位时间 <$UTCNOW8>
+INC N$每日复位时间 5
+CALCVAR HUMAN 礼包申请状态  = 1
+SAVEVAR HUMAN 礼包申请状态
+POSTGIFTTYPE 1
+Goto @取礼包内容
+BREAK
+
+
+[@每日按钮恢复]
+#IF
+EQUAL N$每日复位时间 0
+#ACT
+BREAK
+#ELSEACT
+Goto @取礼包内容
+
+
+[@领取超级礼包]
+#IF
+CHECKVAR HUMAN 礼包码申请状态 = 0
+#ACT
+MOV N$超级复位时间 <$UTCNOW8>
+INC N$超级复位时间 5
+CALCVAR HUMAN 礼包码申请状态  = 1
+SAVEVAR HUMAN 礼包码申请状态
+POSTGIFTTYPE 3 <$NPCINPUT(1)>
+DELAYGOTO 6000 @超级按钮恢复
+BREAK
+
+
+[@超级按钮恢复]
+#IF
+EQUAL N$超级复位时间 0
+#ACT
+BREAK
+#ELSEACT
+Goto @取礼包内容
+
+
+[@下载盒子]
+#IF
+EQUAL S$按钮序号 1
+#ACT
+SENDBOXTYPE 7101
+#IF
+EQUAL S$按钮序号 2
+#ACT
+SENDBOXTYPE 7102
+#IF
+EQUAL S$按钮序号 3
+#ACT
+SENDBOXTYPE 7103
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+OpenWebSite  https://www.996box.com/
+break
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+OpenWebSite  http://m.996box.com?game_id=<$GAMEID>&uid=<$USERID>&type=710<$str(S$按钮序号)>
+BREAK
+
+}

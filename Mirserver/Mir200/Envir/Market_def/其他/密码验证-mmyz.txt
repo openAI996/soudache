@@ -1,0 +1,35 @@
+[@main]
+<Img|x=0.0|y=20.0|width=560|height=250|bg=1|show=0|scale9r=40|scale9t=40|scale9b=40|move=0|loadDelay=1|scale9l=40|esc=1|img=public/bg_npc_01.png|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=518.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=226.0|y=30.0|img=private/biaoti/01020.png|esc=0>
+<RText|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=你的角色当前存在　<在异地登陆或疑似被盗号/FCOLOR=250>　的风险>
+<RText|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=17|text=系统已将账号锁定冻结！请输入<“二级密码”/FCOLOR=243>进行解冻。>
+<Layout|x=75.0|y=201.0|width=120|height=50|link=@@InPutString89(请输入您设置的“二级密码”,进行验证后方可正常游戏！)>
+<Text|x=75.0|y=215.0|color=11009|size=18|outline=1|outlinecolor=0|text=验证“二级密码”|link=@@InPutString89(请输入您设置的“二级密码”,进行验证后方可正常游戏！)>
+<Layout|x=324.0|y=201.0|width=120|height=50|link=@exit>
+<Text|x=350.0|y=215.0|color=11009|size=18|outline=1|outlinecolor=0|text=关闭|link=@exit>
+<Img|x=45.0|y=220.0|width=18|height=20|img=public/00016.png|esc=0>
+<Img|x=325.0|y=220.0|width=18|height=18|esc=0|img=public/00020.png>
+<Text|x=45.0|y=135.0|size=16|color=100|text=您的账号处于[非安全环境],请验证您的二级密码,方可正常进入游戏>
+<Text|x=45.0|y=160.0|size=16|color=100|text=设置密码后人物登录时IP发生变化时，须输入二级密码才能正常游戏>
+
+[@InPutString89]
+#IF
+CheckStringlength <$STR(S89)> < 6
+#ACT
+MESSAGEBOX 最少输入3个汉字！
+BREAK
+
+#IF
+CompareText <$STR(S89)> <$STR(T98)>
+#ACT
+MOV T98 <$STR(S89)>
+MOV T99 <$IPADDR>
+SendMsg 6 提示：二级密码验证成功！祝您游戏愉快！
+ChangeModeEx 10 1
+MapMove 3 333 333
+BREAK
+#ELSEACT
+MESSAGEBOX 您输入的验证密码不正确！请重新输入!！
+BREAK

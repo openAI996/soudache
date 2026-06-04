@@ -1,0 +1,79 @@
+[@Çìµäµ°¸â]
+{
+#IF
+small M3 60
+#Act
+INC   M3 2
+Gmexecute showeffect 79
+Gmexecute showeffect 80
+Gmexecute showeffect 81
+Delaygoto 2000 @Çìµäµ°¸â1
+#ELSEAct
+MOV M3 0
+[@Çìµäµ°¸â1]
+#IF
+small M3 60
+#Act
+INC M3 2
+Gmexecute showeffect 80
+Gmexecute showeffect 81
+Gmexecute showeffect 82
+Delaygoto 2000 @Çìµäµ°¸â2
+#ELSEAct
+MOV M3 0
+[@Çìµäµ°¸â2]
+#IF
+small M3 60
+#Act
+INC M3 2
+Gmexecute showeffect 81
+Gmexecute showeffect 82
+Gmexecute showeffect 83
+Delaygoto 2000 @Çìµäµ°¸â3
+#ELSEAct
+MOV M3 0
+[@Çìµäµ°¸â3]
+#IF
+small M3 60
+#Act
+INC M3 2
+Gmexecute showeffect 82
+Gmexecute showeffect 83
+Gmexecute showeffect 84
+Delaygoto 2000 @Çìµäµ°¸â4
+#ELSEAct
+MOV M3 0
+[@Çìµäµ°¸â4]
+#IF
+small M3 60
+#Act
+INC M3 2
+Gmexecute showeffect 83
+Gmexecute showeffect 84
+Gmexecute showeffect 85
+Delaygoto 2000 @Çìµäµ°¸â5
+#ELSEAct
+MOV M3 0
+[@Çìµäµ°¸â5]
+#IF
+small M3 60
+#Act
+INC M3 2
+Gmexecute showeffect 79
+Gmexecute showeffect 83
+Gmexecute showeffect 84
+Delaygoto 2000 @Çìµäµ°¸â6
+#ELSEAct
+MOV M3 0
+[@Çìµäµ°¸â6]
+#IF
+small M3 60
+#Act
+INC M3 2
+Gmexecute showeffect 81
+Gmexecute showeffect 82
+Gmexecute showeffect 85
+Delaygoto 2000 @StdModeFunc5
+#ELSEAct
+MOV M3 0
+}

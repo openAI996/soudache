@@ -1,0 +1,3 @@
+[@main]
+#ACT
+#CALL [\相关NPC\地图传送.txt] @地图传送界面

@@ -1,0 +1,100 @@
+[@MAIN]
+#If
+DAYOFWEEK SAT
+LARGE <$HFCOUNT> 0
+#ACT
+MOV S$寄售行税收奖励 +材料行税收：<$STR(G99)>元宝
+#ELSEACT
+MOV S$寄售行税收奖励
+
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|height=280|show=0|loadDelay=1|scale9l=50|scale9r=50|bg=1|move=0|scale9t=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=37.0|y=70.0|color=255|size=16|text=沙巴克奖励由行会老大点击发放，奖励发放过程如下：>
+<RText|x=37.0|y=95.0|color=255|size=16|text=<会长独享当日总奖励的20%元宝/FCOLOR=250>，剩余元宝皇宫内行会成员平分。>
+<Text|x=37.0|y=120.0|color=255|size=16|text=平分的沙城奖励通过邮件方式发放给各位沙巴克成员>
+<Text|x=37.0|y=145.0|color=249|size=16|text=注意：沙巴克老大领取奖励发放时，沙巴克成员离线或不在皇宫>
+<Layout|x=171.0|y=222.0|width=200|height=40|color=x|link=@开始平分奖励>
+<Text|x=215.0|y=227.0|color=251|size=18|text=平分沙城奖励|link=@开始平分奖励>
+<Text|x=85.0|y=170.0|color=249|size=16|text=将无法获得沙巴克奖励！>
+<Text|x=33.0|y=263.0|color=254|size=16|text=注意：沙巴克奖励领取时间为22:05-23:00>
+<Text|x=35.0|y=195.0|color=11007|size=16|text=当晚沙城奖励为：<$STR(G10)>元宝<$str(S$寄售行税收奖励)>>
+
+[@开始平分奖励]
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$领奖时间)>
+#ACT
+BREAK
+
+#IF
+Checkcastlewar 0
+#Act
+MessageBox [领奖失败]:\　\　　　　　　请等待攻城结束才能领取攻沙奖励！
+Close
+Break
+
+#IF
+NOT ISCASTLEMASTER
+#ACT
+MessageBox [领奖失败]:\　\　　　　　　你不是“沙巴克城主”无法领取！
+Close
+Break
+
+#IF
+Equal <$HOUR> 22
+LARGE <$MINUTE> 4
+SMALL <$MINUTE> 59
+#ACT
+#ELSEACT
+MessageBox [领奖失败]:\　\　　　　　　领取时间只可在“22:05-23:00”点领取！
+Close
+Break
+
+#IF
+EQUAL G10 0
+#ACT
+MESSAGEBOX [领奖失败]:\　\　　　　　　本次攻城奖励已经被领取！
+Close
+Break
+
+#IF
+DAYOFWEEK SAT
+LARGE <$HFCOUNT> 0
+#ACT
+MOV N$寄售行税收 <$str(G99)>
+INC G10 <$STR(N$寄售行税收)>
+MOV G99 0
+mov N$寄售行税收 0
+
+#IF
+LARGE G10 0
+ISCASTLEMASTER
+#ACT
+MOV N$领奖时间 <$UTCNOW>
+MOV N$城主奖励 0
+CalcPer <$STR(G10)> 20 N$城主奖励
+MailGIVE 元宝 <$STR(N$城主奖励)>
+logact 10001 通过[沙巴克领奖元]领取<$STR(N$城主奖励)>元宝，剩余金币：<$MONEY(元宝)>。
+DEC G10 <$str(N$城主奖励)>
+SendMail 15 沙巴克奖励 尊敬的<$USERNAME>：恭喜您的行会成功攻占沙巴克！您荣登【沙巴克城主】，现向您发放攻沙奖励，请查收！
+SENDMSG 0 伟大的沙巴克城主[%s]成功发放沙巴克奖励,沙城荣耀再现辉煌！
+SENDMSG 0 伟大的沙巴克城主[%s]成功发放沙巴克奖励,沙城荣耀再现辉煌！
+SENDMSG 0 伟大的沙巴克城主[%s]成功发放沙巴克奖励,沙城荣耀再现辉煌！
+SENDMSGNEW 58 0 伟大的沙巴克城主【<$USERNAME>】已将沙城奖励平分给各位沙巴克成员！ 1 15
+MOV G23 0
+GOTOLABEL 2 @沙巴克当前地图的人物触发
+DELAYGOTO 1000 @统计发放
+BREAK
+
+[@统计发放]
+#IF
+LARGE G23 0
+#ACT
+MOV G22 0
+DIV G22 G10 G23
+Gmexecute 开始提问 @攻沙奖励
+MOV G10 0
+BREAK

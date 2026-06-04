@@ -1,0 +1,578 @@
+[@基础按钮QM]
+{
+
+;p #IF
+;p CHECK [288] 0
+;p #ACT
+;p MOV N$自动月灵 0
+;p #ELSEACT
+;p MOV N$自动月灵 1
+;p 
+;p #IF
+;p CHECK [289] 0
+;p #ACT
+;p MOV N$自动麒麟 0
+;p #ELSEACT
+;p MOV N$自动麒麟 1
+;p 
+;p #IF
+;p CHECK [290] 0
+;p #ACT
+;p MOV N$自动圣兽 0
+;p #ELSEACT
+;p MOV N$自动圣兽 1
+
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$排行榜 <Button|a=0|x=157.0|y=160.0|width=38|height=88|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_mobile/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_mobile/1900012111.png|color=1025|text=等\级|link=@排行榜_全部等级>
+INC S$排行榜 <Button|a=0|x=157.0|y=250.0|width=38|height=88|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_mobile/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_mobile/1900012111.png|color=1025|text=战\士|link=@排行榜_战士等级>
+INC S$排行榜 <Button|a=0|x=157.0|y=340.0|width=38|height=88|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_mobile/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_mobile/1900012111.png|color=1025|text=法\师|link=@排行榜_法师等级>
+INC S$排行榜 <Button|a=0|x=157.0|y=430.0|width=38|height=88|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_mobile/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_mobile/1900012111.png|color=1025|text=道\士|link=@排行榜_道士等级>
+ADDBUTTON 45 999 <$STR(S$排行榜)>
+
+MOV S$主界面按钮 <Button|x=-285|y=-85|width=46|height=46|size=18|color=255|pimg=private/main/1900012054_1.png|nimg=private/main/1900012054.png|link=@商城>
+ADDBUTTON 108 1 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=-153|y=-86|width=46|height=46|size=18|color=255|pimg=private/main/1900012050_1.png|nimg=private/main/1900012050.png|link=@排行榜>
+ADDBUTTON 108 2 <$STR(S$主界面按钮)>
+
+MOV S$主界面按钮 <Button|x=-130|y=-445|mimg=private/main/bottom/1900013010.png|color=255|nimg=private/main/bottom/1900013010.png|link=@角色>
+ADDBUTTON 104 4 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|id=333|x=-63|y=-445|mimg=private/main/bottom/1900013011.png|color=255|nimg=private/main/bottom/1900013011.png|link=@背包>
+ADDBUTTON 104 5 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=-130.0|y=-375.0|pimg=private/main/Skill/1900012708.png|size=18|color=255|nimg=private/main/Skill/1900012708.png|link=@开始挂机>
+ADDBUTTON 104 6 <$STR(S$主界面按钮)>
+ 
+MOV S$主界面按钮 <Button|x=22|y=30|mimg=private/main/bottom/1900013012.png|color=255|nimg=private/main/bottom/1900013012.png|link=@技能>
+ADDBUTTON 109 1 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=92|y=30|mimg=private/main/bottom/1900013014.png|color=255|nimg=private/main/bottom/1900013014.png|link=@组队>
+ADDBUTTON 109 2 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=162|y=30|mimg=private/main/bottom/1900013013.png|color=255|nimg=private/main/bottom/1900013013.png|link=@行会>
+ADDBUTTON 109 3 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=22|y=100|mimg=private/main/bottom/1900013016.png|color=255|nimg=private/main/bottom/1900013016.png|link=@摆摊>
+ADDBUTTON 109 4 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=92|y=100|mimg=private/main/bottom/1900013015.png|color=255|nimg=private/main/bottom/1900013015.png|link=@交易>
+ADDBUTTON 109 5 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=162|y=100|mimg=private/main/bottom/1900012590.png|color=255|nimg=private/main/bottom/1900012590.png|link=@邮件>
+ADDBUTTON 109 6 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=92|y=170|mimg=private/main/bottom/1900013017.png|color=255|nimg=private/main/bottom/1900013017.png|link=@内挂设置>
+ADDBUTTON 109 7 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=162|y=170|mimg=private/main/bottom/1900013018.png|color=255|nimg=private/main/bottom/1900013018.png|link=@退出>
+ADDBUTTON 109 8 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=22|y=170|mimg=private/main/bottom/1900013019.png|color=255|nimg=private/main/bottom/1900013019.png|link=@拍卖行>
+ADDBUTTON 109 90 <$STR(S$主界面按钮)>
+AUTOPICKITEMBYBTN
+
+
+;===移动端-背包按钮添加
+MOV S$背包按钮 <Button|x=360.0|y=342.0|width=76|height=33|rotate=0|size=18|nimg=public/1900000611.png|color=246|text=整理|link=@刷新>
+INC S$背包按钮 <Text|x=70|y=390|size=18|outline=1|color=250|text=安\全\箱>
+INC S$背包按钮 <Img|x=95.0|y=392.0|esc=0|img=public/1900000651.png>
+INC S$背包按钮 <Img|x=165.0|y=392.0|esc=0|img=public/1900000651.png>
+addbutton 7 1 <$STR(S$背包按钮)>
+;p MOV S$背包按钮 <Button|x=340.0|y=417.0|width=85|height=28|rotate=0|size=18|color=251|pimg=public/bagal2.png|nimg=public/bagal1.png|text=在线回收|link=@回收>
+;p addbutton 7 2 <$STR(S$背包按钮)>
+;p MOV S$背包按钮 <Button|x=140.0|y=417.0|width=85|height=28|rotate=0|size=18|color=251|pimg=public/bagal2.png|nimg=public/bagal1.png|text=远程仓库|link=@仓库>
+;p addbutton 7 3 <$STR(S$背包按钮)>
+;p MOV S$背包按钮 <Button|x=450.0|y=417.0|width=85|height=28|rotate=0|size=18|color=251|pimg=public/bagal2.png|nimg=public/bagal1.png|text=包裹扩展|link=@拓展包裹>
+;p addbutton 7 5 <$STR(S$背包按钮)>
+Mov S$背包按钮 <Text|text=$STM(ITEMCOUNT_1)|x=65|y=349|size=20|color=255|outline=1|outlinecolor=0>
+addbutton 7 4 <$STR(S$背包按钮)>
+;p Mov S$状态按钮 
+;p ;INC S$状态按钮  <Text|text=$STM(pk)|x=176|y=110|size=16|color=255|outline=1|outlinecolor=0>
+;p INC S$状态按钮  <Text|text=$STM(ITEMCOUNT_15)|x=176|y=136|size=16|color=255|outline=1|outlinecolor=0>
+;p INC S$状态按钮  <Text|text=$STM(ITEMCOUNT_16)|x=176|y=164|size=16|color=255|outline=1|outlinecolor=0>
+;p addbutton 4 1 <$STR(S$状态按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+#act
+MOV S$排行榜 <Button|a=4|x=46.0|y=140.0|width=32|height=75|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_win32/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_win32/1900012111.png|color=1025|text=等\级|link=@排行榜_全部等级>
+INC S$排行榜 <Button|a=4|x=46.0|y=220.0|width=32|height=75|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_win32/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_win32/1900012111.png|color=1025|text=战\士|link=@排行榜_战士等级>
+INC S$排行榜 <Button|a=4|x=46.0|y=300.0|width=32|height=75|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_win32/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_win32/1900012111.png|color=1025|text=法\师|link=@排行榜_法师等级>
+INC S$排行榜 <Button|a=4|x=46.0|y=380.0|width=32|height=75|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_win32/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_win32/1900012111.png|color=1025|text=道\士|link=@排行榜_道士等级>
+ADDBUTTON 45 999 <$STR(S$排行榜)>
+
+MOV S$主界面按钮 <Button|x=-62.0|y=50|pimg=private/main/Skill/1900012708.png|size=18|color=255|nimg=private/main/Skill/1900012708.png|link=@开始挂机>
+ADDBUTTON 107 1 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=-62.0|y=-20|mimg=private/main/bottom/1900012590.png|color=255|nimg=private/main/bottom/1900012590.png|link=@邮件>
+ADDBUTTON 107 2 <$STR(S$主界面按钮)>
+MOV S$主界面按钮 <Button|x=-62.0|y=-90|mimg=private/main/bottom/jiaoyihang.png|color=255|nimg=private/main/bottom/jiaoyihang.png|link=@交易行>
+ADDBUTTON 107 3 <$STR(S$主界面按钮)>
+;p MOV S$主界面按钮 <Button|x=-62|y=-160|mimg=private/main/bottom/1900013016.png|color=255|nimg=private/main/bottom/1900013016.png|link=@摆摊>
+;p ADDBUTTON 107 4 <$STR(S$主界面按钮)>
+;p MOV S$主界面按钮 <Button|x=-202|y=-187|mimg=private/main-win32/000194.png|color=255|nimg=private/main-win32/000195.png|link=@拍卖行>
+;p ADDBUTTON 104 110 <$STR(S$主界面按钮)>
+
+;===PC端-背包按钮添加
+MOV S$背包按钮 <Button|x=269.0|y=244.0|width=60|height=30|rotate=0|color=246|size=16|nimg=public/1900000611.png|text=整理|link=@刷新>
+INC S$背包按钮 <Text|x=80.0|y=292.0|color=250|outline=1|size=16|text=安\全\箱>
+INC S$背包按钮 <Img|x=103.0|y=296.0|width=50|height=50|esc=0|img=public/1900000651.png>
+INC S$背包按钮 <Img|x=157.0|y=296.0|width=50|height=50|esc=0|img=public/1900000651.png>
+addbutton 7 1 <$STR(S$背包按钮)>
+;p MOV S$背包按钮 <Button|x=217.0|y=312.0|width=70|height=25|rotate=0|size=12|color=251|pimg=public/bagal2.png|nimg=public/bagal1.png|text=在线回收|link=@回收>
+;p addbutton 7 2 <$STR(S$背包按钮)>
+MOV S$背包按钮 <Button|x=260.0|y=312.0|width=70|height=25|rotate=0|size=12|color=251|pimg=public/bagal2.png|nimg=public/bagal1.png|text=仓库|link=@仓库>
+addbutton 7 3 <$STR(S$背包按钮)>
+;p MOV S$背包按钮 <Button|x=311.0|y=312.0|width=70|height=25|rotate=0|size=12|color=251|pimg=public/bagal2.png|nimg=public/bagal1.png|text=包裹扩展|link=@拓展包裹>
+;p addbutton 7 5 <$STR(S$背包按钮)>
+;p Mov S$背包按钮 <Text|text=$STM(ITEMCOUNT_1)|x=70|y=286|size=15|color=255|outline=1|outlinecolor=0>
+;p addbutton 7 4 <$STR(S$背包按钮)>
+;p Mov S$状态按钮 
+;p ;INC S$状态按钮  <Text|text=$STM(pk)|x=176|y=110|size=16|color=255|outline=1|outlinecolor=0>
+;p INC S$状态按钮  <Text|text=$STM(ITEMCOUNT_15)|x=161|y=115|size=12|color=255|outline=1|outlinecolor=0>
+;p INC S$状态按钮  <Text|text=$STM(ITEMCOUNT_16)|x=161|y=137|size=12|color=255|outline=1|outlinecolor=0>
+;p addbutton 4 1 <$STR(S$状态按钮)>
+
+;p #IF
+;p Equal <$CLIENTFLAG> 1
+;p CHECKLEVELEX < 50
+;p #ACT
+;p MOV S$好友屏蔽 <Layout|x=515.0|y=330.0|width=100|height=60|color=x|link=@好友屏蔽>
+;p ADDBUTTON 15 1 <$STR(S$好友屏蔽)>
+;p 
+;p #IF
+;p Equal <$CLIENTFLAG> 2
+;p CHECKLEVELEX < 50
+;p #ACT
+;p MOV S$好友屏蔽 <Layout|x=615.0|y=390.0|width=120|height=60|color=x|link=@好友屏蔽>
+;p ADDBUTTON 15 1 <$STR(S$好友屏蔽)>
+
+;#IF
+;Equal <$CLIENTFLAG> 1
+;#ACT
+;MOV S$命格系统 <Layout|id=334|x=223.0|y=95.0|width=50|height=25|rotate=0|color=x|link=@命格>
+;INC S$命格系统 <Button|x=223.0|y=95.0|width=50|height=25|pimg=private/mingge/001866.png|nimg=private/mingge/001865.png|link=@命格>
+;ADDBUTTON 3001 14 <$STR(S$命格系统)>
+
+;#IF
+;Equal <$CLIENTFLAG> 2
+;#ACT
+;MOV S$命格系统 <Layout|id=334|x=282.0|y=135.0|width=65|height=35|rotate=0|color=x|link=@命格>
+;INC S$命格系统 <Button|x=283.0|y=138.0|pimg=private/mingge/0022.png|color=255|size=18|nimg=private/mingge/0021.png|link=@命格>
+;ADDBUTTON 3001 14 <$STR(S$命格系统)>
+
+;p #IF
+;p Equal <$CLIENTFLAG> 1
+;p #ACT
+;p MOV S$技能流派 <Img|x=0.0|y=315.0|width=274|height=38|scale9b=10|scale9l=10|scale9r=10|img=public/bg_hhdb_01.jpg|scale9t=10|esc=0>
+;p INC S$技能流派 <Button|x=95.0|y=323.0|color=1025|size=16|width=95|height=30|nimg=public/1900000680.png|pimg=public/1900000680_1.png|text=技能精修|link=@技能流派按钮>
+;p ADDBUTTON 6 1 <$STR(S$技能流派)>
+;p 
+;p #IF
+;p Equal <$CLIENTFLAG> 2
+;p #ACT
+;p MOV S$技能流派 <Button|x=200.0|y=436.0|color=1025|size=18|width=104|height=33|nimg=public/1900000680.png|pimg=public/1900000680_1.png|text=技能精修|link=@技能流派按钮>
+;p ADDBUTTON 6 1 <$STR(S$技能流派)>
+;p 
+;p #IF
+;p Equal <$CLIENTFLAG> 1
+;p #ACT
+;p MOV S$时装按钮 <Button|x=225.0|y=95.0|width=45|height=25|rotate=0|size=14|color=94|nimg=private/mingge/1932500105.png|text=时装|link=@时装>
+;p ADDBUTTON 3001 16 <$STR(S$时装按钮)>
+;p 
+;p #IF
+;p Equal <$CLIENTFLAG> 2
+;p #ACT
+;p MOV S$时装按钮 <Button|x=285.0|y=145.0|width=56|height=28|nimg=private/mingge/1932500105.png|color=94|size=16|text=时装|link=@时装>
+;p ADDBUTTON 3001 16 <$STR(S$时装按钮)>
+
+;#IF
+;Equal <$CLIENTFLAG> 1
+;CHECKLEVELEX > 84
+;#ACT
+;DELBUTTON 108 80
+;MOV S$经验容器 <Img|children={2}|x=350.0|y=-78.0|tips={经验容器：/FCOLOR=251}^{提升等级还需累积/FCOLOR=250}^{<$STR(U10)>/<$cfg_jing_yan(<$LEVEL>_1)>万经验/FCOLOR=250}|tipsx=50|tipsy=-20|size=18|img=public/002331.png>
+;INC S$经验容器 <Effect|id=2|effectid=30015|effecttype=0|x=5|y=20>
+;ADDBUTTON 108 80 <$STR(S$经验容器)>
+
+;#IF
+;Equal <$CLIENTFLAG> 2
+;CHECKLEVELEX > 84
+;#ACT
+;DELBUTTON 108 80
+;MOV S$经验容器 <Button|children={2}|x=220.0|y=-60.0|tips={经验容器：/FCOLOR=251}^{提升等级还需累积/FCOLOR=250}^{<$STR(U10)>/<$cfg_jing_yan(<$LEVEL>_1)>万经验/FCOLOR=250}|size=18|pimg=public/002331.png|nimg=public/002331.png|color=255>
+;INC S$经验容器 <Effect|id=2|effectid=30015|effecttype=0|x=5|y=20>
+;ADDBUTTON 108 80 <$STR(S$经验容器)>
+
+;p #IF
+;p Equal <$CLIENTFLAG> 1
+;p #ACT
+;p MOV N$流派坐标x 225
+;p MOV N$流派坐标y 25
+;p MOV N$流派宽 40
+;p MOV N$流派高 65
+;p DELBUTTON 3001 15
+;p #IF
+;p Equal <$CLIENTFLAG> 2
+;p #ACT
+;p MOV N$流派坐标x 285
+;p MOV N$流派坐标y 45
+;p MOV N$流派宽 50
+;p MOV N$流派高 80
+;p DELBUTTON 3001 15
+;p 
+;p #IF
+;p EQUAL U50 1
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/001.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+;p #IF
+;p EQUAL U50 2
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/002.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+;p #IF
+;p EQUAL U50 3
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/003.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+;p #IF
+;p EQUAL U50 4
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/004.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+;p #IF
+;p EQUAL U50 5
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/005.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+;p #IF
+;p EQUAL U50 6
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/006.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+;p #IF
+;p EQUAL U50 7
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/007.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+;p #IF
+;p EQUAL U50 8
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/008.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+;p #IF
+;p EQUAL U50 9
+;p #ACT
+;p MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/009.png|esc=0>
+;p ADDBUTTON 3001 15 <$STR(S$流派显示)>
+
+}
+
+[@界面装饰]
+{
+;p #IF
+;p Equal <$CLIENTFLAG> 1
+;p #ACT
+;p BREAK
+;p 
+;p #IF
+;p HOUR 7 17
+;p #ACT
+;p MOV S$主界面按钮 <Button|x=178|y=-128|nimg=private\main\bt.png>
+;p ADDBUTTON 108 3 <$STR(S$主界面按钮)>
+;p #ELSEACT
+;p MOV S$主界面按钮 <Button|x=178|y=-128|nimg=private\main\ws.png>
+;p ADDBUTTON 108 3 <$STR(S$主界面按钮)>
+
+
+#IF
+#ACT
+MOV S$主界面按钮 
+;p INC S$主界面按钮 <Img|x=-49.0|y=-54.0|img=private/mimap/1.png|link=@空>
+;p INC S$主界面按钮 <Img|x=-49.0|y=-54.0|img=private/mimap/3.png|link=@空>
+;p INC S$主界面按钮 <Img|x=535.0|y=-54.0|img=private/mimap/4.png|link=@空>
+;p INC S$主界面按钮 <Img|x=-49.0|y=403.0|img=private/mimap/2.png|link=@空>
+;p INC S$主界面按钮 <Img|x=300.0|y=-45.0|img=private/biaoti/01056.png>
+;p 
+;p INC S$主界面按钮 <Button|x=700.0|y=-35.0|pimg=public/1999000511.png|nimg=public/1999000510.png|link=@小地图关闭>
+;p INC S$主界面按钮 <Layout|x=557.0|y=283.0|width=140|height=50|link=@小地图随机>
+INC S$主界面按钮 <Button|x=637.0|y=288.0|color=1025|size=18|width=140|height=40|nimg=private/pmh/002.png|text=随机传送|link=@小地图随机>
+;p INC S$主界面按钮 <Layout|x=557.0|y=345.0|width=140|height=50|link=@小地图回城>
+INC S$主界面按钮 <Button|x=637.0|y=350.0|color=1025|size=18|width=140|height=40|nimg=private/pmh/002.png|text=立即回城|link=@小地图回城>
+ADDBUTTON 8 10 <$STR(S$主界面按钮)>
+}
+
+[@界面货币]
+{
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$货币 <Img|x=0.0|y=0.0|width=265|height=35|img=public/1900015004.png|esc=0>
+INC S$货币 <ItemShow|x=20.0|y=-15.0|width=70|height=70|itemid=1|itemcount=1|showtips=1|bgtype=0|scale=0.8>
+INC S$货币 <ItemShow|x=140.0|y=-15.0|width=70|height=70|itemid=2|itemcount=1|showtips=1|bgtype=0|scale=0.8>
+;INC S$货币 <Button|x=30.0|y=5.0|width=42|height=22|tips=<金币/FCOLOR=251>^<当前拥有金币：<$GOLDCOUNT>/FCOLOR=251>^<拥有绑定金币：<$MONEY(绑定金币)>/FCOLOR=251>|tipsx=65|tipsy=100|nimg=item/item_1/000007.png|size=18|pimg=item/item_1/000007.png>
+;INC S$货币 <Button|x=155.0|y=4.0|tipsx=65|tipsy=100|size=18|pimg=item/item_1/000001.png|color=255|nimg=item/item_1/000001.png|tips=<元宝/FCOLOR=251>^<当前拥有元宝：<$GAMEGOLD>/FCOLOR=251>^<拥有绑定元宝：<$MONEY(绑定元宝)>/FCOLOR=251>>
+INC S$货币 <Text|text=$STM(ITEMCOUNT_1)|simplenum=1|x=75|y=5|color=251|size=18|outline=1|outlinecolor=0>
+INC S$货币 <Text|text=$STM(ITEMCOUNT_2)|simplenum=1|x=190|y=5|color=251|size=18|outline=1|outlinecolor=0>
+DELBUTTON 101 1
+addbutton 101 1 <$STR(S$货币)>
+}
+
+[@功能按钮]
+{
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+MOV S$充值按钮 <Button|x=225.0|y=2.0|width=55|height=30|rotate=0|color=255|nimg=public/buff_2.png|pimg=public/buff_3.png|size=18|link=@快捷充值>
+DELBUTTON 101 2
+ADDBUTTON 101 2 <$STR(S$充值按钮)>
+
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+MOV S$充值按钮 <Button|x=270.0|y=2.0|width=55|height=30|rotate=0|color=255|nimg=public/buff_2.png|pimg=public/buff_3.png|size=18|link=@快捷充值>
+DELBUTTON 101 2
+ADDBUTTON 101 2 <$STR(S$充值按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKVAR HUMAN 关注礼包 = 2
+#ACT
+DELBUTTON 102 1 
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKVAR HUMAN 关注礼包 = 2
+#ACT
+DELBUTTON 102 1 
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$首充按钮 <Button|id=666|x=-385.0|y=80|width=75|height=75|nimg=private/top/05.png|link=@首充>
+DELBUTTON 102 3 
+ADDBUTTON 102 3 <$STR(S$首充按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$首充按钮 <Button|id=666|children={2}|x=-280.0|y=80|width=75|height=75|nimg=private/top/05.png|link=@首充>
+DELBUTTON 102 3 
+ADDBUTTON 102 3 <$STR(S$首充按钮)>
+
+
+#IF
+#ACT
+DELBUTTON 102 11 
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$七日豪礼 <Button|id=555|x=-555.0|y=80|width=75|height=75|nimg=private/top/09.png|link=@七日豪礼>
+ADDBUTTON 102 11 <$STR(S$七日豪礼)>
+#IF
+SMALL N$时间差数 604800
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$七日豪礼 <Button|id=555|x=-450.0|y=80|width=75|height=75|nimg=private/top/09.png|link=@七日豪礼>
+ADDBUTTON 102 11 <$STR(S$七日豪礼)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$活跃按钮 <Button|children={1}|x=-470.0|y=80|width=75|height=75|nimg=private/top/13.png|link=@活跃度>
+DELBUTTON 102 99 
+ADDBUTTON 102 99 <$STR(S$活跃按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$活跃按钮 <Button|children={1}|x=-365.0|y=80|width=75|height=75|nimg=private/top/13.png|link=@活跃度>
+DELBUTTON 102 99 
+ADDBUTTON 102 99 <$STR(S$活跃按钮)>
+
+#IF
+CHECK [223] 0
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$首次充值按钮 <Button|children={1}|x=-725.0|y=82|width=75|height=75|nimg=private/top/18.png|link=@首次充值>
+INC S$首次充值按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 200 
+ADDBUTTON 102 200 <$STR(S$首次充值按钮)>
+
+#IF
+CHECK [223] 0
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$首次充值按钮 <Button|children={1}|x=-620.0|y=82|width=75|height=75|nimg=private/top/18.png|link=@首次充值>
+INC S$首次充值按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 200 
+ADDBUTTON 102 200 <$STR(S$首次充值按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKVAR HUMAN 关注礼包 < 2
+#ACT
+MOV S$关注按钮 <Button|id=333|children={1}|x=-640.0|y=80|width=75|height=75|nimg=private/top/01.png|link=@关注礼包>
+INC S$关注按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 1 
+ADDBUTTON 102 1 <$STR(S$关注按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKVAR HUMAN 关注礼包 < 2
+#ACT
+MOV S$关注按钮 <Button|id=333|children={1}|x=-535.0|y=80|width=75|height=75|nimg=private/top/01.png|link=@关注礼包>
+INC S$关注按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 1 
+ADDBUTTON 102 1 <$STR(S$关注按钮)>
+
+;#IF
+;Equal <$CLIENTFLAG> 1
+;#ACT
+;MOV S$活动按钮 <Button|children={1}|x=-705.0|y=80|width=75|height=75|nimg=private/top/14.png|link=@节日活动>
+;INC S$活动按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+;DELBUTTON 102 100 
+;ADDBUTTON 102 100 <$STR(S$活动按钮)>
+
+;#IF
+;Equal <$CLIENTFLAG> 2
+;#ACT
+;MOV S$活动按钮 <Button|children={1}|x=-805.0|y=80|width=75|height=75|nimg=private/top/14.png|link=@节日活动>
+;INC S$活动按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+;DELBUTTON 102 100 
+;ADDBUTTON 102 100 <$STR(S$活动按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$功能按钮 <Button|x=-215|y=5|nimg=private/top/0_1.png|link=@按钮收起>
+INC S$功能按钮 <Layout|x=-230|y=5.0|width=50|height=50|color=x|link=@按钮收起>
+DELBUTTON 102 4 
+ADDBUTTON 102 4 <$STR(S$功能按钮)>
+
+MOV S$盒子礼包按钮 <Button|x=-300.0|y=2|width=75|height=75|nimg=private/top/12.png|link=@开启盒子>
+ADDBUTTON 102 5 <$STR(S$盒子礼包按钮)>
+
+MOV S$功能按钮 <Button|x=-385.0|y=0|width=75|height=75|nimg=private/top/02.png|link=@游戏攻略>
+DELBUTTON 102 6 
+ADDBUTTON 102 6 <$STR(S$功能按钮)>
+
+MOV S$功能按钮 <Button|x=-470.0|y=0|width=75|height=75|nimg=private/top/04.png|link=@充值有礼>
+DELBUTTON 102 7 
+ADDBUTTON 102 7 <$STR(S$功能按钮)>
+
+MOV S$功能按钮 <Button|x=-555.0|y=0|width=75|height=75|nimg=private/top/06.png|link=@装备图鉴>
+DELBUTTON 102 8 
+ADDBUTTON 102 8 <$STR(S$功能按钮)>
+
+MOV S$功能按钮 <Button|x=-640.0|y=0|width=75|height=75|nimg=private/top/03.png|link=@BOSS查询>
+DELBUTTON 102 9 
+ADDBUTTON 102 9 <$STR(S$功能按钮)>
+
+MOV S$功能按钮 <Button|x=-300.0|y=82|width=72|height=72|nimg=private/top/07.png|link=@交易行>
+DELBUTTON 102 10 
+ADDBUTTON 102 10 <$STR(S$功能按钮)>
+
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKJOB Taoist
+equal u50 7
+large u85 0
+#ACT
+MOV S$内挂按钮 
+INC S$内挂按钮 <Text|x=420.0|y=758.0|color=255|size=16|text=自动召唤月灵>
+INC S$内挂按钮 <CheckBox|x=370.0|y=755.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动月灵)>|link=@自动月灵开关>
+DELBUTTON 21 1
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKJOB Taoist
+equal u50 8
+large u91 0
+#ACT
+MOV S$内挂按钮 
+INC S$内挂按钮 <Text|x=420.0|y=758.0|color=255|size=16|text=自动召唤麒麟>
+INC S$内挂按钮 <CheckBox|x=370.0|y=755.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动麒麟)>|link=@自动麒麟开关>
+DELBUTTON 21 1
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKJOB Taoist
+equal u50 9
+#ACT
+MOV S$内挂按钮 
+INC S$内挂按钮 <Text|x=420.0|y=758.0|color=255|size=16|text=自动召唤圣兽>
+INC S$内挂按钮 <CheckBox|x=370.0|y=755.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动圣兽)>|link=@自动圣兽开关>
+DELBUTTON 21 1
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$功能按钮 
+INC S$功能按钮 <Button|x=-190|y=5|nimg=private/top/0_1.png|link=@按钮收起>
+DELBUTTON 102 4 
+ADDBUTTON 102 4 <$STR(S$功能按钮)>
+
+MOV S$盒子礼包按钮 <Button|x=-280.0|y=2|width=75|height=75|nimg=private/top/12.png|link=@开启盒子>
+ADDBUTTON 102 5 <$STR(S$盒子礼包按钮)>
+
+INC S$功能按钮 <Button|x=-365.0|y=0|width=75|height=75|nimg=private/top/02.png|link=@游戏攻略>
+DELBUTTON 102 6 
+ADDBUTTON 102 6 <$STR(S$功能按钮)>
+
+INC S$功能按钮 <Button|x=-450.0|y=0|width=75|height=75|nimg=private/top/04.png|link=@充值有礼>
+DELBUTTON 102 7 
+ADDBUTTON 102 7 <$STR(S$功能按钮)>
+
+INC S$功能按钮 <Button|x=-535.0|y=0|width=75|height=75|nimg=private/top/06.png|link=@装备图鉴>
+DELBUTTON 102 8 
+ADDBUTTON 102 8 <$STR(S$功能按钮)>
+
+INC S$功能按钮 <Button|x=-620.0|y=0|width=75|height=75|nimg=private/top/03.png|link=@BOSS查询>
+DELBUTTON 102 9 
+ADDBUTTON 102 9 <$STR(S$功能按钮)>
+
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKJOB Taoist
+equal u50 7
+large u85 0
+#ACT
+MOV S$内挂按钮 
+INC S$内挂按钮 <Text|x=373.0|y=602.0|color=255|size=12|text=自动召唤月灵>
+INC S$内挂按钮 <CheckBox|x=333.0|y=593.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动月灵)>|link=@自动月灵开关>
+DELBUTTON 21 1
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKJOB Taoist
+equal u50 8
+large u91 0
+#ACT
+MOV S$内挂按钮 
+INC S$内挂按钮 <Text|x=373.0|y=602.0|color=255|size=12|text=自动召唤麒麟>
+INC S$内挂按钮 <CheckBox|x=333.0|y=593.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动麒麟)>|link=@自动麒麟开关>
+DELBUTTON 21 1
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKJOB Taoist
+equal u50 9
+#ACT
+MOV S$内挂按钮 
+INC S$内挂按钮 <Text|x=373.0|y=602.0|color=255|size=12|text=自动召唤圣兽>
+INC S$内挂按钮 <CheckBox|x=333.0|y=593.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动圣兽)>|link=@自动圣兽开关>
+DELBUTTON 21 1
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+
+#IF
+#ACT
+#CALL [\相关NPC\八门遁甲.txt] @八门遁甲界面
+
+}
+

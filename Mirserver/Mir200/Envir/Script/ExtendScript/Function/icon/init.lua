@@ -1,0 +1,7 @@
+include("Script/ExtendScript/Function/icon/改名卡.lua")
+include("Script/ExtendScript/Function/icon/安全箱.lua")
+include("Script/ExtendScript/Function/icon/设置等级.lua")
+include("Script/ExtendScript/Function/icon/打捆绳.lua")
+include("Script/ExtendScript/Function/icon/抽卡.lua")
+include("Script/ExtendScript/Function/icon/技能属性.lua")
+include("Script/ExtendScript/Function/icon/藏品.lua")

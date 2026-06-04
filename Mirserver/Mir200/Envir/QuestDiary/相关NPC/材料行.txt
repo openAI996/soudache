@@ -1,0 +1,1332 @@
+[@材料寄售]
+{
+#IF
+#ACT
+MOV S$货品分类 绿晶矿
+MOV S$商品购买页面
+MOV S$商品展示页面
+MOV S$商品购买页面
+MOV N$跳转位置 1
+GOTO @寄售按钮
+GOTO @绿晶矿拍卖
+
+[@拍卖主界面]
+<Img|x=0.0|y=0.0|width=820|height=520|reset=0|scale9r=150|scale9t=150|bg=1|scale9b=150|move=0|scale9l=150|loadDelay=0|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=764.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=777.0|y=17.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=360.0|y=7.0|img=private/biaoti/01002.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=161.0|y=58.0|height=450|img=private/psllz/00010.png|esc=0>
+<Img|x=177.0|y=450.0|width=605|img=private/pmh/003.png|esc=0>
+<Img|x=179.0|y=103.0|width=605|img=private/pmh/003.png|esc=0>
+
+<RText|x=50.0|y=47.0|size=15|outline=1|outlinecolor=0|color=11016|text=沙巴克城主可在每周六攻沙结束后平分寄售行上周交易额的5%元宝作为额外奖励！<上周税收:<$str(G99)>元宝/FCOLOR=11007>>
+<Text|x=180.0|y=465.0|color=11002|simplenum=1|text=优惠额度：<$MONEY(积分)>>
+<Text|x=190.0|y=75.0|color=87|size=18|outline=1|outlinecolor=0|text=寄售商品>
+<Text|x=330.0|y=75.0|color=87|size=18|outline=1|outlinecolor=0|text=商品数量>
+<Text|x=490.0|y=75.0|color=87|size=18|outline=1|outlinecolor=0|text=商品价格>
+<Text|x=685.0|y=75.0|color=87|size=18|outline=1|outlinecolor=0|text=购买操作>
+<ListView|children={2,3,4,5,6,7,8,9,10,11,12,13,14}|x=35|y=70|width=135|height=430|direction=1|bounce=0|margin=1|reload=1|color=x|default=<$str(N$跳转位置)>>
+<Button|x=379.0|y=465.0|width=60|height=25|pimg=private/pmh/006.png|color=255|size=16|nimg=private/pmh/005.png|outline=1|outlinecolor=0|text=上页|link=@寄售页面上翻>
+<Img|x=444.0|y=467.0|width=65|img=private/pmh/007.png|esc=0>
+<Text|x=470.0|y=465.0|color=255|size=16|text=<$STR(N$寄售页数)>>
+<Button|x=515.0|y=465.0|width=60|height=25|size=16|color=255|nimg=private/pmh/005.png|pimg=private/pmh/006.png|outline=1|outlinecolor=0|text=下页|link=@寄售页面下翻>
+
+<Button|x=700.0|y=459.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=我的寄售|link=@我的寄售>
+<$STR(S$寄售按钮初始化)>
+<$STR(S$商品展示页面)>
+<$STR(S$商品购买页面)>
+
+
+[@寄售按钮]
+#IF
+#ACT
+MOV S$寄售按钮初始化 
+INC S$寄售按钮初始化 <Button|id=2|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=绿晶矿|link=@绿晶矿拍卖#货品分类=绿晶矿>
+INC S$寄售按钮初始化 <Button|id=3|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=女娲石|link=@女娲石拍卖#货品分类=女娲石>
+INC S$寄售按钮初始化 <Button|id=4|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=天命神石|link=@天命神石拍卖#货品分类=天命神石>
+INC S$寄售按钮初始化 <Button|id=5|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=祝福油|link=@祝福油拍卖#货品分类=祝福油>
+INC S$寄售按钮初始化 <Button|id=6|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=17|text=1万经验卷|link=@1万经验卷拍卖#货品分类=1万经验卷>
+INC S$寄售按钮初始化 <Button|id=7|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=17|text=10万经验卷|link=@10万经验卷拍卖#货品分类=10万经验卷>
+INC S$寄售按钮初始化 <Button|id=8|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=17|text=100万经验卷|link=@100万经验卷拍卖#货品分类=100万经验卷>
+INC S$寄售按钮初始化 <Button|id=9|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=声望令牌|link=@声望令牌拍卖#货品分类=声望令牌>
+INC S$寄售按钮初始化 <Button|id=10|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=精修卷轴|link=@精修卷轴拍卖#货品分类=精修卷轴>
+INC S$寄售按钮初始化 <Button|id=11|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=紫薇星石|link=@紫薇星石拍卖#货品分类=紫薇星石>
+INC S$寄售按钮初始化 <Button|id=12|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=沃玛碎片|link=@沃玛拍卖#货品分类=沃玛碎片>
+INC S$寄售按钮初始化 <Button|id=13|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=祖玛碎片|link=@祖玛拍卖#货品分类=祖玛碎片>
+INC S$寄售按钮初始化 <Button|id=14|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=赤月碎片|link=@赤月拍卖#货品分类=赤月碎片>
+
+[@赤月拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=14|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=赤月碎片|link=@赤月拍卖#货品分类=赤月碎片>
+INC S$寄售按钮初始化 <Button|id=14|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/002.png|color=251|size=18|text=赤月碎片|link=@赤月拍卖#货品分类=赤月碎片>
+MOV N$赤月碎片_1 0
+MOV N$赤月碎片_2 1
+MOV N$赤月碎片_3 2
+MOV N$赤月碎片_4 3
+MOV N$赤月碎片_5 4
+MOV N$赤月碎片_6 5
+MOV N$跳转位置 13
+GOTO @寄售数据调取
+
+[@祖玛拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=13|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=祖玛碎片|link=@祖玛拍卖#货品分类=祖玛碎片>
+INC S$寄售按钮初始化 <Button|id=13|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/002.png|color=251|size=18|text=祖玛碎片|link=@祖玛拍卖#货品分类=祖玛碎片>
+MOV N$祖玛碎片_1 0
+MOV N$祖玛碎片_2 1
+MOV N$祖玛碎片_3 2
+MOV N$祖玛碎片_4 3
+MOV N$祖玛碎片_5 4
+MOV N$祖玛碎片_6 5
+MOV N$跳转位置 13
+GOTO @寄售数据调取
+
+[@沃玛拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=12|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=沃玛碎片|link=@沃玛拍卖#货品分类=沃玛碎片>
+INC S$寄售按钮初始化 <Button|id=12|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/002.png|color=251|size=18|text=沃玛碎片|link=@沃玛拍卖#货品分类=沃玛碎片>
+MOV N$沃玛碎片_1 0
+MOV N$沃玛碎片_2 1
+MOV N$沃玛碎片_3 2
+MOV N$沃玛碎片_4 3
+MOV N$沃玛碎片_5 4
+MOV N$沃玛碎片_6 5
+MOV N$跳转位置 13
+GOTO @寄售数据调取
+
+[@紫薇星石拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=11|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=紫薇星石|link=@紫薇星石拍卖#货品分类=紫薇星石>
+INC S$寄售按钮初始化 <Button|id=11|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/002.png|color=251|size=18|text=紫薇星石|link=@紫薇星石拍卖#货品分类=紫薇星石>
+MOV N$紫薇星石_1 0
+MOV N$紫薇星石_2 1
+MOV N$紫薇星石_3 2
+MOV N$紫薇星石_4 3
+MOV N$紫薇星石_5 4
+MOV N$紫薇星石_6 5
+MOV N$跳转位置 10
+GOTO @寄售数据调取
+
+[@精修卷轴拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=10|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=精修卷轴|link=@精修卷轴拍卖#货品分类=精修卷轴>
+INC S$寄售按钮初始化 <Button|id=10|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/002.png|color=251|size=18|text=精修卷轴|link=@精修卷轴拍卖#货品分类=精修卷轴>
+MOV N$寄售页数 1
+MOV N$精修卷轴_1 0
+MOV N$精修卷轴_2 1
+MOV N$精修卷轴_3 2
+MOV N$精修卷轴_4 3
+MOV N$精修卷轴_5 4
+MOV N$精修卷轴_6 5
+MOV N$跳转位置 9
+GOTO @寄售数据调取
+
+[@声望令牌拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=9|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=声望令牌|link=@声望令牌拍卖#货品分类=声望令牌>
+INC S$寄售按钮初始化 <Button|id=9|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=251|size=18|text=声望令牌|link=@声望令牌拍卖#货品分类=声望令牌>
+MOV N$寄售页数 1
+MOV N$声望令牌_1 0
+MOV N$声望令牌_2 1
+MOV N$声望令牌_3 2
+MOV N$声望令牌_4 3
+MOV N$声望令牌_5 4
+MOV N$声望令牌_6 5
+MOV N$跳转位置 8
+GOTO @寄售数据调取
+
+[@100万经验卷拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=8|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=17|text=100万经验卷|link=@100万经验卷拍卖#货品分类=100万经验卷>
+INC S$寄售按钮初始化 <Button|id=8|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=251|size=17|text=100万经验卷|link=@100万经验卷拍卖#货品分类=100万经验卷>
+MOV N$寄售页数 1
+MOV N$100万经验卷_1 0
+MOV N$100万经验卷_2 1
+MOV N$100万经验卷_3 2
+MOV N$100万经验卷_4 3
+MOV N$100万经验卷_5 4
+MOV N$100万经验卷_6 5
+MOV N$跳转位置 7
+GOTO @寄售数据调取
+
+[@10万经验卷拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=7|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=17|text=10万经验卷|link=@10万经验卷拍卖#货品分类=10万经验卷>
+INC S$寄售按钮初始化 <Button|id=7|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=251|size=17|text=10万经验卷|link=@10万经验卷拍卖#货品分类=10万经验卷>
+MOV N$寄售页数 1
+MOV N$10万经验卷_1 0
+MOV N$10万经验卷_2 1
+MOV N$10万经验卷_3 2
+MOV N$10万经验卷_4 3
+MOV N$10万经验卷_5 4
+MOV N$10万经验卷_6 5
+MOV N$跳转位置 6
+GOTO @寄售数据调取
+
+[@1万经验卷拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=6|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=17|text=1万经验卷|link=@1万经验卷拍卖#货品分类=1万经验卷>
+INC S$寄售按钮初始化 <Button|id=6|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=251|size=17|text=1万经验卷|link=@1万经验卷拍卖#货品分类=1万经验卷>
+MOV N$寄售页数 1
+MOV N$1万经验卷_1 0
+MOV N$1万经验卷_2 1
+MOV N$1万经验卷_3 2
+MOV N$1万经验卷_4 3
+MOV N$1万经验卷_5 4
+MOV N$1万经验卷_6 5
+MOV N$跳转位置 5
+GOTO @寄售数据调取
+
+[@祝福油拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=5|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=祝福油|link=@祝福油拍卖#货品分类=祝福油>
+INC S$寄售按钮初始化 <Button|id=5|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=251|size=18|text=祝福油|link=@祝福油拍卖#货品分类=祝福油>
+MOV N$寄售页数 1
+MOV N$祝福油_1 0
+MOV N$祝福油_2 1
+MOV N$祝福油_3 2
+MOV N$祝福油_4 3
+MOV N$祝福油_5 4
+MOV N$祝福油_6 5
+MOV N$跳转位置 4
+GOTO @寄售数据调取
+
+[@天命神石拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=4|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=天命神石|link=@天命神石拍卖#货品分类=天命神石>
+INC S$寄售按钮初始化 <Button|id=4|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=251|size=18|text=天命神石|link=@天命神石拍卖#货品分类=天命神石>
+MOV N$寄售页数 1
+MOV N$天命神石_1 0
+MOV N$天命神石_2 1
+MOV N$天命神石_3 2
+MOV N$天命神石_4 3
+MOV N$天命神石_5 4
+MOV N$天命神石_6 5
+MOV N$跳转位置 3
+GOTO @寄售数据调取
+
+[@女娲石拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=3|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=女娲石|link=@女娲石拍卖#货品分类=女娲石>
+INC S$寄售按钮初始化 <Button|id=3|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=251|size=18|text=女娲石|link=@女娲石拍卖#货品分类=女娲石>
+MOV N$寄售页数 1
+MOV N$女娲石_1 0
+MOV N$女娲石_2 1
+MOV N$女娲石_3 2
+MOV N$女娲石_4 3
+MOV N$女娲石_5 4
+MOV N$女娲石_6 5
+MOV N$跳转位置 2
+GOTO @寄售数据调取
+
+
+[@绿晶矿拍卖]
+#IF
+#ACT
+GOTO @寄售按钮
+DEC S$寄售按钮初始化 <Button|id=2|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=160|size=18|text=绿晶矿|link=@绿晶矿拍卖#货品分类=绿晶矿>
+INC S$寄售按钮初始化 <Button|id=2|x=5.0|y=0.0|width=130|height=42|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=251|size=18|text=绿晶矿|link=@绿晶矿拍卖#货品分类=绿晶矿>
+MOV N$寄售页数 1
+MOV N$绿晶矿_1 0
+MOV N$绿晶矿_2 1
+MOV N$绿晶矿_3 2
+MOV N$绿晶矿_4 3
+MOV N$绿晶矿_5 4
+MOV N$绿晶矿_6 5
+MOV N$跳转位置 1
+GOTO @寄售数据调取
+
+
+[@寄售页面上翻]
+#if
+EQUAL N$寄售页数 1
+#ACT
+BREAK 
+
+#IF
+LARGE N$寄售页数 1
+#ACT
+DEC N$寄售页数 1
+DEC N$<$STR(S$货品分类)>_1 6
+DEC N$<$STR(S$货品分类)>_2 6
+DEC N$<$STR(S$货品分类)>_3 6
+DEC N$<$STR(S$货品分类)>_4 6
+DEC N$<$STR(S$货品分类)>_5 6
+DEC N$<$STR(S$货品分类)>_6 6
+goto @寄售数据调取
+BREAK
+
+[@寄售页面下翻]
+#IF
+LARGE N$寄售页数 500
+#ACT
+BREAK
+
+#if
+#act
+INC N$寄售页数 1
+INC N$<$STR(S$货品分类)>_1 6
+INC N$<$STR(S$货品分类)>_2 6
+INC N$<$STR(S$货品分类)>_3 6
+INC N$<$STR(S$货品分类)>_4 6
+INC N$<$STR(S$货品分类)>_5 6
+INC N$<$STR(S$货品分类)>_6 6
+goto @寄售数据调取
+BREAK
+
+
+[@寄售数据调取]
+#ACT
+GetListStringEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N$<$STR(S$货品分类)>_1)> S$第一列 |
+GetListStringEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N$<$STR(S$货品分类)>_2)> S$第二列 |
+GetListStringEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N$<$STR(S$货品分类)>_3)> S$第三列 |
+GetListStringEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N$<$STR(S$货品分类)>_4)> S$第四列 |
+GetListStringEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N$<$STR(S$货品分类)>_5)> S$第五列 |
+GetListStringEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N$<$STR(S$货品分类)>_6)> S$第六列 |
+GetValidstr <$STR(S$第一列0)> # S$第一列人物UID S$无用
+GetValidstr <$STR(S$第二列0)> # S$第二列人物UID S$无用
+GetValidstr <$STR(S$第三列0)> # S$第三列人物UID S$无用
+GetValidstr <$STR(S$第四列0)> # S$第四列人物UID S$无用
+GetValidstr <$STR(S$第五列0)> # S$第五列人物UID S$无用
+GetValidstr <$STR(S$第六列0)> # S$第六列人物UID S$无用
+
+#OR
+NOT EQUAL S$第一列0 
+NOT EQUAL S$第二列0 
+NOT EQUAL S$第三列0 
+NOT EQUAL S$第四列0 
+NOT EQUAL S$第五列0 
+NOT EQUAL S$第六列0 
+#ACT
+MOV S$商品展示页面 <Img|x=181.0|y=109.0|width=600|img=private/pmh/008.png|esc=0>
+
+#IF
+EQUAL S$第一列0 
+EQUAL S$第二列0 
+EQUAL S$第三列0 
+EQUAL S$第四列0 
+EQUAL S$第五列0 
+EQUAL S$第六列0 
+#ACT
+MOV S$商品展示页面 <Img|x=415.0|y=255.0|img=private/auction/word_paimaihang_01.png|esc=0>
+
+#IF
+NOT EQUAL S$第一列0 
+#ACT
+INC S$商品展示页面 <Img|x=200.0|y=110.0|width=50|height=50|esc=0|img=private/pmh/015.png>
+INC S$商品展示页面 <ItemShow|x=193.0|y=100.0|width=70|height=70|itemid=<$str(S$第一列2)>|itemcount=<$str(S$第一列4)>|showtips=1|bgtype=0|scale=0.9>
+INC S$商品展示页面 <Text|x=346.0|y=125.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第一列4)>>
+INC S$商品展示页面 <Text|x=495.0|y=125.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第一列5)>元宝>
+
+#IF
+NOT EQUAL S$第二列0 
+#ACT
+INC S$商品展示页面 <Img|x=200.0|y=167.0|width=50|height=50|esc=0|img=private/pmh/015.png>
+INC S$商品展示页面 <ItemShow|x=193.0|y=156.0|width=70|height=70|itemid=<$str(S$第二列2)>|itemcount=<$str(S$第二列4)>|showtips=1|bgtype=0|scale=0.9>
+INC S$商品展示页面 <Text|x=346.0|y=180.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第二列4)>>
+INC S$商品展示页面 <Text|x=495.0|y=180.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第二列5)>元宝>
+
+#IF
+NOT EQUAL S$第三列0 
+#ACT
+INC S$商品展示页面 <Img|x=200.0|y=223.0|width=50|height=50|esc=0|img=private/pmh/015.png>
+INC S$商品展示页面 <ItemShow|x=193.0|y=213.0|width=70|height=70|itemid=<$str(S$第三列2)>|itemcount=<$str(S$第三列4)>|showtips=1|bgtype=0|scale=0.9>
+INC S$商品展示页面 <Text|x=346.0|y=235.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第三列4)>>
+INC S$商品展示页面 <Text|x=495.0|y=235.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第三列5)>元宝>
+
+#IF
+NOT EQUAL S$第四列0
+#ACT
+INC S$商品展示页面 <Img|x=200.0|y=278.0|width=50|height=50|esc=0|img=private/pmh/015.png>
+INC S$商品展示页面 <ItemShow|x=193.0|y=270.0|width=70|height=70|itemid=<$str(S$第四列2)>|itemcount=<$str(S$第四列4)>|showtips=1|bgtype=0|scale=0.9>
+INC S$商品展示页面 <Text|x=346.0|y=293.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第四列4)>>
+INC S$商品展示页面 <Text|x=495.0|y=293.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第四列5)>元宝>
+
+#IF
+NOT EQUAL S$第五列0 
+#ACT
+INC S$商品展示页面 <Img|x=200.0|y=335.0|width=50|height=50|esc=0|img=private/pmh/015.png>
+INC S$商品展示页面 <ItemShow|x=193.0|y=325.0|width=70|height=70|itemid=<$str(S$第五列2)>|itemcount=<$str(S$第五列4)>|showtips=1|bgtype=0|scale=0.9>
+INC S$商品展示页面 <Text|x=346.0|y=350.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第五列4)>>
+INC S$商品展示页面 <Text|x=495.0|y=350.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第五列5)>元宝>
+
+#IF
+NOT EQUAL S$第六列0 
+#ACT
+INC S$商品展示页面 <Img|x=200.0|y=391.0|width=50|height=50|esc=0|img=private/pmh/015.png>
+INC S$商品展示页面 <ItemShow|x=193.0|y=382.0|width=70|height=70|itemid=<$str(S$第六列2)>|itemcount=<$str(S$第六列4)>|showtips=1|bgtype=0|scale=0.9>
+INC S$商品展示页面 <Text|x=346.0|y=405.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第六列4)>>
+INC S$商品展示页面 <Text|x=495.0|y=405.0|color=87|size=17|outline=1|outlinecolor=0|text=<$str(S$第六列5)>元宝>
+
+#IF
+NOT EQUAL S$第一列0 
+NOT EQUAL S$第一列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Button|x=685.0|y=125.0|width=70|pimg=private/pmh/006.png|size=17|color=1025|nimg=private/pmh/005.png|text=购买|link=@购买物品#货品索引=<$STR(N$<$STR(S$货品分类)>_1)>>
+
+#IF
+NOT EQUAL S$第一列0 
+EQUAL S$第一列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Text|x=685.0|y=125.0|color=250|size=16|text=我的寄售>
+
+#IF
+NOT EQUAL S$第二列0 
+NOT EQUAL S$第二列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Button|x=685.0|y=180.0|width=70|pimg=private/pmh/006.png|size=17|color=1025|nimg=private/pmh/005.png|text=购买|link=@购买物品#货品索引=<$STR(N$<$STR(S$货品分类)>_2)>>
+
+#IF
+NOT EQUAL S$第二列0 
+EQUAL S$第二列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Text|x=685.0|y=180.0|color=250|size=16|text=我的寄售>
+
+#IF
+NOT EQUAL S$第三列0 
+NOT EQUAL S$第三列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Button|x=685.0|y=235.0|width=70|pimg=private/pmh/006.png|size=17|color=1025|nimg=private/pmh/005.png|text=购买|link=@购买物品#货品索引=<$STR(N$<$STR(S$货品分类)>_3)>>
+
+#IF
+NOT EQUAL S$第三列0 
+EQUAL S$第三列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Text|x=685.0|y=235.0|color=250|size=16|text=我的寄售>
+
+#IF
+NOT EQUAL S$第四列0 
+NOT EQUAL S$第四列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Button|x=685.0|y=293.0|width=70|pimg=private/pmh/006.png|size=17|color=1025|nimg=private/pmh/005.png|text=购买|link=@购买物品#货品索引=<$STR(N$<$STR(S$货品分类)>_4)>>
+
+#IF
+NOT EQUAL S$第四列0 
+EQUAL S$第四列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Text|x=685.0|y=293.0|color=250|size=16|text=我的寄售>
+
+#IF
+NOT EQUAL S$第五列0 
+NOT EQUAL S$第五列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Button|x=685.0|y=350.0|width=70|pimg=private/pmh/006.png|size=17|color=1025|nimg=private/pmh/005.png|text=购买|link=@购买物品#货品索引=<$STR(N$<$STR(S$货品分类)>_5)>>
+
+#IF
+NOT EQUAL S$第五列0 
+EQUAL S$第五列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Text|x=685.0|y=350.0|color=250|size=16|text=我的寄售>
+
+#IF
+NOT EQUAL S$第六列0 
+NOT EQUAL S$第六列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Button|x=685.0|y=405.0|width=70|pimg=private/pmh/006.png|size=17|color=1025|nimg=private/pmh/005.png|text=购买|link=@购买物品#货品索引=<$STR(N$<$STR(S$货品分类)>_6)>>
+
+#IF
+NOT EQUAL S$第六列0 
+EQUAL S$第六列人物UID <$USERID>
+#ACT
+INC S$商品展示页面 <Text|x=685.0|y=405.0|color=250|size=16|text=我的寄售>
+
+#IF
+#ACT
+GOTO @拍卖主界面
+
+[@购买物品]
+#IF
+#ACT
+MOV S$商品列
+MOV S$商品记录取出 
+GetListStringEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(S$货品索引)> S$商品列 |
+GetRandomText ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt S$商品记录取出 <$STR(S$货品索引)>
+GetValidstr <$STR(S$商品列1)> # S$寄售人区号 S$寄售人名字
+MOV S$商品购买页面 <Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|scale9r=20|scale9l=20|img=public/1900000651_1.png|esc=0|scale9b=20|scale9t=20|link=@取消购买>
+INC S$商品购买页面 <Img|x=250.0|y=75.0|img=private/pmh/014.png|esc=0|link=@穿透层>
+INC S$商品购买页面 <Img|x=375.0|y=150.0|img=private/pmh/015.png|esc=0>
+INC S$商品购买页面 <Text|x=371.0|y=108.0|size=16|color=251|text=购买商品>
+INC S$商品购买页面 <ItemShow|x=370.0|y=145.0|width=70|height=70|itemid=<$STR(S$商品列2)>|itemcount=<$STR(S$商品列4)>|showtips=1|bgtype=0>
+INC S$商品购买页面 <Button|x=430.0|y=420.0|color=251|size=18|nimg=private/pmh/011.png|text=购买|link=@确认购买商品>
+INC S$商品购买页面 <Button|x=305.0|y=420.0|color=251|nimg=private/pmh/011.png|size=18|text=取消|link=@取消购买>
+
+#IF
+CHECKMONEY 积分 = 0
+#ACT
+MOV N$优惠后价格 <$STR(S$商品列5)>
+INC S$商品购买页面 <Img|x=365.0|y=240.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Img|x=365.0|y=280.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Img|x=365.0|y=320.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Text|x=300.0|y=240.0|color=11072|size=16|text=寄售人：>
+INC S$商品购买页面 <Text|x=370.0|y=240.0|color=11072|size=16|text=<$STR(S$寄售人名字)>>
+INC S$商品购买页面 <Text|x=285.0|y=280.0|size=16|color=11072|text=购买数量：>
+INC S$商品购买页面 <Text|x=371.0|y=280.0|color=11072|size=16|text=<$STR(S$商品列4)>>
+INC S$商品购买页面 <Text|x=285.0|y=320.0|size=16|color=11072|text=购买价格：>
+INC S$商品购买页面 <Text|x=368.0|y=320.0|color=11072|size=16|text=<$STR(N$优惠后价格)>元宝>
+
+
+#IF
+CHECKMONEY 积分 ? <$STR(S$商品列5)>
+#ACT
+MOV N$优惠后价格 0
+MOV N$优惠计算 <$STR(S$商品列5)>
+FORMULATION <$STR(N$优惠计算)>/10*8 N$优惠后价格
+DEC N$优惠计算 <$STR(N$优惠后价格)>
+INC S$商品购买页面 <Text|x=285.0|y=220.0|color=11002|size=16|text=商品价格：<$STR(S$商品列5)>元宝(8折)>
+INC S$商品购买页面 <Text|x=285.0|y=250.0|color=11002|size=16|text=折扣减免：<$STR(N$优惠计算)>元宝>
+
+INC S$商品购买页面 <Img|x=365.0|y=290.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Img|x=365.0|y=330.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Img|x=365.0|y=370.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Text|x=300.0|y=290.0|color=11072|size=16|text=寄售人：>
+INC S$商品购买页面 <Text|x=370.0|y=290.0|color=11072|size=16|text=<$STR(S$寄售人名字)>>
+INC S$商品购买页面 <Text|x=285.0|y=330.0|size=16|color=11072|text=购买数量：>
+INC S$商品购买页面 <Text|x=371.0|y=330.0|color=11072|size=16|text=<$STR(S$商品列4)>>
+INC S$商品购买页面 <Text|x=285.0|y=370.0|size=16|color=11072|text=折后价格：>
+INC S$商品购买页面 <Text|x=368.0|y=370.0|color=11072|size=16|text=<$STR(N$优惠后价格)>元宝>
+
+#IF
+CHECKMONEY 积分 > 0
+CHECKMONEY 积分 < <$STR(S$商品列5)>
+#ACT
+MOV N$优惠后价格 0
+MOV N$优惠计算 <$STR(S$商品列5)>
+mov N$额度 <$MONEY(积分)>
+FORMULATION (<$STR(N$优惠计算)>-<$STR(N$额度)>)+(<$STR(N$额度)>*8/10) N$优惠后价格
+DEC N$优惠计算 <$STR(N$优惠后价格)>
+
+INC S$商品购买页面 <Text|x=285.0|y=220.0|color=11002|size=16|text=优惠额度：<$MONEY(积分)>元宝(8折)>
+INC S$商品购买页面 <Text|x=285.0|y=250.0|color=11002|size=16|text=折扣减免：<$STR(N$优惠计算)>元宝>
+
+INC S$商品购买页面 <Img|x=365.0|y=290.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Img|x=365.0|y=330.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Img|x=365.0|y=370.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$商品购买页面 <Text|x=300.0|y=290.0|color=11072|size=16|text=寄售人：>
+INC S$商品购买页面 <Text|x=370.0|y=290.0|color=11072|size=16|text=<$STR(S$寄售人名字)>>
+INC S$商品购买页面 <Text|x=285.0|y=330.0|size=16|color=11072|text=购买数量：>
+INC S$商品购买页面 <Text|x=371.0|y=330.0|color=11072|size=16|text=<$STR(S$商品列4)>>
+INC S$商品购买页面 <Text|x=285.0|y=370.0|size=16|color=11072|text=折后价格：>
+INC S$商品购买页面 <Text|x=368.0|y=370.0|color=11072|size=16|text=<$STR(N$优惠后价格)>元宝>
+
+
+#IF
+#ACT
+GOTO @拍卖主界面
+
+[@取消购买]
+#IF
+#ACT
+MOV S$商品列
+MOV S$商品记录取出 
+MOV S$商品购买页面 
+GOTO @拍卖主界面
+
+[@确认购买商品]
+#IF
+CheckBindMoney 元宝 < <$STR(N$优惠后价格)>
+#ACT
+MESSAGEBOX 你没有足够的元宝购买此寄售物品
+BREAK
+
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(S$商品记录取出)>
+#ACT
+MOV S$商品购买页面  
+MOV S$商品记录取出
+goto @寄售数据调取
+MESSAGEBOX 货品不存在，请重新购买
+BREAK
+
+#IF
+LARGE U225 19
+#ACT
+MESSAGEBOX 邮件已达上限，请先提取购买物品，删除邮件后再继续购买！
+break
+
+#IF
+CHECKMONEY 积分 ? <$STR(S$商品列5)>
+CheckBindMoney 元宝 ? <$STR(N$优惠后价格)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(S$商品记录取出)>
+#ACT
+INC u225 1
+
+GetStringPos ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(S$商品记录取出)>
+
+DelText ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N0)> 0
+
+MONEY 积分 - <$STR(S$商品列5)>
+
+ChangeBindMoney 元宝 <$STR(N$优惠后价格)>
+
+MOV N$税收计算 0
+FORMULATION <$STR(N$优惠后价格)>/100*5  N$税收计算
+INC G99 <$STR(N$税收计算)>
+
+logact 10002 通过[寄售掌柜]消耗<$STR(N$优惠后价格)>元宝，剩余元宝：<$GAMEGOLD>。
+MailGIVE <$STR(S$商品列3)> <$STR(S$商品列4)> 
+SendMail 1 寄售行 你好：<$USERNAME>！你花费<$STR(N$优惠后价格)>元宝购买了<$STR(S$寄售人名字)>的<$STR(S$商品列4)>个<$STR(S$商品列3)>。请提取你购买的物品！
+AddTextListEx ..\QuestDiary\寄售行\备份文件\购买日志.txt <$YEAR>年<$MONTH>月<$DAY>日<$HOUR>点<$MINUTE>分<$SECOND>秒,<$SERVERNAME>_<$USERNAME>购买了<$STR(S$寄售人名字)>的<$STR(S$商品列3)>,购买数量：<$STR(S$商品列4)>，购买价格：<$STR(N$优惠后价格)>,货架位置：<$STR(S$商品列6)>
+MOV S$商品购买页面  
+goto @寄售数据调取
+GOTO @寄售人获利
+BREAK
+
+#IF
+CHECKMONEY 积分 > 0
+CHECKMONEY 积分 < <$STR(S$商品列5)>
+CheckBindMoney 元宝 ? <$STR(N$优惠后价格)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(S$商品记录取出)>
+#ACT
+INC u225 1
+GetStringPos ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(S$商品记录取出)>
+
+DelText ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N0)> 0
+
+MONEY 积分 = 0
+ChangeBindMoney 元宝 <$STR(N$优惠后价格)>
+
+MOV N$税收计算 0
+FORMULATION <$STR(N$优惠后价格)>/100*5  N$税收计算
+INC G99 <$STR(N$税收计算)>
+
+logact 10002 通过[寄售掌柜]消耗<$STR(N$优惠后价格)>元宝，剩余元宝：<$GAMEGOLD>。
+MailGIVE <$STR(S$商品列3)> <$STR(S$商品列4)> 
+SendMail 1 寄售行 你好：<$USERNAME>！你花费<$STR(N$优惠后价格)>元宝购买了<$STR(S$寄售人名字)>的<$STR(S$商品列4)>个<$STR(S$商品列3)>。请提取你购买的物品！
+AddTextListEx ..\QuestDiary\寄售行\备份文件\购买日志.txt <$YEAR>年<$MONTH>月<$DAY>日<$HOUR>点<$MINUTE>分<$SECOND>秒,<$SERVERNAME>_<$USERNAME>购买了<$STR(S$寄售人名字)>的<$STR(S$商品列3)>,购买数量：<$STR(S$商品列4)>，购买价格：<$STR(N$优惠后价格)>,货架位置：<$STR(S$商品列6)>
+MOV S$商品购买页面  
+goto @寄售数据调取
+GOTO @寄售人获利
+BREAK
+
+#IF
+CHECKMONEY 积分 = 0
+CheckBindMoney 元宝 ? <$STR(N$优惠后价格)>
+CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(S$商品记录取出)>
+#ACT
+INC u225 1
+GetStringPos ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(S$商品记录取出)>
+
+DelText ..\QuestDiary\寄售行\<$STR(S$货品分类)>分类.txt <$STR(N0)> 0
+
+ChangeBindMoney 元宝 <$STR(N$优惠后价格)>
+
+MOV N$税收计算 0
+FORMULATION <$STR(N$优惠后价格)>/100*5  N$税收计算
+INC G99 <$STR(N$税收计算)>
+
+logact 10002 通过[寄售掌柜]消耗<$STR(N$优惠后价格)>元宝，剩余元宝：<$GAMEGOLD>。
+MailGIVE <$STR(S$商品列3)> <$STR(S$商品列4)> 
+SendMail 1 寄售行 你好：<$USERNAME>！你花费<$STR(N$优惠后价格)>元宝购买了<$STR(S$寄售人名字)>的<$STR(S$商品列4)>个<$STR(S$商品列3)>。请提取你购买的物品！
+
+AddTextListEx ..\QuestDiary\寄售行\备份文件\购买日志.txt <$YEAR>年<$MONTH>月<$DAY>日<$HOUR>点<$MINUTE>分<$SECOND>秒,<$SERVERNAME>_<$USERNAME>购买了<$STR(S$寄售人名字)>的<$STR(S$商品列3)>,购买数量：<$STR(S$商品列4)>，购买价格：<$STR(N$优惠后价格)>,货架位置：<$STR(S$商品列6)>
+MOV S$商品购买页面  
+goto @寄售数据调取
+GOTO @寄售人获利
+BREAK
+
+[@寄售人获利]
+#IF
+<$STR(S$寄售人名字)>.Checkonline
+#ACT
+SetHumVar <$STR(S$寄售人名字)> S$买方名字 <$USERNAME>
+HCALL <$STR(S$寄售人名字)> @寄售价格返还
+BREAK
+#ELSEACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(S$商品记录取出)>
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+AddTextListEx ..\QuestDiary\寄售行\备份文件\离线记录.txt  <$STR(S$商品记录取出)>
+break
+
+[@我的寄售]
+#IF
+#ACT
+MOV N$最低出售价格 0
+MOV N$最多出售数量 0
+GOTO @寄售主界面
+
+[@寄售主界面]
+#IF
+#ACT
+MOV S$下架位置
+MOV S$上架位置
+MOV S$商品界面
+MOV N$索引ID 1
+MOV N$递进ID 1
+
+#IF
+NOT EQUAL T1
+#ACT
+GETVALIDSTRSUPER <$STR(T1)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=1>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T2
+#ACT
+GETVALIDSTRSUPER <$STR(T2)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=2>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T3
+#ACT
+GETVALIDSTRSUPER <$STR(T3)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=3>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T4
+#ACT
+GETVALIDSTRSUPER <$STR(T4)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=4>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T5
+#ACT
+GETVALIDSTRSUPER <$STR(T5)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=5>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T6
+#ACT
+GETVALIDSTRSUPER <$STR(T6)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=6>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T7
+#ACT
+GETVALIDSTRSUPER <$STR(T7)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=7>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T8
+#ACT
+GETVALIDSTRSUPER <$STR(T8)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=8>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T9
+#ACT
+GETVALIDSTRSUPER <$STR(T9)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=9>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+#IF
+NOT EQUAL T10
+#ACT
+GETVALIDSTRSUPER <$STR(T10)>  |  S$寄售数据分割  N$分割数据数量
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位,寄售名_<$STR(N$索引ID)>,寄售数_<$STR(N$索引ID)>,寄售价_<$STR(N$索引ID)>,寄售idx_<$STR(N$索引ID)>}|width=220|height=105|img=private/pmh/013.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@寄售下架#下架位置=10>
+INC S$商品界面 <ItemShow|id=寄售idx_<$str(N$索引ID)>|x=10.0|y=30.0|width=70|height=70|itemid=<$str(S$寄售数据分割3)>|itemcount=<$str(S$寄售数据分割5)>|showtips=1|bgtype=0>
+INC S$商品界面 <Text|id=寄售名_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=25.0|y=5.0|color=58|size=17|text=<$str(S$寄售数据分割4)>>
+INC S$商品界面 <Text|id=寄售数_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=40.0|color=255|size=14|text=数量：<$str(S$寄售数据分割5)>>
+INC S$商品界面 <Text|id=寄售价_<$str(N$索引ID)>|outline=1|outlinecolor=0|x=75.0|y=65.0|color=255|size=14|text=价格：<$str(S$寄售数据分割6)>元宝>
+INC N$索引ID N$递进ID
+
+
+#IF
+EQUAL T1
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=1>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T2
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=2>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T3
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=3>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T4
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=4>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T5
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=5>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T6
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=6>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T7
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=7>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T8
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=8>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T9
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=9>
+INC N$索引ID N$递进ID
+
+#IF
+EQUAL T10
+#ACT
+INC S$商品界面 <Img|id=<$STR(N$索引ID)>|x=0.0|y=0.0|children={<$STR(N$索引ID)>号寄售位}|width=220|height=105|img=private/pmh/012.png>
+INC S$商品界面 <Layout|id=<$STR(N$索引ID)>号寄售位|x=0.0|y=0.0|width=220|height=100|color=x|link=@上架提示#上架位置=10>
+INC N$索引ID N$递进ID
+
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=0.0|width=820|height=520|scale9t=150|scale9b=150|bg=1|scale9r=150|move=0|loadDelay=0|reset=1|scale9l=150|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=751.0|y=2.0|width=50|height=50|link=@exit>
+<Button|x=777.0|y=17.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=360.0|y=7.0|img=private/biaoti/01002.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Text|x=167.0|y=46.0|color=11037|text=温馨提示：寄售手续费为20%，寄售成功后货款将以邮件方式发放给您。>
+<Img|x=491.0|y=70.0|height=430|img=private/pmh/004.png|esc=0>
+<Img|x=32.0|y=441.0|width=458|rotate=0|esc=0|img=private/pmh/003.png>
+<Button|x=225.0|y=453.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=寄售行|link=@拍卖主界面>
+<Img|x=33.0|y=102.0|width=458|rotate=0|esc=0|img=private/pmh/003.png>
+<Text|x=204.0|y=76.0|color=150|size=16|outline=1|outlinecolor=0|text=寄售货架(<$str(u205)>/10)>
+<Text|x=565.0|y=76.0|color=150|size=16|outline=1|outlinecolor=0|text=请选择需要寄售的物品>
+<ListView|children={行底板_1,行底板_2,行底板_3,行底板_4,行底板_5}|x=36.0|y=107.0|width=450|height=330|bounce=0|direction=1|color=x|margin=10>
+
+<Layout|id=行底板_1|children={底板_1,底板_2}|x=0.0|y=0.0|width=455|height=100|color=x>
+<Layout|id=行底板_2|children={底板_3,底板_4}|x=0.0|y=0.0|width=455|height=100|color=x>
+<Layout|id=行底板_3|children={底板_5,底板_6}|x=0.0|y=0.0|width=455|height=100|color=x>
+<Layout|id=行底板_4|children={底板_7,底板_8}|x=0.0|y=0.0|width=455|height=100|color=x>
+<Layout|id=行底板_5|children={底板_9,底板_10}|x=0.0|y=0.0|width=455|height=100|color=x>
+
+<Layout|id=底板_1|children={1}|x=0.0|y=0.0|width=250|height=75|color=x>
+<Layout|id=底板_2|children={2}|x=230.0|y=0.0|width=250|height=75|color=x>
+
+<Layout|id=底板_3|children={3}|x=0.0|y=0.0|width=250|height=75|color=x>
+<Layout|id=底板_4|children={4}|x=230.0|y=0.0|width=250|height=75|color=x>
+
+<Layout|id=底板_5|children={5}|x=0.0|y=0.0|width=250|height=75|color=x>
+<Layout|id=底板_6|children={6}|x=230.0|y=0.0|width=250|height=75|color=x>
+
+<Layout|id=底板_7|children={7}|x=0.0|y=0.0|width=250|height=75|color=x>
+<Layout|id=底板_8|children={8}|x=230.0|y=0.0|width=250|height=75|color=x>
+
+<Layout|id=底板_9|children={9}|x=0.0|y=0.0|width=250|height=75|color=x>
+<Layout|id=底板_10|children={10}|x=230.0|y=0.0|width=250|height=75|color=x>
+
+<ListView|children={装备列表}|x=500.0|y=102.0|width=280|height=390|bounce=0|direction=1|color=x|margin=1>
+<BAGITEMS|id=装备列表|x=-29.0|y=0.0|filter3=10140,10202,10259,10388,10389,10390,10404,10406,10408,10410,10462,10463,10464|count=128|row=32|select=<$STR(S0)>|link=@挑选上架物品>
+
+<$STR(S$商品界面)>
+<$STR(S$寄售商品界面)>
+
+
+[@上架提示]
+#ACT
+sendmsg 9 请在右侧选择寄售道具
+
+
+[@挑选上架物品]
+#IF
+#ACT
+MOV S$寄售物品ID <$STR(S0)>
+LINKITEMBYMAKEINDEX <$STR(S$寄售物品ID)>
+GetItemNameByMakeIndex <$STR(S$寄售物品ID)> S$寄售物品名称
+GetDBItemFieldValue <$STR(S$寄售物品名称)> idx N$寄售物品IDX
+Getitembindinfo <$STR(S$寄售物品ID)> N$绑定状态
+
+#IF
+LARGE N$绑定状态 0
+#ACT
+SENDMSG 9 绑定物品禁止上架
+BREAK
+
+#IF
+EQUAL U205 10
+#ACT
+SENDMSG 9 寄售货架已满
+break
+
+#IF
+CHECK [358] 0
+#ACT
+MESSAGEBOX 非畅玩游戏玩家无法使用寄售行！
+BREAK
+
+;#IF
+;LARGE <$HFCOUNT> 5
+;#ACT
+;MOV N$合区次数 5
+;#ELSEACT
+;MOV N$合区次数 <$HFCOUNT>
+
+#IF
+EQUAL S$寄售物品名称 绿晶矿
+#ACT
+MOV N$最低出售价格 2
+MOV N$最多出售数量 999
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 女娲石
+#ACT
+MOV N$最低出售价格 120
+MOV N$最多出售数量 999
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 天命神石
+#ACT
+MOV N$最低出售价格 3000
+MOV N$最多出售数量 99
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 祝福油
+#ACT
+MOV N$最低出售价格 15
+MOV N$最多出售数量 999
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 1万经验卷
+#ACT
+MOV N$最低出售价格 5
+MOV N$最多出售数量 999
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 10万经验卷
+#ACT
+MOV N$最低出售价格 50
+MOV N$最多出售数量 99
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 精修卷轴
+#ACT
+MOV N$最低出售价格 50
+MOV N$最多出售数量 999
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 声望令牌
+#ACT
+MOV N$最低出售价格 30
+MOV N$最多出售数量 999
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 100万经验卷
+#ACT
+MOV N$最低出售价格 500
+MOV N$最多出售数量 1
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 紫薇星石
+#ACT
+MOV N$最低出售价格 25000
+MOV N$最多出售数量 1
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 沃玛碎片
+#ACT
+MOV N$最低出售价格 10
+MOV N$最多出售数量 20
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 祖玛碎片
+#ACT
+MOV N$最低出售价格 25
+MOV N$最多出售数量 20
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+EQUAL S$寄售物品名称 赤月碎片
+#ACT
+MOV N$最低出售价格 50
+MOV N$最多出售数量 20
+;MOV N$最低出售价格 0
+;FORMULATION <$STR(N$出售价格)>-(<$STR(N$出售价格)>*10*<$STR(N$合区次数)>/100) N$最低出售价格
+
+#IF
+#ACT
+MOV S$寄售商品界面
+INC S$寄售商品界面 <Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|scale9l=20|scale9r=20|scale9b=20|img=public/1900000651_1.png|esc=0|scale9t=20|link=@取消上架>
+INC S$寄售商品界面 <Img|x=250.0|y=75.0|img=private/pmh/014.png|esc=0|link=@穿透层>
+INC S$寄售商品界面 <Img|x=375.0|y=150.0|img=private/pmh/015.png|esc=0>
+INC S$寄售商品界面 <Img|x=365.0|y=240.0|width=150|img=private/pmh/016.png|esc=0>
+INC S$寄售商品界面 <Img|x=365.0|y=280.0|width=150|img=private/pmh/016.png|esc=0>
+INC S$寄售商品界面 <ItemShow|x=370.0|y=145.0|width=70|height=70|itemid=<$STR(N$寄售物品IDX)>|itemcount=0|showtips=1|bgtype=0>
+INC S$寄售商品界面 <Text|x=355.0|y=108.0|color=251|size=16|outline=1|outlinecolor=0|text=即将寄售商品>
+INC S$寄售商品界面 <Text|x=285.0|y=240.0|color=255|size=16|outline=1|outlinecolor=0|text=寄售数量：>
+INC S$寄售商品界面 <Text|x=285.0|y=280.0|color=255|size=16|outline=1|outlinecolor=0|text=出售价格：>
+INC S$寄售商品界面 <Text|x=285.0|y=385.0|color=255|size=14|outline=1|outlinecolor=0|text=单个最低寄售价：<$STR(N$最低出售价格)>元宝>
+INC S$寄售商品界面 <Text|x=285.0|y=360.0|color=255|size=14|outline=1|outlinecolor=0|text=商品最多寄售量：<$STR(N$最多出售数量)>个>
+INC S$寄售商品界面 <Input|x=367.0|y=240.0|width=140|height=25|size=12|color=255|maxcount=7|type=1|inputid=1|place=请输入寄售物品数量>
+INC S$寄售商品界面 <Input|x=365.0|y=280.0|width=140|height=25|size=12|color=255|maxcount=7|type=1|inputid=2|place=请输入寄售物品总价格>
+INC S$寄售商品界面 <Button|x=430.0|y=420.0|nimg=private/pmh/011.png|color=251|size=16|text=寄售|submitInput=1,2|link=@上架商品>
+INC S$寄售商品界面 <Button|x=305.0|y=420.0|nimg=private/pmh/011.png|color=251|size=16|text=取消|link=@取消上架>
+
+MOV S0 
+GOTO @寄售主界面
+
+[@取消上架]
+#ACT
+MOV S0
+MOV S$寄售物品ID 
+MOV S$寄售物品名称
+MOV N$寄售物品IDX
+MOV S$寄售商品界面
+GOTO @寄售主界面
+
+[@取消下架]
+#IF
+#ACT
+MOV S$寄售商品界面 
+MOV S$下架数据分割
+MOV S$下架位置
+GOTO @寄售主界面
+
+[@寄售下架]
+#IF
+NOT EQUAL T<$STR(S$下架位置)>
+#ACT
+GETVALIDSTRSUPER <$STR(T<$STR(S$下架位置)>)>  |  S$下架数据分割  N$分割数据数量
+MOV S$寄售商品界面
+INC S$寄售商品界面 <Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|scale9r=20|scale9l=20|img=public/1900000651_1.png|esc=0|scale9b=20|scale9t=20|link=@取消下架>
+INC S$寄售商品界面 <Img|x=250.0|y=75.0|img=private/pmh/014.png|esc=0|link=@穿透层>
+INC S$寄售商品界面 <Img|x=375.0|y=150.0|img=private/pmh/015.png|esc=0>
+INC S$寄售商品界面 <Img|x=365.0|y=240.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$寄售商品界面 <Img|x=365.0|y=280.0|width=150|esc=0|img=private/pmh/016.png>
+INC S$寄售商品界面 <ItemShow|x=370.0|y=145.0|width=70|height=70|itemid=<$STR(S$下架数据分割3)>|itemcount=<$STR(S$下架数据分割5)>|showtips=1|bgtype=0>
+INC S$寄售商品界面 <Text|x=370.0|y=108.0|size=16|color=251|text=下架商品>
+INC S$寄售商品界面 <Text|x=285.0|y=240.0|color=255|size=16|text=寄售数量：>
+INC S$寄售商品界面 <Text|x=285.0|y=280.0|color=255|size=16|text=出售价格：>
+INC S$寄售商品界面 <Text|x=370.0|y=242.0|color=255|size=16|text=<$STR(S$下架数据分割5)>>
+INC S$寄售商品界面 <Text|x=370.0|y=282.0|color=255|size=16|text=<$STR(S$下架数据分割6)>>
+INC S$寄售商品界面 <Button|x=430.0|y=420.0|color=251|size=18|nimg=private/pmh/011.png|text=下架|link=@下架商品#货品位置=<$STR(S$下架数据分割7)>>
+INC S$寄售商品界面 <Button|x=305.0|y=420.0|color=251|size=18|nimg=private/pmh/011.png|text=取消|link=@取消下架>
+GOTO @寄售主界面
+
+
+[@下架商品]
+#IF
+NOT CheckContainsTextListEx ..\QuestDiary\寄售行\<$STR(S$下架数据分割4)>分类.txt  <$STR(T<$str(S$货品位置)>)>
+#ACT
+MOV S$寄售商品界面 
+MOV S$货品位置
+MESSAGEBOX 货品已卖出！
+delaygoto 500 @寄售主界面
+BREAK
+
+#IF
+LARGE  J32  4
+#ACT
+MOV S$寄售商品界面 
+MOV S$货品位置
+delaygoto 100 @寄售主界面
+MESSAGEBOX 单日最多允许下架5次货物，请勿频繁下架！
+BREAK
+
+
+#IF
+NOT EQUAL T<$str(S$货品位置)>
+#ACT
+GetStringPos ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(T<$str(S$货品位置)>)>
+DelText ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(N0)> 0
+
+GetStringPos ..\QuestDiary\寄售行\<$STR(S$下架数据分割4)>分类.txt <$STR(T<$str(S$货品位置)>)>
+DelText ..\QuestDiary\寄售行\<$STR(S$下架数据分割4)>分类.txt <$STR(N0)> 0
+
+AddTextListEx ..\QuestDiary\寄售行\备份文件\下架日志.txt <$YEAR>年<$MONTH>月<$DAY>日<$HOUR>点<$MINUTE>分<$SECOND>秒,<$SERVERNAME>_<$USERNAME>下架了<$STR(S$下架数据分割4)>,下架数量：<$STR(S$下架数据分割5)>，物品价格：<$STR(S$下架数据分割6)>,货架位置：<$STR(S$下架数据分割7)>
+
+MOV T<$str(S$货品位置)>
+DEC U205 1
+GIVE <$STR(S$下架数据分割4)> <$STR(S$下架数据分割5)>
+SENDMSG 9 成功下架<$STR(S$下架数据分割4)>...
+INC J32 1
+MOV S$寄售商品界面
+MOV S$货品位置
+GOTO @寄售主界面
+BREAK
+
+
+[@上架商品]
+#IF
+EQUAL U205 10
+#ACT
+SENDMSG 9 寄售货架已满
+break
+
+#OR
+EQUAL <$NPCINPUT(1)> 
+EQUAL <$NPCINPUT(2)> 
+EQUAL <$NPCINPUT(1)> 0
+EQUAL <$NPCINPUT(2)> 0
+#ACT
+MESSAGEBOX 请正确填写寄售信息！
+break
+
+#IF
+#ACT
+LeftStr <$NPCINPUT(1)>  1 S$获取数量字符串
+LeftStr <$NPCINPUT(2)>  1 S$获取价格字符串
+
+#OR
+EQUAL  S$获取数量字符串 0
+EQUAL  S$获取价格字符串 0
+#ACT
+MESSAGEBOX 请正确填写寄售信息！
+break
+
+#IF
+NOT CHECKITEMS <$STR(S$寄售物品名称)>#<$NPCINPUT(1)> 1 0
+#ACT
+MESSAGEBOX 寄售数量不正确
+break
+
+#IF
+LARGE <$NPCINPUT(2)> 0
+#ACT
+MOV N$价格计算 <$STR(N$最低出售价格)>
+MUL N$价格计算 <$NPCINPUT(1)>
+
+#IF
+LARGE <$NPCINPUT(1)> <$STR(N$最多出售数量)>
+#ACT
+MESSAGEBOX 该物品每次最多寄售<$STR(N$最多出售数量)>个！
+break
+
+#IF
+SMALL <$NPCINPUT(2)> <$STR(N$价格计算)>
+#ACT
+MESSAGEBOX 该物品限制最低寄售单价为：<$STR(N$最低出售价格)>元宝\总寄售价格不能低于<$STR(N$价格计算)>元宝！
+break
+
+#IF
+CHECKITEMS <$STR(S$寄售物品名称)>#<$NPCINPUT(1)> 1 0
+#ACT
+TakeStateItem <$STR(S$寄售物品名称)> <$NPCINPUT(1)> 0 0 0 0 0 0 0 0
+GOTO @寄售位置查询
+MOV S$寄售商品界面
+GOTO @保存寄售数据
+break
+
+[@寄售位置查询]
+#IF
+NOT EQUAL T1
+NOT EQUAL T2
+NOT EQUAL T3
+NOT EQUAL T4
+NOT EQUAL T5
+NOT EQUAL T6
+NOT EQUAL T7
+NOT EQUAL T8
+NOT EQUAL T9
+NOT EQUAL T10
+#ACT
+BREAK
+
+#IF
+EQUAL T1
+#ACT
+MOV N$寄售位置 1
+BREAK
+
+#IF
+EQUAL T2
+#ACT
+MOV N$寄售位置 2
+BREAK
+
+#IF
+EQUAL T3
+#ACT
+MOV N$寄售位置 3
+BREAK
+
+#IF
+EQUAL T4
+#ACT
+MOV N$寄售位置 4
+BREAK
+
+#IF
+EQUAL T5
+#ACT
+MOV N$寄售位置 5
+BREAK
+
+#IF
+EQUAL T6
+#ACT
+MOV N$寄售位置 6
+BREAK
+
+#IF
+EQUAL T7
+#ACT
+MOV N$寄售位置 7
+BREAK
+
+#IF
+EQUAL T8
+#ACT
+MOV N$寄售位置 8
+BREAK
+
+#IF
+EQUAL T9
+#ACT
+MOV N$寄售位置 9
+BREAK
+
+#IF
+EQUAL T10
+#ACT
+MOV N$寄售位置 10
+BREAK
+
+[@保存寄售数据]
+#IF
+EQUAL U205 10
+#ACT
+SENDMSG 9 寄售货架已满
+break
+
+#IF
+SMALL U205 10
+#ACT
+INC U205 1
+
+MOV T45 <$USERID>#<$STR(N$寄售位置)>|<$SERVERNAME>1#<$USERNAME>|<$STR(N$寄售物品IDX)>|<$STR(S$寄售物品名称)>|<$NPCINPUT(1)>|<$NPCINPUT(2)>|<$STR(N$寄售位置)>
+
+MOV T<$STR(N$寄售位置)> <$STR(T45)>
+
+AddTextListEx ..\QuestDiary\寄售行\备份文件\主文件.txt <$STR(T45)>
+
+AddTextListEx ..\QuestDiary\寄售行\<$STR(S$寄售物品名称)>分类.txt <$STR(T45)>
+
+AddTextListEx ..\QuestDiary\寄售行\备份文件\上架日志.txt <$YEAR>年<$MONTH>月<$DAY>日<$HOUR>点<$MINUTE>分<$SECOND>秒,<$SERVERNAME>_<$USERNAME>上架了<$STR(S$寄售物品名称)>,寄售数量：<$NPCINPUT(1)>，寄售价格：<$NPCINPUT(2)>,货架位置：<$STR(N$寄售位置)>
+
+SENDMSG 0 151 234 寄售系统：玩家[<$USERNAME>]委托寄售行掌柜寄售了【<$STR(S$寄售物品名称)>】，并吆喝一句欲购从速... 
+SENDMSG 9 成功寄售<$STR(S$寄售物品名称)>，物品卖出后将以邮寄方式发送货款...
+
+MOV S$寄售物品ID 
+MOV S$寄售物品名称
+MOV N$寄售物品IDX 0
+MOV T45 
+
+GOTO @寄售主界面
+BREAK
+
+}

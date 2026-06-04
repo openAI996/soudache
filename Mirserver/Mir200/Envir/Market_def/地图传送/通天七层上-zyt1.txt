@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE zyt4 23 26

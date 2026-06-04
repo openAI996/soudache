@@ -1,0 +1,50 @@
+[@MAIN]
+#IF
+CHECKVAR HUMAN 保卫家园 = 23
+#ACT
+MOV S$家园任务 <Button|x=180.0|y=80.0|color=255|pimg=public/1900000663_2.png|size=18|nimg=public/1900000663_1.png|text=保卫家园(白日门)|link=@保卫白日>
+#ELSEACT
+MOV S$家园任务
+
+
+#IF
+#SAY
+<Img|move=0|img=public/bg_npc_01.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=545|y=0|width=80|height=80|link=@exit>
+<Button|x=546|y=0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Text|x=15.0|y=15.0|color=255|size=18|text=我的功夫你应该不会怀疑吧！那群徒弟嘛也算是学有所成了。>
+<Text|x=15.0|y=35.0|color=255|size=18|text=唉！要不是这把老骨头，我也真想同他们一道去闯荡闯荡！>
+<$STR(S$家园任务)>
+
+
+[@保卫白日]
+#IF
+CHECKVAR HUMAN 保卫家园 = 23
+#ACT
+MESSAGEBOX 你确定使用5元宝进入白日门秘境吗 @白日确认 @取消
+BREAK
+#ELSEACT
+MESSAGEBOX 保卫家园(白日门)任务每天只能进入一次！
+BREAK
+
+[@白日确认]
+#IF
+CHECKMONEY 元宝 > 4
+#ACT
+MONEY 元宝 - 5
+DelMirrorMap <$USERNAME>白日
+ADDMIRRORMAP d717 <$USERNAME>白日 保卫家园(白日) 3600 3
+CreateNPC 保卫家园 <$USERNAME>白日 61 57 15 保卫家园 1
+MonGenEx <$USERNAME>白日 50 50 祖玛卫士 50 3 0 255
+MonGenEx <$USERNAME>白日 50 50 祖玛卫士 50 3 0 255
+MonGenEx <$USERNAME>白日 50 50 祖玛卫士 50 3 0 255
+MonGenEx <$USERNAME>白日 50 50 祖玛卫士 50 3 0 255
+MonGenEx <$USERNAME>白日 50 50 祖玛卫士 50 3 0 255
+MonGenEx <$USERNAME>白日 50 50 祖玛卫士 50 3 0 255
+MonGenEx <$USERNAME>白日 50 50 祖玛卫士 50 3 0 255
+MAPMOVE <$USERNAME>白日 60 55 5
+SendCenterMsg 180 251 您在当前地图中停留剩余时间为%d..... 1 3600 @保卫家园
+BREAK
+#ELSEACT
+MESSAGEBOX 失败：您的元宝不足
+BREAK

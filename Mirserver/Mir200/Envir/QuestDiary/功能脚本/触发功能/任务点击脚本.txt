@@ -1,0 +1,160 @@
+[@点击任务]
+
+{
+
+#IF
+EQUAL <$CURRTASKID> 1
+#ACT
+OPENNPCSHOWEX 143
+
+#IF
+CHECK [1] 1
+checklevelex < 28
+EQUAL <$CURRTASKID> 2
+CHECKMAPNAME lgf
+#ACT
+StartAutoPlayGame
+#IF
+CHECK [1] 1
+checklevelex < 28
+EQUAL <$CURRTASKID> 2
+not CHECKMAPNAME lgf
+#ACT
+MAP lgf
+StartAutoPlayGame
+
+#IF
+EQUAL <$CURRTASKID> 3
+CHECKMAPNAME 3
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=490.0|y=20.0|width=50|height=50|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=222.0|y=30.0|img=private/biaoti/01058.png|esc=0>
+<Text|x=45.0|y=70.0|size=18|color=11008|text=欢迎进入[搜打撤传奇]>
+<RText|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=亲爱的玩家：<<$USERNAME>/FCOLOR=251>>
+<RText|x=45.0|y=120.0|width=598|height=24|size=17|color=255|outline=1|outlinecolor=0|text=您已来到盟重土城，现在可以在盟重安全区<【传送员】坐标/FCOLOR=11003>>
+<RText|x=45.0|y=145.0|size=17|color=255|outline=1|outlinecolor=0|text=<[340:340]/FCOLOR=11003>处进入地图，目前角色在以下地图升级最快！>
+
+<Layout|x=35.0|y=199.0|width=100|height=40|color=*|link=@任务进图#地图代码=d001#落点坐标X=0#落点坐标Y=0>
+<Img|x=40.0|y=209.0|img=public/00010.png|esc=0>
+<Text|x=60.0|y=205.0|color=11008|size=18|text=半兽古墓|link=@任务进图#地图代码=d001#落点坐标X=0#落点坐标Y=0>
+
+<Layout|x=155.0|y=199.0|width=100|height=40|color=*|link=@任务进图#地图代码=d2051#落点坐标X=112#落点坐标Y=175>
+<Img|x=160.0|y=209.0|img=public/00010.png|esc=0>
+<Text|x=180.0|y=205.0|color=11008|size=18|text=骷髅洞|link=@任务进图#地图代码=d2051#落点坐标X=112#落点坐标Y=175>
+
+<Layout|x=275.0|y=199.0|width=100|height=40|color=*|link=@任务进图#地图代码=d401#落点坐标X=28#落点坐标Y=179>
+<Img|x=280.0|y=209.0|img=public/00010.png|esc=0>
+<Text|x=300.0|y=205.0|color=11008|size=18|text=废弃矿洞|link=@任务进图#地图代码=d401#落点坐标X=28#落点坐标Y=179>
+
+<Layout|x=400.0|y=199.0|width=100|height=40|color=*|link=@任务进图#地图代码=d601#落点坐标X=206#落点坐标Y=233>
+<Img|x=405.0|y=209.0|img=public/00010.png|esc=0>
+<Text|x=425.0|y=205.0|color=11008|size=18|text=蜈蚣洞穴|link=@任务进图#地图代码=d601#落点坐标X=206#落点坐标Y=233>
+
+#IF
+EQUAL <$CURRTASKID> 4
+CheckHumInRange 3 330 330 50
+#ACT
+MOV S$分解引导 开启
+OPENNPCSHOWEX 26
+
+#IF
+EQUAL <$CURRTASKID> 4
+not CheckHumInRange 3 330 330 50
+#ACT
+MESSAGEBOX 是否需要前往土城分解装备完成任务？ @确定去分解 @取消
+MOV S$分解引导 开启
+OPENNPCSHOWEX 26
+
+#IF
+EQUAL <$CURRTASKID> 5
+#ACT
+Navigation 102 333 关注礼包
+
+#IF
+EQUAL <$CURRTASKID> 6
+CheckHumInRange 3 330 330 15 
+#ACT
+OPENNPCSHOWEX 36 
+
+#IF
+EQUAL <$CURRTASKID> 6
+NOT CheckHumInRange 3 330 330 15 
+#ACT
+OPENHYPERLINK 1
+Navigation 202 4 技能精修
+
+#IF
+EQUAL <$CURRTASKID> 7
+#ACT
+;OPENHYPERLINK 37
+OPENHYPERLINK 1
+Navigation 202 6 八门遁甲界面
+
+
+#IF
+CHECKMAPNAME 3
+EQUAL <$CURRTASKID> 9
+CHECKVAR HUMAN 天书任务次数 < 30
+CHECKVAR HUMAN 天书当日次数 = 0
+CHECKVAR HUMAN 天书任务接取 = 1
+CHECKVAR HUMAN 天书任务杀怪 < 10
+#ACT
+OPENNPCSHOWEX 23
+#IF
+CHECKMAPNAME 3
+EQUAL <$CURRTASKID> 9
+CHECKVAR HUMAN 天书任务次数 < 30
+CHECKVAR HUMAN 天书当日次数 = 0
+CHECKVAR HUMAN 天书任务接取 = 1
+CHECKVAR HUMAN 天书任务杀怪 = 10
+#ACT
+OPENNPCSHOWEX 15
+
+
+#IF
+CHECKMAPNAME 3
+EQUAL <$CURRTASKID> 10
+CHECKVAR HUMAN 镖车次数 = 0
+#ACT
+OPENNPCSHOWEX 53
+#IF
+CHECKMAPNAME 3
+EQUAL <$CURRTASKID> 10
+CHECKVAR HUMAN 镖车次数 = 1
+#ACT
+OPENNPCSHOWEX 57
+
+
+[@确定去分解]
+#IF
+#ACT
+MAPMOVE 3 335 323
+MOV S$分解引导 开启
+OPENNPCSHOWEX 26
+
+
+[@任务进图]
+#IF
+EQUAL S$落点坐标X 0
+EQUAL S$落点坐标Y 0
+;CHECK [3] 0
+#ACT
+SET [3] 1
+NEWCHANGETASK 3 <$LEVEL>
+MAP <$STR(S$地图代码)> 
+CLOSE
+BREAK
+
+#IF
+;CHECK [3] 0
+#ACT
+SET [3] 1
+NEWCHANGETASK 3 <$LEVEL>
+MAPMOVE <$STR(S$地图代码)> <$STR(S$落点坐标X)> <$STR(S$落点坐标Y)>
+CLOSE
+BREAK
+
+
+}

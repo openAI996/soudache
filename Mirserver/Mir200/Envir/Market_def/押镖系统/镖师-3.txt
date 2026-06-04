@@ -1,0 +1,549 @@
+[@MAIN]
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=我是玛法大陆”震天镖局“的镖师，目前我们镖局有一大批重>
+<RText|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=要物资，需要运送到土城<"沙巴克大门(669,338)"/FCOLOR=11008>的行商处。>
+<Text|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=每人每天都可以在我这里押运一次镖，如果你想升级的话，这>
+<Text|x=45.0|y=145.0|color=255|size=17|outline=1|outlinecolor=0|text=倒是一个快速升级的好方法。>
+<Layout|x=45.0|y=185.0|width=100|height=40|link=@打听押镖>
+<Text|x=70.0|y=190.0|color=11008|size=18|text=打听押镖|link=@打听押镖>
+<Layout|x=235.0|y=185.0|width=100|height=40|link=@传送>
+<Text|x=265.0|y=190.0|color=11008|size=18|text=传送|link=@传送>
+<Img|x=45.0|y=193.0|width=20|height=20|esc=0|img=public/00013.png>
+<Img|x=240.0|y=193.0|width=20|height=20|esc=0|img=public/00012.png>
+
+
+
+
+[@打听押镖]
+<Img|x=0.0|y=20.0|height=290|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<Text|x=45.0|y=70.0|color=11054|size=18|text=押镖说明：>
+<RText|x=45.0|y=100.0|color=255|size=16|outline=1|outlinecolor=0|text=1、等级条件：只有<50级及以上/FCOLOR=11008>的玩家才有资格帮我们押运镖车>
+<RText|x=45.0|y=125.0|color=255|size=16|outline=1|outlinecolor=0|text=2、押金需求：需要支付<100万金币/FCOLOR=11008>的押金，请放心，完成拉镖任>
+<RText|x=70.0|y=150.0|color=255|size=16|outline=1|outlinecolor=0|text=务后，押金会原封不动地退还。>
+<RText|x=45.0|y=175.0|outlinecolor=0|color=255|outline=1|size=16|text=3、丰厚奖励：普通镖车押镖途中，你可以在<3个驿站点/FCOLOR=11008>分别加>
+<RText|x=70.0|y=200.0|outlinecolor=0|color=255|outline=1|size=16|text=1次货，奖励更加丰厚！>
+<RText|x=45.0|y=225.0|color=255|size=16|outline=1|outlinecolor=0|text=4、押镖时间：只有每天的<19:00-23:00/FCOLOR=11003>才能押送镖车！>
+<Layout|x=67.0|y=254.0|width=200|height=40|rotate=0|link=@押镖界面>
+<Text|x=70.0|y=260.0|color=11008|size=18|text=没问题，就把镖车交给我吧！|link=@押镖界面>
+<Layout|x=388.0|y=254.0|width=100|height=40|rotate=0|link=@押镖返利界面>
+<Text|x=384.0|y=260.0|color=11008|size=18|text=押运返利镖车|link=@押镖返利界面>
+<Img|x=45.0|y=265.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=361.0|y=265.0|width=18|height=20|esc=0|img=public/00022.png>
+
+
+[@押镖返利界面]
+#if
+#act
+MOV N$返利计算 0
+MOV N$返利值  0
+MOV N$返利值 <$GAMEGIRD>
+MOV N$已领取返利 <$STR(u126)>
+MUL N$返利计算 N$返利值 30
+DEC N$返利计算 N$已领取返利
+
+#IF
+LARGE N$返利计算 0
+SMALL N$返利计算 <$STR(N$返利值)>
+#ACT
+mov N$返利值 <$str(N$返利计算)>
+
+#IF
+SMALL N$返利计算 1
+#ACT
+MOV N$返利值  0
+mov N$返利计算 0
+
+#if
+#act
+#say
+<Img|x=0.0|y=20.0|height=290|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@打听押镖>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@打听押镖>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<Text|x=45.0|y=70.0|size=18|color=11054|text=返利押镖说明：>
+<RText|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=16|text=充值达到100元的玩家，每天晚上<20:00-21:00/FCOLOR=11003>>
+<RText|x=45.0|y=120.0|outlinecolor=0|color=255|outline=1|size=16|text=可以在我这里押运 <返利镖车/FCOLOR=249>，押运成功后，你可以获得不菲的返利>
+<RText|x=45.0|y=145.0|outlinecolor=0|color=255|outline=1|size=16|text=元宝奖励！<(只奖励元宝，无其他奖励！)/FCOLOR=11008>>
+<RText|x=45.0|y=175.0|outlinecolor=0|color=255|outline=1|size=16|text=你累计充值：<$GAMEGIRD>元，剩余返利：<$str(N$返利计算)>元宝。>
+<RText|x=45.0|y=200.0|outlinecolor=0|color=255|outline=1|size=16|text=本次押运成功后可获得<$STR(N$返利值)>元宝。>
+<Layout|x=67.0|y=232.0|width=150|height=40|rotate=0|link=@开始押运返利镖车>
+<Text|x=70.0|y=235.0|color=11008|size=18|text=确定押运返利镖车|link=@开始押运返利镖车>
+<Layout|x=293.0|y=230.0|width=150|height=40|rotate=0|link=@直接领取返利>
+<Text|x=289.0|y=235.0|color=11008|size=18|text=不押镖，直接领取返利|link=@直接领取返利>
+<Img|x=45.0|y=240.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=266.0|y=240.0|width=18|height=20|esc=0|img=public/00022.png>
+;<Text|x=43.0|y=269.0|color=11022|size=18|text=注：返利镖车和普通镖车每天只允许押运其中一种！>
+
+
+[@开始押运返利镖车]
+#if
+CHECKGAMEGIRD < 100
+#act
+MESSAGEBOX 您的充值不足100元，无法押运返利镖车！
+Pullpay 100 1 2
+BREAK
+
+#if
+SMALL N$返利计算 1
+#act
+MESSAGEBOX 您的返利值已经消耗完
+BREAK
+
+#IF
+CHECKLEVELEX < 50
+#ACT
+MESSAGEBOX 50级以上的玩家才能押镖！！
+BREAK
+
+;#if
+;checkgamegold < <$GAMEGIRD>
+;#act
+;MESSAGEBOX 请交给我<$GAMEGIRD>个元宝作为押金，押送成功后将会返还给您！
+;BREAK
+
+#OR
+CHECKSLAVENAME 镖车1
+CHECKSLAVENAME 镖车2
+CHECKSLAVENAME 镖车3
+CHECKSLAVENAME 镖车4
+CHECKSLAVENAME 返利镖车1
+CHECKSLAVENAME 返利镖车2
+CHECKSLAVENAME 返利镖车3
+CHECKSLAVENAME 返利镖车4
+CHECKSLAVENAME 返利镖车5
+CHECKSLAVENAME 返利镖车6
+CHECKSLAVENAME 返利镖车7
+CHECKSLAVENAME 返利镖车8
+CHECKSLAVENAME 返利镖车9
+CHECKSLAVENAME 返利镖车10
+CHECKSLAVENAME 返利镖车11
+CHECKSLAVENAME 返利镖车12
+#ACT
+MESSAGEBOX 你当前已经有护送的镖车了,请将它护送至沙巴克大门【669:338】交给富商！
+BREAK
+
+#IF
+LARGE J28 0
+#SAY
+<Img|x=0.0|y=20.0|height=240|show=0|reset=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|loadDelay=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=看来你已经完成了今日的押镖任务，如果你想要再来接取>
+<Text|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=押镖任务的话，那就等明天再来吧！>
+<Layout|x=39.0|y=149.0|width=150|height=40|link=@EXIT>
+<Text|x=45.0|y=155.0|color=11008|size=18|text=好的，谢谢你！|link=@EXIT>
+#ACT
+BREAK
+
+
+#IF
+SMALL J28 1
+#SAY
+<Img|x=0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<RText|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=请在1个小时内把镖车护送到<沙巴克大门(669,338)/FCOLOR=11008>处的盟重>
+<RText|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=富商那里！你可以打开大地图查看<镖车交还点/FCOLOR=11008>位置！>
+<Layout|x=65.0|y=172.0|width=200|height=40|link=@开始接镖返利>
+<Text|x=70.0|y=178.0|color=11008|size=18|text=好的，我一定不负所托！|link=@开始接镖返利>
+<Img|x=45.0|y=180.0|width=20|height=20|esc=0|img=public/00012.png>
+#ACT
+BREAK
+
+[@开始接镖返利]
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$拉镖点击)>
+#ACT
+BREAK
+
+#IF
+CHECKGAMEGIRD > 99
+CHECKGAMEGIRD < 200
+#ACT
+MOV S$镖车名称 返利镖车1
+
+#IF
+CHECKGAMEGIRD > 199
+CHECKGAMEGIRD < 300
+#ACT
+MOV S$镖车名称 返利镖车2
+
+#IF
+CHECKGAMEGIRD > 299
+CHECKGAMEGIRD < 400
+#ACT
+MOV S$镖车名称 返利镖车3
+
+#IF
+CHECKGAMEGIRD > 399
+CHECKGAMEGIRD < 500
+#ACT
+MOV S$镖车名称 返利镖车4
+
+#IF
+CHECKGAMEGIRD > 499
+CHECKGAMEGIRD < 600
+#ACT
+MOV S$镖车名称 返利镖车5
+
+#IF
+CHECKGAMEGIRD > 599
+CHECKGAMEGIRD < 700
+#ACT
+MOV S$镖车名称 返利镖车6
+
+#IF
+CHECKGAMEGIRD > 699
+CHECKGAMEGIRD < 800
+#ACT
+MOV S$镖车名称 返利镖车7
+
+#IF
+CHECKGAMEGIRD > 799
+CHECKGAMEGIRD < 900
+#ACT
+MOV S$镖车名称 返利镖车8
+
+#IF
+CHECKGAMEGIRD > 899
+CHECKGAMEGIRD < 1000
+#ACT
+MOV S$镖车名称 返利镖车9
+
+#IF
+CHECKGAMEGIRD > 999
+CHECKGAMEGIRD < 10000
+#ACT
+MOV S$镖车名称 返利镖车10
+
+#IF
+CHECKGAMEGIRD > 9999
+CHECKGAMEGIRD < 100000
+#ACT
+MOV S$镖车名称 返利镖车11
+
+#IF
+CHECKGAMEGIRD > 99999
+#ACT
+MOV S$镖车名称 返利镖车12
+
+#IF
+SMALL N$返利值 100
+#ACT
+MOV N$掉落提示 50
+MOV U129 50
+MOV U128 1
+
+#IF
+large N$返利值 99
+SMALL N$返利值 50000
+#ACT
+MOV  N$掉落判断 0
+FORMULATION (<$str(N$返利值)>/5)/100 N$掉落判断
+MOV U129 100
+MOV U128 <$STR(N$掉落判断)>
+
+#IF
+large N$返利值 49999
+SMALL N$返利值 250000
+#ACT
+MOV  N$掉落判断 0
+FORMULATION (<$str(N$返利值)>/5)/500 N$掉落判断
+MOV U129 500
+MOV U128 <$STR(N$掉落判断)>
+
+#IF
+large N$返利值 249999
+#ACT
+MOV U129 500
+MOV U128 100
+
+#IF
+LARGE U129 0
+#ACT
+MOV N$掉落提示 <$STR(N$掉落判断)>
+MUL N$掉落提示 <$STR(N$掉落提示)> <$STR(u129)>
+
+#IF
+HOUR 20
+MIN 0 59
+#ACT
+MOV N$拉镖点击 <$UTCNOW8>
+inc u126 <$STR(N$返利值)>
+MOV u127 <$STR(N$返利值)>
+RECALLMOB <$STR(S$镖车名称)> 0 60 0
+DartTime 3600 1
+ChangeSlaveNameColor <$STR(S$镖车名称)> 249
+MOV J28 999
+MOV S$屏蔽名字 <$USERNAME>
+DEC S$屏蔽名字 3 16
+INC S$屏蔽名字 *****
+SendCenterMsg 251 249 [<$STR(S$屏蔽名字)>]成功在土城震天镖局接取到【返利镖车】，希望他此行护送镖车一路平安！ 1 30
+SENDMSG 7 恭喜你成功领取返利镖车，本次押镖可以获得<$STR(N$返利值)>元宝，镖车被劫者将会掉落<$str(N$掉落提示)>元宝
+CLOSE
+delaygoto 5 @活跃任务4
+BREAK
+#ELSEACT
+SENDMSG 9 押送镖车时间点为:20:00~21:00之间
+BREAK
+
+
+[@直接领取返利]
+#if
+#act
+MOV N$返利计算 0
+MOV N$返利值  0
+MOV N$返利值 <$GAMEGIRD>
+MOV N$已领取返利 <$STR(u126)>
+MUL N$返利计算 N$返利值 30
+DEC N$返利计算 N$已领取返利
+MOV N$直接返利 0
+CalcPer <$str(N$返利值)> 66 N$直接返利
+
+#IF
+LARGE N$返利计算 0
+SMALL N$返利计算 <$STR(N$返利值)>
+#ACT
+mov N$返利值 <$str(N$返利计算)>
+CalcPer <$str(N$返利值)> 66 N$直接返利
+
+#IF
+SMALL N$返利计算 1
+#ACT
+mov N$返利计算 0
+mov N$返利值 0
+
+
+#if
+#act
+#say
+<Img|x=0.0|y=20.0|height=250|show=0|reset=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|esc=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@押镖返利界面>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@押镖返利界面>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<RText|x=45.0|y=75.0|color=255|size=16|outlinecolor=0|outline=1|text=若你担心路途遥远，自身实力不足，唯恐有失，>
+<RText|x=45.0|y=100.0|color=255|size=16|outlinecolor=0|outline=1|text=可以放弃本次押送，但我只能拿出其中 <66%/FCOLOR=11003>的返利给你>
+<RText|x=45.0|y=135.0|outlinecolor=0|color=255|outline=1|size=16|text=即本次正常押运可获得：<$str(N$返利值)>元宝\若选择直接领取可获得：<$str(N$直接返利)>元宝。>
+<RText|x=45.0|y=185.0|color=255|size=16|outlinecolor=0|outline=1|text=你累计充值：<$GAMEGIRD>元，剩余返利：<$str(N$返利计算)>元宝。>
+<Layout|x=67.0|y=219.0|width=120|height=40|rotate=0|link=@返利领取确认>
+<Text|x=70.0|y=225.0|color=11008|size=18|text=确定直接领取|link=@返利领取确认>
+<Layout|x=285.0|y=219.0|width=120|height=40|rotate=0|link=@押镖返利界面>
+<Text|x=289.0|y=225.0|color=11008|size=18|text=我考虑考虑|link=@押镖返利界面>
+<Img|x=45.0|y=230.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=266.0|y=230.0|width=18|height=20|esc=0|img=public/00022.png>
+
+[@返利领取确认]
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$拉镖点击)>
+#ACT
+BREAK
+
+#if
+SMALL N$返利计算 1
+#act
+MESSAGEBOX 您的返利值已经消耗完
+BREAK
+
+#IF
+LARGE J28 0
+#ACT
+MESSAGEBOX 你今天已经押送过镖车了！
+BREAK
+
+#IF
+HOUR 20
+MIN 0 59
+#ACT
+MOV N$拉镖点击 <$UTCNOW8>
+inc u126 <$STR(N$返利值)>
+MONEY 元宝 + <$str(N$直接返利)>
+MOV J28 999
+
+MOV S$屏蔽名字 <$USERNAME>
+DEC S$屏蔽名字 3 16
+INC S$屏蔽名字 *****
+SendCenterMsg 251 249 [<$STR(S$屏蔽名字)>]成功在土城震天镖局领取了今日【返利元宝】！ 1 30
+CLOSE
+delaygoto 5 @活跃任务4
+BREAK
+#ELSEACT
+SENDMSG 9 领取时间点为:20:00~21:00之间
+BREAK
+
+
+
+
+[@押镖界面]
+#IF
+CHECKLEVELEX < 50
+#ACT
+MESSAGEBOX 50级以上的玩家才能押镖！！
+BREAK
+
+#OR
+CHECKSLAVENAME 镖车1
+CHECKSLAVENAME 镖车2
+CHECKSLAVENAME 镖车3
+CHECKSLAVENAME 镖车4
+CHECKSLAVENAME 返利镖车1
+CHECKSLAVENAME 返利镖车2
+CHECKSLAVENAME 返利镖车3
+CHECKSLAVENAME 返利镖车4
+CHECKSLAVENAME 返利镖车5
+CHECKSLAVENAME 返利镖车6
+CHECKSLAVENAME 返利镖车7
+CHECKSLAVENAME 返利镖车8
+CHECKSLAVENAME 返利镖车9
+CHECKSLAVENAME 返利镖车10
+CHECKSLAVENAME 返利镖车11
+CHECKSLAVENAME 返利镖车12
+#ACT
+MESSAGEBOX 你当前已经有护送的镖车了,请将它护送至沙巴克大门【669:338】交给富商！
+BREAK
+
+#IF
+CHECKVAR HUMAN 镖车次数 < 1
+#SAY
+<Img|x=0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<RText|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=请在1个小时内把镖车护送到<沙巴克大门(669,338)/FCOLOR=11008>处的盟重>
+<RText|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=富商那里！你可以打开大地图查看<镖车交还点/FCOLOR=11008>位置！>
+<Layout|x=65.0|y=172.0|width=200|height=40|link=@开始接镖>
+<Text|x=70.0|y=178.0|color=11008|size=18|text=好的，我一定不负所托！|link=@开始接镖>
+<Img|x=45.0|y=180.0|width=20|height=20|esc=0|img=public/00012.png>
+#ACT
+BREAK
+
+#IF
+CHECKVAR HUMAN 镖车次数 > 0
+#SAY
+<Img|x=0.0|y=20.0|height=240|show=0|reset=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|loadDelay=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=看来你已经完成了今日的押镖任务，如果你想要再来接取>
+<Text|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=押镖任务的话，那就等明天再来吧！>
+<Layout|x=39.0|y=149.0|width=150|height=40|link=@EXIT>
+<Text|x=45.0|y=155.0|color=11008|size=18|text=好的，谢谢你！|link=@EXIT>
+#ACT
+BREAK
+
+[@开始接镖]
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$拉镖点击)>
+#ACT
+BREAK
+
+#IF
+CHECKMONEY 金币 < 1000000
+#ACT
+MESSAGEBOX 你需要支付100万金币作为押金！
+BREAK
+
+#IF
+HOUR 19 22
+MIN 0 59
+#ACT
+MOV N$拉镖点击 <$UTCNOW8>
+TAKE 金币 1000000
+logact 10001 通过[镖师]消耗1000000金币，剩余金币：<$MONEY(金币)>。
+RECALLMOB 镖车1 0 60 0
+DartTime 3600 1
+ChangeSlaveNameColor 镖车1 255
+CALCVAR HUMAN 镖车次数 = 1
+SAVEVAR HUMAN 镖车次数
+CALCVAR HUMAN 镖车时间 = <$UTCNOW8>
+CALCVAR HUMAN 镖车时间 + 3600
+SAVEVAR HUMAN 镖车时间
+MOV S$屏蔽名字 <$USERNAME>
+DEC S$屏蔽名字 3 16
+INC S$屏蔽名字 *****
+SendCenterMsg 251 249 [<$STR(S$屏蔽名字)>]成功在土城震天镖局接取到【镖车】，希望他此行护送镖车一路平安！ 1 30
+CLOSE
+delaygoto 5 @活跃任务4
+BREAK
+#ELSEACT
+SENDMSG 9 押送镖车时间点为:19:00~23:00之间
+BREAK
+
+[@活跃任务4]
+#IF
+SMALL J56 10
+#ACT
+INC J56 10
+INC J65 10
+INC U43 10
+BREAK
+
+[@传送]
+<Img|x=-0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01037.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=为了镖车的安全，镖局和驿站之间有着互助协议！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=你可以在3个驿站<互相传送/FCOLOR=11008>，每次需要支付<10万金币/FCOLOR=11003>。>
+<Img|x=45.0|y=154.0|width=20|height=20|esc=0|img=public/00012.png>
+<Layout|x=60.0|y=145.0|width=100|height=40|link=@传送老杨营地>
+<Text|x=70.0|y=151.0|color=11008|size=18|text=比奇营地|link=@传送老杨营地>
+<Img|x=215.0|y=155.0|width=20|height=20|esc=0|img=public/00012.png>
+<Layout|x=230.0|y=145.0|width=100|height=40|link=@传送猎人部落>
+<Text|x=240.0|y=152.0|color=11008|size=18|text=山谷部落|link=@传送猎人部落>
+<Img|x=385.0|y=155.0|width=20|height=20|esc=0|img=public/00012.png>
+<Layout|x=400.0|y=145.0|width=100|height=40|link=@传送冒险军团>
+<Text|x=410.0|y=152.0|color=11008|size=18|text=山谷军团|link=@传送冒险军团>
+<Img|x=45.0|y=208.0|width=20|height=20|esc=0|img=public/00024.png>
+<Layout|x=62.0|y=200.0|width=60|height=40|rotate=0|link=@MAIN>
+<Text|x=70.0|y=205.0|color=11008|size=18|text=返回|link=@MAIN>
+
+
+[@传送老杨营地]
+#IF
+CHECKMONEY 金币 > 99999
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[镖师]传送消耗100000金币，剩余金币：<$MONEY(金币)>。
+MAPMOVE 3 425 383 3
+close
+BREAK
+#ELSEACT
+MESSAGEBOX 传送费是10万金币，你无法支付足够费用！
+BREAK
+
+
+[@传送猎人部落]
+#IF
+CHECKMONEY 金币 > 99999
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[镖师]传送消耗100000金币，剩余金币：<$MONEY(金币)>。
+MAPMOVE 3 556 386 3
+BREAK
+#ELSEACT
+MESSAGEBOX 传送费是10万金币，你无法支付足够费用！
+BREAK
+
+
+[@传送冒险军团]
+#IF
+CHECKMONEY 金币 > 99999
+#ACT
+MONEY 金币 - 100000
+logact 10001 通过[镖师]传送消耗100000金币，剩余金币：<$MONEY(金币)>。
+MAPMOVE 3 633 381 2
+BREAK
+#ELSEACT
+MESSAGEBOX 传送费是10万金币，你无法支付足够费用！
+BREAK

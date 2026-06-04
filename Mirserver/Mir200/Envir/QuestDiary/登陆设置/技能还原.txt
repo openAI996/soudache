@@ -1,0 +1,187 @@
+[@还原技能]
+{
+#IF
+CheckMagicName 斩月烈火
+CheckMagicName 烈火剑法
+#ACT
+DELSKILL 烈火剑法
+
+#IF
+CheckMagicName 赤焰疾光
+CheckMagicName 疾光电影
+#ACT
+DELSKILL 疾光电影
+
+#IF
+CheckMagicName 冰霜雷电
+CheckMagicName 雷电术
+#ACT
+DELSKILL 雷电术
+
+#IF
+CheckMagicName 召唤月灵
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽
+
+#IF
+CheckMagicName 召唤月灵
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽
+
+#IF
+CheckMagicName 召唤麒麟
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽
+
+#IF
+CheckMagicName 御灵圣兽
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽
+
+;武宗刺杀还原
+#IF
+EQUAL U50 2
+EQUAL U58 1
+CHECKSKILL 刺杀剑术 = 1 1
+#ACT
+SKILLLEVEL 刺杀剑术 = 0 1
+
+;暴君刺杀还原
+#IF
+EQUAL U50 3
+EQUAL U61 1
+CHECKSKILL 刺杀剑术 = 1 1
+#ACT
+SKILLLEVEL 刺杀剑术 = 0 1
+;暴君半月还原
+#IF
+EQUAL U50 3
+EQUAL U62 1
+CHECKSKILL 半月弯刀 = 1 1
+#ACT
+SKILLLEVEL 半月弯刀 = 0 1
+SKILLLEVEL 半月弯刀 = 3
+;雷神雷电还原
+#IF
+EQUAL U50 4
+EQUAL U66 1
+CHECKSKILL 雷电术 = 1 1
+#ACT
+SKILLLEVEL 雷电术 = 0 1
+;雷神疾光还原
+#IF
+EQUAL U50 4
+EQUAL U67 1
+CHECKSKILL 疾光电影 = 1 1
+#ACT
+SKILLLEVEL 疾光电影 = 0 1
+;炎帝·火墙还原
+#IF
+EQUAL U50 5
+LARGE U71 0
+CHECKSKILL 火墙 = 8 1
+#ACT
+SKILLLEVEL 火墙 = 3
+;炎帝·赤焰疾光还原
+#IF
+EQUAL U50 5
+LARGE U72 0
+CheckMagicName 赤焰疾光
+#ACT
+ADDSKILL 疾光电影
+DELSKILL 赤焰疾光 3
+SKILLLEVEL 赤焰疾光 = 0 1
+;炎帝·流星火雨还原
+#IF
+EQUAL U50 5
+LARGE U74 0
+NOT CheckMagicName 流星火雨
+#ACT
+DELSKILL 流星火雨
+;炎帝·神之召唤还原
+#IF
+EQUAL U50 5
+LARGE U75 0
+NOT CheckMagicName 神之召唤
+#ACT
+DELSKILL 神之召唤
+;道尊·气功波
+#IF
+EQUAL U50 7
+LARGE U83 0
+CheckMagicName 无极真气
+#ACT
+DELSKILL 无极真气 
+;兽神·群毒术还原
+#IF
+EQUAL U50 9
+LARGE U92 0
+CheckMagicName 群体施毒术
+#ACT
+DELSKILL 群体施毒术 3
+;兽神·战甲术还原
+#IF
+EQUAL U50 9
+LARGE U93 0
+CHECKSKILL 神圣战甲术 = 1 1
+#ACT
+SKILLLEVEL 神圣战甲术 = 0 1
+;兽神·无极真气
+#IF
+EQUAL U50 9
+LARGE U94 0
+CheckMagicName 无极真气
+#ACT
+DELSKILL 无极真气 3
+;兽神·心灵召唤
+#IF
+EQUAL U50 9
+LARGE U95 0
+CheckMagicName 兽灵之心
+#ACT
+DELSKILL 兽灵之心 3
+#IF
+EQUAL U50 4
+CheckMagicName 流星火雨
+#ACT
+DELSKILL 流星火雨
+;狮子吼替换
+#IF
+CheckMagicName 新狮子吼
+#ACT
+DELSKILL 新狮子吼 3
+ADDSKILL 狮子吼  3
+
+#IF
+not CHECKJOB Taoist
+CheckMagicName 治愈术
+#act
+DELSKILL 治愈术
+#IF
+not CHECKJOB Taoist
+CheckMagicName 施毒术
+#act
+DELSKILL 施毒术
+
+#IF
+CHECKJOB Taoist
+NOT CheckMagicName 治愈术
+#ACT
+ADDSKILL 治愈术 3
+
+#IF
+CHECKJOB Taoist
+NOT CheckMagicName 施毒术
+#ACT
+ADDSKILL 施毒术 3
+
+#IF
+CHECKJOB Taoist
+NOT CheckMagicName 气功波
+#ACT
+ADDSKILL 气功波 3 
+}

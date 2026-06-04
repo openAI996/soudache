@@ -1,0 +1,59 @@
+[@新手登陆]
+{
+
+#IF
+ISNEWHUMAN
+checkjob warrior
+#ACT
+ADDSKILL 基本剑术
+DELAYGOTO 100 @任务接取
+break
+
+#IF
+ISNEWHUMAN
+checkjob wizard
+#ACT
+ADDSKILL 火球术 3
+DELAYGOTO 100 @任务接取
+break
+
+#IF
+ISNEWHUMAN
+checkjob taoist
+#ACT
+ADDSKILL 治愈术 3
+DELAYGOTO 100 @任务接取
+break
+
+[@任务接取]
+#if
+gender man
+#act
+GiveStateItem 木剑 1 0 1 0 1 1 1 1 1
+GiveStateItem 布衣(男) 1 0 1 0 1 1 1 1 1
+TakeOnItem 木剑 1
+TakeOnItem 布衣(男) 0
+
+#IF
+gender woman
+#ACT
+GiveStateItem 木剑 1 0 1 0 1 1 1 1 1
+GiveStateItem 布衣(女) 1 0 1 0 1 1 1 1 1
+TakeOnItem 木剑 1
+TakeOnItem 布衣(女) 0
+
+#IF
+checkjob taoist
+#ACT
+GiveStateItem 护身符(大) 2 0 1 0 1 1 1 1 1
+GiveStateItem 黄色药粉(少量) 1 0 1 0 1 1 1 1 1
+GiveStateItem 灰色药粉(少量) 1 0 1 0 1 1 1 1 1
+
+#IF
+#ACT
+SetSndaItemBox 1
+GiveStateItem 盟重回城石 1 0 1 0 1 1 1 1 1
+GiveStateItem 随机传送石 1 0 1 0 1 1 1 1 1
+sendmsg 0 欢迎新的玛法勇士：“<$USERNAME>”回归，{《搜打撤传奇》|250:0:1}有你更加精彩.... 
+
+}

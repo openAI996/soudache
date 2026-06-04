@@ -1,0 +1,191 @@
+[@MAIN]
+<Img|x=-0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01042.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=漫漫长路，很感谢您能把镖车安全运送到我这里。>
+<Text|x=45.0|y=94.0|size=17|color=255|outline=1|outlinecolor=0|text=为了表示感谢，我会奖励您一些经验和礼盒作为运镖的酬劳！>
+<Text|x=45.0|y=120.0|size=17|color=255|outline=1|outlinecolor=0|text=并且返还您的押金。>
+<Text|x=70.0|y=175.0|color=11008|size=18|text=完成押镖|link=@提交镖车>
+<Img|x=45.0|y=180.0|width=18|height=20|img=public/00017.png|esc=0>
+<Layout|x=45.0|y=170.0|width=100|height=40|color=x>
+
+<Text|x=270.0|y=175.0|color=11008|size=18|text=提交返利镖车|link=@提交返利镖车>
+<Img|x=245.0|y=180.0|width=18|height=20|img=public/00017.png|esc=0>
+<Layout|x=245.0|y=170.0|width=100|height=40|color=x>
+
+[@提交镖车]
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$拉镖交还)>
+#ACT
+BREAK
+
+
+#IF
+CHECKVAR HUMAN 镖车次数 < 1
+#ACT
+SENDMSG 9 你尚未接取押镖任务！
+BREAK
+
+
+#OR
+CheckSlaveInRange 镖车1 5
+CheckSlaveInRange 镖车2 5
+CheckSlaveInRange 镖车3 5
+CheckSlaveInRange 镖车4 5
+CheckSlaveInRange 镖车5 5
+#ACT
+MOV N$拉镖交还 <$UTCNOW8>
+KillCallMob 镖车1 1 1
+KillCallMob 镖车2 1 1
+KillCallMob 镖车3 1 1
+KillCallMob 镖车4 1 1
+MOV N$等级索引 <$LEVEL>
+DEC N$等级索引 49
+GIVE 金币 1000000
+logact 10001 通过[镖局商行]提交镖车返还1000000金币，剩余金币：<$MONEY(金币)>。
+GiveStateItem  押镖礼盒 1 1 1 0 0 1 1 1 1
+NEWCOMPLETETASK 10
+NEWDELETETASK 10
+GOTO @新区任务二
+GOTO @押镖经验
+BREAK
+#ELSEACT
+SENDMSG 9 你的镖车呢？我并没有看到啊！
+BREAK
+
+[@押镖经验]
+#IF
+CHECKLEVELEX < 80
+#ACT
+CHANGEEXP + <$cfg_ya_biao(<$STR(N$等级索引)>_<$HUMAN(镖车次数)>)>
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+NOT SMALL <$EXP> <$cfg_jing_yan(<$LEVEL>_1)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+FORMULATION (<$cfg_jing_yan(<$LEVEL>_1)>-<$EXP>)  N$升级经验差
+
+#IF
+SMALL <$cfg_ya_biao(<$STR(N$等级索引)>_<$HUMAN(镖车次数)>)> <$STR(N$升级经验差)>
+CHECKLEVELEX > 79
+#ACT
+CHANGEEXP + <$cfg_ya_biao(<$STR(N$等级索引)>_<$HUMAN(镖车次数)>)>
+BREAK
+
+#IF
+large <$cfg_ya_biao(<$STR(N$等级索引)>_<$HUMAN(镖车次数)>)> <$STR(N$升级经验差)>
+CHECKLEVELEX > 79
+#ACT
+CHANGEEXP + <$STR(N$升级经验差)>
+BREAK
+
+
+[@新区任务二]
+#IF
+#ACT
+MOV N$记录时间2 <$STR(G201)>
+MOV N$当前时间 <$UTCNOW8>
+FORMULATION (<$STR(N$记录时间2)>+86400-<$STR(N$当前时间)>)/86400 N$新区时间2
+
+#IF
+SMALL N$新区时间2 1
+SMALL U142 1
+#ACT
+MOV U142 1
+ADDSTRVALUE T40 七日任务2 0
+BREAK
+
+
+[@提交返利镖车]
+
+;#IF
+;CheckSlaveInRange 返利镖车 5
+;#act
+;MOV N$拉镖交还 <$UTCNOW8>
+;KillCallMob 返利镖车 1 1
+;MOV N$实际返利值 <$GAMEGIRD>
+;MONEY 元宝 + <$STR(N$实际返利值)>
+;MONEY 元宝 + <$GAMEGIRD>
+;DELAYGOTO 50 @返利结算
+;GOTO @新区任务二
+;#ELSEACT
+;BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$拉镖交还)>
+#ACT
+BREAK
+
+#IF
+CHECKSLAVECOUNT > 0 返利镖车1
+#ACT
+MOV S$返镖名称 返利镖车1
+#IF
+CHECKSLAVECOUNT > 0 返利镖车2
+#ACT
+MOV S$返镖名称 返利镖车2
+#IF
+CHECKSLAVECOUNT > 0 返利镖车3
+#ACT
+MOV S$返镖名称 返利镖车3
+#IF
+CHECKSLAVECOUNT > 0 返利镖车4
+#ACT
+MOV S$返镖名称 返利镖车4
+#IF
+CHECKSLAVECOUNT > 0 返利镖车5
+#ACT
+MOV S$返镖名称 返利镖车5
+#IF
+CHECKSLAVECOUNT > 0 返利镖车6
+#ACT
+MOV S$返镖名称 返利镖车6
+#IF
+CHECKSLAVECOUNT > 0 返利镖车7
+#ACT
+MOV S$返镖名称 返利镖车7
+#IF
+CHECKSLAVECOUNT > 0 返利镖车8
+#ACT
+MOV S$返镖名称 返利镖车8
+#IF
+CHECKSLAVECOUNT > 0 返利镖车9
+#ACT
+MOV S$返镖名称 返利镖车9
+#IF
+CHECKSLAVECOUNT > 0 返利镖车10
+#ACT
+MOV S$返镖名称 返利镖车10
+#IF
+CHECKSLAVECOUNT > 0 返利镖车11
+#ACT
+MOV S$返镖名称 返利镖车11
+#IF
+CHECKSLAVECOUNT > 0 返利镖车12
+#ACT
+MOV S$返镖名称 返利镖车12
+
+#IF
+CheckSlaveInRange <$STR(S$返镖名称)> 5
+CHECKSLAVECOUNT > 0  <$STR(S$返镖名称)>
+#ACT
+MOV N$拉镖交还 <$UTCNOW8>
+KillCallMob <$STR(S$返镖名称)> 1 1
+KILLSLAVE
+MONEY 元宝 + <$str(u127)>
+MOV S$返镖名称 
+MOV U127 0
+MOV U128 0
+MOV U129 0
+GOTO @新区任务二
+BREAK
+#ELSEACT
+SENDMSG 9 你的镖车呢？我并没有看到啊！
+BREAK

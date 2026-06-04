@@ -1,0 +1,1582 @@
+[@管理后台]
+{
+
+#IF
+NOT EQUAL S$身份认证 已通过
+;EQUAL <$USERACCOUNT> 29409123
+#SAY
+<Text|text=请输入管理员密码后以继续密码111|x=55|y=80|size=18|color=1001|link=@@InPutString90(请输入管理员密码)>
+#ACT
+BREAK
+#IF
+NOT EQUAL S$身份认证 已通过
+;EQUAL <$USERACCOUNT> 29409123
+#SAY
+<Text|text=请输入管理员密码后以继续密码111|x=55|y=80|size=18|color=1001|link=@@InPutString90(请输入管理员密码)>
+#ACT
+BREAK
+
+#IF
+EQUAL S$身份认证 已通过
+;EQUAL <$USERACCOUNT> 29409123
+#ACT
+GOTO @后台界面
+BREAK
+#IF
+EQUAL S$身份认证 已通过
+;EQUAL <$USERACCOUNT> 29409123
+#ACT
+GOTO @后台界面
+BREAK
+
+[@InPutString90]
+#IF
+;EQUAL <$USERACCOUNT> 29409123
+COMPARETEXT <$STR(S90)> 111
+#ACT
+CHANGEPERMISSION 10
+MOV S$身份认证 已通过
+GOTO @后台界面
+BREAK
+#IF
+;EQUAL <$USERACCOUNT> 29409123
+COMPARETEXT <$STR(S90)> 29409123
+#ACT
+CHANGEPERMISSION 10
+MOV S$身份认证 已通过
+GOTO @后台界面
+BREAK
+#ELSEACT
+CHANGEPERMISSION 10
+MOV S$身份认证 已通过
+GOTO @后台界面
+;#ELSESAY
+;输入有误！[<$STR(S90)>]
+
+[@客服后台]
+#IF
+NOT EQUAL S$客服认证 已通过
+EQUAL <$USERNAME> 有柱牛肉面
+#SAY
+<Text|text=请输入客服密码后以继续密码111|x=55|y=80|size=18|color=1001|link=@@InPutString91(请输入客服密码)>
+#ACT
+BREAK
+
+
+#IF
+NOT EQUAL S$客服认证 已通过
+;EQUAL <$USERACCOUNT> 29409123
+#SAY
+<Text|text=请输入客服密码后以继续密码11|x=55|y=80|size=18|color=1001|link=@@InPutString91(请输入客服密码)>
+#ACT
+BREAK
+
+#IF
+EQUAL S$客服认证 已通过
+;EQUAL <$USERACCOUNT> 36390895
+#ACT
+GOTO @客服界面
+BREAK
+
+#IF
+EQUAL S$客服认证 已通过
+EQUAL <$USERNAME> 有柱牛肉面
+#ACT
+GOTO @客服界面
+BREAK
+
+[@InPutString91]
+#IF
+EQUAL <$USERNAME> 有柱牛肉面
+COMPARETEXT <$STR(S91)> 800158161
+#ACT
+MOV S$客服认证 已通过
+GOTO @客服界面
+BREAK
+
+#IF
+;EQUAL <$USERACCOUNT> 36390895
+COMPARETEXT <$STR(S91)> 800158161
+#ACT
+MOV S$客服认证 已通过
+GOTO @客服界面
+BREAK
+
+#ELSESAY
+输入有误！
+
+;----------------------------------------------------管理后台脚本段--------------------------------
+[@后台界面]
+#IF
+EQUAL S$身份认证 已通过
+;EQUAL <$USERACCOUNT> 2317916
+#ACT
+;CHANGEMODE 1 1
+;CHANGEMODE 2 1
+;CHANGEMODE 3 1
+MOV S$界面跳转 后台界面
+#SAY
+<Img|width=520|height=480|move=1|img=public/icon_paihangbang_05.png|bg=1|reset=0>
+<Img|x=20|y=20|img=public/btn_szjm_03.png>
+<Layout|x=446.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=481.0|y=9.0|nimg=public/btn_gban_01.png|link=@exit>
+<Button|x=22.0|y=70.0|size=18|nimg=public/bg_hhzy_01_3.png|text=调整等级|link=@@InPutString10(请输入名字)>
+<Button|x=172.0|y=70.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=跟踪/拉人|link=@@InPutString11(请输入名字)>
+<Button|x=322.0|y=70.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=踢人下线|link=@@InPutString12(请输入名字)>
+
+<Button|x=22.0|y=115.0|size=18|nimg=public/bg_hhzy_01_3.png|text=拿走物品|link=@@InPutString13(请输入名字)>
+<Button|x=172.0|y=115.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=充值补发|link=@@InPutString15>
+<Button|x=322.0|y=115.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=调整技能|link=@@InPutString16(请输入名字)>
+
+<Button|x=22.0|y=160.0|size=18|nimg=public/bg_hhzy_01_3.png|text=删除行会|link=@@InPutString18(请输入名字)>
+<Button|x=172.0|y=160.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=踢出离线|link=@@InPutInteger18(请输入踢出的等级)>
+<Button|x=322.0|y=160.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=强制攻城|link=@执行_强制攻城>
+
+<Button|x=22.0|y=205.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色标识相关|link=@@InPutString19(请输入名字)>
+<Button|x=172.0|y=205.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色变量相关|link=@@InPutString20(请输入名字)>
+<Button|x=322.0|y=205.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色自定义变量|link=@@InPutString23(请输入名字)>
+
+<Button|x=22.0|y=250.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色键值相关|link=@@InPutString26(请输入名字)>
+<Button|x=172.0|y=250.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色自定义属性|link=@@InPutString30(请输入名字)>
+<Button|x=322.0|y=250.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色BUFF相关|link=@@InPutString31(请输入名字)>
+
+<Button|x=22.0|y=295.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色师徒相关|link=@@InPutString32(请输入名字)>
+<Button|x=172.0|y=295.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色夫妻相关|link=@@InPutString33(请输入名字)>
+<Button|x=322.0|y=295.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色八门数据|link=@@InPutString34(请输入名字)>
+
+<Button|x=22.0|y=340.0|size=18|nimg=public/bg_hhzy_01_3.png|text=全局变量相关|link=@@InPutString37(请输入变量名)>
+<Button|x=172.0|y=340.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=查询寄售行|link=@寄售行系统>
+<Button|x=322.0|y=340.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=加载配置文件|link=@重读配置选项>
+
+<Button|x=322.0|y=383.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=无图鉴修复|link=@@InPutString52(请输入名字)>
+
+
+<Button|x=318.0|y=430.0|size=18|nimg=public/bg_hhzy_01_3.png|color=255|text=加入行会|link=@@InPutString72(请输入名字)>
+<Button|x=334.0|y=17.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=日志清除|link=@清除日志>
+<Button|x=163.0|y=430.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=问题佩饰修复|link=@@InPutString53(请输入名字)>
+<Button|x=165.0|y=387.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=强化装备清空|link=@@InPutString55(请输入名字需要操作的角色名)>
+
+<Text|x=15.0|y=380.0|size=18|color=249|text=开区天数:<$KFDAY>天\合区天数：<$HFDAYS>\合区次数：<$HFCOUNT>>
+<Text|x=150.0|y=380.0|color=249|size=18|text=<$DATETIME>>
+<Text|x=71.0|y=23.0|color=250|size=18|text=今日发放充值：<$STR(J300)>元。>
+<Text|x=15.0|y=451.0|color=250|size=18|text=时间戳：<$UTCNOW8>>
+
+#IF
+EQUAL S$身份认证 已通过
+;EQUAL <$USERACCOUNT> 12554023
+#ACT
+;CHANGEMODE 1 1
+;CHANGEMODE 2 1
+;CHANGEMODE 3 1
+MOV S$界面跳转 后台界面
+#SAY
+<Img|width=520|height=480|move=1|img=public/icon_paihangbang_05.png|bg=1|reset=0>
+<Img|x=20|y=20|img=public/btn_szjm_03.png>
+<Layout|x=446.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=481.0|y=9.0|nimg=public/btn_gban_01.png|link=@exit>
+<Button|x=22.0|y=70.0|size=18|nimg=public/bg_hhzy_01_3.png|text=调整等级|link=@@InPutString10(请输入名字)>
+<Button|x=172.0|y=70.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=跟踪/拉人|link=@@InPutString11(请输入名字)>
+<Button|x=322.0|y=70.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=踢人下线|link=@@InPutString12(请输入名字)>
+
+<Button|x=22.0|y=115.0|size=18|nimg=public/bg_hhzy_01_3.png|text=拿走物品|link=@@InPutString13(请输入名字)>
+<Button|x=172.0|y=115.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=充值补发|link=@@InPutString15>
+<Button|x=322.0|y=115.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=调整技能|link=@@InPutString16(请输入名字)>
+
+<Button|x=22.0|y=160.0|size=18|nimg=public/bg_hhzy_01_3.png|text=删除行会|link=@@InPutString18(请输入名字)>
+<Button|x=172.0|y=160.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=踢出离线|link=@@InPutInteger18(请输入踢出的等级)>
+<Button|x=322.0|y=160.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=强制攻城|link=@执行_强制攻城>
+
+<Button|x=22.0|y=205.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色标识相关|link=@@InPutString19(请输入名字)>
+<Button|x=172.0|y=205.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色变量相关|link=@@InPutString20(请输入名字)>
+<Button|x=322.0|y=205.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色自定义变量|link=@@InPutString23(请输入名字)>
+
+<Button|x=22.0|y=250.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色键值相关|link=@@InPutString26(请输入名字)>
+<Button|x=172.0|y=250.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色自定义属性|link=@@InPutString30(请输入名字)>
+<Button|x=322.0|y=250.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色BUFF相关|link=@@InPutString31(请输入名字)>
+
+<Button|x=22.0|y=295.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色师徒相关|link=@@InPutString32(请输入名字)>
+<Button|x=172.0|y=295.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色夫妻相关|link=@@InPutString33(请输入名字)>
+<Button|x=322.0|y=295.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色八门数据|link=@@InPutString34(请输入名字)>
+
+<Button|x=22.0|y=340.0|size=18|nimg=public/bg_hhzy_01_3.png|text=全局变量相关|link=@@InPutString37(请输入变量名)>
+<Button|x=172.0|y=340.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=查询寄售行|link=@寄售行系统>
+<Button|x=322.0|y=340.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=加载配置文件|link=@重读配置选项>
+
+<Button|x=322.0|y=383.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=无图鉴修复|link=@@InPutString52(请输入名字)>
+
+
+<Button|x=318.0|y=430.0|size=18|nimg=public/bg_hhzy_01_3.png|color=255|text=加入行会|link=@@InPutString72(请输入名字)>
+<Button|x=334.0|y=17.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=日志清除|link=@清除日志>
+<Button|x=163.0|y=430.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=问题佩饰修复|link=@@InPutString53(请输入名字)>
+<Button|x=165.0|y=387.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=强化装备清空|link=@@InPutString55(请输入名字需要操作的角色名)>
+
+<Text|x=15.0|y=380.0|size=18|color=249|text=开区天数:<$KFDAY>天\合区天数：<$HFDAYS>\合区次数：<$HFCOUNT>>
+<Text|x=150.0|y=380.0|color=249|size=18|text=<$DATETIME>>
+<Text|x=71.0|y=23.0|color=250|size=18|text=今日发放充值：<$STR(J300)>元。>
+<Text|x=15.0|y=451.0|color=250|size=18|text=时间戳：<$UTCNOW8>>
+
+
+;----------------------------------------------------客服后台脚本段--------------------------------
+[@客服界面]
+#IF
+EQUAL S$客服认证 已通过
+EQUAL <$USERNAME> 有柱牛肉面
+#ACT
+;CHANGEMODE 1 1
+;CHANGEMODE 2 1
+;CHANGEMODE 3 1
+MOV S$界面跳转 客服界面
+#SAY
+<Img|width=520|height=450|move=1|img=public/icon_paihangbang_05.png|bg=1|reset=0>
+<Img|x=20|y=20|img=public/btn_szjm_03.png>
+<Text|x=67.0|y=20.0|color=251|size=22|text=GM background v1.2>
+<Layout|x=446.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=481.0|y=9.0|nimg=public/btn_gban_01.png|link=@exit>
+
+<Button|x=22.0|y=70.0|size=18|nimg=public/bg_hhzy_01_3.png|text=调整等级|link=@@InPutString10(请输入名字)>
+<Button|x=172.0|y=70.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=跟踪/拉人|link=@@InPutString11(请输入名字)>
+<Button|x=322.0|y=70.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=踢人下线|link=@@InPutString12(请输入名字)>
+
+<Button|x=22.0|y=115.0|size=18|nimg=public/bg_hhzy_01_3.png|text=删除行会|link=@@InPutString18(请输入名字)>
+<Button|x=172.0|y=115.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=调整技能|link=@@InPutString16(请输入名字)>
+<Button|x=322.0|y=115.0|size=18|nimg=public/bg_hhzy_01_3.png|text=改名卡发放|link=@@InPutString54(请输入名字)>
+
+<Button|x=22.0|y=160.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=踢出离线|link=@@InPutInteger18(请输入踢出的等级)>
+<Button|x=172.0|y=160.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色标识相关|link=@@InPutString19(请输入名字)>
+<Button|x=322.0|y=160.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色变量相关|link=@@InPutString20(请输入名字)>
+
+<Button|x=22.0|y=205.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色自定义变量|link=@@InPutString23(请输入名字)>
+<Button|x=172.0|y=205.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色键值相关|link=@@InPutString26(请输入名字)>
+<Button|x=322.0|y=205.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色自定义属性|link=@@InPutString30(请输入名字)>
+
+<Button|x=22.0|y=250.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色BUFF相关|link=@@InPutString31(请输入名字)>
+<Button|x=172.0|y=250.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色师徒相关|link=@@InPutString32(请输入名字)>
+<Button|x=322.0|y=250.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色夫妻相关|link=@@InPutString33(请输入名字)>
+
+<Button|x=22.0|y=295.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色八门数据|link=@@InPutString34(请输入名字)>
+<Button|x=172.0|y=295.0|size=18|nimg=public/bg_hhzy_01_3.png|text=全局变量相关|link=@@InPutString37(请输入变量名)>
+
+<Button|x=172.0|y=340.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=查询寄售行|link=@寄售行系统>
+<Button|x=322.0|y=340.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=隐身管理模式|link=@隐身管理模式>
+
+<Button|x=322.0|y=383.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=无图鉴修复|link=@@InPutString52(请输入名字)>
+<Button|x=318.0|y=430.0|size=18|nimg=public/bg_hhzy_01_3.png|color=255|text=加入行会|link=@@InPutString72(请输入名字)>
+<Button|x=172.0|y=382.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=退出隐身模式|link=@退出隐身模式>
+<Button|x=334.0|y=17.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=日志清除|link=@清除日志>
+#IF
+EQUAL S$客服认证 已通过
+;EQUAL <$USERACCOUNT> 36390895
+#ACT
+;CHANGEMODE 1 1
+;CHANGEMODE 2 1
+;CHANGEMODE 3 1
+MOV S$界面跳转 客服界面
+#SAY
+<Img|width=520|height=450|move=1|img=public/icon_paihangbang_05.png|bg=1|reset=0>
+<Img|x=20|y=20|img=public/btn_szjm_03.png>
+<Text|x=67.0|y=20.0|color=251|size=22|text=GM background v1.2>
+<Layout|x=446.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=481.0|y=9.0|nimg=public/btn_gban_01.png|link=@exit>
+
+<Button|x=22.0|y=70.0|size=18|nimg=public/bg_hhzy_01_3.png|text=调整等级|link=@@InPutString10(请输入名字)>
+<Button|x=172.0|y=70.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=跟踪/拉人|link=@@InPutString11(请输入名字)>
+<Button|x=322.0|y=70.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=踢人下线|link=@@InPutString12(请输入名字)>
+
+<Button|x=22.0|y=115.0|size=18|nimg=public/bg_hhzy_01_3.png|text=删除行会|link=@@InPutString18(请输入名字)>
+<Button|x=172.0|y=115.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=调整技能|link=@@InPutString16(请输入名字)>
+<Button|x=322.0|y=115.0|size=18|nimg=public/bg_hhzy_01_3.png|text=改名卡发放|link=@@InPutString54(请输入名字)>
+
+<Button|x=22.0|y=160.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=踢出离线|link=@@InPutInteger18(请输入踢出的等级)>
+<Button|x=172.0|y=160.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色标识相关|link=@@InPutString19(请输入名字)>
+<Button|x=322.0|y=160.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色变量相关|link=@@InPutString20(请输入名字)>
+
+<Button|x=22.0|y=205.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色自定义变量|link=@@InPutString23(请输入名字)>
+<Button|x=172.0|y=205.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色键值相关|link=@@InPutString26(请输入名字)>
+<Button|x=322.0|y=205.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色自定义属性|link=@@InPutString30(请输入名字)>
+
+<Button|x=22.0|y=250.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色BUFF相关|link=@@InPutString31(请输入名字)>
+<Button|x=172.0|y=250.0|size=18|nimg=public/bg_hhzy_01_3.png|text=角色师徒相关|link=@@InPutString32(请输入名字)>
+<Button|x=322.0|y=250.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色夫妻相关|link=@@InPutString33(请输入名字)>
+
+<Button|x=22.0|y=295.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=角色八门数据|link=@@InPutString34(请输入名字)>
+<Button|x=172.0|y=295.0|size=18|nimg=public/bg_hhzy_01_3.png|text=全局变量相关|link=@@InPutString37(请输入变量名)>
+
+<Button|x=172.0|y=340.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=查询寄售行|link=@寄售行系统>
+<Button|x=322.0|y=340.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=隐身管理模式|link=@隐身管理模式>
+
+<Button|x=322.0|y=383.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=无图鉴修复|link=@@InPutString52(请输入名字)>
+<Button|x=318.0|y=430.0|size=18|nimg=public/bg_hhzy_01_3.png|color=255|text=加入行会|link=@@InPutString72(请输入名字)>
+
+<Button|x=172.0|y=382.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=退出隐身模式|link=@退出隐身模式>
+<Button|x=334.0|y=17.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=日志清除|link=@清除日志>
+;----------------------------------------------------调整等级脚本段--------------------------------
+[@隐身管理模式]
+#IF
+#ACT
+    ;CHANGEMODE 1 1
+    ;CHANGEMODE 2 1
+    ;CHANGEMODE 3 1
+MESSAGEBOX 已经进入管理隐身无敌模式
+BREAK
+
+
+[@InPutString72]
+#ACT
+ADDGUILDMEMBER <$str(s72)> 
+
+
+[@退出隐身模式]
+#IF
+#ACT
+    ;CHANGEMODE 3 0
+MESSAGEBOX 已经退出管理隐身无敌模式
+BREAK
+
+
+
+[@InPutString52]
+#IF
+#ACT
+<$STR(S52)>.MOV T12 徒弟1=*,徒弟2=*,徒弟3=*
+<$STR(S52)>.MOV T13 鬼狮鹰#10|天马#40|赤烟驹#10|青鸾#100|鲲鹏#10|咕噜神象#100|嗜血飞龙#40|寒霜巨龙#10|上古火龙#60|青龙大帝#70|金甲象#80|玄武大帝#30|勾陈#40|玉麒麟#40|双头魔龙#70|雷霄巨蝎#40|穷奇#60|白虎大帝#90|黄金宝马#90
+<$STR(S52)>.MOV T180 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T181 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T182 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T183 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T184 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T185 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T186 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T187 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T188 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T189 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+
+<$STR(S52)>.MOV T190 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T191 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T192 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T193 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T194 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T195 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T196 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T197 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T198 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T199 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+
+<$STR(S52)>.MOV T200 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T201 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T202 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T203 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T204 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T205 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T206 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T207 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T208 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T209 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+
+<$STR(S52)>.MOV T210 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T211 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T212 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T213 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T214 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T215 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T216 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T217 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T218 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T219 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+
+<$STR(S52)>.MOV T220 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T221 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T222 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T223 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T224 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T225 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T226 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T227 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T228 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T229 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+
+<$STR(S52)>.MOV T230 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T231 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T232 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T233 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T234 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T235 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T236 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T237 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T238 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T239 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+
+<$STR(S52)>.MOV T240 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T241 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T242 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T243 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T244 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T245 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+<$STR(S52)>.MOV T246 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0
+sendmsg 6 <$STR(S52)>的图鉴修复完成
+
+[@InPutString10]
+#IF
+<$STR(S10)>.Checkonline
+#ACT
+MOV S$目标等级
+GetHumVar <$STR(S10)> S$目标等级 <$LEVEL>
+BREAK
+#SAY
+<Text|text=<$STR(S10)>当前的等级为：<$STR(S$目标等级)>|x=55|y=80|size=18|color=1001>
+<Text|text=输入需要调整的等级|x=55|y=110|size=18|color=1001|link=@@InPutInteger10(请输入要设置的等级)>
+#ELSESAY
+<$STR(S10)>目前不在线，无法调整其等级！\ \
+<返回/执行_返回管理>
+
+[@InPutInteger10]
+<Text|text=<$STR(S10)>当前的等级为：<$STR(S$目标等级)>|x=55|y=80|size=18|color=1001>
+<Text|text=调整后<$STR(S10)>的等级将变为：<$STR(N10)>|x=55|y=110|size=18|color=1001>
+<Button|x=83.0|y=150.0|width=80|height=30|pimg=public/1900000663.png|color=255|size=18|nimg=public/1900000662.png|text=确定调整|link=@调整_角色等级>
+
+[@调整_角色等级]
+#IF
+#ACT
+GMEXECUTE 调整等级 <$STR(S10)> <$STR(N10)>
+SENDMSG 9 <$STR(S10)>的等级已经调整为：<$STR(N10)>级！
+MOV S10
+MOV N10 0
+MOV S$目标等级
+GOTO @<$STR(S$界面跳转)>
+BREAK 
+
+;----------------------------------------------------召唤传送脚本段--------------------------------
+
+[@InPutString11]
+<Text|text=请选择要对<$STR(S11)>进行的操作：|x=55|y=80|size=18|color=1001>
+<Text|text=召唤<$STR(S11)>|x=55|y=110|size=18|color=1001|link=@召唤_目标>
+<Text|text=跟踪<$STR(S11)>|x=55|y=140|size=18|color=1001|link=@跟踪_目标>
+<Text|text=提示：执行此两项操作时请确保自身是否在隐身状态|x=55|y=170|size=18|color=249>
+<Text|text=否则将会暴露自身，可能造成不良后果！|x=55|y=200|size=18|color=249>
+
+[@召唤_目标]
+#IF
+#ACT
+GMEXECUTE zr <$STR(S11)>
+SENDMSG 9 已经将<$STR(S11)>拉至身边！
+MOV S11
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+[@跟踪_目标]
+#IF
+#ACT
+GMEXECUTE 传送自己 <$STR(S11)>
+SENDMSG 9 你已经传送至<$STR(S11)>身边！
+MOV S11
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+;----------------------------------------------------踢人下线脚本段--------------------------------
+[@InPutString12]
+<Text|text=你确定要将<$STR(S12)>踢出游戏吗？|x=55|y=80|size=18|color=1001>
+<Button|x=83.0|y=150.0|width=80|height=30|pimg=public/1900000663.png|color=255|size=18|nimg=public/1900000662.png|text=确定踢出|link=@调整_踢出角色>
+
+[@调整_踢出角色]
+#IF
+#ACT
+GMEXECUTE Kick <$STR(S12)>
+SENDMSG 9 已踢出:<$STR(S12)>
+MOV S12
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+;----------------------------------------------------拿走物品脚本段--------------------------------
+[@InPutString13]
+<Text|text=当前操作的角色名：<$STR(S13)>|x=55|y=80|size=18|color=1001>
+<Text|text=请输入道具名称|x=55|y=110|size=18|color=1001|link=@@InPutString14>
+
+[@InPutString54]
+<Text|text=当前操作的角色名：<$STR(S54)>|x=55|y=80|size=18|color=1001>
+<Button|x=83.0|y=180.0|width=80|height=30|pimg=public/1900000663.png|color=255|size=18|nimg=public/1900000662.png|text=确定发放|link=@调整_给与改名>
+
+[@InPutString14]
+#IF
+#ACT
+SetHumVar <$STR(S13)> S$道具参数 <$STR(S14)>
+<$STR(S13)>.GETBAGITEMCOUNT <$STR(S$道具参数)> N$参数数值
+GetHumVar <$STR(S13)> S$道具数量 <$STR(N$参数数值)>
+#SAY
+<Text|text=当前操作的角色名：<$STR(S13)>|x=55|y=80|size=18|color=1001>
+<Text|text=当前角色背包中<$STR(S14)>数量：<$STR(S$道具数量)>|x=55|y=110|size=18|color=1001>
+<Text|text=输入扣除/给与的数量|x=55|y=140|size=18|color=1001|link=@@InPutInteger14(请输入扣除/给与的数量)>
+
+[@InPutInteger14]
+<Text|text=当前操作的角色名：<$STR(S13)>|x=55|y=80|size=18|color=1001>
+<Text|text=当前角色背包中<$STR(S14)>数量：<$STR(S$道具数量)>|x=55|y=110|size=18|color=1001>
+<Text|text=将要进行操作的道具数量<$STR(N14)>|x=55|y=140|size=18|color=1001>
+<Button|x=83.0|y=180.0|width=80|height=30|pimg=public/1900000663.png|color=255|size=18|nimg=public/1900000662.png|text=确定拿走|link=@调整_拿走装备>
+<Button|x=221.0|y=180.0|width=80|height=30|pimg=public/1900000663.png|color=255|size=18|nimg=public/1900000662.png|text=给与装备|link=@调整_给与装备>
+<Button|x=362.0|y=180.0|width=100|height=30|pimg=public/1900000663.png|color=255|size=18|nimg=public/1900000662.png|text=给与绑定装备|link=@调整_给与绑定装备>
+
+[@调整_拿走装备]
+#IF
+#ACT
+MOV A191 <$STR(S14)>
+MOV G191 <$STR(N14)>
+<$STR(S13)>.TAKE <$STR(A191)> <$STR(G191)>
+SetHumVar <$STR(S13)> S$道具参数 <$STR(S14)>
+<$STR(S13)>.GETBAGITEMCOUNT <$STR(S$道具参数)> N$参数数值
+GetHumVar <$STR(S13)> S$道具数量 <$STR(N$参数数值)>
+SENDMSG 9 拿走<$STR(S13)><$STR(N14)>个<$STR(S14)>，他目前剩余：<$STR(S$道具数量)>个！
+HTTPPOST http://47.97.112.7:9999/log  0  <$DATETIME>给【<$SERVERNAME>】的【<$STR(S13)>】拿走了<$STR(N14)>个<$STR(S14)>
+MOV S13
+MOV S14
+MOV N14
+MOV S$道具参数
+MOV S$道具数量
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+[@调整_给与装备]
+#IF
+#ACT
+MOV A191 <$STR(S14)>
+MOV G191 <$STR(N14)>
+<$STR(S13)>.GIVE <$STR(A191)> <$STR(G191)>
+SetHumVar <$STR(S13)> S$道具参数 <$STR(S14)>
+<$STR(S13)>.GETBAGITEMCOUNT <$STR(S$道具参数)> N$参数数值
+GetHumVar <$STR(S13)> S$道具数量 <$STR(N$参数数值)>
+SENDMSG 9 给与<$STR(S13)><$STR(N14)>个<$STR(S14)>，他目前剩余：<$STR(S$道具数量)>个！
+HTTPPOST http://47.97.112.7:9999/log  0  <$DATETIME>给【<$SERVERNAME>】的【<$STR(S13)>】补发了<$STR(N14)>个<$STR(S14)>
+MOV S13
+MOV S14
+MOV N14
+MOV S$道具参数
+MOV S$道具数量
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+[@调整_给与改名]
+#IF
+#ACT
+MOV A191 改名卡
+<$STR(S54)>.GIVE <$STR(A191)> 1
+MOV S54
+MOV A191 
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+
+[@调整_给与绑定装备]
+#IF
+#ACT
+MOV A191 <$STR(S14)>
+MOV G191 <$STR(N14)>
+<$STR(S13)>.GiveStateItem <$STR(A191)> <$STR(G191)> 1 1 0 0 1 1 1 1
+SetHumVar <$STR(S13)> S$道具参数 <$STR(S14)>
+<$STR(S13)>.GETBAGITEMCOUNT <$STR(S$道具参数)> N$参数数值
+GetHumVar <$STR(S13)> S$道具数量 <$STR(N$参数数值)>
+SENDMSG 9 给与<$STR(S13)><$STR(N14)>个<$STR(S14)>，他目前剩余：<$STR(S$道具数量)>个！
+HTTPPOST http://47.97.112.7:9999/log  0  <$DATETIME>给【<$SERVERNAME>】的【<$STR(S13)>】补发了<$STR(N14)>个绑定<$STR(S14)>
+MOV S13
+MOV S14
+MOV N14
+MOV S$道具参数
+MOV S$道具数量
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+;----------------------------------------------------补发充值脚本段--------------------------------
+[@InPutString15]
+#IF
+;;EQUAL <$USERACCOUNT> 2317916
+#SAY
+<Text|text=当前补发的角色名：<$STR(S15)>|x=55|y=80|size=18|color=1001>
+<Text|text=输入补发的数量|x=55|y=110|size=18|color=1001|link=@@InPutInteger15>
+#ACT
+BREAK
+
+[@InPutInteger15]
+<Text|text=当前补发的角色名：<$STR(S15)>|x=55|y=80|size=18|color=1001>
+<Text|text=输入补发的数量:<$STR(N15)>|x=55|y=110|size=18|color=1001>
+<Button|x=135|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=补发充值|color=255|size=16|width=80|height=30|link=@调整_补发充值>
+<Button|x=275|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=补发元宝|color=255|size=16|width=80|height=30|link=@调整_补发元宝>
+
+[@调整_补发充值]
+#IF
+;;EQUAL <$USERACCOUNT> 2317916
+#ACT
+MOV A200 <$STR(S15)>
+MOV G200 <$STR(N15)>
+HTTPPOST http://47.97.112.7:9999/log 0  <$DATETIME>给【<$SERVERNAME>】的【<$STR(A200)>】补发了<$STR(G200)>元充值
+hcall <$STR(S15)> @给与充值
+MOV S15
+MOV N15 0
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+[@调整_补发元宝]
+#IF
+;;EQUAL <$USERACCOUNT> 2317916
+#ACT
+MOV A200 <$STR(S15)>
+MOV G200 <$STR(N15)>
+HTTPPOST http://47.97.112.7:9999/log 0  <$DATETIME>给【<$SERVERNAME>】的【<$STR(A200)>】补发了<$STR(G200)>个元宝
+hcall <$STR(S15)> @给与元宝
+MOV S15
+MOV N15 0
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+;----------------------------------------------------调整技能脚本段--------------------------------
+
+[@InPutString16]
+<Text|text=当前操作的角色名：<$STR(S16)>|x=55|y=50|size=18|color=1001>
+<Text|text=请输入需要操作的技能名称|x=55|y=80|size=18|color=1001|link=@@InPutString17(请输入技能名称)>
+
+[@InPutString17]
+#IF
+#ACT
+MOV S$技能状态
+MOV S$技能等级
+MOV S$技能强化
+<$STR(S16)>.MOV S$技能状态
+<$STR(S16)>.MOV S$技能等级
+<$STR(S16)>.MOV S$技能强化
+SetHumVar <$STR(S16)> S17 <$STR(S17)>
+
+#IF
+<$STR(S16)>.CheckMagicName <$STR(S17)>
+#ACT
+<$STR(S16)>.MOV S$技能状态 已学习
+#ELSEACT
+<$STR(S16)>.MOV S$技能状态 未学习
+
+#IF
+<$STR(S16)>.EQUAL S$技能状态 已学习
+#ACT
+<$STR(S16)>.GetMagicLevel <$STR(S17)> 0 S$技能等级
+<$STR(S16)>.GetMagicLevel <$STR(S17)> 1 S$技能强化
+
+#IF
+#ACT
+GetHumVar <$STR(S16)> S$技能状态 <$STR(S$技能状态)>
+GetHumVar <$STR(S16)> S$技能等级 <$STR(S$技能等级)>
+GetHumVar <$STR(S16)> S$技能强化 <$STR(S$技能强化)>
+#SAY
+<Text|text=当前操作的角色名：<$STR(S16)>|x=55|y=50|size=18|color=1001>
+<Text|text=当前操作的技能：<$STR(S17)>|x=55|y=80|size=18|color=1001>
+<Text|text=技能状态:<$STR(S$技能状态)>，技能等级:<$STR(S$技能等级)>，强化状态:<$STR(S$技能强化)>|x=55|y=110|size=18|color=1001>
+<Button|x=100|y=140|nimg=public/1900000662.png|pimg=public/1900000663.png|text=增加技能|color=255|size=16|width=80|height=30|link=@调整_增加技能>
+<Button|x=250|y=140|nimg=public/1900000662.png|pimg=public/1900000663.png|text=删除技能|color=255|size=16|width=80|height=30|link=@调整_删除技能>
+<Button|x=100|y=200|nimg=public/1900000662.png|pimg=public/1900000663.png|text=调整技能|color=255|size=16|width=80|height=30|link=@@InPutInteger16(请输入调整的技能等级)>
+<Button|x=250|y=200|nimg=public/1900000662.png|pimg=public/1900000663.png|text=强化技能|color=255|size=16|width=80|height=30|link=@@InPutInteger17(请输入强化的技能等级)>
+
+[@调整_增加技能]
+#IF
+#ACT
+<$STR(S16)>.ADDSKILL <$STR(S17)> 3
+SENDMSG 9 <$STR(S16)>已经成功学习<$STR(S17)>！
+GOTO @InPutString17
+BREAK
+
+[@调整_删除技能]
+#IF
+#ACT
+<$STR(S16)>.DELSKILL <$STR(S17)>
+SENDMSG 9 <$STR(S16)>已经成功删除<$STR(S17)>！
+GOTO @InPutString17
+BREAK
+
+[@InPutInteger16]
+#IF
+#ACT
+SetHumVar <$STR(S16)> N16 <$STR(N16)>
+<$STR(S16)>.SKILLLEVEL <$STR(S17)> = <$STR(N16)> 0
+SENDMSG 9 <$STR(S16)>的<$STR(S17)>技能等级已经调整至<$STR(N16)>！
+GOTO @InPutString17
+BREAK
+
+[@InPutInteger17]
+#IF
+#ACT
+SetHumVar <$STR(S16)> N17 <$STR(N17)>
+<$STR(S16)>.SKILLLEVEL <$STR(S17)> = <$STR(N17)> 1
+SENDMSG 9 <$STR(S16)>的<$STR(S17)>强化等级已经调整至<$STR(N17)>！
+GOTO @InPutString17
+BREAK
+
+;----------------------------------------------------删除行会脚本段--------------------------------
+[@InPutString18]
+#IF
+#ACT
+GMEXECUTE 删除行会 <$STR(S18)>
+SENDMSG 9 已删除行会:<$STR(S18)>
+BREAK
+
+;----------------------------------------------------踢出离线脚本段--------------------------------
+[@InPutInteger18]
+<RText|text=你即将执行：<将土城内所有等级<$STR(N18)>及以下的角色踢出操作！/FCOLOR=249>|x=55|y=50|size=18|color=1001>
+<Button|x=100|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=确定踢出|color=255|size=16|width=80|height=30|link=@调整_踢出离线>
+<Button|x=250|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=返回界面|color=255|size=16|width=80|height=30|link=@执行_返回管理>
+
+[@调整_踢出离线]
+#IF
+#ACT
+Tdummy 3 <$STR(N18)> *
+SENDMSG 9 已踢出<$STR(N18)>级以下离线挂机人物
+GOTO @<$STR(S$界面切换)>
+BREAK
+
+;----------------------------------------------------强制攻城脚本段--------------------------------
+[@执行_强制攻城]
+#IF
+#ACT
+ADDTOCASTLEWARLIST 沙巴克 * 
+AddAttackSabukAll 0
+AddToCastleWarListEx 沙巴克 *
+GMEXECUTE 开始攻城 沙巴克
+BREAK
+
+;----------------------------------------------------角色标识相关脚本段--------------------------------
+[@InPutString19]
+<Text|text=当前操作的角色名：<$STR(S19)>|x=55|y=50|size=18|color=1001>
+<Text|text=请输入需要操作的标识|x=55|y=80|size=18|color=1001|link=@@InPutInteger19(请输入需要操作的标识)>
+
+[@InPutInteger19]
+#IF
+#ACT
+MOV N$目标标识 0
+SetHumVar <$STR(S19)> N19 <$STR(N19)>
+
+#IF
+<$STR(S19)>.CHECK [<$STR(N19)>] 0
+#ACT
+MOV N$目标标识 0
+#IF
+<$STR(S19)>.CHECK [<$STR(N19)>] 1
+#ACT
+MOV N$目标标识 1
+
+#IF
+#SAY
+<Text|text=当前操作的角色名：<$STR(S19)>|x=55|y=50|size=18|color=1001>
+<Text|text=当前角色[<$STR(N19)>]的标识值：<$STR(N$目标标识)>|x=55|y=80|size=18|color=1001>
+<Button|x=100|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=调整标识|color=255|size=16|width=80|height=30|link=@调整_角色标识>
+<Button|x=250|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=返回界面|color=255|size=16|width=80|height=30|link=@执行_返回管理>
+#ACT
+BREAK
+
+[@调整_角色标识]
+#IF
+<$STR(S19)>.CHECK [<$STR(N19)>] 0
+#ACT
+<$STR(S19)>.SET [<$STR(N19)>] 1
+GOTO @InPutInteger19
+BREAK
+#IF
+<$STR(S19)>.CHECK [<$STR(N19)>] 1
+#ACT
+<$STR(S19)>.SET [<$STR(N19)>] 0
+GOTO @InPutInteger19
+BREAK
+
+;----------------------------------------------------角色变量相关脚本段--------------------------------
+[@InPutString20]
+<Text|text=当前操作的角色名：<$STR(S20)>|x=55|y=50|size=18|color=1001>
+<Text|text=请输入需要操作的变量|x=55|y=80|size=18|color=1001|link=@@InPutString21(请输入需要操作的变量)>
+
+[@InPutString21]
+#IF
+#ACT
+MOV S$返回变量
+SetHumVar <$STR(S20)> S21 <$STR(S21)>
+<$STR(S20)>.MOV S$返回变量 <$STR(<$STR(S21)>)>
+GetHumVar <$STR(S20)> S$返回变量 <$STR(S$返回变量)>
+SENDMSG 6 当前<$STR(S20)>的变量值：<$STR(S$返回变量)>
+BREAK
+#SAY
+<Text|text=当前操作的角色名：<$STR(S20)>|x=55|y=50|size=18|color=1001>
+<Text|text=当前角色的变量值：<$STR(S$返回变量)>|x=55|y=80|size=18|color=1001>
+<Text|text=由于某些变量显示有误，变量信息已经输入至聊天框内。|x=55|y=100|size=17|color=249>
+<Button|x=100|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=调整变量|color=255|size=16|width=80|height=30|link=@@InPutString22(请输入需要调整的值)>
+<Button|x=250|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=返回界面|color=255|size=16|width=80|height=30|link=@执行_返回管理>
+
+[@InPutString22]
+<Text|text=当前操作的角色名：<$STR(S20)>|x=55|y=50|size=18|color=1001>
+<Text|text=当前操作的变量值：<$STR(S21)>|x=55|y=80|size=18|color=1001>
+<Text|text=当前需要修改的值：<$STR(S22)>|x=55|y=110|size=18|color=1001>
+<Button|x=100|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=确定调整|color=255|size=16|width=80|height=30|link=@调整_角色变量>
+<Button|x=250|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=返回界面|color=255|size=16|width=80|height=30|link=@执行_返回管理>
+<Text|text=T、Z系列变量可以是数字或字符或符号，|x=55|y=190|size=17|color=249>
+<Text|text=U、J系列变量必须为数字，否则数据混乱！|x=55|y=210|size=17|color=249>
+<Text|text=带有键值特征的变量尽量先咨询技术！|x=55|y=230|size=17|color=249>
+
+
+[@清除日志]
+#act
+CLEARNAMELIST ..\QuestDiary\寄售行\备份文件\购买日志.txt
+CLEARNAMELIST ..\QuestDiary\寄售行\备份文件\上架日志.txt
+CLEARNAMELIST ..\QuestDiary\寄售行\备份文件\下架日志.txt
+
+
+
+[@调整_角色变量]
+#IF
+#ACT
+SetHumVar <$STR(S20)> S21 <$STR(S21)>
+SetHumVar <$STR(S20)> S22 <$STR(S22)>
+<$STR(S20)>.MOV <$STR(S21)> <$STR(S22)>
+SENDMSG 9 <$STR(S20)>的<$STR(S21)>变量已经调整为：<$STR(S22)>
+GOTO @InPutString21
+BREAK
+
+;----------------------------------------------------角色自定义变量相关脚本段--------------------------------
+[@InPutString23]
+<Text|text=当前操作的角色名：<$STR(S23)>|x=55|y=50|size=18|color=1001>
+<Text|text=请输入需要操作的自定义变量|x=55|y=80|size=18|color=1001|link=@@InPutString24(请输入需要操作的自定义变量)>
+
+[@InPutString24]
+#IF
+#ACT
+MOV S$自定变量
+SetHumVar <$STR(S23)> S24 <$STR(S24)>
+GetHumVar <$STR(S23)> S$自定变量 <$HUMAN(<$STR(S24)>)>
+#SAY
+<Text|text=当前操作的角色名：<$STR(S23)>|x=55|y=50|size=18|color=1001>
+<Text|text=当前角色自定义变量：<$STR(S$自定变量)>|x=55|y=80|size=18|color=1001>
+<Button|x=100|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=调整自定义变量|color=255|size=16|width=80|height=30|link=@@InPutString25(请输入需要调整的值)>
+<Button|x=250|y=150|nimg=public/1900000662.png|pimg=public/1900000663.png|text=返回界面|color=255|size=16|width=80|height=30|link=@执行_返回管理>
+<Text|text=字符型自定义变量可以为数值、符号或汉字|x=55|y=190|size=17|color=249>
+<Text|text=数字型自定义变量必须为数字！|x=55|y=210|size=17|color=249>
+
+[@InPutString25]
+#IF
+#ACT
+SetHumVar <$STR(S23)> S24 <$STR(S24)>
+SetHumVar <$STR(S23)> S25 <$STR(S25)>
+<$STR(S23)>.CALCVAR HUMAN <$STR(S24)> = <$STR(S25)>
+<$STR(S23)>.SAVEVAR HUMAN <$STR(S24)>
+SENDMSG 9 <$STR(S23)>的自定义变量<$STR(S24)>已经修改为：<$STR(S25)>
+GOTO @InPutString24
+BREAK
+
+;----------------------------------------------------角色键值变量相关脚本段--------------------------------
+[@InPutString26]
+<Text|text=当前操作的角色名：<$STR(S26)>|x=55|y=50|size=18|color=1001>
+<Text|text=请输入需要操作的变量|x=55|y=80|size=18|color=1001|link=@@InPutString27(请输入需要操作的自定义变量)>
+
+[@InPutString27]
+#IF
+#ACT
+SetHumVar <$STR(S26)> S27 <$STR(S27)>
+GetHumVar <$STR(S26)> S$角色变量 <$STR(<$STR(S27)>)>
+SENDMSG 6 当前角色<$STR(S27)>变量的键值：<$STR(S$角色变量)>
+BREAK
+#SAY
+<Text|text=当前操作的角色名：<$STR(S26)>|x=55|y=50|size=18|color=1001>
+<Text|text=角色<$STR(S27)>变量的键值属性已经输入至聊天框内|x=55|y=80|size=18|color=1001>
+<Text|text=输入需要改变的键位|x=55|y=110|size=18|color=1001|link=@@InPutString28(请输入需要改变的键位)>
+<Text|text=返回重新修改|x=55|y=150|size=18|color=1001|link=@重新修改键值>
+<Text|text=返回界面首页|x=255|y=150|size=18|color=1001|link=@执行_返回管理>
+
+[@InPutString28]
+<Text|text=当前操作的角色名：<$STR(S26)>|x=55|y=50|size=18|color=1001>
+<Text|text=角色<$STR(S27)>变量的键值属性已经输入至聊天框内|x=55|y=80|size=18|color=1001>
+<Text|text=需要改变的键位为：<$STR(S28)>|x=55|y=110|size=18|color=1001>
+<Text|text=请输入要改变键位的值|x=55|y=140|size=18|color=1001|link=@@InPutString29(请输入需要改变键位的值)>
+<Text|text=返回重新修改|x=55|y=170|size=18|color=1001|link=@重新修改键值>
+
+[@InPutString29]
+<Text|text=当前操作的角色名：<$STR(S26)>|x=55|y=50|size=18|color=1001>
+<Text|text=角色<$STR(S27)>变量的键值属性已经输入至聊天框内|x=55|y=80|size=18|color=1001>
+<Text|text=需要改变的键位为：<$STR(S28)>|x=55|y=110|size=18|color=1001>
+<Text|text=需要将键位的值改为：<$STR(S29)>|x=55|y=140|size=18|color=1001>
+<Button|x=100|y=170|nimg=public/1900000662.png|pimg=public/1900000663.png|text=调整键值|color=255|size=16|width=80|height=30|link=@调整_角色键值>
+<Text|text=返回重新修改|x=55|y=210|size=18|color=1001|link=@重新修改键值>
+
+[@重新修改键值]
+#IF
+#ACT
+MOV S27
+MOV S28
+MOV S29
+MOV S$角色变量
+GOTO @InPutString26
+BREAK
+
+[@调整_角色键值]
+#IF
+#ACT
+SetHumVar <$STR(S26)> S27 <$STR(S27)>
+SetHumVar <$STR(S26)> S28 <$STR(S28)>
+SetHumVar <$STR(S26)> S29 <$STR(S29)>
+<$STR(S26)>.ADDSTRVALUE <$STR(S27)> <$STR(S28)> <$STR(S29)>
+SENDMSG 9 <$STR(S26)>的<$STR(S27)>变量<$STR(S28)>键值已经修改为:<$STR(S29)>
+GOTO @InPutString27
+BREAK
+
+;----------------------------------------------------角色自定义属性相关脚本段--------------------------------
+[@InPutString30]
+<Text|text=当前操作的角色名：<$STR(S30)>|x=55|y=50|size=18|color=1001>
+<Text|text=请输入需要查询的属性|x=55|y=80|size=18|color=1001|link=@@InPutInteger30(请输入需要查询的属性：200-249之间)>
+
+[@InPutInteger30]
+#IF
+#ACT
+MOV S$返回属性
+SetHumVar <$STR(S30)> S30 <$STR(N30)>
+<$STR(S30)>.MOV S$返回属性 <$CUSTABIL[<$STR(S30)>]> 
+GetHumVar <$STR(S30)> S$返回属性 <$STR(S$返回属性)>
+#SAY
+<Text|text=当前操作的角色名：<$STR(S30)>|x=55|y=50|size=18|color=1001>
+<Text|text=当前角色<$STR(N30)>号属性数值：<$STR(S$返回属性)>|x=55|y=80|size=18|color=1001>
+<Text|text=返回首页|x=55|y=110|size=18|color=1001|link=@执行_返回管理>
+
+;----------------------------------------------------角色BUFF属性相关脚本段--------------------------------
+[@InPutString31]
+<Text|text=当前操作的角色名：<$STR(S31)>|x=55|y=50|size=18|color=1001>
+<Text|text=请输入需要查询的BUFF编号|x=55|y=80|size=18|color=1001|link=@@InPutInteger31(具体BUFF编号咨询技术)>
+
+[@InPutInteger31]
+#IF
+#ACT
+SetHumVar <$STR(S31)> S31 <$STR(N31)>
+<$STR(S31)>.MOV S$状态层数 <$BUFFOL(<$STR(S31)>)>
+<$STR(S31)>.MOV S$状态时间 <$BUFFTR(<$STR(S31)>)>
+GetHumVar <$STR(S31)> S$状态层数 <$STR(S$状态层数)>
+GetHumVar <$STR(S31)> S$状态时间 <$STR(S$状态时间)>
+#SAY
+<Text|text=当前操作的角色名：<$STR(S31)>|x=55|y=50|size=18|color=1001>
+<Text|text=角色<$STR(S31)>BUFF层数：<$STR(S$状态层数)>，剩余时间：<$STR(S$状态时间)>|x=55|y=80|size=18|color=1001>
+<Button|x=100|y=170|nimg=public/1900000662.png|pimg=public/1900000663.png|text=增加此BUFF|color=255|size=16|width=80|height=30|link=@调整_增加状态>
+<Button|x=250|y=170|nimg=public/1900000662.png|pimg=public/1900000663.png|text=删除此BUFF|color=255|size=16|width=80|height=30|link=@调整_删除状态>
+<Text|text=返回首页|x=55|y=210|size=18|color=1001|link=@执行_返回管理>
+
+[@调整_增加状态]
+#IF
+#ACT
+SetHumVar <$STR(S31)> S31 <$STR(N31)>
+<$STR(S31)>.ADDBUFF <$STR(S31)>
+SENDMSG 9 已经为<$STR(S31)>增加了一层编号为：<$STR(N31)>的BUFF
+GOTO @InPutInteger31
+BREAK
+
+[@调整_删除状态]
+#IF
+#ACT
+SetHumVar <$STR(S31)> S31 <$STR(N31)>
+<$STR(S31)>.DELBUFF <$STR(S31)>
+SENDMSG 9 <$STR(S31)>编号为：<$STR(N31)>的BUFF已经被删除
+GOTO @InPutInteger31
+BREAK
+
+;----------------------------------------------------角色师徒数据相关脚本段--------------------------------
+[@InPutString32]
+#IF
+#ACT
+MOV S$徒弟数据1
+MOV S$徒弟数据2
+MOV S$徒弟数据3
+MOV S$师傅变量
+MOV S$删除数据
+<$STR(S32)>.GETSTRVALUE T12 徒弟1 S$徒弟数据1
+<$STR(S32)>.GETSTRVALUE T12 徒弟2 S$徒弟数据2
+<$STR(S32)>.GETSTRVALUE T12 徒弟3 S$徒弟数据3
+GetHumVar <$STR(S32)> S$师傅变量 <$STR(T11)>
+GetHumVar <$STR(S32)> S$徒弟数据1 <$STR(S$徒弟数据1)>
+GetHumVar <$STR(S32)> S$徒弟数据2 <$STR(S$徒弟数据2)>
+GetHumVar <$STR(S32)> S$徒弟数据3 <$STR(S$徒弟数据3)>
+#SAY
+<Text|text=当前操作的角色名：<$STR(S32)>|x=55|y=50|size=18|color=1001>
+<Text|text=当前角色师傅信息：<$STR(S$师傅变量)>|x=55|y=90|size=18|color=1001>
+<Text|text=当前角色徒弟位置1：<$STR(S$徒弟数据1)>|x=55|y=130|size=18|color=1001>
+<Text|text=当前角色徒弟位置2：<$STR(S$徒弟数据2)>|x=55|y=170|size=18|color=1001>
+<Text|text=当前角色徒弟位置3：<$STR(S$徒弟数据3)>|x=55|y=210|size=18|color=1001>
+<Text|text=返回首页|x=450|y=50|size=18|color=1001|link=@执行_返回管理>
+<Button|x=400|y=90|nimg=public/1900000662.png|pimg=public/1900000663.png|text=开除师傅|color=255|size=16|width=80|height=30|link=@调整_开除师傅>
+<Button|x=400|y=130|nimg=public/1900000662.png|pimg=public/1900000663.png|text=开除徒弟1|color=255|size=16|width=80|height=30|link=@调整_开除大徒弟>
+<Button|x=400|y=170|nimg=public/1900000662.png|pimg=public/1900000663.png|text=开除徒弟2|color=255|size=16|width=80|height=30|link=@调整_开除二徒弟>
+<Button|x=400|y=210|nimg=public/1900000662.png|pimg=public/1900000663.png|text=开除徒弟3|color=255|size=16|width=80|height=30|link=@调整_开除三徒弟>
+<Text|text=解除师徒关系时请务必确保师傅和徒弟都在线，否则出错！|x=55|y=240|size=18|color=249>
+
+[@调整_开除师傅]
+#IF
+EQUAL S$师傅变量
+#ACT
+SENDMSG 9 师傅变量为空，无需操作！
+BREAK
+
+#IF
+#ACT
+<$STR(S32)>.MOV T11
+<$STR(S32)>.unmaster requestunmaster force
+GetHumVar <$STR(S32)> S$删除数据 <$USERID>
+MOV A199 <$STR(S$删除数据)>
+Gmexecute 开始提问 @删除徒弟数据
+SENDMSG 9 请求已提交！
+BREAK
+
+[@调整_开除大徒弟]
+#IF
+EQUAL S$徒弟数据1 *
+#ACT
+SENDMSG 9 当前徒弟变量为空，无需操作！
+BREAK
+
+#IF
+#ACT
+<$STR(S32)>.ADDSTRVALUE T12 徒弟1 *
+GetHumVar <$STR(S32)> S$删除数据 <$USERID>
+MOV A199 <$STR(S$删除数据)>
+Gmexecute 开始提问 @删除师傅数据
+SENDMSG 9 请求已提交！
+BREAK
+
+[@调整_开除二徒弟]
+#IF
+EQUAL S$徒弟数据2 *
+#ACT
+SENDMSG 9 当前徒弟变量为空，无需操作！
+BREAK
+
+#IF
+#ACT
+<$STR(S32)>.ADDSTRVALUE T12 徒弟2 *
+GetHumVar <$STR(S32)> S$删除数据 <$USERID>
+MOV A199 <$STR(S$删除数据)>
+Gmexecute 开始提问 @删除师傅数据
+SENDMSG 9 请求已提交！
+BREAK
+
+[@调整_开除三徒弟]
+#IF
+EQUAL S$徒弟数据3 *
+#ACT
+SENDMSG 9 当前徒弟变量为空，无需操作！
+BREAK
+
+#IF
+#ACT
+<$STR(S32)>.ADDSTRVALUE T12 徒弟3 *
+GetHumVar <$STR(S32)> S$删除数据 <$USERID>
+MOV A199 <$STR(S$删除数据)>
+Gmexecute 开始提问 @删除师傅数据
+SENDMSG 9 请求已提交！
+BREAK
+
+;----------------------------------------------------角色婚姻数据相关脚本段--------------------------------
+[@InPutString33]
+<Text|text=当前操作的角色名：<$STR(S33)>|x=55|y=50|size=18|color=1001>
+<Button|x=55|y=80|nimg=public/1900000662.png|pimg=public/1900000663.png|text=强制离婚|color=255|size=16|width=80|height=30|link=@调整_强制离婚>
+<Text|text=返回首页|x=55|y=130|size=18|color=1001|link=@执行_返回管理>
+
+[@调整_强制离婚]
+#IF
+<$STR(S33)>.Checkmarry
+#ACT
+<$STR(S33)>.Unmarry Requestunmarry Force
+SENDMSG 9 离婚数据已提交！
+BREAK
+#ELSEACT
+SENDMSG 9 对方尚未结婚！
+BREAK
+
+;----------------------------------------------------角色八门遁甲数据相关脚本段--------------------------------
+[@InPutString34]
+<Text|text=当前操作的角色名：<$STR(S34)>|x=55|y=50|size=18|color=1001>
+<Text|text=查询角色命格数据库|x=55|y=80|size=16|color=1001|link=@@InPutString35(蓝色=T100,紫色=T101,橙色=T102,红色=T103)>
+<Text|text=查询角色指定命门数据|x=55|y=110|size=16|color=1001|link=@@InPutString36(输入：开门或休门或生门等以查询指定数据)>
+<Text|text=初始化人物八门数据库|x=55|y=140|size=16|color=1001|link=@初始化八门数据>
+<Text|text=清除人物紫薇星石使用数据|x=55|y=170|size=16|color=1001|link=@初始化紫薇星石>
+
+[@InPutString35]
+#IF
+EQUAL S34
+#ACT
+SENDMSG 9 先输入角色名后再进行操作！
+BREAK
+
+#IF
+#ACT
+MOV S$八门数据
+SetHumVar <$STR(S34)> S35 <$STR(S35)>
+<$STR(S34)>.MOV S$八门数据 <$STR(<$STR(S35)>)>
+GetHumVar <$STR(S34)> S$八门数据 <$STR(S$八门数据)>
+SENDMSG 6 对方<$STR(S34)>数据为：<$STR(S$八门数据)>
+BREAK
+
+[@InPutString36]
+#IF
+EQUAL S34
+#ACT
+SENDMSG 9 先输入角色名后再进行操作！
+BREAK
+
+#IF
+EQUAL S36 开门
+#ACT
+MOV S$传递参数1 T20
+MOV S$传递参数2 T151
+MOV S$传递参数3 T152
+MOV S$传递参数4 T153
+#IF
+EQUAL S36 休门
+#ACT
+MOV S$传递参数1 T21
+MOV S$传递参数2 T154
+MOV S$传递参数3 T155
+MOV S$传递参数4 T156
+#IF
+EQUAL S36 生门
+#ACT
+MOV S$传递参数1 T22
+MOV S$传递参数2 T157
+MOV S$传递参数3 T158
+MOV S$传递参数4 T159
+#IF
+EQUAL S36 伤门
+#ACT
+MOV S$传递参数1 T23
+MOV S$传递参数2 T160
+MOV S$传递参数3 T161
+MOV S$传递参数4 T162
+#IF
+EQUAL S36 杜门
+#ACT
+MOV S$传递参数1 T24
+MOV S$传递参数2 T163
+MOV S$传递参数3 T164
+MOV S$传递参数4 T165
+#IF
+EQUAL S36 景门
+#ACT
+MOV S$传递参数1 T25
+MOV S$传递参数2 T166
+MOV S$传递参数3 T167
+MOV S$传递参数4 T168
+#IF
+EQUAL S36 死门
+#ACT
+MOV S$传递参数1 T26
+MOV S$传递参数2 T169
+MOV S$传递参数3 T170
+MOV S$传递参数4 T171
+
+
+#IF
+#ACT
+MOV S$返回数据1
+MOV S$返回数据2
+MOV S$返回数据3
+MOV S$返回数据4
+MOV S$命格数据1
+MOV S$命格数据2
+MOV S$命格数据3
+MOV S$命格数据4
+SetHumVar <$STR(S34)> S$传递参数1 <$STR(S$传递参数1)>
+SetHumVar <$STR(S34)> S$传递参数2 <$STR(S$传递参数2)>
+SetHumVar <$STR(S34)> S$传递参数3 <$STR(S$传递参数3)>
+SetHumVar <$STR(S34)> S$传递参数4 <$STR(S$传递参数4)>
+<$STR(S34)>.MOV S$返回数据1 <$STR(<$STR(S$传递参数1)>)>
+<$STR(S34)>.MOV S$返回数据2 <$STR(<$STR(S$传递参数2)>)>
+<$STR(S34)>.MOV S$返回数据3 <$STR(<$STR(S$传递参数3)>)>
+<$STR(S34)>.MOV S$返回数据4 <$STR(<$STR(S$传递参数4)>)>
+GetHumVar <$STR(S34)> S$命格数据1 <$STR(S$返回数据1)>
+GetHumVar <$STR(S34)> S$命格数据2 <$STR(S$返回数据2)>
+GetHumVar <$STR(S34)> S$命格数据3 <$STR(S$返回数据3)>
+GetHumVar <$STR(S34)> S$命格数据4 <$STR(S$返回数据4)>
+#SAY
+<Text|text=角色：<$STR(S34)>的<$STR(S$传递参数1)>数据：<$STR(S$命格数据1)>|x=55|y=50|size=18|color=1001>
+<Text|text=角色：<$STR(S34)>的备选数据1：<$STR(S$命格数据2)>|x=55|y=75|size=18|color=1001>
+<Text|text=角色：<$STR(S34)>的备选数据2：<$STR(S$命格数据3)>|x=55|y=100|size=18|color=1001>
+<Text|text=角色：<$STR(S34)>的备选数据3：<$STR(S$命格数据4)>|x=55|y=125|size=18|color=1001>
+<Text|text=重新获得数据|x=55|y=150|size=18|color=1001|link=@InPutString34>
+
+[@初始化八门数据]
+<Text|text=初始化<$STR(S34)>的八门数据会导致对方所有关联八门|x=55|y=50|size=18|color=1001>
+<Text|text=遁甲的数据全部重置到新手登陆阶段。且需要重新进入八门|x=55|y=75|size=18|color=1001>
+<Text|text=试炼才能开启八门。此项不会清除角色紫薇星石使用数据|x=55|y=100|size=18|color=1001>
+<Text|text=确定初始化八门数据|x=55|y=130|size=18|color=1001|link=@确定重置八门>
+
+[@确定重置八门]
+#IF
+#ACT
+<$STR(S34)>.MOV T20
+<$STR(S34)>.MOV T21
+<$STR(S34)>.MOV T22
+<$STR(S34)>.MOV T23
+<$STR(S34)>.MOV T24
+<$STR(S34)>.MOV T25
+<$STR(S34)>.MOV T26
+<$STR(S34)>.MOV T27
+<$STR(S34)>.MOV T151
+<$STR(S34)>.MOV T152
+<$STR(S34)>.MOV T153
+<$STR(S34)>.MOV T154
+<$STR(S34)>.MOV T155
+<$STR(S34)>.MOV T156
+<$STR(S34)>.MOV T157
+<$STR(S34)>.MOV T158
+<$STR(S34)>.MOV T159
+<$STR(S34)>.MOV T160
+<$STR(S34)>.MOV T161
+<$STR(S34)>.MOV T162
+<$STR(S34)>.MOV T163
+<$STR(S34)>.MOV T164
+<$STR(S34)>.MOV T165
+<$STR(S34)>.MOV T166
+<$STR(S34)>.MOV T167
+<$STR(S34)>.MOV T168
+<$STR(S34)>.MOV T169
+<$STR(S34)>.MOV T170
+<$STR(S34)>.MOV T171
+<$STR(S34)>.MOV T100 一马当先#50|暗夜幻影#50|时来运转#50|杀人狂魔#50|青云直上#50|德高望重#50|乐善好施#50|死亡送葬#50|昼伏夜行#50|终极审判#50|法外狂徒#50|天纵奇才#50|丹凤卸甲#50|日进斗金#50|指点迷津#50|女中豪杰#50|比翼双飞#50|桃李天下#50|替天行道#50
+<$STR(S34)>.MOV T101 取之有道#40|弑神者#100|意外之财#35|药圣尊者#110|烹饪大师#110|巧夺天工#110|铁匠传人#110|神之打野#25|草木之灵#30|酒中仙#110|妙手回春#110|赏金猎人#110
+<$STR(S34)>.MOV T102 恶贯满盈#80|神魔之体#75|空间王者#75|韧性十足#75|天神赐福#75|绝处逢生#80|战神之怒#75|凤凰涅槃#80|不灭金身#75|与日俱进#80|柳暗花明#80|万人敬仰#75|唤龙术#75
+<$STR(S34)>.MOV T103 老当益壮#25|天生神力#25|血之狂暴#50|疾风劲火#55|无相神功#25|霸权压制#40|藐视神罚#110|热血沸腾#40|布衣神相#110|道法自然#100|毁灭之力#100|暴走战神#100|降神附体#110|斗转星移#110
+<$STR(S34)>.SET [201] 0
+<$STR(S34)>.SET [202] 0
+<$STR(S34)>.SET [203] 0
+<$STR(S34)>.SET [204] 0
+<$STR(S34)>.SET [205] 0
+<$STR(S34)>.SET [206] 0
+<$STR(S34)>.SET [207] 0
+<$STR(S34)>.SET [208] 0
+SENDMSG 9 <$STR(S34)>的八门数据已经被初始化！
+GOTO @InPutString34
+BREAK
+
+[@初始化紫薇星石]
+#IF
+NOT EQUAL S34
+#ACT
+<$STR(S34)>.MOV U248 0
+<$STR(S34)>.MOV U249 0
+SENDMSG 9 <$STR(S34)>的紫薇星石使用数据已经被初始化！
+BREAK
+#ELSEACT
+SENDMSG 9 请先输入操作对象后再进行
+BREAK
+
+;----------------------------------------------------全局变量数据相关脚本段--------------------------------
+[@InPutString37]
+<Text|text=当前<$STR(S37)>的变量值为：<$STR(<$STR(S37)>)>|x=55|y=50|size=18|color=1001>
+<Text|text=调整<$STR(S37)>变量的值|x=55|y=80|size=16|color=1001|link=@@InPutString38(请输入需要改变的值)>
+<Text|text=返回首页|x=55|y=110|size=18|color=1001|link=@执行_返回管理>
+<Text|text=警告:字符型变量可为:字符、数字或符号。|x=55|y=140|size=16|color=249>
+<Text|text=警告:数字型变量必须为数字，否则会导致变量崩溃！|x=55|y=160|size=16|color=249>
+
+[@InPutString38]
+<Text|text=当前<$STR(S37)>的变量值为：<$STR(<$STR(S37)>)>|x=55|y=50|size=18|color=1001>
+<Text|text=调整后<$STR(S37)>变量的值为：<$STR(S38)>|x=55|y=80|size=16|color=1001>
+<Button|x=55|y=110|nimg=public/1900000662.png|pimg=public/1900000663.png|text=确定更改|color=255|size=16|width=80|height=30|link=@调整_全局变量>
+<Text|text=警告:字符型变量可为:字符、数字或符号。|x=55|y=140|size=16|color=249>
+<Text|text=警告:数字型变量必须为数字，否则会导致变量崩溃！|x=55|y=160|size=16|color=249>
+
+[@调整_全局变量]
+#IF
+#ACT
+MOV <$STR(S37)> <$STR(S38)>
+SENDMSG 9 <$STR(S37)>的变量已修改为：<$STR(S38)>
+GOTO @InPutString37
+BREAK
+
+[@寄售行系统]
+#IF
+#ACT
+MOV S$文本名称 购买日志
+MOV S$查询页数 1
+GOTO @查询寄售数据
+BREAK
+
+[@寄售行主页]
+<Img|width=520|height=450|move=1|img=public/icon_paihangbang_05.png|bg=1|reset=0>
+<Text|x=20.0|y=10.0|color=1001|size=18|text=购买日志|link=@查询寄售数据#文本名称=购买日志#查询页数=1>
+<Text|x=120.0|y=10.0|color=1001|size=18|text=离线记录|link=@查询寄售数据#文本名称=离线记录#查询页数=1>
+<Text|x=220.0|y=10.0|color=1001|size=18|text=上架日志|link=@查询寄售数据#文本名称=上架日志#查询页数=1>
+<Text|x=320.0|y=10.0|color=1001|size=18|text=下架日志|link=@查询寄售数据#文本名称=下架日志#查询页数=1>
+<Text|x=420|y=10|color=1001|size=18|text=返回首页|link=@执行_返回管理>
+<$STR(S$寄售行内容)>
+
+[@查询寄售数据]
+#IF
+#ACT
+MOV N$页数 <$STR(S$查询页数)>
+
+#IF
+EQUAL N$页数 1
+#ACT
+MOV N$读取数据0 0
+MOV N$读取数据1 1
+MOV N$读取数据2 2
+MOV N$读取数据3 3
+MOV N$读取数据4 4
+MOV N$读取数据5 5
+MOV N$读取数据6 6
+MOV N$读取数据7 7
+MOV N$读取数据8 8
+MOV N$读取数据9 9
+
+#IF
+#ACT
+MOV S$读取内容0 
+MOV S$读取内容1
+MOV S$读取内容2
+MOV S$读取内容3
+MOV S$读取内容4
+MOV S$读取内容5
+MOV S$读取内容6
+MOV S$读取内容7
+MOV S$读取内容8
+MOV S$读取内容9
+MOV S$寄售行内容
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据0)> S$读取内容0
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据1)> S$读取内容1
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据2)> S$读取内容2
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据3)> S$读取内容3
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据4)> S$读取内容4
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据5)> S$读取内容5
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据6)> S$读取内容6
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据7)> S$读取内容7
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据8)> S$读取内容8
+GetListString ..\QuestDiary\寄售行\备份文件\<$STR(S$文本名称)>.txt <$STR(N$读取数据9)> S$读取内容9
+
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据0)>：<$STR(S$读取内容0)>|x=55|y=50|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据1)>：<$STR(S$读取内容1)>|x=55|y=75|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据2)>：<$STR(S$读取内容2)>|x=55|y=100|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据3)>：<$STR(S$读取内容3)>|x=55|y=125|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据4)>：<$STR(S$读取内容4)>|x=55|y=150|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据5)>：<$STR(S$读取内容5)>|x=55|y=175|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据6)>：<$STR(S$读取内容6)>|x=55|y=200|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据7)>：<$STR(S$读取内容7)>|x=55|y=225|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据8)>：<$STR(S$读取内容8)>|x=55|y=250|size=14|color=255>
+INC S$寄售行内容 <Text|text=<$STR(N$读取数据9)>：<$STR(S$读取内容9)>|x=55|y=275|size=14|color=255>
+INC S$寄售行内容 <Text|text=上一页|x=55|y=400|size=18|color=1001|link=@首页数据上>
+INC S$寄售行内容 <Text|text=下一页|x=255|y=400|size=18|color=1001|link=@首页数据下>
+SENDMSG 9 <$STR(N$页数)>
+GOTO @寄售行主页
+BREAK
+
+[@首页数据上]
+#IF
+LARGE N$页数 1
+#ACT
+DEC N$页数 1
+MOV S$查询页数 <$STR(N$页数)>
+DEC N$读取数据0 10
+DEC N$读取数据1 10
+DEC N$读取数据2 10
+DEC N$读取数据3 10
+DEC N$读取数据4 10
+DEC N$读取数据5 10
+DEC N$读取数据6 10
+DEC N$读取数据7 10
+DEC N$读取数据8 10
+DEC N$读取数据9 10
+GOTO @查询寄售数据
+BREAK
+
+[@首页数据下]
+#IF
+#ACT
+INC N$页数 1
+MOV S$查询页数 <$STR(N$页数)>
+INC N$读取数据0 10
+INC N$读取数据1 10
+INC N$读取数据2 10
+INC N$读取数据3 10
+INC N$读取数据4 10
+INC N$读取数据5 10
+INC N$读取数据6 10
+INC N$读取数据7 10
+INC N$读取数据8 10
+INC N$读取数据9 10
+GOTO @查询寄售数据
+BREAK
+
+
+[@重读配置选项]
+#IF
+#ACT
+MOV S39
+#SAY
+<Text|text=请输入需要重新加载的文件名称|x=55|y=50|size=18|color=1001|link=@@InPutString39(输入文件名，不要带后缀，字符类全部小写输入！)>
+<Text|text=返回首页|x=55|y=100|size=18|color=1001|link=@执行_返回管理>
+
+[@InPutString39]
+<Text|text=重新加载的文件名为：<$STR(S39)>|x=55|y=60|size=18|color=1001>
+<Text|text=重新加载表格文件：<$STR(S39)>.csv|x=55|y=100|size=18|color=1001|link=@调整_重读表格>
+;<Text|text=重新加载配置文件：<$STR(S39)>.ini|x=55|y=110|size=18|color=1001|link=@调整_重读文件>
+;<Text|text=重新加载数据文本：<$STR(S39)>.txt|x=55|y=140|size=18|color=1001|link=@调整_重读文本>
+<Text|text=重新输入文件名|x=55|y=150|size=18|color=1001|link=@重读配置选项>
+
+[@调整_重读表格]
+#IF
+#ACT
+NEWREADCSV ..\QuestDiary\功能脚本\加载数据\<$STR(S39)>.csv
+SENDMSG 9 表格数据已重新加载
+GOTO @重读配置选项
+BREAK
+
+[@执行_返回管理]
+#IF
+#ACT
+GOTO @<$STR(S$界面跳转)>
+BREAK
+
+[@补发后台]
+#IF
+;EQUAL <$USERACCOUNT> 27274775
+EQUAL S$补发身份认证 已通过
+#ACT
+GOTO @补发界面
+BREAK
+
+#IF
+;EQUAL <$USERACCOUNT> 36390895
+EQUAL S$补发身份认证 已通过
+#ACT
+GOTO @补发界面
+BREAK
+
+#IF
+;EQUAL <$USERACCOUNT> 36390895
+#SAY
+\ \ \ \
+　　<请输入密码/@@InPutString97(请输入密码)> \ \
+#ACT
+BREAK
+
+
+#IF
+;EQUAL <$USERACCOUNT> 27274775
+#SAY
+\ \ \ \
+　　<请输入密码/@@InPutString97(请输入密码)> \ \
+#ACT
+BREAK
+
+[@InPutString97]
+#IF
+COMPARETEXT <$STR(S97)> cyh960321
+#ACT
+CHANGEPERMISSION 9
+MOV S$补发身份认证 已通过
+GOTO @补发界面
+#ELSEACT
+BREAK
+#ELSESAY
+密码错误
+
+[@补发界面]
+#IF
+#ACT
+#SAY
+<Img|move=0|img=public/bg_npc_01.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=545|y=0|width=80|height=80|link=@exit>
+<Button|x=546|y=0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Button|x=37.0|y=59.0|color=255|nimg=public/bg_hhzy_01_3.png|size=18|text=给与充值|link=@客服补发>
+
+[@客服补发]
+#OR
+;EQUAL <$USERACCOUNT> 36390895
+;EQUAL <$USERACCOUNT> 27274775
+#SAY
+<Text|x=39.0|y=58.0|color=251|size=18|text=输入补发名字:<$STR(S$补发姓名)>|link=@@InPutString98(请输入名字)>
+<Text|x=39.0|y=98.0|color=251|size=18|text=输入补发金额:<$STR(N$补发金额)>|link=@@InPutInteger98(请输入金额)>
+<Button|x=39.0|y=138.0|width=80|height=30|nimg=public/1900000662.png|pimg=public/1900000663.png|color=255|size=16|text=确定补发|link=@确定客服补发>
+#ACT
+BREAK
+
+[@InPutString98]
+#IF
+#ACT
+MOV S$补发姓名 <$STR(S98)>
+GOTO @客服补发
+BREAK
+
+[@InPutInteger98]
+#IF
+#ACT
+MOV N$补发金额 <$STR(N98)>
+GOTO @客服补发
+BREAK
+
+[@确定客服补发]
+#OR
+;EQUAL <$USERACCOUNT> 36390895
+;EQUAL <$USERACCOUNT> 27274775
+#ACT
+MOV A200 <$STR(S$补发姓名)>
+MOV G200 <$STR(N$补发金额)>
+HTTPPOST http://47.97.112.7:9999/log 0  客服操作：<$DATETIME>给【<$SERVERNAME>】的【<$STR(A200)>】补发了<$STR(G200)>元充值
+HCALL <$STR(S$补发姓名)> @给与充值
+INC G400 <$STR(N$补发金额)>
+MOV S98
+MOV N98
+MOV S$补发姓名
+MOV N$补发金额
+GOTO @客服补发
+BREAK
+
+
+
+[@InPutString53]
+#IF
+NOT <$STR(S53)>.Checkonline
+#ACT
+SENDMSG 9 当前角色不在线，请登陆该角色后再执行！
+BREAK
+
+#IF
+<$STR(S53)>.CHECKUSEITEM 14
+#ACT
+MOV S$传递数据 执行佩饰恢复
+SetHumVar <$STR(S53)> S53 <$STR(S$传递数据)>
+HCALL <$STR(S53)> @客服佩饰执行
+BREAK
+#ELSEACT
+SENDMSG 9 <$STR(S53)>身上尚未佩戴任何佩饰！
+BREAK
+
+[@InPutString55]
+#IF
+NOT <$STR(S55)>.Checkonline
+#ACT
+SENDMSG 9 当前角色不在线，请登陆该角色后再执行！
+BREAK
+
+#IF
+<$STR(S55)>.Checkonline
+#SAY
+<Text|x=40.0|y=60.0|color=251|size=18|text=清空武器强化|link=@清空强化#清空部位=1>
+<Text|x=180.0|y=60.0|color=251|size=18|text=清空衣服强化|link=@清空强化#清空部位=0>
+<Text|x=320.0|y=60.0|color=251|size=18|text=清空项链强化|link=@清空强化#清空部位=3>
+
+<Text|x=40.0|y=90.0|color=251|size=18|text=清空头盔强化|link=@清空强化#清空部位=4>
+<Text|x=180.0|y=90.0|color=251|size=18|text=清空勋章强化|link=@清空强化#清空部位=2>
+<Text|x=320.0|y=90.0|color=251|size=18|text=清空左手强化|link=@清空强化#清空部位=6>
+
+<Text|x=40.0|y=120.0|color=251|size=18|text=清空右手强化|link=@清空强化#清空部位=5>
+<Text|x=180.0|y=120.0|color=251|size=18|text=清空左戒强化|link=@清空强化#清空部位=8>
+<Text|x=320.0|y=120.0|color=251|size=18|text=清空右戒强化|link=@清空强化#清空部位=7>
+
+<Text|x=40.0|y=150.0|color=251|size=18|text=清空护符强化|link=@清空强化#清空部位=9>
+<Text|x=180.0|y=150.0|color=251|size=18|text=清空腰带强化|link=@清空强化#清空部位=10>
+<Text|x=320.0|y=150.0|color=251|size=18|text=清空靴子强化|link=@清空强化#清空部位=11>
+
+<Text|x=40.0|y=180.0|color=251|size=18|text=清空宠物强化|link=@清空强化#清空部位=15>
+
+#ACT
+BREAK
+
+[@清空强化]
+#IF
+#ACT
+SetHumVar <$STR(S55)> S$清空部位 <$STR(S$清空部位)>
+<$STR(S55)>.ChangeItemUpgradeCount <$STR(S$清空部位)> = 0
+<$STR(S55)>.CHANGECUSTOMITEMABIL <$STR(S$清空部位)> 0 1 0 2
+<$STR(S55)>.CHANGECUSTOMITEMABIL <$STR(S$清空部位)> 0 2 0 2
+<$STR(S55)>.CHANGECUSTOMITEMABIL <$STR(S$清空部位)> 0 3 0 2
+<$STR(S55)>.CHANGECUSTOMITEMVALUE <$STR(S$清空部位)> 0 = 0 2
+<$STR(S55)>.CHANGECUSTOMITEMTEXT <$STR(S$清空部位)> -1 2
+BREAK
+
+
+}

@@ -1,0 +1,713 @@
+[@MAIN]
+#IF
+#ACT
+MOV S$许愿按钮 <Button|x=188.0|y=390.0|width=120|height=35|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=251|size=18|text=神龙许愿|link=@开始许愿>
+MOV S$龙珠特效 
+INC S$龙珠特效 <Effect|x=140.0|y=135.0|scale=1|speed=1|act=0|effecttype=0|effectid=30016|dir=5>
+INC S$龙珠特效 <Effect|x=290.0|y=200.0|scale=1|speed=1|act=0|effecttype=0|effectid=30017|dir=5>
+INC S$龙珠特效 <Effect|x=99.0|y=200.0|scale=1|speed=1|act=0|effecttype=0|effectid=30018|dir=5>
+INC S$龙珠特效 <Effect|x=250.0|y=135.0|scale=1|speed=1|act=0|effecttype=0|effectid=30019|dir=5>
+INC S$龙珠特效 <Effect|x=120.0|y=265.0|scale=1|speed=1|act=0|effecttype=0|effectid=30020|dir=5>
+INC S$龙珠特效 <Effect|x=280.0|y=265.0|scale=1|speed=1|act=0|effecttype=0|effectid=30021|dir=5>
+INC S$龙珠特效 <Effect|x=198.0|y=296.0|scale=1|speed=1|act=0|effecttype=0|effectid=30022|dir=5>
+INC S$龙珠特效 <Effect|x=184.0|y=195.0|scale=1|speed=1|effecttype=0|effectid=8121|act=0|dir=5>
+GOTO @许愿界面
+break
+
+[@许愿界面]
+#IF
+#ACT
+MOV N$许愿次数 3
+DEC N$许愿次数 J22
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=690|esc=1|scale9r=50|scale9t=50|bg=1|scale9b=50|move=0|reset=1|loadDelay=0|img=private/psllz/00070.png|scale9l=50|show=4>
+<Layout|x=631.0|y=-16.0|width=80|height=80|link=@exit>
+<Button|x=647.0|y=16.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=300.0|y=7.0|img=private/biaoti/01046.png|esc=0>
+<Img|x=32.0|y=70.0|width=432|height=380|scale9l=50|scale9b=50|img=private/slxy/001.png|scale9r=50|esc=0|scale9t=50>
+<Img|x=-15.0|y=30.0|img=private/slxy/002.png|esc=0>
+<Img|x=190.0|y=200.0|width=100|height=100|esc=0|img=private/slxy/003.png>
+<Img|x=449.0|y=57.0|height=400|img=private/psllz/00010.png|esc=0>
+<Text|x=40.0|y=70.0|outlinecolor=0|color=11002|outline=1|size=17|text=今日可许愿次数：<$STR(N$许愿次数)>次>
+<Text|x=40.0|y=96.0|outlinecolor=0|color=11022|outline=1|size=16|text=(许愿次数每日凌晨重置)>
+<Text|x=467.0|y=105.0|color=255|size=16|outlinecolor=0|outline=1|text=游戏中集齐7颗龙珠就可以\在神龙处许下1个愿望只要\我们拥有足够数量的龙珠，\就可以随机获得装备、金\币等珍贵材料！>
+
+
+<Img|x=598.0|y=295.0|img=public/02128.png|esc=0>
+<Img|x=533.0|y=295.0|img=public/02128.png|esc=0>
+<Img|x=468.0|y=295.0|img=public/02128.png|esc=0>
+<Img|x=598.0|y=370.0|img=public/02128.png|esc=0>
+<Img|x=533.0|y=370.0|img=public/02128.png|esc=0>
+<Img|x=468.0|y=371.0|img=public/02128.png|esc=0>
+<ItemShow|x=463.0|y=290.0|width=70|height=70|itemid=10390|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=529.0|y=290.0|width=70|height=70|itemid=10404|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=593.0|y=290.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=462.0|y=366.0|width=70|height=70|itemid=10432|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=528.0|y=366.0|width=70|height=70|itemid=10431|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=593.0|y=366.0|width=70|height=70|itemid=10433|itemcount=1|showtips=1|bgtype=0>
+<Img|x=461.0|y=253.0|width=200|height=15|scale9r=0|scale9l=0|scale9t=0|img=public/word_sxbt_05.png|scale9b=0|esc=0>
+<Text|x=526.0|y=244.0|color=1025|size=18|text=奖励预览>
+<Text|x=471.0|y=76.0|size=18|color=11009|text=许愿规则：>
+<$STR(S$许愿按钮)>
+<$STR(S$龙珠特效)>
+
+[@开始许愿]
+#IF
+LARGE J22 2
+#ACT
+MESSAGEBOX 你今天许愿的次数已用完！
+BREAK 
+
+#IF
+CHECKITEM 一星珠 1
+CHECKITEM 二星珠 1
+CHECKITEM 三星珠 1
+CHECKITEM 四星珠 1
+CHECKITEM 五星珠 1
+CHECKITEM 六星珠 1
+CHECKITEM 七星珠 1
+#ACT
+MOV S$许愿按钮
+INC S$许愿按钮 <Button|x=37.0|y=410.0|width=100|height=35|rotate=0|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|color=251|size=17|text=我要装备|link=@我要装备>
+INC S$许愿按钮 <Button|x=247.0|y=411.0|width=100|height=35|rotate=0|color=251|size=17|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|text=我要经验|link=@我要经验>
+INC S$许愿按钮 <Button|x=142.0|y=411.0|width=100|height=35|rotate=0|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|color=251|size=17|text=我要材料|link=@我要材料>
+INC S$许愿按钮 <Button|x=352.0|y=411.0|width=100|height=35|rotate=0|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|color=251|size=17|text=我要金币|link=@我要金币>
+goto @许愿界面
+break
+#ELSEACT
+SENDMSG 9 你没有集齐七颗龙珠啊！
+BREAK
+
+[@我要装备]
+#IF
+LARGE N$许愿CD <$UTCNOW>
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 背包空格数量不足！
+BREAK
+
+#IF
+LARGE J22 2
+#ACT
+MESSAGEBOX 你今天许愿的次数已用完！
+BREAK 
+
+#IF
+CHECKITEM 一星珠 1
+CHECKITEM 二星珠 1
+CHECKITEM 三星珠 1
+CHECKITEM 四星珠 1
+CHECKITEM 五星珠 1
+CHECKITEM 六星珠 1
+CHECKITEM 七星珠 1
+#ACT
+MOV N$许愿CD <$UTCNOW>
+INC N$许愿CD 2
+INC J22 1
+INC G83 1
+TAKE 一星珠 1
+TAKE 二星珠 1
+TAKE 三星珠 1
+TAKE 四星珠 1
+TAKE 五星珠 1
+TAKE 六星珠 1
+TAKE 七星珠 1
+MOV S$龙珠特效 <Effect|x=218.0|y=235.0|speed=1.5|effecttype=0|act=0|effectid=8122|dir=5>
+goto @许愿界面
+delaygoto  2000 @装备许愿结果
+#ELSEACT
+SENDMSG 9 许愿失败，你没有集齐七颗龙珠啊！
+BREAK
+
+
+[@我要经验]
+#IF
+LARGE N$许愿CD <$UTCNOW>
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 背包空格数量不足！
+BREAK
+
+#IF
+LARGE J22 2
+#ACT
+MESSAGEBOX 你今天许愿的次数已用完！
+BREAK 
+
+#IF
+CHECKITEM 一星珠 1
+CHECKITEM 二星珠 1
+CHECKITEM 三星珠 1
+CHECKITEM 四星珠 1
+CHECKITEM 五星珠 1
+CHECKITEM 六星珠 1
+CHECKITEM 七星珠 1
+#ACT
+MOV N$许愿CD <$UTCNOW>
+INC N$许愿CD 2
+INC J22 1
+INC G83 1
+TAKE 一星珠 1
+TAKE 二星珠 1
+TAKE 三星珠 1
+TAKE 四星珠 1
+TAKE 五星珠 1
+TAKE 六星珠 1
+TAKE 七星珠 1
+MOV S$龙珠特效 <Effect|x=218.0|y=235.0|speed=1.5|effecttype=0|act=0|effectid=8122|dir=5>
+goto @许愿界面
+delaygoto  2000 @经验许愿结果
+#ELSEACT
+SENDMSG 9 许愿失败，你没有集齐七颗龙珠啊！
+BREAK
+
+
+[@我要材料]
+#IF
+LARGE N$许愿CD <$UTCNOW>
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 背包空格数量不足！
+BREAK
+
+#IF
+LARGE J22 2
+#ACT
+MESSAGEBOX 你今天许愿的次数已用完！
+BREAK 
+
+#OR
+NOT CHECKITEM 一星珠 1
+NOT CHECKITEM 二星珠 1
+NOT CHECKITEM 三星珠 1
+NOT CHECKITEM 四星珠 1
+NOT CHECKITEM 五星珠 1
+NOT CHECKITEM 六星珠 1
+NOT CHECKITEM 七星珠 1
+#ACT
+SENDMSG 9 许愿失败，你没有集齐七颗龙珠啊！
+BREAK
+
+#IF
+CHECKITEM 一星珠 1
+CHECKITEM 二星珠 1
+CHECKITEM 三星珠 1
+CHECKITEM 四星珠 1
+CHECKITEM 五星珠 1
+CHECKITEM 六星珠 1
+CHECKITEM 七星珠 1
+#ACT
+MOV N$许愿CD <$UTCNOW>
+INC N$许愿CD 2
+INC J22 1
+INC G83 1
+TAKE 一星珠 1
+TAKE 二星珠 1
+TAKE 三星珠 1
+TAKE 四星珠 1
+TAKE 五星珠 1
+TAKE 六星珠 1
+TAKE 七星珠 1
+MOV S$龙珠特效 <Effect|x=218.0|y=235.0|speed=1.5|effecttype=0|act=0|effectid=8122|dir=5>
+goto @许愿界面
+delaygoto  2000 @材料许愿结果
+break
+
+
+[@我要金币]
+#IF
+LARGE N$许愿CD <$UTCNOW>
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 背包空格数量不足！
+BREAK
+
+#IF
+LARGE J22 2
+#ACT
+MESSAGEBOX 你今天许愿的次数已用完！
+BREAK 
+
+#IF
+CHECKITEM 一星珠 1
+CHECKITEM 二星珠 1
+CHECKITEM 三星珠 1
+CHECKITEM 四星珠 1
+CHECKITEM 五星珠 1
+CHECKITEM 六星珠 1
+CHECKITEM 七星珠 1
+#ACT
+MOV N$许愿CD <$UTCNOW>
+INC N$许愿CD 2
+INC J22 1
+INC G83 1
+TAKE 一星珠 1
+TAKE 二星珠 1
+TAKE 三星珠 1
+TAKE 四星珠 1
+TAKE 五星珠 1
+TAKE 六星珠 1
+TAKE 七星珠 1
+MOV S$龙珠特效 <Effect|x=218.0|y=235.0|speed=1.5|effecttype=0|act=0|effectid=8122|dir=5>
+goto @许愿界面
+delaygoto  2000 @金币许愿结果
+#ELSEACT
+SENDMSG 9 许愿失败，你没有集齐七颗龙珠啊！
+BREAK
+
+
+[@金币许愿结果]
+#IF
+LARGE G83 499
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOVR N$超级金币随机 149 251
+sendmsg 7 鸿运当头生效，额外获得金币<$str(N$超级金币随机)>万...
+MUL  N$超级金币随机  <$str(N$超级金币随机)> 2
+GIVE 金币 <$str(N$超级金币随机)>0000
+logact 10001 通过[神龙许愿]获得<$str(N$超级金币随机)>0000金币，剩余金币：<$MONEY(金币)>。
+MESSAGEBOX 你在神龙许愿中获得：<$str(N$超级金币随机)>万金币！
+MOV N$超级金币随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOVR N$超级金币随机 99 151
+sendmsg 7 鸿运当头生效，额外获得金币<$str(N$超级金币随机)>万...
+MUL  N$超级金币随机  <$str(N$超级金币随机)> 2
+GIVE 金币 <$str(N$超级金币随机)>0000
+logact 10001 通过[神龙许愿]获得<$str(N$超级金币随机)>0000金币，剩余金币：<$MONEY(金币)>。
+MESSAGEBOX 你在神龙许愿中获得：<$str(N$超级金币随机)>万金币！
+MOV N$超级金币随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+LARGE G83 499
+#ACT
+MOV G83 0
+MOVR N$超级金币随机 149 251
+GIVE 金币 <$str(N$超级金币随机)>0000
+logact 10001 通过[神龙许愿]获得<$str(N$超级金币随机)>0000金币，剩余金币：<$MONEY(金币)>。
+MESSAGEBOX 你在神龙许愿中获得：<$str(N$超级金币随机)>万金币！
+MOV N$超级金币随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+#ACT
+MOVR N$超级金币随机 99 151
+GIVE 金币 <$str(N$超级金币随机)>0000
+logact 10001 通过[神龙许愿]获得<$str(N$超级金币随机)>0000金币，剩余金币：<$MONEY(金币)>。
+MESSAGEBOX 你在神龙许愿中获得：<$str(N$超级金币随机)>万金币！
+MOV N$超级金币随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+
+
+[@经验许愿结果]
+#IF
+CHECKLEVELEX > 79
+LARGE G83 499
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV G83 0
+MOVR N$超级经验随机 14 26
+sendmsg 7 鸿运当头生效，额外获得获得<$str(N$超级经验随机)>个经验卷...
+MUL  N$超级经验随机  <$str(N$超级经验随机)> 2
+GiveStateItem 10万经验卷 <$str(N$超级经验随机)> 1 1 0 0 1 1 1 1
+MESSAGEBOX 你在神龙许愿中获得：10万经验卷*<$str(N$超级经验随机)>！
+MOV N$超级经验随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+SMALL G83 500
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOVR N$超级经验随机 9 16
+sendmsg 7 鸿运当头生效，额外获得获得<$str(N$超级经验随机)>个经验卷...
+MUL  N$超级经验随机  <$str(N$超级经验随机)> 2
+GiveStateItem 10万经验卷 <$str(N$超级经验随机)> 1 1 0 0 1 1 1 1
+MESSAGEBOX 你在神龙许愿中获得：10万经验卷*<$str(N$超级经验随机)>！
+MOV N$超级经验随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+LARGE G83 499
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV G83 0
+MOVR N$超级经验随机 14 26
+sendmsg 7 鸿运当头生效，额外获得获得<$str(N$超级经验随机)>00000经验...
+MUL  N$超级经验随机  <$str(N$超级经验随机)> 2
+CHANGEEXP + <$str(N$超级经验随机)>00000
+MESSAGEBOX 你在神龙许愿中获得：<$str(N$超级经验随机)>00000经验！
+MOV N$超级经验随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+SMALL G83 500
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOVR N$超级经验随机 9 16
+sendmsg 7 鸿运当头生效，额外获得获得<$str(N$超级经验随机)>00000经验...
+MUL  N$超级经验随机  <$str(N$超级经验随机)> 2
+CHANGEEXP + <$str(N$超级经验随机)>00000
+MESSAGEBOX 你在神龙许愿中获得：<$str(N$超级经验随机)>00000经验！
+MOV N$超级经验随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+;===============================================鸿运当头
+#IF
+CHECKLEVELEX > 79
+LARGE G83 499
+#ACT
+MOV G83 0
+MOVR N$超级经验随机 14 26
+GiveStateItem 10万经验卷 <$str(N$超级经验随机)> 1 1 0 0 1 1 1 1
+MESSAGEBOX 你在神龙许愿中获得：10万经验卷*<$str(N$超级经验随机)>！
+MOV N$超级经验随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+SMALL G83 500
+#ACT
+MOVR N$超级经验随机 9 16
+GiveStateItem 10万经验卷 <$str(N$超级经验随机)> 1 1 0 0 1 1 1 1
+MESSAGEBOX 你在神龙许愿中获得：10万经验卷*<$str(N$超级经验随机)>！
+MOV N$超级经验随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+LARGE G83 499
+#ACT
+MOV G83 0
+MOVR N$超级经验随机 14 26
+CHANGEEXP + <$str(N$超级经验随机)>00000
+MESSAGEBOX 你在神龙许愿中获得：<$str(N$超级经验随机)>00000经验！
+MOV N$超级经验随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+CHECKLEVELEX < 80
+SMALL G83 500
+#ACT
+MOVR N$超级经验随机 9 16
+CHANGEEXP + <$str(N$超级经验随机)>00000
+MESSAGEBOX 你在神龙许愿中获得：<$str(N$超级经验随机)>00000经验！
+MOV N$超级经验随机 0
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+
+
+[@材料许愿结果]
+#IF
+LARGE G83 499
+CHECK [358] 1
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV G83 0
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿材料超级奖励.txt S$奖励内容
+GetValidstr <$str(S$奖励内容)> # S$材料名 S$材料数
+MOV n$材料数 <$STR(S$材料数)>
+MUL n$材料数  <$STR(n$材料数)> 2
+GIVE <$STR(S$材料名)> <$STR(n$材料数)>
+sendmsg 7 鸿运当头生效，材料获得双倍数量...
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$材料名)>*<$STR(S$材料数)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+LARGE G83 499
+CHECK [358] 0
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV G83 0
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿材料超级奖励.txt S$奖励内容
+GetValidstr <$str(S$奖励内容)> # S$材料名 S$材料数
+MOV n$材料数 <$STR(S$材料数)>
+MUL n$材料数  <$STR(n$材料数)> 2
+GiveStateItem <$STR(S$材料名)> <$STR(n$材料数)> 1 1 0 0 1 1 1 1
+sendmsg 7 鸿运当头生效，材料获得双倍数量...
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$材料名)>*<$STR(S$材料数)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+CHECK [358] 1
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿材料普通奖励.txt S$奖励内容
+GetValidstr <$str(S$奖励内容)> # S$材料名 S$材料数
+MOV n$材料数 <$STR(S$材料数)>
+MUL n$材料数  <$STR(n$材料数)> 2
+GIVE <$STR(S$材料名)> <$STR(n$材料数)>
+sendmsg 7 鸿运当头生效，材料获得双倍数量...
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$材料名)>*<$STR(S$材料数)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+CHECK [358] 0
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿材料普通奖励.txt S$奖励内容
+GetValidstr <$str(S$奖励内容)> # S$材料名 S$材料数
+MOV n$材料数 <$STR(S$材料数)>
+MUL n$材料数  <$STR(n$材料数)> 2
+GiveStateItem <$STR(S$材料名)> <$STR(N$材料数)> 1 1 0 0 1 1 1 1
+sendmsg 7 鸿运当头生效，材料获得双倍数量...
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$材料名)>*<$STR(S$材料数)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+;======================================================================
+#IF
+LARGE G83 499
+CHECK [358] 1
+#ACT
+MOV G83 0
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿材料超级奖励.txt S$奖励内容
+GetValidstr <$str(S$奖励内容)> # S$材料名 S$材料数
+GIVE <$STR(S$材料名)> <$STR(S$材料数)>
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$材料名)>*<$STR(S$材料数)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+LARGE G83 499
+CHECK [358] 0
+#ACT
+MOV G83 0
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿材料超级奖励.txt S$奖励内容
+GetValidstr <$str(S$奖励内容)> # S$材料名 S$材料数
+GiveStateItem <$STR(S$材料名)> <$STR(S$材料数)> 1 1 0 0 1 1 1 1
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$材料名)>*<$STR(S$材料数)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+CHECK [358] 1
+#ACT
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿材料普通奖励.txt S$奖励内容
+GetValidstr <$str(S$奖励内容)> # S$材料名 S$材料数
+GIVE <$STR(S$材料名)> <$STR(S$材料数)>
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$材料名)>*<$STR(S$材料数)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+CHECK [358] 0
+#ACT
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿材料普通奖励.txt S$奖励内容
+GetValidstr <$str(S$奖励内容)> # S$材料名 S$材料数
+GiveStateItem <$STR(S$材料名)> <$STR(S$材料数)> 1 1 0 0 1 1 1 1
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$材料名)>*<$STR(S$材料数)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+
+[@装备许愿结果]
+#IF
+LARGE G83 499
+CHECK [358] 1
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV G83 0
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿装备超级奖励.txt S$奖励内容
+GIVE <$STR(S$奖励内容)> 2
+sendmsg 7 鸿运当头生效，装备获得双倍数量...
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$奖励内容)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+LARGE G83 499
+CHECK [358] 0
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV G83 0
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿装备超级奖励.txt S$奖励内容
+GiveStateItem <$STR(S$奖励内容)> 2 1 1 0 0 1 1 1 1
+sendmsg 7 鸿运当头生效，装备获得双倍数量...
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$奖励内容)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+CHECK [358] 1
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿装备普通奖励.txt S$奖励内容
+GIVE <$STR(S$奖励内容)> 2
+sendmsg 7 鸿运当头生效，装备获得双倍数量...
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$奖励内容)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+CHECK [358] 0
+EQUAL S$鸿运当头 激活
+RANDOMEX 20 100
+#ACT
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿装备普通奖励.txt S$奖励内容
+GiveStateItem <$STR(S$奖励内容)> 2 1 1 0 0 1 1 1 1
+sendmsg 7 鸿运当头生效，装备获得双倍数量...
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$奖励内容)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+;==========================================================================================
+#IF
+LARGE G83 499
+CHECK [358] 1
+#ACT
+MOV G83 0
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿装备超级奖励.txt S$奖励内容
+GIVE <$STR(S$奖励内容)> 1
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$奖励内容)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+LARGE G83 499
+CHECK [358] 0
+#ACT
+MOV G83 0
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿装备超级奖励.txt S$奖励内容
+GiveStateItem <$STR(S$奖励内容)> 1 1 1 0 0 1 1 1 1
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$奖励内容)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+CHECK [358] 1
+#ACT
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿装备普通奖励.txt S$奖励内容
+GIVE <$STR(S$奖励内容)> 1
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$奖励内容)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+#IF
+SMALL G83 500
+CHECK [358] 0
+#ACT
+MOV S$奖励内容
+GETRANDOMLINETEXT ..\QuestDiary\数据文件\许愿装备普通奖励.txt S$奖励内容
+GiveStateItem <$STR(S$奖励内容)> 1 1 1 0 0 1 1 1 1
+MESSAGEBOX 你在神龙许愿中获得：<$STR(S$奖励内容)>！
+GOTO @MAIN
+delaygoto 5 @活跃任务6
+BREAK
+
+[@活跃任务6]
+#IF
+EQUAL S$活跃达人 激活
+#act
+INC J105 1
+
+#IF
+SMALL J58 5
+#ACT
+MOV J58 5
+INC J65 5
+INC U43 5
+BREAK

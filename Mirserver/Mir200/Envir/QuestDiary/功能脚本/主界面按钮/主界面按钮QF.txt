@@ -1,0 +1,1491 @@
+[@基础按钮QF]
+{
+
+[@排行榜_全部等级]
+#IF
+CHECKLEVELEX < 48
+#ACT
+sendmsg 9 需要等级：48
+BREAK
+
+#IF
+#act
+OPENHYPERLINK 32 2
+OPENHYPERLINK 32 1 1
+
+[@排行榜_战士等级]
+#IF
+CHECKLEVELEX < 48
+#ACT
+sendmsg 9 需要等级：48
+BREAK
+
+
+#IF
+#act
+OPENHYPERLINK 32 2
+OPENHYPERLINK 32 1 2
+
+[@排行榜_法师等级]
+#IF
+CHECKLEVELEX < 48
+#ACT
+sendmsg 9 需要等级：48
+BREAK
+
+#IF
+#act
+OPENHYPERLINK 32 2
+OPENHYPERLINK 32 1 3
+
+[@排行榜_道士等级]
+#IF
+CHECKLEVELEX < 48
+#ACT
+sendmsg 9 需要等级：48
+BREAK
+
+#IF
+#act
+OPENHYPERLINK 32 2
+OPENHYPERLINK 32 1 4
+
+[@角色]
+#IF
+#ACT
+OPENHYPERLINK 1
+
+[@背包]
+#IF
+#ACT
+OPENHYPERLINK 7
+
+[@技能流派按钮]
+#ACT
+#CALL [\相关NPC\技能流派.txt] @三职六派
+
+[@时装]
+#ACT
+#CALL [\相关NPC\时装.txt] @角色时装
+
+[@刷新]
+#ACT
+REFRESHBAG
+
+[@技能]
+#IF
+#ACT
+OPENHYPERLINK 4
+
+[@首次充值]
+#ACT
+#CALL [\相关NPC\首次充值.txt] @首次充值界面
+
+[@拍卖行]
+#IF
+#ACT
+#CALL [\相关NPC\材料行.txt] @材料寄售
+
+[@组队]
+#IF
+#ACT
+OPENHYPERLINK 17
+
+[@好友屏蔽]
+#IF
+CHECKLEVELEX < 50
+#ACT
+MESSAGEBOX 防止恶意捣乱，角色达到50级即可互加好友
+break
+
+[@行会]
+#IF
+#ACT
+OPENHYPERLINK 31
+
+[@摆摊]
+#IF
+CHECKLEVELEX > 34
+#ACT
+OPENHYPERLINK 8
+#elseact
+MessageBox 等级达到35级才能摆摊！！
+Break
+
+[@交易]
+#IF
+#act
+OPENHYPERLINK 33 
+
+[@快捷充值]
+#IF
+#act
+OPENHYPERLINK 26
+
+[@交易行]
+#IF
+#act
+OPENHYPERLINK 35
+
+[@邮件]
+#IF
+#ACT
+PLAYSOUND 113 1 0
+OPENHYPERLINK 16
+
+[@内挂设置]
+#IF
+#ACT
+OPENHYPERLINK 23
+
+[@节日活动]
+#IF
+#ACT
+#CALL [\相关NPC\节日庆使.txt] @节日活动界面
+
+[@设置]
+#IF
+#ACT
+#CALL [\功能脚本\挂机巡航.txt] @角色挂机设置
+
+[@退出]
+#IF
+#ACT
+OPENHYPERLINK 29
+
+[@商城]
+#IF
+#ACT
+OPENHYPERLINK 9
+
+[@排行榜]
+#IF
+CHECKLEVELEX < 48
+#ACT
+sendmsg 9 需要等级：48
+BREAK
+
+#IF
+#ACT
+OPENHYPERLINK 32
+
+[@切换]
+#IF
+#ACT
+OPENHYPERLINK 36
+
+[@回收]
+#IF
+#ACT
+#CALL [\系统功能\回收系统\回收功能.txt] @开启回收
+BREAK 
+
+[@背包关闭]
+#IF
+#ACT
+OPENHYPERLINK 7 2
+MOV N$拓展包裹展开 0
+MOV S$包裹拓展
+DELBUTTON 7 20
+close
+
+[@仓库]
+#IF
+#Act
+OPENSTORAGE
+
+[@内挂设置]
+#IF
+#ACT
+OPENHYPERLINK 20
+
+[@设置]
+#IF
+#ACT
+#CALL [\功能脚本\挂机巡航.txt] @角色挂机设置
+
+[@开始挂机]
+#IF
+NOT hasbuff 50409
+EQUAL U9 0
+#ACT
+#CALL [\功能脚本\挂机巡航.txt] @角色挂机设置
+BREAK
+
+#IF
+CHECKTEXTLIST ..\QuestDiary\数据文件\禁止挂机地图.txt  <$MAP>
+#ACT
+sendmsg 9 该地图禁止挂机！
+break
+
+#IF
+CheckContainsText <$MAPTITLE> 试炼
+#ACT
+sendmsg 9 该地图禁止挂机！
+break
+
+#IF
+CHECK [24] 0
+#ACT
+MESSAGEBOX 恭喜你获得系统赠送12小时挂机时间\每手动击杀1只怪物即可增加1分钟挂机时间\你也可以点击设置按钮定义挂机参数 @挂机提示确定 @挂机提示确定
+
+#IF
+hasbuff 50409
+EQUAL N$挂机状态 0
+#ACT
+MOV N$挂机状态 1
+StartAutoPlayGame
+;SENDMSG 7 开始挂机
+BREAK
+
+#IF
+EQUAL N$挂机状态 0
+#ACT
+MOV N$挂机状态 1
+DEC U9 1
+StartAutoPlayGame
+;SENDMSG 7 开始挂机
+BREAK
+
+[@挂机提示确定]
+#IF
+CHECK [24] 0
+#ACT
+SET [24] 1
+INC U9 39600
+Navigation 108 335 挂机设置
+BREAK
+
+[@停止挂机]
+#IF
+EQUAL N$挂机状态 1
+#ACT
+MOV N$挂机状态 0
+#ELSEACT
+BREAK
+
+#IF
+Equal <$CLIENTFLAG> 1
+#act
+MOV N$挂机状态 0
+StopAutoPlayGame
+MOV N$巡航时间保护 0
+MOV S$挂机
+INC S$挂机 <Button|x=-62.0|y=50|pimg=private/main/Skill/1900012708.png|size=18|color=255|nimg=private/main/Skill/1900012708.png|link=@开始挂机>
+MOV S$挂机设置 
+DELBUTTON 107 1 
+ADDBUTTON 107 1 <$STR(S$挂机)>
+DELBUTTON 108 4
+DELDSFUNCALL DINGSHICF_巡航时间保护
+;SENDMSG 7 关闭挂机
+BREAK
+
+#IF
+Equal <$CLIENTFLAG> 2
+#act
+MOV N$挂机状态 0
+StopAutoPlayGame
+MOV S$挂机
+INC S$挂机 <Button|x=-130.0|y=-375.0|pimg=private/main/Skill/1900012708.png|size=18|color=255|nimg=private/main/Skill/1900012708.png|link=@开始挂机>
+MOV S$挂机设置 
+MOV N$巡航时间保护 0
+DELBUTTON 104 6 
+ADDBUTTON 104 6 <$STR(S$挂机)>
+DELBUTTON 108 4
+DELDSFUNCALL DINGSHICF_巡航时间保护
+;SENDMSG 7 关闭挂机
+BREAK
+
+[@装备图鉴]
+#ACT
+#CALL [\相关NPC\装备图鉴.txt] @装备图鉴功能
+
+
+
+[@自动月灵开关]
+#IF
+CHECK [288] 0
+#ACT
+SET [288] 1
+addbuff 50459
+GOTO @召唤按钮刷新
+break
+
+#IF
+CHECK [288] 1
+#ACT
+SET [288] 0
+DELbuff 50459
+GOTO @召唤按钮刷新
+break
+
+[@自动麒麟开关]
+#IF
+CHECK [289] 0
+#ACT
+SET [289] 1
+addbuff 50460
+GOTO @召唤按钮刷新
+break
+
+#IF
+CHECK [289] 1
+#ACT
+SET [289] 0
+DELbuff 50460
+GOTO @召唤按钮刷新
+break
+
+[@自动圣兽开关]
+#IF
+CHECK [290] 0
+#ACT
+SET [290] 1
+addbuff 50461
+GOTO @召唤按钮刷新
+break
+
+#IF
+CHECK [290] 1
+#ACT
+SET [290] 0
+DELbuff 50461
+GOTO @召唤按钮刷新
+break
+
+
+[@召唤按钮刷新]
+#IF
+#ACT
+DELBUTTON 21 1
+MOV S$内挂按钮 
+
+#IF
+CHECK [288] 0
+#ACT
+MOV N$自动月灵 0
+#ELSEACT
+MOV N$自动月灵 1
+
+#IF
+CHECK [289] 0
+#ACT
+MOV N$自动麒麟 0
+#ELSEACT
+MOV N$自动麒麟 1
+
+#IF
+CHECK [290] 0
+#ACT
+MOV N$自动圣兽 0
+#ELSEACT
+MOV N$自动圣兽 1
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKJOB Taoist
+equal u50 7
+large u85 0
+#ACT
+INC S$内挂按钮 <Text|x=373.0|y=602.0|color=255|size=12|text=自动召唤月灵>
+INC S$内挂按钮 <CheckBox|x=333.0|y=593.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动月灵)>|link=@自动月灵开关>
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+BREAK
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKJOB Taoist
+equal u50 8
+large u91 0
+#ACT
+INC S$内挂按钮 <Text|x=373.0|y=602.0|color=255|size=12|text=自动召唤麒麟>
+INC S$内挂按钮 <CheckBox|x=333.0|y=593.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动麒麟)>|link=@自动麒麟开关>
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+BREAK
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKJOB Taoist
+equal u50 9
+#ACT
+INC S$内挂按钮 <Text|x=373.0|y=602.0|color=255|size=12|text=自动召唤圣兽>
+INC S$内挂按钮 <CheckBox|x=333.0|y=593.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动圣兽)>|link=@自动圣兽开关>
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+BREAK
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKJOB Taoist
+equal u50 7
+large u85 0
+#ACT
+INC S$内挂按钮 <Text|x=420.0|y=758.0|color=255|size=16|text=自动召唤月灵>
+INC S$内挂按钮 <CheckBox|x=370.0|y=755.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动月灵)>|link=@自动月灵开关>
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+BREAK
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKJOB Taoist
+equal u50 8
+large u91 0
+#ACT 
+INC S$内挂按钮 <Text|x=420.0|y=758.0|color=255|size=16|text=自动召唤麒麟>
+INC S$内挂按钮 <CheckBox|x=370.0|y=755.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动麒麟)>|link=@自动麒麟开关>
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+BREAK
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKJOB Taoist
+equal u50 9
+#ACT
+INC S$内挂按钮 <Text|x=420.0|y=758.0|color=255|size=16|text=自动召唤圣兽>
+INC S$内挂按钮 <CheckBox|x=370.0|y=755.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$自动圣兽)>|link=@自动圣兽开关>
+ADDBUTTON 21 1 <$STR(S$内挂按钮)>
+BREAK
+
+[@小地图随机]
+#IF
+#ACT
+GETBAGITEMCOUNT 随机传送石 N$随机石数量
+GETBAGITEMCOUNT 永久随机石 N$永久随数量
+
+#IF
+LARGE N$随机石数量 0
+EQUAL N$挂机状态 1
+#ACT
+EatItem 随机传送石 1
+MOV N$使用随机石 1
+MOV N$随机使用判断 1
+delaygoto 100 @随机后继续挂机
+BREAK
+
+#IF
+large N$永久随数量 0
+EQUAL N$挂机状态 1
+#ACT
+EatItem 永久随机石 1
+MOV N$使用随机石 1
+MOV N$随机使用判断 1
+delaygoto 100 @随机后继续挂机
+BREAK
+
+#IF
+LARGE N$随机石数量 0
+EQUAL N$挂机状态 0
+#ACT
+EatItem 随机传送石 1
+BREAK
+
+#IF
+LARGE N$永久随数量 0
+EQUAL N$挂机状态 0
+#ACT
+EatItem 永久随机石 1
+BREAK
+
+#IF
+EQUAL N$随机石数量 0
+EQUAL N$永久随数量 0
+#ACT
+SENDMSG 9 <font color='#ff0000'>包裹随机传送石数量不足！</font>
+BREAK
+
+[@随机后继续挂机]
+#If
+#ACT
+CLEARDELAYGOTO
+StartAutoPlayGame
+BREAK
+
+[@小地图回城]
+#IF
+#ACT
+GETBAGITEMCOUNT 盟重回城石 N$回城石数量
+GETBAGITEMCOUNT 永久回城石 N$永久回数量
+
+#IF
+NOT EQUAL N$回城石数量 0
+#ACT
+EatItem 盟重回城石 1
+
+#IF
+NOT EQUAL N$永久回数量 0
+#ACT
+EatItem 永久回城石 1
+
+#IF
+EQUAL N$回城石数量 0
+EQUAL N$永久回数量 0
+#ACT
+SENDMSG 9 <font color='#ff0000'>包裹盟重回城石数量不足！</font>
+BREAK
+
+[@游戏攻略]
+#ACT
+#CALL [\相关NPC\游戏攻略.txt] @攻略
+
+[@充值有礼]
+#ACT
+#CALL [\相关NPC\充值回馈.txt] @充值回馈
+
+[@首充]
+#ACT
+#CALL [\相关NPC\首充.txt] @首充开启
+
+[@关注礼包]
+#ACT
+#CALL [\相关NPC\关注领取.txt] @关注礼包领取
+
+[@拓展包裹]
+#ACT
+#CALL [\相关NPC\额外包裹.txt] @包裹拓展界面
+
+[@BOSS查询]
+#ACT
+#CALL [\相关NPC\教主查询.txt] @教主查询
+
+[@七日豪礼]
+#ACT
+#CALL [\相关NPC\七日豪礼.txt] @豪礼界面
+
+[@活跃度]
+#IF
+#ACT
+#CALL [\相关NPC\活跃任务.txt] @每日活跃
+
+[@小地图关闭]
+#act
+OPENHYPERLINK 24 2
+
+[@按钮收起]
+#OR
+Equal <$CLIENTFLAG> 1
+Equal <$CLIENTFLAG> 2
+#ACT
+DELBUTTON 102 1
+DELBUTTON 102 2
+DELBUTTON 102 3
+DELBUTTON 102 4
+DELBUTTON 102 5
+DELBUTTON 102 6
+DELBUTTON 102 7
+DELBUTTON 102 8
+DELBUTTON 102 9
+DELBUTTON 102 10
+DELBUTTON 102 11
+DELBUTTON 102 99 
+DELBUTTON 102 100 
+DELBUTTON 102 200 
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$功能按钮 
+INC S$功能按钮 <Button|children={1}|x=-190|y=5|nimg=private/top/0.png|link=@按钮展开>
+INC S$功能按钮 <Img|id=1|img=public/hot1.png|x=10|y=-5>
+DELBUTTON 102 4 
+ADDBUTTON 102 4 <$STR(S$功能按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$功能按钮 
+INC S$功能按钮 <Button|children={1}|x=-215|y=5|nimg=private/top/0.png|link=@按钮展开>
+INC S$功能按钮 <Img|id=1|img=public/hot1.png|x=10|y=-5>
+INC S$功能按钮 <Layout|x=-230|y=5.0|width=50|height=50|color=x|link=@按钮展开>
+DELBUTTON 102 4 
+ADDBUTTON 102 4 <$STR(S$功能按钮)>
+
+
+[@按钮展开]
+#IF
+#ACT
+DELBUTTON 102 11 
+MOV N$时间差数 <$UTCNOW8>
+DEC N$时间差数 G201
+
+#IF
+SMALL N$时间差数 604800
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$七日豪礼 <Button|x=-555.0|y=80|width=75|height=75|nimg=private/top/09.png|link=@七日豪礼>
+ADDBUTTON 102 11 <$STR(S$七日豪礼)>
+#IF
+SMALL N$时间差数 604800
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$七日豪礼 <Button|x=-450.0|y=80|width=75|height=75|nimg=private/top/09.png|link=@七日豪礼>
+ADDBUTTON 102 11 <$STR(S$七日豪礼)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKVAR HUMAN 关注礼包 = 2
+#ACT
+DELBUTTON 102 1 
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKVAR HUMAN 关注礼包 = 2
+#ACT
+DELBUTTON 102 1 
+
+#IF
+Equal <$CLIENTFLAG> 2
+CHECKVAR HUMAN 关注礼包 < 2
+#ACT
+MOV S$关注按钮 <Button|id=333|children={1}|x=-640.0|y=80|width=75|height=75|nimg=private/top/01.png|link=@关注礼包>
+INC S$关注按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 1 
+ADDBUTTON 102 1 <$STR(S$关注按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+CHECKVAR HUMAN 关注礼包 < 2
+#ACT
+MOV S$关注按钮 <Button|id=333|children={1}|x=-535.0|y=80|width=75|height=75|nimg=private/top/01.png|link=@关注礼包>
+INC S$关注按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 1 
+ADDBUTTON 102 1 <$STR(S$关注按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+SMALL J20 1
+#ACT
+MOV S$首充按钮 <Button|children={2}|x=-385.0|y=80|width=75|height=75|nimg=private/top/05.png|link=@首充>
+INC S$首充按钮 <Img|id=2|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 3 
+ADDBUTTON 102 3 <$STR(S$首充按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+SMALL J20 1
+#ACT
+MOV S$首充按钮 <Button|children={2}|x=-280.0|y=80|width=75|height=75|nimg=private/top/05.png|link=@首充>
+INC S$首充按钮 <Img|id=2|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 3 
+ADDBUTTON 102 3 <$STR(S$首充按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+LARGE J20 0
+#ACT
+MOV S$首充按钮 <Button|children={2}|x=-385.0|y=80|width=75|height=75|nimg=private/top/05.png|link=@首充>
+DELBUTTON 102 3 
+ADDBUTTON 102 3 <$STR(S$首充按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+LARGE J20 0
+#ACT
+MOV S$首充按钮 <Button|children={2}|x=-280.0|y=80|width=75|height=75|nimg=private/top/05.png|link=@首充>
+DELBUTTON 102 3 
+ADDBUTTON 102 3 <$STR(S$首充按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$活跃按钮 <Button|children={1}|x=-470.0|y=80|width=75|height=75|nimg=private/top/13.png|link=@活跃度>
+DELBUTTON 102 99 
+ADDBUTTON 102 99 <$STR(S$活跃按钮)>
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$活跃按钮 <Button|children={1}|x=-365.0|y=80|width=75|height=75|nimg=private/top/13.png|link=@活跃度>
+DELBUTTON 102 99 
+ADDBUTTON 102 99 <$STR(S$活跃按钮)>
+
+#IF
+CHECK [223] 0
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$首次充值按钮 <Button|children={1}|x=-725.0|y=82|width=75|height=75|nimg=private/top/18.png|link=@首次充值>
+INC S$首次充值按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 200 
+ADDBUTTON 102 200 <$STR(S$首次充值按钮)>
+
+#IF
+CHECK [223] 0
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$首次充值按钮 <Button|children={1}|x=-620.0|y=82|width=75|height=75|nimg=private/top/18.png|link=@首次充值>
+INC S$首次充值按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+DELBUTTON 102 200 
+ADDBUTTON 102 200 <$STR(S$首次充值按钮)>
+
+;#IF
+;Equal <$CLIENTFLAG> 1
+;#ACT
+;MOV S$活动按钮 <Button|children={1}|x=-705.0|y=80|width=75|height=75|nimg=private/top/14.png|link=@节日活动>
+;INC S$活动按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+;DELBUTTON 102 100 
+;ADDBUTTON 102 100 <$STR(S$活动按钮)>
+
+;#IF
+;Equal <$CLIENTFLAG> 2
+;#ACT
+;MOV S$活动按钮 <Button|children={1}|x=-805.0|y=80|width=75|height=75|nimg=private/top/14.png|link=@节日活动>
+;INC S$活动按钮 <Img|id=1|img=public/hot1.png|x=50|y=5>
+;DELBUTTON 102 100 
+;ADDBUTTON 102 100 <$STR(S$活动按钮)>
+
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$功能按钮 <Button|x=-215|y=5|nimg=private/top/0_1.png|link=@按钮收起>
+INC S$功能按钮 <Layout|x=-230|y=5.0|width=50|height=50|color=x|link=@按钮收起>
+DELBUTTON 102 4 
+ADDBUTTON 102 4 <$STR(S$功能按钮)>
+
+MOV S$盒子礼包按钮 <Button|x=-300.0|y=2|width=75|height=75|nimg=private/top/12.png|link=@开启盒子>
+ADDBUTTON 102 5 <$STR(S$盒子礼包按钮)>
+
+
+MOV S$功能按钮 <Button|x=-385.0|y=0|width=75|height=75|nimg=private/top/02.png|link=@游戏攻略>
+DELBUTTON 102 6 
+ADDBUTTON 102 6 <$STR(S$功能按钮)>
+
+MOV S$功能按钮 <Button|x=-470.0|y=0|width=75|height=75|nimg=private/top/04.png|link=@充值有礼>
+DELBUTTON 102 7 
+ADDBUTTON 102 7 <$STR(S$功能按钮)>
+
+MOV S$功能按钮 <Button|x=-555.0|y=0|width=75|height=75|nimg=private/top/06.png|link=@装备图鉴>
+DELBUTTON 102 8 
+ADDBUTTON 102 8 <$STR(S$功能按钮)>
+
+MOV S$功能按钮 <Button|x=-640.0|y=0|width=75|height=75|nimg=private/top/03.png|link=@BOSS查询>
+DELBUTTON 102 9 
+ADDBUTTON 102 9 <$STR(S$功能按钮)>
+
+MOV S$功能按钮 <Button|x=-300.0|y=82|width=72|height=72|nimg=private/top/07.png|link=@交易行>
+DELBUTTON 102 10 
+ADDBUTTON 102 10 <$STR(S$功能按钮)>
+
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$功能按钮 
+INC S$功能按钮 <Button|x=-190|y=5|nimg=private/top/0_1.png|link=@按钮收起>
+DELBUTTON 102 4 
+ADDBUTTON 102 4 <$STR(S$功能按钮)>
+
+MOV S$盒子礼包按钮 <Button|x=-280.0|y=2|width=75|height=75|nimg=private/top/12.png|link=@开启盒子>
+ADDBUTTON 102 5 <$STR(S$盒子礼包按钮)>
+
+INC S$功能按钮 <Button|x=-365.0|y=0|width=75|height=75|nimg=private/top/02.png|link=@游戏攻略>
+DELBUTTON 102 6 
+ADDBUTTON 102 6 <$STR(S$功能按钮)>
+
+INC S$功能按钮 <Button|x=-450.0|y=0|width=75|height=75|nimg=private/top/04.png|link=@充值有礼>
+DELBUTTON 102 7 
+ADDBUTTON 102 7 <$STR(S$功能按钮)>
+
+INC S$功能按钮 <Button|x=-535.0|y=0|width=75|height=75|nimg=private/top/06.png|link=@装备图鉴>
+DELBUTTON 102 8 
+ADDBUTTON 102 8 <$STR(S$功能按钮)>
+
+INC S$功能按钮 <Button|x=-620.0|y=0|width=75|height=75|nimg=private/top/03.png|link=@BOSS查询>
+DELBUTTON 102 9 
+ADDBUTTON 102 9 <$STR(S$功能按钮)>
+
+
+[@八门开启]
+#IF
+NOT EQUAL T20
+NOT EQUAL T21
+NOT EQUAL T22
+NOT EQUAL T23
+NOT EQUAL T24
+NOT EQUAL T25
+NOT EQUAL T26
+NOT EQUAL T27
+#ACT
+SENDMSG 9 你已经成功开启所有命门！
+BREAK
+
+#OR
+NOT EQUAL T151
+NOT EQUAL T152
+NOT EQUAL T153
+NOT EQUAL T154
+NOT EQUAL T155
+NOT EQUAL T156
+NOT EQUAL T157
+NOT EQUAL T158
+NOT EQUAL T159
+NOT EQUAL T160
+NOT EQUAL T161
+NOT EQUAL T162
+NOT EQUAL T163
+NOT EQUAL T164
+NOT EQUAL T165
+NOT EQUAL T166
+NOT EQUAL T167
+NOT EQUAL T168
+NOT EQUAL T169
+NOT EQUAL T170
+NOT EQUAL T171
+#ACT
+MESSAGEBOX 您当前有未选择的八门属性，请点级属性洗练选择后再前往挑战！
+BREAK
+
+
+#IF
+CHECKLEVELEX > 34
+CHECK [201] 0
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+MOV S$八门试炼按钮
+INC S$八门试炼按钮 <Layout|x=45.0|y=160.0|width=150|height=45|color=*|link=@开门试炼开启>
+INC S$八门试炼按钮 <Text|x=60.0|y=170.0|color=251|size=18|text=进入试炼秘境|link=@开门试炼开启>
+INC S$八门试炼按钮 <Layout|x=290.0|y=160.0|width=150|height=45|color=*|link=@EXIT>
+INC S$八门试炼按钮 <Text|x=305.0|y=170.0|color=251|size=18|text=我再准备一下|link=@EXIT>
+GOTO @八门试炼界面
+BREAK
+#IF
+CHECKLEVELEX > 34
+CHECK [201] 0
+#ACT
+MESSAGEBOX 角色必须在盟重安全区内才能开启八门试炼\是否立即传送回盟重安全区内开启八门试炼？ @确定传送八门 @取消传送八门
+BREAK
+#IF
+CHECKLEVELEX > 34
+CHECK [201] 1
+EQUAL T20
+#ACT
+MOV S$选择索引1 T151
+MOV S$选择索引2 T152
+MOV S$选择索引3 T153
+MOV S$改变变量 T20
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+
+#IF
+CHECKLEVELEX > 44
+CHECK [202] 0
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+MOV S$八门试炼按钮
+INC S$八门试炼按钮 <Layout|x=45.0|y=160.0|width=150|height=45|color=*|link=@休门试炼开启>
+INC S$八门试炼按钮 <Text|x=60.0|y=170.0|color=251|size=18|text=进入试炼秘境|link=@休门试炼开启>
+INC S$八门试炼按钮 <Layout|x=290.0|y=160.0|width=150|height=45|color=*|link=@EXIT>
+INC S$八门试炼按钮 <Text|x=305.0|y=170.0|color=251|size=18|text=我再准备一下|link=@EXIT>
+GOTO @八门试炼界面
+BREAK
+#IF
+CHECKLEVELEX > 44
+CHECK [202] 0
+#ACT
+MESSAGEBOX 角色必须在盟重安全区内才能开启八门试炼\是否立即传送回盟重安全区内开启八门试炼？ @确定传送八门 @取消传送八门
+BREAK
+#IF
+CHECKLEVELEX > 44
+CHECK [202] 1
+EQUAL T21
+#ACT
+MOV S$选择索引1 T154
+MOV S$选择索引2 T155
+MOV S$选择索引3 T156
+MOV S$改变变量 T21
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+
+#IF
+CHECKLEVELEX > 54
+CHECK [203] 0
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+MOV S$八门试炼按钮
+INC S$八门试炼按钮 <Layout|x=45.0|y=160.0|width=150|height=45|color=*|link=@生门试炼开启>
+INC S$八门试炼按钮 <Text|x=60.0|y=170.0|color=251|size=18|text=进入试炼秘境|link=@生门试炼开启>
+INC S$八门试炼按钮 <Layout|x=290.0|y=160.0|width=150|height=45|color=*|link=@EXIT>
+INC S$八门试炼按钮 <Text|x=305.0|y=170.0|color=251|size=18|text=我再准备一下|link=@EXIT>
+GOTO @八门试炼界面
+BREAK
+#IF
+CHECKLEVELEX > 54
+CHECK [203] 0
+#ACT
+MESSAGEBOX 角色必须在盟重安全区内才能开启八门试炼\是否立即传送回盟重安全区内开启八门试炼？ @确定传送八门 @取消传送八门
+BREAK
+#IF
+CHECKLEVELEX > 54
+CHECK [203] 1
+EQUAL T22
+#ACT
+MOV S$选择索引1 T157
+MOV S$选择索引2 T158
+MOV S$选择索引3 T159
+MOV S$改变变量 T22
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+
+#IF
+CHECKLEVELEX > 64
+CHECK [204] 0
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+MOV S$八门试炼按钮
+INC S$八门试炼按钮 <Layout|x=45.0|y=160.0|width=150|height=45|color=*|link=@伤门试炼开启>
+INC S$八门试炼按钮 <Text|x=60.0|y=170.0|color=251|size=18|text=进入试炼秘境|link=@伤门试炼开启>
+INC S$八门试炼按钮 <Layout|x=290.0|y=160.0|width=150|height=45|color=*|link=@EXIT>
+INC S$八门试炼按钮 <Text|x=305.0|y=170.0|color=251|size=18|text=我再准备一下|link=@EXIT>
+GOTO @八门试炼界面
+BREAK
+#IF
+CHECKLEVELEX > 64
+CHECK [204] 0
+#ACT
+MESSAGEBOX 角色必须在盟重安全区内才能开启八门试炼\是否立即传送回盟重安全区内开启八门试炼？ @确定传送八门 @取消传送八门
+BREAK
+#IF
+CHECKLEVELEX > 64
+CHECK [204] 1
+EQUAL T23
+#ACT
+MOV S$选择索引1 T160
+MOV S$选择索引2 T161
+MOV S$选择索引3 T162
+MOV S$改变变量 T23
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+
+#IF
+CHECKLEVELEX > 74
+CHECK [205] 0
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+MOV S$八门试炼按钮
+INC S$八门试炼按钮 <Layout|x=45.0|y=160.0|width=150|height=45|color=*|link=@杜门试炼开启>
+INC S$八门试炼按钮 <Text|x=60.0|y=170.0|color=251|size=18|text=进入试炼秘境|link=@杜门试炼开启>
+INC S$八门试炼按钮 <Layout|x=290.0|y=160.0|width=150|height=45|color=*|link=@EXIT>
+INC S$八门试炼按钮 <Text|x=305.0|y=170.0|color=251|size=18|text=我再准备一下|link=@EXIT>
+GOTO @八门试炼界面
+BREAK
+#IF
+CHECKLEVELEX > 74
+CHECK [205] 0
+#ACT
+MESSAGEBOX 角色必须在盟重安全区内才能开启八门试炼\是否立即传送回盟重安全区内开启八门试炼？ @确定传送八门 @取消传送八门
+BREAK
+#IF
+CHECKLEVELEX > 74
+CHECK [205] 1
+EQUAL T24
+#ACT
+MOV S$选择索引1 T163
+MOV S$选择索引2 T164
+MOV S$选择索引3 T165
+MOV S$改变变量 T24
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+
+#IF
+CHECKLEVELEX > 82
+CHECK [206] 0
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+MOV S$八门试炼按钮
+INC S$八门试炼按钮 <Layout|x=45.0|y=160.0|width=150|height=45|color=*|link=@景门试炼开启>
+INC S$八门试炼按钮 <Text|x=60.0|y=170.0|color=251|size=18|text=进入试炼秘境|link=@景门试炼开启>
+INC S$八门试炼按钮 <Layout|x=290.0|y=160.0|width=150|height=45|color=*|link=@EXIT>
+INC S$八门试炼按钮 <Text|x=305.0|y=170.0|color=251|size=18|text=我再准备一下|link=@EXIT>
+GOTO @八门试炼界面
+BREAK
+#IF
+CHECKLEVELEX > 82
+CHECK [206] 0
+#ACT
+MESSAGEBOX 角色必须在盟重安全区内才能开启八门试炼\是否立即传送回盟重安全区内开启八门试炼？ @确定传送八门 @取消传送八门
+BREAK
+#IF
+CHECKLEVELEX > 82
+CHECK [206] 1
+EQUAL T25
+#ACT
+MOV S$选择索引1 T166
+MOV S$选择索引2 T167
+MOV S$选择索引3 T168
+MOV S$改变变量 T25
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+
+#IF
+CHECKLEVELEX > 85
+CHECK [207] 0
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+MOV S$八门试炼按钮
+INC S$八门试炼按钮 <Layout|x=45.0|y=160.0|width=150|height=45|color=*|link=@死门试炼开启>
+INC S$八门试炼按钮 <Text|x=60.0|y=170.0|color=251|size=18|text=进入试炼秘境|link=@死门试炼开启>
+INC S$八门试炼按钮 <Layout|x=290.0|y=160.0|width=150|height=45|color=*|link=@EXIT>
+INC S$八门试炼按钮 <Text|x=305.0|y=170.0|color=251|size=18|text=我再准备一下|link=@EXIT>
+GOTO @八门试炼界面
+BREAK
+#IF
+CHECKLEVELEX > 85
+CHECK [207] 0
+#ACT
+MESSAGEBOX 角色必须在盟重安全区内才能开启八门试炼\是否立即传送回盟重安全区内开启八门试炼？ @确定传送八门 @取消传送八门
+BREAK
+#IF
+CHECKLEVELEX > 85
+CHECK [207] 1
+EQUAL T26
+#ACT
+MOV S$选择索引1 T169
+MOV S$选择索引2 T170
+MOV S$选择索引3 T171
+MOV S$改变变量 T26
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+
+#IF
+CHECKLEVELEX > 89
+CHECK [208] 0
+CHECKMAPNAME 3
+INSAFEZONE
+SMALL U50 1
+#ACT
+SENDMSG 9 请先选择精修的职业后再来开启试炼
+BREAK
+#IF
+CHECKLEVELEX > 89
+CHECK [208] 0
+CHECKMAPNAME 3
+INSAFEZONE
+LARGE U50 0
+#ACT
+MOV S$八门试炼按钮
+INC S$八门试炼按钮 <Layout|x=45.0|y=160.0|width=150|height=45|color=*|link=@惊门试炼开启>
+INC S$八门试炼按钮 <Text|x=60.0|y=170.0|color=251|size=18|text=进入试炼秘境|link=@惊门试炼开启>
+INC S$八门试炼按钮 <Layout|x=290.0|y=160.0|width=150|height=45|color=*|link=@EXIT>
+INC S$八门试炼按钮 <Text|x=305.0|y=170.0|color=251|size=18|text=我再准备一下|link=@EXIT>
+GOTO @八门试炼界面
+BREAK
+#IF
+CHECKLEVELEX > 89
+CHECK [208] 0
+LARGE U50 0
+#ACT
+MESSAGEBOX 角色必须在盟重安全区内才能开启八门试炼\是否立即传送回盟重安全区内开启八门试炼？ @确定传送八门 @取消传送八门
+BREAK
+
+#IF
+CHECKLEVELEX < 35
+#ACT
+SENDMSG 9 等级达到35级即可开启：开门！
+BREAK
+#IF
+CHECKLEVELEX < 45
+#ACT
+SENDMSG 9 等级达到45级即可开启：休门！
+BREAK
+#IF
+CHECKLEVELEX < 55
+#ACT
+SENDMSG 9 等级达到55级即可开启：生门！
+BREAK
+#IF
+CHECKLEVELEX < 65
+#ACT
+SENDMSG 9 等级达到65级即可开启：伤门！
+BREAK
+#IF
+CHECKLEVELEX < 75
+#ACT
+SENDMSG 9 等级达到75级即可开启：杜门！
+BREAK
+#IF
+CHECKLEVELEX < 83
+#ACT
+SENDMSG 9 等级达到83级即可开启：景门！
+BREAK
+#IF
+CHECKLEVELEX < 86
+#ACT
+SENDMSG 9 等级达到86级即可开启：死门！
+BREAK
+#IF
+CHECKLEVELEX < 90
+#ACT
+SENDMSG 9 等级达到90级即可开启：惊门！
+BREAK
+
+[@确定传送八门]
+#IF
+#ACT
+MAPMOVE 3 333 333
+DELAYGOTO 100 @八门开启
+BREAK
+
+
+[@八门试炼界面]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=<$USERNAME>，你即将开启八门试炼任务。>
+<Text|x=45.0|y=95.0|color=255|size=18|text=开启任务后即可进入试炼秘境，击败秘境守卫才能解锁>
+<Text|x=45.0|y=120.0|color=255|size=18|text=对应命门的属性。如果你已做好准备，那我们就开始吧！>
+<$STR(S$八门试炼按钮)>
+
+
+[@开门试炼开启]
+#IF
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+AddMirrorMap jjc01 <$USERNAME>kaim 开门试炼 3600 3
+CLEARMAPMON <$USERNAME>kaim
+MonGenEx <$USERNAME>kaim 21 22 开门守护者 0 1 0 249
+MAP <$USERNAME>kaim
+SENDMSG 6 请击败开门守护者后开启生门！
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重省的安全区内进入八门试炼场景！
+CLOSE
+BREAK
+
+[@休门试炼开启]
+#IF
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+AddMirrorMap jjc01 <$USERNAME>xium 休门试炼 3600 3
+CLEARMAPMON <$USERNAME>xium
+MonGenEx <$USERNAME>xium 21 22 休门守护者 0 1 0 249
+MAP <$USERNAME>xium
+SENDMSG 6 请击败休门守护者后开启休门！
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重省的安全区内进入八门试炼场景！
+CLOSE
+BREAK
+
+[@生门试炼开启]
+#IF
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+AddMirrorMap jjc01 <$USERNAME>shengm 生门试炼 3600 3
+CLEARMAPMON <$USERNAME>shengm
+MonGenEx <$USERNAME>shengm 21 22 生门守护者 0 1 0 249
+MAP <$USERNAME>shengm
+SENDMSG 6 请击败生门守护者后开启生门！
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重省的安全区内进入八门试炼场景！
+CLOSE
+BREAK
+
+[@伤门试炼开启]
+#IF
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+AddMirrorMap jjc01 <$USERNAME>shangm 伤门试炼 3600 3
+CLEARMAPMON <$USERNAME>shangm
+MonGenEx <$USERNAME>shangm 21 22 伤门守护者 0 1 0 249
+MAP <$USERNAME>shangm
+SENDMSG 6 请击败伤门守护者后开启伤门！
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重省的安全区内进入八门试炼场景！
+CLOSE
+BREAK
+
+[@杜门试炼开启]
+#IF
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+AddMirrorMap jjc01 <$USERNAME>dum 杜门试炼 3600 3
+CLEARMAPMON <$USERNAME>dum
+MonGenEx <$USERNAME>dum 21 22 杜门守护者 0 1 0 249
+MAP <$USERNAME>dum
+SENDMSG 6 请击败杜门守护者后开启杜门！
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重省的安全区内进入八门试炼场景！
+CLOSE
+BREAK
+
+[@景门试炼开启]
+#IF
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+AddMirrorMap jjc01 <$USERNAME>jingm 景门试炼 3600 3
+CLEARMAPMON <$USERNAME>jingm
+MonGenEx <$USERNAME>jingm 21 22 景门守护者 0 1 0 249
+MAP <$USERNAME>jingm
+SENDMSG 6 请击败景门守护者后开启景门！
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重省的安全区内进入八门试炼场景！
+CLOSE
+BREAK
+
+[@死门试炼开启]
+#IF
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+AddMirrorMap jjc01 <$USERNAME>sim 死门试炼 3600 3
+CLEARMAPMON <$USERNAME>sim
+MonGenEx <$USERNAME>sim 21 22 死门守护者 0 1 0 249
+MAP <$USERNAME>sim
+SENDMSG 6 请击败死门守护者后开启死门！
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重省的安全区内进入八门试炼场景！
+CLOSE
+BREAK
+
+[@惊门试炼开启]
+#IF
+CHECKMAPNAME 3
+INSAFEZONE
+#ACT
+AddMirrorMap jjc01 <$USERNAME>jinm 惊门试炼 3600 3
+CLEARMAPMON <$USERNAME>jinm
+MonGenEx <$USERNAME>jinm 21 22 惊门守护者 0 1 0 249
+MAP <$USERNAME>jinm
+SENDMSG 6 请击败惊门守护者后开启惊门！
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重省的安全区内进入八门试炼场景！
+CLOSE
+BREAK
+
+
+[@属性洗练]
+#IF
+NOT EQUAL T151
+NOT EQUAL T152
+NOT EQUAL T153
+CHECK [201] 1
+#ACT
+MOV S$选择索引1 T151
+MOV S$选择索引2 T152
+MOV S$选择索引3 T153
+MOV S$改变变量 T20
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+#IF
+NOT EQUAL T154
+NOT EQUAL T155
+NOT EQUAL T156
+CHECK [202] 1
+#ACT
+MOV S$选择索引1 T154
+MOV S$选择索引2 T155
+MOV S$选择索引3 T156
+MOV S$改变变量 T21
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+#IF
+NOT EQUAL T157
+NOT EQUAL T158
+NOT EQUAL T159
+CHECK [203] 1
+#ACT
+MOV S$选择索引1 T157
+MOV S$选择索引2 T158
+MOV S$选择索引3 T159
+MOV S$改变变量 T22
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+#IF
+NOT EQUAL T160
+NOT EQUAL T161
+NOT EQUAL T162
+CHECK [204] 1
+#ACT
+MOV S$选择索引1 T160
+MOV S$选择索引2 T161
+MOV S$选择索引3 T162
+MOV S$改变变量 T23
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+#IF
+NOT EQUAL T163
+NOT EQUAL T164
+NOT EQUAL T165
+CHECK [205] 1
+#ACT
+MOV S$选择索引1 T163
+MOV S$选择索引2 T164
+MOV S$选择索引3 T165
+MOV S$改变变量 T24
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+#IF
+NOT EQUAL T166
+NOT EQUAL T167
+NOT EQUAL T168
+CHECK [206] 1
+#ACT
+MOV S$选择索引1 T166
+MOV S$选择索引2 T167
+MOV S$选择索引3 T168
+MOV S$改变变量 T25
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+#IF
+NOT EQUAL T169
+NOT EQUAL T170
+NOT EQUAL T171
+CHECK [207] 1
+#ACT
+MOV S$选择索引1 T169
+MOV S$选择索引2 T170
+MOV S$选择索引3 T171
+MOV S$改变变量 T26
+#CALL [\相关NPC\八门遁甲.txt] @修改八门界面
+BREAK
+
+#IF
+NOT CHECKITEM 紫薇星石 1
+#ACT
+SENDMSG 9 洗炼八门遁甲的属性需要一颗紫薇星石！
+BREAK
+
+#IF
+EQUAL T20
+EQUAL T21
+EQUAL T22
+EQUAL T23
+EQUAL T24
+EQUAL T25
+EQUAL T26
+EQUAL T27
+#ACT
+SENDMSG 9 <font color='#fffc00'>没有任何找到可以重置的八门属性！</font>
+BREAK
+
+#If
+#ACT
+MOV S$改命界面
+MOV N$改命按钮 0
+MOV N$坐标x偏移1 26
+MOV N$坐标x偏移2 43
+MOV N$坐标y偏移1 145
+MOV N$坐标y偏移2 150
+
+#If
+NOT EQUAL T20
+#ACT
+INC N$改命按钮 1
+INC S$改命界面 <Layout|x=<$STR(N$坐标x偏移1)>.0|y=<$STR(N$坐标y偏移1)>.0|width=100|height=30|rotate=0|color=*|link=@改变命格#选择索引1=T151#选择索引2=T152#选择索引3=T153#改变变量=T20>
+INC S$改命界面 <Text|x=<$STR(N$坐标x偏移2)>.0|y=<$STR(N$坐标y偏移2)>.0|color=251|size=18|text=<$STR(T20)>|link=@改变命格#选择索引1=T151#选择索引2=T152#选择索引3=T153#改变变量=T20>
+INC N$坐标x偏移1 130
+INC N$坐标x偏移2 130
+
+#If
+NOT EQUAL T21
+#ACT
+INC N$改命按钮 1
+INC S$改命界面 <Layout|x=<$STR(N$坐标x偏移1)>.0|y=<$STR(N$坐标y偏移1)>.0|width=100|height=30|rotate=0|color=*|link=@改变命格#选择索引1=T154#选择索引2=T155#选择索引3=T156#改变变量=T21>
+INC S$改命界面 <Text|x=<$STR(N$坐标x偏移2)>.0|y=<$STR(N$坐标y偏移2)>.0|color=251|size=18|text=<$STR(T21)>|link=@改变命格#选择索引1=T154#选择索引2=T155#选择索引3=T156#改变变量=T21>
+INC N$坐标x偏移1 130
+INC N$坐标x偏移2 130
+
+#If
+NOT EQUAL T22
+#ACT
+INC N$改命按钮 1
+INC S$改命界面 <Layout|x=<$STR(N$坐标x偏移1)>.0|y=<$STR(N$坐标y偏移1)>.0|width=100|height=30|rotate=0|color=*|link=@改变命格#选择索引1=T157#选择索引2=T158#选择索引3=T159#改变变量=T22>
+INC S$改命界面 <Text|x=<$STR(N$坐标x偏移2)>.0|y=<$STR(N$坐标y偏移2)>.0|color=251|size=18|text=<$STR(T22)>|link=@改变命格#选择索引1=T157#选择索引2=T158#选择索引3=T159#改变变量=T22>
+INC N$坐标x偏移1 130
+INC N$坐标x偏移2 130
+
+#If
+NOT EQUAL T23
+#ACT
+INC N$改命按钮 1
+INC S$改命界面 <Layout|x=<$STR(N$坐标x偏移1)>.0|y=<$STR(N$坐标y偏移1)>.0|width=100|height=30|rotate=0|color=*|link=@改变命格#选择索引1=T160#选择索引2=T161#选择索引3=T162#改变变量=T23>
+INC S$改命界面 <Text|x=<$STR(N$坐标x偏移2)>.0|y=<$STR(N$坐标y偏移2)>.0|color=251|size=18|text=<$STR(T23)>|link=@改变命格#选择索引1=T160#选择索引2=T161#选择索引3=T162#改变变量=T23>
+INC N$坐标x偏移1 130
+INC N$坐标x偏移2 130
+
+#If
+EQUAL N$改命按钮 4
+#ACT
+MOV N$坐标x偏移1 26
+MOV N$坐标x偏移2 43
+MOV N$坐标y偏移1 195
+MOV N$坐标y偏移2 200
+
+#If
+NOT EQUAL T24
+#ACT
+INC N$改命按钮 1
+INC S$改命界面 <Layout|x=<$STR(N$坐标x偏移1)>.0|y=<$STR(N$坐标y偏移1)>.0|width=100|height=30|rotate=0|color=*|link=@改变命格#选择索引1=T163#选择索引2=T164#选择索引3=T165#改变变量=T24>
+INC S$改命界面 <Text|x=<$STR(N$坐标x偏移2)>.0|y=<$STR(N$坐标y偏移2)>.0|color=251|size=18|text=<$STR(T24)>|link=@改变命格#选择索引1=T163#选择索引2=T164#选择索引3=T165#改变变量=T24>
+INC N$坐标x偏移1 130
+INC N$坐标x偏移2 130
+
+#If
+EQUAL N$改命按钮 4
+#ACT
+MOV N$坐标x偏移1 26
+MOV N$坐标x偏移2 43
+MOV N$坐标y偏移1 195
+MOV N$坐标y偏移2 200
+
+#If
+NOT EQUAL T25
+#ACT
+INC N$改命按钮 1
+INC S$改命界面 <Layout|x=<$STR(N$坐标x偏移1)>.0|y=<$STR(N$坐标y偏移1)>.0|width=100|height=30|rotate=0|color=*|link=@改变命格#选择索引1=T166#选择索引2=T167#选择索引3=T168#改变变量=T25>
+INC S$改命界面 <Text|x=<$STR(N$坐标x偏移2)>.0|y=<$STR(N$坐标y偏移2)>.0|color=251|size=18|text=<$STR(T25)>|link=@改变命格#选择索引1=T166#选择索引2=T167#选择索引3=T168#改变变量=T25>
+INC N$坐标x偏移1 130
+INC N$坐标x偏移2 130
+
+#If
+EQUAL N$改命按钮 4
+#ACT
+MOV N$坐标x偏移1 26
+MOV N$坐标x偏移2 43
+MOV N$坐标y偏移1 195
+MOV N$坐标y偏移2 200
+
+#If
+NOT EQUAL T26
+#ACT
+INC N$改命按钮 1
+INC S$改命界面 <Layout|x=<$STR(N$坐标x偏移1)>.0|y=<$STR(N$坐标y偏移1)>.0|width=100|height=30|rotate=0|color=*|link=@改变命格#选择索引1=T169#选择索引2=T170#选择索引3=T171#改变变量=T26>
+INC S$改命界面 <Text|x=<$STR(N$坐标x偏移2)>.0|y=<$STR(N$坐标y偏移2)>.0|color=251|size=18|text=<$STR(T26)>|link=@改变命格#选择索引1=T169#选择索引2=T170#选择索引3=T171#改变变量=T26>
+
+#If
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=490.0|y=20.0|width=50|height=50|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Text|x=45.0|y=70.0|color=11013|size=17|outlinecolor=0|outline=1|text=“阴阳五行及八卦，纳入九宫性异样，”>
+<Text|x=45.0|y=95.0|color=11013|size=17|outlinecolor=0|outline=1|text=“命名八门主吉凶，紫薇星石可知详。”>
+<Text|x=45.0|y=120.0|color=255|size=17|text=请选择你要洗练的八门属性：>
+<$STR(S$改命界面)>
+
+
+}

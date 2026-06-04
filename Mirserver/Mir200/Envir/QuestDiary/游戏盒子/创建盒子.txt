@@ -1,0 +1,33 @@
+[@创建盒子]
+{
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+MOV  S$盒子礼包按钮 <Effect|x=305|y=70|effectid=5109|effecttype=0>
+INC S$盒子礼包按钮 <Layout|x=270|y=5|width=80|height=80|color=X|link=@开启盒子>
+ADDBUTTON 101 1 <$STR(S$盒子礼包按钮)>
+#ELSEACT
+MOV  S$盒子礼包按钮 <Effect|x=260|y=70|effectid=5109|effecttype=0>
+INC S$盒子礼包按钮 <Layout|x=226|y=5|width=80|height=80|color=X|link=@开启盒子>
+ADDBUTTON 101 1 <$STR(S$盒子礼包按钮)>
+
+;登录给顶戴
+#IF
+EQUAL <$BOXTILEOPEN> 1
+EQUAL <$BOXLOGIN> 1
+#ACT
+SENDBOXTYPE 7104
+MOV N$称号ID <$BOXTILE>
+INC N$称号ID 5099
+SetIcon 10 1 <$STR(N$称号ID)> 0 0 0 0
+MOV N$盒子称号显隐 1
+
+#IF
+EQUAL <$BOXTILEOPEN> 1
+CHECKVAR HUMAN 首次开通称号 = 0
+#ACT
+SENDBOXTYPE 7105
+CALCVAR HUMAN 首次开通称号  = 1
+SAVEVAR HUMAN 首次开通称号
+
+}

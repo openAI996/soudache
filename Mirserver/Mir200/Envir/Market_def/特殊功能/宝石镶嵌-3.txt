@@ -1,0 +1,956 @@
+[@MAIN]
+#IF
+#ACT
+MOV N$宝石显示 0
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01031.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=我一向喜欢这些晶莹剔透的玩意儿，>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=但你倘若认为它们只是摆设，那便大错特错了！>
+<Text|x=46.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=若非凭借它们强大的加持，十三年前，魔龙教主率众围攻盟>
+<Text|x=45.0|y=145.0|color=255|size=17|outline=1|outlinecolor=0|text=重的大决战，最终结局或未可知....>
+<Img|x=45.0|y=200.0|width=20|height=20|esc=0|img=public/00021.png>
+<Layout|x=65.0|y=192.0|width=100|height=40|link=@开启原石>
+<Text|x=70.0|y=197.0|color=11009|size=18|text=开启女娲石|link=@开启原石>
+<Img|x=219.0|y=200.0|width=20|height=20|esc=0|img=public/00021.png>
+<Layout|x=225.0|y=192.0|width=100|height=40|link=@镶嵌宝石>
+<Text|x=244.0|y=197.0|color=11009|size=18|text=镶嵌宝石|link=@镶嵌宝石>
+<Img|x=375.0|y=200.0|width=20|height=20|esc=0|img=public/00013.png>
+<Layout|x=395.0|y=192.0|width=100|height=40|link=@女娲石碎片>
+<Text|x=400.0|y=197.0|color=11009|size=18|text=分解宝石|link=@女娲石碎片>
+
+
+
+
+
+
+[@开启原石]
+#IF
+#ACT
+GETBAGITEMCOUNT 女娲石 N$原石数量
+
+#IF
+SMALL N$原石数量 1
+#ACT
+MOV S$原石显示 <ItemShow|x=175.0|y=125.0|width=70|height=70|itemid=10463|itemcount=1|showtips=1|bgtype=0|grey=1>
+
+#IF
+LARGE N$原石数量 0
+#ACT
+MOV S$原石显示 <ItemShow|x=175.0|y=125.0|width=70|height=70|itemid=10463|itemcount=<$STR(N$原石数量)>|showtips=1|bgtype=0|grey=0>
+
+#IF
+SMALL N$宝石显示 1
+#ACT
+INC S$原石显示 <Img|x=180.0|y=320.0|width=60|height=60|esc=0|img=private/zbj/0008.png>
+INC S$原石显示 <Text|x=145.0|y=392.0|color=11037|size=18|text=点击按钮获取宝石>
+#IF
+LARGE N$宝石显示 0
+#ACT
+INC S$原石显示 <ItemShow|itemid=<$STR(N$宝石显示)>|itemcount=0|showtips=1|x=180.0|y=320.0>
+INC S$原石显示 <Text|x=115.0|y=392.0|outline=1|outlinecolor=0|color=<$STR(N$宝石颜色)>|size=16|text=镶嵌属性:<$cfg_bao_shi(<$STR(N$宝石说明)>_7)>>
+
+
+
+#IF
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=7.0|y=0.0|width=720|height=500|bg=1|loadDelay=0|scale9r=35|scale9t=35|scale9b=30|move=0|scale9l=35|reset=1|esc=1|img=private/xlxl/0000.png|show=4>
+<Img|x=315.0|y=7.0|img=private/biaoti/01031.png|esc=0>
+<Layout|x=670.0|y=-18.0|width=80|height=80|link=@exit>
+<Img|x=365.0|y=72.0|height=365|img=private/psllz/00010.png|esc=0>
+<Button|x=683.0|y=21.0|pimg=public/1990000511.png|color=255|nimg=public/1990000510.png|size=18|link=@exit>
+<Img|x=50.0|y=75.0|width=320|height=355|rotate=0|esc=0|img=private/xlxl/0004.png>
+<Button|x=158.0|y=440.0|nimg=private/xlxl/0011.png|outlinecolor=0|outline=1|size=17|color=251|text=开石|link=@开启宝石>
+<Img|x=381.0|y=80.0|width=300|scale9r=10|scale9t=10|esc=0|img=private/xlxl/021600.png|scale9b=10|scale9l=10>
+<Text|x=410.0|y=85.0|color=11034|size=18|text=说  明>
+<Text|x=390.0|y=125.0|color=11018|size=16|text=1、宝石的力量会随着时间消散请及>
+<Text|x=417.0|y=150.0|color=11018|size=16|text=时镶嵌到装备上！>
+<Text|x=390.0|y=180.0|color=11008|size=16|text=2、可以在紫金神炉处分解装备获得>
+<Text|x=415.0|y=205.0|color=11008|size=16|text=“女娲石”>
+<Text|x=390.0|y=240.0|color=11008|size=16|text=3、“开石”得到的宝石可以镶嵌在装>
+<Text|x=420.0|y=265.0|size=16|color=11008|text=备上。>
+<$STR(S$原石显示)>
+
+
+
+[@开启宝石]
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 开启原石失败，背包空格数量不足！
+BREAK
+
+#IF
+NOT CHECKITEM 女娲石 1
+#ACT
+SENDMSG 9 开启原石失败，你没有女娲石！
+BREAK
+
+#IF
+#ACT
+MOV S$宝石权重
+RANSJSTR 1级宝石#80|2级宝石#15|3级宝石#5 1 3 S$宝石权重 S$无用
+
+#IF
+CHECKITEM 女娲石 1
+EQUAL S$宝石权重 3级宝石
+#ACT
+TAKE 女娲石 1
+MOV S$三级宝石组 3级吸血石#10|3级孔雀石#10|3级暴击石#10|3级攻坚石#10|3级增伤石#10|3级物攻石#20|3级魔攻石#20|3级道攻石#20|3级韧性石#20|3级嗜血石#20|3级强攻石#30|3级命中石#30|
+INC S$三级宝石组 3级闪避石#30|3级宠物石#30|3级忽防石#30|3级法抗石#50|3级反伤石#50|3级魔防石#50|3级物防石#50|3级底攻石#100|3级血怒石#100|3级复苏石#100|3级生命石#100|3级炼妖石#100
+RANSJSTR <$STR(S$三级宝石组)> 1 3 S$获得宝石 S$无用
+GiveStateItem <$STR(S$获得宝石)> 1 1 1 0 0 1 1 1 1
+GetDBItemFieldValue <$STR(S$获得宝石)> idx N$宝石显示
+GetDBItemFieldValue <$STR(S$获得宝石)> Source N$宝石说明
+GetDBItemFieldValue <$STR(S$获得宝石)> Color N$宝石颜色
+GOTO @开启原石
+BREAK
+#IF
+CHECKITEM 女娲石 1
+EQUAL S$宝石权重 2级宝石
+#ACT
+TAKE 女娲石 1
+MOV S$二级宝石组 2级吸血石#6|2级孔雀石#6|2级暴击石#6|2级攻坚石#6|2级嗜血石#6|2级物攻石#15|2级魔攻石#15|2级道攻石#15|2级韧性石#15|2级增伤石#30|2级强攻石#30|2级命中石#30|
+INC S$二级宝石组 2级闪避石#30|2级宠物石#30|2级忽防石#30|2级法抗石#50|2级反伤石#50|2级魔防石#65|2级物防石#65|2级底攻石#100|2级血怒石#100|2级复苏石#100|2级生命石#100|2级炼妖石#100
+RANSJSTR <$STR(S$二级宝石组)> 1 3 S$获得宝石 S$无用
+GiveStateItem <$STR(S$获得宝石)> 1 1 1 0 0 1 1 1 1
+GetDBItemFieldValue <$STR(S$获得宝石)> idx N$宝石显示
+GetDBItemFieldValue <$STR(S$获得宝石)> Source N$宝石说明
+GetDBItemFieldValue <$STR(S$获得宝石)> Color N$宝石颜色
+GOTO @开启原石
+BREAK
+#IF
+CHECKITEM 女娲石 1
+EQUAL S$宝石权重 1级宝石
+#ACT
+TAKE 女娲石 1
+MOV S$一级宝石组 1级吸血石#2|1级孔雀石#2|1级暴击石#2|1级攻坚石#2|1级增伤石#2|1级物攻石#15|1级魔攻石#15|1级道攻石#15|1级韧性石#15|1级嗜血石#15|1级强攻石#35|1级命中石#35|
+INC S$一级宝石组 1级闪避石#35|1级宠物石#35|1级忽防石#35|1级法抗石#50|1级反伤石#50|1级魔防石#50|1级物防石#50|1级底攻石#108|1级血怒石#108|1级复苏石#108|1级生命石#108|1级炼妖石#108
+RANSJSTR <$STR(S$一级宝石组)> 1 3 S$获得宝石 S$无用
+GiveStateItem <$STR(S$获得宝石)> 1 1 1 0 0 1 1 1 1
+GetDBItemFieldValue <$STR(S$获得宝石)> idx N$宝石显示
+GetDBItemFieldValue <$STR(S$获得宝石)> Source N$宝石说明
+GetDBItemFieldValue <$STR(S$获得宝石)> Color N$宝石颜色
+GOTO @开启原石
+BREAK
+
+
+[@镶嵌宝石]
+#IF
+#ACT
+MOV S$装备ID
+MOV S$宝石ID
+MOV S$副页索引 说明
+GOTO @加载镶嵌数据
+BREAK
+
+[@加载镶嵌数据]
+#IF
+#ACT
+MOV S$镶嵌显示
+
+#IF
+EQUAL S$装备ID *
+#ACT
+MOV S$装备ID
+
+#IF
+EQUAL S$宝石ID *
+#ACT
+MOV S$宝石ID
+
+
+#IF
+EQUAL S$副页索引 说明
+#ACT
+MOV S$副页内容
+INC S$副页内容 <Img|x=381.0|y=80.0|width=300|scale9r=10|scale9l=10|scale9t=10|img=private/xlxl/021600.png|scale9b=10|esc=0>
+INC S$副页内容 <Text|x=410.0|y=85.0|color=11034|size=18|text=说　明>
+INC S$副页内容 <Text|x=390.0|y=125.0|color=11018|size=16|text=1、宝石通过“开石”获得>
+INC S$副页内容 <Text|x=390.0|y=150.0|color=11008|size=16|text=2、每件装备只能镶嵌一个宝石，再>
+INC S$副页内容 <Text|x=415.0|y=175.0|color=11008|size=16|text=次镶嵌会覆盖之前的宝石。>
+INC S$副页内容 <Text|x=390.0|y=200.0|color=11008|size=16|text=3、拥有特殊属性的宝珠，只能镶嵌>
+INC S$副页内容 <Text|x=415.0|y=225.0|size=16|color=11008|text=在固定位置。>
+INC S$副页内容 <Text|x=390.0|y=250.0|color=11008|size=16|text=4、非畅玩用户镶嵌宝石后的装备不>
+INC S$副页内容 <Text|x=415.0|y=275.0|size=16|color=11008|text=能交易。>
+INC S$副页内容 <Text|x=390.0|y=315.0|size=16|color=11018|text=请点击左边放入要镶嵌的装备和宝石>
+
+
+#IF
+EQUAL S$副页索引 背包
+#ACT
+MOV S$副页内容
+INC S$副页内容 <Img|x=380.0|y=80.0|width=300|img=private/xlxl/021600.png|esc=0>
+INC S$副页内容 <Img|x=400.0|y=85.0|img=private/xlxl/0014.png|esc=0>
+INC S$副页内容 <Text|x=432.0|y=88.0|color=251|size=18|outline=1|outlinecolor=0|text=背包装备>
+INC S$副页内容 <ListView|children={2}|x=390|y=120|width=350|height=295|direction=1|bounce=0|margin=1|reload=0|default=8>
+INC S$副页内容 <BAGITEMS|id=2||condition=5#*,6#*,10#*,11#*,15#*,19#*,20#*,21#*,22#*,23#*,24#*,26#*,28#*,30#*,48#*,50#*,52#*,53#*,54#*,62#*,64#*|select=<$STR(S0)>|selecttype=1|conditionEx=1|conditionParam=7|conditionOnOff=1|count=60|row=15|link=@选择背包>
+
+#IF
+EQUAL S$副页索引 宝石
+#ACT
+MOV S$副页内容
+INC S$副页内容 <Img|x=380.0|y=80.0|width=300|img=private/xlxl/021600.png|esc=0>
+INC S$副页内容 <Img|x=400.0|y=85.0|img=private/xlxl/0014.png|esc=0>
+INC S$副页内容 <Text|x=432.0|y=88.0|color=251|size=18|outline=1|outlinecolor=0|text=背包宝石>
+INC S$副页内容 <ListView|children={2}|x=390|y=120|width=350|height=295|direction=1|bounce=0|margin=1|reload=0|default=8>
+INC S$副页内容 <BAGITEMS|id=2|condition=42#255|select=<$STR(S0)>|selecttype=1|conditionEx=1|conditionParam=7|conditionOnOff=1|count=60|row=15|link=@选择宝石>
+
+
+#IF
+EQUAL S$装备ID
+#ACT
+INC S$镶嵌显示 <Layout|x=175.0|y=126.0|width=70|height=70|color=x|link=@加载镶嵌数据#副页索引=背包#装备ID=*>
+INC S$镶嵌显示 <Text|x=193.0|y=137|color=11037|size=18|text=放入\装备>
+INC S$镶嵌显示 <Img|x=180.0|y=130.0|img=private/psllz/02130.png|esc=0>
+
+#IF
+NOT EQUAL S$装备ID
+#ACT
+MOV N$绑定属性 0
+LINKITEMBYMAKEINDEX <$STR(S$装备ID)>
+GETCUSTOMPROPERTYVALUE -1 0 N$绑定属性 1
+
+#IF
+NOT EQUAL S$装备ID
+EQUAL N$绑定属性 0
+#ACT
+INC S$镶嵌显示 <Text|x=150.0|y=210.0|color=11049|size=18|text=当前装备未镶嵌>
+
+#IF
+NOT EQUAL S$装备ID
+LARGE N$绑定属性 0
+#ACT
+GETHUMCUSTOMITEMVALUE 15 244 N$镶嵌类型 N$无用 0 1
+;INC S$镶嵌显示 <Text|x=95.0|y=180.0|color=255|size=18|text=当前装备已镶嵌<$cfg_bao_shi(<$STR(N$镶嵌类型)>_1)>>
+INC S$镶嵌显示 <Text|x=135.0|y=210.0|color=11044|size=18|outline=1|outlinecolor=0|text=当前装备已镶嵌宝石>
+
+
+#IF
+EQUAL S$宝石ID
+#ACT
+INC S$镶嵌显示 <Layout|x=175.0|y=320.0|width=70|height=70|color=x|link=@加载镶嵌数据#副页索引=宝石#宝石ID=*>
+INC S$镶嵌显示 <Text|x=193.0|y=330|color=11037|size=18|text=放入\宝石>
+INC S$镶嵌显示 <Img|x=180.0|y=320.0|img=private/psllz/02130.png|esc=0>
+INC S$镶嵌显示 <Text|x=158.0|y=390.0|color=255|size=18|outline=1|outlinecolor=0|text=新宝石：无>
+
+
+#IF
+NOT EQUAL S$宝石ID
+#ACT
+INC S$镶嵌显示 <Text|x=125.0|y=390.0|color=<$STR(N$宝石颜色)>|size=18|outline=1|outlinecolor=0|text=新宝石：<$STR(S$宝石名称)>>
+
+
+#IF
+#ACT
+GOTO @镶嵌界面
+BREAK
+
+[@镶嵌界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=7.0|y=0.0|width=720|height=500|bg=1|show=4|scale9r=35|scale9t=35|scale9b=30|move=0|esc=1|loadDelay=0|reset=1|img=private/xlxl/0000.png|scale9l=35|layerid=5000>
+<Img|x=315.0|y=7.0|img=private/biaoti/01031.png|esc=0>
+<Layout|x=668.0|y=-17.0|width=80|height=80|link=@exit>
+<Img|x=365.0|y=72.0|height=365|img=private/psllz/00010.png|esc=0>
+<Button|x=687.0|y=20.0|pimg=public/1990000511.png|color=255|nimg=public/1990000510.png|size=18|link=@exit>
+<Img|x=50.0|y=75.0|width=320|height=355|rotate=0|img=private/xlxl/0004.png|esc=0>
+<Button|x=158.0|y=440.0|nimg=private/xlxl/0011.png|outlinecolor=0|outline=1|size=17|color=251|text=镶嵌|link=@开始镶嵌>
+<DBItemShow|x=176.0|y=125.0|width=70|height=70|makeindex=<$STR(S$装备ID)>|dblink=@加载镶嵌数据#副页索引=背包#装备ID=*>
+<DBItemShow|x=180.0|y=315.0|width=70|height=70|makeindex=<$STR(S$宝石ID)>|dblink=@加载镶嵌数据#副页索引=宝石#宝石ID=*>
+<$STR(S$副页内容)>
+<$STR(S$镶嵌显示)>
+
+[@选择背包]
+#IF
+#ACT
+MOV S$装备ID <$STR(S0)>
+GOTO @加载镶嵌数据
+BREAK
+
+[@选择宝石]
+#IF
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S0)>
+MOV S$宝石ID <$STR(S0)>
+GetItemNameByMakeIndex <$STR(S$宝石ID)> S$宝石名称
+GetDBItemFieldValue <$STR(S$宝石名称)> Color N$宝石颜色
+GetDBItemFieldValue <$STR(S$宝石名称)> Source N$宝石索引
+GOTO @加载镶嵌数据
+BREAK
+
+[@开始镶嵌]
+#IF
+EQUAL S$装备ID
+#ACT
+SENDMSG 9 请先选择你需要镶嵌的装备！
+BREAK
+#IF
+EQUAL S$宝石ID
+#ACT
+SENDMSG 9 请选择你所要镶嵌的宝石！
+BREAK
+#IF
+NOT CheckBagItem <$STR(S$装备ID)>
+#ACT
+SENDMSG 9 背包内没有找到对应的装备物品！
+BREAK
+#IF
+NOT CheckBagItem <$STR(S$宝石ID)>
+#ACT
+SENDMSG 9 背包内没有找到对应的宝石物品！
+BREAK
+
+#IF
+#ACT
+MOV N$绑定属性 0
+LINKITEMBYMAKEINDEX <$STR(S$装备ID)>
+GETCUSTOMPROPERTYVALUE -1 0 N$绑定属性 1
+
+#IF
+LARGE N$绑定属性 0
+#ACT
+MESSAGEBOX 提示：要镶嵌的装备已经镶嵌过宝石了\如果继续镶嵌将会覆盖之前镶嵌的宝石！ @确认继续镶嵌 @取消
+BREAK
+
+
+#IF
+CHECK [358] 1
+SMALL N$绑定属性 1
+#ACT
+GetItemNameByMakeIndex <$STR(S$宝石ID)> S$宝石名称
+GetDBItemFieldValue <$STR(S$宝石名称)> Color N$宝石颜色
+GetDBItemFieldValue <$STR(S$宝石名称)> Source N$宝石索引
+CHANGECUSTOMITEMTEXT -1 [宝石镶嵌]： 1
+CHANGECUSTOMITEMTEXTCOLOR -1 154 1
+CHANGECUSTOMITEMABIL -1 0 0 <$STR(N$宝石颜色)> 1
+CHANGECUSTOMITEMABIL -1 0 1 <$cfg_bao_shi(<$STR(N$宝石索引)>_3)> 1
+CHANGECUSTOMITEMABIL -1 0 2 <$cfg_bao_shi(<$STR(N$宝石索引)>_4)> 1
+CHANGECUSTOMITEMABIL -1 0 3 <$cfg_bao_shi(<$STR(N$宝石索引)>_6)> 1
+CHANGECUSTOMITEMABIL -1 0 4 0 1
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_bao_shi(<$STR(N$宝石索引)>_5)> 1
+DelItemByMakeIndex <$STR(S$宝石ID)>
+MOV S$宝石ID
+GOTO @加载镶嵌数据
+BREAK
+#IF
+CHECK [358] 0
+SMALL N$绑定属性 1
+#ACT
+;不可交易
+SetItemState -1 1 1
+;禁止爆出
+SetItemState -1 5 1
+;丢弃消失
+SetItemState -1 6 1
+;禁止摆摊或上架拍卖行
+SetItemState -1 8 1
+GetItemNameByMakeIndex <$STR(S$宝石ID)> S$宝石名称
+GetDBItemFieldValue <$STR(S$宝石名称)> Color N$宝石颜色
+GetDBItemFieldValue <$STR(S$宝石名称)> Source N$宝石索引
+CHANGECUSTOMITEMTEXT -1 [宝石镶嵌]： 1
+CHANGECUSTOMITEMTEXTCOLOR -1 154 1
+CHANGECUSTOMITEMABIL -1 0 0 <$STR(N$宝石颜色)> 1
+CHANGECUSTOMITEMABIL -1 0 1 <$cfg_bao_shi(<$STR(N$宝石索引)>_3)> 1
+CHANGECUSTOMITEMABIL -1 0 2 <$cfg_bao_shi(<$STR(N$宝石索引)>_4)> 1
+CHANGECUSTOMITEMABIL -1 0 3 <$cfg_bao_shi(<$STR(N$宝石索引)>_6)> 1
+CHANGECUSTOMITEMABIL -1 0 4 0 1
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_bao_shi(<$STR(N$宝石索引)>_5)> 1
+UpDateBoxItem -1
+DelItemByMakeIndex <$STR(S$宝石ID)>
+MOV S$宝石ID
+GOTO @加载镶嵌数据
+BREAK
+
+[@确认继续镶嵌]
+#IF
+CHECK [358] 1
+#ACT
+GetItemNameByMakeIndex <$STR(S$宝石ID)> S$宝石名称
+GetDBItemFieldValue <$STR(S$宝石名称)> Color N$宝石颜色
+GetDBItemFieldValue <$STR(S$宝石名称)> Source N$宝石索引
+CHANGECUSTOMITEMTEXT -1 [宝石镶嵌]： 1
+CHANGECUSTOMITEMTEXTCOLOR -1 154 1
+CHANGECUSTOMITEMABIL -1 0 0 <$STR(N$宝石颜色)> 1
+CHANGECUSTOMITEMABIL -1 0 1 <$cfg_bao_shi(<$STR(N$宝石索引)>_3)> 1
+CHANGECUSTOMITEMABIL -1 0 2 <$cfg_bao_shi(<$STR(N$宝石索引)>_4)> 1
+CHANGECUSTOMITEMABIL -1 0 3 <$cfg_bao_shi(<$STR(N$宝石索引)>_6)> 1
+CHANGECUSTOMITEMABIL -1 0 4 0 1
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_bao_shi(<$STR(N$宝石索引)>_5)> 1
+DelItemByMakeIndex <$STR(S$宝石ID)>
+MOV S$宝石ID
+GOTO @加载镶嵌数据
+BREAK
+
+#IF
+CHECK [358] 0
+#ACT
+;不可交易
+SetItemState -1 1 1
+;禁止爆出
+SetItemState -1 5 1
+;丢弃消失
+SetItemState -1 6 1
+;禁止摆摊或上架拍卖行
+SetItemState -1 8 1
+GetItemNameByMakeIndex <$STR(S$宝石ID)> S$宝石名称
+GetDBItemFieldValue <$STR(S$宝石名称)> Color N$宝石颜色
+GetDBItemFieldValue <$STR(S$宝石名称)> Source N$宝石索引
+CHANGECUSTOMITEMTEXT -1 [宝石镶嵌]： 1
+CHANGECUSTOMITEMTEXTCOLOR -1 154 1
+CHANGECUSTOMITEMABIL -1 0 0 <$STR(N$宝石颜色)> 1
+CHANGECUSTOMITEMABIL -1 0 1 <$cfg_bao_shi(<$STR(N$宝石索引)>_3)> 1
+CHANGECUSTOMITEMABIL -1 0 2 <$cfg_bao_shi(<$STR(N$宝石索引)>_4)> 1
+CHANGECUSTOMITEMABIL -1 0 3 <$cfg_bao_shi(<$STR(N$宝石索引)>_6)> 1
+CHANGECUSTOMITEMABIL -1 0 4 0 1
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_bao_shi(<$STR(N$宝石索引)>_5)> 1
+UpDateBoxItem -1
+DelItemByMakeIndex <$STR(S$宝石ID)>
+MOV S$宝石ID
+GOTO @加载镶嵌数据
+BREAK
+
+
+[@女娲石碎片]
+#IF
+#ACT
+MOV N$预计数量 0
+MOV S$副页索引 说明
+MOV S$分解IDX1
+MOV S$分解IDX2
+MOV S$分解IDX3
+MOV S$分解IDX4
+MOV S$分解IDX5
+MOV S$分解IDX6
+MOV S$分解IDX7
+MOV S$分解IDX8
+GOTO @加载分解数据
+BREAK
+
+
+[@加载分解数据]
+#IF
+#ACT
+MOV S0
+MOV N$女娲石 0
+MOV S$分解物品
+MOV N$预计数量 0
+GETBAGITEMCOUNT 女娲石碎片 N$女娲石碎片
+
+#IF
+EQUAL S$分解IDX1 *
+#ACT
+MOV S$分解IDX1
+#IF
+EQUAL S$分解IDX2 *
+#ACT
+MOV S$分解IDX2
+#IF
+EQUAL S$分解IDX3 *
+#ACT
+MOV S$分解IDX3
+#IF
+EQUAL S$分解IDX4 *
+#ACT
+MOV S$分解IDX4
+#IF
+EQUAL S$分解IDX5 *
+#ACT
+MOV S$分解IDX5
+#IF
+EQUAL S$分解IDX6 *
+#ACT
+MOV S$分解IDX6
+#IF
+EQUAL S$分解IDX7 *
+#ACT
+MOV S$分解IDX7
+#IF
+EQUAL S$分解IDX8 *
+#ACT
+MOV S$分解IDX8
+
+#IF
+NOT EQUAL S$分解IDX1
+#ACT
+INC S0 <$STR(S$分解IDX1)>,
+#IF
+NOT EQUAL S$分解IDX2
+#ACT
+INC S0 <$STR(S$分解IDX2)>,
+#IF
+NOT EQUAL S$分解IDX3
+#ACT
+INC S0 <$STR(S$分解IDX3)>,
+#IF
+NOT EQUAL S$分解IDX4
+#ACT
+INC S0 <$STR(S$分解IDX4)>,
+#IF
+NOT EQUAL S$分解IDX5
+#ACT
+INC S0 <$STR(S$分解IDX5)>,
+#IF
+NOT EQUAL S$分解IDX6
+#ACT
+INC S0 <$STR(S$分解IDX6)>,
+#IF
+NOT EQUAL S$分解IDX7
+#ACT
+INC S0 <$STR(S$分解IDX7)>,
+#IF
+NOT EQUAL S$分解IDX8
+#ACT
+INC S0 <$STR(S$分解IDX8)>,
+
+#IF
+NOT EQUAL S$分解IDX1
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX1)> S$分解宝石1
+GetDBItemFieldValue <$STR(S$分解宝石1)> Source N$分解索引1
+INC N$预计数量 <$cfg_bao_shi(<$STR(N$分解索引1)>_8)>
+INC S$分解物品 <DBItemShow|x=65.0|y=92.0|width=70|height=70|makeindex=<$STR(S$分解IDX1)>|showtips=1|bgtype=0|color=250|link=@加载分解数据#分解IDX1=*>
+#IF
+NOT EQUAL S$分解IDX2
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX2)> S$分解宝石2
+GetDBItemFieldValue <$STR(S$分解宝石2)> Source N$分解索引2
+INC N$预计数量 <$cfg_bao_shi(<$STR(N$分解索引2)>_8)>
+INC S$分解物品 <DBItemShow|x=140.0|y=92.0|width=70|height=70|makeindex=<$STR(S$分解IDX2)>|showtips=1|bgtype=0|color=250|link=@加载分解数据#分解IDX2=*>
+#IF
+NOT EQUAL S$分解IDX3
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX3)> S$分解宝石3
+GetDBItemFieldValue <$STR(S$分解宝石3)> Source N$分解索引3
+INC N$预计数量 <$cfg_bao_shi(<$STR(N$分解索引3)>_8)>
+INC S$分解物品 <DBItemShow|x=215.0|y=92.0|width=70|height=70|makeindex=<$STR(S$分解IDX3)>|showtips=1|bgtype=0|color=250|link=@加载分解数据#分解IDX3=*>
+#IF
+NOT EQUAL S$分解IDX4
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX4)> S$分解宝石4
+GetDBItemFieldValue <$STR(S$分解宝石4)> Source N$分解索引4
+INC N$预计数量 <$cfg_bao_shi(<$STR(N$分解索引4)>_8)>
+INC S$分解物品 <DBItemShow|x=290.0|y=92.0|width=70|height=70|makeindex=<$STR(S$分解IDX4)>|showtips=1|bgtype=0|color=250|link=@加载分解数据#分解IDX4=*>
+#IF
+NOT EQUAL S$分解IDX5
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX5)> S$分解宝石5
+GetDBItemFieldValue <$STR(S$分解宝石5)> Source N$分解索引5
+INC N$预计数量 <$cfg_bao_shi(<$STR(N$分解索引5)>_8)>
+INC S$分解物品 <DBItemShow|x=65.0|y=172.0|width=70|height=70|makeindex=<$STR(S$分解IDX5)>|showtips=1|bgtype=0|color=250|link=@加载分解数据#分解IDX5=*>
+#IF
+NOT EQUAL S$分解IDX6
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX6)> S$分解宝石6
+GetDBItemFieldValue <$STR(S$分解宝石6)> Source N$分解索引6
+INC N$预计数量 <$cfg_bao_shi(<$STR(N$分解索引6)>_8)>
+INC S$分解物品 <DBItemShow|x=140.0|y=172.0|width=70|height=70|makeindex=<$STR(S$分解IDX6)>|showtips=1|bgtype=0|color=250|link=@加载分解数据#分解IDX6=*>
+#IF
+NOT EQUAL S$分解IDX7
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX7)> S$分解宝石7
+GetDBItemFieldValue <$STR(S$分解宝石7)> Source N$分解索引7
+INC N$预计数量 <$cfg_bao_shi(<$STR(N$分解索引7)>_8)>
+INC S$分解物品 <DBItemShow|x=215.0|y=172.0|width=70|height=70|makeindex=<$STR(S$分解IDX7)>|showtips=1|bgtype=0|color=250|link=@加载分解数据#分解IDX7=*>
+#IF
+NOT EQUAL S$分解IDX8
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX8)> S$分解宝石8
+GetDBItemFieldValue <$STR(S$分解宝石8)> Source N$分解索引8
+INC N$预计数量 <$cfg_bao_shi(<$STR(N$分解索引8)>_8)>
+INC S$分解物品 <DBItemShow|x=290.0|y=172.0|width=70|height=70|makeindex=<$STR(S$分解IDX8)>|showtips=1|bgtype=0|color=250|link=@加载分解数据#分解IDX8=*>
+
+#IF
+EQUAL S$副页索引 说明
+#ACT
+MOV S$副页内容 
+INC S$副页内容 <Img|x=380.0|y=80.0|width=300|scale9r=10|scale9t=10|esc=0|img=private/xlxl/021600.png|scale9b=10|scale9l=10>
+INC S$副页内容 <Text|x=410.0|y=85.0|color=11034|size=18|text=说　明>
+INC S$副页内容 <Text|x=390.0|y=125.0|color=11008|size=16|text=1、宝石可以分解为女娲石碎片>
+INC S$副页内容 <Text|x=390.0|y=150.0|color=11008|size=16|text=2、10粒女娲石碎片可重塑一块女娲石>
+INC S$副页内容 <Text|x=390.0|y=180.0|color=11018|size=16|text=3级宝石仅可手动分解，无法快速放入>
+INC S$副页内容 <Text|x=389.0|y=400.0|color=11038|size=18|outlinecolor=0|outline=1|text=当前拥有：>
+INC S$副页内容 <ItemShow|x=468.0|y=380.0|width=70|height=70|itemid=10425|itemcount=1|showtips=1|bgtype=0|scale=0.8>
+INC S$副页内容 <Img|x=538.0|y=400.0|rotate=45|esc=0|img=public/jjj.png>
+INC S$副页内容 <Text|x=553.0|y=400.0|color=11038|size=18|text=<$STR(N$女娲石碎片)>>
+INC S$副页内容 <Button|x=550.0|y=440.0|width=110|height=35|outlinecolor=0|color=251|outline=1|nimg=private/psllz/02134.png|size=16|text=背包宝石|link=@加载分解数据#副页索引=背包>
+
+
+#IF
+EQUAL S$副页索引 背包
+#ACT
+MOV S$副页内容
+INC S$副页内容 <Img|x=380.0|y=80.0|width=300|img=private/xlxl/021600.png|esc=0>
+INC S$副页内容 <Img|x=400.0|y=85.0|img=private/xlxl/0014.png|esc=0>
+INC S$副页内容 <Text|x=432.0|y=88.0|color=251|size=18|outline=1|outlinecolor=0|text=背包宝石>
+INC S$副页内容 <ListView|children={2}|x=390|y=120|width=350|height=295|direction=1|bounce=0|margin=1|reload=0|default=8>
+INC S$副页内容 <BAGITEMS|id=2|condition=42#255|select=<$STR(S0)>|exclude=<$str(s0)>|x=0.0|y=0.0|count=126|row=32|link=@拆解单个>
+INC S$副页内容 <Button|x=550.0|y=440.0|width=110|height=35|outlinecolor=0|color=251|outline=1|nimg=private/psllz/02134.png|size=16|text=说明|link=@加载分解数据#副页索引=说明>
+
+
+
+#IF
+#ACT
+GOTO @分解界面
+BREAK
+
+
+[@分解界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=7.0|y=0.0|width=720|height=500|bg=1|show=4|scale9r=35|scale9t=35|scale9b=30|move=0|esc=1|loadDelay=0|reset=1|img=private/xlxl/0000.png|scale9l=35>
+<Img|x=315.0|y=7.0|img=private/biaoti/01031.png|esc=0>
+<Layout|x=668.0|y=-17.0|width=80|height=80|link=@exit>
+<Img|x=365.0|y=72.0|height=365|img=private/psllz/00010.png|esc=0>
+<Button|x=687.0|y=20.0|pimg=public/1990000511.png|color=255|nimg=public/1990000510.png|size=18|link=@exit>
+<Img|x=70.0|y=100.0|img=private/psllz/0216099.png|esc=0>
+<Img|x=145.0|y=100.0|img=private/psllz/0216099.png|esc=0>
+<Img|x=220.0|y=100.0|img=private/psllz/0216099.png|esc=0>
+<Img|x=295.0|y=100.0|img=private/psllz/0216099.png|esc=0>
+<Img|x=70.0|y=180.0|img=private/psllz/0216099.png|esc=0>
+<Img|x=145.0|y=180.0|img=private/psllz/0216099.png|esc=0>
+<Img|x=220.0|y=180.0|img=private/psllz/0216099.png|esc=0>
+<Img|x=295.0|y=180.0|img=private/psllz/0216099.png|esc=0>
+<Img|x=50.0|y=251.0|width=320|rotate=0|esc=0|img=private/psllz/02143.png>
+<Img|x=62.0|y=320.0|width=300|height=100|scale9l=5|scale9b=5|img=private/xlxl/0018.png|scale9r=5|scale9t=5|esc=0>
+<Text|x=93.0|y=270.0|color=11003|size=18|outlinecolor=0|outline=1|text=此次分解可得：>
+<ItemShow|x=209.0|y=250.0|width=70|height=70|itemid=10425|itemcount=1|showtips=1|bgtype=0|scale=0.8>
+<Img|x=279.0|y=270.0|rotate=45|img=public/jjj.png|esc=0>
+<Text|x=296.0|y=270.0|color=11003|size=18|text=<$STR(N$预计数量)>>
+<Text|x=175.0|y=328.0|color=255|size=18|outlinecolor=0|outline=1|text=快速放入>
+<Button|x=77.0|y=365.0|color=231|nimg=private/xlxl/0011.png|size=18|text=1级宝石|link=@放入一级>
+<Button|x=238.0|y=364.0|color=231|nimg=private/xlxl/0011.png|size=18|text=2级宝石|link=@放入二级>
+<Button|x=410.0|y=440.0|width=110|height=35|outlinecolor=0|nimg=private/psllz/02134.png|outline=1|color=251|size=16|text=重塑女娲石|link=@合成原石>
+<Button|x=158.0|y=440.0|outlinecolor=0|outline=1|nimg=private/xlxl/0011.png|size=17|color=251|text=分解|link=@开始分解>
+
+<Img|x=65.0|y=335.0|img=public/word_sxbt_05.png|esc=0>
+
+<$STR(S$副页内容)>
+<$STR(S$分解物品)>
+
+[@放入一级]
+#IF
+#ACT
+MOV S$分解IDX1
+MOV S$分解IDX2
+MOV S$分解IDX3
+MOV S$分解IDX4
+MOV S$分解IDX5
+MOV S$分解IDX6
+MOV S$分解IDX7
+MOV S$分解IDX8
+LoopBagItems @获取背包一级宝石 N$物品唯一ID S$物品的名称
+MOV S$递增物品唯一ID
+MOV S$递增物品名称
+MOV N$取值数量 1
+DELAYGOTO 100 @加载分解数据
+BREAK
+
+[@获取背包一级宝石]
+#OR
+EQUAL S$物品的名称 1级吸血石
+EQUAL S$物品的名称 1级孔雀石
+EQUAL S$物品的名称 1级暴击石
+EQUAL S$物品的名称 1级攻坚石
+EQUAL S$物品的名称 1级魔闪石
+EQUAL S$物品的名称 1级物攻石
+EQUAL S$物品的名称 1级魔攻石
+EQUAL S$物品的名称 1级道攻石
+EQUAL S$物品的名称 1级韧性石
+EQUAL S$物品的名称 1级嗜血石
+EQUAL S$物品的名称 1级强攻石
+EQUAL S$物品的名称 1级命中石
+EQUAL S$物品的名称 1级闪避石
+EQUAL S$物品的名称 1级宠物石
+EQUAL S$物品的名称 1级忽防石
+EQUAL S$物品的名称 1级法抗石
+EQUAL S$物品的名称 1级反伤石
+EQUAL S$物品的名称 1级魔防石
+EQUAL S$物品的名称 1级物防石
+EQUAL S$物品的名称 1级底攻石
+EQUAL S$物品的名称 1级血怒石
+EQUAL S$物品的名称 1级复苏石
+EQUAL S$物品的名称 1级生命石
+EQUAL S$物品的名称 1级炼妖石
+#ACT
+#ELSEACT
+BREAK
+
+#IF
+LARGE N$取值数量 8
+#ACT
+BREAK
+
+#IF
+NOT EQUAL S$分解IDX<$STR(N$取值数量)>
+#ACT
+INC N$取值数量 1
+
+#IF
+SMALL N$取值数量 9
+#ACT
+INC S$递增物品唯一ID <$STR(N$物品唯一ID)>,
+INC S$递增物品名称 <$STR(S$物品的名称)>,
+MOV S$分解IDX<$STR(N$取值数量)> <$STR(N$物品唯一ID)>
+INC N$取值数量 1
+SelectBagItems <$STR(S$递增物品唯一ID)>
+
+
+
+[@放入二级]
+#IF
+#ACT
+MOV S$分解IDX1
+MOV S$分解IDX2
+MOV S$分解IDX3
+MOV S$分解IDX4
+MOV S$分解IDX5
+MOV S$分解IDX6
+MOV S$分解IDX7
+MOV S$分解IDX8
+LoopBagItems @获取背包二级宝石 N$物品唯一ID S$物品的名称
+MOV S$递增物品唯一ID
+MOV S$递增物品名称
+MOV N$取值数量 1
+DELAYGOTO 100 @加载分解数据
+BREAK
+
+[@获取背包二级宝石]
+#OR
+EQUAL S$物品的名称 2级吸血石
+EQUAL S$物品的名称 2级孔雀石
+EQUAL S$物品的名称 2级暴击石
+EQUAL S$物品的名称 2级攻坚石
+EQUAL S$物品的名称 2级魔闪石
+EQUAL S$物品的名称 2级物攻石
+EQUAL S$物品的名称 2级魔攻石
+EQUAL S$物品的名称 2级道攻石
+EQUAL S$物品的名称 2级韧性石
+EQUAL S$物品的名称 2级嗜血石
+EQUAL S$物品的名称 2级强攻石
+EQUAL S$物品的名称 2级命中石
+EQUAL S$物品的名称 2级闪避石
+EQUAL S$物品的名称 2级宠物石
+EQUAL S$物品的名称 2级忽防石
+EQUAL S$物品的名称 2级法抗石
+EQUAL S$物品的名称 2级反伤石
+EQUAL S$物品的名称 2级魔防石
+EQUAL S$物品的名称 2级物防石
+EQUAL S$物品的名称 2级底攻石
+EQUAL S$物品的名称 2级血怒石
+EQUAL S$物品的名称 2级复苏石
+EQUAL S$物品的名称 2级生命石
+EQUAL S$物品的名称 2级炼妖石
+#ACT
+#ELSEACT
+BREAK
+
+#IF
+LARGE N$取值数量 8
+#ACT
+BREAK
+
+#IF
+NOT EQUAL S$分解IDX<$STR(N$取值数量)>
+#ACT
+INC N$取值数量 1
+
+#IF
+SMALL N$取值数量 9
+#ACT
+INC S$递增物品唯一ID <$STR(N$物品唯一ID)>,
+INC S$递增物品名称 <$STR(S$物品的名称)>,
+MOV S$分解IDX<$STR(N$取值数量)> <$STR(N$物品唯一ID)>
+INC N$取值数量 1
+SelectBagItems <$STR(S$递增物品唯一ID)>
+
+[@拆解单个]
+#IF
+#ACT
+MOV S$分解IDX1
+MOV S$分解IDX2
+MOV S$分解IDX3
+MOV S$分解IDX4
+MOV S$分解IDX5
+MOV S$分解IDX6
+MOV S$分解IDX7
+MOV S$分解IDX8
+MOV S$分解IDX9
+GETVALIDSTRSUPER <$STR(S0)> , S$分解IDX
+
+#IF
+EQUAL S0
+#ACT
+GOTO @加载分割数据
+BREAK
+
+#IF
+EQUAL S$分解IDX9
+NOT EQUAL S0
+#ACT
+GETVALIDSTRSUPER <$STR(S0)> , S$分解IDX
+GOTO @加载分解数据
+BREAK
+#ELSEACT
+STOP
+BREAK
+
+
+
+
+
+
+
+[@开始分解]
+#IF
+NOT CHECKBAGSIZE 3
+#ACT
+SENDMSG 9 分解失败，背包空格数量不足！
+BREAK
+
+#IF
+#ACT
+MOV N$分解数量 0
+
+#IF
+CheckBagItem <$STR(S$分解IDX1)>
+NOT EQUAL S$分解IDX1
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX1)> S$分解宝石1
+GetDBItemFieldValue <$STR(S$分解宝石1)> Source N$分解索引1
+INC N$分解数量 <$cfg_bao_shi(<$STR(N$分解索引1)>_8)>
+DelItemByMakeIndex <$STR(S$分解IDX1)>
+MOV S$分解IDX1
+#IF
+CheckBagItem <$STR(S$分解IDX2)>
+NOT EQUAL S$分解IDX2
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX2)> S$分解宝石2
+GetDBItemFieldValue <$STR(S$分解宝石2)> Source N$分解索引2
+INC N$分解数量 <$cfg_bao_shi(<$STR(N$分解索引2)>_8)>
+DelItemByMakeIndex <$STR(S$分解IDX2)>
+MOV S$分解IDX2
+#IF
+CheckBagItem <$STR(S$分解IDX3)>
+NOT EQUAL S$分解IDX3
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX3)> S$分解宝石3
+GetDBItemFieldValue <$STR(S$分解宝石3)> Source N$分解索引3
+INC N$分解数量 <$cfg_bao_shi(<$STR(N$分解索引3)>_8)>
+DelItemByMakeIndex <$STR(S$分解IDX3)>
+MOV S$分解IDX3
+#IF
+CheckBagItem <$STR(S$分解IDX4)>
+NOT EQUAL S$分解IDX4
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX4)> S$分解宝石4
+GetDBItemFieldValue <$STR(S$分解宝石4)> Source N$分解索引4
+INC N$分解数量 <$cfg_bao_shi(<$STR(N$分解索引4)>_8)>
+DelItemByMakeIndex <$STR(S$分解IDX4)>
+MOV S$分解IDX4
+#IF
+CheckBagItem <$STR(S$分解IDX5)>
+NOT EQUAL S$分解IDX5
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX5)> S$分解宝石5
+GetDBItemFieldValue <$STR(S$分解宝石5)> Source N$分解索引5
+INC N$分解数量 <$cfg_bao_shi(<$STR(N$分解索引5)>_8)>
+DelItemByMakeIndex <$STR(S$分解IDX5)>
+MOV S$分解IDX5
+#IF
+CheckBagItem <$STR(S$分解IDX6)>
+NOT EQUAL S$分解IDX6
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX6)> S$分解宝石6
+GetDBItemFieldValue <$STR(S$分解宝石6)> Source N$分解索引6
+INC N$分解数量 <$cfg_bao_shi(<$STR(N$分解索引6)>_8)>
+DelItemByMakeIndex <$STR(S$分解IDX6)>
+MOV S$分解IDX6
+#IF
+CheckBagItem <$STR(S$分解IDX7)>
+NOT EQUAL S$分解IDX7
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX7)> S$分解宝石7
+GetDBItemFieldValue <$STR(S$分解宝石7)> Source N$分解索引7
+INC N$分解数量 <$cfg_bao_shi(<$STR(N$分解索引1)>_8)>
+DelItemByMakeIndex <$STR(S$分解IDX7)>
+MOV S$分解IDX7
+#IF
+CheckBagItem <$STR(S$分解IDX8)>
+NOT EQUAL S$分解IDX8
+#ACT
+GetItemNameByMakeIndex <$STR(S$分解IDX8)> S$分解宝石8
+GetDBItemFieldValue <$STR(S$分解宝石8)> Source N$分解索引8
+INC N$分解数量 <$cfg_bao_shi(<$STR(N$分解索引8)>_8)>
+DelItemByMakeIndex <$STR(S$分解IDX8)>
+MOV S$分解IDX8
+
+#IF
+CHECK [358] 1
+LARGE N$分解数量 0
+#ACT
+GIVE 女娲石碎片 <$STR(N$分解数量)>
+GOTO @加载分解数据
+BREAK
+#IF
+CHECK [358] 0
+LARGE N$分解数量 0
+#ACT
+GiveStateItem 女娲石碎片 <$STR(N$分解数量)> 1 1 0 0 1 1 1 1
+GOTO @加载分解数据
+BREAK
+
+#IF
+EQUAL N$分解数量 0
+#ACT
+SENDMSG 9 没有找到可以分解的宝石！
+BREAK
+
+
+
+[@合成原石]
+#IF
+NOT CHECKBAGSIZE 3
+#ACT
+SENDMSG 9 合成失败，背包空格数量不足！
+BREAK
+
+#IF
+CHECK [358] 0
+CHECKITEM 女娲石碎片 10
+#ACT
+TAKE 女娲石碎片 10
+GiveStateItem 女娲石 1 1 1 0 0 1 1 1 1
+GOTO @加载分解数据
+BREAK
+#IF
+CHECK [358] 1
+CHECKITEM 女娲石碎片 10
+#ACT
+TAKE 女娲石碎片 10
+GIVE  女娲石 1
+GOTO @加载分解数据
+BREAK
+#ELSEACT
+SENDMSG 9 合成失败，女娲石碎片数量不足10颗！
+
+BREAK
+
+
+[@1111]
+@11 强化雷霆盔
+@11 强化雷霆项链
+@11 强化雷霆护腕
+@11 强化雷霆战戒
+@11 强化雷霆腰带
+@11 强化雷霆战靴
+
+
+
+
+
+

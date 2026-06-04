@@ -1,0 +1,507 @@
+[@日志清除]
+#act
+CLEARNAMELIST ..\QuestDiary\寄售行\备份文件\购买日志.txt
+CLEARNAMELIST ..\QuestDiary\寄售行\备份文件\上架日志.txt
+CLEARNAMELIST ..\QuestDiary\寄售行\备份文件\下架日志.txt
+
+[@新手地图检测]
+#IF
+LARGE I50 1
+#ACT
+DEC I50 1
+
+#IF
+EQUAL I50 1
+#ACT
+MOV I50 0
+DelNpc 秘境之门 d2079
+Gmexecute 集体传送 d2079 3 330 330 
+SENDMSG 0 牛魔神殿的秘境之门已经关闭！
+
+#IF
+NOT CheckMonMap lgf 300
+#ACT
+MonGenEx lgf 71 71 鸡 80 50 0 255
+MonGenEx lgf 71 71 鹿 80 50 0 255
+MonGenEx lgf 71 71 鹿1 80 50 0 255
+MonGenEx lgf 71 71 多钩猫 80 50 0 255
+MonGenEx lgf 71 71 钉耙猫 80 50 0 255
+MonGenEx lgf 71 71 稻草人 80 50 0 255
+MonGenEx lgf 71 71 森林雪人 80 50 0 255
+BREAK
+
+[@每日执行]
+#IF
+#ACT
+REPAIRCASTLE 0
+INC G1 1
+MOV G3 0
+MOV G400 0
+MOV G112 0
+ClearHumCustVar 天书当日次数|兑换女儿红次数|镖车次数|每日扔物品次数 0
+SortHumVar 男战士比武胜场 S$男战士 N$男战变量值 0 1 5
+SortHumVar 女战士比武胜场 S$女战士 N$女战变量值 0 1 5
+SortHumVar 男法师比武胜场 S$男法师 N$男法变量值 0 1 5
+SortHumVar 女法师比武胜场 S$女法师 N$女法变量值 0 1 5
+SortHumVar 男道士比武胜场 S$男道士 N$男道变量值 0 1 5
+SortHumVar 女道士比武胜场 S$女道士 N$女道变量值 0 1 5
+MOV A35 <$STR(S$男战士1)>
+MOV A36 <$STR(S$女战士1)>
+MOV A37 <$STR(S$男法师1)>
+MOV A38 <$STR(S$女法师1)>
+MOV A39 <$STR(S$男道士1)>
+MOV A40 <$STR(S$女道士1)>
+MOV G35 <$STR(N$男战变量值1)>
+MOV G36 <$STR(N$女战变量值1)>
+MOV G37 <$STR(N$男法变量值1)>
+MOV G38 <$STR(N$女法变量值1)>
+MOV G39 <$STR(N$男道变量值1)>
+MOV G40 <$STR(N$女道变量值1)>
+Gmexecute 开始提问 @悦享刷新
+
+[@限制清空]
+#IF
+#ACT
+MOV G41 0
+MOV G42 0
+MOV G43 0
+MOV G44 0
+
+#IF
+DAYOFMONTH 1
+LARGE G1 29
+#ACT
+;每月第1天清空30天限制
+MOV G45 0
+MOV G46 0
+MOV G47 0
+MOV G48 0
+MOV G49 0
+MOV G50 0
+MOV G51 0
+MOV G52 0
+MOV G53 0
+MOV G54 0
+MOV G55 0
+MOV G56 0
+MOV G57 0
+MOV G58 0
+MOV G59 0
+MOV G60 0
+MOV G61 0
+MOV G62 0
+MOV G63 0
+MOV G64 0 
+MOV G65 0
+MOV G69 0
+
+#IF
+LARGE G71 1
+#ACT
+;每2天清空限制变量值，骑士衣服清空限制
+MOV G71 0
+MOV G66 0
+
+#IF
+LARGE G72 2
+#ACT
+;每3天清空限制变量值，三魂衣服清空限制
+MOV G72 0
+MOV G67 0
+
+#IF
+LARGE G73 6
+#ACT
+;每7天清空限制变量值，天机衣服清空限制
+MOV G73 0
+MOV G68 0
+
+#IF
+LARGE G74 59
+#ACT
+;每60天清空限制变量值，上古衣服清空限制
+MOV G74 0
+MOV G70 0
+
+#IF
+SMALL G71 2
+#ACT
+INC G71 1
+
+#IF
+SMALL G72 3
+#ACT
+INC G72 1
+
+#IF
+SMALL G73 7
+#ACT
+INC G73 1
+
+#IF
+SMALL G74 60
+#ACT
+INC G74 1
+
+[@攻城提示]
+#IF
+large <$HFCOUNT> 0
+LARGE G112 0
+NOT equal <$HFDAYS> 1
+NOT DAYOFWEEK SAT
+#ACT
+SENDMOVEMSG 0 58 255 0 2 沙巴克攻城战争将于今天晚上8点准时开启，请各行会做好战前准备！
+BREAK
+
+#IF
+equal <$HFDAYS> 1
+large <$HFCOUNT> 0
+small <$HFCOUNT> 3
+#ACT
+SENDMOVEMSG 0 58 255 0 2 沙巴克攻城战争将于今天晚上8点准时开启，请各行会做好战前准备！
+BREAK
+
+#IF
+equal <$HFDAYS> 1
+EQUAL <$HFCOUNT> 3
+#ACT
+SENDMOVEMSG 0 58 255 0 2 沙巴克攻城战争将于今天晚上8点准时开启，请各行会做好战前准备！
+BREAK
+
+#IF
+equal <$HFDAYS> 1
+large <$HFCOUNT> 3
+#ACT
+SENDMOVEMSG 0 58 255 0 2 沙巴克攻城战争将于今天晚上8点准时开启，请各行会做好战前准备！
+BREAK
+
+#IF
+DAYOFWEEK SAT
+LARGE <$HFCOUNT> 0
+large <$HFDAYS> 1
+#ACT
+SENDMOVEMSG 0 58 255 0 2 沙巴克攻城战争将于今天晚上8点准时开启，请各行会做好战前准备！
+BREAK
+
+[@攻城设置]
+#IF
+large <$HFCOUNT> 0
+LARGE G112 0
+NOT equal <$HFDAYS> 1
+NOT DAYOFWEEK SAT
+#ACT
+ADDATTACKSABUKALL 0
+MOV G10 0
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDTOPCHATBOARDMSG 0 149 235 30 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！ 1
+SENDMOVEMSG 0 58 255 0 1 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！
+BREAK
+
+#IF
+equal <$HFDAYS> 1
+large <$HFCOUNT> 0
+small <$HFCOUNT> 3
+#ACT
+ADDATTACKSABUKALL 0
+MOV G10 50000
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDTOPCHATBOARDMSG 0 149 235 30 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！ 1
+SENDMOVEMSG 0 58 255 0 1 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！
+BREAK
+
+#IF
+equal <$HFDAYS> 1
+EQUAL <$HFCOUNT> 3
+#ACT
+ADDATTACKSABUKALL 0
+MOV G10 80000
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDTOPCHATBOARDMSG 0 149 235 30 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！ 1
+SENDMOVEMSG 0 58 255 0 1 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！
+BREAK
+
+#IF
+equal <$HFDAYS> 1
+large <$HFCOUNT> 3
+#ACT
+ADDATTACKSABUKALL 0
+MOV G10 100000
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDTOPCHATBOARDMSG 0 149 235 30 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！ 1
+SENDMOVEMSG 0 58 255 0 1 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！
+BREAK
+
+#IF
+DAYOFWEEK SAT
+large <$HFDAYS> 1
+LARGE <$HFCOUNT> 0
+#ACT
+ADDATTACKSABUKALL 0
+MOV G10 1
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDMSG 0 沙巴克攻城战争将于30分钟后正式开启，请各行会做好准备！！
+SENDTOPCHATBOARDMSG 0 149 235 30 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！ 1
+SENDMOVEMSG 0 58 255 0 1 沙巴克攻城战争将于30分钟后正式开启，请各行会做好充分准备！！
+BREAK
+
+[@开始攻城]
+#IF
+large <$HFCOUNT> 0
+LARGE G112 0
+NOT equal <$HFDAYS> 1
+NOT DAYOFWEEK SAT
+#ACT
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSGNEW 58 255  沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战！ 1  10
+BREAK
+
+#IF
+equal <$HFDAYS> 1
+large <$HFCOUNT> 0
+small <$HFCOUNT> 3
+#ACT
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSGNEW 58 255  沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战！ 1  10
+BREAK
+#IF
+equal <$HFDAYS> 1
+EQUAL <$HFCOUNT> 3
+#ACT
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSGNEW 58 255  沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战！ 1  10
+BREAK
+#IF
+equal <$HFDAYS> 1
+large <$HFCOUNT> 3
+#ACT
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSGNEW 58 255  沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战！ 1  10
+BREAK
+#IF
+DAYOFWEEK SAT
+large <$HFDAYS> 1
+LARGE <$HFCOUNT> 0
+#ACT
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSG 0 沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战
+SENDMSGNEW 58 255  沙巴克争霸战正式开启，请各行会前往沙城为你们的荣耀而战！ 1  10
+BREAK
+
+[@夺宝预告]
+#IF
+#ACT
+SENDMSG 0 夺宝奇兵活动即将于21点开放，请速回城准备参加活动！
+SENDMSG 0 夺宝奇兵活动即将于21点开放，请速回城准备参加活动！
+SENDMSGNEW 151 0  <【夺宝奇兵】/FCOLOR=70>活动即将于<21点/FCOLOR=58>开放，请各位勇士做好准备参加活动！ 1  5
+BREAK
+
+[@夺宝开始]
+#IF
+EQUAL A330
+#ACT
+MOV A330 开启
+gmexecute 开始提问 @夺宝奇兵弹窗
+MonGenEx dbsd 43 35 祖玛教主8 0 1 0 249
+SENDMOVEMSG 0 58 255 0 5 携带宝盒的宝盒教主已经出现在夺宝神殿，请速度前往夺宝奇兵NPC进入活动场地，得到宝盒并且保护30分钟将获得高级武器，衣服，首饰等超值奖励！！！
+SENDMSGNEW 151 0 <【夺宝奇兵】/FCOLOR=11014>活动已开放，携带宝盒的<宝盒教主/FCOLOR=254>已经出现在<【夺宝神殿】/FCOLOR=11003>！！ 1 15
+SENDTOPCHATBOARDMSG 0 149 235 30 携带宝盒的宝盒教主已经出现在夺宝神殿，请速度前往夺宝奇兵NPC进入活动场地，得到宝盒并且保护30分钟将获得高级武器，衣服，首饰等超值奖励！！！ 1
+BREAK
+
+[@夺宝关闭]
+#IF
+EQUAL A330 开启
+#ACT
+MOV A330
+SENDMSG 0 “夺宝奇兵”活动已经关闭，想要参加活动的勇士请等下次活动开启！
+SENDMSG 0 “夺宝奇兵”活动已经关闭，想要参加活动的勇士请等下次活动开启！
+MoveMapPlay dbsd 3 333 333
+BREAK
+
+[@世界BOSS刷新]
+#IF
+CheckMapSameMonCount shijie01 东胜神州◆持国天王 = 0 
+#ACT
+MonGenEx shijie01 22 26 东胜神州◆持国天王 0 1 0 58
+#IF
+CheckMapSameMonCount shijie02 南赡部洲◆增长天王 = 0 
+#ACT
+MonGenEx shijie02 36 35 南赡部洲◆增长天王 0 1 0 58
+#IF
+CheckMapSameMonCount shijie03 西牛贺洲◆广目天王 = 0 
+#ACT
+MonGenEx shijie03 25 28 西牛贺洲◆广目天王 0 1 0 58
+#IF
+CheckMapSameMonCount shijie04 北俱芦洲◆多闻天王 = 0 
+#ACT
+MonGenEx shijie04 21 32 北俱芦洲◆多闻天王 0 1 0 58
+
+#IF
+#ACT
+Gmexecute 开始提问 @世界BOSS弹窗
+SENDMSGNEW 151 0 <【世界BOSS】：/FCOLOR=70>四大天王已复活,勇士们可通过<土城世界BOSS处/FCOLOR=250>前往挑战<四大天王/FCOLOR=249>！！ 1 15
+sendmsg 0 [世界BOSS]：四大天王已复活，勇士们可通过土城世界BOSS处前往挑战！ 
+sendmsg 0 [世界BOSS]：四大天王已复活，勇士们可通过土城世界BOSS处前往挑战！ 
+BREAK
+
+[@押镖活动]
+#IF
+#ACT
+SENDMOVEMSG 0 58 255 0 10 押镖活动已开启，此时间段送镖成功将获得押镖礼盒以及海量经验奖励！！！
+SENDTOPCHATBOARDMSG 0 149 235 30 押镖活动已开启，此时间段送镖成功将获得押镖礼盒以及海量经验奖励！！！  1
+Gmexecute 开始提问 @拉镖弹窗
+BREAK
+
+
+[@宝地开启]
+#IF
+EQUAL A331
+large <$HFCOUNT> 0
+#ACT
+MOV A331 开启
+MOV A332
+MonGenEx cbg 50 50 宝地经验花1 40 30 0 255 宝地经验花 0
+MonGenEx cbg 24 23 宝地长矛巨魔 1 1 0 250 宝地长矛巨魔 1
+MonGenEx cbg 77 23 宝地长矛巨魔 1 1 0 250 宝地长矛巨魔 1
+MonGenEx cbg 81 80 宝地死灵近侍 1 1 0 253 宝地死灵近侍 1
+Gmexecute 开始提问 @宝地弹窗
+SENDMSG 0 [藏宝之地]的封印已经解除，各位勇士可以通过土城左下角的[藏宝之地]NPC处前往探宝！
+SENDMSG 0 [藏宝之地]的封印已经解除，各位勇士可以通过土城左下角的[藏宝之地]NPC处前往探宝！
+SENDMSGNEW 151 0  <藏宝之地/FCOLOR=254>封印已解除，各位勇士可以通过土城左下角的<藏宝之地NPC处/FCOLOR=11003>前往探宝！ 1  10
+BREAK
+
+#IF
+EQUAL A331
+#ACT
+MOV A331 开启
+MOV A332
+MonGenEx cbg 50 50 宝地经验花 40 30 0 255 宝地经验花 0
+MonGenEx cbg 24 23 宝地长矛巨魔 1 1 0 250 宝地长矛巨魔 1
+MonGenEx cbg 77 23 宝地长矛巨魔 1 1 0 250 宝地长矛巨魔 1
+MonGenEx cbg 81 80 宝地死灵近侍 1 1 0 253 宝地死灵近侍 1
+Gmexecute 开始提问 @宝地弹窗
+SENDMSG 0 [藏宝之地]的封印已经解除，各位勇士可以通过土城左下角的[藏宝之地]NPC处前往探宝！
+SENDMSG 0 [藏宝之地]的封印已经解除，各位勇士可以通过土城左下角的[藏宝之地]NPC处前往探宝！
+SENDMSGNEW 151 0  <藏宝之地/FCOLOR=254>封印已解除，各位勇士可以通过土城左下角的<藏宝之地NPC处/FCOLOR=11003>前往探宝！ 1  10
+BREAK
+
+
+[@宝地刷蚂蚁]
+#IF
+EQUAL A331  开启
+large <$HFCOUNT> 0
+#ACT
+MOV N$经验花总数 30
+FindMapMonster cbg 宝地经验花1 N$剩余经验花 1
+DEC N$经验花总数 <$STR(N$剩余经验花)>
+MonGenEx cbg 50 50 宝地经验花1 40 <$STR(N$经验花总数)> 0 255 宝地经验花 0
+BREAK
+
+#IF
+EQUAL A331  开启
+#ACT
+MOV N$经验花总数 30
+FindMapMonster cbg 宝地经验花 N$剩余经验花 1
+DEC N$经验花总数 <$STR(N$剩余经验花)>
+MonGenEx cbg 50 50 宝地经验花 40 <$STR(N$经验花总数)> 0 255 宝地经验花 0
+BREAK
+
+[@宝地刷巨魔]
+#IF
+EQUAL A331  开启
+#ACT
+MonGenEx cbg 24 23 宝地长矛巨魔 1 1 0 250 宝地长矛巨魔 1
+MonGenEx cbg 77 23 宝地长矛巨魔 1 1 0 250 宝地长矛巨魔 1
+
+
+
+[@宝地刷守护神]
+#IF
+EQUAL A331  开启
+large <$HFCOUNT> 0
+#ACT
+MonGenEx cbg 50 50 宝地守护神 1 1 0 249 宝地守护神 1
+SENDMSG 0 [宝地守护神]已出现在藏宝之地，各位勇士可以通过土城左下角的[藏宝之地]NPC处前往探宝！
+SENDMSG 0 [宝地守护神]已出现在藏宝之地，各位勇士可以通过土城左下角的[藏宝之地]NPC处前往探宝！
+SENDMSGNEW 151 0  <【宝地守护神】/FCOLOR=249>已出现在<藏宝之地/FCOLOR=254>，各位勇士可以通过土城左下角的<藏宝之地NPC处/FCOLOR=11003>前往探宝！ 1  10
+BREAK
+
+#IF
+EQUAL A331  开启
+EQUAL <$HFCOUNT> 0
+#ACT
+MonGenEx cbg 50 50 宝地守护神1 1 1 0 249 宝地守护神 0
+SENDMSG 0 [宝地守护神]已出现在藏宝之地，各位勇士可以通过土城左下角的[藏宝之地]NPC处前往探宝！
+SENDMSG 0 [宝地守护神]已出现在藏宝之地，各位勇士可以通过土城左下角的[藏宝之地]NPC处前往探宝！
+SENDMSGNEW 151 0  <【宝地守护神】/FCOLOR=249>已出现在<藏宝之地/FCOLOR=254>，各位勇士可以通过土城左下角的<藏宝之地NPC处/FCOLOR=11003>前往探宝！ 1  10
+BREAK
+
+[@宝地关闭]
+#IF
+EQUAL A331 开启
+#ACT
+MOV A331
+Gmexecute 集体传送 cbg 3 330 330 
+MoveMapPlay cbg 3 333 333
+RandomKillMon cbg 宝地经验花1  255 1
+RandomKillMon cbg 宝地经验花   255 1
+RandomKillMon cbg 宝地长矛巨魔 255 1
+RandomKillMon cbg 宝地死灵近侍 255 1
+RandomKillMon cbg 宝地守护神	 255 1
+CLEARMAPMON cbg
+SENDMSG 0 “藏宝之地”重新进入封印状态，想要参加的勇士可以等下次活动开启！
+SENDMSG 0 “藏宝之地”重新进入封印状态，想要参加的勇士可以等下次活动开启！
+BREAK
+
+[@宝地关门]
+#IF
+EQUAL A331 开启
+EQUAL A332 
+#ACT
+MOV A332 关闭
+SENDMSG 0 “藏宝之地”入口已经关闭！！！！
+SENDMSG 0 “藏宝之地”入口已经关闭！！！！
+BREAK
+
+
+[@信使刷新]
+#IF
+CheckMapSameMonCount mzbz 盟重霸主 = 0 
+#ACT
+MonGenEx mzbz 21 22 盟重霸主 0 1 0 58
+#IF
+CheckMapSameMonCount bqbz 比奇城主 = 0 
+#ACT
+MonGenEx bqbz 21 22 比奇城主 0 1 0 58
+#IF
+CheckMapSameMonCount fmbz 封魔谷主 = 0 
+#ACT
+MonGenEx fmbz 21 22 封魔谷主 0 1 0 58
+#IF
+CheckMapSameMonCount cybz 苍月岛主 = 0 
+#ACT
+MonGenEx cybz 21 22 苍月岛主 0 1 0 58
+#IF
+CheckMapSameMonCount brbz 白日门主 = 0 
+#ACT
+MonGenEx brbz 21 22 白日门主 0 1 0 58
+
+#IF
+#ACT
+SENDMSGNEW 151 0 <【玛法信使】：/FCOLOR=70>五大信使已经出现,勇士们可通过<各大主城老兵处/FCOLOR=250>前往挑战<五大信使/FCOLOR=249>！！ 1 15
+sendmsg 0 [玛法信使]：五大信使已出现，勇士们可通过各大主城老兵处前往挑战！ 
+sendmsg 0 [玛法信使]：五大信使已出现，勇士们可通过各大主城老兵处前往挑战！ 
+BREAK
+
+
+[@信息提示]
+#act
+SENDMOVEMSG 0 58 255 50 1 为了玩家更好的游戏体验，我们将严肃处理，加速、瞬移、自行下图、见人就飞此类外挂，首次视情况封禁24小时~7天时间，给予警告，继续违反者，进行7天，30天，365天，永久封禁！
+BREAK

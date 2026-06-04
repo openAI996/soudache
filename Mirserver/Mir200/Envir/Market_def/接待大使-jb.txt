@@ -1,0 +1,25 @@
+[@main]
+#IF
+EQUAL <$HFCOUNT> 1
+#ACT
+MOV N$充值金额 30
+
+#IF
+EQUAL <$HFCOUNT> 2
+#ACT
+MOV N$充值金额 50
+
+#IF
+LARGE <$HFCOUNT> 2
+#ACT
+MOV N$充值金额 200
+
+#IF
+CHECKGAMEGIRD < <$STR(N$充值金额)>
+#ACT
+MESSAGEBOX 为防止工作室脱机影响玩家游戏体验\老区设置需充值<$STR(N$充值金额)>元可进入土城！
+BREAK
+#ELSEACT
+MAPMOVE 0 291 619
+break 
+

@@ -1,0 +1,381 @@
+[@攻击八门触发]
+{
+#IF
+EQUAL S$金砖之力 激活
+#ACT
+GETBAGITEMCOUNT 金砖 N$金砖物品数
+
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+GOTO @八门攻击怪物
+BREAK
+#ELSEACT
+GOTO @八门攻击人物
+BREAK
+
+[@八门攻击怪物]
+;弑神者对龙族造成伤害提升100%
+#or
+EQUAL <$CURRRTARGETNAME> 东胜神州◆持国天王
+EQUAL <$CURRRTARGETNAME> 南赡部洲◆增长天王
+EQUAL <$CURRRTARGETNAME> 西牛贺洲◆广目天王
+EQUAL <$CURRRTARGETNAME> 北俱芦洲◆多闻天王
+EQUAL <$CURRRTARGETNAME> 祖龙神
+#ACT
+MOV S$弑神怪物 生效
+
+#IF
+EQUAL S$弑神者 激活
+EQUAL S$弑神怪物 生效
+#ACT
+INC N$总附加伤害 <$DAMAGEVALUE>
+MOV S$弑神怪物
+
+;神之打野对怪物造成基于自身等级的伤害，自身等级为60级以下可对怪物造成10%额外伤害,自身等级每提升1级可提高1%
+#IF
+EQUAL S$神之打野 激活
+CheckLevelex < 61
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 10 N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+#IF
+EQUAL S$神之打野 激活
+CheckLevelex > 60
+#ACT
+MOV N$伤害计算 0
+MOV N$伤害比例 <$LEVEL>
+DEC N$伤害比例 60
+INC N$伤害比例 10
+CalcPer <$DAMAGEVALUE> <$STR(N$伤害比例)> N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+#IF
+EQUAL S$金砖之力 激活
+LARGE N$金砖物品数 4
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 5 N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+#IF
+EQUAL S$金砖之力 激活
+LARGE N$金砖物品数 0
+small N$金砖物品数 5
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> <$str(N$金砖物品数)> N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+;天尊传人命格攻击时1%概率释放治愈术
+#IF
+EQUAL S$天尊传人 激活
+RANDOMEX 2 100
+CHECKITEMW 超级黄色药粉 1
+CheckItemDura 9 > 10 0
+#ACT
+M.MAKEPOSION 1 30 0
+ChangeItemDura 9 - 10 0
+#IF
+EQUAL S$天尊传人 激活
+RANDOMEX 2 100
+CHECKITEMW 黄色药粉(大量) 1
+CheckItemDura 9 > 10 0
+#ACT
+M.MAKEPOSION 1 30 0
+ChangeItemDura 9 - 10 0
+#IF
+EQUAL S$御灵传人 激活
+RANDOMEX 2 100
+CHECKITEMW 护身符(大) 
+CheckItemDura 9 > 100 0
+CHECKSLAVECOUNT = 0 魔化骷髅
+#ACT
+ChangeItemDura 9 - 100 0
+RECALLMOB 魔化骷髅 3 65535 0 0 0 0
+#IF
+EQUAL S$御灵传人 激活
+RANDOMEX 2 100
+CHECKITEMW 超级护身符
+CheckItemDura 9 > 100 0
+CHECKSLAVECOUNT = 0 魔化骷髅
+#ACT
+ChangeItemDura 9 - 100 0
+RECALLMOB 魔化骷髅 3 65535 0 0 0 0
+
+;神雷天罚
+#IF
+EQUAL S$神雷天罚 激活
+RANDOMEX 3 100
+CHECKJOB Warrior
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXDC> 100 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 2 31065
+#IF
+EQUAL S$神雷天罚 激活
+RANDOMEX 3 100
+CHECKJOB Wizard
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXMC> 100 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 2 31065
+#IF
+EQUAL S$神雷天罚 激活
+RANDOMEX 3 100
+CHECKJOB Taoist
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXSC> 100 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 2 31065
+
+;天雷之力
+#IF
+EQUAL S$天雷之力 激活
+RANDOMEX 3 100
+CHECKJOB Warrior
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXDC> 50 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 2 31065
+#IF
+EQUAL S$天雷之力 激活
+RANDOMEX 3 100
+CHECKJOB Wizard
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXMC> 50 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 2 31065
+#IF
+EQUAL S$天雷之力 激活
+RANDOMEX 3 100
+CHECKJOB Taoist
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXSC> 50 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 2 31065
+
+
+#IF
+EQUAL S$魔力穿刺 激活
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXMP> 2 N$伤害计算
+M.HUMANHP - <$STR(N$伤害计算)>
+
+[@八门攻击人物]
+;替天行道对红名角色造成25%的额外伤害
+#IF
+EQUAL S$替天行道 激活
+<$CURRRTARGETNAME>.CHECKPKPOINTEX > 199
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 25 N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+
+#IF
+EQUAL S$魔力穿刺 激活
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXMP> 2 N$伤害计算
+SetHumVar <$CURRRTARGETNAME> s$魔力穿刺伤害 <$str(N$伤害计算)>
+<$CURRRTARGETNAME>.HUMANHP - <$STR(N$魔力穿刺伤害)>
+
+
+;霸权压制对其他职业角色提高10%的伤害
+#IF
+EQUAL S$霸权压制 激活
+#ACT
+GetHumVar <$CURRRTARGETNAME> S$目标职业 <$JOB>
+
+#IF
+EQUAL S$霸权压制 激活
+NOT EQUAL S$目标职业 <$JOB>
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 10 N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+;祸起萧墙对同职业角色提高8%的伤害
+#IF
+EQUAL S$人小鬼大 激活
+#ACT
+MOV N$八门目标等级 0
+GetHumVar <$CURRRTARGETNAME> N$八门目标等级 <$LEVEL>
+MOV N$八门自身等级 <$LEVEL>
+
+#IF
+EQUAL S$人小鬼大 激活
+SMALL N$八门自身等级 <$STR(N$八门目标等级)>
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 3 N$伤害计算
+INC N$总附加伤害 <$STR(N$伤害计算)>
+
+#IF
+EQUAL S$人小鬼大 激活
+LARGE N$八门自身等级 <$STR(N$八门目标等级)>
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 3 N$伤害计算
+DEC N$总附加伤害 <$STR(N$伤害计算)>
+
+;祸起萧墙对同职业角色提高8%的伤害
+#IF
+EQUAL S$祸起萧墙 激活
+#ACT
+GetHumVar <$CURRRTARGETNAME> S$目标职业 <$JOB>
+
+#IF
+EQUAL S$祸起萧墙 激活
+EQUAL S$目标职业 <$JOB>
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 8 N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+#IF
+EQUAL S$金砖之力 激活
+LARGE N$金砖物品数 4
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 5 N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+#IF
+EQUAL S$金砖之力 激活
+LARGE N$金砖物品数 0
+small N$金砖物品数 5
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> <$str(N$金砖物品数)> N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+;藐视神罚命格激活攻击玩家时让对手HP上限暂时减少10%
+#IF
+EQUAL S$藐视神罚 激活
+NOT EQUAL <$CURRRTARGETNAME> <$USERNAME>
+#ACT
+<$CURRRTARGETNAME>.addbuff 50118
+
+#IF
+EQUAL S$巫蛊之术 激活
+NOT <$CURRRTARGETNAME>.HASBUFF 50201
+RANDOMEX 1 100
+#ACT
+<$CURRRTARGETNAME>.addbuff 50201 600 1
+<$CURRRTARGETNAME>.sendmsg 6 对方巫蛊之术生效，你已身中苗疆蛊毒，持续时长10分钟...
+
+#IF
+EQUAL S$诅咒之王 激活
+RANDOMEX 3 100
+#ACT
+<$CURRRTARGETNAME>.addbuff 50056 5 1
+
+;天雷之力
+#IF
+EQUAL S$天雷之力 激活
+RANDOMEX 3 100
+CHECKJOB Warrior
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXDC> 50 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 1 31065
+#IF
+EQUAL S$天雷之力 激活
+RANDOMEX 3 100
+CHECKJOB Wizard
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXMC> 50 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 1 31065
+#IF
+EQUAL S$天雷之力 激活
+RANDOMEX 3 100
+CHECKJOB Taoist
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXSC> 50 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 1 31065
+
+
+;神雷天罚
+#IF
+EQUAL S$神雷天罚 激活
+RANDOMEX 3 100
+CHECKJOB Warrior
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXDC> 100 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 1 31065
+#IF
+EQUAL S$神雷天罚 激活
+RANDOMEX 3 100
+CHECKJOB Wizard
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXMC> 100 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 1 31065
+#IF
+EQUAL S$神雷天罚 激活
+RANDOMEX 3 100
+CHECKJOB Taoist
+#ACT
+MOV N$伤害计算 0
+CalcPer <$MAXSC> 100 N$伤害计算
+RangeHarm <$ATTACKMONSTER_XEX> <$ATTACKMONSTER_YEX> 0 0 6 <$STR(N$伤害计算)> 0 1 31065
+
+;天尊传人命格攻击时1%概率释放治愈术
+#IF
+EQUAL S$天尊传人 激活
+RANDOMEX 2 100
+CHECKITEMW 超级黄色药粉 1
+CheckItemDura 9 > 10 0
+#ACT
+<$CURRRTARGETNAME>.MAKEPOSION 1 30 0
+ChangeItemDura 9 - 10 0
+#IF
+EQUAL S$天尊传人 激活
+RANDOMEX 2 100
+CHECKITEMW 黄色药粉(大量) 1
+CheckItemDura 9 > 10 0
+#ACT
+<$CURRRTARGETNAME>.MAKEPOSION 1 30 0
+ChangeItemDura 9 - 10 0
+
+#IF
+EQUAL S$御灵传人 激活
+RANDOMEX 2 100
+CHECKITEMW 护身符(大) 
+CheckItemDura 9 > 100 0
+CHECKSLAVECOUNT = 0 魔化骷髅
+#ACT
+ChangeItemDura 9 - 100 0
+RECALLMOB 魔化骷髅 3 65535 0 0 0 0
+
+#IF
+EQUAL S$御灵传人 激活
+RANDOMEX 2 100
+CHECKITEMW 超级护身符
+CheckItemDura 9 > 100 0
+CHECKSLAVECOUNT = 0 魔化骷髅
+#ACT
+ChangeItemDura 9 - 100 0
+RECALLMOB 魔化骷髅 3 65535 0 0 0 0
+
+#IF
+EQUAL S$清风明月 激活
+RANDOMEX 50 100
+NOT EQUAL <$CURRRTARGETNAME>
+NOT EQUAL <$CURRRTARGETNAME> <$USERNAME>
+not <$CURRRTARGETNAME>.hasbuff 50476
+LARGE <$DAMAGEVALUE> 0
+#ACT
+<$CURRRTARGETNAME>.addbuff 50476
+<$CURRRTARGETNAME>.sendmsg 6 魔法躲避被降低30%，持续5秒...
+sendmsg 6 八门-清风明月触发，对方魔法躲避降低30%，持续5秒...
+
+}

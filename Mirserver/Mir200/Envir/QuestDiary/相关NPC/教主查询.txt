@@ -1,0 +1,809 @@
+[@教主查询]
+
+{
+#IF
+#ACT
+MOV N$查询页数 1
+MOV N$查询位置1 1
+MOV N$查询位置2 2
+MOV N$查询位置3 3
+MOV N$查询位置4 4
+MOV N$查询位置5 5
+MOV N$查询位置6 6
+MOV N$查询位置7 7
+MOV N$查询位置8 8
+GOTO @查询教主
+BREAK
+
+
+[@查询界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|width=671|bg=1|show=4|loadDelay=1|move=0|esc=1|img=private/psllz/00070.png|reset=1>
+<Img|x=-28.0|y=1.0|width=735|img=private/zbtj/bossbj.png|esc=0>
+<Img|x=287.0|y=6.0|img=private/biaoti/01060.png|esc=0>
+<Layout|x=603.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=628.0|y=15.0|color=255|size=18|pimg=public/1999000511.png|nimg=public/1999000510.png|link=@exit>
+<Text|x=80.0|y=73.0|color=11008|size=18|text=地点>
+<Text|x=191.0|y=72.0|color=11008|size=17|text=BOSS>
+<Text|x=282.0|y=74.0|color=11008|size=17|text=刷新间隔>
+<Text|x=385.0|y=74.0|color=11008|size=17|text=浮动>
+<Text|x=455.0|y=74.0|color=11008|size=17|text=击杀时间>
+<Text|x=550.0|y=73.0|color=11008|size=17|text=剩余时间>
+<Layout|x=170.0|y=413.0|width=100|height=40|color=x|link=@查询上翻>
+<Button|x=190.0|y=420.0|width=65|height=30|outline=1|outlinecolor=0|pimg=private/pmh/006.png|nimg=private/pmh/005.png|color=255|size=16|text=上页|link=@查询上翻>
+
+<Img|x=300.0|y=420.0|width=80|height=25|scale9b=5|scale9r=5|scale9l=5|img=private/pmh/007.png|scale9t=5|esc=0>
+<Text|x=320.0|y=422.0|color=255|size=16|text=第<$STR(N$查询页数)>页>
+
+<Layout|x=415.0|y=413.0|width=100|height=40|color=x|link=@查询下翻>
+<Button|x=435.0|y=420.0|width=65|height=30|outline=1|outlinecolor=0|pimg=private/pmh/006.png|nimg=private/pmh/005.png|color=255|size=16|text=下页|link=@查询下翻>
+
+<$STR(S$查询结果)>
+
+[@查询上翻]
+#IF
+LARGE N$查询页数 1
+#ACT
+DEC N$查询页数 1
+DEC N$查询位置1 8
+DEC N$查询位置2 8
+DEC N$查询位置3 8
+DEC N$查询位置4 8
+DEC N$查询位置5 8
+DEC N$查询位置6 8
+DEC N$查询位置7 8
+DEC N$查询位置8 8
+GOTO @查询教主
+BREAK
+#ELSEACT
+SENDMSG 9 当前已经是第一页了！
+BREAK
+
+[@查询下翻]
+#IF
+SMALL N$查询页数 8
+#ACT
+INC N$查询页数 1
+INC N$查询位置1 8
+INC N$查询位置2 8
+INC N$查询位置3 8
+INC N$查询位置4 8
+INC N$查询位置5 8
+INC N$查询位置6 8
+INC N$查询位置7 8
+INC N$查询位置8 8
+GOTO @查询教主
+BREAK
+#ELSEACT
+SENDMSG 9 当前已经是最后一页了！
+BREAK
+
+
+[@查询教主]
+#IF
+#ACT
+MOV N$教主数量1 0
+MOV N$教主数量2 0
+MOV N$教主数量3 0
+MOV N$教主数量4 0
+MOV N$教主数量5 0
+MOV N$教主数量6 0
+MOV N$教主数量7 0
+MOV N$教主数量8 0
+MOV S$查询结果
+MOV N$时差偏正1 0
+MOV N$时差偏正2 0
+MOV N$时差偏正3 0
+MOV N$时差偏正4 0
+MOV N$时差偏正5 0
+MOV N$时差偏正6 0
+MOV N$时差偏正7 0
+MOV N$时差偏正8 0
+
+#IF
+#ACT
+FindMapMonster <$cfg_boss_chax(<$STR(N$查询位置1)>_3)> <$cfg_boss_chax(<$STR(N$查询位置1)>_17)> N$教主数量1 1
+FindMapMonster <$cfg_boss_chax(<$STR(N$查询位置2)>_3)> <$cfg_boss_chax(<$STR(N$查询位置2)>_17)> N$教主数量2 1
+FindMapMonster <$cfg_boss_chax(<$STR(N$查询位置3)>_3)> <$cfg_boss_chax(<$STR(N$查询位置3)>_17)> N$教主数量3 1
+FindMapMonster <$cfg_boss_chax(<$STR(N$查询位置4)>_3)> <$cfg_boss_chax(<$STR(N$查询位置4)>_17)> N$教主数量4 1
+FindMapMonster <$cfg_boss_chax(<$STR(N$查询位置5)>_3)> <$cfg_boss_chax(<$STR(N$查询位置5)>_17)> N$教主数量5 1
+FindMapMonster <$cfg_boss_chax(<$STR(N$查询位置6)>_3)> <$cfg_boss_chax(<$STR(N$查询位置6)>_17)> N$教主数量6 1
+FindMapMonster <$cfg_boss_chax(<$STR(N$查询位置7)>_3)> <$cfg_boss_chax(<$STR(N$查询位置7)>_17)> N$教主数量7 1
+FindMapMonster <$cfg_boss_chax(<$STR(N$查询位置8)>_3)> <$cfg_boss_chax(<$STR(N$查询位置8)>_17)> N$教主数量8 1
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_10)>  空
+SMALL N$教主数量1 1
+#ACT
+MOV N$时差偏正1 <$STR(<$cfg_boss_chax(<$STR(N$查询位置1)>_10)>)>
+DEC N$时差偏正1 <$UTCNOW8>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_10)>  空
+SMALL N$教主数量2 1
+#ACT
+MOV N$时差偏正2 <$STR(<$cfg_boss_chax(<$STR(N$查询位置2)>_10)>)>
+DEC N$时差偏正2 <$UTCNOW8>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_10)>  空
+SMALL N$教主数量3 1
+#ACT
+MOV N$时差偏正3 <$STR(<$cfg_boss_chax(<$STR(N$查询位置3)>_10)>)>
+DEC N$时差偏正3 <$UTCNOW8>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_10)>  空
+SMALL N$教主数量4 1
+#ACT
+MOV N$时差偏正4 <$STR(<$cfg_boss_chax(<$STR(N$查询位置4)>_10)>)>
+DEC N$时差偏正4 <$UTCNOW8>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_10)>  空
+SMALL N$教主数量5 1
+#ACT
+MOV N$时差偏正5 <$STR(<$cfg_boss_chax(<$STR(N$查询位置5)>_10)>)>
+DEC N$时差偏正5 <$UTCNOW8>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_10)>  空
+SMALL N$教主数量6 1
+#ACT
+MOV N$时差偏正6 <$STR(<$cfg_boss_chax(<$STR(N$查询位置6)>_10)>)>
+DEC N$时差偏正6 <$UTCNOW8>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_10)>  空
+SMALL N$教主数量7 1
+#ACT
+MOV N$时差偏正7 <$STR(<$cfg_boss_chax(<$STR(N$查询位置7)>_10)>)>
+DEC N$时差偏正7 <$UTCNOW8>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_10)>  空
+SMALL N$教主数量8 1
+#ACT
+MOV N$时差偏正8 <$STR(<$cfg_boss_chax(<$STR(N$查询位置8)>_10)>)>
+DEC N$时差偏正8 <$UTCNOW8>
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_10)>  空
+SMALL N$时差偏正1 0
+#ACT
+MOV <$cfg_boss_chax(<$STR(N$查询位置1)>_10)> <$UTCNOW8>
+INC <$cfg_boss_chax(<$STR(N$查询位置1)>_10)> <$cfg_boss_chax(<$STR(N$查询位置1)>_16)>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_10)>  空
+SMALL N$时差偏正2 0
+#ACT
+MOV <$cfg_boss_chax(<$STR(N$查询位置2)>_10)> <$UTCNOW8>
+INC <$cfg_boss_chax(<$STR(N$查询位置2)>_10)> <$cfg_boss_chax(<$STR(N$查询位置2)>_16)>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_10)>  空
+SMALL N$时差偏正3 0
+#ACT
+MOV <$cfg_boss_chax(<$STR(N$查询位置3)>_10)> <$UTCNOW8>
+INC <$cfg_boss_chax(<$STR(N$查询位置3)>_10)> <$cfg_boss_chax(<$STR(N$查询位置3)>_16)>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_10)>  空
+SMALL N$时差偏正4 0
+#ACT
+MOV <$cfg_boss_chax(<$STR(N$查询位置4)>_10)> <$UTCNOW8>
+INC <$cfg_boss_chax(<$STR(N$查询位置4)>_10)> <$cfg_boss_chax(<$STR(N$查询位置4)>_16)>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_10)>  空
+SMALL N$时差偏正5 0
+#ACT
+MOV <$cfg_boss_chax(<$STR(N$查询位置5)>_10)> <$UTCNOW8>
+INC <$cfg_boss_chax(<$STR(N$查询位置5)>_10)> <$cfg_boss_chax(<$STR(N$查询位置5)>_16)>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_10)>  空
+SMALL N$时差偏正6 0
+#ACT
+MOV <$cfg_boss_chax(<$STR(N$查询位置6)>_10)> <$UTCNOW8>
+INC <$cfg_boss_chax(<$STR(N$查询位置6)>_10)> <$cfg_boss_chax(<$STR(N$查询位置6)>_16)>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_10)>  空
+SMALL N$时差偏正7 0
+#ACT
+MOV <$cfg_boss_chax(<$STR(N$查询位置7)>_10)> <$UTCNOW8>
+INC <$cfg_boss_chax(<$STR(N$查询位置7)>_10)> <$cfg_boss_chax(<$STR(N$查询位置7)>_16)>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_10)>  空
+SMALL N$时差偏正8 0
+#ACT
+MOV <$cfg_boss_chax(<$STR(N$查询位置8)>_10)> <$UTCNOW8>
+INC <$cfg_boss_chax(<$STR(N$查询位置8)>_10)> <$cfg_boss_chax(<$STR(N$查询位置8)>_16)>
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_10)>  空
+LARGE N$教主数量1 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置1)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置1)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_10)>  空
+SMALL N$教主数量1 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+MOV N$刷新时差 <$STR(<$cfg_boss_chax(<$STR(N$查询位置1)>_10)>)>
+DEC N$刷新时差 <$UTCNOW8>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置1)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_10)>  空
+LARGE N$教主数量1 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置1)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置1)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_10)>  空
+SMALL N$教主数量1 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置1)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置1)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置1)>_6)> 系统刷新
+SMALL N$教主数量1 1
+#ACT
+DEC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+DEC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置1)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=系统刷新>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置1)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置1)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=空>
+
+
+
+
+
+
+
+
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_10)>  空
+LARGE N$教主数量2 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置2)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置2)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_10)>  空
+SMALL N$教主数量2 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+MOV N$刷新时差 <$STR(<$cfg_boss_chax(<$STR(N$查询位置2)>_10)>)>
+DEC N$刷新时差 <$UTCNOW8>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置2)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_10)>  空
+LARGE N$教主数量2 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置2)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置2)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_10)>  空
+SMALL N$教主数量2 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置2)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置2)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置2)>_6)> 系统刷新
+SMALL N$教主数量2 1
+#ACT
+DEC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+DEC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置2)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=系统刷新>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置2)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置2)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=空>
+
+
+
+
+
+
+
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_10)>  空
+LARGE N$教主数量3 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置3)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置3)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_10)>  空
+SMALL N$教主数量3 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+MOV N$刷新时差 <$STR(<$cfg_boss_chax(<$STR(N$查询位置3)>_10)>)>
+DEC N$刷新时差 <$UTCNOW8>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置3)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_10)>  空
+LARGE N$教主数量3 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置3)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置3)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_10)>  空
+SMALL N$教主数量3 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置3)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置3)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置3)>_6)> 系统刷新
+SMALL N$教主数量3 1
+#ACT
+DEC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+DEC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置3)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=系统刷新>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置3)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置3)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=空>
+
+
+
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_10)>  空
+LARGE N$教主数量4 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置4)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置4)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_10)>  空
+SMALL N$教主数量4 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+MOV N$刷新时差 <$STR(<$cfg_boss_chax(<$STR(N$查询位置4)>_10)>)>
+DEC N$刷新时差 <$UTCNOW8>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置4)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_10)>  空
+LARGE N$教主数量4 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置4)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置4)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_10)>  空
+SMALL N$教主数量4 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置4)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置4)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置4)>_6)> 系统刷新
+SMALL N$教主数量4 1
+#ACT
+DEC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+DEC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置4)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=系统刷新>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置4)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置4)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=空>
+
+
+
+
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_10)>  空
+LARGE N$教主数量5 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置5)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置5)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_10)>  空
+SMALL N$教主数量5 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+MOV N$刷新时差 <$STR(<$cfg_boss_chax(<$STR(N$查询位置5)>_10)>)>
+DEC N$刷新时差 <$UTCNOW8>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置5)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_10)>  空
+LARGE N$教主数量5 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置5)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置5)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_10)>  空
+SMALL N$教主数量5 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置5)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置5)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置5)>_6)> 系统刷新
+SMALL N$教主数量5 1
+#ACT
+DEC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+DEC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置5)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=系统刷新>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置5)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置5)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=空>
+
+
+
+
+
+
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_10)>  空
+LARGE N$教主数量6 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置6)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置6)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_10)>  空
+SMALL N$教主数量6 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+MOV N$刷新时差 <$STR(<$cfg_boss_chax(<$STR(N$查询位置6)>_10)>)>
+DEC N$刷新时差 <$UTCNOW8>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置6)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_10)>  空
+LARGE N$教主数量6 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置6)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置6)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_10)>  空
+SMALL N$教主数量6 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置6)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置6)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置6)>_6)> 系统刷新
+SMALL N$教主数量6 1
+#ACT
+DEC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+DEC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置6)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=系统刷新>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置6)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置6)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=空>
+
+
+
+
+
+
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_10)>  空
+LARGE N$教主数量7 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置7)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置7)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_10)>  空
+SMALL N$教主数量7 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+MOV N$刷新时差 <$STR(<$cfg_boss_chax(<$STR(N$查询位置7)>_10)>)>
+DEC N$刷新时差 <$UTCNOW8>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置7)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_10)>  空
+LARGE N$教主数量7 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置7)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置7)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_10)>  空
+SMALL N$教主数量7 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置7)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置7)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置7)>_6)> 系统刷新
+SMALL N$教主数量7 1
+#ACT
+DEC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+DEC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置7)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=系统刷新>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置7)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置7)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=空>
+
+
+
+
+
+
+
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_10)>  空
+LARGE N$教主数量8 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置8)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置8)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_1)>
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_10)>  空
+SMALL N$教主数量8 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+MOV N$刷新时差 <$STR(<$cfg_boss_chax(<$STR(N$查询位置8)>_10)>)>
+DEC N$刷新时差 <$UTCNOW8>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置8)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_10)>  空
+LARGE N$教主数量8 0
+#ACT
+MOV N$刷新颜色 250
+MOV S$刷新状态 已刷新
+MOV <$cfg_boss_chax(<$STR(N$查询位置8)>_13)> 未击杀
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_11)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置8)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=<$STR(S$刷新状态)>>
+#IF
+NOT EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_1)>
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_10)>  空
+SMALL N$教主数量8 1
+#ACT
+MOV N$刷新颜色 249
+MOV S$刷新状态 未刷新
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_5)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|outline=1|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_4)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_2)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|outlinecolor=0|color=255|outline=1|size=17|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_1)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_7)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_6)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_9)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$cfg_boss_chax(<$STR(N$查询位置8)>_8)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置8)>_13)>)>>
+INC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+
+#IF
+EQUAL <$cfg_boss_chax(<$STR(N$查询位置8)>_6)> 系统刷新
+SMALL N$教主数量8 1
+#ACT
+DEC S$查询结果 <COUNTDOWN|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|outlinecolor=0|count=0|outline=1|showWay=1|size=18|color=<$STR(N$刷新颜色)>|time=<$str(N$刷新时差)>>
+DEC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=<$STR(<$cfg_boss_chax(<$STR(N$查询位置8)>_13)>)>>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_14)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=<$STR(N$刷新颜色)>|size=17|text=系统刷新>
+INC S$查询结果 <Text|x=<$cfg_boss_chax(<$STR(N$查询位置8)>_12)>|y=<$cfg_boss_chax(<$STR(N$查询位置8)>_15)>|color=255|size=17|outline=1|outlinecolor=0|text=空>
+
+
+#IF
+#ACT
+GOTO @查询界面
+BREAK
+
+
+;击杀怪物后赋予怪物对应变量为当前时间戳后，再加上刷新时间间隔
+
+}

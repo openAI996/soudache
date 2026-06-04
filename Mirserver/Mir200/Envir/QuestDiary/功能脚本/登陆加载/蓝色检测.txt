@@ -1,0 +1,332 @@
+[@蓝色命格激活判断]
+{
+#IF
+#ACT
+MOV S$一马当先
+MOV S$暗夜幻影
+MOV S$时来运转
+MOV S$杀人狂魔
+MOV S$青云直上
+MOV S$德高望重
+MOV S$乐善好施
+MOV S$死亡送葬
+MOV S$昼伏夜行
+MOV S$终极审判
+MOV S$法外狂徒
+MOV S$天纵奇才
+MOV S$丹凤卸甲
+MOV S$日进斗金
+MOV S$指点迷津
+MOV S$女中豪杰
+MOV S$比翼双飞
+MOV S$桃李天下
+MOV S$替天行道
+MOV S$蓝魔附体
+MOV S$红魔附体
+MOV S$情比金坚
+MOV S$人小鬼大
+MOV S$立地成佛
+MOV S$活跃达人
+MOV S$神秘之姿
+MOV S$杏林圣手
+
+#OR
+EQUAL T20 一马当先
+EQUAL T21 一马当先
+EQUAL T22 一马当先
+EQUAL T23 一马当先
+EQUAL T24 一马当先
+EQUAL T25 一马当先
+EQUAL T26 一马当先
+#ACT
+MOV S$一马当先 激活
+
+#OR
+EQUAL T20 人小鬼大
+EQUAL T21 人小鬼大
+EQUAL T22 人小鬼大
+EQUAL T23 人小鬼大
+EQUAL T24 人小鬼大
+EQUAL T25 人小鬼大
+EQUAL T26 人小鬼大
+#ACT
+MOV S$人小鬼大 激活
+
+#OR
+EQUAL T20 暗夜幻影
+EQUAL T21 暗夜幻影
+EQUAL T22 暗夜幻影
+EQUAL T23 暗夜幻影
+EQUAL T24 暗夜幻影
+EQUAL T25 暗夜幻影
+EQUAL T26 暗夜幻影
+#ACT
+MOV S$暗夜幻影 激活
+
+#OR
+EQUAL T20 时来运转
+EQUAL T21 时来运转
+EQUAL T22 时来运转
+EQUAL T23 时来运转
+EQUAL T24 时来运转
+EQUAL T25 时来运转
+EQUAL T26 时来运转
+#ACT
+MOV S$时来运转 激活
+
+#OR
+EQUAL T20 杀人狂魔
+EQUAL T21 杀人狂魔
+EQUAL T22 杀人狂魔
+EQUAL T23 杀人狂魔
+EQUAL T24 杀人狂魔
+EQUAL T25 杀人狂魔
+EQUAL T26 杀人狂魔
+#ACT
+MOV S$杀人狂魔 激活
+
+#OR
+EQUAL T20 青云直上
+EQUAL T21 青云直上
+EQUAL T22 青云直上
+EQUAL T23 青云直上
+EQUAL T24 青云直上
+EQUAL T25 青云直上
+EQUAL T26 青云直上
+#ACT
+MOV S$青云直上 激活
+
+#OR
+EQUAL T20 德高望重
+EQUAL T21 德高望重
+EQUAL T22 德高望重
+EQUAL T23 德高望重
+EQUAL T24 德高望重
+EQUAL T25 德高望重
+EQUAL T26 德高望重
+#ACT
+MOV S$德高望重 激活
+
+#OR
+EQUAL T20 乐善好施
+EQUAL T21 乐善好施
+EQUAL T22 乐善好施
+EQUAL T23 乐善好施
+EQUAL T24 乐善好施
+EQUAL T25 乐善好施
+EQUAL T26 乐善好施
+#ACT
+MOV S$乐善好施 激活
+
+#OR
+EQUAL T20 死亡送葬
+EQUAL T21 死亡送葬
+EQUAL T22 死亡送葬
+EQUAL T23 死亡送葬
+EQUAL T24 死亡送葬
+EQUAL T25 死亡送葬
+EQUAL T26 死亡送葬
+#ACT
+MOV S$死亡送葬 激活
+
+#OR
+EQUAL T20 昼伏夜行
+EQUAL T21 昼伏夜行
+EQUAL T22 昼伏夜行
+EQUAL T23 昼伏夜行
+EQUAL T24 昼伏夜行
+EQUAL T25 昼伏夜行
+EQUAL T26 昼伏夜行
+#ACT
+MOV S$昼伏夜行 激活
+
+#OR
+EQUAL T20 终极审判
+EQUAL T21 终极审判
+EQUAL T22 终极审判
+EQUAL T23 终极审判
+EQUAL T24 终极审判
+EQUAL T25 终极审判
+EQUAL T26 终极审判
+#ACT
+MOV S$终极审判 激活
+
+#OR
+EQUAL T20 法外狂徒
+EQUAL T21 法外狂徒
+EQUAL T22 法外狂徒
+EQUAL T23 法外狂徒
+EQUAL T24 法外狂徒
+EQUAL T25 法外狂徒
+EQUAL T26 法外狂徒
+#ACT
+MOV S$法外狂徒 激活
+
+
+#OR
+EQUAL T20 天纵奇才
+EQUAL T21 天纵奇才
+EQUAL T22 天纵奇才
+EQUAL T23 天纵奇才
+EQUAL T24 天纵奇才
+EQUAL T25 天纵奇才
+EQUAL T26 天纵奇才
+#ACT
+MOV S$天纵奇才 激活
+
+#OR
+EQUAL T20 丹凤卸甲
+EQUAL T21 丹凤卸甲
+EQUAL T22 丹凤卸甲
+EQUAL T23 丹凤卸甲
+EQUAL T24 丹凤卸甲
+EQUAL T25 丹凤卸甲
+EQUAL T26 丹凤卸甲
+#ACT
+MOV S$丹凤卸甲 激活
+
+#OR
+EQUAL T20 日进斗金
+EQUAL T21 日进斗金
+EQUAL T22 日进斗金
+EQUAL T23 日进斗金
+EQUAL T24 日进斗金
+EQUAL T25 日进斗金
+EQUAL T26 日进斗金
+#ACT
+MOV S$日进斗金 激活
+
+#OR
+EQUAL T20 指点迷津
+EQUAL T21 指点迷津
+EQUAL T22 指点迷津
+EQUAL T23 指点迷津
+EQUAL T24 指点迷津
+EQUAL T25 指点迷津
+EQUAL T26 指点迷津
+#ACT
+MOV S$指点迷津 激活
+
+#OR
+EQUAL T20 女中豪杰
+EQUAL T21 女中豪杰
+EQUAL T22 女中豪杰
+EQUAL T23 女中豪杰
+EQUAL T24 女中豪杰
+EQUAL T25 女中豪杰
+EQUAL T26 女中豪杰
+#ACT
+MOV S$女中豪杰 激活
+
+#OR
+EQUAL T20 比翼双飞
+EQUAL T21 比翼双飞
+EQUAL T22 比翼双飞
+EQUAL T23 比翼双飞
+EQUAL T24 比翼双飞
+EQUAL T25 比翼双飞
+EQUAL T26 比翼双飞
+#ACT
+MOV S$比翼双飞 激活
+
+#OR
+EQUAL T20 桃李天下
+EQUAL T21 桃李天下
+EQUAL T22 桃李天下
+EQUAL T23 桃李天下
+EQUAL T24 桃李天下
+EQUAL T25 桃李天下
+EQUAL T26 桃李天下
+#ACT
+MOV S$桃李天下 激活
+
+#OR
+EQUAL T20 替天行道
+EQUAL T21 替天行道
+EQUAL T22 替天行道
+EQUAL T23 替天行道
+EQUAL T24 替天行道
+EQUAL T25 替天行道
+EQUAL T26 替天行道
+#ACT
+MOV S$替天行道 激活
+
+#OR
+EQUAL T20 蓝魔附体
+EQUAL T21 蓝魔附体
+EQUAL T22 蓝魔附体
+EQUAL T23 蓝魔附体
+EQUAL T24 蓝魔附体
+EQUAL T25 蓝魔附体
+EQUAL T26 蓝魔附体
+#ACT
+MOV S$蓝魔附体 激活
+
+#OR
+EQUAL T20 红魔附体
+EQUAL T21 红魔附体
+EQUAL T22 红魔附体
+EQUAL T23 红魔附体
+EQUAL T24 红魔附体
+EQUAL T25 红魔附体
+EQUAL T26 红魔附体
+#ACT
+MOV S$红魔附体 激活
+
+#OR
+EQUAL T20 情比金坚
+EQUAL T21 情比金坚
+EQUAL T22 情比金坚
+EQUAL T23 情比金坚
+EQUAL T24 情比金坚
+EQUAL T25 情比金坚
+EQUAL T26 情比金坚
+#ACT
+MOV S$情比金坚 激活
+
+#OR
+EQUAL T20 立地成佛
+EQUAL T21 立地成佛
+EQUAL T22 立地成佛
+EQUAL T23 立地成佛
+EQUAL T24 立地成佛
+EQUAL T25 立地成佛
+EQUAL T26 立地成佛
+#ACT
+MOV S$立地成佛 激活
+
+#OR
+EQUAL T20 活跃达人
+EQUAL T21 活跃达人
+EQUAL T22 活跃达人
+EQUAL T23 活跃达人
+EQUAL T24 活跃达人
+EQUAL T25 活跃达人
+EQUAL T26 活跃达人
+#ACT
+MOV S$活跃达人 激活
+
+#OR
+EQUAL T20 神秘之姿
+EQUAL T21 神秘之姿
+EQUAL T22 神秘之姿
+EQUAL T23 神秘之姿
+EQUAL T24 神秘之姿
+EQUAL T25 神秘之姿
+EQUAL T26 神秘之姿
+#ACT
+MOV S$神秘之姿 激活
+
+
+#OR
+EQUAL T20 杏林圣手
+EQUAL T21 杏林圣手
+EQUAL T22 杏林圣手
+EQUAL T23 杏林圣手
+EQUAL T24 杏林圣手
+EQUAL T25 杏林圣手
+EQUAL T26 杏林圣手
+#ACT
+MOV S$杏林圣手 激活
+
+}

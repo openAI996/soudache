@@ -1,0 +1,134 @@
+[@MAIN]
+#IF
+#ACT
+MOV N$显示索引1 35
+MOV N$显示索引2 36
+MOV N$显示索引3 37
+MOV N$显示索引4 38
+#SAY
+<Img|width=830|show=0|scale9r=0|scale9t=0|esc=1|bg=1|scale9b=0|move=0|loadDelay=1|img=private/xlxl/05008.png|scale9l=20|reset=1>
+<Layout|x=755.0|y=7.0|width=80|height=80|link=@exit>
+<Button|x=775.0|y=28.0|color=255|size=18|pimg=private/mingge/1902600024.png|nimg=private/mingge/1902600022.png|link=@exit>
+<Text|x=55.0|y=85.0|color=255|size=18|text=武器改造过程十分复杂，可不是一般人能完成的，>
+<Text|x=55.0|y=110.0|color=255|size=18|text=算你幸运，我正好可以改造符合你职业的武器。>
+<ListView|children={1000,1100,1200,1300}|x=56.0|y=136.0|width=720|height=330|direction=1|bounce=0|margin=5|reload=0>
+
+<Img|id=1000|children={1001,1002,1003,1004,1005,1006,1007,1008,1009,1010}|x=0.0|y=0.0|width=720|height=70|img=private/xlxl/021608.png|esc=0>
+<ItemShow|id=1001|x=0.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_4)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_5)>|showtips=1|bgtype=1>
+<Img|id=1002|x=64.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1003|x=90.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_7)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_8)>|showtips=1|bgtype=1>
+<Img|id=1004|x=154.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1005|x=180.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_10)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_11)>|showtips=1|bgtype=1>
+<Img|id=1006|x=244.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1007|x=270.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_13)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_14)>|showtips=1|bgtype=1>
+<Img|id=1008|x=334.0|y=20.0|img=public/qxjt.png|esc=0>
+<ItemShow|id=1009|x=375.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引1)>_2)>|itemcount=1|showtips=1|bgtype=1>
+<Button|id=1010|x=625.0|y=20.0|color=1025|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=开始合成|link=@合成武器#合成索引=35>
+
+
+<Img|id=1100|children={1101,1102,1103,1104,1105,1106,1107,1108,1109,1110}|x=0.0|y=0.0|width=720|height=70|img=private/xlxl/021608.png|esc=0>
+<ItemShow|id=1101|x=0.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_4)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_5)>|showtips=1|bgtype=1>
+<Img|id=1102|x=64.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1103|x=90.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_7)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_8)>|showtips=1|bgtype=1>
+<Img|id=1104|x=154.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1105|x=180.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_10)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_11)>|showtips=1|bgtype=1>
+<Img|id=1106|x=244.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1107|x=270.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_13)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_14)>|showtips=1|bgtype=1>
+<Img|id=1108|x=334.0|y=20.0|img=public/qxjt.png|esc=0>
+<ItemShow|id=1109|x=375.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引2)>_2)>|itemcount=1|showtips=1|bgtype=1>
+<Button|id=1110|x=625.0|y=20.0|color=1025|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=开始合成|link=@合成武器#合成索引=36>
+
+
+<Img|id=1200|children={1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212}|x=0.0|y=0.0|width=720|height=70|img=private/xlxl/021608.png|esc=0>
+<ItemShow|id=1201|x=0.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_4)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_5)>|showtips=1|bgtype=1>
+<Img|id=1202|x=64.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1203|x=90.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_7)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_8)>|showtips=1|bgtype=1>
+<Img|id=1204|x=154.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1205|x=180.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_10)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_11)>|showtips=1|bgtype=1>
+<Img|id=1206|x=244.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1207|x=270.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_13)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_14)>|showtips=1|bgtype=1>
+<Img|id=1208|x=334.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1209|x=360.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_16)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_17)>|showtips=1|bgtype=1>
+<Img|id=1210|x=424.0|y=20.0|img=public/qxjt.png|esc=0>
+<ItemShow|id=1211|x=465.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引3)>_2)>|itemcount=1|showtips=1|bgtype=1>
+<Button|id=1212|x=625.0|y=20.0|color=1025|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=开始合成|link=@合成武器1#合成索引=37>
+
+<Img|id=1300|children={1301,1302,1303,1304,1305,1306,1307,1308,1309,1310,1311,1312,1313,1314}|x=0.0|y=0.0|width=720|height=70|img=private/xlxl/021608.png|esc=0>
+<ItemShow|id=1301|x=0.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_4)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_5)>|showtips=1|bgtype=1>
+<Img|id=1302|x=64.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1303|x=90.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_7)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_8)>|showtips=1|bgtype=1>
+<Img|id=1304|x=154.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1305|x=180.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_10)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_11)>|showtips=1|bgtype=1>
+<Img|id=1306|x=244.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1307|x=270.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_13)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_14)>|showtips=1|bgtype=1>
+<Img|id=1308|x=334.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1309|x=360.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_16)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_17)>|showtips=1|bgtype=1>
+<Img|id=1310|x=424.0|y=20.0|img=public/icon_add_01.png|esc=0>
+<ItemShow|id=1311|x=450.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_19)>|itemcount=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_20)>|showtips=1|bgtype=1>
+<Img|id=1312|x=514.0|y=20.0|img=public/qxjt.png|esc=0>
+<ItemShow|id=1313|x=555.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(<$STR(N$显示索引4)>_2)>|itemcount=1|showtips=1|bgtype=1>
+<Button|id=1314|x=625.0|y=20.0|color=1025|size=18|nimg=private/pmh/005.png|pimg=private/pmh/006.png|text=开始合成|link=@合成武器2#合成索引=38>
+
+
+[@合成武器]
+#IF
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+#ACT
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+GIVE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)> 1
+SENDMSG 9 恭喜你成功合成出：<$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)>！
+BREAK
+#ELSEACT
+SENDMSG 9 合成失败，材料不足！
+BREAK
+
+[@合成武器1]
+#IF
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_16)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_17)>
+#ACT
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_16)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_17)>
+GIVE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)> 1
+SENDMSG 9 恭喜你成功合成出：<$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)>！
+BREAK
+#ELSEACT
+SENDMSG 9 合成失败，材料不足！
+BREAK
+
+[@合成武器2]
+#IF
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_16)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_17)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_19)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_20)>
+#ACT
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_16)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_17)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_19)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_20)>
+GIVE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)> 1
+SENDMSG 9 恭喜你成功合成出：<$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)>！
+BREAK
+#ELSEACT
+SENDMSG 9 合成失败，材料不足！
+BREAK
+
+
+

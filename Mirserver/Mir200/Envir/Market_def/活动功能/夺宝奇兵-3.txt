@@ -1,0 +1,48 @@
+[@MAIN]
+<Img|x=0.0|y=20.0|height=300|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01036.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=<活动名称：/FCOLOR=11008>　夺宝奇兵>
+<RText|x=285.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=<活动时间：/FCOLOR=11008>每天21:00-24:00>
+<Text|x=45.0|y=105.0|color=11008|size=17|text=活动规则：>
+<RText|x=45.0|y=130.0|color=255|size=16|outline=1|outlinecolor=0|text=<(1)：/FCOLOR=251>每天21点整，携带<"宝盒"/FCOLOR=11013>的宝盒教主将出现在神殿地图>
+<Text|x=80.0|y=155.0|color=255|size=16|outline=1|outlinecolor=0|text=击败教主可以获得宝盒一个。>
+<RText|x=45.0|y=180.0|color=255|size=16|outline=1|outlinecolor=0|text=<(2)：/FCOLOR=251>宝盒内藏有顶级首饰、武器、衣服、书页等随机一件道具>
+<RText|x=80.0|y=205.0|color=255|size=16|outline=1|outlinecolor=0|text=抢到并<保护宝盒15分钟不掉落/FCOLOR=11003>即可获得宝盒内的宝物！>
+<RText|x=45.0|y=230.0|color=255|size=16|outline=1|outlinecolor=0|text=<(3)：/FCOLOR=251>持宝者若被杀死、小退或离开神殿，宝盒必定掉落在地上。>
+<Img|x=45.0|y=270.0|width=20|height=20|esc=0|img=public/00014.png>
+<Layout|x=70.0|y=260.0|width=120|height=40|link=@参加夺宝>
+<Text|x=71.0|y=265.0|color=11008|size=18|text=参加夺宝奇兵|link=@参加夺宝>
+<Img|x=330.0|y=272.0|img=public/00020.png|esc=0>
+<Layout|x=320.0|y=260.0|width=100|height=40|link=@EXIT>
+<Text|x=355.0|y=265.0|color=11008|size=18|text=关闭|link=@EXIT>
+
+
+[@参加夺宝]
+#IF
+EQUAL S$活跃达人 激活
+#act
+INC J105 1
+
+#IF
+SMALL J62 5
+EQUAL A330 开启
+#ACT
+MAPMOVE dbsd 19 65 3
+sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了夺宝区域抢夺{[神秘宝盒]|254:0:1}企图获得终级装备......
+sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了夺宝区域抢夺{[神秘宝盒]|254:0:1}企图获得终级装备......
+INC J62 5
+INC J65 5
+INC U43 5
+BREAK
+#IF
+EQUAL A330 开启
+#ACT
+MAPMOVE dbsd 19 65 3
+sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了夺宝区域抢夺{[神秘宝盒]|254:0:1}企图获得终级装备......
+sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了夺宝区域抢夺{[神秘宝盒]|254:0:1}企图获得终级装备......
+BREAK
+#ELSEACT
+SENDMSG 9 夺宝奇兵活动尚未开启或者已经关闭了！
+BREAK

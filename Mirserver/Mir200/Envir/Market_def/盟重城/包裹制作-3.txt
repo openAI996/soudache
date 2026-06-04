@@ -1,0 +1,262 @@
+[@main]
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+MOV S$物品比例缩放 1
+#ELSEACT
+MOV S$物品比例缩放 0.85
+
+#IF
+CheckContainsText <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)> 巧夺天工
+#ACT
+GOTO @裁缝师界面
+break
+#ELSEACT
+GOTO @正常界面
+break
+
+
+[@裁缝师界面]
+<Img|x=0.0|y=20.0|reset=1|show=0|bg=1|move=0|img=private/bgzz/bgbj.png|loadDelay=1|esc=1>
+<Layout|x=490.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=222.0|y=30.0|img=private/biaoti/01004.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你好，我是这里的裁缝，你想缝制什么包裹呢？>
+<Text|x=45.0|y=485.0|color=249|size=16|text=提示：游戏内所有绿名精英怪物均有几率爆出布料！>
+<Img|x=215.0|y=7.0|img=private/biaoti/01004.png|esc=0>
+<Img|x=50.0|y=105.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=170.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=235.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=300.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=365.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=430.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=105.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=170.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=235.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=300.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=365.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=430.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=105.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=170.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=235.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=300.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=365.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=430.0|img=private/bgzz/003.png|esc=0>
+<Img|x=120.0|y=122.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=188.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=252.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=318.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=371.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=445.0|img=private/bgzz/001.png|esc=0>
+<Img|x=245.0|y=122.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=188.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=252.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=318.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=381.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=445.0|img=private/bgzz/002.png|esc=0>
+<ItemShow|x=45.0|y=100.0|width=70|height=70|itemid=10427|itemcount=8|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=45.0|y=165.0|width=70|height=70|itemid=10324|itemcount=2|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=45.0|y=230.0|width=70|height=70|itemid=10325|itemcount=2|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=45.0|y=295.0|width=70|height=70|itemid=10326|itemcount=2|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=45.0|y=360.0|width=70|height=70|itemid=10327|itemcount=2|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=45.0|y=425.0|width=70|height=70|itemid=10328|itemcount=2|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=150.0|y=100.0|width=70|height=70|itemid=1|itemcount=300000|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=150.0|y=165.0|width=70|height=70|itemid=1|itemcount=600000|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=150.0|y=230.0|width=70|height=70|itemid=1|itemcount=1000000|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=150.0|y=295.0|width=70|height=70|itemid=1|itemcount=5000000|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=150.0|y=360.0|width=70|height=70|itemid=1|itemcount=8000000|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=150.0|y=425.0|width=70|height=70|itemid=1|itemcount=50000000|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=295.0|y=100.0|width=70|height=70|itemid=10324|itemcount=1|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=295.0|y=165.0|width=70|height=70|itemid=10325|itemcount=1|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=295.0|y=230.0|width=70|height=70|itemid=10326|itemcount=1|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=295.0|y=295.0|width=70|height=70|itemid=10327|itemcount=1|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=295.0|y=360.0|width=70|height=70|itemid=10328|itemcount=1|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<ItemShow|x=295.0|y=425.0|width=70|height=70|itemid=10330|itemcount=1|bgtype=0|showtips=1|scale=<$str(S$物品比例缩放)>>
+<Button|x=395.0|y=115.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹1>
+<Button|x=395.0|y=180.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹2>
+<Button|x=395.0|y=245.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹3>
+<Button|x=395.0|y=310.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹4>
+<Button|x=395.0|y=375.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹5>
+<Button|x=395.0|y=440.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹6>
+
+
+
+
+[@正常界面]
+<Img|x=0.0|y=20.0|height=435|img=private/bgzz/bgbj.png|move=0|loadDelay=1|scale9t=45|reset=1|show=0|scale9r=45|scale9l=45|scale9b=45|bg=1|esc=1>
+<Layout|x=490.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=222.0|y=30.0|img=private/biaoti/01004.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你好，我是这里的裁缝，你想缝制什么包裹呢？>
+<Text|x=45.0|y=420.0|color=249|size=16|text=提示：游戏内所有绿名精英怪物均有几率爆出布料！>
+<Img|x=50.0|y=105.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=170.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=235.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=300.0|img=private/bgzz/003.png|esc=0>
+<Img|x=50.0|y=365.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=105.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=170.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=235.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=300.0|img=private/bgzz/003.png|esc=0>
+<Img|x=155.0|y=365.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=105.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=170.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=235.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=300.0|img=private/bgzz/003.png|esc=0>
+<Img|x=300.0|y=365.0|img=private/bgzz/003.png|esc=0>
+<Img|x=120.0|y=122.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=188.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=252.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=318.0|img=private/bgzz/001.png|esc=0>
+<Img|x=120.0|y=381.0|img=private/bgzz/001.png|esc=0>
+<Img|x=245.0|y=122.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=188.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=252.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=318.0|img=private/bgzz/002.png|esc=0>
+<Img|x=245.0|y=381.0|img=private/bgzz/002.png|esc=0>
+<ItemShow|x=45.0|y=100.0|width=70|height=70|itemid=10427|itemcount=8|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=45.0|y=165.0|width=70|height=70|itemid=10324|itemcount=2|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=45.0|y=230.0|width=70|height=70|itemid=10325|itemcount=2|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=45.0|y=295.0|width=70|height=70|itemid=10326|itemcount=2|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=45.0|y=360.0|width=70|height=70|itemid=10327|itemcount=2|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=150.0|y=100.0|width=70|height=70|itemid=1|itemcount=300000|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=150.0|y=165.0|width=70|height=70|itemid=1|itemcount=600000|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=150.0|y=230.0|width=70|height=70|itemid=1|itemcount=1000000|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=150.0|y=295.0|width=70|height=70|itemid=1|itemcount=5000000|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=150.0|y=360.0|width=70|height=70|itemid=1|itemcount=8000000|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=295.0|y=100.0|width=70|height=70|itemid=10324|itemcount=1|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=295.0|y=165.0|width=70|height=70|itemid=10325|itemcount=1|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=295.0|y=230.0|width=70|height=70|itemid=10326|itemcount=1|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=295.0|y=295.0|width=70|height=70|itemid=10327|itemcount=1|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<ItemShow|x=295.0|y=360.0|width=70|height=70|itemid=10328|itemcount=1|bgtype=0|scale=<$str(S$物品比例缩放)>|showtips=1>
+<Button|x=395.0|y=115.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹1>
+<Button|x=395.0|y=180.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹2>
+<Button|x=395.0|y=245.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹3>
+<Button|x=395.0|y=310.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹4>
+<Button|x=395.0|y=375.0|width=90|height=35|rotate=0|nimg=private/bgzz/005.png|pimg=private/bgzz/006.png|color=100|size=18|text=缝制|link=@包裹5>
+
+[@包裹1]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 <font color='#ff0000'>合成失败，背包空格数量不足5格！</font>
+Break
+
+#IF
+CHECKITEM 布料 8
+CheckBindMoney 金币 > 299999
+#ACT
+TAKE 布料 8
+ChangeBindMoney 金币 300000
+logact 10001 通过[包裹制作]消耗300000金币，剩余金币：<$MONEY(金币)>。
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+SENDMSG 9 提示：锻造成功，获得：麻布袋(5格)*1！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料或金币数量不足！
+BREAK
+
+[@包裹2]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 <font color='#ff0000'>合成失败，背包空格数量不足5格！</font>
+Break
+
+#IF
+CHECKITEM 麻布袋(5格) 2
+CheckBindMoney 金币 > 599999
+#ACT
+TAKE 麻布袋(5格) 2
+ChangeBindMoney 金币 600000
+logact 10001 通过[包裹制作]消耗600000金币，剩余金币：<$MONEY(金币)>。
+GiveStateItem 麻布袋(8格)  1 1 1 0 0 1 1 1 1
+SENDMSG 9 提示：锻造成功，获得：麻布袋(8格)*1！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料或金币数量不足！
+BREAK
+
+[@包裹3]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 <font color='#ff0000'>合成失败，背包空格数量不足5格！</font>
+Break
+
+#IF
+CHECKITEM 麻布袋(8格) 2
+CheckBindMoney 金币 > 999999
+#ACT
+TAKE 麻布袋(8格) 2
+ChangeBindMoney 金币 1000000
+logact 10001 通过[包裹制作]消耗1000000金币，剩余金币：<$MONEY(金币)>。
+GiveStateItem 麻布袋(10格)  1 1 1 0 0 1 1 1 1
+SENDMSG 9 提示：锻造成功，获得：麻布袋(10格)*1！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料或金币数量不足！
+BREAK
+
+[@包裹4]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 <font color='#ff0000'>合成失败，背包空格数量不足5格！</font>
+Break
+
+#IF
+CHECKITEM 麻布袋(10格) 2
+CheckBindMoney 金币 > 4999999
+#ACT
+TAKE 麻布袋(10格) 2
+ChangeBindMoney 金币 5000000
+logact 10001 通过[包裹制作]消耗5000000金币，剩余金币：<$MONEY(金币)>。
+GiveStateItem 丝绸袋(14格) 1 1 1 0 0 1 1 1 1
+SENDMSG 9 提示：锻造成功，获得：丝绸袋(14格)*1！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料或金币数量不足！
+BREAK
+
+[@包裹5]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 <font color='#ff0000'>合成失败，背包空格数量不足5格！</font>
+Break
+
+#IF
+CHECKITEM 丝绸袋(14格) 2
+CheckBindMoney 金币 > 7999999
+#ACT
+TAKE 丝绸袋(14格) 2
+ChangeBindMoney 金币 8000000
+logact 10001 通过[包裹制作]消耗8000000金币，剩余金币：<$MONEY(金币)>。
+GIVE 绫罗袋(18格) 1 1 1 0 0 1 1 1 1
+SENDMSG 9 提示：锻造成功，获得：绫罗袋(18格)*1！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料或金币数量不足！
+BREAK
+
+[@包裹6]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 <font color='#ff0000'>合成失败，背包空格数量不足5格！</font>
+Break
+
+#IF
+CHECKITEM 绫罗袋(18格) 2
+CheckBindMoney 金币 > 49999999
+#ACT
+TAKE 绫罗袋(18格) 2
+ChangeBindMoney 金币 50000000
+logact 10001 通过[包裹制作]消耗50000000金币，剩余金币：<$MONEY(金币)>。
+GIVE 乾坤袋(20格) 1
+SENDMSG 9 提示：锻造成功，获得：乾坤袋(20格)*1！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料或金币数量不足！
+BREAK

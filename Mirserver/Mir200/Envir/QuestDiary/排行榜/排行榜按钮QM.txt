@@ -1,0 +1,21 @@
+[@排行榜按钮QM]
+{
+#IF
+equal <$CLIENTFLAG> 2
+#ACT
+MOV S$排行榜 <Button|a=0|x=157.0|y=160.0|width=38|height=88|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_mobile/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_mobile/1900012111.png|color=1025|text=等\级|link=@排行榜_全部等级>
+INC S$排行榜 <Button|a=0|x=157.0|y=250.0|width=38|height=88|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_mobile/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_mobile/1900012111.png|color=1025|text=战\士|link=@排行榜_战士等级>
+INC S$排行榜 <Button|a=0|x=157.0|y=340.0|width=38|height=88|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_mobile/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_mobile/1900012111.png|color=1025|text=法\师|link=@排行榜_法师等级>
+INC S$排行榜 <Button|a=0|x=157.0|y=430.0|width=38|height=88|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_mobile/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_mobile/1900012111.png|color=1025|text=道\士|link=@排行榜_道士等级>
+ADDBUTTON 45 999 <$STR(S$排行榜)>
+
+#IF
+equal <$CLIENTFLAG> 1
+#ACT
+MOV S$排行榜 <Button|a=0|x=192.0|y=170.0|width=32|height=75|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_win32/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_win32/1900012111.png|color=1025|text=等\级|link=@排行榜_全部等级>
+INC S$排行榜 <Button|a=0|x=192.0|y=250.0|width=32|height=75|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_win32/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_win32/1900012111.png|color=1025|text=战\士|link=@排行榜_战士等级>
+INC S$排行榜 <Button|a=0|x=192.0|y=330.0|width=32|height=75|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_win32/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_win32/1900012111.png|color=1025|text=法\师|link=@排行榜_法师等级>
+INC S$排行榜 <Button|a=0|x=192.0|y=410.0|width=32|height=75|tipsx=10|tipsy=110|outlinecolor=0|outline=1|nimg=private/rank_ui/rank_ui_win32/1900012110.png|size=18|pimg=private/rank_ui/rank_ui_win32/1900012111.png|color=1025|text=道\士|link=@排行榜_道士等级>
+ADDBUTTON 45 999 <$STR(S$排行榜)>
+
+}

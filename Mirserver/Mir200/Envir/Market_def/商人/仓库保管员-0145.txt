@@ -1,0 +1,392 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=大侠，您有什么东西需要我帮您保管的吗？目前我们的个人仓\库业务还是完全免费的！>
+<Layout|x=60.0|y=130.0|width=100|height=50|link=@打开仓库>
+<Layout|x=265.0|y=130.0|width=100|height=50|link=@开始扩充仓库>
+<Layout|x=59.0|y=188.0|width=130|height=50|link=@二级密码>
+<Layout|x=265.0|y=190.0|width=130|height=50|link=@mbind>
+<Text|x=70.0|y=140.0|color=11008|size=18|text=使用仓库|link=@打开仓库>
+<Text|x=270.0|y=140.0|color=11008|size=18|text=扩充仓库|link=@开始扩充仓库>
+<Text|x=70.0|y=195.0|color=11008|size=18|text=设置“二级密码”|link=@二级密码>
+<Text|x=270.0|y=195.0|color=11008|size=18|text=打捆各种道具|link=@mbind>
+<Img|x=45.0|y=145.0|width=16|height=20|esc=0|img=public/00016.png>
+<Img|x=248.0|y=145.0|img=public/btn_npcfh_03.png|esc=0>
+<Img|x=248.0|y=200.0|img=public/btn_npcfh_03.png|esc=0>
+<Img|x=45.0|y=200.0|img=public/btn_npcfh_03.png|esc=0>
+
+[@打开仓库]
+#IF
+#Act
+OPENSTORAGE
+
+[@开始扩充仓库]
+#IF
+EQUAL U8 20
+#ACT
+SENDMSG 9 你的仓库已达扩容上限！
+break
+
+
+
+;#OR
+;CHECK [300] 0
+;CHECK [301] 0
+;#ACT
+;MESSAGEBOX 请先领取关注礼包，把仓库扩展到40格再来升级!
+;BREAK
+
+#IF
+#ACT
+MOV N$仓库解锁次数 <$str(U8)>
+#say
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<RText|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=将您当前的仓库从<<$cfg_ckks(<$str(N$仓库解锁次数)>_2)>个/FCOLOR=251>格子扩充至<<$cfg_ckks(<$str(N$仓库解锁次数)>_3)>个/FCOLOR=251>格子\需花费<<$cfg_ckks(<$str(N$仓库解锁次数)>_1)>元宝/FCOLOR=250>的费用，您确定要扩充仓库格子吗？>
+<Layout|x=62.0|y=135.0|width=100|height=50|link=@确认扩充仓库>
+<Layout|x=62.0|y=195.0|width=80|height=50|link=@main>
+<Text|x=70.0|y=145.0|color=11008|size=18|text=确认扩充|link=@确认扩充仓库>
+<Text|x=70.0|y=200.0|color=11008|size=18|text=返回|link=@main>
+<Img|x=45.0|y=150.0|img=public/btn_npcfh_03.png|esc=0>
+<Img|x=45.0|y=205.0|img=public/btn_npcfh_03.png|esc=0>
+<Img|x=250.0|y=7.0|img=private/biaoti/01018.png|esc=0>
+
+
+[@确认扩充仓库]
+#IF
+LARGE N$扩充时间CD <$UTCNOW>
+#ACT
+BREAK
+
+#IF
+CHECKMONEY 元宝 ? <$cfg_ckks(<$str(N$仓库解锁次数)>_1)>
+#ACT
+MOV N$扩充时间CD <$UTCNOW>
+INC N$扩充时间CD 1
+MONEY 元宝 - <$cfg_ckks(<$str(N$仓库解锁次数)>_1)>
+logact 10002 通过[仓库保管员]消耗<$cfg_ckks(<$str(N$仓库解锁次数)>_1)>元宝，剩余元宝：<$GAMEGOLD>。
+CHANGESTORAGE 10
+INC U8 1
+SENDMSG 9 恭喜你成功为您的仓库扩充10个格子！
+CLOSE
+BREAK
+
+#ELSEACT
+SENDMSG 9 扩充失败，元宝不足<$cfg_ckks(<$str(N$仓库解锁次数)>_1)>个！
+BREAK
+
+
+[@mbind]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=请问你要打捆什么呢？>
+<Layout|x=45.0|y=115.0|width=150|height=40|color=*|link=@changeGold>
+<Img|x=45.0|y=123.0|width=20|height=20|esc=0|img=public/00022.png>
+<Text|x=70.0|y=120.0|color=11008|size=18|text=用金币交换金条|link=@changeGold>
+<Layout|x=271.0|y=115.0|width=150|height=40|color=*|link=@changebigGold>
+<Img|x=265.0|y=123.0|width=20|height=20|esc=0|img=public/00022.png>
+<Text|x=290.0|y=120.0|color=11008|size=18|text=用金条交换金砖|link=@changebigGold>
+<Layout|x=45.0|y=173.0|width=150|height=40|color=*|link=@changesmallgold>
+<Img|x=45.0|y=184.0|width=20|height=20|esc=0|img=public/00022.png>
+<Text|x=70.0|y=180.0|color=11008|size=18|text=用金砖交换金盒|link=@changesmallgold>
+
+;<Layout|x=267.0|y=174.0|width=150|height=40|color=*|link=@提取元宝>
+;<Img|x=265.0|y=183.0|width=20|height=20|esc=0|img=public/00022.png>
+;<Text|x=290.0|y=180.0|color=11008|size=18|text=提取元宝|link=@提取元宝>
+
+
+[@changeGold]
+#if
+check [358] 0
+#act
+messagebox 使用过畅玩交易卷的玩家才可使用金条兑换服务！
+BREAK
+
+#IF
+CHECKMONEY 金币 > 1001999
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=你说你要用金币换成金条？>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=好的，我帮你换。但是要支付手续费>
+<RText|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=费用是<2000金币/FCOLOR=11003>，你还换吗？>
+<Layout|x=35.0|y=150.0|width=100|height=40|color=*|link=@changeGold_1>
+<Img|x=45.0|y=160.0|width=20|height=20|esc=0|img=public/00022.png>
+<Text|x=70.0|y=155.0|color=11008|size=18|text=交换|link=@changeGold_1>
+<Layout|x=35.0|y=205.0|width=100|height=40|color=*|link=@EXIT>
+<Img|x=43.0|y=211.0|width=18|height=18|esc=0|img=public/00015.png>
+<Text|x=70.0|y=205.0|color=11008|size=18|text=取消|link=@EXIT>
+
+#IF
+CHECKMONEY 金币 < 1002000
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=你连这点钱都没有，还换什么？>
+<Text|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=等你有足够的钱，再来找我吧！>
+<Layout|x=41.0|y=135.0|width=100|height=40|color=*|link=@mbind>
+<Img|x=45.0|y=145.0|img=public/00024.png|esc=0>
+<Text|x=70.0|y=140.0|color=11008|size=18|text=返回|link=@mbind>
+
+
+
+[@changeGold_1]
+#IF
+LARGE N$换取CD <$UTCNOW>
+#ACT
+BREAK
+
+#IF 
+CHECKBAGSIZE  1
+CHECKMONEY 金币 > 1001999
+#ACT
+take 金币 1002000
+logact 10001 通过[仓库保管员]消耗1002000金币，剩余金币：<$MONEY(金币)>。
+give 金条 1
+MOV N$换取CD <$UTCNOW>
+INC N$换取CD 1
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=你的包里东西已经满了，或者你没有足够的钱支付手续费>
+<Text|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=你再确认一下吧！>
+<Layout|x=41.0|y=135.0|width=100|height=40|color=*|link=@mbind>
+<Img|x=45.0|y=145.0|img=public/00024.png|esc=0>
+<Text|x=70.0|y=140.0|color=11008|size=18|text=返回|link=@mbind>
+
+[@changebigGold]
+#if
+check [358] 0
+#act
+messagebox 使用过畅玩交易卷的玩家才可使用金条兑换服务！
+BREAK
+
+#IF
+checkitem 金条 5
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=你说你要用金条换成金砖？>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=好的，我帮你换。但是要支付手续费>
+<RText|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=费用是<5000金币/FCOLOR=11003>，你还换吗？>
+<Layout|x=35.0|y=150.0|width=100|height=40|color=*|link=@changebigGold_1>
+<Img|x=45.0|y=160.0|width=20|height=20|esc=0|img=public/00022.png>
+<Text|x=70.0|y=155.0|color=11008|size=18|text=交换|link=@changebigGold_1>
+<Layout|x=35.0|y=205.0|width=100|height=40|color=*|link=@exit>
+<Img|x=43.0|y=211.0|width=18|height=18|esc=0|img=public/00015.png>
+<Text|x=70.0|y=205.0|color=11008|size=18|text=取消|link=@exit>
+#ELSESAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=你连这点钱都没有，还换什么？>
+<Text|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=等你有足够的钱，再来找我吧！>
+<Layout|x=41.0|y=135.0|width=100|height=40|color=*|link=@mbind>
+<Img|x=45.0|y=145.0|img=public/00024.png|esc=0>
+<Text|x=70.0|y=140.0|color=11008|size=18|text=返回|link=@mbind>
+
+
+
+
+
+[@changebigGold_1]
+#IF
+LARGE N$换取CD <$UTCNOW>
+#ACT
+BREAK
+
+#IF 
+CHECKBAGSIZE  1
+checkitem 金条 5
+checkgold 5000
+#ACT
+MOV N$换取CD <$UTCNOW>
+INC N$换取CD 1
+take 金条 5
+take 金币 5000
+logact 10001 通过[仓库保管员]消耗5000金币，剩余金币：<$MONEY(金币)>。
+give 金砖 1
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=你的包里东西已经满了，或者你没有足够的钱支付手续费>
+<Text|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=你再确认一下吧！>
+<Layout|x=41.0|y=135.0|width=100|height=40|color=*|link=@mbind>
+<Img|x=45.0|y=145.0|img=public/00024.png|esc=0>
+<Text|x=70.0|y=140.0|color=11008|size=18|text=返回|link=@mbind>
+
+
+
+
+[@changesmallgold]
+#if
+check [358] 0
+#act
+messagebox 使用过畅玩交易卷的玩家才可使用金条兑换服务！
+BREAK
+
+#IF
+checkitem 金砖 5
+#SAY 
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=你说你要用金砖换成金盒？>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=好的，我帮你换。但是要支付手续费>
+<RText|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=费用是<5000金币/FCOLOR=11003>，你还换吗？>
+<Layout|x=35.0|y=150.0|width=100|height=40|color=*|link=@changesmallgold_1>
+<Img|x=45.0|y=160.0|width=20|height=20|esc=0|img=public/00022.png>
+<Text|x=70.0|y=155.0|color=11008|size=18|text=交换|link=@changesmallgold_1>
+<Layout|x=35.0|y=205.0|width=100|height=40|color=*|link=@exit>
+<Img|x=43.0|y=211.0|width=18|height=18|esc=0|img=public/00015.png>
+<Text|x=70.0|y=205.0|color=11008|size=18|text=取消|link=@exit>
+#ELSESAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|outline=1|outlinecolor=0|text=你都没有金砖，还换什么？>
+<Text|x=45.0|y=95.0|size=17|color=255|outline=1|outlinecolor=0|text=想骗我？快滚！>
+<Layout|x=41.0|y=135.0|width=100|height=40|color=*|link=@mbind>
+<Img|x=45.0|y=145.0|img=public/00024.png|esc=0>
+<Text|x=70.0|y=140.0|color=11008|size=18|text=返回|link=@mbind>
+
+
+
+
+
+[@changesmallgold_1]
+#IF
+LARGE N$换取CD <$UTCNOW>
+#ACT
+BREAK
+
+#IF
+checkitem 金砖 5
+checkgold 5000
+#ACT
+MOV N$换取CD <$UTCNOW>
+INC N$换取CD 1
+take 金砖 5
+take 金币 5000
+logact 10001 通过[仓库保管员]消耗5000金币，剩余金币：<$MONEY(金币)>。
+give 金盒 1
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=18|text=你的包里东西已经满了，或者你没有足够的钱支付手续费>
+<Text|x=45.0|y=95.0|color=255|size=18|text=你再确认一下吧>
+<Layout|x=40.0|y=135.0|width=100|height=40|color=*|link=@EXIT>
+<Img|x=45.0|y=145.0|img=public/00015.png|esc=0>
+<Text|x=70.0|y=140.0|color=251|size=18|text=取消|link=@EXIT>
+
+
+[@提取元宝]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01018.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=只要支付一定的手续费，我就可以帮你把身上的<【元宝】/FCOLOR=11053>提取\出来这样你就能方便和其他玩家进行交易了！>
+<Img|x=45.0|y=130.0|img=public/02128.png|esc=0>
+<Img|x=160.0|y=130.0|img=public/02128.png|esc=0>
+<Img|x=275.0|y=130.0|img=public/02128.png|esc=0>
+<Img|x=390.0|y=130.0|img=public/02128.png|esc=0>
+<ItemShow|x=40.0|y=125.0|width=70|height=70|itemid=10575|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=155.0|y=125.0|width=70|height=70|itemid=10576|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=270.0|y=125.0|width=70|height=70|itemid=10577|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=385.0|y=125.0|width=70|height=70|itemid=10578|itemcount=1|showtips=1|bgtype=0>
+<Layout|x=35.0|y=190.0|width=80|height=40|color=*|link=@提取100>
+<Layout|x=148.0|y=190.0|width=80|height=40|color=*|link=@提取1000>
+<Layout|x=260.0|y=190.0|width=80|height=40|color=*|link=@提取10000>
+<Layout|x=372.0|y=190.0|width=100|height=40|color=*|link=@提取100000>
+<Text|x=42.0|y=195.0|color=11008|size=17|text=105元宝|link=@提取100>
+<Text|x=153.0|y=195.0|color=11008|size=18|text=1050元宝|link=@提取1000>
+<Text|x=262.0|y=195.0|color=11008|size=18|text=10500元宝|link=@提取10000>
+<Text|x=375.0|y=195.0|color=11008|size=18|text=105000元宝|link=@提取100000>
+
+
+
+[@提取100]
+#IF
+CHECKMONEY 元宝 > 104
+#ACT
+MONEY 元宝 - 105
+logact 10001 通过[仓库保管员]消耗105元宝，剩余元宝：<$GAMEGOLD>。
+GIVE 100元宝 1
+SENDMSG 9 成功提取100元宝
+BREAK
+#ELSEACT
+CLOSE
+SENDMSG 9 你身上元宝不足105个，其中5个元宝是手续费！
+break
+
+[@提取1000]
+#IF
+CHECKMONEY 元宝 > 1049
+#ACT
+MONEY 元宝 - 1050
+logact 10001 通过[仓库保管员]消耗1050元宝，剩余元宝：<$GAMEGOLD>。
+GIVE 1000元宝 1
+SENDMSG 9 成功提取1000元宝
+BREAK
+#ELSEACT
+CLOSE
+SENDMSG 9 你身上元宝不足1050个，其中50个元宝是手续费！
+break
+
+[@提取10000]
+#IF
+CHECKMONEY 元宝 > 10499
+#ACT
+MONEY 元宝 - 10500
+logact 10001 通过[仓库保管员]消耗10500元宝，剩余元宝：<$GAMEGOLD>。
+GIVE 10000元宝 1
+SENDMSG 9 成功提取10000元宝
+BREAK
+#ELSEACT
+CLOSE
+SENDMSG 9 你身上元宝不足10500个，其中500个元宝是手续费！
+break
+
+[@提取100000]
+#IF
+CHECKMONEY 元宝 > 104999
+#ACT
+MONEY 元宝 - 105000
+logact 10001 通过[仓库保管员]消耗105000元宝，剩余元宝：<$GAMEGOLD>。
+GIVE 100000元宝 1
+SENDMSG 9 成功提取100000元宝
+BREAK
+#ELSEACT
+CLOSE
+SENDMSG 9 你身上元宝不足105000个，其中5000个元宝是手续费！
+break
+
+
+
+[@二级密码]
+#ACT
+#CALL [\功能脚本\二级密码.txt] @密码设置

@@ -1,0 +1,20 @@
+[@main]
+<Img|x=4.0|y=20.0|height=300|show=0|reset=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|loadDelay=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|color=11073|size=17|outlinecolor=0|outline=1|text=热血2003年怀旧复古微变版本，上班族必玩的传奇，推荐复古>
+<Text|x=45.0|y=95.0|color=11073|size=17|outlinecolor=0|outline=1|text=骨灰玩家入驻。游戏长期复古耐玩，装备多样，玩法永不枯燥>
+<Text|x=45.0|y=120.0|color=11073|size=17|outlinecolor=0|outline=1|text=让玩家一直有打装备的乐趣。>
+<Text|x=45.0|y=145.0|color=11007|size=17|outlinecolor=0|outline=1|text=坚决打击使用外挂,非法广告、脱机脚本、第三方辅助软件等违>
+<Text|x=45.0|y=170.0|color=11007|size=17|outlinecolor=0|outline=1|text=规行为！敬请各位玩家切勿抱有侥幸心理，珍惜自己的游戏账>
+<Text|x=45.0|y=195.0|color=11007|size=17|outlinecolor=0|outline=1|text=号，一旦发现并经过核实，我们有权封号处理，绝不姑息!>
+<Text|x=45.0|y=225.0|color=11003|size=17|outlinecolor=0|outline=1|text=官方网站：>
+<Text|x=131.0|y=225.0|color=11073|size=17|text=Www.yx3.Com>
+<Text|x=275.0|y=225.0|color=11003|size=17|outlinecolor=0|outline=1|text=官方论坛：>
+<Text|x=361.0|y=225.0|color=11073|size=17|text=bbs.yx3.Com>
+
+<Text|x=45.0|y=250.0|color=11003|size=17|outlinecolor=0|outline=1|text=公  众  号：>
+<Text|x=131.0|y=250.0|color=11073|size=17|text=忘忧网络游戏>
+<Text|x=45.0|y=275.0|color=11003|size=17|outlinecolor=0|outline=1|text=企业客服：>
+<Text|x=131.0|y=276.0|color=11073|size=17|text=800065081>
+<Img|x=224.0|y=30.0|img=private/biaoti/01065.png|esc=0>

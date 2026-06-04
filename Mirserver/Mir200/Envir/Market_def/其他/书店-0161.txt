@@ -1,0 +1,55 @@
+(@buy @sell @s_repair )
+%100
++3
++4
+
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|color=255|size=17|text=没想到深藏此处还是被发现了！>
+<Text|x=45.0|y=95.0|size=17|color=255|text=如果你有足够的星石碎片，可与我交换紫薇星石！>
+<Img|x=48.0|y=158.0|width=20|height=20|esc=0|img=public/00012.png>
+<Layout|x=68.0|y=153.0|width=100|height=35|link=@获得紫薇星石>
+<Text|x=73.0|y=153.0|color=11008|size=17|text=兑换|link=@获得紫薇星石>
+<Text|x=113.0|y=153.0|color=255|size=17|outline=1|outlinecolor=0|text=紫薇星石>
+
+<Layout|x=315.0|y=151.0|width=150|height=35|rotate=0|link=@几率公示>
+<Text|x=314.0|y=153.0|color=11008|size=18|text=八门遁甲几率公示|link=@几率公示>
+<Img|x=290.0|y=161.0|img=public/00013.png|esc=0>
+
+[@几率公示]
+<Img|x=0.0|y=20.0|height=370|img=public/bg_npc_01.png|move=0|esc=1|reset=1|show=0|scale9l=30|scale9b=80|scale9t=80|bg=1|scale9r=30|loadDelay=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<RText|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=八门遁甲洗练几率如下：>
+<RText|x=45.0|y=97.0|outlinecolor=0|color=255|outline=1|size=17|text=<蓝色八门：/FCOLOR=154>56%的概率\<紫色八门：/FCOLOR=253>25%的概率\<橙色八门：/FCOLOR=70>15%的概率\<红色八门：/FCOLOR=58>极为罕见，每<100个/FCOLOR=250>八门属性中仅有3~4个数量的\八门会出现红色属性，其获得概率为4%。\<若想增加获得红色八门的机会，可以使用紫薇星石进行八门/FCOLOR=11003>\<洗练。每使用10个紫薇星石，获得红色八门的概率将/FCOLOR=11003><增加20%/FCOLOR=249>\<可以提高获得强大八门属性的机会！/FCOLOR=11003>\<需要注意的是，八门属性的获得是随机的，每位玩家的结果可/FCOLOR=11050>\<能会有所不同，请谨慎操作。/FCOLOR=11050>\<祝您好运，愿您能获得理想的八门属性！/FCOLOR=11050>>
+
+
+
+
+[@获得紫薇星石]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+;<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=使用66枚星石碎片，我可以帮助你还原成一枚完整的>
+<RText|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=17|text=紫薇星石，并且这项可是免费服务！>
+<Img|x=45.0|y=143.0|width=20|height=20|esc=0|img=public/00012.png>
+<Layout|x=65.0|y=135.0|width=100|height=35|link=@星石碎片兑换>
+<Text|x=70.0|y=140.0|color=11008|size=17|text=我带来了|link=@星石碎片兑换>
+
+[@星石碎片兑换]
+#IF
+CHECKITEM 星石碎片 66
+#ACT
+TAKE 星石碎片 66
+GIVE 紫薇星石 1
+SENDMSG 9 兑换成功，获得：紫薇星石*1！
+BREAK
+#ELSEACT
+SENDMSG 9 兑换失败，星石碎片数量不足！
+BREAK
+
+
+

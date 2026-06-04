@@ -1,0 +1,671 @@
+[@MAIN]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01032.png|esc=0>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=你有需要淬炼的武器和衣服吗？>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=我能为你激发它的潜在属性，大幅度提升你的战斗力！>
+<Img|x=45.0|y=143.0|width=20|height=20|esc=0|img=public/00021.png>
+<Layout|x=65.0|y=135.0|width=100|height=40|link=@鉴定装备>
+<Text|x=70.0|y=140.0|color=11009|size=18|text=淬炼剑甲|link=@鉴定装备>
+<Img|x=45.0|y=198.0|width=20|height=20|esc=0|img=public/00020.png>
+<Layout|x=60.0|y=190.0|width=100|height=40|link=@exit>
+<Text|x=70.0|y=195.0|color=11009|size=18|text=离开|link=@exit>
+
+
+[@鉴定装备]
+#IF
+#ACT
+MOV S$唯一ID
+MOV S$副页索引 
+MOV S$副页内容
+MOV S$鉴定锁定 
+MOV S$鉴定说明 
+
+INC S$鉴定说明 <Img|x=381.0|y=80.0|width=300|scale9r=10|scale9t=10|scale9l=10|img=private/xlxl/021600.png|scale9b=10|esc=0>
+INC S$鉴定说明 <Text|x=410.0|y=85.0|color=11034|size=18|text=淬炼说明>
+INC S$鉴定说明 <Text|x=385.0|y=120.0|size=16|color=11042|text=1、只有紫色品质以上武器衣服可以淬炼>
+INC S$鉴定说明 <Text|x=410.0|y=145.0|size=16|color=11042|text=每件装备淬炼满级为10级。>
+INC S$鉴定说明 <Text|x=385.0|y=175.0|size=16|color=11002|text=2、武器淬炼属性为：攻魔道上限百分比>
+INC S$鉴定说明 <Text|x=410.0|y=200.0|size=16|color=11002|text=衣服淬炼属性为：生命值上限百分比>
+INC S$鉴定说明 <Text|x=410.0|y=225.0|size=16|color=11002|text=底攻武器淬炼属性为：攻魔道下限百分比>
+INC S$鉴定说明 <Text|x=385.0|y=255.0|size=16|color=11007|text=3、淬炼等级1~10级阶段，每级加1%属性。>
+INC S$鉴定说明 <Text|x=410.0|y=280.0|size=16|color=11007|text=淬炼等级达到10级后有1次突破机会。>
+
+MOV S$鉴定选择按钮 
+INC S$鉴定选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|nimg=private/psllz/02133.png|size=16|color=160|outlinecolor=0|outline=1|text=选择身上|link=@加载数据内容#副页索引=身上#唯一ID=*>
+INC S$鉴定选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|nimg=private/psllz/02133.png|size=16|color=160|outlinecolor=0|outline=1|text=选择背包|link=@加载数据内容#副页索引=背包#唯一ID=*>
+
+GOTO @加载数据内容
+BREAK
+
+
+[@加载数据内容]
+#IF
+#ACT
+MOV S$属性类型
+MOV N$鉴定数值 0
+MOV N$鉴定等级 0
+MOV S$突破界面
+
+#IF
+EQUAL S$唯一ID *
+#ACT
+MOV S$唯一ID
+
+#IF
+EQUAL S$副页索引 背包
+#ACT
+MOV S$鉴定锁定 
+MOV S$鉴定说明 
+MOV S$副页内容
+INC S$副页内容 <Img|x=378.0|y=82.0|width=300|esc=0|img=private/xlxl/021600.png>
+INC S$副页内容 <Img|x=401.0|y=87.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$副页内容 <Text|x=432.0|y=89.0|color=251|size=18|outline=1|outlinecolor=0|text=背包物品>
+INC S$副页内容 <ListView|children={2,3,4,5,6,7,8,9}|x=390.0|y=120.0|width=350|height=295|direction=1|bounce=0|margin=1|reload=0|reset=0>
+INC S$副页内容 <BAGITEMS|id=2|condition=5#*,6#*,10#*,11#*,|x=0.0|y=0.0|select=<$STR(S0)>|selecttype=1|count=126|row=32|link=@背包物品>
+MOV S$鉴定选择按钮 
+INC S$鉴定选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|nimg=private/psllz/02133.png|size=16|color=160|outlinecolor=0|outline=1|text=选择身上|link=@加载数据内容#副页索引=身上#唯一ID=*>
+INC S$鉴定选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|nimg=private/psllz/02134.png|size=16|color=100|outlinecolor=0|outline=1|text=选择背包>
+
+#IF
+EQUAL S$副页索引 身上
+#ACT
+MOV S$鉴定锁定 
+MOV S$鉴定说明 
+MOV S$副页内容
+INC S$副页内容 <Img|x=378.0|y=82.0|width=300|esc=0|img=private/xlxl/021600.png>
+INC S$副页内容 <Img|x=401.0|y=87.0|width=30|height=30|esc=0|img=private/xlxl/0015.png>
+INC S$副页内容 <Text|x=432.0|y=89.0|color=251|size=18|outline=1|outlinecolor=0|text=身上物品>
+INC S$副页内容 <ListView|children={衣服,武器}|x=380.0|y=120.0|width=295|height=300|direction=1|bounce=0|margin=1|reload=0|reset=0|color=x>
+MOV S$鉴定选择按钮 
+INC S$鉴定选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|nimg=private/psllz/02134.png|size=16|color=100|outlinecolor=0|outline=1|text=选择身上>
+INC S$鉴定选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|nimg=private/psllz/02133.png|size=16|color=160|outlinecolor=0|outline=1|text=选择背包|link=@加载数据内容#副页索引=背包#唯一ID=*>
+
+
+#IF
+EQUAL S$副页索引 身上
+CHECKUSEITEM 0
+#ACT
+MOV S$鉴定说明 
+INC S$副页内容 <Img|id=衣服|children={21,22,23,24,25}|x=380.0|y=120.0|width=295|scale9r=100|scale9t=30|esc=0|img=private/xlxl/0017.png|scale9b=30|scale9l=100|link=@加载数据内容#唯一ID=<$DRESSID>#锁定索引=25>
+INC S$副页内容 <DBItemShow|id=21|x=3.0|y=5.0|width=70|height=70|makeindex=<$DRESSID>>
+INC S$副页内容 <Text|id=22|outline=1|outlinecolor=0|x=80.0|y=5.0|color=255|size=18|text=<$DRESS>>
+INC S$副页内容 <Text|id=23|outline=1|outlinecolor=0|x=80.0|y=40.0|color=150|size=18|text=衣服>
+
+#IF
+EQUAL S$副页索引 身上
+CHECKUSEITEM 1
+#ACT
+MOV S$鉴定说明 
+INC S$副页内容 <Img|id=武器|children={31,32,33,34,35}|x=380.0|y=120.0|width=295|scale9r=100|scale9t=30|esc=0|img=private/xlxl/0017.png|scale9b=30|scale9l=100|link=@加载数据内容#唯一ID=<$WEAPONID>#锁定索引=35>
+INC S$副页内容 <DBItemShow|id=31|x=3.0|y=5.0|width=70|height=70|makeindex=<$WEAPONID>>
+INC S$副页内容 <Text|id=32|outline=1|outlinecolor=0|x=80.0|y=5.0|color=255|size=18|text=<$WEAPON>>
+INC S$副页内容 <Text|id=33|outline=1|outlinecolor=0|x=80.0|y=40.0|color=150|size=18|text=武器>
+
+#IF
+EQUAL S$唯一ID
+#ACT
+MOV S$物品颜色 999
+INC S$副页内容 <Text|x=196.0|y=139.0|color=11027|text=放入\装备>
+
+#IF
+NOT EQUAL S$唯一ID
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$唯一ID)>
+GetItemNameByMakeIndex <$STR(S$唯一ID)> S$装备名字 
+GetDBItemFieldValue <$STR(S$装备名字)> Color S$物品颜色
+GetDBItemFieldValue <$STR(S$装备名字)> StdMode N$装备类型
+
+#OR
+EQUAL <$STR(S$物品颜色)> 253
+EQUAL <$STR(S$物品颜色)> 70
+EQUAL <$STR(S$物品颜色)> 58
+EQUAL <$STR(S$物品颜色)> 249
+EQUAL <$STR(S$物品颜色)> 999
+#ACT
+#ELSEACT
+MOV S0
+MOV S$物品颜色
+MOV S$唯一ID
+MOV S$装备名字
+SENDMSG 9 只有紫色、橙色、红色装备才能淬炼！
+GOTO @加载数据内容
+BREAK
+
+#IF
+NOT EQUAL S$唯一ID
+#ACT
+GETCUSTOMPROPERTYVALUE -1 0 S$属性类型 0
+GetItemNameByMakeIndex <$STR(S$唯一ID)> S$装备名字 
+GetDBItemFieldValue <$STR(S$装备名字)> StdMode N$装备类型
+
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 < 1
+#ACT
+MOV N$鉴定等级 0
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 1
+#ACT
+MOV N$鉴定等级 1
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 2
+#ACT
+MOV N$鉴定等级 2
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 3
+#ACT
+MOV N$鉴定等级 3
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 4
+#ACT
+MOV N$鉴定等级 4
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 5
+#ACT
+MOV N$鉴定等级 5
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 6
+#ACT
+MOV N$鉴定等级 6
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 7
+#ACT
+MOV N$鉴定等级 7
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 8
+#ACT
+MOV N$鉴定等级 8
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 9
+#ACT
+MOV N$鉴定等级 9
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 = 10
+#ACT
+MOV N$鉴定等级 10
+#IF
+NOT EQUAL S$唯一ID
+CHECKCUSTOMITEMVALUE -1 0 > 10
+#ACT
+MOV N$鉴定等级 11
+
+
+#IF
+NOT EQUAL S$唯一ID
+SMALL N$鉴定等级 10
+#ACT
+INC S$副页内容 <ItemShow|id=item_1|x=0.0|y=0.0|width=70|height=70|itemid=<$cfg_jj_jd(<$STR(N$鉴定等级)>_2)>|itemcount=<$cfg_jj_jd(<$STR(N$鉴定等级)>_3)>|showtips=1|bgtype=0>
+;INC S$副页内容 <ItemShow|id=item_2|x=0.0|y=0.0|width=70|height=70|itemid=<$cfg_jj_jd(<$STR(N$鉴定等级)>_5)>|itemcount=<$cfg_jj_jd(<$STR(N$鉴定等级)>_6)>|showtips=1|bgtype=0>
+INC S$副页内容 <Text|x=157.0|y=322.0|color=11073|size=16|text=成功几率：<$cfg_jj_jd(<$STR(N$鉴定等级)>_9)>%>
+INC S$副页内容 <Text|x=80.0|y=352.0|color=11073|size=16|text=消耗金币：<$cfg_jj_jd(<$STR(N$鉴定等级)>_7)>>
+INC S$副页内容 <Text|x=80.0|y=377.0|color=11073|size=16|text=淬炼属性：>
+INC S$副页内容 <Button|x=158.0|y=440.0|nimg=private/xlxl/0011.png|outlinecolor=0|outline=1|size=17|color=251|text=淬炼|link=@开始鉴定>
+#IF
+NOT EQUAL S$唯一ID
+EQUAL N$鉴定等级 10
+#ACT
+INC S$副页内容 <ItemShow|id=item_1|x=0.0|y=0.0|width=70|height=70|itemid=<$cfg_jj_jd(<$STR(N$鉴定等级)>_2)>|itemcount=<$cfg_jj_jd(<$STR(N$鉴定等级)>_3)>|showtips=1|bgtype=0>
+;INC S$副页内容 <ItemShow|id=item_2|x=0.0|y=0.0|width=70|height=70|itemid=<$cfg_jj_jd(<$STR(N$鉴定等级)>_5)>|itemcount=<$cfg_jj_jd(<$STR(N$鉴定等级)>_6)>|showtips=1|bgtype=0>
+INC S$副页内容 <Text|x=135.0|y=322.0|color=11073|size=16|text=已达到最高淬炼属性>
+INC S$副页内容 <Text|x=80.0|y=355.0|color=11073|size=16|text=我可以使用天外陨铁帮您再突破一次>
+INC S$副页内容 <Text|x=80.0|y=375.0|color=11073|size=16|text=让这件装备威力提升至极致属性，装>
+INC S$副页内容 <Text|x=80.0|y=395.0|color=11073|size=16|text=备的潜力越高几率就越高。>
+;INC S$副页内容 <Text|x=80.0|y=280.0|color=249|size=16|text=突破属性：11%~20%随机>
+;INC S$副页内容 <Text|x=80.0|y=300.0|color=249|size=16|text=突破限制：每件装备只有一次突破机会>
+INC S$副页内容 <Button|x=158.0|y=440.0|nimg=private/xlxl/0011.png|outlinecolor=0|outline=1|size=17|color=251|text=淬炼突破|link=@开始突破>
+#IF
+NOT EQUAL S$唯一ID
+LARGE N$鉴定等级 10
+#ACT
+MOV S0
+MOV S$物品颜色
+MOV S$唯一ID
+MOV S$装备名字
+SENDMSG 9 这件装备的淬炼等级已经达到满级了！
+GOTO @加载数据内容
+BREAK
+
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+CHECKJOB Warrior
+#ACT
+MOV N$鉴定类型 4
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+CHECKJOB Wizard
+#ACT
+MOV N$鉴定类型 6
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+CHECKJOB Taoist
+#ACT
+MOV N$鉴定类型 8
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL N$装备类型 10
+#ACT
+MOV N$鉴定类型 1
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL N$装备类型 11
+#ACT
+MOV N$鉴定类型 1
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL S$装备名字 鬼炎
+#ACT
+DEC N$鉴定类型 1
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL S$装备名字 上古鬼炎
+#ACT
+DEC N$鉴定类型 1
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL S$装备名字 黄金鬼炎
+#ACT
+DEC N$鉴定类型 1
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL S$装备名字 至尊鬼炎
+#ACT
+DEC N$鉴定类型 1
+
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL S$装备名字 落魄神兵
+#ACT
+DEC N$鉴定类型 1
+
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL S$装备名字 寒冰鬼炎
+#ACT
+DEC N$鉴定类型 1
+
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL S$装备名字 炽焰鬼炎
+#ACT
+DEC N$鉴定类型 1
+
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+EQUAL S$装备名字 冰焰至尊剑
+#ACT
+DEC N$鉴定类型 1
+
+
+#IF
+NOT EQUAL S$唯一ID
+EQUAL S$属性类型 0
+#ACT
+MOV S$属性类型 <$STR(N$鉴定类型)>
+
+#IF
+;LARGE N$鉴定等级 0
+SMALL N$鉴定等级 10
+EQUAL S$属性类型 3
+#ACT
+INC S$副页内容 <Text|x=160.0|y=378.0|color=11003|size=17|text=攻击下限+<$cfg_jj_jd(<$STR(N$鉴定等级)>_8)>%>
+#IF
+;LARGE N$鉴定等级 0
+SMALL N$鉴定等级 10
+EQUAL S$属性类型 4
+#ACT
+INC S$副页内容 <Text|x=160.0|y=378.0|color=11003|size=17|text=攻击上限+<$cfg_jj_jd(<$STR(N$鉴定等级)>_8)>%>
+#IF
+;LARGE N$鉴定等级 0
+SMALL N$鉴定等级 10
+EQUAL S$属性类型 5
+#ACT
+INC S$副页内容 <Text|x=160.0|y=378.0|color=11003|size=17|text=魔法下限+<$cfg_jj_jd(<$STR(N$鉴定等级)>_8)>%>
+#IF
+;LARGE N$鉴定等级 0
+SMALL N$鉴定等级 10
+EQUAL S$属性类型 6
+#ACT
+INC S$副页内容 <Text|x=160.0|y=378.0|color=11003|size=17|text=魔法上限+<$cfg_jj_jd(<$STR(N$鉴定等级)>_8)>%>
+#IF
+;LARGE N$鉴定等级 0
+SMALL N$鉴定等级 10
+EQUAL S$属性类型 7
+#ACT
+INC S$副页内容 <Text|x=160.0|y=378.0|color=11003|size=17|text=道术下限+<$cfg_jj_jd(<$STR(N$鉴定等级)>_8)>%>
+#IF
+;LARGE N$鉴定等级 0
+SMALL N$鉴定等级 10
+EQUAL S$属性类型 8
+#ACT
+INC S$副页内容 <Text|x=160.0|y=378.0|color=11003|size=17|text=道术上限+<$cfg_jj_jd(<$STR(N$鉴定等级)>_8)>%>
+#IF
+;LARGE N$鉴定等级 0
+SMALL N$鉴定等级 10
+EQUAL S$属性类型 1
+#ACT
+INC S$副页内容 <Text|x=160.0|y=378.0|color=11003|size=17|text=体力上限+<$cfg_jj_jd(<$STR(N$鉴定等级)>_8)>%>
+
+
+#IF
+EQUAL S$副页索引 身上
+NOT EQUAL S$唯一ID
+#ACT
+SelectBagItems <$STR(S$唯一ID)>,
+INC S$副页内容 <Layout|x=182.0|y=132.0|width=60|height=60|color=x|dblink=@加载数据内容#唯一ID=*>
+;INC S$副页内容 <Img|x=171.0|y=145.0|width=70|height=70|img=private/psllz/0216099.png|link=@加载数据内容#唯一ID=*>
+INC S$副页内容 <DBItemShow|x=180.0|y=126.0|width=70|height=70|makeindex=<$STR(S$唯一ID)>|dblink=@加载数据内容#唯一ID=*>
+MOV S$鉴定锁定 <Img|id=<$str(s$锁定索引)>|x=-5.0|y=-5.0|width=300|height=85|scale9r=15|esc=0|scale9b=15|scale9t=15|scale9l=15|img=public/1900000678_1.png>
+
+#IF
+EQUAL S$副页索引 背包
+NOT EQUAL S$唯一ID
+#ACT
+SelectBagItems <$STR(S$唯一ID)>,
+INC S$副页内容 <Layout|x=182.0|y=132.0|width=60|height=60|color=x|dblink=@加载数据内容#唯一ID=*>
+;INC S$副页内容 <Img|x=171.0|y=145.0|width=70|height=70|img=private/psllz/0216099.png|link=@加载数据内容#唯一ID=*>
+INC S$副页内容 <DBItemShow|x=180.0|y=126.0|width=70|height=70|makeindex=<$STR(S$唯一ID)>|dblink=@加载数据内容#唯一ID=*>
+MOV S$鉴定锁定 
+
+#IF
+#ACT
+GOTO @鉴定界面
+BREAK
+
+[@背包物品]
+#IF
+#ACT
+MOV S$唯一ID <$STR(S0)>
+GOTO @加载数据内容
+BREAK
+
+
+[@鉴定界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=7.0|y=0.0|width=735|height=500|scale9t=35|scale9b=30|bg=1|scale9r=35|move=0|loadDelay=0|reset=1|esc=1|scale9l=35|img=private/xlxl/0000.png|show=4|layerid=5000>
+<Img|x=320.0|y=8.0|img=private/biaoti/01032.png|esc=0>
+<Layout|x=678.0|y=-20.0|width=80|height=80|link=@exit>
+<Img|x=360.0|y=71.0|height=366|img=private/psllz/00010.png|esc=0>
+<Button|x=695.0|y=20.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=54.0|y=80.0|width=315|height=355|esc=0|img=private/zbj/0004.png>
+<Img|x=179.0|y=130.0|img=private/xlxl/0003.png|esc=0>
+<Img|x=381.0|y=80.0|width=300|scale9r=10|scale9t=10|scale9l=10|img=private/xlxl/021600.png|scale9b=10|esc=0>
+<Button|x=410.0|y=440.0|width=110|height=35|nimg=private/psllz/02134.png|size=16|color=100|outlinecolor=0|outline=1|text=选择身上>
+<Button|x=550.0|y=440.0|width=110|height=35|outlinecolor=0|nimg=private/psllz/02133.png|outline=1|color=160|size=16|text=选择背包>
+<Img|children={item_1}|x=180.0|y=225.0|img=private/xlxl/0003.png|esc=0>
+;<Img|children={item_2}|x=265.0|y=225.0|img=private/xlxl/0003.png|esc=0>
+<$STR(S$鉴定说明)>
+<$STR(S$鉴定选择按钮)>
+<$STR(S$副页内容)>
+<$STR(S$鉴定锁定)>
+
+;<EquipShow|id=item_1|x=95.0|y=225.0|width=70|height=70|showtips=1|index=1|bgtype=0>
+;<EquipShow|id=item_2|x=265.0|y=225.0|width=70|height=70|showtips=1|index=1|bgtype=0>
+
+[@开始鉴定]
+#IF
+EQUAL S$唯一ID
+#ACT
+SENDMSG 9 请先选择需要淬炼的装备！
+BREAK
+
+#IF
+NOT EQUAL S$唯一ID
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$唯一ID)>
+GetItemNameByMakeIndex <$STR(S$唯一ID)> S$装备名字 
+GetDBItemFieldValue <$STR(S$装备名字)> Color S$物品颜色
+GetDBItemFieldValue <$STR(S$装备名字)> StdMode N$装备类型
+MOV N$真实几率 <$cfg_jj_jd(<$STR(N$鉴定等级)>_10)>
+
+#OR
+EQUAL <$STR(S$物品颜色)> 253
+EQUAL <$STR(S$物品颜色)> 70
+EQUAL <$STR(S$物品颜色)> 58
+EQUAL <$STR(S$物品颜色)> 249
+#ACT
+#ELSEACT
+MOV S$物品颜色
+MOV S$唯一ID
+MOV S$装备名字
+SENDMSG 9 只有紫色、橙色、红色装备才能淬炼！
+GOTO @加载数据内容
+BREAK
+
+#IF
+CHECKMONEY 金币 < <$cfg_jj_jd(<$STR(N$鉴定等级)>_7)>
+#ACT
+SENDMSG 9 淬炼失败，金币数量不足<$cfg_jj_jd(<$STR(N$鉴定等级)>_7)>！
+BREAK
+
+#IF
+NOT CHECKITEM <$cfg_jj_jd(<$STR(N$鉴定等级)>_1)> <$cfg_jj_jd(<$STR(N$鉴定等级)>_3)>
+#ACT
+SENDMSG 9 淬炼失败，材料不足！
+BREAK
+;#IF
+;NOT CHECKITEM <$cfg_jj_jd(<$STR(N$鉴定等级)>_4)> <$cfg_jj_jd(<$STR(N$鉴定等级)>_6)>
+;#ACT
+;SENDMSG 9 淬炼失败，材料不足！
+;BREAK
+
+
+#IF
+CHECKJOB Warrior
+#ACT
+MOV N$鉴定类型 4
+
+#IF
+CHECKJOB Wizard
+#ACT
+MOV N$鉴定类型 6
+
+#IF
+CHECKJOB Taoist
+#ACT
+MOV N$鉴定类型 8
+
+#OR
+EQUAL N$装备类型 10
+EQUAL N$装备类型 11
+#ACT
+MOV N$鉴定类型 1
+
+#OR
+EQUAL S$装备名字 鬼炎
+EQUAL S$装备名字 上古鬼炎
+EQUAL S$装备名字 黄金鬼炎
+EQUAL S$装备名字 至尊鬼炎
+EQUAL S$装备名字 落魄神兵
+EQUAL S$装备名字 寒冰鬼炎
+EQUAL S$装备名字 炽焰鬼炎
+EQUAL S$装备名字 冰焰至尊剑
+#ACT
+DEC N$鉴定类型 1
+
+
+#IF
+SMALL N$鉴定等级 10
+RANDOMEX <$STR(N$真实几率)> 100
+#ACT
+TAKE 金币 <$cfg_jj_jd(<$STR(N$鉴定等级)>_7)>
+logact 10001 通过[鉴定师]消耗<$cfg_jj_jd(<$STR(N$鉴定等级)>_7)>金币，剩余金币：<$MONEY(金币)>。
+TAKE <$cfg_jj_jd(<$STR(N$鉴定等级)>_1)> <$cfg_jj_jd(<$STR(N$鉴定等级)>_3)>
+;TAKE <$cfg_jj_jd(<$STR(N$鉴定等级)>_4)> <$cfg_jj_jd(<$STR(N$鉴定等级)>_6)>
+CHANGECUSTOMITEMTEXT -1 [淬炼属性]：  0
+CHANGECUSTOMITEMTEXTCOLOR -1 154 0
+CHANGECUSTOMITEMABIL -1 0 0 250 0
+CHANGECUSTOMITEMABIL -1 0 1 <$STR(N$鉴定类型)> 0
+CHANGECUSTOMITEMABIL -1 0 3 1 0
+CHANGECUSTOMITEMABIL -1 0 4 0 0
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_jj_jd(<$STR(N$鉴定等级)>_8)> 0
+SENDMSG 9 淬炼成功！
+GOTO @绑定检测
+DELAYGOTO 50 @加载数据内容
+BREAK
+
+#IF
+SMALL N$鉴定等级 10
+#ACT
+TAKE 金币 <$cfg_jj_jd(<$STR(N$鉴定等级)>_7)>
+logact 10001 通过[鉴定师]消耗<$cfg_jj_jd(<$STR(N$鉴定等级)>_7)>金币，剩余金币：<$MONEY(金币)>。
+TAKE <$cfg_jj_jd(<$STR(N$鉴定等级)>_1)> <$cfg_jj_jd(<$STR(N$鉴定等级)>_3)>
+;TAKE <$cfg_jj_jd(<$STR(N$鉴定等级)>_4)> <$cfg_jj_jd(<$STR(N$鉴定等级)>_6)>
+SENDMSG 9 很遗憾，本次淬炼失败了！
+GOTO @绑定检测
+DELAYGOTO 50 @加载数据内容
+BREAK
+
+
+
+
+[@开始突破]
+#IF
+NOT EQUAL S$唯一ID
+#ACT
+MESSAGEBOX 突破属性：随机11%~20%属性\突破限制：每件装备只有一次突破机会\是否确认突破？ @确认突破 @EXIT
+BREAK
+#ELSEACT
+SENDMSG 9 请先选择需要突破的装备！
+BREAK
+
+[@确认突破]
+#IF
+EQUAL S$唯一ID
+#ACT
+SENDMSG 9 请先选择需要突破的装备！
+BREAK
+
+#IF
+NOT EQUAL S$唯一ID
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$唯一ID)>
+GetItemNameByMakeIndex <$STR(S$唯一ID)> S$装备名字 
+GetDBItemFieldValue <$STR(S$装备名字)> Color S$物品颜色
+GetDBItemFieldValue <$STR(S$装备名字)> StdMode N$装备类型
+
+#OR
+EQUAL <$STR(S$物品颜色)> 253
+EQUAL <$STR(S$物品颜色)> 70
+EQUAL <$STR(S$物品颜色)> 58
+EQUAL <$STR(S$物品颜色)> 249
+#ACT
+#ELSEACT
+MOV S$物品颜色
+MOV S$唯一ID
+MOV S$装备名字
+SENDMSG 9 只有紫色、橙色、红色装备才能突破！
+GOTO @加载数据内容
+BREAK
+
+#IF
+EQUAL <$STR(S$物品颜色)> 253
+#ACT
+RANSJSTR 11#300|12#300|13#300|14#94|15#1|16#1|17#1|18#1|19#1|20#1 1 3 S$突破权重 S$无用
+#IF
+EQUAL <$STR(S$物品颜色)> 70
+#ACT
+RANSJSTR 11#200|12#200|13#200|14#200|15#155|16#20|17#10|18#5|19#5|20#5 1 3 S$突破权重 S$无用
+#IF
+EQUAL <$STR(S$物品颜色)> 58
+#ACT
+RANSJSTR 11#200|12#200|13#200|14#200|15#155|16#20|17#10|18#5|19#5|20#5 1 3 S$突破权重 S$无用
+#IF
+EQUAL <$STR(S$物品颜色)> 249
+#ACT
+RANSJSTR 11#150|12#110|13#110|14#110|15#110|16#110|17#110|18#80|19#60|20#50 1 3 S$突破权重 S$无用
+
+#IF
+NOT CHECKITEM <$cfg_jj_jd(<$STR(N$鉴定等级)>_1)> <$cfg_jj_jd(<$STR(N$鉴定等级)>_3)>
+#ACT
+SENDMSG 9 淬炼突破失败，材料不足！
+BREAK
+
+#IF
+CHECKJOB Warrior
+#ACT
+MOV N$鉴定类型 4
+
+#IF
+CHECKJOB Wizard
+#ACT
+MOV N$鉴定类型 6
+
+#IF
+CHECKJOB Taoist
+#ACT
+MOV N$鉴定类型 8
+
+#OR
+EQUAL N$装备类型 10
+EQUAL N$装备类型 11
+#ACT
+MOV N$鉴定类型 1
+
+#OR
+EQUAL S$装备名字 鬼炎
+EQUAL S$装备名字 上古鬼炎
+EQUAL S$装备名字 黄金鬼炎
+EQUAL S$装备名字 至尊鬼炎
+EQUAL S$装备名字 落魄神兵
+EQUAL S$装备名字 寒冰鬼炎
+EQUAL S$装备名字 炽焰鬼炎
+EQUAL S$装备名字 冰焰至尊剑
+#ACT
+DEC N$鉴定类型 1
+
+#IF
+EQUAL N$鉴定等级 10
+#ACT
+TAKE <$cfg_jj_jd(<$STR(N$鉴定等级)>_1)> <$cfg_jj_jd(<$STR(N$鉴定等级)>_3)>
+CHANGECUSTOMITEMTEXT -1 [淬炼属性]：  0
+CHANGECUSTOMITEMTEXTCOLOR -1 154 0
+CHANGECUSTOMITEMABIL -1 0 0 250 0
+CHANGECUSTOMITEMABIL -1 0 1 <$STR(N$鉴定类型)> 0
+CHANGECUSTOMITEMABIL -1 0 3 1 0
+CHANGECUSTOMITEMABIL -1 0 4 0 0
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(S$突破权重)> 0
+SENDMSG 9 淬炼成功！
+GOTO @绑定检测
+DELAYGOTO 50 @加载数据内容
+BREAK
+
+
+
+[@绑定检测]
+#IF
+CHECK [358] 0
+#ACT
+;不可交易
+SetItemState -1 1 1
+;禁止爆出
+SetItemState -1 5 1
+;丢弃消失
+SetItemState -1 6 1
+;禁止摆摊或上架拍卖行
+SetItemState -1 8 1

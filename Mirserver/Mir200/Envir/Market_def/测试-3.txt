@@ -1,0 +1,1666 @@
+[@main]
+#IF
+INSAFEZONE
+SMALL <$HP> <$MAXHP>
+#Act
+humanhp = <$MAXHP>
+humanmp = <$MAXMP>
+DETOXIFCATION
+;SENDMSG 0 {[%s]在土城`一键满血NPC处`瞬间满血，继续战斗吧骚年！|0:251:0}
+;sendMsg 9 <font color='#ffe400' size ='18'>黄色</font>
+;sendMsg 9 <font color='#00ff00' size ='18'>绿色</font>
+;sendMsg 9 <font color='#ff0000' size ='18'>红色</font>
+;MESSAGEBOX \　\恭喜：
+
+#or
+equal <$USERACCOUNT> iopaaa
+equal <$USERACCOUNT> Yhl1814953080
+equal <$USERACCOUNT> T2530341207
+equal <$USERACCOUNT> 5119784
+equal <$USERACCOUNT> 35689105
+equal <$USERACCOUNT> 7248473
+#ACT
+goto @测试123
+BREAK
+#IF
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+goto @视频录制区勿进
+BREAK
+;————————————————————————————————————————————————————————————————————— yiyouqwsx332       @fff 盟重土城 120 128
+[@121]
+CheckBindMoney 元宝 ? 10    ChangeBindMoney 元宝 10         CHECKMONEY 元宝 ? 2000      MONEY 元宝 - 2000
+;—————————————————————— <$HUMAN(XXXX)> <$STR(N$在线时间)> <$STR(S$是否在线)>
+;—————————————————————— close #ELSEACT setontimer 28 1 setofftimer 28   {颜色/FCOLOR=250}
+SendCustomMsg 1 恭喜{恭喜/FCOLOR=250}恭喜 246 0 500 100 500 100
+SendCustomMsg 1 {11111111111/FCOLOR=251}BUFF触发：{免疫暴击3秒/FCOLOR=249} 246 0 450 100 450 100
+C:\Users\Administrator\AppData\Local\Temp
+
+[@测试1]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 背包负重：<$BW>/<$MAXBW>
+SENDMSG 6 穿戴负重：<$WW>/<$MAXWW>
+SENDMSG 6 腕力负重：<$HW>/<$MAXHW>
+;opendragonbox 15 5
+DELBUTTON 3 101
+DELBUTTON 301 101
+ADDBUTTON 3 101 <Button|x=2.0|y=185.0|width=44|height=25|size=15|nimg=public_win32/1900000611.png|color=246|text=羁绊|link=@查看自己羁绊>
+ADDBUTTON 301 101 <Button|x=2.0|y=185.0|width=44|height=25|size=15|nimg=public_win32/1900000611.png|color=246|text=羁绊|link=@查看目标羁绊>
+
+[@测试1]
+#IF
+checkjob warrior
+#ACT
+give 炼狱
+give 重盔甲(男)
+give 道士头盔
+give 蓝翡翠项链
+give 死神手套
+give 死神手套
+give 珊瑚戒指
+give 珊瑚戒指
+give 兽皮腰带
+give 布鞋
+break
+
+#IF
+checkjob wizard
+#ACT
+give 偃月
+give 魔法长袍(男)
+give 道士头盔
+give 放大镜
+give 黑檀手镯
+give 黑檀手镯
+give 魅力戒指
+give 魅力戒指
+give 兽皮腰带
+give 布鞋
+break
+
+#IF
+checkjob taoist
+#ACT
+give 银蛇
+give 灵魂战衣(男)
+give 道士头盔
+give 竹笛
+give 道士手镯
+give 道士手镯
+give 道德戒指
+give 道德戒指
+give 兽皮腰带
+give 布鞋
+break
+
+[@测试2]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 2
+opendragonbox 17 5
+
+[@1111111]
+give 木剑
+give 布衣(男)
+give 青铜头盔
+give 金项链
+give 铁手镯
+give 小手镯
+give 古铜戒指
+give 六角戒指
+
+[@测试3]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 称号 CONFERTITLE
+CONFERTITLE 天纵真爱粉
+opendragonbox 19 5
+
+[@测试4]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 称号 DEPRIVETITLE
+;DEPRIVETITLE ALL
+DEPRIVETITLE 天纵真爱粉
+DEPRIVETITLE 护花使者
+
+
+#IF
+;ISNEWHUMAN
+checkjob warrior
+#ACT
+give 金创药(中)包
+give 金创药(中)包
+give 金创药(中)包
+give 金创药(中)包
+give 荣誉勋章11号
+give 青铜头盔
+give 传统项链
+give 铁手镯
+give 铁手镯
+give 古铜戒指
+give 古铜戒指
+DELAYGOTO 100 @任务接取
+break
+
+#IF
+;ISNEWHUMAN
+checkjob wizard
+#ACT
+give 金创药(中)包
+give 魔法药(中)包
+give 魔法药(中)包
+give 魔法药(中)包
+give 青铜头盔
+give 荣誉勋章12号
+give 传统项链
+give 铁手镯
+give 铁手镯
+give 六角戒指
+give 六角戒指
+DELAYGOTO 100 @任务接取
+break
+
+#IF
+;ISNEWHUMAN
+checkjob taoist
+#ACT
+give 金创药(中)包
+give 魔法药(中)包
+give 魔法药(中)包
+give 魔法药(中)包
+give 青铜头盔
+give 荣誉勋章12号
+give 传统项链
+give 铁手镯
+give 铁手镯
+give 玻璃戒指
+give 玻璃戒指
+DELAYGOTO 100 @任务接取
+break
+
+[@任务接取]
+#if
+gender man
+#act
+GiveStateItem 木剑 1 0 1 0 1 1 1 1 1
+GiveStateItem 布衣(男) 1 0 1 0 1 1 1 1 1
+TakeOnItem 木剑 1
+TakeOnItem 布衣(男) 0
+
+#IF
+gender woman
+#ACT
+GiveStateItem 木剑 1 0 1 0 1 1 1 1 1
+GiveStateItem 布衣(女) 1 0 1 0 1 1 1 1 1
+TakeOnItem 木剑 1
+TakeOnItem 布衣(女) 0
+
+#IF
+checkjob taoist
+#ACT
+GiveStateItem 护身符(大) 2 0 1 0 1 1 1 1 1
+GiveStateItem 黄色药粉(少量) 1 0 1 0 1 1 1 1 1
+GiveStateItem 灰色药粉(少量) 1 0 1 0 1 1 1 1 1
+
+#IF
+#ACT
+;GiveStateItem 盟重回城石 1 0 1 0 1 1 1 1 1
+;GiveStateItem 随机传送石 1 0 1 0 1 1 1 1 1
+sendmsg 0 欢迎新的玛法勇士：“<$USERNAME>”回归，{《搜打撤传奇》|250:0:1}有你更加精彩.... 
+
+
+
+
+[@按钮]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+DELBUTTON 
+delaygoto 1 @按钮1
+[@按钮1]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+
+
+[@按钮11]
+DELBUTTON 104 99991
+DELBUTTON 104 99992
+DELBUTTON 104 99993
+ADDBUTTON 104 99991 <Button|x=-1000|y=-253|width=60|height=30|nimg=public/1.png|text=上一张|link=@上一个图>
+ADDBUTTON 104 99992 <Button|x=-930|y=-253|width=60|height=30|nimg=public/1.png|text=第一张|link=@第一个图>
+ADDBUTTON 104 99993 <Button|x=-860|y=-253|width=60|height=30|nimg=public/1.png|text=下一张|link=@下一个图>
+
+DELBUTTON 104 99991
+DELBUTTON 104 99992
+DELBUTTON 104 99993
+ADDBUTTON 104 99991 <Button|x=-1000|y=-253|width=60|height=30|nimg=public/1.png|text=上一张|link=@上一个怪>
+ADDBUTTON 104 99992 <Button|x=-930|y=-253|width=60|height=30|nimg=public/1.png|text=第一张|link=@第一个怪>
+ADDBUTTON 104 99993 <Button|x=-860|y=-253|width=60|height=30|nimg=public/1.png|text=下一张|link=@下一个怪>
+
+[@红点]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+DELBUTTON 102 104
+mov S$图标 <Button|id=104|x=-470|y=1|nimg=custom/2/1.png|link=@游戏活动>
+inc S$图标 <Text|x=-467|y=39|size=14|color=95|outline=1|text=游戏活动>
+addbutton 102 104 <$STR(S$图标)>
+
+Reddot 102 104 30 65 0 res/public/btn_npcfh_04.png
+SENDMSG 6 增加红点成功
+
+[@顶戴测试]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#act
+;SetIcon 0 -1
+;SetIcon 1 -1
+;SetIcon 2 -1
+;SetIcon 3 -1
+;SetIcon 4 -1
+;SetIcon 5 -1
+;SetIcon 6 -1
+;SetIcon 7 -1
+;SetIcon 8 -1
+;SetIcon 9 -1
+delaygoto 200 @顶戴测试1
+[@顶戴测试1]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#act
+SetIcon 5 1 <$STR(N$在线时间)>
+inc N$在线时间 20217
+SENDMSG 6 顶戴测试
+
+
+; 参数1：位置(0-9)
+; 参数2：播放效果(0图片名称 1特效ID)
+; 参数3：图片名或者特效ID
+; 参数4：X坐标 (为空时默认X=0)
+; 参数5：Y坐标 (为空时默认Y=0)
+; 参数6：自动补全空白位置0,1(0=掉 1=不掉)
+; 参数7：是否只有自己看见(0=所有人都可以看见 1=仅仅自己可以看见)
+; 参数8：0=或空按之前的   1=在后面播放
+
+
+[@攻速0]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+MOV N$SUDU 0
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@攻速10]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+inc N$SUDU 10
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@攻速50]
+#ACT
+MOV N$SUDU 50
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@攻速100]
+#ACT
+MOV N$SUDU 100
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@攻速150]
+#ACT
+MOV N$SUDU 150
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@攻速200]
+#ACT
+MOV N$SUDU 200
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@攻速250]
+#ACT
+MOV N$SUDU 250
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@攻速300]
+#ACT
+MOV N$SUDU 300
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@攻速满]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+MOV N$SUDU 1000
+ChangeSpeedEX 2 <$STR(N$SUDU)>
+SENDMSG 6 攻速：<$STR(N$SUDU)>
+
+[@施法0]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+MOV N$SUDU 0
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@施法10]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+inc N$SUDU 10
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@施法50]
+#ACT
+MOV N$SUDU 50
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@施法100]
+#ACT
+MOV N$SUDU 100
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@施法150]
+#ACT
+MOV N$SUDU 150
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@施法200]
+#ACT
+MOV N$SUDU 200
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@施法250]
+#ACT
+MOV N$SUDU 250
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@施法300]
+#ACT
+MOV N$SUDU 300
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@施法满]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+MOV N$SUDU 1000
+ChangeSpeedEX 3 <$STR(N$SUDU)>
+SENDMSG 6 施法：<$STR(N$SUDU)>
+
+[@测试NPC]
+#or
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+DELNPC 测试 3
+CreateNPC 测试 3 330 330 12 测试-3
+sendmsg 6 测试NPC
+
+[@删除NPC]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+DELNPC 测试 3
+sendmsg 6 删除NPC
+
+[@空白区]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 3 315 310
+
+[@清理]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+Gmexecute ql <$USERNAME>
+SENDMSG 6 清理
+delaygoto 100 @清理a
+[@清理a]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+give 盟重回城石
+give 随机传送石
+give 修复神水
+
+[@转生+1]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+RENEWLEVEL 1 0 0
+SENDMSG 6 转生+1
+goto @main
+
+[@转生0]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+RestRenewLevel
+SENDMSG 6 转生=0
+goto @main
+
+[@分辨率]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+OPENHYPERLINK 113
+OPENHYPERLINK 1
+OPENHYPERLINK 7
+
+;——————————————
+[@皇宫]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove n0150 15 18
+
+[@武器店]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#act
+map 0159
+
+[@材料]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ELSEACT
+BREAK
+#IF
+NOT checkitem 转生证明 1
+#ACT
+sendmsg 6 满材料
+give 幸运石 90000
+#ELSEACT
+sendmsg 6 249 255 清材料
+take 幸运石 90000
+
+[@充值]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ELSEACT
+BREAK
+#IF
+CHECKMONEY 元宝 = 0
+#ACT
+;———————————————元宝+绑定元宝超21亿，【CheckBindMoney 元宝 ? 100000】将检测不出
+MONEY 金币 = 2000000000
+MONEY 绑定金币 = 2000000000
+MONEY 元宝 = 2000000000
+MONEY 绑定元宝 = 2000000000
+MONEY 灵符 = 2000000000
+MONEY 绑定灵符 = 2000000000
+MONEY 充值点 = 2000000000
+MONEY 真实充值 = 2000000000
+MONEY 直购充值 = 2000000000
+sendmsg 6 满充值
+#ELSEACT
+MONEY 金币 = 0
+MONEY 绑定金币 = 0
+MONEY 元宝 = 0
+MONEY 绑定元宝 = 0
+MONEY 灵符 = 0
+MONEY 绑定灵符 = 0
+MONEY 充值点 = 0
+MONEY 真实充值 = 0
+MONEY 直购充值 = 0
+sendmsg 6 249 255 清零充值
+
+[@技能]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ELSEACT
+BREAK
+#IF
+NOT CheckMagicName 十步一杀
+#ACT
+ADDSKILL 施毒术 3
+ADDSKILL 魔法盾 3
+ADDSKILL 群体施毒术 3
+ADDSKILL 护体神盾 3
+ADDSKILL 半月弯刀 3
+ADDSKILL 开天斩 3
+ADDSKILL 逐日剑法 3
+ADDSKILL 十步一杀 3
+ADDSKILL 擒龙手 3
+sendmsg 6 满技能
+#ELSEACT
+CLEARSKILL
+ADDSKILL 基本剑术 3
+ADDSKILL 攻杀剑术 3
+ADDSKILL 刺杀剑术 3
+ADDSKILL 野蛮冲撞 3
+ADDSKILL 烈火剑法 3
+sendmsg 6 249 255 恢复技能
+
+[@等级]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ELSEACT
+BREAK
+#IF
+CheckLevelEx < <$str(N$测试等级2)>
+#ACT
+CHANGELEVEL = <$str(N$测试等级2)>
+sendmsg 6 等级满级：<$str(N$测试等级2)>
+#ELSEACT
+CHANGELEVEL = <$str(N$测试等级1)>
+sendmsg 6 249 255 等级恢复：<$str(N$测试等级1)>
+
+;——————————————
+[@背包仓库]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ELSEACT
+BREAK
+#IF
+LARGE <$EXTBAGCLOSEITEMCOUNT> 0
+#ACT
+EXTBAGOPENITEMCOUNT 126
+CHANGESTORAGE 240
+MESSAGEBOX 恭喜获得：3页背包，5页仓库
+SENDMSG 6 你的背包格子扩展到<$ADVBAGSIZE>格,
+SENDMSG 6 当前背包格子空格数量常量：<$BAGNILCOUNT> 
+SENDMSG 6 当前背包格子使用数量：<$BAGUSERCOUNT>
+SENDMSG 6 剩余未开启的背包格子数：<$EXTBAGCLOSEITEMCOUNT>
+#ELSEACT
+EXTBAGOPENITEMCOUNT 46
+CHANGESTORAGE 48
+MESSAGEBOX 背包，恢复默认
+SENDMSG 6 你的背包格子扩展到<$ADVBAGSIZE>格,
+SENDMSG 6 当前背包格子空格数量常量：<$BAGNILCOUNT> 
+SENDMSG 6 当前背包格子使用数量：<$BAGUSERCOUNT>
+SENDMSG 6 剩余未开启的背包格子数：<$EXTBAGCLOSEITEMCOUNT>
+
+[@管理模式]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ELSEACT
+BREAK
+#IF
+NOT ISADMIN
+#ACT
+CHANGEPERMISSION 10
+CHANGEMODE 1 1
+CHANGEMODE 2 1
+CHANGEMODE 3 1
+delaygoto 100 @管理提示1
+#ELSEACT
+CHANGEPERMISSION 10
+CHANGEMODE 1 0
+CHANGEMODE 2 0
+CHANGEMODE 3 0
+CHANGEPERMISSION 0
+delaygoto 100 @管理提示2
+[@管理提示1]
+#ACT
+sendmsg 6 241 255 已进入：管理、无敌、隐身
+[@管理提示2]
+#ACT
+sendmsg 6 249 255 已退出：管理、无敌、隐身
+
+[@攻城]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ELSEACT
+BREAK
+#IF
+CHECKUNDERWAR 沙巴克
+#ACT
+MESSAGEBOX 当前`是`攻城状态，是否关闭 @确定攻城 @取消
+#ELSEACT
+MESSAGEBOX 当前`不是`攻城状态，是否开启 @确定攻城 @取消
+[@确定攻城]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ELSEACT
+BREAK
+#IF
+CHECKUNDERWAR 沙巴克
+#ACT
+AddToCastleWarListEx 沙巴克 *
+GMEXECUTE ForcedWallconquestWar 沙巴克
+sendmsg 9 [已关闭]攻城
+#ELSEACT
+AddToCastleWarListEx 沙巴克 *
+GMEXECUTE ForcedWallconquestWar 沙巴克
+sendmsg 9 [已开启]攻城
+
+;——————————————
+[@1大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 第一大陆 290 392 9              1大陆
+[@2大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 玛法世界 176 327 3              2大陆
+[@3大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 古都遗迹 193 473 3              3大陆
+[@4大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 禁忌大陆 480 304 3              4大陆
+[@5大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 接引大陆 435 175 3              5大陆
+[@6大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 甲申之乱 908 907 3               6大陆
+[@7大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 修罗帝狱 721 337 6          7大陆
+[@8大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+mapmove 神之谷 202 185 6          8大陆
+[@9大陆]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+
+[@跨服]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+take 跨服回城石 1
+give 跨服回城石 1
+mapmove 跨服大陆 156 152 6
+
+;——————————————————————— 位置：1　　武器：5,6　　常量：<$WEAPON>
+[@武器]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 武器
+give    祈祷之刃
+give    罗刹
+give    命运之刃
+give    赤血魔剑
+give    鹤嘴锄
+give    木剑
+give    匕首
+give    青铜剑
+give    短剑
+give    铁剑
+give    青铜斧
+give    八荒
+give    凌风
+give    斩马刀
+give    凝霜
+give    修罗
+give    炼狱
+give    乌木剑
+give    海魂
+give    偃月
+give    半月
+give    破魂
+give    降魔
+give    银蛇
+give    井中月
+give    魔杖
+give    无极棍
+give    裁决之杖
+give    骨玉权杖
+give    龙纹剑
+give    血饮
+give    怒斩
+give    龙牙
+give    霸者之刃
+give    屠龙
+give    嗜魂法杖
+give    逍遥扇
+give    开天
+give    镇天
+give    玄天
+give    王者之刃
+give    王者之杖
+give    王者之剑
+give    天龙圣剑
+give    GM刀
+
+;——————————————————————— 位置：0　　衣服：10,11　　常量：<$DRESS>
+[@衣服]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 衣服
+give    布衣(男)
+give    布衣(女)
+give    轻型盔甲(男)
+give    轻型盔甲(女)
+give    中型盔甲(男)
+give    中型盔甲(女)
+give    重盔甲(男)
+give    重盔甲(女)
+give    魔法长袍(男)
+give    魔法长袍(女)
+give    灵魂战衣(男)
+give    灵魂战衣(女)
+give    战神盔甲(男)
+give    战神盔甲(女)
+give    恶魔长袍(女)
+give    恶魔长袍(男)
+give    幽灵战衣(女)
+give    幽灵战衣(男)
+give    天魔神甲
+give    圣战宝甲
+give    法神披风
+give    霓裳羽衣
+give    天尊道袍
+give    天师长袍
+give    雷霆战甲(男)
+give    雷霆战甲(女)
+give    烈焰魔衣(男)
+give    烈焰魔衣(女)
+give    光芒道袍(男)
+give    光芒道袍(女)
+give    凤天魔甲
+give    凰天魔衣
+give    王者战甲(男)
+give    王者战甲(女)
+give    王者魔衣(男)
+give    王者魔衣(女)
+give    王者道袍(男)
+give    王者道袍(女)
+give    天龙圣衣(男)
+give    天龙圣衣(女)
+give    沙城主战袍(男)
+give    沙城主战袍(女)
+
+;——————————————————————— 位置：4　　头盔：15　　常量：<$HELMET>
+[@头盔]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 头盔
+give    记忆头盔
+give    祈祷头盔
+give    神秘头盔
+give    青铜头盔
+give    魔法头盔
+give    道士头盔
+give    骷髅头盔
+give    黑铁头盔
+give    圣战头盔
+give    法神头盔
+give    天尊头盔
+give    圣龙盔
+give    魔龙盔
+give    天龙盔
+give    预言头盔(战)
+give    预言头盔(法)
+give    预言头盔(道)
+give    星王战盔
+give    星王法冠
+give    星王道盔
+give    狂雷战盔
+give    逆火魔盔
+give    通云道盔
+give    王者头盔(战)
+give    王者头盔(法)
+give    王者头盔(道)
+
+;——————————————————————— 位置：13　　斗笠：16　　常量：<$HAT>
+[@斗笠]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 斗笠
+give    斗笠13号
+give    斗笠14号
+give    斗笠15号
+give    斗笠23号
+give    斗笠24号
+give    斗笠25号
+give    斗笠33号
+give    斗笠34号
+give    斗笠35号
+give    斗笠43号
+give    斗笠44号
+give    斗笠45号
+give    斗笠53号
+give    斗笠54号
+give    斗笠55号
+give    白银斗笠(战)
+give    白银斗笠(法)
+give    白银斗笠(道)
+give    黄金斗笠(战)
+give    黄金斗笠(法)
+give    黄金斗笠(道)
+give    王者斗笠(战)
+give    王者斗笠(法)
+give    王者斗笠(道)
+
+;——————————————————————— 位置：3　　项链：19,20,21　　常量：<$NECKLACE>
+[@项链]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 项链
+give    探测项链
+give    技巧项链
+give    祈福项链
+give    魔血项链
+give    虹魔项链
+give    记忆项链
+give    祈祷项链
+give    狂风项链
+give    躲避手链
+give    金项链
+give    传统项链
+give    黄色水晶项链
+give    黑檀项链
+give    黑色水晶项链
+give    魔鬼项链
+give    琥珀项链
+give    白金项链
+give    凤凰明珠
+give    灯笼项链
+give    白色虎齿项链
+give    竹笛
+give    放大镜
+give    蓝翡翠项链
+give    幽灵项链
+give    生命项链
+give    天珠项链
+give    绿色项链
+give    恶魔铃铛
+give    灵魂项链
+give    圣战项链
+give    法神项链
+give    天尊项链
+give    雷霆项链
+give    烈焰项链
+give    光芒项链
+give    战神项链
+give    圣魔项链
+give    真魂项链
+give    星王项链(战)
+give    星王项链(法)
+give    星王项链(道)
+give    狂雷项链
+give    逆火项链
+give    通云项链
+give    王者项链(战)
+give    王者项链(法)
+give    王者项链(道)
+
+;——————————————————————— 位置：7,8　　右戒左戒：22,23　　常量：<$RING_R>,<$RING_L>
+[@戒指]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 戒指
+give    麻痹戒指
+give    护身戒指
+give    复活戒指
+give    传送戒指
+give    隐身戒指
+give    防御戒指
+give    火焰戒指
+give    超负载戒指
+give    求婚戒指
+give    魔血戒指
+give    虹魔戒指
+give    记忆戒指
+give    祈祷戒指
+give    神秘戒指
+give    狂风戒指
+give    古铜戒指
+give    六角戒指
+give    玻璃戒指
+give    牛角戒指
+give    蓝色水晶戒指
+give    黑色水晶戒指
+give    生铁戒指
+give    蛇眼戒指
+give    珍珠戒指
+give    金戒指
+give    魅力戒指
+give    道德戒指
+give    骷髅戒指
+give    降妖除魔戒指
+give    珊瑚戒指
+give    龙之戒指
+give    红宝石戒指
+give    铂金戒指
+give    力量戒指
+give    紫碧螺
+give    泰坦戒指
+give    圣战戒指
+give    法神戒指
+give    天尊戒指
+give    雷霆战戒
+give    烈焰魔戒
+give    光芒道戒
+give    战神戒指
+give    圣魔戒指
+give    真魂戒指
+give    星王戒指(战)
+give    星王戒指(法)
+give    星王戒指(道)
+give    狂雷战戒
+give    逆火魔戒
+give    通云道戒
+give    王者戒指(战)
+give    王者戒指(法)
+give    王者戒指(道)
+
+;——————————————————————— 位置：5,6　　右镯左镯：24,26　　常量：<$ARMRING_R>,<$ARMRING_L>
+[@手镯]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 手镯
+give    魔血手镯
+give    虹魔手镯
+give    记忆手镯
+give    祈祷手镯
+give    神秘腰带
+give    辟邪手镯
+give    夏普儿手镯
+give    铁手镯
+give    小手镯
+give    皮制手套
+give    银手镯
+give    钢手镯
+give    魔法手镯
+give    大手镯
+give    坚固手套
+give    魔力手镯
+give    金手镯
+give    黑檀手镯
+give    道士手镯
+give    死神手套
+give    阎罗手套
+give    幽灵手套
+give    思贝儿手镯
+give    心灵手镯
+give    骑士手镯
+give    龙之手镯
+give    三眼手镯
+give    圣战手镯
+give    法神手镯
+give    天尊手镯
+give    雷霆护腕
+give    烈焰护腕
+give    光芒护腕
+give    战神手镯
+give    圣魔手镯
+give    真魂手镯
+give    星王护腕(战)
+give    星王护腕(法)
+give    星王护腕(道)
+give    狂雷护腕
+give    逆火护腕
+give    通云护腕
+give    王者护腕(战)
+give    王者护腕(法)
+give    王者护腕(道)
+
+;——————————————————————— 位置：15　　马牌：28　　常量：<$HORSE>
+[@马牌]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 马牌
+give    
+;——————————————————————— 位置：2　　勋章：30　　常量：<$RIGHTHAND>
+[@勋章]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 勋章
+give    荣誉勋章11号
+give    荣誉勋章12号
+give    荣誉勋章13号
+give    荣誉勋章14号
+give    荣誉勋章15号
+give    荣誉勋章21号
+give    荣誉勋章22号
+give    荣誉勋章23号
+give    荣誉勋章24号
+give    荣誉勋章25号
+give    荣誉勋章31号
+give    荣誉勋章32号
+give    荣誉勋章33号
+give    荣誉勋章34号
+give    荣誉勋章35号
+give    荣誉勋章41号
+give    荣誉勋章42号
+give    荣誉勋章43号
+give    荣誉勋章44号
+give    荣誉勋章45号
+give    荣誉勋章51号
+give    荣誉勋章52号
+give    荣誉勋章53号
+give    荣誉勋章54号
+give    荣誉勋章55号
+give    银星勋章(战)
+give    银星勋章(法)
+give    银星勋章(道)
+give    勇者勋章(战)
+give    勇者勋章(法)
+give    勇者勋章(道)
+give    王者勋章(战)
+give    王者勋章(法)
+give    王者勋章(道)
+
+;——————————————————————— 位置：16　　盾牌：48　　常量：<$SHIELD>
+[@盾牌]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 盾牌
+give    
+;——————————————————————— 位置：9　　符毒：25,51　　常量：<$BUJUK>
+[@符毒]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 符毒(继承属性装备)
+give    功成名就
+
+;——————————————————————— 位置：11　　靴子：52,62　　常量：<$BOOTS>
+[@靴子]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 靴子
+give    布鞋
+give    鹿皮靴
+give    紫绸靴
+give    避魂靴
+give    雷霆战靴
+give    烈焰魔靴
+give    光芒道靴
+give    传说魔靴(战)
+give    传说魔靴(法)
+give    传说魔靴(道)
+give    星王战靴
+give    星王法靴
+give    星王道靴
+give    狂雷战靴
+give    逆火魔靴
+give    通云道靴
+give    王者靴(战)
+give    王者靴(法)
+give    王者靴(道)
+
+;——————————————————————— 位置：12　　宝石：7,53,63　　常量：<$CHARM>
+[@宝石]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 宝石
+give    傀儡Ψ崛起
+give    魔兽Ｉ冥晶
+
+;——————————————————————— 位置：10　　腰带：54,64　　常量：<$BELT>
+[@腰带]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 腰带
+give    兽皮腰带
+give    铁腰带
+give    青铜腰带
+give    钢铁腰带
+give    雷霆腰带
+give    烈焰腰带
+give    光芒腰带
+give    誓言腰带(战)
+give    誓言腰带(法)
+give    誓言腰带(道)
+give    星王腰带(战)
+give    星王腰带(法)
+give    星王腰带(道)
+give    狂雷腰带
+give    逆火腰带
+give    通云腰带
+give    王者腰带(战)
+give    王者腰带(法)
+give    王者腰带(道)
+
+;——————————————————————— 位置：14　　军鼓：65　　常量：<$DRUM>
+[@军鼓]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 军鼓
+give    
+;——————————————————————— 位置：17　　时装衣服：66,67　　常量：<$SDRESS>
+[@时装甲]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装衣服
+give    
+;——————————————————————— 位置：18　　时装武器：68,69　　常量：<$SWEAPON>
+[@时装剑]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装武器
+give    
+;——————————————————————— 位置：20　　时装项链：75,76,77　　常量：<$SNECKLACE>
+[@时装项链]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装项链
+give    
+;——————————————————————— 位置：21　　时装头盔：78　　常量：<$SHELMET>
+[@时装头盔]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装头盔
+give    
+;——————————————————————— 位置：22,23　　时装右镯左镯：79,80　　常量：<$SARMRING_R>,<$SARMRING_L>
+[@时装手镯]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装手镯
+give    
+;——————————————————————— 位置：24,25　　时装右戒左戒：81,82　　常量：<$SRING_R>,<$SRING_L>
+[@时装戒指]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装戒指
+give    
+;——————————————————————— 位置：26　　时装勋章：83　　常量：<$SRIGHTHAND>
+[@时装勋章]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装勋章
+give    
+;——————————————————————— 位置：27　　时装腰带：84,85　　常量：<$SBELT>
+[@时装腰带]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装腰带
+give    
+;——————————————————————— 位置：28　　时装靴子：86,87　　常量：<$SBOOTS>
+[@时装靴子]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装靴子
+give    
+;——————————————————————— 位置：29　　时装宝石：88,89　　常量：<$SCHARM>
+[@时装宝石]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装宝石(符文属性装备)
+give    符★文
+
+;——————————————————————— 位置：42　　时装马牌：90　　常量：<$SHORSE>
+[@时装马牌]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装马牌
+give    
+;——————————————————————— 位置：43　　时装符印：91　　常量：<$SBUJUK>
+[@时装符印]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装符印
+give	
+;——————————————————————— 位置：44　　时装军鼓：92　　常量：<$SDRUM>
+[@时装军鼓]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装军鼓
+give	
+;——————————————————————— 位置：45　　时装盾牌：93　　常量：<$SSHIELD>
+[@时装盾牌]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 时装盾牌
+
+;——————————————————————— 位置：30~41　　生肖盒1~12：100~111　　常量：<$GODBLESSITEM1>~<$GODBLESSITEM12>
+[@生肖]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 生肖
+give    
+;——————————————————————— 位置：71~78　　图腾=301~308　　常量：<$USEITEMNAME[71]>~<$USEITEMNAME[78]>
+[@图腾]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 图腾
+give    
+;——————————————————————— 位置：84~89　　魔盒=401~406　　常量：<$USEITEMNAME[84]>~<$USEITEMNAME[89]>
+;——————————————————————— 位置：81~83　　魔盒=407~409　　常量：<$USEITEMNAME[84]>~<$USEITEMNAME[89]>
+[@魔盒]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 魔盒
+give    
+;——————————————————————— 位置：90~100　　元神=501~511　　常量：<$USEITEMNAME[90]>~<$USEITEMNAME[100]>
+[@元神]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 元神
+give    
+;——————————————————————— 位置：101~112　　佩饰=601~612　　常量：<$USEITEMNAME[101]>~<$USEITEMNAME[112]>
+[@佩饰]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 佩饰
+give    
+;——————————————————————— 位置：101~112　　佩饰=601~612　　常量：<$USEITEMNAME[101]>~<$USEITEMNAME[112]>
+[@佩饰2]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 佩饰2
+give    
+;——————————————————————— 位置：113　　称号专属=701　　常量：<$USEITEMNAME[113]>
+[@称号专属]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 称号专属
+give    
+;——————————————————————— 位置：114　　技能专属=702　　常量：<$USEITEMNAME[114]>
+[@技能专属]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 技能专属
+give    
+;——————————————————————— 位置：115　　复活专属=703　　常量：<$USEITEMNAME[115]>
+[@复活专属]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 复活专属
+give    
+;——————————————————————— 位置：116　　大陆专属=704　　常量：<$USEITEMNAME[116]>
+[@大陆专属]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 大陆专属
+give    
+;——————————————————————— 位置：117　　佣兵专属=705　　常量：<$USEITEMNAME[117]>
+[@佣兵专属]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 佣兵专属
+give    
+;——————————————————————— 位置：118　　沙巴克专属=706　　常量：<$USEITEMNAME[118]>
+[@沙巴克专属]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 沙巴克专属
+give    
+;——————————————
+[@文件夹]
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+SENDMSG 6 11111111
+;CreateFile ..\QuestDiary\新目录2-1\不朽之王弥赛德.txt
+;ForceDirectories ..\QuestDiary\新目录\8001
+
+
+
+
+
+
+
+[@测试123]
+#OR
+equal <$SERVERNAME>
+equal <$USERACCOUNT> iopaaa
+equal <$USERACCOUNT> 5119784
+#ACT
+MOV N$测试等级1 70
+MOV N$测试等级2 160
+BREAK
+#SAY
+<Img|x=-1.0|y=-1.0|width=500|height=330|show=0|esc=1|move=1|img=private/TradingBankLayer/bg_jiaoyh_06.png|bg=1|reset=0>
+<Button|x=497.0|y=-5.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Layout|x=617.0|y=1.0|width=70|height=70|link=@exit>
+<RText|a=0|x=15.0|y=10.0|size=15|color=161|outline=1|text={登录时间：<$LOGINTIME>/FCOLOR=244}　{登录时长：<$LOGINLONG>/FCOLOR=161}　{人数：<$USERCOUNT>/FCOLOR=244}>
+
+<Text|x=15.0|y=35|tips={位置：1　　武器：5,6　　常量：<$WEAPON>/FCOLOR=254}|size=15|color=251|outline=1|text=武器5.6|link=@武器>
+<Text|x=95.0|y=35|tips={位置：0　　衣服：10,11　　常量：<$DRESS>/FCOLOR=254}|size=15|color=251|outline=1|text=衣服10.11|link=@衣服>
+<Text|x=175.0|y=35|tips={位置：4　　头盔：15　　常量：<$HELMET>/FCOLOR=254}|size=15|color=251|outline=1|text=头盔15|link=@头盔>
+<Text|x=255.0|y=35|tips={位置：3　　项链：19,20,21　　常量：<$NECKLACE>/FCOLOR=254}|size=15|color=251|outline=1|text=链19.20.21|link=@项链>
+<Text|x=335.0|y=35|tips={位置：5,6　　右镯左镯：24,26　　常量：<$ARMRING_R>,<$ARMRING_L>/FCOLOR=254}|size=15|color=251|outline=1|text=手镯24.26|link=@手镯>
+<Text|x=415.0|y=35|tips={位置：7,8　　右戒左戒：22,23　　常量：<$RING_R>,<$RING_L>/FCOLOR=254}|size=15|color=251|outline=1|text=戒指22.23|link=@戒指>
+
+<Text|x=15.0|y=60|tips={位置：10　　腰带：54,64　　常量：<$BELT>/FCOLOR=254}|size=15|color=251|outline=1|text=腰带54.64|link=@腰带>
+<Text|x=95.0|y=60|tips={位置：11　　靴子：52,62　　常量：<$BOOTS>/FCOLOR=254}|size=15|color=251|outline=1|text=靴子52.62|link=@靴子>
+<Text|x=175.0|y=60|tips={位置：13　　斗笠：16　　常量：<$HAT>/FCOLOR=254}|size=15|color=251|outline=1|text=斗笠16|link=@斗笠>
+<Text|x=255.0|y=60|tips={位置：2　　勋章：30　　常量：<$RIGHTHAND>/FCOLOR=254}|size=15|color=251|outline=1|text=勋章30|link=@勋章>
+<Text|x=335.0|y=60|tips={位置：16　　盾牌：48　　常量：<$SHIELD>/FCOLOR=254}|size=15|color=251|outline=1|text=盾牌48|link=@盾牌>
+<Text|x=415.0|y=60|tips={位置：9　　符毒：25,51　　常量：<$BUJUK>/FCOLOR=254}|size=15|color=251|outline=1|text=符毒25.51|link=@符毒>
+
+<Text|x=15.0|y=85|tips={位置：12　　宝石：7,53,63　　常量：<$CHARM>/FCOLOR=254}|size=15|color=251|outline=1|text=石7.53.63|link=@宝石>
+<Text|x=95.0|y=85|tips={位置：14　　军鼓：65　　常量：<$DRUM>/FCOLOR=254}|size=15|color=251|outline=1|text=军鼓65|link=@军鼓>
+<Text|x=175.0|y=85|tips={位置：15　　马牌：28　　常量：<$HORSE>/FCOLOR=254}|size=15|color=251|outline=1|text=马牌28|link=@马牌>
+<Text|x=255.0|y=85|tips={位置：30~41　　生肖盒1~12：100~111　　常量：<$GODBLESSITEM1>~<$GODBLESSITEM12>/FCOLOR=254}|size=15|color=251|outline=1|text=生肖盒|link=@生肖>
+<Text|x=335.0|y=85|tips={位置：71~76　　首饰盒1=120~126　　常量：<$USEITEMNAME[71]>~<$USEITEMNAME[76]>/FCOLOR=254}|size=15|color=251|outline=1|text=图腾|link=@图腾>
+<Text|x=415.0|y=86|size=15|color=249|outline=1|text=时装系列↓>
+
+<Text|x=15.0|y=110|tips={位置：18　　时装武器：68,69　　常量：<$SWEAPON>/FCOLOR=254}|size=15|outline=1|color=243|text=武器68|link=@时装剑>
+<Text|x=95.0|y=110|tips={位置：17　　时装衣服：66,67　　常量：<$SDRESS>/FCOLOR=254}|size=15|outline=1|color=243|text=衣服66|link=@时装甲>
+<Text|x=175.0|y=110.0|tips={位置：45　　时装盾牌：93　　常量：<$SSHIELD>/FCOLOR=254}|size=15|outline=1|color=243|text=头盔78|link=@时装头盔>
+<Text|x=255.0|y=110.0|tips={位置：20　　时装项链：75,76,77　　常量：<$SNECKLACE>/FCOLOR=254}|size=15|outline=1|color=243|text=项链75.76|link=@时装项链>
+<Text|x=335.0|y=110|tips={位置：22,23　　时装右镯左镯：79,80　　常量：<$SARMRING_R>,<$SARMRING_L>/FCOLOR=254}|size=15|outline=1|color=243|text=手镯79.80|link=@时装手镯>
+<Text|x=415.0|y=110|tips={位置：24,25　　时装右戒左戒：81,82　　常量：<$SRING_R>,<$SRING_L>/FCOLOR=254}|size=15|outline=1|color=243|text=戒指81.82|link=@时装戒指>
+
+<Text|x=15.0|y=135.0|tips={位置：27　　时装腰带：84,85　　常量：<$SBELT>/FCOLOR=254}|size=15|outline=1|color=243|text=腰带84.85|link=@时装腰带>
+<Text|x=95.0|y=135.0|tips={位置：28　　时装靴子：86,87　　常量：<$SBOOTS>/FCOLOR=254}|size=15|outline=1|color=243|text=靴子86.87|link=@时装靴子>
+<Text|x=175.0|y=135.0|tips={位置：26　　时装勋章：83　　常量：<$SRIGHTHAND>/FCOLOR=254}|size=15|outline=1|color=243|text=勋章83|link=@时装勋章>
+<Text|x=255.0|y=135.0|tips={位置：43　　时装符印：91　　常量：<$SBUJUK>/FCOLOR=254}|size=15|outline=1|color=243|text=符印91|link=@时装符印>
+<Text|x=335.0|y=135.0|tips={位置：29　　时装宝石：88,89　　常量：<$SCHARM>/FCOLOR=254}|size=15|outline=1|color=243|text=宝石88.89|link=@时装宝石>
+<Text|x=415.0|y=135.0|tips={位置：44　　时装军鼓：92　　常量：<$SDRUM>/FCOLOR=254}|size=15|outline=1|color=243|text=军鼓92|link=@时装军鼓>
+<Text|x=479.0|y=135.0|tips={位置：42　　时装马牌：90　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=马牌90|link=@时装马牌>
+
+<Text|x=15.0|y=160|color=251|outline=1|size=15|text=文件夹|link=@文件夹>
+<Text|x=95.0|y=160|color=251|outline=1|size=15|text=武器店|link=@武器店>
+<Text|x=175.0|y=160|color=251|outline=1|size=15|text=空白区|link=@空白区>
+<Text|x=255.0|y=160|color=251|outline=1|size=15|text=沙皇宫|link=@皇宫>
+<Text|x=335.0|y=160|color=249|outline=1|size=15|text=清理背包|link=@清理>
+
+<Text|x=15.0|y=185|color=161|size=15|outline=1|text=转生<$RELEVEL>>
+<Text|x=95.0|y=185|color=251|outline=1|size=15|text=转生+1|link=@转生+1>
+<Text|x=175.0|y=185|color=251|outline=1|size=15|text=转生=0|link=@转生0>
+<Text|x=255.0|y=185|color=251|outline=1|size=15|text=满等级|link=@等级>
+<Text|x=335.0|y=185|color=251|outline=1|size=15|text=满技能|link=@技能>
+
+<Text|x=15.0|y=210|color=251|outline=1|size=15|text=管理模式|link=@管理模式>
+<Text|x=95.0|y=210|color=251|outline=1|size=15|text=背包仓库|link=@背包仓库>
+<Text|x=175.0|y=210|color=251|outline=1|size=15|text=攻速=0|link=@攻速=0>
+<Text|x=255.0|y=210|color=251|outline=1|size=15|text=攻速+5|link=@攻速+5>
+<Text|x=335.0|y=210|color=251|outline=1|size=15|text=攻速满|link=@攻速满>
+
+<Text|x=15.0|y=235|color=251|outline=1|size=15|text=删除NPC|link=@删除NPC>
+<Text|x=95.0|y=235|color=251|outline=1|size=15|text=分辨率|link=@分辨率>
+<Text|x=175.0|y=235|color=251|outline=1|size=15|text=满充值|link=@充值>
+<Text|x=255.0|y=235|tipsy=12|color=254|outline=1|size=16|text=补充值|link=@@InPutString90(点击输入：充值数量（充值渠道）)>
+<Text|x=335.0|y=235|tipsy=12|color=254|outline=1|size=16|text=补直购|link=@@InPutString88(点击输入：直购数量（直购渠道）)>
+<Text|x=335.0|y=285|color=250|outline=1|size=15|text=刷新NPC|link=@测试NPC>
+
+<Text|x=0.0|y=361.0|outline=1|size=15|color=251|text=施法0|link=@施法0>
+<Text|x=60.0|y=361.0|outline=1|size=15|color=251|text=施法10|link=@施法10>
+<Text|x=120.0|y=361.0|outline=1|size=15|color=251|text=施法50|link=@施法50>
+<Text|x=181.0|y=361.0|outline=1|size=15|color=251|text=施法100|link=@施法100>
+<Text|x=250.0|y=361.0|outline=1|size=15|color=251|text=施法150|link=@施法150>
+<Text|x=320.0|y=361.0|outline=1|size=15|color=251|text=施法200|link=@施法200>
+<Text|x=385.0|y=361.0|outline=1|size=15|color=251|text=施法250|link=@施法250>
+<Text|x=450.0|y=361.0|outline=1|size=15|color=251|text=施法300|link=@施法300>
+<Text|x=515.0|y=361.0|outline=1|size=15|color=251|text=施法满|link=@施法满>
+
+<Text|x=0.0|y=331.0|outline=1|size=15|color=251|text=攻速0|link=@攻速0>
+<Text|x=60.0|y=331.0|outline=1|size=15|color=251|text=攻速10|link=@攻速10>
+<Text|x=120.0|y=331.0|outline=1|size=15|color=251|text=攻速50|link=@攻速50>
+<Text|x=181.0|y=331.0|outline=1|size=15|color=251|text=攻速100|link=@攻速100>
+<Text|x=250.0|y=331.0|outline=1|size=15|color=251|text=攻速150|link=@攻速150>
+<Text|x=320.0|y=331.0|outline=1|size=15|color=251|text=攻速200|link=@攻速200>
+<Text|x=385.0|y=331.0|outline=1|size=15|color=251|text=攻速250|link=@攻速250>
+<Text|x=450.0|y=331.0|outline=1|size=15|color=251|text=攻速300|link=@攻速300>
+<Text|x=515.0|y=331.0|outline=1|size=15|color=251|text=攻速满|link=@攻速满>
+
+<Text|x=15.0|y=260|color=251|outline=1|size=15|text=开关攻城|link=@攻城>
+<Text|x=95.0|y=260|color=251|outline=1|size=15|text=满材料|link=@材料>
+
+<Text|x=175.0|y=260.0|color=251|outline=1|size=15|text=2大陆|link=@2大陆>
+<Text|x=255.0|y=260.0|color=251|outline=1|size=15|text=3大陆|link=@3大陆>
+<Text|x=335.0|y=260.0|color=251|outline=1|size=15|text=4大陆|link=@4大陆>
+<Text|x=15.0|y=285.0|color=251|outline=1|size=15|text=5大陆|link=@5大陆>
+<Text|x=65.0|y=285.0|color=251|outline=1|size=15|text=6大陆|link=@6大陆>
+<Text|x=115.0|y=285.0|color=251|outline=1|size=15|text=7大陆|link=@7大陆>
+<Text|x=165.0|y=285.0|color=251|outline=1|size=15|text=8大陆|link=@8大陆>
+<Text|x=215.0|y=285.0|color=251|outline=1|size=15|text=9大陆|link=@9大陆>
+<Text|x=265.0|y=285.0|color=251|outline=1|size=15|text=跨服|link=@跨服>
+
+<Text|x=415|y=160|color=250|outline=1|size=15|text=测试1|link=@测试1>
+<Text|x=415|y=185|color=250|outline=1|size=15|text=测试2|link=@测试2>
+<Text|x=415|y=210|color=250|outline=1|size=15|text=测试3|link=@测试3>
+<Text|x=415|y=235|color=250|outline=1|size=15|text=测试4|link=@测试4>
+<Text|x=415|y=260|color=250|outline=1|size=15|text=按钮|link=@按钮>
+<Text|x=415|y=285|color=250|outline=1|size=15|text=顶戴|link=@顶戴测试>
+
+;<Text|x=479.0|y=155.0|tips={位置：84~89　　魔盒：401~406　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=魔盒|link=@魔盒>
+;<Text|x=479.0|y=175.0|tips={位置：90~100　　元神：501~511　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=元神|link=@元神>
+;<Text|x=479.0|y=195.0|tips={位置：101~112　　佩饰：601~612　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=佩饰|link=@佩饰>
+;<Text|x=479.0|y=215.0|tips={位置：101~112　　佩饰2：601~612　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=佩饰2|link=@佩饰2>
+;<Text|x=479.0|y=235.0|tips={位置：113　　称号专属：701　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=称号专属|link=@称号专属>
+;<Text|x=479.0|y=255.0|tips={位置：114　　技能专属：702　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=技能专属|link=@技能专属>
+;<Text|x=479.0|y=275.0|tips={位置：115　　复活专属：703　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=复活专属|link=@复活专属>
+;<Text|x=479.0|y=295.0|tips={位置：116　　大陆专属：704　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=大陆专属|link=@大陆专属>
+;<Text|x=479.0|y=315.0|tips={位置：117　　佣兵专属：705　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=佣兵专属|link=@佣兵专属>
+;<Text|x=479.0|y=335.0|tips={位置：118　　沙巴克专属：706　　常量：<$SHORSE>/FCOLOR=254}|size=15|outline=1|color=243|text=沙巴克专属|link=@沙巴克专属>
+
+;|tips={位置：55　　面巾：50　　常量：<$FTOWEL>
+
+;|tips={位置：19　　时装斗笠：71　　常量：<$SHAT>
+;|tips={位置：46　　时装面巾：94　　常量：<$SFTOWEL>
+;|tips={位置：21　　时装头盔：78　　常量：<$SHELMET>
+
+[@测试1]
+changecustomitemtext 55 [附加属性]：
+changecustomitemtextcolor 55 154
+
+changecustomitemabil  55 0 0 249
+changecustomitemabil  55 0 1 1 ; 生命
+changecustomitemabil  55 0 3 1
+changecustomitemabil  55 0 4 0
+changecustomitemvalue 55 0 = 100
+
+changecustomitemabil  55 1 0 252
+changecustomitemabil  55 1 1 2 ; 魔法
+changecustomitemabil  55 1 3 1
+changecustomitemabil  55 1 4 1
+changecustomitemvalue 55 1 = 100
+
+changecustomitemabil  55 2 0 251
+changecustomitemabil  55 2 1 10 ; 防御
+changecustomitemabil  55 2 3 1
+changecustomitemabil  55 2 4 2
+changecustomitemvalue 55 2 = 100
+
+changecustomitemabil  55 3 0 251
+changecustomitemabil  55 3 1 12 ; 魔御
+changecustomitemabil  55 3 3 1
+changecustomitemabil  55 3 4 3
+changecustomitemvalue 55 3 = 100
+
+changecustomitemabil  55 4 0 250
+changecustomitemabil  55 4 1 4 ; 攻击
+changecustomitemabil  55 4 3 1
+changecustomitemabil  55 4 4 4
+changecustomitemvalue 55 4 = 100
+
+changecustomitemabil  55 5 0 250
+changecustomitemabil  55 5 1 6 ; 法术
+changecustomitemabil  55 5 3 1
+changecustomitemabil  55 5 4 5
+changecustomitemvalue 55 5 = 100
+
+changecustomitemabil  55 6 0 250
+changecustomitemabil  55 6 1 8 ; 道术
+changecustomitemabil  55 6 3 1
+changecustomitemabil  55 6 4 6
+changecustomitemvalue 55 6 = 100
+
+[@测试1]    ;cfg_custpro_caption 示例
+#OR
+equal <$SERVERNAME>
+equal <$SERVERNAME> 视频录制区勿进
+#ACT
+;CLEARCUSTOMITEMABIL 22
+
+changecustomitemtext 22 [强化属性]：
+changecustomitemtextcolor 22 154
+
+changecustomitemabil  22 0 0 249
+changecustomitemabil  22 0 1 4	; 属性1
+changecustomitemabil  22 0 2 201	; 属性1 cfg_custpro_caption
+changecustomitemabil  22 0 3 0
+changecustomitemabil  22 0 4 0
+changecustomitemvalue 22 0 + 1
+
+changecustomitemabil  22 1 0 252
+changecustomitemabil  22 1 1 6	; 属性2
+changecustomitemabil  22 1 2 202	; 属性2 cfg_custpro_caption
+changecustomitemabil  22 1 3 0
+changecustomitemabil  22 1 4 1
+changecustomitemvalue 22 1 + 1
+
+changecustomitemabil  22 2 0 150
+changecustomitemabil  22 2 1 8	; 属性3
+changecustomitemabil  22 2 2 203	; 属性3 cfg_custpro_caption
+changecustomitemabil  22 2 3 0
+changecustomitemabil  22 2 4 2
+changecustomitemvalue 22 2 + 1
+
+;获取物品自定义属性的值：
+GETHUMCUSTOMITEMVALUE 22 4 N$在线时间1 N$在线时间
+GETHUMCUSTOMITEMVALUE 22 6 N$在线时间2 N$在线时间
+GETHUMCUSTOMITEMVALUE 22 8 N$在线时间3 N$在线时间
+SENDMSG 6 [<$STR(N$在线时间1)>][<$STR(N$在线时间2)>][<$STR(N$在线时间3)>]

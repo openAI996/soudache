@@ -1,0 +1,8 @@
+[@MAIN]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=490.0|y=20.0|width=50|height=50|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01041.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=11008|text=一直以来的心愿便是仗剑天涯，斩妖除魔。>
+<Text|x=45.0|y=100.0|size=18|color=11008|text=如今，这愿望终于可以实现了！>
+

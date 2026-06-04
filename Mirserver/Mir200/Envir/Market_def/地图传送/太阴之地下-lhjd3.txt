@@ -1,0 +1,4 @@
+[@main]
+#IF
+#ACT
+MAPMOVE lhjd1 12 135 3

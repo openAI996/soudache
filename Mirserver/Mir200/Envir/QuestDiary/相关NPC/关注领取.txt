@@ -1,0 +1,229 @@
+[@关注礼包领取]
+{
+#IF
+#ACT
+MOV S$微信按钮
+MOV N$屏宽 <$SCREENWIDTH>
+MOV N$屏高 <$SCREENHEIGHT>
+DIV N$屏宽 5
+DIV N$屏高 5
+GOTO @微信
+
+[@微信]
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+inc S$微信按钮 <Button|x=245.0|y=335.0|height=35|color=11038|size=18|nimg=public/1913000011.png|pimg=public/1913000012.png|text=一键复制公众号|link=@复制公众号>
+;inc S$微信按钮 <Button|x=440.0|y=335.0|height=35|size=18|nimg=public/1913000011.png|color=11038|pimg=public/1913000012.png|text=一键打开公众号|link=@打开公众号>
+
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|width=670|height=470|esc=1|reset=1|loadDelay=1|bg=1|img=private/psllz/00070.png|move=0|show=4>
+<Layout|x=592.0|y=-22.0|width=80|height=80|link=@exit>
+<Button|x=623.0|y=16.0|color=255|size=18|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|link=@exit>
+<Img|x=288.0|y=7.0|img=private/biaoti/01022.png|esc=0>
+<Img|x=0.0|y=6.0|width=675|height=510|scale9t=150|scale9b=150|img=public/bgx.png|scale9r=150|scale9l=150|esc=0>
+<Button|x=58.0|y=90.0|width=110|height=35|rotate=0|nimg=public/1913000012.png|pimg=public/1913000011.png|color=11038|size=18|text=微信礼包|link=@微信>
+<Button|x=58.0|y=135.0|width=110|height=35|rotate=0|nimg=public/1913000011.png|pimg=public/1913000012.png|color=11038|size=18|text=Q群礼包|link=@qq>
+<Img|x=190.0|y=97.0|width=130|height=130|esc=0|img=public/wx.png>
+<RText|x=320.0|y=95.0|color=11072|size=16|outline=1|outlinecolor=0|text=<《搜打撤传奇》/FCOLOR=11002>官方公众号已正式上线！>
+<Text|x=328.0|y=120.0|color=11072|size=16|text=在这里，你可以获取最新的游戏资讯。>
+<Text|x=327.0|y=160.0|color=11072|size=16|text=扫描左侧二维码，获得礼包激活码。>
+<Text|x=327.0|y=185.0|color=11072|size=16|text=立即领取微信大礼包！>
+<Text|x=195.0|y=260.0|color=11072|size=16|text=礼包内含：>
+<Img|x=280.0|y=260.0|img=public/02128.png|esc=0>
+<Img|x=360.0|y=260.0|img=public/02128.png|esc=0>
+<Img|x=530.0|y=260.0|img=public/02128.png|esc=0>
+<ItemShow|x=275.0|y=255.0|width=70|height=70|itemid=10324|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=355.0|y=255.0|width=70|height=70|itemid=10589|itemcount=1|showtips=1|bgtype=0>
+<Text|x=430.0|y=260.0|color=1110|size=16|text=有几率获得：>
+<ItemShow|x=525.0|y=255.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=0>
+
+<Img|x=220.0|y=402.0|width=155|height=30|esc=0|img=public/1900012019.png>
+<Button|x=480.0|y=395.0|width=120|height=44|nimg=private/psllz/btn_push_05.png|pimg=private/psllz/btn_push_06.png|size=18|color=11034|submitInput=1|text=领取礼包|link=@领取微信>
+<Input|x=223.0|y=405.0|width=150|height=25|type=0|size=14|place=在此输入激活码|inputid=1|color=255|placecolor=11030>
+<$str(S$微信按钮)>
+
+
+
+[@qq]
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|width=670|height=470|show=4|loadDelay=1|bg=1|img=private/psllz/00070.png|move=0|reset=1|esc=1>
+<Layout|x=592.0|y=-22.0|width=80|height=80|link=@exit>
+<Button|x=623.0|y=16.0|color=255|size=18|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|link=@exit>
+
+<Img|x=288.0|y=7.0|img=private/biaoti/01022.png|esc=0>
+<Img|x=0.0|y=6.0|width=675|height=510|scale9t=150|scale9b=150|img=public/bgx.png|scale9r=150|scale9l=150|esc=0>
+<Button|x=58.0|y=90.0|width=110|height=35|rotate=0|nimg=public/1913000011.png|pimg=public/1913000012.png|color=11038|size=18|text=微信礼包|link=@微信>
+<Button|x=58.0|y=135.0|width=110|height=35|rotate=0|nimg=public/1913000012.png|pimg=public/1913000011.png|color=11038|size=18|text=Q群礼包|link=@qq>
+<Text|x=195.0|y=100.0|color=11072|size=16|text=加入《搜打撤传奇》Q群，和众多玩家一起交流游戏！>
+<Text|x=195.0|y=125.0|color=11072|size=16|text=还能随时资讯客服没让您快速了解游戏，轻松上手！>
+<Text|x=195.0|y=170.0|color=11072|size=16|text=加群获得激活码，立即领取豪华礼包！>
+<Text|x=195.0|y=230.0|color=11072|size=16|text=礼包内含：>
+<Img|x=285.0|y=230.0|img=public/02128.png|esc=0>
+<Img|x=390.0|y=230.0|img=public/02128.png|esc=0>
+<ItemShow|x=280.0|y=225.0|width=70|height=70|itemid=10324|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=385.0|y=225.0|width=70|height=70|itemid=10589|itemcount=1|showtips=1|bgtype=0>
+<Img|x=220.0|y=382.0|width=155|height=30|esc=0|img=public/1900012019.png>
+<Button|x=480.0|y=375.0|width=120|height=44|nimg=private/psllz/btn_push_05.png|pimg=private/psllz/btn_push_06.png|size=18|color=11034|submitInput=2|text=领取礼包|link=@领取QQ>
+<Button|x=480.0|y=225.0|width=120|rotate=0|nimg=private/psllz/btn_push_05.png|pimg=private/psllz/btn_push_06.png|color=11034|size=18|text=复制群号|link=@复制群号>
+<Input|x=223.0|y=385.0|width=150|height=25|rotate=0|color=255|inputid=2|place=在此输入激活码|type=0|size=14|placecolor=11030>
+
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|width=670|height=470|reset=1|show=4|loadDelay=1|bg=1|img=private/psllz/00070.png|move=0|esc=1>
+<Layout|x=592.0|y=-22.0|width=80|height=80|link=@exit>
+<Button|x=623.0|y=16.0|color=255|size=18|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|link=@exit>
+
+<Img|x=288.0|y=7.0|img=private/biaoti/01022.png|esc=0>
+<Img|x=0.0|y=6.0|width=675|height=510|scale9b=150|scale9r=150|scale9t=150|img=public/bgx.png|scale9l=150|esc=0>
+<Button|x=58.0|y=90.0|width=110|height=35|rotate=0|color=11038|nimg=public/1913000011.png|pimg=public/1913000012.png|size=18|text=微信礼包|link=@微信>
+<Button|x=58.0|y=135.0|width=110|height=35|rotate=0|color=11038|nimg=public/1913000012.png|pimg=public/1913000011.png|size=18|text=Q群礼包|link=@qq>
+<Text|x=195.0|y=100.0|color=11072|size=16|text=加入《搜打撤传奇》Q群，和众多玩家一起交流游戏！>
+<Text|x=195.0|y=125.0|color=11072|size=16|text=还能随时资讯客服没让您快速了解游戏，轻松上手！>
+<Text|x=195.0|y=170.0|color=11072|size=16|text=加群获得激活码，立即领取豪华礼包！>
+<Text|x=195.0|y=230.0|color=11072|size=16|text=礼包内含：>
+<Img|x=285.0|y=230.0|img=public/02128.png|esc=0>
+<Img|x=390.0|y=230.0|img=public/02128.png|esc=0>
+<ItemShow|x=280.0|y=225.0|width=70|height=70|itemid=10324|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=385.0|y=225.0|width=70|height=70|itemid=10589|itemcount=1|showtips=1|bgtype=0>
+<Img|x=220.0|y=382.0|width=155|height=30|esc=0|img=public/1900012019.png>
+<Button|x=480.0|y=375.0|width=120|height=44|submitInput=2|pimg=private/psllz/btn_push_06.png|color=11034|size=18|nimg=private/psllz/btn_push_05.png|text=领取礼包|link=@领取QQ>
+<Button|x=480.0|y=225.0|width=120|rotate=0|size=18|nimg=private/psllz/btn_push_05.png|color=11034|pimg=private/psllz/btn_push_06.png|text=一键加群|link=@一键加群>
+<Input|x=223.0|y=385.0|width=150|height=25|rotate=0|size=14|type=0||place=在此输入激活码|placecolor=11030|color=255|inputid=2>
+
+
+[@复制公众号]
+#IF
+#ACT
+MIRCOPY https://s.pdb2.com/l/1nn5egjl9B4TqeM  
+SENDFORQQWX 4
+sendmsg 9 复制成功，请前往微信公众号搜索界面粘贴使用
+BREAK
+
+[@打开公众号]
+#IF
+#ACT
+SENDFORQQWX 4
+OpenWebSite https://s.pdb2.com/l/DM65fGiFsIJtQfm
+BREAK
+
+
+[@复制群号]
+#IF
+#ACT
+MIRCOPY 891377934
+SENDFORQQWX 1
+sendmsg 9 复制成功，请前往QQ群搜索界面粘贴使用
+BREAK
+
+[@一键加群]
+#IF
+#ACT
+OpenWebSite  http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=V_EQ_WR6Tpd7YnBtMoZperRGMd7xOB1z&authKey=Xf5m2suJj8Re2gOiuSfbCdxDmzai13ZVQ8bnEeG3U1CnoMXHkB3pCzgZk8xh%2FgTf&noverify=0&group_code=891377934
+
+
+[@领取微信]
+#IF
+CHECK [300] 1
+#ACT
+SENDMSG 9 <font color='#fff600'>你已领取过该礼包！</font>
+BREAK
+
+#if
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 <font color='#fff600'>请预留5个空格后再来领取</font>
+BREAK
+
+#IF
+CHECK [300] 0
+CompareText <$NPCINPUT(1)> yx3com
+RANDOMEX 1 100
+#ACT
+SET [300] 1
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+GiveStateItem 储存箱(8格) 1 1 1 0 0 1 1 1 1
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 关注礼包 + 1
+SAVEVAR HUMAN 关注礼包
+GOTO @按钮检测
+sendmsg 0 恭喜玩家：{【<$USERNAME>】|250:0:1}关注微信公众号，领取了{[微信礼包]|254:0:1}获得大量稀有物资.....
+BREAK
+
+#IF
+CHECK [300] 0
+CompareText <$NPCINPUT(1)> yx3com
+#ACT
+SET [300] 1
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+GiveStateItem 储存箱(8格) 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 关注礼包 + 1
+SAVEVAR HUMAN 关注礼包
+GOTO @按钮检测
+sendmsg 0 恭喜玩家：{【<$USERNAME>】|250:0:1}关注微信公众号，领取了{[微信礼包]|254:0:1}获得大量稀有物资.....
+BREAK
+#ELSEACT
+sendmsg 9 <font color='#ff0000'>您的输入不正确</font>
+BREAK
+
+
+[@领取QQ]
+#IF
+CHECK [301] 1
+#ACT
+SENDMSG 9 <font color='#fff600'>你已领取过该礼包！</font>
+BREAK
+
+#if
+NOT CHECKBAGSIZE 8
+#ACT
+SENDMSG 9 <font color='#fff600'>请预留5个空格后再来领取</font>
+BREAK
+
+#IF
+CHECK [301] 0
+CompareText <$NPCINPUT(2)> yw888
+#ACT
+SET [301] 1
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+GiveStateItem 储存箱(8格) 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 关注礼包 + 1
+SAVEVAR HUMAN 关注礼包
+GOTO @按钮检测
+sendmsg 0 恭喜玩家：{【<$USERNAME>】|250:0:1}加入了玩家QQ群，领取了{[QQ群礼包]|254:0:1}获得大量稀有物资.....
+BREAK
+#ELSEACT
+sendmsg 9 <font color='#ff0000'>您的输入不正确</font>
+BREAK
+
+
+[@按钮检测]
+#IF
+CHECKVAR HUMAN 关注礼包 = 2
+#ACT
+#CALL [\功能脚本\主界面按钮\主界面按钮QF.txt] @按钮收起
+#CALL [\功能脚本\主界面按钮\主界面按钮QF.txt] @按钮展开
+CLOSE
+NEWDELETETASK 5
+BREAK
+#ELSEACT
+GOTO @微信
+BREAK
+
+
+}

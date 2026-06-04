@@ -1,0 +1,57 @@
+[@计算游戏速度]
+{
+#IF
+#ACT
+MOV N$移动速度 0
+MOV N$无视海底 0
+MOV N$加攻击速度 0
+MOV N$减攻击速度 0
+MOV N$减施法速度 0
+
+#IF
+HASBUFF 50484
+#ACT
+DEC N$减施法速度 10
+DEC N$减攻击速度 10
+
+#IF
+CHECK [136] 1
+#ACT
+INC N$加攻击速度 2
+
+#IF
+HASBUFF 50013
+#ACT
+DEC N$移动速度 20
+DEC N$减攻击速度 15
+
+#OR
+CHECKITEM 避水珠 1
+CHECKITEMW 避水珠 1
+#ACT
+MOV N$无视海底 1
+
+#IF
+EQUAL N$无视海底 0
+CheckContainsTextListEx ..\QuestDiary\功能脚本\加载数据\海底地图.txt <$MAP>
+#ACT
+DEC N$移动速度 30
+
+#IF
+CHECKITEMW 疾风靴
+#ACT
+INC N$移动速度 5
+
+#IF
+#ACT
+CHANGESPEEDEX 1 0
+CHANGESPEEDEX 2 0
+CHANGESPEEDEX 1 <$STR(N$移动速度)>
+CHANGESPEEDEX 2 <$STR(N$减攻击速度)>
+CHANGESPEEDEX 3 <$STR(N$减施法速度)>
+
+#IF
+LARGE N$加攻击速度 0
+#ACT
+ChangeHumNewValue 20 <$STR(N$加攻击速度)>  65535
+}

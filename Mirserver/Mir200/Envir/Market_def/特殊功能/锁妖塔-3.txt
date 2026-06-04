@@ -1,0 +1,405 @@
+[@MAIN]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=人们提起万魔秘境总是讳莫如深，据传闻，里面囚禁着世上>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=最强大的恶魔。>
+<RText|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=你愿意前往查探下吗？<“封印石”/FCOLOR=11003>是进入的唯一凭证。>
+<Layout|x=45.0|y=150.0|width=150|height=40|color=*|link=@兑换>
+<Img|x=45.0|y=160.0|width=16|height=20|esc=0|img=public/00016.png>
+<Text|x=70.0|y=155.0|color=11008|size=18|text=兑换|link=@兑换>
+<Text|x=115.0|y=155.0|color=255|size=17|outline=1|outlinecolor=0|text=封印石>
+<Layout|x=45.0|y=200.0|width=150|height=40|color=*|link=@单人>
+<Img|x=45.0|y=210.0|width=20|height=20|esc=0|img=public/00014.png>
+<Text|x=70.0|y=205.0|color=11008|size=18|text=单人|link=@单人>
+<Text|x=115.0|y=205.0|color=255|size=17|outline=1|outlinecolor=0|text=挑战万魔秘境>
+<Layout|x=255.0|y=200.0|width=150|height=40|color=*|link=@组队>
+<Img|x=255.0|y=210.0|width=20|height=20|esc=0|img=public/00014.png>
+<Text|x=280.0|y=205.0|color=11008|size=18|text=组队|link=@组队>
+<Text|x=320.0|y=205.0|color=255|size=17|outline=1|outlinecolor=0|text=挑战万魔秘境>
+
+
+[@兑换]
+<Img|x=0.0|y=20.0|height=320|show=0|reset=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|loadDelay=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=使用<8个/FCOLOR=11003>封印石碎片即可兑换一块对应的封印石。>
+<RText|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=所有　<绿名怪物/FCOLOR=11003>　均有概率掉落<“封印石碎片”/FCOLOR=11014>。>
+<Img|x=45.0|y=130.0|img=public/02128.png|esc=0>
+<Img|x=45.0|y=190.0|img=public/02128.png|esc=0>
+<Img|x=45.0|y=250.0|img=public/02128.png|esc=0>
+<Img|x=241.0|y=130.0|img=public/02128.png|esc=0>
+<Img|x=241.0|y=190.0|img=public/02128.png|esc=0>
+<Img|x=241.0|y=250.0|img=public/02128.png|esc=0>
+<ItemShow|x=40.0|y=125.0|width=70|height=70|itemid=10406|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=40.0|y=185.0|width=70|height=70|itemid=10408|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=40.0|y=245.0|width=70|height=70|itemid=10410|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=238.0|y=125.0|width=70|height=70|itemid=10407|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=238.0|y=185.0|width=70|height=70|itemid=10409|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=239.0|y=245.0|width=70|height=70|itemid=10411|itemcount=1|showtips=1|bgtype=0>
+<Text|x=160.0|y=145.0|color=255|size=20|outline=1|outlinecolor=0|text=8>
+<Text|x=160.0|y=205.0|color=255|size=20|outline=1|outlinecolor=0|text=8>
+<Text|x=160.0|y=260.0|color=255|size=20|outline=1|outlinecolor=0|text=8>
+<Img|x=200.0|y=150.0|grey=1|img=public/ddd.png|esc=0>
+<Img|x=200.0|y=210.0|grey=1|img=public/ddd.png|esc=0>
+<Img|x=200.0|y=265.0|grey=1|img=public/ddd.png|esc=0>
+<Layout|x=350.0|y=135.0|width=150|height=40|color=*|link=@兑换沃玛石>
+<Text|x=360.0|y=140.0|color=11008|size=18|text=兑换沃玛封印石|link=@兑换沃玛石>
+<Layout|x=350.0|y=195.0|width=150|height=40|color=*|link=@兑换祖玛石>
+<Text|x=360.0|y=200.0|color=11008|size=18|text=兑换祖玛封印石|link=@兑换祖玛石>
+<Layout|x=349.0|y=255.0|width=150|height=40|color=*|link=@兑换赤月石>
+<Text|x=360.0|y=260.0|color=11008|size=18|text=兑换赤月封印石|link=@兑换赤月石>
+<Img|x=145.0|y=160.0|rotate=135|esc=0|img=public/jjj.png>
+<Img|x=145.0|y=215.0|rotate=135|esc=0|img=public/jjj.png>
+<Img|x=145.0|y=275.0|rotate=135|esc=0|img=public/jjj.png>
+
+
+
+[@兑换沃玛石]
+#IF
+CHECKITEM 沃玛碎片 8
+#ACT
+TAKE 沃玛碎片 8
+GiveStateItem 沃玛封印石 1 1 1 0 0 1 1 1 1
+SENDMSG 9 你成功兑换一枚沃玛封印石！
+BREAK
+#ELSEACT
+SENDMSG 9 你身上的“沃玛碎片”不足8个，无法兑换！
+BREAK
+
+[@兑换祖玛石]
+#IF
+CHECKITEM 祖玛碎片 8
+#ACT
+TAKE 祖玛碎片 8
+GiveStateItem 祖玛封印石 1 1 1 0 0 1 1 1 1
+SENDMSG 9 你成功兑换一枚祖玛封印石！
+BREAK
+#ELSEACT
+SENDMSG 9 你身上的“祖玛碎片”不足8个，无法兑换！
+BREAK
+
+[@兑换赤月石]
+#IF
+CHECKITEM 赤月碎片 8
+#ACT
+TAKE 赤月碎片 8
+GiveStateItem 赤月封印石 1 1 1 0 0 1 1 1 1
+SENDMSG 9 你成功兑换一枚赤月封印石！
+BREAK
+#ELSEACT
+SENDMSG 9 你身上的“赤月碎片”不足8个，无法兑换！
+BREAK
+
+
+[@单人]
+<Img|x=0.0|y=20.0|height=260|img=public/bg_npc_01.png|move=0|loadDelay=1|scale9t=50|reset=1|show=0|scale9r=50|scale9l=50|scale9b=50|bg=1|esc=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=您选择了<“单人”/FCOLOR=11003>挑战万魔秘境，请注意自身安危！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=使用的<“封印石”/FCOLOR=11003>越高级，遭遇强大恶魔的可能性越大。>
+<Layout|x=45.0|y=125.0|width=150|height=40|color=*|link=@单人沃玛>
+<Text|x=70.0|y=135.0|color=251|size=18|text=沃玛封印石|link=@单人沃玛>
+<Layout|x=40.0|y=180.0|width=150|height=40|color=*|link=@单人祖玛>
+<Text|x=70.0|y=185.0|color=251|size=18|text=祖玛封印石|link=@单人祖玛>
+<Layout|x=40.0|y=235.0|width=150|height=40|color=*|link=@单人赤月>
+<Text|x=70.0|y=235.0|color=251|size=18|text=赤月封印石|link=@单人赤月>
+<Img|x=45.0|y=140.0|width=20|height=20|esc=0|img=public/00014.png>
+<Img|x=45.0|y=190.0|width=20|height=20|esc=0|img=public/00014.png>
+<Img|x=45.0|y=240.0|width=20|height=20|esc=0|img=public/00014.png>
+
+[@单人沃玛]
+#IF
+RANDOMEX 5 100
+CHECKITEM 沃玛封印石 1
+#ACT
+TAKE 沃玛封印石
+AddMirrorMap wmmj <$USERNAME>a 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>a  25 25 50 *
+CLEARMAPMON <$USERNAME>a
+MOV S$沃玛秘境 兽人骑士统领#200|骷髅王#200|骷髅制造者#200|憎恶电僵王#100|召魂使#100|虫族之王#100|暗之毒蛇王#50|猪皇#50
+RANSJSTR <$STR(S$沃玛秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>a 29 29 <$STR(S$刷新怪物)> 0 1 0 70
+MAPMOVE  <$USERNAME>a 20 19 2
+SENDDELAYMSG 你在当前秘境中停留时间还有%s后结束 1800 249 1 @回城
+BREAK
+
+#IF
+CHECKITEM 沃玛封印石 1
+#ACT
+TAKE 沃玛封印石
+AddMirrorMap wmmj <$USERNAME>a 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>a  25 25 50 *
+CLEARMAPMON <$USERNAME>a
+MOV S$沃玛秘境 血蝠王#150|蝎子王#150|骷髅将军#150|万年尸王#100|蜈蚣王#100|触龙神#100|暗黑毒蛇#70|暗之野猪统领#60|獠牙野猪王#60|沃玛教主#60
+RANSJSTR <$STR(S$沃玛秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>a 29 29 <$STR(S$刷新怪物)> 0 1 0 245
+MAPMOVE  <$USERNAME>a 20 19 2
+SENDDELAYMSG 你在当前秘境中停留时间还有%s后结束 1800 249 1 @回城
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|height=260|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你身上的<“沃玛封印石”/FCOLOR=11003>数量不足1块，无法挑战！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=万魔秘境里的BOSS！>
+<Layout|x=42.0|y=145.0|width=150|height=40|color=*|link=@EXIT>
+<Text|x=45.0|y=150.0|color=251|size=18|text=离开|link=@EXIT>
+
+
+
+[@单人祖玛]
+#IF
+RANDOMEX 10 100
+CHECKITEM 祖玛封印石 1
+#ACT
+TAKE 祖玛封印石
+AddMirrorMap zmmj <$USERNAME>b 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>b  25 25 50 *
+CLEARMAPMON <$USERNAME>b
+MOV S$祖玛秘境 米尔教皇#100|封印魔兽#100|虹魔教主#100|昔日封魔霸主#100|十殿阎罗王#80|暗之牛魔王#50|恶魔蛛王#50|鬼眼妖蛛#50|万恶之源#50|魔龙万年树妖#50|暗之魔龙教主#50|魔龙教主#30|通天老祖#30|剑圣#30|通天教主#30
+RANSJSTR <$STR(S$祖玛秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>b 26 26 <$STR(S$刷新怪物)> 0 1 0 70
+MAPMOVE  <$USERNAME>b 13 38 2
+SENDDELAYMSG 你在当前秘境中停留时间还有%s后结束 1800 249 1 @回城
+BREAK
+
+#IF
+CHECKITEM 祖玛封印石 1
+#ACT
+TAKE 祖玛封印石
+AddMirrorMap zmmj <$USERNAME>b 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>b  25 25 50 *
+CLEARMAPMON <$USERNAME>b
+MOV S$祖玛秘境 黄大仙#100|祖玛教主#100|虹魔蝎卫#100|虹魔虎卫#100|虹魔猪卫#100|黄泉教主#60|牛魔王#50|逆魔之王#50|双头血魔#30|双头金刚#30|赤月恶魔#30|狂化魔龙巨蛾#30|狂化魔龙力士#30|狂化破甲兵#30|玄眉道长#20|通天祭祀女巫#20|通天魔婴#20|通天守护者#20|通天炎魔#20|引魂人#20|黑无常#20|白无常#20
+RANSJSTR <$STR(S$祖玛秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>b 26 26 <$STR(S$刷新怪物)> 0 1 0 245
+MAPMOVE  <$USERNAME>b 13 38 2
+SENDDELAYMSG 你在当前秘境中停留时间还有%s后结束 1800 249 1 @回城
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|height=260|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你身上的<“祖玛封印石”/FCOLOR=11003>数量不足1块，无法挑战！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=万魔秘境里的BOSS！>
+<Layout|x=42.0|y=145.0|width=150|height=40|color=*|link=@EXIT>
+<Text|x=45.0|y=150.0|color=251|size=18|text=离开|link=@EXIT>
+
+[@单人赤月]
+#IF
+RANDOMEX 10 100
+CHECKITEM 赤月封印石 1
+#ACT
+TAKE 赤月封印石
+AddMirrorMap cymj <$USERNAME>c 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>c  25 25 50 *
+CLEARMAPMON <$USERNAME>c
+MOV S$赤月秘境 幽灵教主#150|海妖王#150|永恒部落兽王#150|暗黑亡灵#100|蚁后#110|阿修罗之王#80|冰原王#50|冰原魔#50|美杜莎#50|寒冰雪翼神#50|湮灭恶龙#30|领地魔君#30
+RANSJSTR <$STR(S$赤月秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>c 36 36 <$STR(S$刷新怪物)> 0 1 0 70
+MAPMOVE <$USERNAME>c 17 26
+SENDDELAYMSG 你在当前秘境中停留时间还有%s后结束 1800 249 1 @回城
+BREAK
+
+#IF
+CHECKITEM 赤月封印石 1
+#ACT
+TAKE 赤月封印石
+AddMirrorMap cymj <$USERNAME>c 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>c  25 25 50 *
+CLEARMAPMON <$USERNAME>c
+MOV S$赤月秘境 幽灵战将#120|海魔统领#120|海魔将军#100|幽灵战神#100|古部落将军#100|迷失破坏者#60|死灵近侍#50|毒蚁#50|铁血妖后#50|幽灵骑士#50|冰霜之女#50|地狱审判者#50|地狱灰烬者#50
+RANSJSTR <$STR(S$赤月秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>c 36 36 <$STR(S$刷新怪物)> 0 1 0 245
+MAPMOVE <$USERNAME>c 17 26
+SENDDELAYMSG 你在当前秘境中停留时间还有%s后结束 1800 249 1 @回城
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|height=260|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你身上的<“赤月封印石”/FCOLOR=11003>数量不足1块，无法挑战！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=万魔秘境里的BOSS！>
+<Layout|x=42.0|y=145.0|width=150|height=40|color=*|link=@EXIT>
+<Text|x=45.0|y=150.0|color=251|size=18|text=离开|link=@EXIT>
+
+
+[@组队]
+<Img|x=0.0|y=20.0|height=260|img=public/bg_npc_01.png|move=0|loadDelay=1|scale9t=50|reset=1|show=0|scale9r=50|scale9l=50|scale9b=50|bg=1|esc=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=您选择了<“组队”/FCOLOR=11003>挑战万魔秘境，请注意自身安危！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=使用的<“封印石”/FCOLOR=11003>越高级，遭遇强大恶魔的可能性越大。>
+<Layout|x=45.0|y=125.0|width=150|height=40|color=*|link=@组队沃玛>
+<Text|x=70.0|y=135.0|color=251|size=18|text=沃玛封印石|link=@组队沃玛>
+<Layout|x=40.0|y=180.0|width=150|height=40|color=*|link=@组队祖玛>
+<Text|x=70.0|y=185.0|color=251|size=18|text=祖玛封印石|link=@组队祖玛>
+<Layout|x=40.0|y=235.0|width=150|height=40|color=*|link=@组队赤月>
+<Text|x=70.0|y=235.0|color=251|size=18|text=赤月封印石|link=@组队赤月>
+<Img|x=45.0|y=140.0|width=20|height=20|esc=0|img=public/00014.png>
+<Img|x=45.0|y=190.0|width=20|height=20|esc=0|img=public/00014.png>
+<Img|x=45.0|y=240.0|width=20|height=20|esc=0|img=public/00014.png>
+
+[@组队沃玛]
+#IF
+SMALL <$GROUPMEMBERCOUNT> 2
+#ACT
+SENDMSG 9 当前没有队伍！
+BREAK
+
+#IF
+NOT EQUAL <$USERNAME> <$TEAM0>
+#ACT
+SENDMSG 9 只有队长才能带领队伍挑战！
+BREAK
+
+#IF
+RANDOMEX 5 100
+CHECKITEM 沃玛封印石 1
+#ACT
+TAKE 沃玛封印石 1
+AddMirrorMap wmmj <$USERNAME>d 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>d  25 25 50 *
+CLEARMAPMON <$USERNAME>d
+MOV S$沃玛秘境 兽人骑士统领#200|骷髅王#200|骷髅制造者#200|憎恶电僵王#100|召魂使#100|虫族之王#100|暗之毒蛇王#50|猪皇#50
+RANSJSTR <$STR(S$沃玛秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>d 29 29 <$STR(S$刷新怪物)> 0 1 0 70
+GROUPMAPMOVE <$USERNAME>d 20 19 2 0 @万魔编组
+BREAK
+
+#IF
+CHECKITEM 沃玛封印石 1
+#ACT
+TAKE 沃玛封印石 1
+AddMirrorMap wmmj <$USERNAME>d 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>d  25 25 50 *
+CLEARMAPMON <$USERNAME>d
+MOV S$沃玛秘境 血蝠王#150|蝎子王#150|骷髅将军#150|万年尸王#100|蜈蚣王#100|触龙神#100|暗黑毒蛇#70|暗之野猪统领#60|獠牙野猪王#60|沃玛教主#60
+RANSJSTR <$STR(S$沃玛秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>d 29 29 <$STR(S$刷新怪物)> 0 1 0 245
+GROUPMAPMOVE <$USERNAME>d 20 19 2 0 @万魔编组
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|height=260|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你身上的<“沃玛封印石”/FCOLOR=11003>数量不足1块，无法挑战！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=万魔秘境里的BOSS！>
+<Layout|x=42.0|y=145.0|width=150|height=40|color=*|link=@EXIT>
+<Text|x=45.0|y=150.0|color=251|size=18|text=离开|link=@EXIT>
+
+[@组队祖玛]
+#IF
+SMALL <$GROUPMEMBERCOUNT> 2
+#ACT
+SENDMSG 9 当前没有队伍！
+BREAK
+
+#IF
+NOT EQUAL <$USERNAME> <$TEAM0>
+#ACT
+SENDMSG 9 只有队长才能带领队伍挑战！
+BREAK
+
+#IF
+RANDOMEX 10 100
+CHECKITEM 祖玛封印石 1
+#ACT
+TAKE 祖玛封印石 1
+AddMirrorMap zmmj <$USERNAME>e 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>e  25 25 50 *
+CLEARMAPMON <$USERNAME>e
+MOV S$祖玛秘境 米尔教皇#100|封印魔兽#100|虹魔教主#100|昔日封魔霸主#100|十殿阎罗王#80|暗之牛魔王#50|恶魔蛛王#50|鬼眼妖蛛#50|万恶之源#50|魔龙万年树妖#50|暗之魔龙教主#50|魔龙教主#30|通天老祖#30|剑圣#30|通天教主#30
+RANSJSTR <$STR(S$祖玛秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>e 26 26 <$STR(S$刷新怪物)> 0 1 0 70
+GROUPMAPMOVE <$USERNAME>e 13 38 2 0 @万魔编组
+BREAK
+
+#IF
+CHECKITEM 祖玛封印石 1
+#ACT
+TAKE 祖玛封印石 1
+AddMirrorMap zmmj <$USERNAME>e 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>e  25 25 50 *
+CLEARMAPMON <$USERNAME>e
+MOV S$祖玛秘境 黄大仙#100|祖玛教主#100|虹魔蝎卫#100|虹魔虎卫#100|虹魔猪卫#100|黄泉教主#60|牛魔王#50|逆魔之王#50|双头血魔#30|双头金刚#30|赤月恶魔#30|狂化魔龙巨蛾#30|狂化魔龙力士#30|狂化破甲兵#30|玄眉道长#20|通天祭祀女巫#20|通天魔婴#20|通天守护者#20|通天炎魔#20|引魂人#20|黑无常#20|白无常#20
+RANSJSTR <$STR(S$祖玛秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>e 26 26 <$STR(S$刷新怪物)> 0 1 0 245
+GROUPMAPMOVE <$USERNAME>e 13 38 2 0 @万魔编组
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|height=260|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你身上的<“祖玛封印石”/FCOLOR=11003>数量不足1块，无法挑战！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=万魔秘境里的BOSS！>
+<Layout|x=42.0|y=145.0|width=150|height=40|color=*|link=@EXIT>
+<Text|x=45.0|y=150.0|color=251|size=18|text=离开|link=@EXIT>
+
+
+[@组队赤月]
+#IF
+SMALL <$GROUPMEMBERCOUNT> 2
+#ACT
+SENDMSG 9 当前没有队伍！
+BREAK
+
+#IF
+NOT EQUAL <$USERNAME> <$TEAM0>
+#ACT
+SENDMSG 9 只有队长才能带领队伍挑战！
+BREAK
+
+#IF
+RANDOMEX 10 100
+CHECKITEM 赤月封印石 1
+#ACT
+TAKE 赤月封印石 1
+AddMirrorMap cymj <$USERNAME>f 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>f  25 25 50 *
+CLEARMAPMON <$USERNAME>f
+MOV S$赤月秘境 幽灵教主#150|海妖王#150|永恒部落兽王#150|暗黑亡灵#100|蚁后#110|阿修罗之王#80|冰原王#50|冰原魔#50|美杜莎#50|寒冰雪翼神#50|湮灭恶龙#30|领地魔君#30
+RANSJSTR <$STR(S$赤月秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>f 36 36 <$STR(S$刷新怪物)> 0 1 0 70
+GROUPMAPMOVE <$USERNAME>f 17 26 2 0 @万魔编组
+BREAK
+
+#IF
+CHECKITEM 赤月封印石 1
+#ACT
+TAKE 赤月封印石 1
+AddMirrorMap cymj <$USERNAME>f 万魔秘境 1800 3
+CLEARITEMMAP <$USERNAME>f  25 25 50 *
+CLEARMAPMON <$USERNAME>f
+MOV S$赤月秘境 幽灵战将#120|海魔统领#120|海魔将军#100|幽灵战神#100|古部落将军#100|迷失破坏者#60|死灵近侍#50|毒蚁#50|铁血妖后#50|幽灵骑士#50|冰霜之女#50|地狱审判者#50|地狱灰烬者#50
+RANSJSTR <$STR(S$赤月秘境)> 1 3 S$刷新怪物 S$无用
+MonGenEx <$USERNAME>f 36 36 <$STR(S$刷新怪物)> 0 1 0 245
+GROUPMAPMOVE <$USERNAME>f 17 26 2 0 @万魔编组
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|height=260|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01035.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你身上的<“赤月封印石”/FCOLOR=11003>数量不足1块，无法挑战！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=万魔秘境里的BOSS！>
+<Layout|x=42.0|y=145.0|width=150|height=40|color=*|link=@EXIT>
+<Text|x=45.0|y=150.0|color=251|size=18|text=离开|link=@EXIT>
+
+
+[@回城]
+#IF
+#ACT
+MAPMOVE 3 333 333
+SENDMSG 9 你在地图中停留时间已经耗尽！
+BREAK

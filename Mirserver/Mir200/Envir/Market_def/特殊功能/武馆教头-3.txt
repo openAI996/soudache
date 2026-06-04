@@ -1,0 +1,1257 @@
+[@MAIN]
+#IF
+#ACT
+MOV S50
+MOV S51
+MOV S52
+MOV S53
+MOV S$徒弟目标
+MOV S$师傅目标
+MOV S$操作对象
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=你是想要拜师还是收徒呢？>
+<Layout|x=40.0|y=100.0|width=100|height=40|link=@了解>
+<Text|x=45.0|y=110.0|color=11008|size=17|text=了解|link=@了解>
+<Text|x=90.0|y=110.0|color=255|size=17|outlinecolor=0|outline=1|text=拜师>
+<Layout|x=40.0|y=165.0|width=100|height=40|link=@unmaster>
+<Text|x=46.0|y=170.0|color=11008|size=18|text=解除|link=@unmaster>
+<Text|x=91.0|y=170.0|color=255|size=17|outlinecolor=0|outline=1|text=师徒关系>
+
+<Layout|x=268.0|y=100.0|width=100|height=40|link=@勋章大师>
+<Text|x=273.0|y=110.0|color=11008|size=17|text=打听|link=@勋章大师>
+<Text|x=318.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=勋章合成>
+
+
+
+;<Layout|x=40.0|y=200.0|width=100|height=40|link=@查询>
+;<Text|x=45.0|y=155.0|color=11008|size=18|text=查询|link=@查询>
+;<Text|x=90.0|y=155.0|color=255|size=17|outlinecolor=0|outline=1|text=师徒关系>
+
+
+[@了解]
+<Img|x=-0.0|y=20.0|height=350|show=0|scale9l=50|scale9t=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=11054|size=18|text=拜师说明:>
+<Text|x=45.0|y=100.0|color=255|size=16|text=(1)：徒弟的等级不能超过48级，师傅的等级不能低于50级。>
+<Text|x=45.0|y=125.0|color=255|size=16|text=(2)：一个师傅累计最多可以收3个徒弟。>
+<Text|x=44.0|y=150.0|color=255|size=16|text=(3)：徒弟在40级之后，每升1级师傅可以获得1、2、3..点声望;>
+<Text|x=45.0|y=175.0|color=255|size=16|text=在徒弟达到65级时，师傅可以获得:>
+<Img|x=45.0|y=205.0|img=public/02128.png|esc=0>
+<Img|x=165.0|y=205.0|img=public/02128.png|esc=0>
+<Img|x=285.0|y=205.0|img=public/02128.png|esc=0>
+<ItemShow|x=40.0|y=200.0|width=70|height=70|itemid=10390|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=160.0|y=200.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=280.0|y=200.0|width=70|height=70|itemid=10202|itemcount=10|showtips=1|bgtype=0>
+<Layout|x=40.0|y=265.0|width=100|height=40|link=@master>
+<Text|x=45.0|y=275.0|color=11008|size=18|text=我要拜师|link=@master>
+<Layout|x=40.0|y=320.0|width=100|height=40|link=@发布>
+<Text|x=45.0|y=320.0|color=11008|size=18|text=发布|link=@发布>
+<RText|x=91.0|y=320.0|color=255|size=17|outline=1|outlinecolor=0|text=全服拜师请求　<每天可免费发布10次！/FCOLOR=249>>
+<Layout|x=430.0|y=315.0|width=100|height=40|link=@MAIN>
+<Text|x=448.0|y=319.0|color=11008|size=18|text=返回|link=@MAIN>
+
+
+
+
+
+[@发布]
+#IF
+checklevel 48
+#ACT
+SENDMSG 9 你的等级已经达到48级无法再拜师了！
+BREAK
+
+#IF
+NOT EQUAL T11
+#ACT
+SENDMSG 9 你已经有师傅了，你想干什么！？
+BREAK
+
+#IF
+LARGE J151 9
+#ACT
+SENDMSG 9 当日免费发布的拜师消息次数已经用完！
+BREAK
+
+#IF
+SMALL N$发布间隔 <$UTCNOW8>
+#ACT
+MOV N$发布间隔 <$UTCNOW8>
+INC N$发布间隔 30
+INC J151 1
+SENDMSG 1 255 244 <$USERNAME>(<$LEVEL>)级在盟重省的武馆教头处发布了拜师请求，欢迎各位达到50级的玩家前去收徒！
+BREAK
+#ELSEACT
+SENDMSG 9 你发布消息的速度太快了，请稍等一会儿吧！
+BREAK
+
+
+[@master]
+<Img|x=-0.0|y=20.0|height=240|show=0|scale9t=50|scale9l=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=想拜师呀，你要拜的师父来了没有？>
+<Text|x=45.0|y=95.0|color=255|size=17|text=与你师傅面对面站好，开始拜师。>
+<Layout|x=40.0|y=130.0|width=100|height=40|link=@agree>
+<Text|x=45.0|y=135.0|color=251|size=18|text=准备好了|link=@agree>
+<Layout|x=40.0|y=190.0|width=100|height=40|link=@EXIT>
+<Text|x=45.0|y=195.0|color=251|size=18|text=我知道了|link=@EXIT>
+<Layout|x=222.0|y=190.0|width=80|height=40|link=@了解>
+<Text|x=230.0|y=195.0|color=251|size=18|text=返回|link=@了解>
+
+
+
+
+[@agree]
+;检查是不是已经是别人的师父
+#IF
+checkismaster
+#SAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=没事别来这玩！！！>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+#ACT
+BREAK
+;检查是不是已经拜师了
+#IF
+checkmaster
+#SAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你都已经拜了别人为师，怎么还拜师！！！>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+#ACT
+BREAK
+;检查对面的人物是不是别人的徒弟
+#IF
+checkposemaster
+#SAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你找了个什么人做师父，怎么现在还是别人的徒弟？>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+#ACT
+BREAK
+;检查二个有没站好位置
+#IF
+checkposedir
+#ELSESAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你们二个面对面站好呀，不要乱动。>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+
+
+#ELSEACT
+BREAK
+
+#IF
+checklevel 48
+#SAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你都48级了还要找师父？>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+#act
+break
+
+#IF
+checkposelevel > 50
+#ACT
+master
+BREAK
+#ELSESAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你找个什么师父呀，等级这么低？>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+
+
+[@StartGetMaster]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=拜师仪式正式开始。>
+<Text|x=45.0|y=95.0|color=255|size=17|text=你是否确认拜师？>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@RequestMaster>
+<Text|x=45.0|y=135.0|color=251|size=18|text=确认|link=@RequestMaster>
+
+
+
+[@StartMaster]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=拜师仪式正式开始。>
+<Text|x=45.0|y=95.0|color=255|size=17|text=对方已经向你提出拜师请求。>
+
+
+[@RequestMaster]
+#IF
+#ACT
+MOV S50
+MOV S51
+MOV S52
+MOV S53
+MOV S$拜师目标
+GetOppositeHumName S$拜师目标
+GetHumVar <$STR(S$拜师目标)> S50 <$STR(T12)>
+GetHumVar <$STR(S$拜师目标)> S$拜师标识 <$USERID>
+GETSTRVALUE S50 徒弟1 S51
+GETSTRVALUE S50 徒弟2 S52
+GETSTRVALUE S50 徒弟3 S53
+
+#OR
+EQUAL S51 *
+EQUAL S52 *
+EQUAL S53 *
+#ACT
+master requestmaster
+BREAK
+#ELSESAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=对方徒弟位置已满，没有空闲位置了！>
+
+
+
+
+
+[@WateMaster]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你已向对方请求拜师，请耐心等待对方的答复。>
+
+
+
+
+[@RevMaster]
+<Img|x=-0.0|y=20.0|height=240|show=0|reset=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|loadDelay=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=对方想拜你为师，你是否想收此人为徒？>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@ResposeMaster>
+<Text|x=45.0|y=135.0|color=251|size=18|text=同意|link=@ResposeMaster>
+<Layout|x=189.0|y=130.0|width=80|height=40|link=@ResposeMasterFail>
+<Text|x=193.0|y=135.0|color=251|size=18|text=不同意|link=@ResposeMasterFail>
+
+[@ResposeMaster]
+#IF
+#ACT
+MOV S51
+MOV S52
+MOV S53
+MOV S$徒弟目标
+GETSTRVALUE T12 徒弟1 S51
+GETSTRVALUE T12 徒弟2 S52
+GETSTRVALUE T12 徒弟3 S53
+GetOppositeHumName S$徒弟目标
+GetHumVar <$STR(S$徒弟目标)> S$徒弟标识 <$USERID>
+
+#IF
+EQUAL S51 *
+NOT EQUAL S$徒弟目标
+#ACT
+ADDSTRVALUE T12 徒弟1 <$STR(S$徒弟标识)>
+master responsemaster ok
+BREAK
+#IF
+EQUAL S52 *
+NOT EQUAL S$徒弟目标
+#ACT
+ADDSTRVALUE T12 徒弟2 <$STR(S$徒弟标识)>
+master responsemaster ok
+BREAK
+#IF
+EQUAL S53 *
+NOT EQUAL S$徒弟目标
+#ACT
+ADDSTRVALUE T12 徒弟3 <$STR(S$徒弟标识)>
+master responsemaster ok
+BREAK
+#ELSEACT
+SENDMSG 9 你的徒弟位置已经满员了！
+GOTO @ResposeMasterFail
+BREAK
+
+
+[@ResposeMasterFail]
+#if
+#act
+master responsemaster fail
+BREAK
+
+[@EndMaster]
+#IF
+EQUAL <$GETSTRVALUE(T12,徒弟1)> *
+EQUAL <$GETSTRVALUE(T12,徒弟2)> *
+EQUAL <$GETSTRVALUE(T12,徒弟3)> *
+#SAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你们二个已经是师徒关系了。>
+#ACT
+MOV T11 <$STR(S$拜师标识)>
+BREAK
+#ELSESAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你们二个已经是师徒关系了。>
+
+[@EndMasterFail]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=拜师失败！>
+
+[@MasterDirErr]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=对方没站好位置！>
+
+
+
+[@MasterCheckDir]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=请站好位置！>
+
+[@HumanTypeErr]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=此人不可以做你的师父！>
+
+
+;==========================================
+开始
+[@unmaster]
+#if
+   havemaster
+#act
+   unmaster
+#elsesay
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你都没师父，跑来做什么？>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+
+
+
+;=======================================================
+
+[@UnMasterCheckDir]
+<Img|x=-0.0|y=20.0|height=240|show=0|scale9l=50|scale9t=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=按正常出师步骤，必须二个人对面对站好位置，>
+<Text|x=45.0|y=95.0|color=255|size=17|text=如果人来不了你只能选择强行出师了。>
+<Layout|x=43.0|y=130.0|width=110|height=40|link=@fUnMaster>
+<Text|x=45.0|y=135.0|color=251|size=18|text=我要强行出师|link=@fUnMaster>
+
+<Layout|x=43.0|y=185.0|width=110|height=40|link=@main>
+<Text|x=45.0|y=190.0|color=251|size=18|text=返回|link=@main>
+
+
+
+;=======================================================
+;对面位置不是人物时显示的信息
+[@UnMasterTypeErr]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你对面站了个什么东西，怎么不太象人来的。>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+[@UnIsMaster]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=必须由徒弟发出请求！！！>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+
+[@UnMasterError]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=不要来捣乱！！！>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+;=======================================================
+;开始程序后，双方显示的信息
+[@StartUnMaster]
+<Img|x=-0.0|y=20.0|height=240|show=0|scale9l=50|scale9t=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=出师仪式现在开始！！！>
+<Text|x=45.0|y=95.0|color=255|size=17|text=是否确定真的要脱离师徒关系？>
+<Layout|x=43.0|y=130.0|width=110|height=40|link=@RequestUnMaster#操作目标=徒弟#操作对象=<$USERNAME>>
+<Text|x=45.0|y=135.0|color=251|size=18|text=确定|link=@RequestUnMaster#操作目标=徒弟#操作对象=<$USERNAME>>
+
+
+[@WateUnMaster]
+<Img|x=-0.0|y=20.0|height=240|show=0|scale9l=50|scale9t=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=出师仪式现在开始！！！>
+
+;=======================================================
+;发出请求
+[@RequestUnMaster]
+#IF
+EQUAL S$操作目标 徒弟
+havemaster
+#ACT
+GetOppositeHumName S$师傅目标
+SetHumVar <$STR(S$师傅目标)> S50 <$STR(S$操作对象)>
+unmaster requestunmaster
+BREAK
+
+#IF
+EQUAL S$操作目标 师傅
+  havemaster
+#ACT
+<$STR(S50)>.MOV T11
+  unmaster requestunmaster
+BREAK
+;=======================================================
+;回应请求
+[@ResposeUnMaster]
+#if
+  havemaster
+#act
+  unmaster responseunmaster
+
+;===============================================
+;请求后显示的信息
+[@WateUnMaster]
+<Img|x=-0.0|y=20.0|height=240|show=0|scale9l=50|scale9t=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你已向对方发出请求，请耐心等待对方的答复。>
+
+
+;===============================================
+;请求后对方显示的信息
+[@RevUnMaster]
+#IF
+#ACT
+MOV S$执行
+#SAY
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9l=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9t=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=对方向你发出出师请求，你是否答应？>
+<Layout|x=32.0|y=105.0|width=110|height=40|link=@RequestUnMaster#操作目标=师傅>
+<Text|x=45.0|y=115.0|color=251|size=18|text=我愿意|link=@RequestUnMaster#操作目标=师傅>
+<Layout|x=34.0|y=172.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=175.0|color=251|size=18|text=返回|link=@main>
+
+;===============================================
+
+[@ExeMasterFail]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=你都没师父，跑来做什么？>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@main>
+<Text|x=45.0|y=135.0|color=251|size=18|text=返回|link=@main>
+
+
+
+;==============================================
+;强行
+[@fUnMaster]
+#if
+  checkitem 金条 1
+  havemaster
+#act
+  take 金条 1
+  MOV T11
+  unmaster requestunmaster force
+#elsesay
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=要收一根金条的手续费，你没有金条！>
+<Layout|x=41.0|y=130.0|width=80|height=40|link=@exit>
+<Text|x=45.0|y=135.0|color=251|size=18|text=确定|link=@exit>
+
+;==============================================
+;完成后的提示信息
+[@UnMasterEnd]
+<Img|x=-0.0|y=20.0|height=240|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01045.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=呵呵，你已经脱离苦海>
+
+
+
+[@查询]
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你可以在我这里查询你的师傅或者徒弟的名字>
+<Text|x=35.0|y=70.0|color=251|size=18|text=查询我的师傅|link=@查询师傅>
+<Text|x=35.0|y=115.0|color=251|size=18|text=查询我的徒弟|link=@查询徒弟>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@MAIN>
+
+[@查询师傅]
+#IF
+EQUAL T11
+#SAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你没有师傅！>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+#ACT
+BREAK
+
+#IF
+<$STR(T11)>.Checkonline
+#SAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你的师傅<$STR(T11)>目前正在游戏中>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+#ACT
+BREAK
+#ELSESAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你的师傅<$STR(T11)>当前不在线>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+
+[@查询徒弟]
+#IF
+#ACT
+MOV S$查询按钮
+MOV S$查询1
+MOV S$查询2
+MOV S$查询3
+GETSTRVALUE T12 徒弟1 S$查询1
+GETSTRVALUE T12 徒弟2 S$查询2
+GETSTRVALUE T12 徒弟3 S$查询3
+
+#IF
+EQUAL S$查询1 *
+EQUAL S$查询2 *
+EQUAL S$查询3 *
+#SAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你还没有任何徒弟！>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+#ACT
+BREAK
+
+#IF
+NOT EQUAL S$查询1 *
+#ACT
+INC S$查询按钮 <Text|x=35.0|y=35.0|size=18|color=251|text=查询大徒弟|link=@查询大徒弟>
+
+#IF
+NOT EQUAL S$查询2 *
+#ACT
+INC S$查询按钮 <Text|x=35.0|y=80.0|size=18|color=251|text=查询二徒弟|link=@查询二徒弟>
+
+#IF
+NOT EQUAL S$查询3 *
+#ACT
+INC S$查询按钮 <Text|x=35.0|y=125.0|size=18|color=251|text=查询三徒弟|link=@查询三徒弟>
+
+#IF
+#SAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=360.0|y=125.0|color=251|size=18|text=返回|link=@查询>
+<$STR(S$查询按钮)>
+
+[@查询大徒弟]
+#IF
+<$STR(S$查询1)>.Checkonline
+#SAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你的大徒弟<$STR(S$查询1)>目前正在游戏中>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+#ACT
+BREAK
+#ELSESAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你的大徒弟<$STR(S$查询1)>当前不在线>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+
+[@查询二徒弟]
+#IF
+<$STR(S$查询2)>.Checkonline
+#SAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你的二徒弟<$STR(S$查询2)>目前正在游戏中>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+#ACT
+BREAK
+#ELSESAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你的二徒弟<$STR(S$查询2)>当前不在线>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+
+[@查询三徒弟]
+#IF
+<$STR(S$查询3)>.Checkonline
+#SAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你的三徒弟<$STR(S$查询3)>目前正在游戏中>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+#ACT
+BREAK
+#ELSESAY
+<Img|move=0|img=private/mingge/1932500106.png|loadDelay=1|bg=1|reset=1|show=0>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=35.0|y=35.0|size=18|color=255|text=你的三徒弟<$STR(S$查询3)>当前不在线>
+<Text|x=35.0|y=155.0|color=251|size=18|text=返回|link=@查询>
+
+
+
+
+
+
+
+
+
+[@勋章大师]
+#IF
+#ACT
+MOV S$合成展示
+GETBAGITEMCOUNT 幸运石 N$幸运石数量
+GETBAGITEMCOUNT 鸿运石 N$鸿运石数量
+GETBAGITEMCOUNT 天运石 N$天运石数量
+
+
+#OR
+LARGE N$幸运石数量 0
+LARGE N$鸿运石数量 0
+LARGE N$天运石数量 0
+#ACT
+MOV S$合成展示
+INC S$合成展示 <Img|x=290.0|y=147.0|width=18|height=20|esc=0|img=public/00017.png>
+INC S$合成展示 <Layout|x=312.0|y=135.0|width=100|height=40|color=x|link=@合成鸿运石>
+INC S$合成展示 <Text|x=315.0|y=140.0|color=11009|size=17|text=合成鸿运石|link=@合成鸿运石>
+
+INC S$合成展示 <Img|x=290.0|y=202.0|width=18|height=20|esc=0|img=public/00017.png>
+INC S$合成展示 <Layout|x=312.0|y=195.0|width=100|height=40|color=x|link=@合成天运石>
+INC S$合成展示 <Text|x=315.0|y=197.0|color=11009|size=17|text=合成天运石|link=@合成天运石>
+
+INC S$合成展示 <Text|x=408.0|y=142.0|color=11043|size=18|text=(幸运石*2)>
+INC S$合成展示 <Text|x=408.0|y=200.0|color=11043|size=18|text=(鸿运石*2)>
+
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01007.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=勋章象征着人类的至高荣誉，如果你有能耐收集整个套装。>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=可以来找我兑换对应的勋章！>
+<Layout|x=48.0|y=135.0|width=100|height=40|link=@子类展开#勋章分类=高级#主类名=荣誉级#锁定索引=2#子类名=1级荣誉勋章#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160>
+<Text|x=70.0|y=140.0|color=11009|size=18|outline=1|outlinecolor=0|text=兑换勋章|link=@子类展开#勋章分类=高级#主类名=荣誉级#锁定索引=2#子类名=1级荣誉勋章#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160>
+<Img|x=45.0|y=147.0|width=20|height=20|esc=0|img=public/00025.png>
+<Layout|x=48.0|y=195.0|width=100|height=40|link=@exit>
+<Text|x=70.0|y=198.0|color=11009|size=18|outline=1|outlinecolor=0|text=离开|link=@exit>
+<Img|x=45.0|y=205.0|width=20|height=20|esc=0|img=public/00020.png>
+<$STR(S$合成展示)>
+
+
+[@合成鸿运石]
+#IF
+CHECKITEM 幸运石 2
+#ACT
+TAKE 幸运石 2
+GiveStateItem 鸿运石 1 1 1 0 0 1 1 0 1
+SENDMSG 9 恭喜你成功合成1个鸿运石！
+GOTO @勋章大师
+break
+#ELSEACT
+MESSAGEBOX 合成失败，幸运石不足2个！
+BREAK
+
+
+[@合成天运石]
+#IF
+CHECKITEM 鸿运石 2
+#ACT
+TAKE 鸿运石 2
+GiveStateItem 天运石 1 1 1 0 0 1 1 0 1
+SENDMSG 9 恭喜你成功合成1个天运石！
+GOTO @勋章大师
+break
+#ELSEACT
+MESSAGEBOX 合成失败，鸿运石不足2个！
+BREAK
+
+
+
+[@兑换勋章界面]
+#IF
+CHECKLEVELEX < 50
+EQUAL S$勋章分类 高级
+#ACT
+BREAK 
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|height=480|loadDelay=0|show=4|reset=1|move=0|img=private/psllz/00070.png|bg=1|esc=1>
+<Img|x=285.0|y=7.0|img=private/biaoti/01007.png|esc=0>
+<Layout|x=613.0|y=-18.0|width=80|height=80|link=@exit>
+<Img|x=176.0|y=58.0|height=400|img=private/psllz/00010.png|esc=0>
+<Button|x=628.0|y=19.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=45.0|y=48.0|color=11002|size=18|text=当前声望：：<$MONEY(声望)>>
+<ListView|children={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30}|x=38.0|y=73.0|width=145|height=375|direction=1|reload=0|bounce=0|margin=2|color=x>
+<$STR(S$勋章子按钮)>
+<Button|id=1|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮1b)>.png|nimg=private/pmh/00<$STR(S$按钮1a)>.png|color=<$STR(S$按钮1c)>|size=18|text=荣誉级|link=@子类展开#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#主类名=荣誉级#锁定索引=2#子类名=1级荣誉勋章>
+<Button|id=6|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮2b)>.png|nimg=private/pmh/00<$STR(S$按钮2a)>.png|color=<$STR(S$按钮2c)>|size=18|text=圣战级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=2#按钮2b=1#按钮2c=251#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#主类名=圣战级#锁定索引=7#子类名=圣战勋章>
+<Button|id=10|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮3b)>.png|nimg=private/pmh/00<$STR(S$按钮3a)>.png|color=<$STR(S$按钮3c)>|size=18|text=天之圣战级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=2#按钮3b=1#按钮3c=251#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#主类名=天之圣战级#锁定索引=11#子类名=天之圣战勋章>
+<Button|id=14|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮4b)>.png|nimg=private/pmh/00<$STR(S$按钮4a)>.png|color=<$STR(S$按钮4c)>|size=18|text=魔龙级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=2#按钮4b=1#按钮4c=251#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#主类名=魔龙级#锁定索引=15#子类名=雷霆勋章>
+<Button|id=18|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮5b)>.png|nimg=private/pmh/00<$STR(S$按钮5a)>.png|color=<$STR(S$按钮5c)>|size=18|text=强化魔龙级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=2#按钮5b=1#按钮5c=251#按钮6a=1#按钮6b=2#按钮6c=160#主类名=强化魔龙级#锁定索引=19#子类名=强化雷霆勋章>
+<Button|id=22|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮4b)>.png|nimg=private/pmh/00<$STR(S$按钮6a)>.png|color=<$STR(S$按钮6c)>|size=18|text=特殊勋章|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=2#按钮6b=1#按钮6c=251#主类名=特殊勋章#锁定索引=23#子类名=神秘勋章>
+<$STR(S$位置锁定)>
+<$STR(S$材料界面)>
+
+#IF
+EQUAL S$勋章分类 高级
+#ACT
+BREAK
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|height=480|loadDelay=0|show=4|reset=1|move=0|img=private/psllz/00070.png|bg=1|esc=1>
+<Img|x=285.0|y=7.0|img=private/biaoti/01007.png|esc=0>
+<Layout|x=613.0|y=-18.0|width=80|height=80|link=@exit>
+<Img|x=176.0|y=58.0|height=400|img=private/psllz/00010.png|esc=0>
+<Button|x=628.0|y=19.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=45.0|y=48.0|color=11002|size=18|text=当前声望：：<$MONEY(声望)>>
+<Button|children={2000}|x=-17.0|y=80.0|width=40|height=90|size=18|nimg=private/xlxl/0008.png|color=255|link=@子类展开#勋章分类=高级#主类名=荣誉级#锁定索引=2#子类名=1级荣誉勋章#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160>
+<Text|id=2000|x=10.0|y=5.0|color=255|outline=1|size=18|outlinecolor=0|text=高\级>
+<Button|children={3000}|x=-17.0|y=160.0|width=40|height=90|size=18|nimg=private/xlxl/0009.png|color=255|link=@子类展开#勋章分类=上古#主类名=上古T1级#锁定索引=32#子类名=白虎勋章#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160>
+<Text|id=3000|x=10.0|y=5.0|color=160|outline=1|size=18|outlinecolor=0|text=上\古>
+<ListView|children={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30}|x=38.0|y=73.0|width=145|height=375|direction=1|reload=0|bounce=0|margin=2|color=x>
+<$STR(S$勋章子按钮)>
+<Button|id=1|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮1b)>.png|nimg=private/pmh/00<$STR(S$按钮1a)>.png|color=<$STR(S$按钮1c)>|size=18|text=荣誉级|link=@子类展开#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#主类名=荣誉级#锁定索引=2#子类名=1级荣誉勋章>
+<Button|id=6|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮2b)>.png|nimg=private/pmh/00<$STR(S$按钮2a)>.png|color=<$STR(S$按钮2c)>|size=18|text=圣战级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=2#按钮2b=1#按钮2c=251#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#主类名=圣战级#锁定索引=7#子类名=圣战勋章>
+<Button|id=10|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮3b)>.png|nimg=private/pmh/00<$STR(S$按钮3a)>.png|color=<$STR(S$按钮3c)>|size=18|text=天之圣战级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=2#按钮3b=1#按钮3c=251#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#主类名=天之圣战级#锁定索引=11#子类名=天之圣战勋章>
+<Button|id=14|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮4b)>.png|nimg=private/pmh/00<$STR(S$按钮4a)>.png|color=<$STR(S$按钮4c)>|size=18|text=魔龙级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=2#按钮4b=1#按钮4c=251#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#主类名=魔龙级#锁定索引=15#子类名=雷霆勋章>
+<Button|id=18|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮5b)>.png|nimg=private/pmh/00<$STR(S$按钮5a)>.png|color=<$STR(S$按钮5c)>|size=18|text=强化魔龙级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=2#按钮5b=1#按钮5c=251#按钮6a=1#按钮6b=2#按钮6c=160#主类名=强化魔龙级#锁定索引=19#子类名=强化雷霆勋章>
+<Button|id=22|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮4b)>.png|nimg=private/pmh/00<$STR(S$按钮6a)>.png|color=<$STR(S$按钮6c)>|size=18|text=特殊勋章|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=2#按钮6b=1#按钮6c=251#主类名=特殊勋章#锁定索引=23#子类名=神秘勋章>
+<$STR(S$位置锁定)>
+<$STR(S$材料界面)>
+
+#IF
+EQUAL S$勋章分类 上古
+#ACT
+BREAK
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|height=480|loadDelay=0|show=4|reset=1|move=0|img=private/psllz/00070.png|bg=1|esc=1>
+<Img|x=285.0|y=7.0|img=private/biaoti/01007.png|esc=0>
+<Layout|x=613.0|y=-18.0|width=80|height=80|link=@exit>
+<Img|x=176.0|y=58.0|height=400|img=private/psllz/00010.png|esc=0>
+<Button|x=628.0|y=19.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=45.0|y=48.0|color=11002|size=18|text=当前声望：：<$MONEY(声望)>>
+<Button|children={2000}|x=-17.0|y=80.0|width=40|height=90|size=18|nimg=private/xlxl/0009.png|color=255|link=@子类展开#勋章分类=高级#主类名=荣誉级#锁定索引=2#子类名=1级荣誉勋章#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160>
+<Text|id=2000|x=10.0|y=5.0|color=160|outline=1|size=18|outlinecolor=0|text=高\级>
+<Button|children={3000}|x=-17.0|y=160.0|width=40|height=90|size=18|nimg=private/xlxl/0008.png|color=255|link=@子类展开#勋章分类=上古#主类名=上古T1级#锁定索引=32#子类名=白虎勋章#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160>
+<Text|id=3000|x=10.0|y=5.0|color=255|outline=1|size=18|outlinecolor=0|text=上\古>
+<ListView|children={31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58}|x=38.0|y=73.0|width=145|height=375|direction=1|reload=0|bounce=0|margin=2|color=x>
+<$STR(S$勋章子按钮)>
+<Button|id=31|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮1b)>.png|nimg=private/pmh/00<$STR(S$按钮1a)>.png|color=<$STR(S$按钮1c)>|size=18|text=上古T1级|link=@子类展开#按钮1a=2#按钮1b=1#按钮1c=251#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160#主类名=上古T1级#锁定索引=32#子类名=白虎勋章>
+<Button|id=35|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮2b)>.png|nimg=private/pmh/00<$STR(S$按钮2a)>.png|color=<$STR(S$按钮2c)>|size=18|text=上古T2级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=2#按钮2b=1#按钮2c=251#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160#主类名=上古T2级#锁定索引=36#子类名=梵天勋章>
+<Button|id=39|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮3b)>.png|nimg=private/pmh/00<$STR(S$按钮3a)>.png|color=<$STR(S$按钮3c)>|size=18|text=上古T3级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=2#按钮3b=1#按钮3c=251#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160#主类名=上古T3级#锁定索引=40#子类名=战神凭证>
+<Button|id=43|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮4b)>.png|nimg=private/pmh/00<$STR(S$按钮4a)>.png|color=<$STR(S$按钮4c)>|size=18|text=上古T4级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=2#按钮4b=1#按钮4c=251#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160#主类名=上古T4级#锁定索引=44#子类名=战魂烈日章>
+<Button|id=47|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮5b)>.png|nimg=private/pmh/00<$STR(S$按钮5a)>.png|color=<$STR(S$按钮5c)>|size=18|text=上古T5级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=2#按钮5b=1#按钮5c=251#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=1#按钮7b=2#按钮7c=160#主类名=上古T5级#锁定索引=48#子类名=天玑明王章>
+<Button|id=51|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮6b)>.png|nimg=private/pmh/00<$STR(S$按钮6a)>.png|color=<$STR(S$按钮6c)>|size=18|text=上古T6级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=2#按钮6b=1#按钮6c=251#按钮7a=1#按钮7b=2#按钮7c=160#主类名=上古T6级#锁定索引=52#子类名=虎皇霸天章>
+<Button|id=55|x=0.0|y=0.0|width=140|height=38|pimg=private/pmh/00<$STR(S$按钮7b)>.png|nimg=private/pmh/00<$STR(S$按钮7a)>.png|color=<$STR(S$按钮7c)>|size=18|text=上古T7级|link=@子类展开#按钮1a=1#按钮1b=2#按钮1c=160#按钮2a=1#按钮2b=2#按钮2c=160#按钮3a=1#按钮3b=2#按钮3c=160#按钮4a=1#按钮4b=2#按钮4c=160#按钮5a=1#按钮5b=2#按钮5c=160#按钮6a=1#按钮6b=2#按钮6c=160#按钮7a=2#按钮7b=1#按钮7c=251#主类名=上古T7级#锁定索引=56#子类名=上古∶苍龙逆火章>
+<$STR(S$位置锁定)>
+<$STR(S$材料界面)>
+
+[@子类展开]
+#IF
+#ACT
+
+MOV N$分类所在行 <$GetTypeBRow(cfg_xzhc,1,<$str(S$主类名)>)>
+MOV N$起始排序 <$cfg_xzhc(<$STR(N$分类所在行)>_2)>
+MOV N$最大排序 <$cfg_xzhc(<$STR(N$分类所在行)>_3)>
+INC N$最大排序 <$STR(N$起始排序)>
+MOV N$子类起始 3
+
+MOV S$勋章子按钮 
+While N$起始排序 < <$str(N$最大排序)>
+Inc N$起始排序 1
+Inc N$子类起始 1
+INC S$勋章子按钮 <Img|id=<$STR(N$起始排序)>|children={<$STR(N$起始排序)>号下划线,<$STR(N$起始排序)>号名字}|x=0.0|y=0.0|width=140|height=35|img=private/psllz/04015.png|link=@兑换界面#锁定索引=<$STR(N$起始排序)>#子类名=<$cfg_xzhc(<$STR(N$分类所在行)>_<$STR(N$子类起始)>)>>
+INC S$勋章子按钮 <Button|id=<$STR(N$起始排序)>号名字|x=<$cfg_xzhc(<$STR(N$分类所在行)>_12)>.0|y=5.0|color=255|nimg=public/0.png|pimg=public/0.png|size=18|text=<$cfg_xzhc(<$STR(N$分类所在行)>_<$STR(N$子类起始)>)>|link=@兑换界面#锁定索引=<$STR(N$起始排序)>#子类名=<$cfg_xzhc(<$STR(N$分类所在行)>_<$STR(N$子类起始)>)>>
+INC S$勋章子按钮 <Img|id=<$STR(N$起始排序)>号下划线|children={<$STR(N$起始排序)>锁定}|x=0.0|y=33.0|width=140|esc=0|img=public/1900000667_1.png>
+EndWhile
+GOTO @兑换界面
+BREAK
+
+[@兑换界面]
+#IF
+#act
+MOV N$子类所在行 <$GetTypeBRow(cfg_xzhc,2,<$str(S$子类名)>)>
+MOV N$升级成功率 <$cfg_xzhc(<$STR(N$子类所在行)>_5)> 
+INC N$升级成功率 <$STR(U7)>
+
+#if
+large N$升级成功率 100
+#ACT
+MOV N$升级成功率 100
+
+#IF
+#ACT
+MOV S$材料界面 
+MOV S$位置锁定 <Img|id=<$STR(S$锁定索引)>锁定|width=120|x=5.0|y=-34.0|img=public/1900000678.png|esc=0>
+
+INC S$材料界面 <Img|x=190.0|y=71.0|width=455|height=35|esc=0|img=private/psllz/05016.png>
+INC S$材料界面 <Text|x=370.0|y=75.0|outline=1|outlinecolor=0|color=150|size=18|text=<$str(S$子类名)>>
+INC S$材料界面 <Text|x=205.0|y=130.0|outline=1|outlinecolor=0|color=255|size=18|text=兑换[>
+INC S$材料界面 <Text|x=324.0|y=130.0|outline=1|outlinecolor=0|color=255|size=18|text=]需要以下条件：>
+INC S$材料界面 <Img|x=255.0|y=113.0|width=60|height=60|scale9r=5|scale9t=5|esc=0|img=public/02124.png|scale9b=5|scale9l=5>
+INC S$材料界面 <ItemShow|x=252.0|y=110.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_13)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <Text|x=205.0|y=180.0|outline=1|outlinecolor=0|color=255|size=18|text=消耗声望：<$cfg_xzhc(<$STR(N$子类所在行)>_4)>>
+INC S$材料界面 <RText|x=205.0|y=210.0|outline=1|outlinecolor=0|color=255|size=18|text=成功概率：<<$STR(N$升级成功率)>%/FCOLOR=58>>
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 0
+#ACT
+INC S$材料界面 <Text|x=205.0|y=240.0|outline=1|outlinecolor=0|color=255|size=18|text=提交装备：无>
+#ELSEACT
+INC S$材料界面 <Text|x=205.0|y=240.0|outline=1|outlinecolor=0|color=255|size=18|text=提交装备：>
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 4
+#ACT
+INC S$材料界面 <Img|x=210.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=295.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=380.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=465.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <ItemShow|x=205.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_14)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=290.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_15)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=375.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_16)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=460.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_17)>|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 5
+#ACT
+INC S$材料界面 <Img|x=210.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=295.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=380.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=465.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=550.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <ItemShow|x=205.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_14)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=290.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_15)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=375.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_16)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=460.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_17)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=545.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_18)>|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 6
+#ACT
+INC S$材料界面 <Img|x=210.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=295.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=380.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=465.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=550.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=210.0|y=350.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <ItemShow|x=205.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_14)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=290.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_15)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=375.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_16)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=460.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_17)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=545.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_18)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=205.0|y=345.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_19)>|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 7
+#ACT
+INC S$材料界面 <Img|x=210.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=295.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=380.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=465.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=550.0|y=280.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=210.0|y=350.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <Img|x=295.0|y=350.0|img=private/psllz/02128.png|esc=0>
+INC S$材料界面 <ItemShow|x=205.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_14)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=290.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_15)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=375.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_16)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=460.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_17)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=545.0|y=275.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_18)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=205.0|y=345.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_19)>|itemcount=1|showtips=1|bgtype=0>
+INC S$材料界面 <ItemShow|x=290.0|y=345.0|width=70|height=70|itemid=<$cfg_xzhc(<$STR(N$子类所在行)>_20)>|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+#ACT
+MOV S$额外材料
+MOV S$添加确认
+INC S$材料界面 <Button|x=355.0|y=415.0|width=100|height=38|rotate=0|nimg=private/psllz/btn_push_05.png|color=255|size=18|text=兑换勋章|link=@开始兑换勋章>
+GOTO @兑换勋章界面
+break
+
+[@开始兑换勋章]
+#IF
+#ACT
+MOV S$物品颜色
+GetDBItemFieldValue <$str(S$子类名)> color S$物品颜色
+
+
+#IF
+CHECKMONEY 声望 < <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#ACT
+SENDMSG 9 声望不足<$cfg_xzhc(<$STR(N$子类所在行)>_4)>点！
+break
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 7
+NOT CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_12)>#1 0 0
+#act
+SENDMSG 9 请准备足够的装备提交！
+break
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 6
+NOT CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1 0 0
+#act
+SENDMSG 9 请准备足够的装备提交！
+break
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 5
+NOT CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1 0 0
+#act
+SENDMSG 9 请准备足够的装备提交！
+break
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 4
+NOT CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1 0 0
+#act
+SENDMSG 9 请准备足够的装备提交！
+break
+
+
+#IF
+EQUAL S$添加确认
+SMALL N$升级成功率 100
+EQUAL S$物品颜色 253
+CHECKITEM 幸运石 1
+#ACT
+MESSAGEBOX 检测到你背包内有幸运石，使用幸运石可以让\合成<$str(S$子类名)>的几率从<$STR(N$升级成功率)>%变为100%\是否确认使用幸运石？ @确认使用幸运石 @直接合成
+BREAK
+#IF
+EQUAL S$添加确认
+SMALL N$升级成功率 100
+EQUAL S$物品颜色 253
+CHECKITEM 鸿运石 1
+#ACT
+MESSAGEBOX 检测到你背包内有鸿运石，使用鸿运石可以让\合成<$str(S$子类名)>的几率从<$STR(N$升级成功率)>%变为100%\是否确认使用鸿运石？ @确认使用鸿运石 @直接合成
+BREAK
+#IF
+EQUAL S$添加确认
+SMALL N$升级成功率 100
+EQUAL S$物品颜色 253
+CHECKITEM 天运石 1
+#ACT
+MESSAGEBOX 检测到你背包内有天运石，使用天运石可以让\合成<$str(S$子类名)>的几率从<$STR(N$升级成功率)>%变为100%\是否确认使用天运石？ @确认使用天运石 @直接合成
+BREAK
+
+#IF
+EQUAL S$添加确认
+SMALL N$升级成功率 100
+EQUAL S$物品颜色 70
+CHECKITEM 鸿运石 1
+#ACT
+MESSAGEBOX 检测到你背包内有鸿运石，使用鸿运石可以让\合成<$str(S$子类名)>的几率从<$STR(N$升级成功率)>%变为100%\是否确认使用鸿运石？ @确认使用鸿运石 @直接合成
+BREAK
+#IF
+EQUAL S$添加确认
+SMALL N$升级成功率 100
+EQUAL S$物品颜色 70
+CHECKITEM 天运石 1
+#ACT
+MESSAGEBOX 检测到你背包内有天运石，使用天运石可以让\合成<$str(S$子类名)>的几率从<$STR(N$升级成功率)>%变为100%\是否确认使用天运石？ @确认使用天运石 @直接合成
+BREAK
+
+#IF
+EQUAL S$添加确认
+SMALL N$升级成功率 100
+EQUAL S$物品颜色 249
+CHECKITEM 天运石 1
+#ACT
+MESSAGEBOX 检测到你背包内有天运石，使用天运石可以让\合成<$str(S$子类名)>的几率从<$STR(N$升级成功率)>%变为100%\是否确认使用天运石？ @确认使用天运石 @直接合成
+BREAK
+
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 7
+RANDOMEX <$STR(N$升级成功率)> 100
+CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_12)>#1 0 0
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#ACT
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+TAKES <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_12)>#1 N0 0
+MOV U7 0
+GiveStateItem <$str(S$子类名)> 1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功兑换<$str(S$子类名)>1个
+GOTO @兑换界面
+DELAYGOTO 1000 @任务检测
+BREAK
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 6
+RANDOMEX <$STR(N$升级成功率)> 100
+CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1 0 0
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#ACT
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+TAKES <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1 N0 0
+MOV U7 0
+GiveStateItem <$str(S$子类名)> 1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功兑换<$str(S$子类名)>1个
+GOTO @兑换界面
+DELAYGOTO 1000 @任务检测
+BREAK
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 5
+RANDOMEX <$STR(N$升级成功率)> 100
+CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1 0 0
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#ACT
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+TAKES <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1 N0 0
+MOV U7 0
+GiveStateItem <$str(S$子类名)> 1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功兑换<$str(S$子类名)>1个
+GOTO @兑换界面
+DELAYGOTO 1000 @任务检测
+BREAK
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 4
+RANDOMEX <$STR(N$升级成功率)> 100
+CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1 0 0
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#ACT
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+TAKES <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1 N0 0
+MOV U7 0
+GiveStateItem <$str(S$子类名)> 1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功兑换<$str(S$子类名)>1个
+GOTO @兑换界面
+DELAYGOTO 1000 @任务检测
+BREAK
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 0
+RANDOMEX <$STR(N$升级成功率)> 100
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#ACT
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+MOV U7 0
+GiveStateItem <$str(S$子类名)> 1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功兑换<$str(S$子类名)>1个
+GOTO @兑换界面
+DELAYGOTO 1000 @任务检测
+BREAK
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 7
+CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_12)>#1 0 0
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#act
+TAKES <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_12)>#1 N0 0
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+INC U7 <$cfg_xzhc(<$STR(N$子类所在行)>_21)>
+SENDMSG 9 很遗憾，此次兑换勋章失败，下次兑换成功率+<$cfg_xzhc(<$STR(N$子类所在行)>_21)>%！
+GOTO @兑换界面
+BREAK
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 6
+CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1 0 0
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#act
+TAKES <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_11)>#1 N0 0
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+INC U7 <$cfg_xzhc(<$STR(N$子类所在行)>_21)>
+SENDMSG 9 很遗憾，此次兑换勋章失败，下次兑换成功率+<$cfg_xzhc(<$STR(N$子类所在行)>_21)>%！
+GOTO @兑换界面
+BREAK
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 5
+CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1 0 0
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#act
+TAKES <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_10)>#1 N0 0
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+INC U7 <$cfg_xzhc(<$STR(N$子类所在行)>_21)>
+SENDMSG 9 很遗憾，此次兑换勋章失败，下次兑换成功率+<$cfg_xzhc(<$STR(N$子类所在行)>_21)>%！
+GOTO @兑换界面
+BREAK
+
+#IF
+EQUAL <$cfg_xzhc(<$STR(N$子类所在行)>_3)> 4
+CHECKITEMS <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1 0 0
+CHECKMONEY 声望 ? <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+#act
+TAKES <$cfg_xzhc(<$STR(N$子类所在行)>_6)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_7)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_8)>#1&<$cfg_xzhc(<$STR(N$子类所在行)>_9)>#1 N0 0
+MONEY 声望 - <$cfg_xzhc(<$STR(N$子类所在行)>_4)>
+INC U7 <$cfg_xzhc(<$STR(N$子类所在行)>_21)>
+SENDMSG 9 很遗憾，此次兑换勋章失败，下次兑换成功率+<$cfg_xzhc(<$STR(N$子类所在行)>_21)>%！
+GOTO @兑换界面
+BREAK
+
+
+[@确认使用幸运石]
+#IF
+CHECKITEM 幸运石 1
+#ACT
+TAKE 幸运石 1
+MOV N$升级成功率 100
+GOTO @开始兑换勋章
+BREAK
+#ELSEACT
+SENDMSG 9 我没有找到幸运石，难道是眼花了？
+GOTO @兑换界面
+BREAK
+
+[@确认使用鸿运石]
+#IF
+CHECKITEM 鸿运石 1
+#ACT
+TAKE 鸿运石 1
+MOV N$升级成功率 100
+GOTO @开始兑换勋章
+BREAK
+#ELSEACT
+SENDMSG 9 我没有找到鸿运石，难道是眼花了？
+GOTO @兑换界面
+BREAK
+
+[@确认使用天运石]
+#IF
+CHECKITEM 天运石 1
+#ACT
+TAKE 天运石 1
+MOV N$升级成功率 100
+GOTO @开始兑换勋章
+BREAK
+#ELSEACT
+SENDMSG 9 我没有找到天运石，难道是眼花了？
+GOTO @兑换界面
+BREAK
+
+[@直接合成]
+#IF
+#ACT
+MOV S$添加确认 已确认
+GOTO @开始兑换勋章
+BREAK
+
+
+
+
+
+
+
+[@任务检测]
+#IF
+SMALL U141 1
+#ACT
+MOV U141 1
+ADDSTRVALUE T40 七日任务1 0
+BREAK

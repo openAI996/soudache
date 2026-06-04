@@ -1,0 +1,1 @@
+#AutoRun NPC MIN 1 @start_game

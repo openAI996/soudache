@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE zsd02 20 75

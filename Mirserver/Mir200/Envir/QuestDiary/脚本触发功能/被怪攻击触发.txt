@@ -1,0 +1,102 @@
+[@被怪物攻击掉血回调]
+{
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+BREAK
+
+
+#OR
+EQUAL <$CURRRTARGETNAME> 炽焰麒麟
+EQUAL <$CURRRTARGETNAME> 玄冰麒麟
+#ACT
+MOV N$攻击对象 2
+
+#IF
+EQUAL N$攻击对象 2
+CHECKJOB Warrior
+#ACT
+MOV N$承伤计算 0
+CalcPer <$DAMAGEVALUE> 15 N$承伤计算
+DEC N$最终掉血值  N$承伤计算
+MOV N$攻击对象 0
+
+#IF
+EQUAL N$攻击对象 2
+CHECKJOB Wizard
+#ACT
+MOV N$承伤计算 0
+CalcPer <$DAMAGEVALUE> 25 N$承伤计算
+DEC N$最终掉血值  N$承伤计算
+MOV N$攻击对象 0
+
+#IF
+EQUAL N$攻击对象 2
+CHECKJOB Taoist
+#ACT
+MOV N$承伤计算 0
+CalcPer <$DAMAGEVALUE> 20 N$承伤计算
+DEC N$最终掉血值  N$承伤计算
+MOV N$攻击对象 0
+
+#OR
+EQUAL <$CURRRTARGETNAME> 上古玄武
+EQUAL <$CURRRTARGETNAME> 上古朱雀
+EQUAL <$CURRRTARGETNAME> 上古白虎
+EQUAL <$CURRRTARGETNAME> 上古青龙
+#ACT
+MOV N$攻击对象 1
+
+#IF
+EQUAL N$攻击对象 1
+CHECKJOB Warrior
+#ACT
+MOV N$承伤计算 0
+CalcPer <$DAMAGEVALUE> 37 N$承伤计算
+DEC N$最终掉血值  N$承伤计算
+MOV N$攻击对象 0
+
+#IF
+EQUAL N$攻击对象 1
+CHECKJOB Wizard
+#ACT
+MOV N$承伤计算 0
+CalcPer <$DAMAGEVALUE> 55 N$承伤计算
+DEC N$最终掉血值  N$承伤计算
+MOV N$攻击对象 0
+
+#IF
+EQUAL N$攻击对象 1
+CHECKJOB Taoist
+#ACT
+MOV N$承伤计算 0
+CalcPer <$DAMAGEVALUE> 50 N$承伤计算
+DEC N$最终掉血值  N$承伤计算
+MOV N$攻击对象 0
+
+
+;计算物理或魔法伤害减免点数
+#IF
+LARGE N$物理伤减免 0
+#ACT
+DEC N$最终掉血值 N$物理伤减免
+
+#IF
+EQUAL S$以彼之道 激活
+RANDOMEX 3 100
+#act
+MOV N$以彼之道计算  0 
+CalcPer <$DAMAGEVALUE> 30 N$以彼之道计算
+M.HUMANHP - <$str(N$以彼之道计算)>
+
+
+#IF
+EQUAL S$血债血偿 激活
+EQUAL <$CURRRTARGETNAME> 三头火龙
+#ACT
+MOV N$血债血偿  0 
+CalcPer <$MAXHP> 1 N$血债血偿计算
+M.HUMANHP - <$STR(N$血债血偿计算)>
+
+
+}

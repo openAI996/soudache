@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE ylc2 156 93 

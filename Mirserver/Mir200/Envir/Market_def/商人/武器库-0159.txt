@@ -1,0 +1,194 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|color=255|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01021.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=没有一个人来光顾，顾客，请进>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=我的自尊使我不允许对这个物品的价格再要求打折！>
+<Layout|x=65.0|y=145.0|width=120|height=40|link=@升级确认>
+<Text|x=70.0|y=150.0|color=11009|text=开始升级武器|link=@升级确认>
+<Img|x=45.0|y=155.0|width=20|height=20|esc=0|img=public/00025.png>
+<Layout|x=300.0|y=145.0|width=120|height=40|link=@买铁>
+<Text|x=305.0|y=150.0|color=11009|size=18|text=黑铁矿石购买|link=@买铁>
+<Img|x=280.0|y=155.0|width=20|height=20|esc=0|img=public/00023.png>
+<Layout|x=53.0|y=196.0|width=80|height=40|link=@exit>
+<Text|x=68.0|y=200.0|color=11009|size=18|outline=1|outlinecolor=0|text=退出|link=@exit>
+<Img|x=45.0|y=205.0|width=18|height=18|esc=0|img=public/00020.png>
+
+
+[@升级确认]
+#IF
+CHECKUSEITEM 1
+#ACT
+MOV S$升级武器ID <$WEAPONID>
+#ELSEACT
+MOV S$升级武器ID 
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit#强化项目=*>
+<Img|x=7.0|y=0.0|width=671|height=470|move=0|img=private/psllz/00070.png|scale9t=35|loadDelay=0|reset=1|scale9l=35|scale9b=30|show=4|bg=1|scale9r=35|esc=1>
+<Img|x=300.0|y=7.0|img=private/biaoti/01021.png|esc=0>
+<Layout|x=622.0|y=0.0|width=50|height=50|link=@exit#强化项目=*>
+<Button|x=635.0|y=15.0|color=255|size=18|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|link=@exit#强化项目=*>
+<Img|x=40.0|y=70.0|width=310|height=380|img=private/xlxl/0013.png|esc=0>
+<DBItemShow|x=178.0|y=128.0|width=70|height=70|makeindex=<$STR(S$唯一ID)>|dblink=@加载强化数据#唯一ID=*>
+<Button|x=141.0|y=392.0|nimg=private/xlxl/0011.png|outlinecolor=0|outline=1|size=17|color=251|text=开始升级|link=@确认>
+<Text|x=134.0|y=331.0|color=255|size=16|text=消耗金币：100000>
+<Text|x=365.0|y=204.0|size=18|color=11004|text=【所需材料】>
+<Text|x=370.0|y=235.0|size=16|color=11007|text=武器升级将扣除背包中的黑铁矿石和\饰品，请将重要首饰存在仓库！>
+<Text|x=368.0|y=375.0|size=16|color=11042|text=注意：武器升级过程中，请勿取下武器\或有其他操作，否则会直接导致武器失\败破碎！>
+<Text|x=365.0|y=80.0|color=11004|size=18|text=【武器升级】>
+<Text|x=370.0|y=110.0|color=11007|size=16|text=1、每把武器最多可升级7次。>
+<Text|x=370.0|y=135.0|color=11007|size=16|text=2、升级的武器以手上所拿武器为准！>
+<Text|x=370.0|y=160.0|color=11042|size=16|text=3、武器升级失败将破碎，请谨慎升级！>
+<Img|x=345.0|y=60.0|height=400|img=private/psllz/00010.png|esc=0>
+<Img|x=162.0|y=125.0|img=private/psllz/05003.png|esc=0>
+<DBItemShow|x=161|y=125|makeindex=<$STR(S$升级武器ID)>>
+
+;<Text|x=50.0|y=100.0|color=255|size=18|text=升级这个武器需要原料：黑铁矿石、饰品、武器和 金币。\你确定要升级吗？>
+;<Text|x=50.0|y=151.0|color=255|size=18|text=别的原料你可以使用你包内的物品，你想开始进行武器升级吗？>
+
+[@确认]
+#IF
+CHECKUSEITEM 1
+#ACT
+MESSAGEBOX 升级这个武器需要原料：黑铁矿石、饰品、武器和金币。\武器升级失败将会破碎消失！！！\你确定要升级吗？ @升级武器啊 @取消
+BREAK 
+#ELSEACT
+MESSAGEBOX 请佩戴武器后再升级！
+BREAK
+
+
+[@升级武器啊]
+#IF
+#ACT
+MOV N$武器升级ID <$WEAPONID>
+MOV N$矿石贡献值 0
+MOV n$武器最高属性 0
+MOV S$背包物品ID
+MOV N$升级对应属性 0
+MOV N$武器升级次数 0
+mov N$成功几率 0
+GETITEMADDVALUE 1 2 N$武器攻击附加 0
+GETITEMADDVALUE 1 3 N$武器魔法附加 0
+GETITEMADDVALUE 1 4 N$武器道术附加 0
+INC N$武器升级次数 <$STR(N$武器攻击附加)>
+INC N$武器升级次数 <$STR(N$武器魔法附加)>
+INC N$武器升级次数 <$STR(N$武器道术附加)>
+
+#IF
+LARGE N$武器升级次数 6
+#ACT
+MESSAGEBOX 该武器已达升级次数上限！
+break
+
+#IF
+CHECKMONEY 金币 < 99999
+#ACT
+MESSAGEBOX 金币不足10万！
+break
+
+#IF
+EQUAL <$WEAPON>
+#ACT
+MESSAGEBOX 请将你要升级的武器佩戴在身上！
+break
+
+#IF
+#ACT
+wqupgrade
+
+#if
+EQUAL N$升级对应属性 0
+#ACT
+MESSAGEBOX 请准备好升级所需首饰！
+break
+
+#if
+EQUAL N$矿石贡献值 0
+#ACT
+MESSAGEBOX 请最少准备1个黑铁矿石！
+break
+
+#IF
+SMALL N$背包首饰属性 <$STR(N$武器最高属性)>
+#ACT
+MESSAGEBOX 首饰提供的属性加成不足，需要首饰<$str(S$升级属性名字)>达到<$STR(N$武器最高属性)>点。
+BREAK 
+
+#IF
+CHECKMONEY 金币 > 99999
+#ACT
+SHOWPROGRESSBARDLG 5 @武器升级完成 武器升级中,进度%d%... 1 @武器升级中断
+BREAK
+
+
+
+
+
+
+[@买铁]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|color=255|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01021.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=黑铁矿石因拥有者强化武器的特性，大受勇士们的喜爱。>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=据说纯度越高的黑铁矿，强化武器的成功率也就越高！>
+<Img|x=45.0|y=135.0|img=public/02128.png|esc=0>
+<Img|x=155.0|y=135.0|img=public/02128.png|esc=0>
+<Img|x=265.0|y=135.0|img=public/02128.png|esc=0>
+<Img|x=375.0|y=135.0|img=public/02128.png|esc=0>
+<ItemShow|x=40.0|y=130.0|width=70|height=70|itemid=10456|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=150.0|y=130.0|width=70|height=70|itemid=10457|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=260.0|y=130.0|width=70|height=70|itemid=10458|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=370.0|y=130.0|width=70|height=70|itemid=10459|itemcount=1|showtips=1|bgtype=0>
+<Layout|x=35.0|y=200.0|width=80|height=35|color=*|link=@购买矿石1>
+<Text|x=40.0|y=200.0|color=11007|size=18|text=20万金币|link=@购买矿石1>
+<Layout|x=150.0|y=200.0|width=60|height=35|color=*|link=@购买矿石2#材料=黑铁矿(纯度15)#货币=20>
+<Text|x=157.0|y=200.0|color=11007|size=18|text=20元宝|link=@购买矿石2#材料=黑铁矿(纯度15)#货币=20>
+<Layout|x=260.0|y=200.0|width=65|height=35|color=*|link=@购买矿石2#材料=黑铁矿(纯度20)#货币=100>
+<Text|x=264.0|y=200.0|color=11007|size=18|text=100元宝|link=@购买矿石2#材料=黑铁矿(纯度20)#货币=100>
+<Layout|x=370.0|y=200.0|width=70|height=35|color=*|link=@购买矿石2#材料=黑铁矿(纯度25)#货币=500>
+<Text|x=375.0|y=200.0|color=11007|size=18|text=500元宝|link=@购买矿石2#材料=黑铁矿(纯度25)#货币=500>
+
+[@购买矿石1]
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 购买失败，背包空格数量不足！
+BREAK
+
+#IF
+CHECKMONEY 金币 > 199999
+#ACT
+MONEY 金币 - 200000
+logact 10001 通过[武器库]消耗200000金币，剩余金币：<$MONEY(金币)>。
+GIVE 黑铁矿(纯度10) 1
+SENDMSG 9 购买成功！
+BREAK
+#ELSEACT
+SENDMSG 9 购买失败，金币数量不足！
+BREAK
+
+[@购买矿石2]
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 购买失败，背包空格数量不足！
+BREAK
+
+#IF
+CHECKGAMEGOLD ? <$STR(S$货币)>
+#ACT
+GAMEGOLD - <$STR(S$货币)>
+logact 10002 通过[武器库]消耗<$STR(S$货币)>元宝，剩余元宝：<$GAMEGOLD>。
+GIVE <$STR(S$材料)> 1
+SENDMSG 9 购买成功！
+BREAK
+#ELSEACT
+SENDMSG 9 购买失败，元宝数量不足！
+BREAK
+

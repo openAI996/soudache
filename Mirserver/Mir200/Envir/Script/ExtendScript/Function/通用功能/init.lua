@@ -1,0 +1,11 @@
+
+include("Script/ExtendScript/Function/通用功能/屏幕按钮.lua")
+include("Script/ExtendScript/Function/通用功能/属性加载.lua")
+include("Script/ExtendScript/Function/通用功能/时间礼包.lua")
+include("Script/ExtendScript/Function/通用功能/服务端缓存.lua")
+include("Script/ExtendScript/Function/通用功能/顶戴加载.lua")
+include("Script/ExtendScript/Function/通用功能/GM测试.lua")
+include("Script/ExtendScript/Function/通用功能/特殊掉落控制.lua")
+include("Script/ExtendScript/Function/通用功能/全区排行.lua")
+include("Script/ExtendScript/Function/通用功能/登录密码.lua")
+include("Script/ExtendScript/Function/通用功能/产出消耗记录.lua")

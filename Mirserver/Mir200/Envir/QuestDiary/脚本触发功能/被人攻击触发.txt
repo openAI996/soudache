@@ -1,0 +1,263 @@
+[@被人物攻击掉血回调]
+{
+#IF
+NOT CHECKCURRTARGETRACE = 0
+#ACT
+BREAK
+
+#IF
+EQUAL S$逆水行舟 激活
+not <$CURRRTARGETNAME>.hasbuff 50484
+#ACT
+<$CURRRTARGETNAME>.addbuff 50484
+<$CURRRTARGETNAME>.sendmsg 6 对方逆水行舟触发，攻击速度和释放速度被降低，持续10秒...
+
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+MOV S$目标取之有道
+GetHumVar <$CURRRTARGETNAME> S$目标取之有道 <$str(S$取之有道)>
+MOV N$八门等级计算 0
+
+#or
+EQUAL S$卓越守护 激活
+EQUAL S$奋勇向前 激活
+#ACT
+GetHumVar <$CURRRTARGETNAME> N$八门目标等级 <$LEVEL>
+MOV N$八门自身等级 <$LEVEL>
+
+#IF
+SMALL N$八门自身等级 <$STR(N$八门目标等级)>
+#ACT
+MOV N$八门等级计算 0
+FORMULATION (<$STR(n$八门目标等级)>-<$str(N$八门自身等级)>)/3 N$八门等级计算
+
+
+#IF
+EQUAL S$卓越守护 激活
+LARGE N$八门自身等级 <$STR(N$八门目标等级)>
+#act
+MOV N$承伤计算 0
+CalcPer <$STR(N$最终掉血值)> 10 N$承伤计算
+DEC N$最终掉血值 N$承伤计算
+
+
+#IF
+EQUAL S$奋勇向前 激活
+LARGE N$八门等级计算 0
+#ACT
+MOV N$承伤计算 0
+CalcPer <$STR(N$最终掉血值)> <$STR(N$八门等级计算)> N$承伤计算
+DEC N$最终掉血值 N$承伤计算
+
+;取之有道有1%概率盗取目标身上1%的金币
+#IF
+check [358] 1
+<$CURRRTARGETNAME>.SMALL J30 10000000
+EQUAL S$目标取之有道 激活
+EQUAL <$CURRRUSEMAGICID> 22
+RANDOMEX 1 200
+LARGE <$GOLDCOUNT> 99
+SMALL <$GOLDCOUNT> 100000000
+#ACT
+CalcPer <$GOLDCOUNT> 1 N$赠送数量
+TAKE 金币 <$STR(N$赠送数量)>
+SetHumVar <$CURRRTARGETNAME> N$返回值 <$STR(N$赠送数量)>
+SetHumVar <$CURRRTARGETNAME> S$返回名字 <$username>
+<$CURRRTARGETNAME>.MONEY 金币 + <$STR(N$返回值)>
+<$CURRRTARGETNAME>.INC J30 <$STR(N$返回值)>
+SENDMSG 6 你被<$CURRRTARGETNAME>盗取掉<$STR(N$赠送数量)>金币！
+logact 10001 通过[取之有道]被<$CURRRTARGETNAME>偷走<$STR(N$赠送数量)>金币，剩余金币：<$MONEY(金币)>。
+<$CURRRTARGETNAME>.SENDMSG 6 你成功盗取<$str(S$返回名字)><$STR(N$返回值)>金币！
+
+#IF
+check [358] 1
+<$CURRRTARGETNAME>.SMALL J30 10000000
+EQUAL S$目标取之有道 激活
+NOT EQUAL <$CURRRUSEMAGICID> 22
+RANDOMEX 1 100
+LARGE <$GOLDCOUNT> 99
+SMALL <$GOLDCOUNT> 100000000
+#ACT
+CalcPer <$GOLDCOUNT> 1 N$赠送数量
+TAKE 金币 <$STR(N$赠送数量)>
+SetHumVar <$CURRRTARGETNAME> N$返回值 <$STR(N$赠送数量)>
+SetHumVar <$CURRRTARGETNAME> S$返回名字 <$username>
+<$CURRRTARGETNAME>.MONEY 金币 + <$STR(N$返回值)>
+<$CURRRTARGETNAME>.INC J30 <$STR(N$返回值)>
+SENDMSG 6 你被<$CURRRTARGETNAME>盗取掉<$STR(N$赠送数量)>金币！
+logact 10001 通过[取之有道]被<$CURRRTARGETNAME>偷走<$STR(N$赠送数量)>金币，剩余金币：<$MONEY(金币)>。
+<$CURRRTARGETNAME>.SENDMSG 6 你成功盗取<$str(S$返回名字)><$STR(N$返回值)>金币！
+
+#IF
+check [358] 1
+EQUAL S$目标取之有道 激活
+<$CURRRTARGETNAME>.SMALL J30 10000000
+EQUAL <$CURRRUSEMAGICID> 22
+RANDOMEX 1 200
+LARGE <$GOLDCOUNT> 99999999
+#ACT
+TAKE 金币 1000000
+SetHumVar <$CURRRTARGETNAME> S$返回名字 <$username>
+<$CURRRTARGETNAME>.MONEY 金币 + 1000000
+<$CURRRTARGETNAME>.INC J30 1000000
+SENDMSG 6 你被<$CURRRTARGETNAME>盗取掉1000000金币！
+logact 10001 通过[取之有道]被<$CURRRTARGETNAME>偷走1000000金币，剩余金币：<$MONEY(金币)>。
+<$CURRRTARGETNAME>.SENDMSG 6 你成功盗取<$str(S$返回名字)>1000000金币！
+
+#IF
+check [358] 1
+EQUAL S$目标取之有道 激活
+<$CURRRTARGETNAME>.SMALL J30 10000000
+NOT EQUAL <$CURRRUSEMAGICID> 22
+RANDOMEX 1 100
+LARGE <$GOLDCOUNT> 99999999
+#ACT
+TAKE 金币 1000000
+SetHumVar <$CURRRTARGETNAME> S$返回名字 <$username>
+<$CURRRTARGETNAME>.MONEY 金币 + 1000000
+<$CURRRTARGETNAME>.INC J30 1000000
+SENDMSG 6 你被<$CURRRTARGETNAME>盗取掉1000000金币！
+logact 10001 通过[取之有道]被<$CURRRTARGETNAME>偷走1000000金币，剩余金币：<$MONEY(金币)>。
+<$CURRRTARGETNAME>.SENDMSG 6 你成功盗取<$str(S$返回名字)>1000000金币！
+
+
+;战神之怒命格被攻击时，攻击者将会有2%概率被战神之怒所震慑，陷入眩晕，持续3秒
+#IF
+EQUAL S$战神之怒 激活
+<$CURRRTARGETNAME>.LARGE <$CUSTABIL[226]> 99
+#ACT
+MOV S$战神韧性概率 免控
+
+#IF
+EQUAL S$战神之怒 激活
+<$CURRRTARGETNAME>.SMALL <$CUSTABIL[226]> 100
+#ACT
+MOV N$韧性概率
+MOV S$战神韧性概率 
+GetHumVar  <$CURRRTARGETNAME> N$韧性概率 <$CUSTABIL[226]>
+
+#IF
+EQUAL S$战神之怒 激活
+NOT EQUAL S$战神韧性概率 免控
+<$CURRRTARGETNAME>.LARGE <$CUSTABIL[226]> 0
+<$CURRRTARGETNAME>.SMALL <$CUSTABIL[226]> 100
+RANDOMEX  <$STR(N$韧性概率)>  100
+#ACT
+MOV S$战神韧性概率 免控
+
+#IF
+EQUAL S$战神之怒 激活
+NOT EQUAL S$战神韧性概率 免控
+RANDOMEX 3 100
+#ACT
+<$CURRRTARGETNAME>.addbuff 50016
+<$CURRRTARGETNAME>.sendmsg 6 你被对方战神之怒所眩晕，眩晕时常3秒...
+
+
+;炎帝魔法盾燃烧攻击者35点MP
+#IF
+EQUAL U50 5
+LARGE U73 0
+CheckHumanState 1
+#ACT
+<$CURRRTARGETNAME>.HUMANMP - 35
+
+
+;冰系法盾被攻击每5秒为目标增加一层寒霜BUFF
+#IF
+EQUAL U50 6
+LARGE U79 0
+RANDOMEX 35 100
+checkHumanState 1
+large N$冰龙套装 1
+<$CURRRTARGETNAME>.SMALL N$冰系法盾 <$UTCNOW8>
+#ACT
+<$CURRRTARGETNAME>.ADDBUFF 50013 7 1
+<$CURRRTARGETNAME>.MOV N$冰系法盾 <$UTCNOW8>
+<$CURRRTARGETNAME>.INC N$冰系法盾 5
+
+#IF
+EQUAL U50 6
+LARGE U79 0
+RANDOMEX 35 100
+checkHumanState 1
+small N$冰龙套装 2
+<$CURRRTARGETNAME>.SMALL N$冰系法盾 <$UTCNOW8>
+#ACT
+<$CURRRTARGETNAME>.ADDBUFF 50013 4 1
+<$CURRRTARGETNAME>.MOV N$冰系法盾 <$UTCNOW8>
+<$CURRRTARGETNAME>.INC N$冰系法盾 5
+
+#OR
+EQUAL <$CURRRUSEMAGICID> 0
+EQUAL <$CURRRUSEMAGICID> 3
+EQUAL <$CURRRUSEMAGICID> 7
+EQUAL <$CURRRUSEMAGICID> 12
+EQUAL <$CURRRUSEMAGICID> 25
+EQUAL <$CURRRUSEMAGICID> 26
+EQUAL <$CURRRUSEMAGICID> 56
+EQUAL <$CURRRUSEMAGICID> 66
+EQUAL <$CURRRUSEMAGICID> 82
+#ACT
+MOV S$伤害类型 物理
+#ELSEACT
+MOV S$伤害类型 魔法
+
+
+;计算物理或魔法伤害减免点数
+#IF
+EQUAL S$伤害类型 物理
+LARGE N$物理伤减免 0
+#ACT
+DEC N$最终掉血值 N$物理伤减免
+
+#IF
+EQUAL S$伤害类型 魔法
+LARGE N$魔法伤减免 0
+#ACT
+DEC N$最终掉血值 N$魔法伤减免
+
+#IF
+EQUAL S$以彼之道 激活
+RANDOMEX 3 100
+#act
+MOV N$以彼之道人计算  0 
+CalcPer <$STR(N$最终掉血值)> 30 N$以彼之道人计算
+SetHumVar <$CURRRTARGETNAME> N$反伤掉血值  <$STR(N$以彼之道人计算)>
+<$CURRRTARGETNAME>.HUMANHP - <$STR(N$反伤掉血值)>
+
+#IF
+EQUAL S$血债血偿 激活
+#ACT
+MOV N$血债血偿  0 
+CalcPer <$MAXHP> 1 N$血债血偿计算
+SetHumVar <$CURRRTARGETNAME> N$血债血偿掉血值  <$STR(N$血债血偿计算)>
+<$CURRRTARGETNAME>.HUMANHP - <$STR(N$血债血偿掉血值)>
+
+#IF
+EQUAL S$九鼎之力 激活
+RANDOMEX 6 100
+LARGE <$UTCNOW8> <$STR(N$九鼎时间)>
+#act
+MOV N$九鼎时间 <$UTCNOW8>
+;INC N$九鼎时间 3
+AddhpPer + 10
+Gmexecute Backstep <$CURRRTARGETNAME> 2 
+
+#IF
+EQUAL S$破幻苍穹 激活
+RANDOMEX 3 100
+NOT hasbuff 50452
+equal N$挂机状态 0
+#act
+ADDBUFF 50451
+ADDBUFF 50452
+delaygoto 10 @破幻满血
+
+[@破幻满血]
+#IF
+#ACT
+AddhpPer + 100
+
+}

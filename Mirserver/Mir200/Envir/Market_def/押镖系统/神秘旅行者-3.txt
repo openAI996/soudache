@@ -1,0 +1,7 @@
+[@MAIN]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=490.0|y=20.0|width=50|height=50|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01040.png|esc=0>
+<Text|x=45.0|y=70.0|color=11008|size=17|text=我虽居无定所，四处漂泊，但心中也有牵挂之人，>
+<Text|x=45.0|y=95.0|size=18|color=11008|text=只是不知那人现在何处。>

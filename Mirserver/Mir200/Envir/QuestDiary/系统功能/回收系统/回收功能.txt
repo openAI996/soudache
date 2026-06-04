@@ -1,0 +1,1783 @@
+[@开启回收]
+{
+#IF
+#ACT
+MOV S$回收ID
+MOV S$单件回收
+MOV S$回收界面
+MOV N$绿晶矿 0
+MOV N$女娲石 0
+MOV N$天命神石 0
+GOTO @回收系统
+BREAK
+
+[@回收系统]
+#IF
+EQUAL S$回收ID *
+#ACT
+MOV S$回收ID
+MOV S$单件回收
+MOV N$绿晶矿 0
+MOV N$女娲石 0
+MOV N$天命神石 0
+
+#IF
+NOT EQUAL S$回收ID
+#ACT
+MOV N$绿晶矿 0
+MOV N$女娲石 0
+MOV N$天命神石 0
+MOV S$单件回收 <DBItemShow|x=212.0|y=120.0|makeindex=<$STR(S$回收ID)>|dblink=@回收系统#回收ID=*>
+INC N$<$cfg_hui_san(<$STR(N$单件位置)>_2)> <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+
+;<Text|x=202.0|y=413.0|color=255|size=18|text=8>
+
+#IF
+LARGE N$绿晶矿 0
+#ACT
+INC S$单件回收 <Text|x=202.0|y=413.0|color=255|size=18|text=<$STR(N$绿晶矿)>>
+
+#IF
+LARGE N$女娲石 0
+#ACT
+INC S$单件回收 <Text|x=302.0|y=413.0|color=255|size=18|text=<$STR(N$女娲石)>>
+
+#IF
+LARGE N$天命神石 0
+#ACT
+INC S$单件回收 <Text|x=402.0|y=413.0|color=255|size=18|text=<$STR(N$天命神石)>>
+
+#IF
+CHECK [98] 0
+#ACT
+MOV N$自动回收 0
+#IF
+CHECK [98] 1
+#ACT
+MOV N$自动回收 1
+#IF
+CHECK [401] 0
+#ACT
+MOV N$沃玛系列 0
+#IF
+CHECK [401] 1
+#ACT
+MOV N$沃玛系列 1
+#IF
+CHECK [402] 0
+#ACT
+MOV N$祖玛系列 0
+#IF
+CHECK [402] 1
+#ACT
+MOV N$祖玛系列 1
+#IF
+CHECK [403] 0
+#ACT
+MOV N$赤月系列 0
+#IF
+CHECK [403] 1
+#ACT
+MOV N$赤月系列 1
+#IF
+CHECK [404] 0
+#ACT
+MOV N$天之赤月 0
+#IF
+CHECK [404] 1
+#ACT
+MOV N$天之赤月 1
+#IF
+CHECK [405] 0
+#ACT
+MOV N$魔龙系列 0
+#IF
+CHECK [405] 1
+#ACT
+MOV N$魔龙系列 1
+#IF
+CHECK [406] 0
+#ACT
+MOV N$强化魔龙 0
+#IF
+CHECK [406] 1
+#ACT
+MOV N$强化魔龙 1
+#IF
+CHECK [407] 0
+#ACT
+MOV N$域级装备 0
+#IF
+CHECK [407] 1
+#ACT
+MOV N$域级装备 1
+#IF
+CHECK [408] 0
+#ACT
+MOV N$特殊装备 0
+#IF
+CHECK [408] 1
+#ACT
+MOV N$特殊装备 1
+
+#IF
+CHECKVAR HUMAN 回收极品 = 1
+#ACT
+MOV N$回收极品 0
+
+#IF
+CHECKVAR HUMAN 回收极品 = 0
+#ACT
+MOV N$回收极品 1
+
+#IF
+#ACT
+MOV N$坐标偏移1 230
+MOV N$坐标偏移2 280
+MOV N$坐标偏移3 330
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+INC N$坐标偏移1 5
+INC N$坐标偏移2 5
+INC N$坐标偏移3 5
+
+#IF
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=750|height=520|bg=1|loadDelay=0|scale9r=45|scale9t=45|scale9b=45|move=0|scale9l=45|reset=1|esc=1|img=private/xlxl/00000.png|show=4>
+<Img|x=327.0|y=7.0|img=private/biaoti/01052.png|esc=0>
+<Layout|x=685.0|y=5.0|width=50|height=50|link=@exit>
+<Button|x=698.0|y=19.0|color=255|size=18|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|link=@exit>
+<Img|x=50.0|y=90.0|width=395|height=280|rotate=0|scale9t=10|scale9r=10|scale9l=10|scale9b=10|img=private/xlxl/0018.png|esc=0>
+<Text|x=193.0|y=93.0|color=1025|size=18|text=↓请放入装备↓>
+<Img|x=213.0|y=121.0|img=private/xlxl/0003.png|esc=0>
+<Button|x=196.0|y=188.0|color=11008|nimg=private/xlxl/0011.png|size=17|text=单件分解|link=@单件回收>
+<Img|x=443.0|y=71.0|height=390|img=private/psllz/00010.png|esc=0>
+<Img|x=50.0|y=375.0|width=395|height=70|scale9l=10|scale9b=10|img=private/xlxl/0018.png|scale9r=10|esc=0|scale9t=10>
+<Text|x=60.0|y=400.0|color=255|size=16|text=分解可获得：>
+<Img|x=160.0|y=380.0|img=public/02128.png|esc=0>
+<Img|x=260.0|y=380.0|img=public/02128.png|esc=0>
+<Img|x=360.0|y=380.0|img=public/02128.png|esc=0>
+<Img|x=465.0|y=90.0|width=235|height=280|scale9t=10|scale9b=10|img=private/xlxl/0018.png|scale9r=10|esc=0|scale9l=10>
+<ItemShow|x=155.0|y=375.0|width=70|height=70|itemid=10462|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=255.0|y=375.0|width=70|height=70|itemid=10463|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=355.0|y=375.0|width=70|height=70|itemid=10464|itemcount=1|showtips=1|bgtype=0>
+<Img|x=465.0|y=375.0|width=235|height=70|scale9r=10|scale9t=10|scale9l=10|img=private/xlxl/0018.png|scale9b=10|esc=0>
+<Text|x=48.0|y=450.0|color=11023|size=16|text=1、除灵兽外，白色装备不可分解，自动回收将自动出售白色装备！>
+<Text|x=48.0|y=478.0|color=11023|size=16|text=2、拥有意外之财的玩家分解时，有20%概率获得双倍材料。>
+<Img|x=465.0|y=90.0|width=235|scale9r=10|scale9l=10|esc=0|img=private/xlxl/021600.png|scale9b=10|scale9t=10>
+<Text|x=487.0|y=98.0|color=251|size=16|outlinecolor=0|outline=1|text=背包中可分解装备>
+<ListView|children={2}|x=476|y=128|width=220|height=230|default=8|margin=1|direction=1|bounce=0|reload=0>
+<BAGITEMS|id=2|x=0.0|y=0.0|count=126|row=42|selecttype=1|select=<$STR(S0)>|exclude=<$STR(S0)>|condition=5#*,6#*,10#*,11#*,15#*,16#*,19#*,20#*,21#*,22#*,23#*,24#*,26#*,28#*,30#*,42#15,52#*,54#*,62#*,64#*|link=@单件选择>
+
+<CheckBox|x=55.0|y=230.0|pimg=public/1900000551.png|nimg=public/1900000550.png|default=<$STR(N$沃玛系列)>|checkboxid=1|link=@系列改变#改变标识=401>
+<Layout|x=85.0|y=225.0|width=100|height=40|color=x|link=@加载配置#读取类型=沃玛系列#位置标记=0#回收ID=*>
+<Text|x=85.0|y=<$STR(N$坐标偏移1)>|color=11004|size=18|text=沃玛系列|link=@加载配置#读取类型=沃玛系列#位置标记=0#回收ID=*>
+<CheckBox|x=190.0|y=230.0|pimg=public/1900000551.png|nimg=public/1900000550.png|default=<$STR(N$祖玛系列)>|checkboxid=1|link=@系列改变#改变标识=402>
+<Layout|x=220.0|y=225.0|width=100|height=40|color=x|link=@加载配置#读取类型=祖玛系列#位置标记=20#回收ID=*>
+<Text|x=220.0|y=<$STR(N$坐标偏移1)>|color=11004|size=18|text=祖玛系列|link=@加载配置#读取类型=祖玛系列#位置标记=20#回收ID=*>
+<CheckBox|x=325.0|y=230.0|pimg=public/1900000551.png|nimg=public/1900000550.png|default=<$STR(N$赤月系列)>|checkboxid=1|link=@系列改变#改变标识=403>
+<Layout|x=355.0|y=225.0|width=100|height=40|color=x|link=@加载配置#读取类型=赤月系列#位置标记=70#回收ID=*>
+<Text|x=355.0|y=<$STR(N$坐标偏移1)>|color=253|size=18|text=赤月系列|link=@加载配置#读取类型=赤月系列#位置标记=70#回收ID=*>
+
+<CheckBox|x=55.0|y=280.0|pimg=public/1900000551.png|nimg=public/1900000550.png|default=<$STR(N$天之赤月)>|checkboxid=1|link=@系列改变#改变标识=404>
+<Layout|x=85.0|y=275.0|width=100|height=40|color=x|link=@加载配置#读取类型=天之赤月#位置标记=110#回收ID=*>
+<Text|x=85.0|y=<$STR(N$坐标偏移2)>|color=253|size=18|text=天之赤月|link=@加载配置#读取类型=天之赤月#位置标记=110#回收ID=*>
+<CheckBox|x=190.0|y=280.0|pimg=public/1900000551.png|nimg=public/1900000550.png|default=<$STR(N$魔龙系列)>|checkboxid=1|link=@系列改变#改变标识=405>
+<Layout|x=220.0|y=275.0|width=100|height=40|color=x|link=@加载配置#读取类型=魔龙系列#位置标记=150#回收ID=*>
+<Text|x=220.0|y=<$STR(N$坐标偏移2)>|color=253|size=18|text=魔龙系列|link=@加载配置#读取类型=魔龙系列#位置标记=150#回收ID=*>
+<CheckBox|x=325.0|y=280.0|pimg=public/1900000551.png|nimg=public/1900000550.png|default=<$STR(N$强化魔龙)>|checkboxid=1|link=@系列改变#改变标识=406>
+<Layout|x=355.0|y=275.0|width=100|height=40|color=x|link=@加载配置#读取类型=强化魔龙#位置标记=180#回收ID=*>
+<Text|x=355.0|y=<$STR(N$坐标偏移2)>|color=253|size=18|text=强化魔龙|link=@加载配置#读取类型=强化魔龙#位置标记=180#回收ID=*>
+
+<CheckBox|x=55.0|y=330.0|pimg=public/1900000551.png|nimg=public/1900000550.png|default=<$STR(N$域级装备)>|checkboxid=1|link=@系列改变#改变标识=407>
+<Layout|x=85.0|y=325.0|width=100|height=40|color=x|link=@加载配置#读取类型=域级装备#位置标记=210#回收ID=*>
+<Text|x=85.0|y=<$STR(N$坐标偏移3)>|color=243|size=18|text=域级装备|link=@加载配置#读取类型=域级装备#位置标记=210#回收ID=*>
+<CheckBox|x=190.0|y=330.0|pimg=public/1900000551.png|nimg=public/1900000550.png|default=<$STR(N$特殊装备)>|checkboxid=1|link=@系列改变#改变标识=408>
+<Layout|x=220.0|y=325.0|width=100|height=40|color=x|link=@加载配置#读取类型=特殊装备#位置标记=280#回收ID=*>
+<Text|x=220.0|y=<$STR(N$坐标偏移3)>|color=243|size=18|text=特殊装备|link=@加载配置#读取类型=特殊装备#位置标记=280#回收ID=*>
+<CheckBox|x=325.0|y=330.0|nimg=public/1900000550.png|checkboxid=1|pimg=public/1900000551.png|default=<$STR(N$自动回收)>|link=@系列改变#改变标识=98>
+<Text|x=355.0|y=<$STR(N$坐标偏移3)>|color=251|size=18|outlinecolor=0|outline=1|text=自动回收>
+
+<CheckBox|x=50.0|y=50.0|nimg=public/1900000550.png|checkboxid=1|pimg=public/1900000551.png|default=<$STR(N$回收极品)>|link=@系列极品改变>
+<Text|x=80.0|y=52|color=251|size=18|outlinecolor=0|outline=1|text=回收极品>
+<Text|x=152.0|y=52.0|color=249|size=17|outlinecolor=0|outline=1|text=(勾选后将自动回收强化过、镶嵌过宝石等极品装备)>
+
+<Text|x=518.0|y=380.0|color=11042|size=16|text=请保管好贵重物品>
+<Button|x=527.0|y=404.0|color=251|nimg=private/xlxl/0011.png|size=17|text=一键回收|link=@一键回收装备>
+
+<$STR(S$回收界面)>
+<$STR(S$单件回收)>
+
+
+
+[@加载配置]
+#IF
+#ACT
+MOV N$屏宽 <$SCREENWIDTH>
+MOV N$屏高 <$SCREENHEIGHT>
+DIV N$屏宽 5
+DIV N$屏高 5
+MOV S$回收界面
+INC S$回收界面 <Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|scale9r=200|scale9l=200|img=public/1851400083.png|esc=0|scale9b=200|scale9t=200|link=@回收系统#回收界面=>
+INC S$回收界面 <Img|x=195.0|y=115.0|width=450|height=360|esc=0|scale9l=50|scale9r=50|scale9t=50|scale9b=50|img=private/psllz/021604.png|link=@穿透层>
+INC S$回收界面 <Layout|x=600.0|y=98.0|width=60|height=60|color=x|link=@回收系统#回收界面=>
+INC S$回收界面 <Button|x=605.0|y=127.0|color=255|size=18|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|link=@回收系统#回收界面=>
+INC S$回收界面 <Text|x=240.0|y=129.0|color=11054|size=18|text=装备名字>
+INC S$回收界面 <Text|x=455.0|y=129.0|color=11054|size=18|text=回收价格>
+;INC S$回收界面 <Text|x=530.0|y=129.0|color=11054|size=18|text=允许回收>
+INC S$回收界面 <Text|x=219.0|y=423.0|color=255|size=16|text=滑动下拉查看更多....>
+;INC S$回收界面 <Button|x=526.0|y=417.0|width=85|height=30|color=1025|nimg=public/buyan.png|size=18|text=全部勾选|link=@勾选回收>
+
+;-------------------------------------------------------------------------沃玛系列;-------------------------------------------------------------------------
+#IF
+EQUAL S$读取类型 沃玛系列
+#ACT
+INC S$回收界面 <ListView|children={110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270}|x=211.0|y=162.0|width=420|height=250|bounce=0|direction=1|reload=0|color=x|margin=1>
+
+INC S$回收界面 <Layout|id=150|children={151,152,153}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=151|x=10.0|y=5.0|color=1025|size=18|text=幽灵项链>
+INC S$回收界面 <Text|id=152|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=160|children={161,162,163}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=161|x=10.0|y=5.0|color=1025|size=18|text=幽灵手套>
+INC S$回收界面 <Text|id=162|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=170|children={171,172,173}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=171|x=10.0|y=5.0|color=1025|size=18|text=龙之戒指>
+INC S$回收界面 <Text|id=172|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=180|children={181,182,183}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=181|x=10.0|y=5.0|color=1025|size=18|text=生命项链>
+INC S$回收界面 <Text|id=182|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=190|children={191,192,193}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=191|x=10.0|y=5.0|color=1025|size=18|text=思贝儿手镯>
+INC S$回收界面 <Text|id=192|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=200|children={201,202,203}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=201|x=10.0|y=5.0|color=1025|size=18|text=红宝石戒指>
+INC S$回收界面 <Text|id=202|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=210|children={211,212,213}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=211|x=10.0|y=5.0|color=1025|size=18|text=天珠项链>
+INC S$回收界面 <Text|id=212|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=220|children={221,222,223}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=221|x=10.0|y=5.0|color=1025|size=18|text=心灵手镯>
+INC S$回收界面 <Text|id=222|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=230|children={231,232,233}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=231|x=10.0|y=5.0|color=1025|size=18|text=白金戒指>
+INC S$回收界面 <Text|id=232|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=240|children={241,242,243}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=241|x=10.0|y=5.0|color=1025|size=18|text=井中月>
+INC S$回收界面 <Text|id=242|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=250|children={251,252,253}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=251|x=10.0|y=5.0|color=1025|size=18|text=魔杖>
+INC S$回收界面 <Text|id=252|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=260|children={261,262,263}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=261|x=10.0|y=5.0|color=1025|size=18|text=无极棍>
+INC S$回收界面 <Text|id=262|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+;-------------------------------------------------------------------------祖玛系列;-------------------------------------------------------------------------
+#IF
+EQUAL S$读取类型 祖玛系列
+#ACT
+MOV S$容器列表1 110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570
+INC S$回收界面 <ListView|children={<$STR(S$容器列表1)>}|x=211.0|y=162.0|width=420|height=250|bounce=0|direction=1|reload=0|color=x|margin=1>
+
+INC S$回收界面 <Layout|id=110|children={111,112,113}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=111|x=10.0|y=5.0|color=1025|size=18|text=黑铁头盔>
+INC S$回收界面 <Text|id=112|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=120|children={121,122,123}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=121|x=10.0|y=5.0|color=1025|size=18|text=绿色项链>
+INC S$回收界面 <Text|id=122|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=130|children={131,132,133}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=131|x=10.0|y=5.0|color=1025|size=18|text=骑士手镯>
+INC S$回收界面 <Text|id=132|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=140|children={141,142,143}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=141|x=10.0|y=5.0|color=1025|size=18|text=力量戒指>
+INC S$回收界面 <Text|id=142|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=150|children={151,152,153}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=151|x=10.0|y=5.0|color=1025|size=18|text=恶魔铃铛>
+INC S$回收界面 <Text|id=152|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=160|children={161,162,163}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=161|x=10.0|y=5.0|color=1025|size=18|text=龙之手镯>
+INC S$回收界面 <Text|id=162|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=170|children={171,172,173}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=171|x=10.0|y=5.0|color=1025|size=18|text=紫碧螺>
+INC S$回收界面 <Text|id=172|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=180|children={181,182,183}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=181|x=10.0|y=5.0|color=1025|size=18|text=灵魂项链>
+INC S$回收界面 <Text|id=182|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=190|children={191,192,193}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=191|x=10.0|y=5.0|color=1025|size=18|text=三眼手镯>
+INC S$回收界面 <Text|id=192|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=200|children={201,202,203}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=201|x=10.0|y=5.0|color=1025|size=18|text=泰坦戒指>
+INC S$回收界面 <Text|id=202|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=210|children={211,212,213}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=211|x=10.0|y=5.0|color=1025|size=18|text=战神盔甲(男)>
+INC S$回收界面 <Text|id=212|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=220|children={221,222,223}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=221|x=10.0|y=5.0|color=1025|size=18|text=战神盔甲(女)>
+INC S$回收界面 <Text|id=222|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=230|children={231,232,233}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=231|x=10.0|y=5.0|color=1025|size=18|text=恶魔长袍(男)>
+INC S$回收界面 <Text|id=232|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=240|children={241,242,243}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=241|x=10.0|y=5.0|color=1025|size=18|text=恶魔长袍(女)>
+INC S$回收界面 <Text|id=242|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=250|children={251,252,253}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=251|x=10.0|y=5.0|color=1025|size=18|text=幽灵战衣(男)>
+INC S$回收界面 <Text|id=252|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=260|children={261,262,263}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=261|x=10.0|y=5.0|color=1025|size=18|text=幽灵战衣(女)>
+INC S$回收界面 <Text|id=262|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=270|children={271,272,273}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=271|x=10.0|y=5.0|color=1025|size=18|text=裁决之杖>
+INC S$回收界面 <Text|id=272|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=280|children={281,282,283}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=281|x=10.0|y=5.0|color=1025|size=18|text=骨玉权杖>
+INC S$回收界面 <Text|id=282|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=290|children={291,292,293}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=291|x=10.0|y=5.0|color=1025|size=18|text=龙纹剑>
+INC S$回收界面 <Text|id=292|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=300|children={301,302,303}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=301|x=10.0|y=5.0|color=1025|size=18|text=神秘头盔>
+INC S$回收界面 <Text|id=302|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=310|children={311,312,313}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=311|x=10.0|y=5.0|color=1025|size=18|text=神秘项链>
+INC S$回收界面 <Text|id=312|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=320|children={321,322,323}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=321|x=10.0|y=5.0|color=1025|size=18|text=神秘手镯>
+INC S$回收界面 <Text|id=322|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=330|children={331,332,333}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=331|x=10.0|y=5.0|color=1025|size=18|text=神秘戒指>
+INC S$回收界面 <Text|id=332|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=340|children={341,342,343}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=341|x=10.0|y=5.0|color=1025|size=18|text=神秘腰带>
+INC S$回收界面 <Text|id=342|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=350|children={351,352,353}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=351|x=10.0|y=5.0|color=1025|size=18|text=神秘靴子>
+INC S$回收界面 <Text|id=352|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+
+INC S$回收界面 <Layout|id=370|children={371,372,373}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=371|x=10.0|y=5.0|color=1025|size=18|text=虹魔头盔>
+INC S$回收界面 <Text|id=372|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=380|children={381,382,383}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=381|x=10.0|y=5.0|color=1025|size=18|text=虹魔项链>
+INC S$回收界面 <Text|id=382|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=390|children={391,392,393}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=391|x=10.0|y=5.0|color=1025|size=18|text=虹魔手镯>
+INC S$回收界面 <Text|id=392|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=400|children={401,402,403}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=401|x=10.0|y=5.0|color=1025|size=18|text=虹魔戒指>
+INC S$回收界面 <Text|id=402|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=410|children={411,412,413}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=411|x=10.0|y=5.0|color=1025|size=18|text=虹魔腰带>
+INC S$回收界面 <Text|id=412|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=420|children={421,422,423}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=421|x=10.0|y=5.0|color=1025|size=18|text=虹魔靴子>
+INC S$回收界面 <Text|id=422|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=440|children={441,442,443}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=441|x=10.0|y=5.0|color=1025|size=18|text=魔血头盔>
+INC S$回收界面 <Text|id=442|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=450|children={451,452,453}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=451|x=10.0|y=5.0|color=1025|size=18|text=魔血项链>
+INC S$回收界面 <Text|id=452|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=460|children={461,462,463}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=461|x=10.0|y=5.0|color=1025|size=18|text=魔血手镯>
+INC S$回收界面 <Text|id=462|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=470|children={471,472,473}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=471|x=10.0|y=5.0|color=1025|size=18|text=魔血戒指>
+INC S$回收界面 <Text|id=472|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=480|children={481,482,483}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=481|x=10.0|y=5.0|color=1025|size=18|text=魔血腰带>
+INC S$回收界面 <Text|id=482|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=490|children={491,492,493}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=491|x=10.0|y=5.0|color=1025|size=18|text=魔血靴子>
+INC S$回收界面 <Text|id=492|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+INC S$回收界面 <Layout|id=510|children={511,512,513}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=511|x=10.0|y=5.0|color=1025|size=18|text=记忆头盔>
+INC S$回收界面 <Text|id=512|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=520|children={521,522,523}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=521|x=10.0|y=5.0|color=1025|size=18|text=记忆项链>
+INC S$回收界面 <Text|id=522|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=530|children={531,532,533}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=531|x=10.0|y=5.0|color=1025|size=18|text=记忆手镯>
+INC S$回收界面 <Text|id=532|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=540|children={541,542,543}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=541|x=10.0|y=5.0|color=1025|size=18|text=记忆戒指>
+INC S$回收界面 <Text|id=542|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+
+INC S$回收界面 <Layout|id=560|children={561,562,563}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=561|x=10.0|y=5.0|color=1025|size=18|text=血煞头盔>
+INC S$回收界面 <Text|id=562|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+INC S$回收界面 <Layout|id=570|children={571,572,573}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=571|x=10.0|y=5.0|color=1025|size=18|text=黄沙百战盔>
+INC S$回收界面 <Text|id=572|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+;-------------------------------------------------------------------------赤月系列;-------------------------------------------------------------------------
+#IF
+EQUAL S$读取类型 赤月系列
+#ACT
+MOV S$容器列表1 110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550
+INC S$回收界面 <ListView|children={<$STR(S$容器列表1)>}|x=211.0|y=162.0|width=420|height=250|bounce=0|direction=1|reload=0|color=x|margin=1>
+
+INC S$回收界面 <Layout|id=110|children={111,112,113}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=111|x=10.0|y=5.0|color=1025|size=18|text=圣战头盔>
+INC S$回收界面 <Text|id=112|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=120|children={121,122,123}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=121|x=10.0|y=5.0|color=1025|size=18|text=圣战项链>
+INC S$回收界面 <Text|id=122|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=130|children={131,132,133}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=131|x=10.0|y=5.0|color=1025|size=18|text=圣战手镯>
+INC S$回收界面 <Text|id=132|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=140|children={141,142,143}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=141|x=10.0|y=5.0|color=1025|size=18|text=圣战戒指>
+INC S$回收界面 <Text|id=142|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=150|children={151,152,153}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=151|x=10.0|y=5.0|color=1025|size=18|text=圣战腰带>
+INC S$回收界面 <Text|id=152|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=160|children={161,162,163}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=161|x=10.0|y=5.0|color=1025|size=18|text=圣战靴子>
+INC S$回收界面 <Text|id=162|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=180|children={181,182,183}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=181|x=10.0|y=5.0|color=1025|size=18|text=法神头盔>
+INC S$回收界面 <Text|id=182|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=190|children={191,192,193}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=191|x=10.0|y=5.0|color=1025|size=18|text=法神项链>
+INC S$回收界面 <Text|id=192|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=200|children={201,202,203}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=201|x=10.0|y=5.0|color=1025|size=18|text=法神手镯>
+INC S$回收界面 <Text|id=202|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=210|children={211,212,213}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=211|x=10.0|y=5.0|color=1025|size=18|text=法神戒指>
+INC S$回收界面 <Text|id=212|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=220|children={221,222,223}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=221|x=10.0|y=5.0|color=1025|size=18|text=法神腰带>
+INC S$回收界面 <Text|id=222|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=230|children={231,232,233}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=231|x=10.0|y=5.0|color=1025|size=18|text=法神靴子>
+INC S$回收界面 <Text|id=232|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=250|children={251,252,253}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=251|x=10.0|y=5.0|color=1025|size=18|text=天尊头盔>
+INC S$回收界面 <Text|id=252|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=260|children={261,262,263}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=261|x=10.0|y=5.0|color=1025|size=18|text=天尊项链>
+INC S$回收界面 <Text|id=262|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=270|children={271,272,273}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=271|x=10.0|y=5.0|color=1025|size=18|text=天尊手镯>
+INC S$回收界面 <Text|id=272|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=280|children={281,282,283}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=281|x=10.0|y=5.0|color=1025|size=18|text=天尊戒指>
+INC S$回收界面 <Text|id=282|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=290|children={291,292,293}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=291|x=10.0|y=5.0|color=1025|size=18|text=天尊腰带>
+INC S$回收界面 <Text|id=292|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=300|children={301,302,303}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=301|x=10.0|y=5.0|color=1025|size=18|text=天尊靴子>
+INC S$回收界面 <Text|id=302|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=320|children={321,322,323}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=321|x=10.0|y=5.0|color=1025|size=18|text=天魔神甲>
+INC S$回收界面 <Text|id=322|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=330|children={331,332,333}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=331|x=10.0|y=5.0|color=1025|size=18|text=圣战宝甲>
+INC S$回收界面 <Text|id=332|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=340|children={341,342,343}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=341|x=10.0|y=5.0|color=1025|size=18|text=法神披风>
+INC S$回收界面 <Text|id=342|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=350|children={351,352,353}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=351|x=10.0|y=5.0|color=1025|size=18|text=霓裳羽衣>
+INC S$回收界面 <Text|id=352|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=360|children={361,362,363}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=361|x=10.0|y=5.0|color=1025|size=18|text=天尊道袍>
+INC S$回收界面 <Text|id=362|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=370|children={371,372,373}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=371|x=10.0|y=5.0|color=1025|size=18|text=天师长袍>
+INC S$回收界面 <Text|id=372|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*3>
+
+INC S$回收界面 <Layout|id=380|children={381,382,383}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=381|x=10.0|y=5.0|color=1025|size=18|text=怒斩>
+INC S$回收界面 <Text|id=382|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=390|children={391,392,393}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=391|x=10.0|y=5.0|color=1025|size=18|text=龙牙>
+INC S$回收界面 <Text|id=392|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=400|children={401,402,403}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=401|x=10.0|y=5.0|color=1025|size=18|text=逍遥扇>
+INC S$回收界面 <Text|id=402|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=410|children={411,412,413}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=411|x=10.0|y=5.0|color=1025|size=18|text=荆棘手镯>
+INC S$回收界面 <Text|id=412|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*2>
+
+;-------------------------------------------------------------------------天之赤月;-------------------------------------------------------------------------
+#IF
+EQUAL S$读取类型 天之赤月
+#ACT
+MOV S$容器列表1 110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550
+INC S$回收界面 <ListView|children={<$STR(S$容器列表1)>}|x=211.0|y=162.0|width=420|height=250|bounce=0|direction=1|reload=0|color=x|margin=1>
+
+INC S$回收界面 <Layout|id=110|children={111,112,113}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=111|x=10.0|y=5.0|color=1025|size=18|text=天之圣战头盔>
+INC S$回收界面 <Text|id=112|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=120|children={121,122,123}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=121|x=10.0|y=5.0|color=1025|size=18|text=天之圣战项链>
+INC S$回收界面 <Text|id=122|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=130|children={131,132,133}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=131|x=10.0|y=5.0|color=1025|size=18|text=天之圣战手镯>
+INC S$回收界面 <Text|id=132|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=140|children={141,142,143}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=141|x=10.0|y=5.0|color=1025|size=18|text=天之圣战戒指>
+INC S$回收界面 <Text|id=142|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=150|children={151,152,153}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=151|x=10.0|y=5.0|color=1025|size=18|text=天之圣战腰带>
+INC S$回收界面 <Text|id=152|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=160|children={161,162,163}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=161|x=10.0|y=5.0|color=1025|size=18|text=天之圣战靴子>
+INC S$回收界面 <Text|id=162|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=180|children={181,182,183}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=181|x=10.0|y=5.0|color=1025|size=18|text=天之法神头盔>
+INC S$回收界面 <Text|id=182|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=190|children={191,192,193}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=191|x=10.0|y=5.0|color=1025|size=18|text=天之法神项链>
+INC S$回收界面 <Text|id=192|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=200|children={201,202,203}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=201|x=10.0|y=5.0|color=1025|size=18|text=天之法神手镯>
+INC S$回收界面 <Text|id=202|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=210|children={211,212,213}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=211|x=10.0|y=5.0|color=1025|size=18|text=天之法神戒指>
+INC S$回收界面 <Text|id=212|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=220|children={221,222,223}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=221|x=10.0|y=5.0|color=1025|size=18|text=天之法神腰带>
+INC S$回收界面 <Text|id=222|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=230|children={231,232,233}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=231|x=10.0|y=5.0|color=1025|size=18|text=天之法神靴子>
+INC S$回收界面 <Text|id=232|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=250|children={251,252,253}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=251|x=10.0|y=5.0|color=1025|size=18|text=天之天尊头盔>
+INC S$回收界面 <Text|id=252|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=260|children={261,262,263}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=261|x=10.0|y=5.0|color=1025|size=18|text=天之天尊项链>
+INC S$回收界面 <Text|id=262|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=270|children={271,272,273}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=271|x=10.0|y=5.0|color=1025|size=18|text=天之天尊手镯>
+INC S$回收界面 <Text|id=272|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=280|children={281,282,283}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=281|x=10.0|y=5.0|color=1025|size=18|text=天之天尊戒指>
+INC S$回收界面 <Text|id=282|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=290|children={291,292,293}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=291|x=10.0|y=5.0|color=1025|size=18|text=天之天尊腰带>
+INC S$回收界面 <Text|id=292|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=300|children={301,302,303}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=301|x=10.0|y=5.0|color=1025|size=18|text=天之天尊靴子>
+INC S$回收界面 <Text|id=302|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=320|children={321,322,323}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=321|x=10.0|y=5.0|color=1025|size=18|text=干将>
+INC S$回收界面 <Text|id=322|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=330|children={331,332,333}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=331|x=10.0|y=5.0|color=1025|size=18|text=赤血魔剑>
+INC S$回收界面 <Text|id=332|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+;-------------------------------------------------------------------------魔龙系列;-------------------------------------------------------------------------
+#IF
+EQUAL S$读取类型 魔龙系列
+#ACT
+MOV S$容器列表1 110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550
+INC S$回收界面 <ListView|children={<$STR(S$容器列表1)>}|x=211.0|y=162.0|width=420|height=250|bounce=0|direction=1|reload=0|color=x|margin=1>
+
+INC S$回收界面 <Layout|id=110|children={111,112,113}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=111|x=10.0|y=5.0|color=1025|size=18|text=雷霆盔>
+INC S$回收界面 <Text|id=112|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=120|children={121,122,123}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=121|x=10.0|y=5.0|color=1025|size=18|text=雷霆项链>
+INC S$回收界面 <Text|id=122|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=130|children={131,132,133}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=131|x=10.0|y=5.0|color=1025|size=18|text=雷霆护腕>
+INC S$回收界面 <Text|id=132|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=140|children={141,142,143}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=141|x=10.0|y=5.0|color=1025|size=18|text=雷霆战戒>
+INC S$回收界面 <Text|id=142|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=150|children={151,152,153}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=151|x=10.0|y=5.0|color=1025|size=18|text=雷霆腰带>
+INC S$回收界面 <Text|id=152|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=160|children={161,162,163}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=161|x=10.0|y=5.0|color=1025|size=18|text=雷霆战靴>
+INC S$回收界面 <Text|id=162|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=180|children={181,182,183}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=181|x=10.0|y=5.0|color=1025|size=18|text=烈焰盔>
+INC S$回收界面 <Text|id=182|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=190|children={191,192,193}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=191|x=10.0|y=5.0|color=1025|size=18|text=烈焰项链>
+INC S$回收界面 <Text|id=192|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=200|children={201,202,203}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=201|x=10.0|y=5.0|color=1025|size=18|text=烈焰护腕>
+INC S$回收界面 <Text|id=202|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=210|children={211,212,213}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=211|x=10.0|y=5.0|color=1025|size=18|text=烈焰魔戒>
+INC S$回收界面 <Text|id=212|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=220|children={221,222,223}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=221|x=10.0|y=5.0|color=1025|size=18|text=烈焰腰带>
+INC S$回收界面 <Text|id=222|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=230|children={231,232,233}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=231|x=10.0|y=5.0|color=1025|size=18|text=烈焰魔靴>
+INC S$回收界面 <Text|id=232|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=250|children={251,252,253}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=251|x=10.0|y=5.0|color=1025|size=18|text=光芒盔>
+INC S$回收界面 <Text|id=252|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=260|children={261,262,263}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=261|x=10.0|y=5.0|color=1025|size=18|text=光芒项链>
+INC S$回收界面 <Text|id=262|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=270|children={271,272,273}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=271|x=10.0|y=5.0|color=1025|size=18|text=光芒护腕>
+INC S$回收界面 <Text|id=272|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=280|children={281,282,283}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=281|x=10.0|y=5.0|color=1025|size=18|text=光芒道戒>
+INC S$回收界面 <Text|id=282|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=290|children={291,292,293}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=291|x=10.0|y=5.0|color=1025|size=18|text=光芒腰带>
+INC S$回收界面 <Text|id=292|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=300|children={301,302,303}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=301|x=10.0|y=5.0|color=1025|size=18|text=光芒道靴>
+INC S$回收界面 <Text|id=302|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=320|children={321,322,323}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=321|x=10.0|y=5.0|color=1025|size=18|text=宙斯手镯>
+INC S$回收界面 <Text|id=322|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=330|children={331,332,333}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=331|x=10.0|y=5.0|color=1025|size=18|text=宙斯之戒>
+INC S$回收界面 <Text|id=332|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+;-------------------------------------------------------------------------强化魔龙;-------------------------------------------------------------------------
+#IF
+EQUAL S$读取类型 强化魔龙
+#ACT
+MOV S$容器列表1 110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550
+INC S$回收界面 <ListView|children={<$STR(S$容器列表1)>}|x=211.0|y=162.0|width=420|height=250|bounce=0|direction=1|reload=0|color=x|margin=1>
+
+INC S$回收界面 <Layout|id=110|children={111,112,113}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=111|x=10.0|y=5.0|color=1025|size=18|text=强化雷霆盔>
+INC S$回收界面 <Text|id=112|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=120|children={121,122,123}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=121|x=10.0|y=5.0|color=1025|size=18|text=强化雷霆项链>
+INC S$回收界面 <Text|id=122|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=130|children={131,132,133}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=131|x=10.0|y=5.0|color=1025|size=18|text=强化雷霆护腕>
+INC S$回收界面 <Text|id=132|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=140|children={141,142,143}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=141|x=10.0|y=5.0|color=1025|size=18|text=强化雷霆战戒>
+INC S$回收界面 <Text|id=142|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=150|children={151,152,153}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=151|x=10.0|y=5.0|color=1025|size=18|text=强化雷霆腰带>
+INC S$回收界面 <Text|id=152|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=160|children={161,162,163}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=161|x=10.0|y=5.0|color=1025|size=18|text=强化雷霆战靴>
+INC S$回收界面 <Text|id=162|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=180|children={181,182,183}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=181|x=10.0|y=5.0|color=1025|size=18|text=强化烈焰盔>
+INC S$回收界面 <Text|id=182|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=190|children={191,192,193}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=191|x=10.0|y=5.0|color=1025|size=18|text=强化烈焰项链>
+INC S$回收界面 <Text|id=192|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=200|children={201,202,203}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=201|x=10.0|y=5.0|color=1025|size=18|text=强化烈焰护腕>
+INC S$回收界面 <Text|id=202|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=210|children={211,212,213}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=211|x=10.0|y=5.0|color=1025|size=18|text=强化烈焰魔戒>
+INC S$回收界面 <Text|id=212|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=220|children={221,222,223}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=221|x=10.0|y=5.0|color=1025|size=18|text=强化烈焰腰带>
+INC S$回收界面 <Text|id=222|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=230|children={231,232,233}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=231|x=10.0|y=5.0|color=1025|size=18|text=强化烈焰魔靴>
+INC S$回收界面 <Text|id=232|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=250|children={251,252,253}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=251|x=10.0|y=5.0|color=1025|size=18|text=强化光芒盔>
+INC S$回收界面 <Text|id=252|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=260|children={261,262,263}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=261|x=10.0|y=5.0|color=1025|size=18|text=强化光芒项链>
+INC S$回收界面 <Text|id=262|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=270|children={271,272,273}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=271|x=10.0|y=5.0|color=1025|size=18|text=强化光芒护腕>
+INC S$回收界面 <Text|id=272|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=280|children={281,282,283}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=281|x=10.0|y=5.0|color=1025|size=18|text=强化光芒道戒>
+INC S$回收界面 <Text|id=282|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=290|children={291,292,293}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=291|x=10.0|y=5.0|color=1025|size=18|text=强化光芒腰带>
+INC S$回收界面 <Text|id=292|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=300|children={301,302,303}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=301|x=10.0|y=5.0|color=1025|size=18|text=强化光芒靴子>
+INC S$回收界面 <Text|id=302|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=320|children={321,322,323}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=321|x=10.0|y=5.0|color=1025|size=18|text=钢盔甲(男)>
+INC S$回收界面 <Text|id=322|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=330|children={331,332,333}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=331|x=10.0|y=5.0|color=1025|size=18|text=钢盔甲(女)>
+INC S$回收界面 <Text|id=332|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=340|children={341,342,343}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=341|x=10.0|y=5.0|color=1025|size=18|text=圣龙魔袍(男)>
+INC S$回收界面 <Text|id=342|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=350|children={351,352,353}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=351|x=10.0|y=5.0|color=1025|size=18|text=圣龙魔袍(女)>
+INC S$回收界面 <Text|id=352|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=360|children={361,362,363}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=361|x=10.0|y=5.0|color=1025|size=18|text=泰坦战衣(男)>
+INC S$回收界面 <Text|id=362|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=370|children={371,372,373}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=371|x=10.0|y=5.0|color=1025|size=18|text=泰坦战衣(女)>
+INC S$回收界面 <Text|id=372|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=380|children={381,382,383}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=381|x=10.0|y=5.0|color=1025|size=18|text=屠龙>
+INC S$回收界面 <Text|id=382|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=390|children={391,392,393}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=391|x=10.0|y=5.0|color=1025|size=18|text=嗜魂法杖>
+INC S$回收界面 <Text|id=392|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=400|children={401,402,403}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=401|x=10.0|y=5.0|color=1025|size=18|text=倚天剑>
+INC S$回收界面 <Text|id=402|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+INC S$回收界面 <Layout|id=410|children={411,412,413}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=411|x=10.0|y=5.0|color=1025|size=18|text=浮幽戒指>
+INC S$回收界面 <Text|id=412|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+;-------------------------------------------------------------------------域级装备;-------------------------------------------------------------------------
+#IF
+EQUAL S$读取类型 域级装备
+#ACT
+MOV S$容器列表1 110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650,660,670,680,690,700,710,720,730,740,750,760,770,780,790,800
+INC S$回收界面 <ListView|children={<$STR(S$容器列表1)>}|x=211.0|y=162.0|width=420|height=250|bounce=0|direction=1|reload=0|color=x|margin=1>
+
+INC S$回收界面 <Layout|id=110|children={111,112,113}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=111|x=10.0|y=5.0|color=1025|size=18|text=祈祷头盔>
+INC S$回收界面 <Text|id=112|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=120|children={121,122,123}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=121|x=10.0|y=5.0|color=1025|size=18|text=祈祷项链>
+INC S$回收界面 <Text|id=122|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=130|children={131,132,133}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=131|x=10.0|y=5.0|color=1025|size=18|text=祈祷手镯>
+INC S$回收界面 <Text|id=132|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=140|children={141,142,143}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=141|x=10.0|y=5.0|color=1025|size=18|text=祈祷戒指>
+INC S$回收界面 <Text|id=142|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=150|children={151,152,153}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=151|x=10.0|y=5.0|color=1025|size=18|text=祈祷腰带>
+INC S$回收界面 <Text|id=152|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=160|children={161,162,163}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=161|x=10.0|y=5.0|color=1025|size=18|text=祈祷靴子>
+INC S$回收界面 <Text|id=162|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=170|children={171,172,173}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=171|x=10.0|y=5.0|color=1025|size=18|text=祈祷之刃>
+INC S$回收界面 <Text|id=172|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=190|children={191,192,193}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=191|x=10.0|y=5.0|color=1025|size=18|text=铜域头盔>
+INC S$回收界面 <Text|id=192|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=200|children={201,202,203}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=201|x=10.0|y=5.0|color=1025|size=18|text=铜域项链>
+INC S$回收界面 <Text|id=202|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=210|children={211,212,213}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=211|x=10.0|y=5.0|color=1025|size=18|text=铜域手镯>
+INC S$回收界面 <Text|id=212|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=220|children={221,222,223}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=221|x=10.0|y=5.0|color=1025|size=18|text=铜域戒指>
+INC S$回收界面 <Text|id=222|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=230|children={231,232,233}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=231|x=10.0|y=5.0|color=1025|size=18|text=铜域腰带>
+INC S$回收界面 <Text|id=232|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=240|children={241,242,243}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=241|x=10.0|y=5.0|color=1025|size=18|text=铜域靴子>
+INC S$回收界面 <Text|id=242|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=260|children={261,262,263}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=261|x=10.0|y=5.0|color=1025|size=18|text=木域头盔>
+INC S$回收界面 <Text|id=262|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=270|children={271,272,273}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=271|x=10.0|y=5.0|color=1025|size=18|text=木域项链>
+INC S$回收界面 <Text|id=272|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=280|children={281,282,283}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=281|x=10.0|y=5.0|color=1025|size=18|text=木域手镯>
+INC S$回收界面 <Text|id=282|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=290|children={291,292,293}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=291|x=10.0|y=5.0|color=1025|size=18|text=木域戒指>
+INC S$回收界面 <Text|id=292|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=300|children={301,302,303}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=301|x=10.0|y=5.0|color=1025|size=18|text=木域腰带>
+INC S$回收界面 <Text|id=302|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=310|children={311,312,313}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=311|x=10.0|y=5.0|color=1025|size=18|text=木域靴子>
+INC S$回收界面 <Text|id=312|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=320|children={321,322,323}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=321|x=10.0|y=5.0|color=1025|size=18|text=土域头盔>
+INC S$回收界面 <Text|id=322|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=330|children={331,332,333}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=331|x=10.0|y=5.0|color=1025|size=18|text=土域项链>
+INC S$回收界面 <Text|id=332|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=340|children={341,342,343}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=341|x=10.0|y=5.0|color=1025|size=18|text=土域手镯>
+INC S$回收界面 <Text|id=342|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=350|children={351,352,353}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=351|x=10.0|y=5.0|color=1025|size=18|text=土域戒指>
+INC S$回收界面 <Text|id=352|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=360|children={361,362,363}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=361|x=10.0|y=5.0|color=1025|size=18|text=土域腰带>
+INC S$回收界面 <Text|id=362|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=370|children={371,372,373}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=371|x=10.0|y=5.0|color=1025|size=18|text=土域靴子>
+INC S$回收界面 <Text|id=372|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=380|children={381,382,383}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=381|x=10.0|y=5.0|color=1025|size=18|text=金域头盔>
+INC S$回收界面 <Text|id=382|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=390|children={391,392,393}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=391|x=10.0|y=5.0|color=1025|size=18|text=金域项链>
+INC S$回收界面 <Text|id=392|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=400|children={401,402,403}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=401|x=10.0|y=5.0|color=1025|size=18|text=金域手镯>
+INC S$回收界面 <Text|id=402|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=410|children={411,412,413}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=411|x=10.0|y=5.0|color=1025|size=18|text=金域戒指>
+INC S$回收界面 <Text|id=412|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=420|children={421,422,423}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=421|x=10.0|y=5.0|color=1025|size=18|text=金域腰带>
+INC S$回收界面 <Text|id=422|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=430|children={431,432,433}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=431|x=10.0|y=5.0|color=1025|size=18|text=金域靴子>
+INC S$回收界面 <Text|id=432|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+;INC S$回收界面 <Layout|id=440|children={441,442,443}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=441|x=10.0|y=5.0|color=1025|size=18|text=金域怒斩>
+;INC S$回收界面 <Text|id=442|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=450|children={451,452,453}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=451|x=10.0|y=5.0|color=1025|size=18|text=火域头盔>
+INC S$回收界面 <Text|id=452|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=460|children={461,462,463}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=461|x=10.0|y=5.0|color=1025|size=18|text=火域项链>
+INC S$回收界面 <Text|id=462|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=470|children={471,472,473}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=471|x=10.0|y=5.0|color=1025|size=18|text=火域手镯>
+INC S$回收界面 <Text|id=472|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=480|children={481,482,483}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=481|x=10.0|y=5.0|color=1025|size=18|text=火域戒指>
+INC S$回收界面 <Text|id=482|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=490|children={491,492,493}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=491|x=10.0|y=5.0|color=1025|size=18|text=火域腰带>
+INC S$回收界面 <Text|id=492|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=500|children={501,502,503}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=501|x=10.0|y=5.0|color=1025|size=18|text=火域靴子>
+INC S$回收界面 <Text|id=502|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=510|children={511,512,513}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=511|x=10.0|y=5.0|color=1025|size=18|text=水域项链>
+INC S$回收界面 <Text|id=512|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=520|children={521,522,523}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=521|x=10.0|y=5.0|color=1025|size=18|text=水域手镯>
+INC S$回收界面 <Text|id=522|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=530|children={531,532,533}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=531|x=10.0|y=5.0|color=1025|size=18|text=水域戒指>
+INC S$回收界面 <Text|id=532|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=540|children={541,542,543}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=541|x=10.0|y=5.0|color=1025|size=18|text=风域项链>
+INC S$回收界面 <Text|id=542|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=550|children={551,552,553}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=551|x=10.0|y=5.0|color=1025|size=18|text=风域手镯>
+INC S$回收界面 <Text|id=552|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=560|children={561,562,563}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=561|x=10.0|y=5.0|color=1025|size=18|text=风域戒指>
+INC S$回收界面 <Text|id=562|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=570|children={571,572,573}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=571|x=10.0|y=5.0|color=1025|size=18|text=藤域头盔>
+INC S$回收界面 <Text|id=572|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=580|children={581,582,583}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=581|x=10.0|y=5.0|color=1025|size=18|text=藤域项链>
+INC S$回收界面 <Text|id=582|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=590|children={591,592,593}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=591|x=10.0|y=5.0|color=1025|size=18|text=藤域手镯>
+INC S$回收界面 <Text|id=592|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=600|children={601,602,603}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=601|x=10.0|y=5.0|color=1025|size=18|text=藤域戒指>
+INC S$回收界面 <Text|id=602|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=610|children={611,612,613}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=611|x=10.0|y=5.0|color=1025|size=18|text=藤域腰带>
+INC S$回收界面 <Text|id=612|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=620|children={621,622,623}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=621|x=10.0|y=5.0|color=1025|size=18|text=藤域靴子>
+INC S$回收界面 <Text|id=622|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=630|children={631,632,633}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=631|x=10.0|y=5.0|color=1025|size=18|text=鬼蜮头盔>
+INC S$回收界面 <Text|id=632|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=640|children={641,642,643}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=641|x=10.0|y=5.0|color=1025|size=18|text=鬼蜮项链>
+INC S$回收界面 <Text|id=642|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=650|children={651,652,653}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=651|x=10.0|y=5.0|color=1025|size=18|text=鬼蜮手镯>
+INC S$回收界面 <Text|id=652|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=660|children={661,662,663}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=661|x=10.0|y=5.0|color=1025|size=18|text=鬼蜮戒指>
+INC S$回收界面 <Text|id=662|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=670|children={671,672,673}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=671|x=10.0|y=5.0|color=1025|size=18|text=鬼蜮腰带>
+INC S$回收界面 <Text|id=672|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=680|children={681,682,683}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=681|x=10.0|y=5.0|color=1025|size=18|text=鬼蜮靴子>
+INC S$回收界面 <Text|id=682|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=690|children={691,692,693}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=691|x=10.0|y=5.0|color=1025|size=18|text=神域头盔>
+INC S$回收界面 <Text|id=692|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=700|children={701,702,703}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=701|x=10.0|y=5.0|color=1025|size=18|text=神域项链>
+INC S$回收界面 <Text|id=702|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=710|children={711,712,713}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=711|x=10.0|y=5.0|color=1025|size=18|text=神域手套>
+INC S$回收界面 <Text|id=712|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=720|children={721,722,723}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=721|x=10.0|y=5.0|color=1025|size=18|text=神域戒指>
+INC S$回收界面 <Text|id=722|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=730|children={731,732,733}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=731|x=10.0|y=5.0|color=1025|size=18|text=神域腰带>
+INC S$回收界面 <Text|id=732|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+INC S$回收界面 <Layout|id=740|children={741,742,743}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=741|x=10.0|y=5.0|color=1025|size=18|text=神域靴子>
+INC S$回收界面 <Text|id=742|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+;INC S$回收界面 <Layout|id=750|children={751,752,753}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=751|x=10.0|y=5.0|color=1025|size=18|text=雷域项链>
+;INC S$回收界面 <Text|id=752|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=760|children={761,762,763}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=761|x=10.0|y=5.0|color=1025|size=18|text=雷域手镯>
+;INC S$回收界面 <Text|id=762|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=770|children={771,772,773}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=771|x=10.0|y=5.0|color=1025|size=18|text=雷域戒指>
+;INC S$回收界面 <Text|id=772|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;-------------------------------------------------------------------------特殊装备;-------------------------------------------------------------------------
+#IF
+EQUAL S$读取类型 特殊装备
+#ACT
+MOV S$容器列表1 110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650,660,670,680,690,700,710,720,730,740,750,760,770,780,790,800
+INC S$回收界面 <ListView|children={<$STR(S$容器列表1)>}|x=211.0|y=162.0|width=420|height=250|bounce=0|direction=1|reload=0|color=x|margin=1>
+
+INC S$回收界面 <Layout|id=110|children={111,112,113}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=111|x=10.0|y=5.0|color=1025|size=18|text=雷霆战甲(男)>
+INC S$回收界面 <Text|id=112|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=120|children={121,122,123}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=121|x=10.0|y=5.0|color=1025|size=18|text=雷霆战甲(女)>
+INC S$回收界面 <Text|id=122|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=130|children={131,132,133}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=131|x=10.0|y=5.0|color=1025|size=18|text=烈焰魔衣(男)>
+INC S$回收界面 <Text|id=132|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=140|children={141,142,143}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=141|x=10.0|y=5.0|color=1025|size=18|text=烈焰魔衣(女)>
+INC S$回收界面 <Text|id=142|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=150|children={151,152,153}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=151|x=10.0|y=5.0|color=1025|size=18|text=光芒道袍(男)>
+INC S$回收界面 <Text|id=152|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=160|children={161,162,163}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=161|x=10.0|y=5.0|color=1025|size=18|text=光芒道袍(女)>
+INC S$回收界面 <Text|id=162|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=170|children={171,172,173}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=171|x=10.0|y=5.0|color=1025|size=18|text=白虎战甲(男)>
+INC S$回收界面 <Text|id=172|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+INC S$回收界面 <Layout|id=180|children={181,182,183}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=181|x=10.0|y=5.0|color=1025|size=18|text=白虎战甲(女)>
+INC S$回收界面 <Text|id=182|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+INC S$回收界面 <Layout|id=190|children={191,192,193}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=191|x=10.0|y=5.0|color=1025|size=18|text=朱雀魔袍(男)>
+INC S$回收界面 <Text|id=192|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+INC S$回收界面 <Layout|id=200|children={201,202,203}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=201|x=10.0|y=5.0|color=1025|size=18|text=朱雀魔袍(女)>
+INC S$回收界面 <Text|id=202|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+INC S$回收界面 <Layout|id=210|children={211,212,213}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=211|x=10.0|y=5.0|color=1025|size=18|text=青龙道袍(男)>
+INC S$回收界面 <Text|id=212|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+INC S$回收界面 <Layout|id=220|children={221,222,223}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=221|x=10.0|y=5.0|color=1025|size=18|text=青龙道袍(女)>
+INC S$回收界面 <Text|id=222|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+;INC S$回收界面 <Layout|id=230|children={231,232,233}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=231|x=10.0|y=5.0|color=1025|size=18|text=凤凰魔甲>
+;INC S$回收界面 <Text|id=232|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=240|children={241,242,243}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=241|x=10.0|y=5.0|color=1025|size=18|text=凤凰魔衣>
+;INC S$回收界面 <Text|id=242|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=250|children={251,252,253}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=251|x=10.0|y=5.0|color=1025|size=18|text=赤金逍遥扇>
+;INC S$回收界面 <Text|id=252|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=260|children={261,262,263}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=261|x=10.0|y=5.0|color=1025|size=18|text=金域怒斩>
+;INC S$回收界面 <Text|id=262|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+;INC S$回收界面 <Layout|id=270|children={271,272,273}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=271|x=10.0|y=5.0|color=1025|size=18|text=黄金鬼炎>
+;INC S$回收界面 <Text|id=272|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+;INC S$回收界面 <Layout|id=280|children={281,282,283}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=281|x=10.0|y=5.0|color=1025|size=18|text=天之开天>
+;INC S$回收界面 <Text|id=282|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+INC S$回收界面 <Layout|id=290|children={291,292,293}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=291|x=10.0|y=5.0|color=1025|size=18|text=落魄神兵>
+INC S$回收界面 <Text|id=292|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+INC S$回收界面 <Layout|id=300|children={301,302,303}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=301|x=10.0|y=5.0|color=1025|size=18|text=海边月>
+INC S$回收界面 <Text|id=302|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=310|children={311,312,313}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=311|x=10.0|y=5.0|color=1025|size=18|text=上古屠龙>
+INC S$回收界面 <Text|id=312|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=320|children={321,322,323}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=321|x=10.0|y=5.0|color=1025|size=18|text=光之权杖>
+INC S$回收界面 <Text|id=322|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=330|children={331,332,333}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=331|x=10.0|y=5.0|color=1025|size=18|text=审判之刃>
+INC S$回收界面 <Text|id=332|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=340|children={341,342,343}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=341|x=10.0|y=5.0|color=1025|size=18|text=鬼炎>
+INC S$回收界面 <Text|id=342|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*5>
+
+;INC S$回收界面 <Layout|id=370|children={371,372,373}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=371|x=10.0|y=5.0|color=1025|size=18|text=天之骨玉权杖>
+;INC S$回收界面 <Text|id=372|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+;INC S$回收界面 <Layout|id=380|children={381,382,383}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=381|x=10.0|y=5.0|color=1025|size=18|text=紫金嗜魂法杖>
+;INC S$回收界面 <Text|id=382|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+;INC S$回收界面 <Layout|id=390|children={391,392,393}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=391|x=10.0|y=5.0|color=1025|size=18|text=天之龙纹剑>
+;INC S$回收界面 <Text|id=392|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+;INC S$回收界面 <Layout|id=400|children={401,402,403}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=401|x=10.0|y=5.0|color=1025|size=18|text=黄金龙纹剑>
+;INC S$回收界面 <Text|id=402|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+;INC S$回收界面 <Layout|id=410|children={411,412,413}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=411|x=10.0|y=5.0|color=1025|size=18|text=天之裁决>
+;INC S$回收界面 <Text|id=412|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+;INC S$回收界面 <Layout|id=420|children={421,422,423}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=421|x=10.0|y=5.0|color=1025|size=18|text=黄金裁决>
+;INC S$回收界面 <Text|id=422|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*4>
+
+;INC S$回收界面 <Layout|id=430|children={431,432,433}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=431|x=10.0|y=5.0|color=1025|size=18|text=黄金屠龙>
+;INC S$回收界面 <Text|id=432|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*6>
+
+INC S$回收界面 <Layout|id=440|children={441,442,443}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=441|x=10.0|y=5.0|color=1025|size=18|text=玄天>
+INC S$回收界面 <Text|id=442|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=450|children={451,452,453}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=451|x=10.0|y=5.0|color=1025|size=18|text=霸者之刃>
+INC S$回收界面 <Text|id=452|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=460|children={461,462,463}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=461|x=10.0|y=5.0|color=1025|size=18|text=开天>
+INC S$回收界面 <Text|id=462|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=470|children={471,472,473}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=471|x=10.0|y=5.0|color=1025|size=18|text=镇天>
+INC S$回收界面 <Text|id=472|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+INC S$回收界面 <Layout|id=480|children={481,482,483}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=481|x=10.0|y=5.0|color=1025|size=18|text=上古龙牙>
+INC S$回收界面 <Text|id=482|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+;INC S$回收界面 <Layout|id=490|children={491,492,493}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=491|x=10.0|y=5.0|color=1025|size=18|text=凤凰法杖>
+;INC S$回收界面 <Text|id=492|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+;INC S$回收界面 <Layout|id=500|children={501,502,503}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=501|x=10.0|y=5.0|color=1025|size=18|text=莫邪>
+;INC S$回收界面 <Text|id=502|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+;INC S$回收界面 <Layout|id=510|children={511,512,513}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=511|x=10.0|y=5.0|color=1025|size=18|text=昆仑扇>
+;INC S$回收界面 <Text|id=512|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+;INC S$回收界面 <Layout|id=520|children={521,522,523}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=521|x=10.0|y=5.0|color=1025|size=18|text=百辟刀>
+;INC S$回收界面 <Text|id=522|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*3>
+
+;INC S$回收界面 <Layout|id=530|children={531,532,533}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=531|x=10.0|y=5.0|color=1025|size=18|text=无极剑>
+;INC S$回收界面 <Text|id=532|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=540|children={541,542,543}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=541|x=10.0|y=5.0|color=1025|size=18|text=死神之吻>
+;INC S$回收界面 <Text|id=542|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=550|children={551,552,553}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=551|x=10.0|y=5.0|color=1025|size=18|text=祈祷魔刃>
+;INC S$回收界面 <Text|id=552|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=560|children={561,562,563}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=561|x=10.0|y=5.0|color=1025|size=18|text=上古鬼炎>
+;INC S$回收界面 <Text|id=562|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+INC S$回收界面 <Layout|id=570|children={571,572,573}|x=0.0|y=0.0|width=400|height=30|color=*>
+INC S$回收界面 <Text|id=571|x=10.0|y=5.0|color=1025|size=18|text=藤域法杖>
+INC S$回收界面 <Text|id=572|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*4>
+
+;INC S$回收界面 <Layout|id=610|children={611,612,613}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=611|x=10.0|y=5.0|color=1025|size=18|text=蓝魔之泪>
+;INC S$回收界面 <Text|id=612|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*1>
+
+;INC S$回收界面 <Layout|id=620|children={621,622,623}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=621|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【凡】>
+;INC S$回收界面 <Text|id=622|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*7>
+
+;INC S$回收界面 <Layout|id=630|children={631,632,633}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=631|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【圣】>
+;INC S$回收界面 <Text|id=632|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*7>
+
+;INC S$回收界面 <Layout|id=640|children={641,642,643}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=641|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【皇】>
+;INC S$回收界面 <Text|id=642|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*7>
+
+;INC S$回收界面 <Layout|id=650|children={651,652,653}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=651|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【帝】>
+;INC S$回收界面 <Text|id=652|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*7>
+
+;INC S$回收界面 <Layout|id=660|children={661,662,663}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=661|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【神】>
+;INC S$回收界面 <Text|id=662|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+;INC S$回收界面 <Layout|id=670|children={671,672,673}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=671|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【暗】>
+;INC S$回收界面 <Text|id=672|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*7>
+
+;INC S$回收界面 <Layout|id=680|children={681,682,683}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=681|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【妖】>
+;INC S$回收界面 <Text|id=682|x=240.0|y=5.0|color=1025|size=18|text=绿晶矿:*7>
+
+;INC S$回收界面 <Layout|id=690|children={691,692,693}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=691|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【魔】>
+;INC S$回收界面 <Text|id=692|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*1>
+
+;INC S$回收界面 <Layout|id=700|children={701,702,703}|x=0.0|y=0.0|width=400|height=30|color=*>
+;INC S$回收界面 <Text|id=701|x=10.0|y=5.0|color=1025|size=18|text=蓝魔项链【仙】>
+;INC S$回收界面 <Text|id=702|x=240.0|y=5.0|color=1025|size=18|text=女娲石:*2>
+
+#IF
+#ACT
+GOTO @回收系统
+BREAK
+
+;改变标识后跳转到回收调整脚本
+[@系列改变]
+#IF
+CHECK [<$STR(S$改变标识)>] 0
+#ACT
+SET [<$STR(S$改变标识)>] 1
+GOTO @回收调整
+BREAK
+#IF
+CHECK [<$STR(S$改变标识)>] 1
+#ACT
+SET [<$STR(S$改变标识)>] 0
+GOTO @回收调整
+BREAK
+
+[@系列极品改变]
+#IF
+CHECKVAR HUMAN 回收极品 = 0
+#ACT
+CALCVAR HUMAN 回收极品 = 1
+SAVEVAR HUMAN 回收极品
+GOTO @回收调整
+BREAK
+
+#IF
+CHECKVAR HUMAN 回收极品 = 1
+#ACT
+CALCVAR HUMAN 回收极品 = 0
+SAVEVAR HUMAN 回收极品
+GOTO @回收调整
+BREAK
+
+;重新检查回收状态然后设置回收数据
+[@回收调整]
+;如果自动回收标识为关闭则清空回收数据后跳转至对话界面
+#IF
+CHECK [98] 0
+#ACT
+AUTORECYCLING
+GOTO @回收系统
+BREAK
+
+;如果自动回收标识为开启则清空回收数据后重新整理各项回收数据开启自动回收
+#IF
+CHECK [98] 1
+#ACT
+MOV S$回收数据
+DELRECYCLINGTYPE -1
+
+#IF
+NOT CHECKTITLE 双倍金币回收
+#ACT
+INC S$回收数据 1;
+#IF
+equal u5 0
+CHECKTITLE 双倍金币回收
+#ACT
+INC S$回收数据 10;
+
+;#IF
+;equal u5 1
+;CHECKTITLE 双倍金币回收
+;#ACT
+;INC S$回收数据 19;
+
+#IF
+CHECK [401] 1
+equal u5 0
+#ACT
+INC S$回收数据 11;
+#IF
+CHECK [402] 1
+equal u5 0
+#ACT
+INC S$回收数据 12;
+#IF
+CHECK [403] 1
+equal u5 0
+#ACT
+INC S$回收数据 13;
+#IF
+CHECK [404] 1
+equal u5 0
+#ACT
+INC S$回收数据 14;
+#IF
+CHECK [405] 1
+equal u5 0
+#ACT
+INC S$回收数据 15;
+#IF
+CHECK [406] 1
+equal u5 0
+#ACT
+INC S$回收数据 16;
+#IF
+CHECK [407] 1
+equal u5 0
+#ACT
+INC S$回收数据 17;
+#IF
+CHECK [408] 1
+equal u5 0
+#ACT
+INC S$回收数据 18;
+
+
+;#IF
+;CHECK [401] 1
+;equal u5 1
+;#ACT
+;INC S$回收数据 20;
+;#IF
+;CHECK [402] 1
+;equal u5 1
+;#ACT
+;INC S$回收数据 21;
+;#IF
+;CHECK [403] 1
+;equal u5 1
+;#ACT
+;INC S$回收数据 22;
+;#IF
+;CHECK [404] 1
+;equal u5 1
+;#ACT
+;INC S$回收数据 23;
+;#IF
+;CHECK [405] 1
+;equal u5 1
+;#ACT
+;INC S$回收数据 24;
+;#IF
+;CHECK [406] 1
+;equal u5 1
+;#ACT
+;INC S$回收数据 25;
+;#IF
+;CHECK [407] 1
+;equal u5 1
+;#ACT
+;INC S$回收数据 26;
+;#IF
+;CHECK [408] 1
+;equal u5 1
+;#ACT
+;INC S$回收数据 27;
+
+#IF
+#ACT
+ADDRECYCLINGTYPE <$STR(S$回收数据)>
+AUTORECYCLING 1 5
+GOTO @回收系统
+BREAK
+
+
+[@单件选择]
+#IF
+#ACT
+MOV N$单件位置 0
+GetItemNameByMakeIndex <$STR(S0)> S$单件名称
+GetDBItemFieldValue <$STR(S$单件名称)> idx S$物品IDX
+MOV N$单件位置 <$GetTypeBRow(cfg_hui_san,1,<$STR(S$物品IDX)>)>
+
+#IF
+SMALL N$单件位置 1
+#ACT
+SENDMSG 9 该物品不在回收列表内！
+BREAK
+
+#IF
+LARGE N$单件位置 0
+#ACT
+MOV S$回收ID <$STR(S0)>
+GOTO @回收系统
+BREAK
+
+[@单件回收]
+#IF
+EQUAL S$回收ID
+#ACT
+SENDMSG 9 请选择你要回收的物品！
+BREAK
+
+#IF
+NOT CheckBagItem <$STR(S$回收ID)>
+#ACT
+SENDMSG 9 没有找到需要回收的对应物品！
+BREAK
+
+#IF
+NOT CheckBagItem <$STR(S$回收ID)>
+#ACT
+GetItemNameByMakeIndex <$STR(S$回收ID)> S$单件名称
+GetDBItemFieldValue <$STR(S$单件名称)> idx S$物品IDX
+MOV N$单件位置 <$GetTypeBRow(cfg_hui_san,1,<$STR(S$物品IDX)>)>
+
+#IF
+EQUAL S$单件名称 1级玉胚
+CHECKTITLE 双倍金币回收
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$回收ID)>
+MOV N$金币收益 0
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+MUL N$金币收益 N$金币收益 <$LINKITEM.COUNT>
+INC N$金币收益 N$金币收益
+GIVE 金币 <$STR(N$金币收益)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+#IF
+EQUAL S$单件名称 1级玉胚
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$回收ID)>
+MOV N$金币收益 0
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+MUL N$金币收益 N$金币收益 <$LINKITEM.COUNT>
+GIVE 金币 <$STR(N$金币收益)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+
+#IF
+EQUAL S$单件名称 2级玉胚
+CHECKTITLE 双倍金币回收
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$回收ID)>
+MOV N$金币收益 0
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+MUL N$金币收益 N$金币收益 <$LINKITEM.COUNT>
+INC N$金币收益 N$金币收益
+GIVE 金币 <$STR(N$金币收益)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+#IF
+EQUAL S$单件名称 2级玉胚
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$回收ID)>
+MOV N$金币收益 0
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+MUL N$金币收益 N$金币收益 <$LINKITEM.COUNT>
+GIVE 金币 <$STR(N$金币收益)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+
+#IF
+EQUAL S$单件名称 3级玉胚
+CHECKTITLE 双倍金币回收
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$回收ID)>
+MOV N$金币收益 0
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+MUL N$金币收益 N$金币收益 <$LINKITEM.COUNT>
+INC N$金币收益 N$金币收益
+GIVE 金币 <$STR(N$金币收益)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+#IF
+EQUAL S$单件名称 3级玉胚
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$回收ID)>
+MOV N$金币收益 0
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+MUL N$金币收益 N$金币收益 <$LINKITEM.COUNT>
+GIVE 金币 <$STR(N$金币收益)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+
+
+#IF
+EQUAL <$cfg_hui_san(<$STR(N$单件位置)>_2)> 金币
+CHECKTITLE 双倍金币回收
+#ACT
+MOV N$金币收益 0
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+GIVE 金币 <$STR(N$金币收益)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+#IF
+EQUAL <$cfg_hui_san(<$STR(N$单件位置)>_2)> 金币
+NOT CHECKTITLE 双倍金币回收
+#ACT
+MOV N$金币收益 0
+INC N$金币收益  <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+GIVE 金币 <$STR(N$金币收益)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+
+#IF
+CheckBagItem <$STR(S$回收ID)>
+CheckContainsText <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>  意外之财
+RANDOMEX 15 100
+#ACT
+MOV N$单件位置 0
+GetItemNameByMakeIndex <$STR(S$回收ID)> S$单件名称
+GetDBItemFieldValue <$STR(S$单件名称)> idx S$物品IDX
+MOV N$单件位置 <$GetTypeBRow(cfg_hui_san,1,<$STR(S$物品IDX)>)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+GIVE <$cfg_hui_san(<$STR(N$单件位置)>_2)> <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+GIVE <$cfg_hui_san(<$STR(N$单件位置)>_2)> <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+SENDMSG 9 <font color='#ff0000'>你成功回收<$STR(S$单件名称)>获得：<$cfg_hui_san(<$STR(N$单件位置)>_2)>*<$cfg_hui_san(<$STR(N$单件位置)>_3)>,意外之财额外提供<$cfg_hui_san(<$STR(N$单件位置)>_2)>*<$cfg_hui_san(<$STR(N$单件位置)>_3)></font>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+
+#IF
+CheckBagItem <$STR(S$回收ID)>
+#ACT
+MOV N$单件位置 0
+GetItemNameByMakeIndex <$STR(S$回收ID)> S$单件名称
+GetDBItemFieldValue <$STR(S$单件名称)> idx S$物品IDX
+MOV N$单件位置 <$GetTypeBRow(cfg_hui_san,1,<$STR(S$物品IDX)>)>
+DelItemByMakeIndex <$STR(S$回收ID)>
+GIVE <$cfg_hui_san(<$STR(N$单件位置)>_2)> <$cfg_hui_san(<$STR(N$单件位置)>_3)>
+SENDMSG 9 你成功回收<$STR(S$单件名称)>获得：<$cfg_hui_san(<$STR(N$单件位置)>_2)>*<$cfg_hui_san(<$STR(N$单件位置)>_3)>
+MOV S0
+MOV S$回收ID
+GOTO @回收系统
+BREAK
+
+
+
+[@一键回收装备]
+#IF
+CHECKTITLE 双倍金币回收
+#ACT
+DELRECYCLINGTYPE -1
+MOV S$回收数据 10;
+
+#IF
+NOT CHECKTITLE 双倍金币回收
+#ACT
+MOV S$回收数据 1;
+DELRECYCLINGTYPE -1
+
+#IF
+CHECK [401] 1
+#ACT
+INC S$回收数据 11;
+#IF
+CHECK [402] 1
+#ACT
+INC S$回收数据 12;
+#IF
+CHECK [403] 1
+#ACT
+INC S$回收数据 13;
+#IF
+CHECK [404] 1
+#ACT
+INC S$回收数据 14;
+#IF
+CHECK [405] 1
+#ACT
+INC S$回收数据 15;
+#IF
+CHECK [406] 1
+#ACT
+INC S$回收数据 16;
+#IF
+CHECK [407] 1
+#ACT
+INC S$回收数据 17;
+#IF
+CHECK [408] 1
+#ACT
+INC S$回收数据 18;
+
+#IF
+#ACT
+ADDRECYCLINGTYPE <$STR(S$回收数据)>
+RECYCLING 
+delaygoto 100 @回收调整
+BREAK
+
+
+
+
+}

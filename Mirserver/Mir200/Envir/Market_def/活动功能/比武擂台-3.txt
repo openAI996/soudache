@@ -1,0 +1,31 @@
+[@main]
+<Img|x=0.0|y=20.0|height=280|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01005.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=<活动名称：/FCOLOR=11008>　比武擂台>
+<RText|x=285.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=<活动时间：/FCOLOR=11008>全天开放>
+<RText|x=45.0|y=130.0|color=255|size=16|outlinecolor=0|outline=1|text=<1、/FCOLOR=249>进入比武场后，观战玩家无法攻击，只有擂台玩家方可攻击！>
+<RText|x=45.0|y=155.0|color=255|size=16|outlinecolor=0|outline=1|text=<2、/FCOLOR=249>比武开始系统将自动扣除双方各<500元宝/FCOLOR=11003>，胜者可得<1000元宝/FCOLOR=11003>！>
+<RText|x=45.0|y=180.0|color=255|size=16|outlinecolor=0|outline=1|text=<3、/FCOLOR=249>进入比武场后不允许使用任何传送道具，小退方可退出比武场！>
+<RText|x=46.0|y=215.0|color=255|size=16|outlinecolor=0|outline=1|text=当前擂主：<<$str(A1)>/FCOLOR=250>>
+<RText|x=311.0|y=215.0|color=255|size=16|outlinecolor=0|outline=1|text=挑战人：<<$str(A2)>/FCOLOR=250>>
+<Layout|x=69.0|y=235.0|width=100|height=50|link=@前往比武场>
+<Text|x=70.0|y=250.0|color=11008|size=17|outline=1|outlinecolor=0|text=前往比武场|link=@前往比武场>
+<Img|x=330.0|y=258.0|img=public/00020.png|esc=0>
+<Layout|x=320.0|y=244.0|width=100|height=40|link=@EXIT>
+<Text|x=355.0|y=250.0|color=11008|size=18|text=关闭|link=@EXIT>
+<Img|x=45.0|y=256.0|width=20|height=20|esc=0|img=public/00014.png>
+<Text|x=45.0|y=100.0|size=17|color=11013|text=比武场规则：>
+
+
+[@前往比武场]
+#IF
+RANDOM 2
+#ACT
+ChangeModeEx 9 65535
+mapmove biwu 26 38
+#ELSEACT
+ChangeModeEx 9 65535
+mapmove biwu 34 39
+

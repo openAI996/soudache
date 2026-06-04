@@ -1,0 +1,33 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=现在我可以把你直接传送至沙巴克皇宫中！>
+<Text|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=不过你必须满足我的要求，而我的要求嘛……>
+<Text|x=45.0|y=120.0|outlinecolor=0|color=255|outline=1|size=17|text=你给我10元宝吧，不算多吧？\ \>
+<Img|x=47.0|y=165.0|width=18|height=18|esc=0|img=public/00012.png>
+<Layout|x=65.0|y=152.0|width=100|height=40|link=@空降2号点>
+<Text|x=72.0|y=160.0|color=11009|size=18|outline=1|outlinecolor=0|text=好的我要进去|link=@空降2号点>
+<Text|x=42.0|y=219.0|color=11003|size=18|text=可传送时间为：21:30-21:50>
+
+
+
+[@空降2号点]
+#IF
+CHECKMONEY 元宝 < 10
+#act
+messagebox 10元宝你都没有，我无能为力！
+break
+
+#IF
+CHECKMONEY 元宝 > 9
+EQUAL <$HOUR> 21
+LARGE <$MINUTE> 29
+SMALL <$MINUTE> 51
+#ACT
+MONEY 元宝 - 10
+MAPmove 0150 7 20 2
+BREAK
+#elseact
+MESSAGEBOX 仅能21.30-21.50之间进入!
+BREAK

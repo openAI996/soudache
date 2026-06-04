@@ -1,0 +1,2140 @@
+[@八门遁甲界面]
+{
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+DELBUTTON 39 10 
+GOTO @八门电脑界面
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+DELBUTTON 39 10 
+GOTO @八门手机界面
+
+
+[@八门手机界面]
+#IF
+#ACT
+MOV S$八门界面
+INC S$八门界面 <RText|x=15.0|y=60.0|outline=1|outlinecolor=0|color=11002|size=15|text=每个角色身上有八门，分为：<开门、休门、生门/FCOLOR=11007>\<伤门、杜门、景门、死门、惊门/FCOLOR=11007>，达到一定的等\级即可开启。开启需要完成对应的挑战任务，通\过挑战后开启各门即可获得一条强大的属性。\<当角色八门全开后即可习得本职业终极技能！/FCOLOR=58>>
+INC S$八门界面 <Img|x=75.0|y=15.0|img=public/bmbt.png|esc=0>
+INC S$八门界面 <Img|x=15.0|y=180.0|width=320|scale9b=30|scale9t=30|img=public/bmbj.png|scale9r=30|scale9l=30|esc=0>
+INC S$八门界面 <Text|x=35.0|y=200.0|color=11007||size=17|text=开门：>
+INC S$八门界面 <Text|x=35.0|y=235.0|color=11007|size=17|text=休门：>
+INC S$八门界面 <Text|x=35.0|y=270.0|color=11007|size=17|text=生门：>
+INC S$八门界面 <Text|x=35.0|y=305.0|color=11007|size=17|text=伤门：>
+INC S$八门界面 <Text|x=180.0|y=200.0|color=11007||size=17|text=杜门：>
+INC S$八门界面 <Text|x=180.0|y=235.0|color=11007|size=17|text=景门：>
+INC S$八门界面 <Text|x=180.0|y=270.0|color=11007|size=17|text=死门：>
+INC S$八门界面 <Text|x=180.0|y=305.0|color=11007|size=17|text=惊门：>
+INC S$八门界面 <Img|x=70.0|y=360.0|width=220|esc=0|scale9r=5|img=private/pmh/016.png|scale9b=5|scale9l=5|scale9t=5>
+INC S$八门界面 <Button|x=50.0|y=410.0|width=120|height=40|rotate=0|nimg=public/1900001023.png|color=11034|size=18|text=八门开启|link=@八门开启>
+INC S$八门界面 <Button|x=180.0|y=410.0|width=120|height=40|rotate=0|nimg=public/1900001023.png|color=11034|size=18|text=属性洗练|link=@属性洗练>
+
+
+#IF
+CHECKLEVELEX < 35
+#ACT
+INC S$八门界面 <Text|x=85.0|y=200.0|color=11027||size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 34
+EQUAL T20
+#ACT
+INC S$八门界面 <Text|x=85.0|y=200.0|color=11027||size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 34
+NOT EQUAL T20
+#ACT
+MOV N$开门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+INC S$八门界面 <Text|x=90.0|y=200.0|color=<$cfg_mig_lieb(<$STR(N$开门索引)>_2)>|size=17|text=<$STR(T20)>>
+INC S$八门界面 <Button|x=30.0|y=195.0|width=145|height=35|nimg=public/100000361.png|color=255|size=18|text=|tips=<$cfg_mig_lieb(<$STR(N$开门索引)>_7)>|tipsx=10|tipsy=70>
+
+
+
+#IF
+CHECKLEVELEX < 45
+#ACT
+INC S$八门界面 <Text|x=85.0|y=235.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 44
+EQUAL T21
+#ACT
+INC S$八门界面 <Text|x=85.0|y=235.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 44
+NOT EQUAL T21
+#ACT
+MOV N$休门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+INC S$八门界面 <Text|x=90.0|y=235.0|color=<$cfg_mig_lieb(<$STR(N$休门索引)>_2)>|size=17|text=<$STR(T21)>>
+INC S$八门界面 <Button|x=30.0|y=230.0|width=145|height=35|nimg=public/100000361.png|color=255|size=18|text=|tips=<$cfg_mig_lieb(<$STR(N$休门索引)>_7)>|tipsx=10|tipsy=70>
+
+
+#IF
+CHECKLEVELEX < 55
+#ACT
+INC S$八门界面 <Text|x=85.0|y=270.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 54
+EQUAL T22
+#ACT
+INC S$八门界面 <Text|x=85.0|y=270.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 54
+NOT EQUAL T22
+#ACT
+MOV N$生门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+INC S$八门界面 <Text|x=90.0|y=270.0|color=<$cfg_mig_lieb(<$STR(N$生门索引)>_2)>|size=17|text=<$STR(T22)>>
+INC S$八门界面 <Button|x=30.0|y=265.0|width=145|height=35|nimg=public/100000361.png|color=255|size=18|text=|tips=<$cfg_mig_lieb(<$STR(N$生门索引)>_7)>|tipsx=10|tipsy=70>
+
+
+#IF
+CHECKLEVELEX < 65
+#ACT
+INC S$八门界面 <Text|x=85.0|y=305.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 64
+EQUAL T23
+#ACT
+INC S$八门界面 <Text|x=85.0|y=305.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 64
+NOT EQUAL T23
+#ACT
+MOV N$伤门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+INC S$八门界面 <Text|x=90.0|y=305.0|color=<$cfg_mig_lieb(<$STR(N$伤门索引)>_2)>|size=17|text=<$STR(T23)>>
+INC S$八门界面 <Button|x=30.0|y=300.0|width=145|height=35|nimg=public/100000361.png|color=255|size=18|text=|tips=<$cfg_mig_lieb(<$STR(N$伤门索引)>_7)>|tipsx=10|tipsy=70>
+
+
+#IF
+CHECKLEVELEX < 75
+#ACT
+INC S$八门界面 <Text|x=230.0|y=200.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 74
+EQUAL T24
+#ACT
+INC S$八门界面 <Text|x=230.0|y=200.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 74
+NOT EQUAL T24
+#ACT
+MOV N$杜门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+INC S$八门界面 <Text|x=235.0|y=200.0|color=<$cfg_mig_lieb(<$STR(N$杜门索引)>_2)>|size=17|text=<$STR(T24)>>
+INC S$八门界面 <Button|x=175.0|y=195.0|width=145|height=35|nimg=public/100000361.png|color=255|size=18|text=|tips=<$cfg_mig_lieb(<$STR(N$杜门索引)>_7)>|tipsx=10|tipsy=70>
+
+
+#IF
+CHECKLEVELEX < 83
+#ACT
+INC S$八门界面 <Text|x=230.0|y=235.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 82
+EQUAL T25
+#ACT
+INC S$八门界面 <Text|x=230.0|y=235.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 82
+NOT EQUAL T25
+#ACT
+MOV N$景门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+INC S$八门界面 <Text|x=235.0|y=235.0|color=<$cfg_mig_lieb(<$STR(N$景门索引)>_2)>|size=17|text=<$STR(T25)>>
+INC S$八门界面 <Button|x=175.0|y=230.0|width=145|height=35|nimg=public/100000361.png|color=255|size=18|text=|tips=<$cfg_mig_lieb(<$STR(N$景门索引)>_7)>|tipsx=10|tipsy=70>
+
+
+#IF
+CHECKLEVELEX < 86
+#ACT
+INC S$八门界面 <Text|x=230.0|y=270.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 85
+EQUAL T26
+#ACT
+INC S$八门界面 <Text|x=230.0|y=270.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 85
+NOT EQUAL T26
+#ACT
+MOV N$死门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+INC S$八门界面 <Text|x=235.0|y=270.0|color=<$cfg_mig_lieb(<$STR(N$死门索引)>_2)>|size=17|text=<$STR(T26)>>
+INC S$八门界面 <Button|x=175.0|y=265.0|width=145|height=35|nimg=public/100000361.png|color=255|size=18|text=|tips=<$cfg_mig_lieb(<$STR(N$死门索引)>_7)>|tipsx=10|tipsy=70>
+
+
+#IF
+CHECKLEVELEX < 90
+#ACT
+INC S$八门界面 <Text|x=230.0|y=305.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 89
+EQUAL T27
+#ACT
+INC S$八门界面 <Text|x=230.0|y=305.0|color=11027|size=17|text=（未开启）>
+#IF
+CHECKLEVELEX > 89
+NOT EQUAL T27
+#ACT
+INC S$八门界面 <Text|x=235.0|y=305.0|color=249|size=17|text=<$STR(T27)>>
+
+
+#IF
+EQUAL T20
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=开门开启等级：35级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T21
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=休门开启等级：45级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T22
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=生门开启等级：55级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T23
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=伤门开启等级：65级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T24
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=杜门开启等级：75级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T25
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=景门开启等级：83级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T26
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=死门开启等级：86级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T27
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=惊门开启等级：90级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+NOT EQUAL T27
+#ACT
+INC S$八门界面 <Text|x=82.0|y=360.0|color=11007|size=17|outlinecolor=0|outline=1|text=所有八门已全部开启>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+
+[@八门电脑界面]
+#IF
+#ACT
+MOV S$八门界面
+INC S$八门界面 <RText|x=10.0|y=55.0|outline=1|outlinecolor=0|color=11002|size=12|text=每个角色身上有八门，分为：<开门、休门、生门/FCOLOR=11007>\<伤门、杜门、景门、死门、惊门/FCOLOR=11007>，达到一定的等\级即可开启。开启需要完成对应的挑战任务，通\过挑战后开启各门即可获得一条强大的属性。\<当角色八门全开后即可习得本职业终极技能！/FCOLOR=58>>
+INC S$八门界面 <Img|x=65.0|y=15.0|width=150|height=30|img=public/bmbt.png|esc=0>
+INC S$八门界面 <Img|x=10.0|y=140.0|width=255|height=130|scale9b=30|scale9t=30|img=public/bmbj.png|scale9r=30|scale9l=30|esc=0>
+INC S$八门界面 <RText|x=25.0|y=160.0|outline=1|outlinecolor=0|color=11005|size=13|text=开门：>
+INC S$八门界面 <RText|x=25.0|y=185.0|outline=1|outlinecolor=0|color=11005|size=13|text=休门：>
+INC S$八门界面 <RText|x=25.0|y=210.0|outline=1|outlinecolor=0|color=11005|size=13|text=生门：>
+INC S$八门界面 <RText|x=25.0|y=235.0|outline=1|outlinecolor=0|color=11005|size=13|text=伤门：>
+INC S$八门界面 <RText|x=150.0|y=160.0|outline=1|outlinecolor=0|color=11005|size=13|text=杜门：>
+INC S$八门界面 <RText|x=150.0|y=185.0|outline=1|outlinecolor=0|color=11005|size=13|text=景门：>
+INC S$八门界面 <RText|x=150.0|y=210.0|outline=1|outlinecolor=0|color=11005|size=13|text=死门：>
+INC S$八门界面 <RText|x=150.0|y=235.0|outline=1|outlinecolor=0|color=11005|size=13|text=惊门：>
+INC S$八门界面 <Img|x=35.0|y=270.0|width=200|esc=0|scale9r=5|img=private/pmh/016.png|scale9b=5|scale9l=5|scale9t=5>
+INC S$八门界面 <Button|x=30.0|y=310.0|width=90|height=30|rotate=0|nimg=public/1900001023.png|color=11032|size=16|text=八门开启|link=@八门开启>
+INC S$八门界面 <Button|x=150.0|y=310.0|width=90|height=30|rotate=0|nimg=public/1900001023.png|color=11032|size=16|text=属性洗练|link=@属性洗练>
+
+#IF
+CHECKLEVELEX < 35
+#ACT
+INC S$八门界面 <RText|x=60.0|y=160.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 34
+EQUAL T20
+#ACT
+INC S$八门界面 <RText|x=60.0|y=160.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 34
+NOT EQUAL T20
+#ACT
+MOV N$开门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+INC S$八门界面 <Text|x=65.0|y=160.0|color=<$cfg_mig_lieb(<$STR(N$开门索引)>_2)>|size=13|text=<$STR(T20)>>
+INC S$八门界面 <Img|x=20.0|y=155.0|width=115|height=25|tips=<$cfg_mig_lieb(<$STR(N$开门索引)>_6)>|tipsx=10|tipsy=70|img=public/100000361.png>
+
+#IF
+CHECKLEVELEX < 45
+#ACT
+INC S$八门界面 <RText|x=60.0|y=185.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 44
+EQUAL T21
+#ACT
+INC S$八门界面 <RText|x=60.0|y=185.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 44
+NOT EQUAL T21
+#ACT
+MOV N$休门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+INC S$八门界面 <Text|x=65.0|y=185.0|color=<$cfg_mig_lieb(<$STR(N$休门索引)>_2)>|size=13|text=<$STR(T21)>>
+INC S$八门界面 <Img|x=20.0|y=180.0|width=115|height=25|tips=<$cfg_mig_lieb(<$STR(N$休门索引)>_6)>|tipsx=10|tipsy=70|img=public/100000361.png>
+
+#IF
+CHECKLEVELEX < 55
+#ACT
+INC S$八门界面 <RText|x=60.0|y=210.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 54
+EQUAL T22
+#ACT
+INC S$八门界面 <RText|x=60.0|y=210.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 54
+NOT EQUAL T22
+#ACT
+MOV N$生门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+INC S$八门界面 <Text|x=65.0|y=210.0|color=<$cfg_mig_lieb(<$STR(N$生门索引)>_2)>|size=13|text=<$STR(T22)>>
+INC S$八门界面 <Img|x=20.0|y=205.0|width=115|height=25|tips=<$cfg_mig_lieb(<$STR(N$生门索引)>_6)>|tipsx=10|tipsy=70|img=public/100000361.png>
+
+#IF
+CHECKLEVELEX < 65
+#ACT
+INC S$八门界面 <RText|x=60.0|y=235.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 64
+EQUAL T23
+#ACT
+INC S$八门界面 <RText|x=60.0|y=235.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 64
+NOT EQUAL T23
+#ACT
+MOV N$伤门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+INC S$八门界面 <Text|x=65.0|y=235.0|color=<$cfg_mig_lieb(<$STR(N$伤门索引)>_2)>|size=13|text=<$STR(T23)>>
+INC S$八门界面 <Img|x=20.0|y=230.0|width=115|height=25|tips=<$cfg_mig_lieb(<$STR(N$伤门索引)>_6)>|tipsx=10|tipsy=70|img=public/100000361.png>
+
+
+#IF
+CHECKLEVELEX < 75
+#ACT
+INC S$八门界面 <RText|x=185.0|y=160.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 74
+EQUAL T24
+#ACT
+INC S$八门界面 <RText|x=185.0|y=160.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 74
+NOT EQUAL T24
+#ACT
+MOV N$杜门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+INC S$八门界面 <Text|x=190.0|y=160.0|color=<$cfg_mig_lieb(<$STR(N$杜门索引)>_2)>|size=13|text=<$STR(T24)>>
+INC S$八门界面 <Img|x=145.0|y=155.0|width=115|height=25|tips=<$cfg_mig_lieb(<$STR(N$杜门索引)>_6)>|tipsx=10|tipsy=70|img=public/100000361.png>
+
+#IF
+CHECKLEVELEX < 83
+#ACT
+INC S$八门界面 <RText|x=185.0|y=185.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 82
+EQUAL T25
+#ACT
+INC S$八门界面 <RText|x=185.0|y=185.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 82
+NOT EQUAL T25
+#ACT
+MOV N$景门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+INC S$八门界面 <Text|x=190.0|y=185.0|color=<$cfg_mig_lieb(<$STR(N$景门索引)>_2)>|size=13|text=<$STR(T25)>>
+INC S$八门界面 <Img|x=145.0|y=180.0|width=115|height=25|tips=<$cfg_mig_lieb(<$STR(N$景门索引)>_6)>|tipsx=10|tipsy=70|img=public/100000361.png>
+
+#IF
+CHECKLEVELEX < 86
+#ACT
+INC S$八门界面 <RText|x=185.0|y=210.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 85
+EQUAL T26
+#ACT
+INC S$八门界面 <RText|x=185.0|y=210.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 85
+NOT EQUAL T26
+#ACT
+MOV N$死门索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+INC S$八门界面 <Text|x=190.0|y=210.0|color=<$cfg_mig_lieb(<$STR(N$死门索引)>_2)>|size=13|text=<$STR(T26)>>
+INC S$八门界面 <Img|x=145.0|y=205.0|width=115|height=25|tips=<$cfg_mig_lieb(<$STR(N$死门索引)>_6)>|tipsx=10|tipsy=70|img=public/100000361.png>
+
+#IF
+CHECKLEVELEX < 90
+#ACT
+INC S$八门界面 <RText|x=185.0|y=235.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 89
+EQUAL T27
+#ACT
+INC S$八门界面 <RText|x=185.0|y=235.0|outline=1|outlinecolor=0|color=11025|size=13|text=（未开启）>
+#IF
+CHECKLEVELEX > 89
+NOT EQUAL T27
+#ACT
+INC S$八门界面 <RText|x=190.0|y=235.0|outline=1|outlinecolor=0|color=249|size=13|text=<$STR(T27)>>
+
+#IF
+EQUAL T20
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=开门开启等级：35级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T21
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=休门开启等级：45级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T22
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=生门开启等级：55级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T23
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=伤门开启等级：65级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T24
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=杜门开启等级：75级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T25
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=景门开启等级：83级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T26
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=死门开启等级：86级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+EQUAL T27
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=惊门开启等级：90级>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+#IF
+NOT EQUAL T27
+#ACT
+INC S$八门界面 <Text|x=47.0|y=275.0|color=11007|size=14|outlinecolor=0|outline=1|text=所有八门已全部开启>
+ADDBUTTON 39 10 <$STR(S$八门界面)>
+BREAK
+
+
+
+
+
+
+
+
+
+
+[@八门天命开启]
+#IF
+EQUAL <$KILLMONNAMEEX> 开门守护者
+#ACT
+MOV S$命格数值1 蓝色
+MOV S$命格数值2 蓝色
+MOV S$命格数值3 蓝色
+MOV S$选择索引1 T151
+MOV S$选择索引2 T152
+MOV S$选择索引3 T153
+
+#IF
+EQUAL <$KILLMONNAMEEX> 休门守护者
+#ACT
+MOV S$命格数值1
+MOV S$命格数值2
+MOV S$命格数值3
+RANSJSTR 蓝色#420|紫色#420|橙色#160 1 3 S$命格数值1 S$无用
+RANSJSTR 蓝色#420|紫色#420|橙色#160 1 3 S$命格数值2 S$无用
+RANSJSTR 蓝色#420|紫色#420|橙色#160 1 3 S$命格数值3 S$无用
+MOV S$选择索引1 T154
+MOV S$选择索引2 T155
+MOV S$选择索引3 T156
+
+#IF
+EQUAL <$KILLMONNAMEEX> 生门守护者
+#ACT
+MOV S$命格数值1
+MOV S$命格数值2
+MOV S$命格数值3
+RANSJSTR 蓝色#400|紫色#400|橙色#195|红色#5 1 3 S$命格数值1 S$无用
+RANSJSTR 蓝色#400|紫色#400|橙色#195|红色#5 1 3 S$命格数值2 S$无用
+RANSJSTR 蓝色#400|紫色#400|橙色#195|红色#5 1 3 S$命格数值3 S$无用
+MOV S$选择索引1 T157
+MOV S$选择索引2 T158
+MOV S$选择索引3 T159
+
+#IF
+EQUAL <$KILLMONNAMEEX> 伤门守护者
+#ACT
+MOV S$命格数值1
+MOV S$命格数值2
+MOV S$命格数值3
+RANSJSTR 蓝色#380|紫色#380|橙色#210|红色#30 1 3 S$命格数值1 S$无用
+RANSJSTR 蓝色#380|紫色#380|橙色#210|红色#30 1 3 S$命格数值2 S$无用
+RANSJSTR 蓝色#380|紫色#380|橙色#210|红色#30 1 3 S$命格数值3 S$无用
+MOV S$选择索引1 T160
+MOV S$选择索引2 T161
+MOV S$选择索引3 T162
+
+#IF
+EQUAL <$KILLMONNAMEEX> 杜门守护者
+#ACT
+MOV S$命格数值1
+MOV S$命格数值2
+MOV S$命格数值3
+RANSJSTR 蓝色#340|紫色#380|橙色#230|红色#50 1 3 S$命格数值1 S$无用
+RANSJSTR 蓝色#340|紫色#380|橙色#230|红色#50 1 3 S$命格数值2 S$无用
+RANSJSTR 蓝色#340|紫色#380|橙色#230|红色#50 1 3 S$命格数值3 S$无用
+MOV S$选择索引1 T163
+MOV S$选择索引2 T164
+MOV S$选择索引3 T165
+
+#IF
+EQUAL <$KILLMONNAMEEX> 景门守护者
+#ACT
+MOV S$命格数值1
+MOV S$命格数值2
+MOV S$命格数值3
+RANSJSTR 蓝色#300|紫色#330|橙色#270|红色#100 1 3 S$命格数值1 S$无用
+RANSJSTR 蓝色#300|紫色#330|橙色#270|红色#100 1 3 S$命格数值2 S$无用
+RANSJSTR 蓝色#300|紫色#330|橙色#270|红色#100 1 3 S$命格数值3 S$无用
+MOV S$选择索引1 T166
+MOV S$选择索引2 T167
+MOV S$选择索引3 T168
+
+#IF
+EQUAL <$KILLMONNAMEEX> 死门守护者
+#ACT
+MOV S$命格数值1
+MOV S$命格数值2
+MOV S$命格数值3
+RANSJSTR 蓝色#200|紫色#330|橙色#320|红色#150 1 3 S$命格数值1 S$无用
+RANSJSTR 蓝色#200|紫色#330|橙色#320|红色#150 1 3 S$命格数值2 S$无用
+RANSJSTR 蓝色#200|紫色#330|橙色#320|红色#150 1 3 S$命格数值3 S$无用
+MOV S$选择索引1 T169
+MOV S$选择索引2 T170
+MOV S$选择索引3 T171
+
+#IF
+EQUAL U50 1
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 擒龙手 3
+MOV T27 擒龙手
+GOTO @八门遁甲界面
+BREAK
+#IF
+EQUAL U50 2
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 武力盾 3
+MOV T27 武力盾
+GOTO @八门遁甲界面
+BREAK
+#IF
+EQUAL U50 3
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 龙影剑术 3
+MOV T27 龙影剑术
+GOTO @八门遁甲界面
+BREAK
+#IF
+EQUAL U50 4
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 群体雷电术 3
+MOV T27 群体雷电术
+GOTO @八门遁甲界面
+BREAK
+#IF
+EQUAL U50 5
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 火龙烈焰 3
+MOV T27 火龙烈焰
+GOTO @八门遁甲界面
+BREAK
+#IF
+EQUAL U50 6
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 冰霜群雨 3
+MOV T27 冰霜群雨
+GOTO @八门遁甲界面
+BREAK
+#IF
+EQUAL U50 7
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 破天一剑 3
+MOV T27 破天一剑
+GOTO @八门遁甲界面
+BREAK
+#IF
+EQUAL U50 8
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 噬血术 3
+MOV T27 噬血术
+GOTO @八门遁甲界面
+BREAK
+#IF
+EQUAL U50 9
+EQUAL <$KILLMONNAMEEX> 惊门守护者
+#ACT
+ADDSKILL 死亡之眼 3
+MOV T27 死亡之眼
+GOTO @八门遁甲界面
+BREAK
+
+
+;统计对应颜色命格所包含的命格数据
+#IF
+#ACT
+MOV S$蓝色数组 一马当先#36|暗夜幻影#36|时来运转#36|杀人狂魔#36|青云直上#55|德高望重#36|乐善好施#36|死亡送葬#36|昼伏夜行#36|终极审判#55|法外狂徒#36|天纵奇才#36|丹凤卸甲#36|日进斗金#36|指点迷津#55|女中豪杰#36|比翼双飞#36|桃李天下#36|替天行道#36|蓝魔附体#36|情比金坚#36|红魔附体#36|人小鬼大#38|立地成佛#29|活跃达人#28|神秘之姿#28|杏林圣手#28|
+MOV S$紫色数组 取之有道#40|弑神者#90|意外之财#35|药圣尊者#80|烹饪大师#80|巧夺天工#70|铁匠传人#80|神之打野#20|赏金猎人#70|酒中仙#70|妙手回春#70|草木之灵#30|道玄传人#30|天尊传人#30|御灵传人#35|天下第一#25|逆水行舟#25|狩猎之心#30|诅咒护体#30|强化达人#30|鸿运当头#30|
+MOV S$橙色数组 神魔之体#55|空间王者#40|韧性十足#40|天神赐福#40|绝处逢生#40|战神之怒#40|凤凰涅槃#40|不灭金身#40|与日俱进#40|柳暗花明#40|万人敬仰#40|唤龙术#40|恶贯满盈#55|奋勇向前#40|生命之王#40|巫蛊之术#40|诅咒之王#40|霸王之体#40|天雷之力#35|以彼之道#35|祸起萧墙#35|离火燎原#35|八面玲珑#25|百发百中#30|卓越守护#25|金砖之力#30|
+MOV S$红色数组 老当益壮#10|天生神力#10|九鼎之力#25|破幻苍穹#25|神雷天罚#25|无相神功#25|重燃战火#25|疾风劲火#25|霸权压制#40|藐视神罚#40|热血沸腾#35|布衣神相#40|道法自然#40|毁灭之力#40|暴走战神#40|降神附体#60|斗转星移#60|生命献祭#60|御兽天师#60|清风明月#60|血之狂暴#60|阴阳逆转#55|魔力穿刺#35|血债血偿#25|恶魔血脉#25|铁血守护#55|
+
+;减掉角色已经拥有的蓝色命格数据
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T20)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+MOV S$削减内容 <$STR(T20)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T21)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+MOV S$削减内容 <$STR(T21)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T22)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+MOV S$削减内容 <$STR(T22)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T23)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+MOV S$削减内容 <$STR(T23)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T24)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+MOV S$削减内容 <$STR(T24)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T25)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+MOV S$削减内容 <$STR(T25)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T26)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+MOV S$削减内容 <$STR(T26)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+
+;减掉角色已经拥有的紫色命格数据
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T20)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+MOV S$削减内容 <$STR(T20)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T21)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+MOV S$削减内容 <$STR(T21)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T22)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+MOV S$削减内容 <$STR(T22)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T23)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+MOV S$削减内容 <$STR(T23)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T24)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+MOV S$削减内容 <$STR(T24)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T25)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+MOV S$削减内容 <$STR(T25)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T26)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+MOV S$削减内容 <$STR(T26)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+
+;减掉角色已经拥有的橙色命格数据
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T20)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+MOV S$削减内容 <$STR(T20)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T21)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+MOV S$削减内容 <$STR(T21)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T22)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+MOV S$削减内容 <$STR(T22)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T23)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+MOV S$削减内容 <$STR(T23)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T24)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+MOV S$削减内容 <$STR(T24)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T25)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+MOV S$削减内容 <$STR(T25)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T26)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+MOV S$削减内容 <$STR(T26)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+
+;减掉角色已经拥有的红色命格数据
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T20)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+MOV S$削减内容 <$STR(T20)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T21)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+MOV S$削减内容 <$STR(T21)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T22)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+MOV S$削减内容 <$STR(T22)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T23)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+MOV S$削减内容 <$STR(T23)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T24)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+MOV S$削减内容 <$STR(T24)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T25)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+MOV S$削减内容 <$STR(T25)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T26)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+MOV S$削减内容 <$STR(T26)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+
+
+;---------------------------------------------根据取出的命格颜色来抽取对应颜色的命格，
+#IF
+EQUAL S$命格数值1 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格1 S$剩余蓝色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL S$命格数值1 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格1 S$剩余紫色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL S$命格数值1 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格1 S$剩余橙色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL S$命格数值1 红色
+#ACT
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格1 S$剩余红色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+
+#IF
+EQUAL S$命格数值2 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格2 S$剩余蓝色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL S$命格数值2 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格2 S$剩余紫色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL S$命格数值2 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格2 S$剩余橙色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL S$命格数值2 红色
+#ACT
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格2 S$剩余红色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+
+#IF
+EQUAL S$命格数值3 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格3 S$剩余蓝色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL S$命格数值3 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格3 S$剩余紫色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL S$命格数值3 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格3 S$剩余橙色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL S$命格数值3 红色
+#ACT
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格3 S$剩余红色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+;--------------------------由于八门数组排列的因素导致数组最后一位是空的权重导致偶尔会出现一次取空现象，这里再取一次值---------------------
+
+#IF
+EQUAL <$STR(S$选择索引1)>
+EQUAL S$命格数值1 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格1 S$剩余蓝色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL <$STR(S$选择索引1)>
+EQUAL S$命格数值1 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格1 S$剩余紫色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL <$STR(S$选择索引1)>
+EQUAL S$命格数值1 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格1 S$剩余橙色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL <$STR(S$选择索引1)>
+EQUAL S$命格数值1 红色
+#ACT
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格1 S$剩余红色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+
+#IF
+EQUAL <$STR(S$选择索引2)>
+EQUAL S$命格数值2 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格2 S$剩余蓝色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL <$STR(S$选择索引2)>
+EQUAL S$命格数值2 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格2 S$剩余紫色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL <$STR(S$选择索引2)>
+EQUAL S$命格数值2 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格2 S$剩余橙色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL <$STR(S$选择索引2)>
+EQUAL S$命格数值2 红色
+#ACT
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格2 S$剩余红色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+#IF
+EQUAL <$STR(S$选择索引3)>
+EQUAL S$命格数值3 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格3 S$剩余蓝色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL <$STR(S$选择索引3)>
+EQUAL S$命格数值3 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格3 S$剩余紫色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL <$STR(S$选择索引3)>
+EQUAL S$命格数值3 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格3 S$剩余橙色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL <$STR(S$选择索引3)>
+EQUAL S$命格数值3 红色
+#ACT
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格3 S$剩余红色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+#IF
+EQUAL <$KILLMONNAMEEX> 开门守护者
+#ACT
+MOV S$选择索引1 T151
+MOV S$选择索引2 T152
+MOV S$选择索引3 T153
+MOV S$改变变量 T20
+
+#IF
+EQUAL <$KILLMONNAMEEX> 休门守护者
+#ACT
+MOV S$选择索引1 T154
+MOV S$选择索引2 T155
+MOV S$选择索引3 T156
+MOV S$改变变量 T21
+
+#IF
+EQUAL <$KILLMONNAMEEX> 生门守护者
+#ACT
+MOV S$选择索引1 T157
+MOV S$选择索引2 T158
+MOV S$选择索引3 T159
+MOV S$改变变量 T22
+
+#IF
+EQUAL <$KILLMONNAMEEX> 伤门守护者
+#ACT
+MOV S$选择索引1 T160
+MOV S$选择索引2 T161
+MOV S$选择索引3 T162
+MOV S$改变变量 T23
+
+#IF
+EQUAL <$KILLMONNAMEEX> 杜门守护者
+#ACT
+MOV S$选择索引1 T163
+MOV S$选择索引2 T164
+MOV S$选择索引3 T165
+MOV S$改变变量 T24
+
+#IF
+EQUAL <$KILLMONNAMEEX> 景门守护者
+#ACT
+MOV S$选择索引1 T166
+MOV S$选择索引2 T167
+MOV S$选择索引3 T168
+MOV S$改变变量 T25
+
+#IF
+EQUAL <$KILLMONNAMEEX> 死门守护者
+#ACT
+MOV S$选择索引1 T169
+MOV S$选择索引2 T170
+MOV S$选择索引3 T171
+MOV S$改变变量 T26
+
+#IF
+#ACT
+GOTO @修改八门界面
+BREAK
+
+
+
+
+
+
+
+
+
+[@八门天命重置]
+#IF
+#ACT
+MESSAGEBOX 是否使用紫薇星石更改[<$STR(<$STR(S$改变变量)>)>]并重新选择？ @星石改确认 @取消
+BREAK
+
+[@星石改确认]
+#IF
+NOT CHECKITEM 紫薇星石 1
+#ACT
+SENDMSG 9 你没有紫薇星石，无法更改八门遁甲属性！
+CLOSE
+BREAK
+
+#IF
+CHECKITEM 紫薇星石 1
+#ACT
+TAKE 紫薇星石 1
+INC U248 1
+
+#IF
+CHECKGAMEGIRD > 59999
+CHECKJOB Warrior
+#ACT
+INC U133 1
+
+#IF
+CHECKGAMEGIRD > 39999
+CHECKJOB Wizard
+#ACT
+INC U133 1
+
+#IF
+CHECKGAMEGIRD > 39999
+CHECKJOB Taoist
+#ACT
+INC U133 1
+
+#IF
+CHECK [410] 0
+#ACT
+SET [410] 1
+MOV N$必出橙色 1
+
+#IF
+EQUAL U248 8
+#ACT
+MOVR U249 2 18
+INC U249 U248
+
+#IF
+CHECKGAMEGIRD > 59999
+CHECKGAMEGIRD < 89999
+CHECKJOB Warrior
+EQUAL U133 185
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 89999
+CHECKGAMEGIRD < 119999
+CHECKJOB Warrior
+EQUAL U133 145
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 119999
+CHECKGAMEGIRD < 149999
+CHECKJOB Warrior
+EQUAL U133 105
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 149999
+CHECKJOB Warrior
+EQUAL U133 85
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 39999
+CHECKGAMEGIRD < 59999
+CHECKJOB Wizard
+EQUAL U133 185
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 59999
+CHECKGAMEGIRD < 79999
+CHECKJOB Wizard
+EQUAL U133 145
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 79999
+CHECKGAMEGIRD < 99999
+CHECKJOB Wizard
+EQUAL U133 105
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 119999
+CHECKJOB Wizard
+EQUAL U133 85
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 39999
+CHECKGAMEGIRD < 59999
+CHECKJOB Taoist
+EQUAL U133 185
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 59999
+CHECKGAMEGIRD < 79999
+CHECKJOB Taoist
+EQUAL U133 145
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 79999
+CHECKGAMEGIRD < 99999
+CHECKJOB Taoist
+EQUAL U133 105
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+#IF
+CHECKGAMEGIRD > 119999
+CHECKJOB Taoist
+EQUAL U133 85
+#ACT
+MOVR U134 1 20
+INC U134 U133
+
+
+#IF
+#ACT
+MOV S$命格权重1
+MOV S$命格数值1
+MOV S$红色位置
+MOV S$命格权重1 蓝色#350|紫色#390|橙色#240|红色#15
+RANSJSTR <$STR(S$命格权重1)> 1 3 S$命格数值1 S$无用
+RANSJSTR 一号位置#50|二号位置#50|三号位置#50 1 3 S$红色位置 S$无用
+
+#IF
+LARGE N$必出橙色 0
+RANDOMEX 40 100
+#ACT
+MOV N$必出橙色 0
+MOV S$命格数值1 橙色
+
+#IF
+LARGE U248 7
+NOT SMALL U248 <$STR(U249)>
+EQUAL S$红色位置 一号位置
+#ACT
+MOV S$命格数值1 红色
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+EQUAL S$红色位置 一号位置
+#ACT
+MOV S$命格数值1 红色
+
+;统计对应颜色命格所包含的命格数据
+#IF
+#ACT
+MOV S$蓝色数组 一马当先#36|暗夜幻影#36|时来运转#36|杀人狂魔#36|青云直上#55|德高望重#36|乐善好施#36|死亡送葬#36|昼伏夜行#36|终极审判#55|法外狂徒#36|天纵奇才#36|丹凤卸甲#36|日进斗金#36|指点迷津#55|女中豪杰#36|比翼双飞#36|桃李天下#36|替天行道#36|蓝魔附体#36|情比金坚#36|红魔附体#36|人小鬼大#38|立地成佛#29|活跃达人#28|神秘之姿#28|杏林圣手#28|
+MOV S$紫色数组 取之有道#40|弑神者#90|意外之财#35|药圣尊者#80|烹饪大师#80|巧夺天工#70|铁匠传人#80|神之打野#20|赏金猎人#70|酒中仙#70|妙手回春#70|草木之灵#30|道玄传人#30|天尊传人#30|御灵传人#35|天下第一#25|逆水行舟#25|狩猎之心#30|诅咒护体#30|强化达人#30|鸿运当头#30|
+MOV S$橙色数组 神魔之体#55|空间王者#40|韧性十足#40|天神赐福#40|绝处逢生#40|战神之怒#40|凤凰涅槃#40|不灭金身#40|与日俱进#40|柳暗花明#40|万人敬仰#40|唤龙术#40|恶贯满盈#55|奋勇向前#40|生命之王#40|巫蛊之术#40|诅咒之王#40|霸王之体#40|天雷之力#35|以彼之道#35|祸起萧墙#35|离火燎原#35|八面玲珑#25|百发百中#30|卓越守护#25|金砖之力#30|
+MOV S$红色数组 老当益壮#10|天生神力#10|九鼎之力#25|破幻苍穹#25|神雷天罚#25|无相神功#25|重燃战火#25|疾风劲火#25|霸权压制#40|藐视神罚#40|热血沸腾#35|布衣神相#40|道法自然#40|毁灭之力#40|暴走战神#40|降神附体#60|斗转星移#60|生命献祭#60|御兽天师#60|清风明月#60|血之狂暴#60|阴阳逆转#55|魔力穿刺#35|血债血偿#25|恶魔血脉#25|铁血守护#55|
+
+;减掉角色已经拥有的蓝色命格数据
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T20)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+MOV S$削减内容 <$STR(T20)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T21)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+MOV S$削减内容 <$STR(T21)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T22)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+MOV S$削减内容 <$STR(T22)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T23)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+MOV S$削减内容 <$STR(T23)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T24)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+MOV S$削减内容 <$STR(T24)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T25)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+MOV S$削减内容 <$STR(T25)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$蓝色数组)> <$STR(T26)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+MOV S$削减内容 <$STR(T26)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$蓝色数组 <$STR(S$削减内容)>|
+
+;减掉角色已经拥有的紫色命格数据
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T20)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+MOV S$削减内容 <$STR(T20)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T21)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+MOV S$削减内容 <$STR(T21)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T22)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+MOV S$削减内容 <$STR(T22)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T23)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+MOV S$削减内容 <$STR(T23)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T24)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+MOV S$削减内容 <$STR(T24)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T25)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+MOV S$削减内容 <$STR(T25)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$紫色数组)> <$STR(T26)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+MOV S$削减内容 <$STR(T26)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$紫色数组 <$STR(S$削减内容)>|
+
+;减掉角色已经拥有的橙色命格数据
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T20)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+MOV S$削减内容 <$STR(T20)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T21)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+MOV S$削减内容 <$STR(T21)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T22)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+MOV S$削减内容 <$STR(T22)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T23)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+MOV S$削减内容 <$STR(T23)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T24)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+MOV S$削减内容 <$STR(T24)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T25)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+MOV S$削减内容 <$STR(T25)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$橙色数组)> <$STR(T26)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+MOV S$削减内容 <$STR(T26)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$橙色数组 <$STR(S$削减内容)>|
+
+;减掉角色已经拥有的红色命格数据
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T20)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T20)>)>
+MOV S$削减内容 <$STR(T20)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T21)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T21)>)>
+MOV S$削减内容 <$STR(T21)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T22)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T22)>)>
+MOV S$削减内容 <$STR(T22)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T23)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T23)>)>
+MOV S$削减内容 <$STR(T23)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T24)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T24)>)>
+MOV S$削减内容 <$STR(T24)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T25)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T25)>)>
+MOV S$削减内容 <$STR(T25)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+#IF
+CheckContainsText <$STR(S$红色数组)> <$STR(T26)>
+#ACT
+MOV N$削减索引 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(T26)>)>
+MOV S$削减内容 <$STR(T26)>
+INC S$削减内容 #<$cfg_mig_lieb(<$STR(N$削减索引)>_9)>
+DEC S$红色数组 <$STR(S$削减内容)>|
+
+;根据取出的命格数值1颜色来抽取对应颜色的命格，如果抽取道红色命格则天书使用次数清零
+#IF
+EQUAL S$命格数值1 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格1 S$剩余蓝色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL S$命格数值1 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格1 S$剩余紫色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL S$命格数值1 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格1 S$剩余橙色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL S$命格数值1 红色
+#ACT
+MOV U248 0
+MOV U249 0
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格1 S$剩余红色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+;------------------------检测备选命格数据2，根据天书使用次数抽取命格，然后检测命格数据是否取到，进行一轮数值读取，最后确定-------------------------
+#IF
+#ACT
+MOV S$命格权重2
+MOV S$命格数值2
+MOV S$命格权重2 蓝色#350|紫色#390|橙色#240|红色#15
+RANSJSTR <$STR(S$命格权重2)> 1 3 S$命格数值2 S$无用
+
+#IF
+LARGE N$必出橙色 0
+RANDOMEX 40 100
+#ACT
+MOV N$必出橙色 0
+MOV S$命格数值2 橙色
+
+#IF
+LARGE U248 7
+NOT SMALL U248 <$STR(U249)>
+EQUAL S$红色位置 二号位置
+#ACT
+MOV S$命格数值2 红色
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+EQUAL S$红色位置 二号位置
+#ACT
+MOV S$命格数值2 红色
+
+;根据取出的命格数值2颜色来抽取对应颜色的命格，如果抽取道红色命格则天书使用次数清零
+#IF
+EQUAL S$命格数值2 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格2 S$剩余蓝色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL S$命格数值2 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格2 S$剩余紫色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL S$命格数值2 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格2 S$剩余橙色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL S$命格数值2 红色
+#ACT
+MOV U248 0
+MOV U249 0
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格2 S$剩余红色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+;-------------------------------------------------------------------------------------------------
+#IF
+#ACT
+MOV S$命格权重3
+MOV S$命格数值3
+MOV S$命格权重3 蓝色#350|紫色#390|橙色#240|红色#15
+RANSJSTR <$STR(S$命格权重3)> 1 3 S$命格数值3 S$无用
+
+#IF
+LARGE N$必出橙色 0
+#ACT
+MOV N$必出橙色 0
+MOV S$命格数值3 橙色
+
+#IF
+LARGE U248 7
+NOT SMALL U248 <$STR(U249)>
+EQUAL S$红色位置 三号位置
+#ACT
+MOV S$命格数值3 红色
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+EQUAL S$红色位置 三号位置
+#ACT
+MOV S$命格数值3 红色
+
+;根据取出的命格数值3颜色来抽取对应颜色的命格，如果抽取道红色命格则天书使用次数清零
+#IF
+EQUAL S$命格数值3 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格3 S$剩余蓝色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL S$命格数值3 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格3 S$剩余紫色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL S$命格数值3 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格3 S$剩余橙色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL S$命格数值3 红色
+#ACT
+MOV U248 0
+MOV U249 0
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格3 S$剩余红色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+
+;--------------------------由于八门数组排列的因素导致数组最后一位是空的权重导致偶尔会出现一次取空现象，这里再取一次值---------------------
+
+#IF
+EQUAL <$STR(S$选择索引1)>
+EQUAL S$命格数值1 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格1 S$剩余蓝色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL <$STR(S$选择索引1)>
+EQUAL S$命格数值1 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格1 S$剩余紫色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL <$STR(S$选择索引1)>
+EQUAL S$命格数值1 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格1 S$剩余橙色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL <$STR(S$选择索引1)>
+EQUAL S$命格数值1 红色
+#ACT
+MOV U248 0
+MOV U249 0
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格1 S$剩余红色组
+MOV <$STR(S$选择索引1)> <$STR(S$取出命格1)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+
+#IF
+EQUAL <$STR(S$选择索引2)>
+EQUAL S$命格数值2 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格2 S$剩余蓝色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL <$STR(S$选择索引2)>
+EQUAL S$命格数值2 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格2 S$剩余紫色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL <$STR(S$选择索引2)>
+EQUAL S$命格数值2 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格2 S$剩余橙色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL <$STR(S$选择索引2)>
+EQUAL S$命格数值2 红色
+#ACT
+MOV U248 0
+MOV U249 0
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格2 S$剩余红色组
+MOV <$STR(S$选择索引2)> <$STR(S$取出命格2)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+#IF
+EQUAL <$STR(S$选择索引3)>
+EQUAL S$命格数值3 蓝色
+#ACT
+RANSJSTR <$STR(S$蓝色数组)> 1 3 S$取出命格3 S$剩余蓝色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$蓝色数组 <$STR(S$剩余蓝色组)>
+#IF
+EQUAL <$STR(S$选择索引3)>
+EQUAL S$命格数值3 紫色
+#ACT
+RANSJSTR <$STR(S$紫色数组)> 1 3 S$取出命格3 S$剩余紫色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$紫色数组 <$STR(S$剩余紫色组)>
+#IF
+EQUAL <$STR(S$选择索引3)>
+EQUAL S$命格数值3 橙色
+#ACT
+RANSJSTR <$STR(S$橙色数组)> 1 3 S$取出命格3 S$剩余橙色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$橙色数组 <$STR(S$剩余橙色组)>
+#IF
+EQUAL <$STR(S$选择索引3)>
+EQUAL S$命格数值3 红色
+#ACT
+MOV U248 0
+MOV U249 0
+RANSJSTR <$STR(S$红色数组)> 1 3 S$取出命格3 S$剩余红色组
+MOV <$STR(S$选择索引3)> <$STR(S$取出命格3)>
+MOV S$红色数组 <$STR(S$剩余红色组)>
+
+
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+EQUAL S$命格数值1 红色
+#act
+GOTO @保底权重改变1
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+EQUAL S$命格数值2 红色
+#act
+GOTO @保底权重改变2
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+EQUAL S$命格数值3 红色
+#act
+GOTO @保底权重改变3
+
+#IF
+#ACT
+DELAYGOTO 5 @修改八门界面
+BREAK
+
+[@保底权重改变1]
+#IF
+#ACT
+MOV S$保底权重 老当益壮#70|天生神力#70|无相神功#120|疾风劲火#130|神雷天罚#130|九鼎之力#160|破幻苍穹#160|生命献祭#160|
+
+;减掉角色已经拥有的红色命格数据
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>|  老当益壮
+#ACT
+DEC S$保底权重 老当益壮#70|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 天生神力
+#ACT
+DEC S$保底权重 天生神力#70|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 无相神功
+#ACT
+DEC S$保底权重 无相神功#120|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 疾风劲火
+#ACT
+DEC S$保底权重 疾风劲火#130|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 神雷天罚
+#ACT
+DEC S$保底权重 神雷天罚#130|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 九鼎之力
+#ACT
+DEC S$保底权重 九鼎之力#160|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 破幻苍穹
+#ACT
+DEC S$保底权重 破幻苍穹#160|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 生命献祭
+#ACT
+DEC S$保底权重 生命献祭#160|
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+#act
+RANSJSTR <$str(S$保底权重)>   1 3 S$取出命格1 S$剩余红色组
+MOV <$STR(S$选择索引1)>  <$STR(S$取出命格1)>
+MOV U133 0
+MOV U134 0
+
+[@保底权重改变2]
+#IF
+#ACT
+MOV S$保底权重 老当益壮#70|天生神力#70|无相神功#120|疾风劲火#130|神雷天罚#130|九鼎之力#160|破幻苍穹#160|生命献祭#160|
+
+;减掉角色已经拥有的红色命格数据
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>|  老当益壮
+#ACT
+DEC S$保底权重 老当益壮#70|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 天生神力
+#ACT
+DEC S$保底权重 天生神力#70|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 无相神功
+#ACT
+DEC S$保底权重 无相神功#120|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 疾风劲火
+#ACT
+DEC S$保底权重 疾风劲火#130|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 神雷天罚
+#ACT
+DEC S$保底权重 神雷天罚#130|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 九鼎之力
+#ACT
+DEC S$保底权重 九鼎之力#160|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 破幻苍穹
+#ACT
+DEC S$保底权重 破幻苍穹#160|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 生命献祭
+#ACT
+DEC S$保底权重 生命献祭#160|
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+#act
+RANSJSTR <$str(S$保底权重)>   1 3 S$取出命格2 S$剩余红色组
+MOV <$STR(S$选择索引2)>  <$STR(S$取出命格2)>
+MOV U133 0
+MOV U134 0
+
+[@保底权重改变3]
+#IF
+#ACT
+MOV S$保底权重 老当益壮#70|天生神力#70|无相神功#120|疾风劲火#130|神雷天罚#130|九鼎之力#160|破幻苍穹#160|生命献祭#160|
+
+;减掉角色已经拥有的红色命格数据
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>|  老当益壮
+#ACT
+DEC S$保底权重 老当益壮#70|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 天生神力
+#ACT
+DEC S$保底权重 天生神力#70|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 无相神功
+#ACT
+DEC S$保底权重 无相神功#120|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 疾风劲火
+#ACT
+DEC S$保底权重 疾风劲火#130|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 神雷天罚
+#ACT
+DEC S$保底权重 神雷天罚#130|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 九鼎之力
+#ACT
+DEC S$保底权重 九鼎之力#160|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 破幻苍穹
+#ACT
+DEC S$保底权重 破幻苍穹#160|
+#IF
+CheckContainsText  <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)>| 生命献祭
+#ACT
+DEC S$保底权重 生命献祭#160|
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+#act
+RANSJSTR <$str(S$保底权重)>   1 3 S$取出命格3 S$剩余红色组
+MOV <$STR(S$选择索引3)>  <$STR(S$取出命格3)>
+MOV U133 0
+MOV U134 0
+
+
+[@修改八门界面]
+#IF
+#ACT
+MOV N$表格数据1 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(<$STR(S$选择索引1)>)>)>
+MOV N$表格数据2 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(<$STR(S$选择索引2)>)>)>
+MOV N$表格数据3 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(<$STR(S$选择索引3)>)>)>
+#SAY
+<Img|a=4|x=<$SCREENWIDTH>.0|y=<$SCREENHEIGHT>.0|width=3000|height=3000|show=0|loadDelay=1|esc=1|move=0|bg=1|img=public/1900012391.png|reset=1>
+<Button|x=500.0|y=120.0|color=1025|mimg=private/mingge/1905300005.png|size=18|nimg=private/mingge/1905300005.png|pimg=private/mingge/1905300006.png|text=|link=@不选命格>
+<Img|id=2|children={20,21,22}|x=200.0|y=166.0|img=private/mingge/1907700010.png|esc=0>
+<Img|id=3|children={30,31,32}|x=450.0|y=166.0|img=private/mingge/1907700010.png|esc=0>
+<Img|id=4|children={40,41,42}|x=700.0|y=166.0|img=private/mingge/1907700010.png|esc=0>
+
+<Text|id=20|x=<$cfg_mig_lieb(<$STR(N$表格数据1)>_8)>.0|y=70.0|color=<$cfg_mig_lieb(<$STR(N$表格数据1)>_2)>|size=15|text=<$cfg_mig_lieb(<$STR(N$表格数据1)>_1)>|outline=1|outlinecolor=0>
+<Text|id=21|x=20.0|y=120.0|color=<$cfg_mig_lieb(<$STR(N$表格数据1)>_2)>|size=13|text=<$cfg_mig_lieb(<$STR(N$表格数据1)>_7)>|outline=1|outlinecolor=0>
+<Button|id=22|x=40.0|y=330.0|color=*|size=18|mimg=private/mingge/100061.png|pimg=private/mingge/100062.png|nimg=private/mingge/100061.png|link=@确认命格1>
+
+<Text|id=30|x=<$cfg_mig_lieb(<$STR(N$表格数据2)>_8)>.0|y=70.0|color=<$cfg_mig_lieb(<$STR(N$表格数据2)>_2)>|size=15|text=<$cfg_mig_lieb(<$STR(N$表格数据2)>_1)>|outline=1|outlinecolor=0>
+<Text|id=31|x=20.0|y=120.0|color=<$cfg_mig_lieb(<$STR(N$表格数据2)>_2)>|size=13|text=<$cfg_mig_lieb(<$STR(N$表格数据2)>_7)>|outline=1|outlinecolor=0>
+<Button|id=32|x=40.0|y=330.0|color=*|size=18|mimg=private/mingge/100061.png|pimg=private/mingge/100062.png|nimg=private/mingge/100061.png|link=@确认命格2>
+
+<Text|id=40|x=<$cfg_mig_lieb(<$STR(N$表格数据3)>_8)>.0|y=70.0|color=<$cfg_mig_lieb(<$STR(N$表格数据3)>_2)>|size=15|text=<$cfg_mig_lieb(<$STR(N$表格数据3)>_1)>|outline=1|outlinecolor=0>
+<Text|id=41|x=20.0|y=120.0|color=<$cfg_mig_lieb(<$STR(N$表格数据3)>_2)>|size=13|text=<$cfg_mig_lieb(<$STR(N$表格数据3)>_7)>|outline=1|outlinecolor=0>
+<Button|id=42|x=40.0|y=330.0|color=*|size=18|mimg=private/mingge/100061.png|pimg=private/mingge/100062.png|nimg=private/mingge/100061.png|link=@确认命格3>
+
+[@确认命格1]
+#IF
+CHECK [22] 0
+#ACT
+SET [22] 1
+NEWDELETETASK 7
+
+;#IF
+;NOT EQUAL <$STR(S$改变变量)>
+;#ACT
+;MOV N$更换数据 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(S$改变变量)>)>
+;INC <$cfg_mig_lieb(<$STR(N$更换数据)>_10)> |<$cfg_mig_lieb(<$STR(N$更换数据)>_1)>#<$cfg_mig_lieb(<$STR(N$更换数据)>_9)>
+
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+#act
+GOTO @选择判定
+
+
+#IF
+#ACT
+MOV <$STR(S$改变变量)> <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)>
+SENDMSG 6 [提示]：你已选择八门属性:“<$cfg_mig_lieb(<$STR(N$表格数据1)>_1)>”。
+;INC <$cfg_mig_lieb(<$STR(N$表格数据2)>_10)> |<$cfg_mig_lieb(<$STR(N$表格数据2)>_1)>#<$cfg_mig_lieb(<$STR(N$表格数据2)>_9)>
+;INC <$cfg_mig_lieb(<$STR(N$表格数据3)>_10)> |<$cfg_mig_lieb(<$STR(N$表格数据3)>_1)>#<$cfg_mig_lieb(<$STR(N$表格数据3)>_9)>
+MOV <$STR(S$选择索引1)>
+MOV <$STR(S$选择索引2)>
+MOV <$STR(S$选择索引3)>
+DelbutShow 1
+CLOSE
+#CALL [\功能脚本\登陆加载\八门属性加载.txt] @加载角色八门属性
+#CALL [\功能脚本\登陆加载\八门属性生效.txt] @八门属性执行
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\相关NPC\八门遁甲.txt] @八门遁甲界面
+GOTO @八门遁甲界面
+DELAYGOTO 100 @新区任务七
+BREAK
+
+[@选择判定]
+#OR
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)> 老当益壮
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)> 天生神力
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)> 无相神功
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)> 疾风劲火
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)> 神雷天罚
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)> 九鼎之力
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)> 破幻苍穹
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据1)>_1)> 生命献祭
+
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)> 老当益壮
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)> 天生神力
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)> 无相神功
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)> 疾风劲火
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)> 神雷天罚
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)> 九鼎之力
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)> 破幻苍穹
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)> 生命献祭
+
+
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)> 老当益壮
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)> 天生神力
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)> 无相神功
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)> 疾风劲火
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)> 神雷天罚
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)> 九鼎之力
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)> 破幻苍穹
+EQUAL <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)> 生命献祭
+
+#act
+MOV U133 0
+MOV U134 0
+
+
+[@确认命格2]
+#IF
+CHECK [22] 0
+#ACT
+SET [22] 1
+NEWDELETETASK 7
+
+;#IF
+;NOT EQUAL <$STR(S$改变变量)>
+;#ACT
+;MOV N$更换数据 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(S$改变变量)>)>
+;INC <$cfg_mig_lieb(<$STR(N$更换数据)>_10)> |<$cfg_mig_lieb(<$STR(N$更换数据)>_1)>#<$cfg_mig_lieb(<$STR(N$更换数据)>_9)>
+
+#IF
+LARGE U133 84
+NOT SMALL U133 <$STR(U134)>
+large U134 84
+#act
+GOTO @选择判定
+
+#IF
+#ACT
+MOV <$STR(S$改变变量)> <$cfg_mig_lieb(<$STR(N$表格数据2)>_1)>
+SENDMSG 6 [提示]：你已选择八门属性:“<$cfg_mig_lieb(<$STR(N$表格数据2)>_1)>”。
+;INC <$cfg_mig_lieb(<$STR(N$表格数据1)>_10)> |<$cfg_mig_lieb(<$STR(N$表格数据1)>_1)>#<$cfg_mig_lieb(<$STR(N$表格数据1)>_9)>
+;INC <$cfg_mig_lieb(<$STR(N$表格数据3)>_10)> |<$cfg_mig_lieb(<$STR(N$表格数据3)>_1)>#<$cfg_mig_lieb(<$STR(N$表格数据3)>_9)>
+MOV <$STR(S$选择索引1)>
+MOV <$STR(S$选择索引2)>
+MOV <$STR(S$选择索引3)>
+DelbutShow 1
+CLOSE
+#CALL [\功能脚本\登陆加载\八门属性加载.txt] @加载角色八门属性
+#CALL [\功能脚本\登陆加载\八门属性生效.txt] @八门属性执行
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\相关NPC\八门遁甲.txt] @八门遁甲界面
+GOTO @八门遁甲界面
+DELAYGOTO 100 @新区任务七
+BREAK
+
+
+[@确认命格3]
+#IF
+CHECK [22] 0
+#ACT
+SET [22] 1
+NEWDELETETASK 7
+
+#IF
+LARGE U133 84
+large U134 84
+NOT SMALL U133 <$STR(U134)>
+#act
+GOTO @选择判定
+
+;#IF
+;NOT EQUAL <$STR(S$改变变量)>
+;#ACT
+;MOV N$更换数据 <$GetTypeBRow(cfg_mig_lieb,1,<$STR(S$改变变量)>)>
+;INC <$cfg_mig_lieb(<$STR(N$更换数据)>_10)> |<$cfg_mig_lieb(<$STR(N$更换数据)>_1)>#<$cfg_mig_lieb(<$STR(N$更换数据)>_9)>
+
+#IF
+#ACT
+MOV <$STR(S$改变变量)> <$cfg_mig_lieb(<$STR(N$表格数据3)>_1)>
+SENDMSG 6 [提示]：你已选择八门属性:“<$cfg_mig_lieb(<$STR(N$表格数据3)>_1)>”。
+;INC <$cfg_mig_lieb(<$STR(N$表格数据1)>_10)> |<$cfg_mig_lieb(<$STR(N$表格数据1)>_1)>#<$cfg_mig_lieb(<$STR(N$表格数据1)>_9)>
+;INC <$cfg_mig_lieb(<$STR(N$表格数据2)>_10)> |<$cfg_mig_lieb(<$STR(N$表格数据2)>_1)>#<$cfg_mig_lieb(<$STR(N$表格数据2)>_9)>
+MOV <$STR(S$选择索引1)>
+MOV <$STR(S$选择索引2)>
+MOV <$STR(S$选择索引3)>
+DelbutShow 1
+CLOSE
+#CALL [\功能脚本\登陆加载\八门属性加载.txt] @加载角色八门属性
+#CALL [\功能脚本\登陆加载\八门属性生效.txt] @八门属性执行
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\相关NPC\八门遁甲.txt] @八门遁甲界面
+GOTO @八门遁甲界面
+DELAYGOTO 100 @新区任务七
+BREAK
+
+
+[@不选命格]
+#IF
+#ACT
+MESSAGEBOX 未选择八门属性，关闭后可在角色装备界面重新打开。 @确认不选 @再看看
+BREAK
+
+[@确认不选]
+#IF
+#ACT
+CLOSE
+BREAK
+
+[@再看看]
+#IF
+#ACT
+BREAK
+
+
+[@新区任务七]
+#IF
+#ACT
+MOV N$激活数量 0
+
+#IF
+NOT EQUAL T20
+#ACT
+INC N$激活数量 1
+#IF
+NOT EQUAL T21
+#ACT
+INC N$激活数量 1
+#IF
+NOT EQUAL T22
+#ACT
+INC N$激活数量 1
+#IF
+NOT EQUAL T23
+#ACT
+INC N$激活数量 1
+#IF
+NOT EQUAL T24
+#ACT
+INC N$激活数量 1
+#IF
+NOT EQUAL T25
+#ACT
+INC N$激活数量 1
+#IF
+NOT EQUAL T26
+#ACT
+INC N$激活数量 1
+
+#IF
+#ACT
+MOV N$记录时间7 <$STR(G201)>
+MOV N$当前时间 <$UTCNOW8>
+FORMULATION (<$STR(N$记录时间7)>+518400-<$STR(N$当前时间)>)/86400 N$新区时间7
+
+#IF
+SMALL N$新区时间7 1
+#ACT
+MOV U147 <$STR(N$激活数量)>
+ADDSTRVALUE T40 七日任务7 0
+BREAK
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

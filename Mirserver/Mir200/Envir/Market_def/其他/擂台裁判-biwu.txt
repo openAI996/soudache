@@ -1,0 +1,152 @@
+[@main]
+<Img|x=0.0|y=20.0|width=575|height=280|reset=1|show=0|scale9r=80|scale9t=80|bg=1|move=0|scale9l=80|scale9b=80|loadDelay=1|img=public/bg_npc_01.png|esc=1>
+<Layout|x=518.0|y=2.0|width=80|height=80|link=@exit>
+<Button|x=535.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=235.0|y=30.0|img=private/biaoti/01005.png|esc=0>
+<RText|x=43.0|y=70.0|outlinecolor=0|color=11014|outline=1|size=18|text=比武擂台规则：>
+<RText|x=45.0|y=100.0|color=255|size=16|outlinecolor=0|outline=1|text=<1、/FCOLOR=249>擂台杀死玩家不增加PK值，死亡不会掉落装备。>
+<RText|x=45.0|y=125.0|outlinecolor=0|color=255|outline=1|size=16|text=<2、/FCOLOR=249>比武开始后，系统将自动扣除双方各<500元宝/FCOLOR=11003>，胜者可得<1000元宝/FCOLOR=11003>！>
+<RText|x=45.0|y=150.0|color=255|size=16|outlinecolor=0|outline=1|text=<3、/FCOLOR=249>擂台上无法使用药品，小退方可退出比武场！>
+<RText|x=47.0|y=185.0|color=255|size=16|outlinecolor=0|outline=1|text=当前擂主：<<$str(A1)>/FCOLOR=250>>
+<RText|x=311.0|y=185.0|color=255|size=16|outlinecolor=0|outline=1|text=挑战人：<<$str(A2)>/FCOLOR=250>>
+<Text|x=45.0|y=255.0|outlinecolor=0|color=11037|outline=1|size=16|text=温馨提示：为防止有人利用擂台免费交易元宝，奖金将扣掉10%的税收！>
+<Layout|x=36.0|y=215.0|width=100|height=50|link=@开始打擂>
+<Text|x=50.0|y=223.0|color=11008|size=18|outline=1|outlinecolor=0|text=我要打擂|link=@开始打擂>
+<Layout|x=178.0|y=215.0|width=100|height=50|link=@受伤治疗>
+<Text|x=192.0|y=223.0|color=11008|size=18|outline=1|outlinecolor=0|text=受伤治疗|link=@受伤治疗>
+<Layout|x=332.0|y=215.0|width=200|height=50|link=@高手榜>
+<Text|x=336.0|y=223.0|color=11008|size=18|outline=1|outlinecolor=0|text=查看《高手PK排行榜》|link=@高手榜>
+
+[@受伤治疗]
+#IF
+EQUAL A1 <$USERNAME>
+NOT EQUAL A2
+#ACT
+SENDMSG 9 你已经在擂台上了！请勿作弊！
+BREAK
+
+#IF
+EQUAL  A2 <$USERNAME>
+NOT EQUAL A1
+#ACT
+SENDMSG 9 你已经在擂台上了！请勿作弊！
+BREAK
+
+#IF
+not EQUAL  A2 <$USERNAME>
+NOT EQUAL A1 <$USERNAME>
+#ACT
+SENDMSG 9 擂台都没上就想治疗？
+BREAK
+
+#IF
+#ACT
+DETOXIFCATION
+HUMANHP + <$MAXHP> 4
+HUMANMP + <$MAXMP> 4
+SendCenterMsg 250 0 已为您恢复至最佳状态 0
+break
+
+[@开始打擂]
+#OR
+EQUAL A1  <$USERNAME>
+EQUAL A2  <$USERNAME>
+#act
+SENDMSG 9 你已经在擂台上了！小退或死亡方可离开擂台！
+BREAK
+
+#IF
+NOT CHECKMONEY 元宝 ? 500
+#ACT
+MESSAGEBOX 想比武请最少准备500元宝
+BREAK 
+
+#if
+EQUAL A1 
+EQUAL A2 
+CHECKMONEY 元宝 > 499
+#act
+MOV A1 <$USERNAME>
+mapmove biwu 30 30 3
+MOV S$屏蔽名字  <$USERNAME>
+DEC S$屏蔽名字 3 16
+INC S$屏蔽名字 *****
+SENDMSGNEW 255 0 玩家<【<$STR(S$屏蔽名字)>】/FCOLOR=249>在<比武场/FCOLOR=251>登上了<比武擂台/FCOLOR=251>,欢迎各位勇士前往挑战！ 1 5
+BREAK
+
+#if
+NOT EQUAL A1 
+not <$STR(A1)>.ISONMAP biwu
+EQUAL A2 
+CHECKMONEY 元宝 > 499
+#act
+MOV A1 <$USERNAME>
+mapmove biwu 30 30 3
+MOV S$屏蔽名字  <$USERNAME>
+DEC S$屏蔽名字 3 16
+INC S$屏蔽名字 *****
+SENDMSGNEW 255 0 玩家<【<$STR(S$屏蔽名字)>】/FCOLOR=249>在<比武场/FCOLOR=251>登上了<比武擂台/FCOLOR=251>,欢迎各位勇士前往挑战！ 1 5
+BREAK
+
+#if
+NOT EQUAL A1 
+EQUAL A2 
+<$STR(A1)>.CHECKMONEY 元宝 < 500
+#act
+<$STR(A1)>.kick
+mapmove biwu 30 30 3
+MOV A1 <$USERNAME>
+MOV S$屏蔽名字  <$USERNAME>
+DEC S$屏蔽名字 3 16
+INC S$屏蔽名字 *****
+SENDMSGNEW 255 0 玩家<【<$STR(S$屏蔽名字)>】/FCOLOR=249>在<比武场/FCOLOR=251>登上了<比武擂台/FCOLOR=251>,欢迎各位勇士前往挑战！ 1 5
+BREAK
+
+#if
+NOT EQUAL A1 
+EQUAL A2 
+CHECKMONEY 元宝 > 499
+<$STR(A1)>.CHECKMONEY 元宝 > 499
+#act
+MONEY 元宝 - 500
+logact 10002 通过[擂台裁判]消耗500元宝，剩余元宝：<$GAMEGOLD>。
+MOV A2 <$USERNAME>
+mapmove biwu 38 31 
+ChangeModeEx 9 0
+ChangeModeEx 10 5
+<$STR(A1)>.GAMEGOLD - 500
+<$STR(A1)>.MAPMOVE biwu 23 31
+<$STR(A1)>.ChangeModeEx 9 0
+<$STR(A1)>.ChangeModeEx 10 5
+<$STR(A1)>.SendCenterMsg 250 0 角色已被锁定，比武将在%d后开始，请做好充分准备！  0 5 
+SendCenterMsg 250 0 角色已被锁定，比武将在%d后开始，请做好充分准备！  0 5 @比武开始
+MOV S$屏蔽名字  <$USERNAME>
+DEC S$屏蔽名字 3 16
+INC S$屏蔽名字 *****
+SENDMSGNEW 255 0 玩家<【<$STR(S$屏蔽名字)>】/FCOLOR=249>登上了<比武擂台/FCOLOR=251>挑战对手【<$STR(A1)>】！ 1 5
+BREAK
+
+[@高手榜]
+<Img|x=0.0|y=20.0|width=575|height=280|bg=1|show=0|scale9r=80|scale9t=80|scale9b=80|move=0|loadDelay=1|scale9l=80|esc=1|img=public/bg_npc_01.png|reset=1>
+<Layout|x=518.0|y=2.0|width=80|height=80|link=@exit>
+<Button|x=535.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=235.0|y=30.0|img=private/biaoti/01005.png|esc=0>
+<RText|x=45.0|y=105.0|color=255|size=16|outlinecolor=0|outline=1|text=天下第一男战士：>
+<RText|x=45.0|y=135.0|color=255|size=16|outlinecolor=0|outline=1|text=天下第一女战士：>
+<RText|x=45.0|y=165.0|color=255|size=16|outlinecolor=0|outline=1|text=天下第一男法师：>
+<RText|x=45.0|y=195.0|color=255|size=16|outlinecolor=0|outline=1|text=天下第一女法师：>
+<RText|x=45.0|y=225.0|color=255|size=16|outlinecolor=0|outline=1|text=天下第一男道士：>
+<RText|x=45.0|y=255.0|color=255|size=16|outlinecolor=0|outline=1|text=天下第一女道士：>
+<Text|x=215.0|y=70.0|outlinecolor=0|color=11014|outline=1|size=18|text=《高手PK排行榜》>
+<Text|x=175.0|y=105.0|color=250|size=16|outlinecolor=0|outline=1|text=<$STR(A35)>>
+<Text|x=175.0|y=135.0|color=250|size=16|outlinecolor=0|outline=1|text=<$STR(A36)>>
+<Text|x=175.0|y=165.0|color=250|size=16|outlinecolor=0|outline=1|text=<$STR(A37)>>
+<Text|x=175.0|y=195.0|color=250|size=16|outlinecolor=0|outline=1|text=<$STR(A38)>>
+<Text|x=175.0|y=225.0|color=250|size=16|outlinecolor=0|outline=1|text=<$STR(A39)>>
+<Text|x=175.0|y=255.0|color=250|size=16|outlinecolor=0|outline=1|text=<$STR(A40)>>
+<RText|x=345.0|y=105.0|color=255|size=16|outlinecolor=0|outline=1|text=胜场：<$STR(G35)>>
+<RText|x=345.0|y=135.0|color=255|size=16|outlinecolor=0|outline=1|text=胜场：<$STR(G36)>>
+<RText|x=345.0|y=165.0|color=255|size=16|outlinecolor=0|outline=1|text=胜场：<$STR(G37)>>
+<RText|x=345.0|y=195.0|color=255|size=16|outlinecolor=0|outline=1|text=胜场：<$STR(G38)>>
+<RText|x=345.0|y=225.0|color=255|size=16|outlinecolor=0|outline=1|text=胜场：<$STR(G39)>>
+<RText|x=345.0|y=255.0|color=255|size=16|outlinecolor=0|outline=1|text=胜场：<$STR(G40)>>

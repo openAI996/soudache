@@ -1,0 +1,573 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01015.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=民以食为天，每一份好的料理都是对食材本身的尊重！>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=准备好食材，可以在我这里进行烹饪。>
+<Layout|x=65.0|y=135.0|width=80|height=40|link=@烹饪食物>
+<Text|x=70.0|y=140.0|color=11008|size=18|text=烹饪食物|link=@烹饪食物>
+<Layout|x=65.0|y=195.0|width=80|height=40|link=@天材地宝>
+<Text|x=70.0|y=200.0|color=11008|size=18|text=天材地宝|link=@天材地宝>
+<Img|x=45.0|y=145.0|width=20|height=20|esc=0|img=public/00023.png>
+<Img|x=45.0|y=204.0|width=20|height=20|esc=0|img=public/00021.png>
+
+[@烹饪食物]
+#IF
+#ACT
+MOV N$烹饪次数 0
+MOV N$顺序 0
+MOV S$成功食品
+MOV N$当前火候 0
+MOV S$背包食材 <ListView|children={2}|x=370.0|y=105.0|width=320|height=170|direction=1|bounce=0|margin=1|reload=0>
+INC S$背包食材 <BAGITEMS|id=2|condition=43|select=<$STR(S0)>|filter3=鸡,猪肉,鱼,面粉,烹饪油|count=126|row=32|selecttype=1|link=@放入食材跳转>
+MOV S$已选食物过滤
+MOV S$1号食物框 
+MOV S$2号食物框 
+MOV S$3号食物框 
+MOV S0
+MOV S$1号食物ID 
+MOV S$2号食物ID 
+MOV S$3号食物ID 
+MOV S$1号食物名称
+MOV S$2号食物名称
+MOV S$3号食物名称
+MOV S$制作按钮 <Button|x=145.0|y=410.0|width=110|height=35|rotate=0|nimg=public/1913000011.png|color=251|size=17|pimg=public/1913000012.png|text=开始烹饪|link=@开始制作食材>
+GOTO @烹饪主界面
+
+[@烹饪主界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=700|height=480|rotate=0|scale9t=150|move=0|img=private/psllz/00070.png|reset=1|show=4|scale9b=150|loadDelay=0|bg=1|scale9l=150|scale9r=150|esc=1>
+<Layout|x=644.0|y=-20.0|width=80|height=80|link=@exit>
+<Button|x=657.0|y=16.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=303.0|y=6.0|img=private/biaoti/01015.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=342.0|y=58.0|height=410|img=private/psllz/00010.png|esc=0>
+<Img|x=360.0|y=285.0|width=305|height=175|rotate=0|scale9l=10|scale9r=10|scale9t=10|scale9b=10|img=private/xlxl/0018.png|esc=0>
+<Img|x=360.0|y=105.0|width=305|height=180|scale9r=10|scale9b=10|scale9t=10|img=private/xlxl/0018.png|scale9l=10|esc=0>
+<Img|x=36.0|y=75.0|width=310|height=130|rotate=0|scale9l=10|scale9r=10|scale9t=10|scale9b=10|img=private/xlxl/0018.png|esc=0>
+
+<Text|x=84.0|y=281.0|color=11042|size=16|text=注：烹饪火候越大成功概率越高>
+<Text|x=150.0|y=355.0|color=11032|size=16|text=烹饪火候：<$STR(N$当前火候)>%>
+
+<Img|children={烹饪物品_1}|x=55.0|y=205.0|img=private/xlxl/0003.png>
+<DBItemShow|id=烹饪物品_1|x=0|y=0|makeindex=<$STR(S$1号食物ID)>|dblink=@食物返回#食物位置=1号>
+<Img|children={烹饪物品_2}|x=160.0|y=205.0|img=private/xlxl/0003.png>
+<DBItemShow|id=烹饪物品_2|x=0|y=0|makeindex=<$STR(S$2号食物ID)>|dblink=@食物返回#食物位置=2号>
+<Img|children={烹饪物品_3}|x=265.0|y=205.0|img=private/xlxl/0003.png>
+<DBItemShow|id=烹饪物品_3|x=0|y=0|makeindex=<$STR(S$3号食物ID)>|dblink=@食物返回#食物位置=3号>
+
+
+<Text|x=365.0|y=285.0|color=11003|size=16|text=烹饪配方：>
+<Text|x=365.0|y=310.0|color=11022|size=16|text=叫花鸡　=　鸡+烹饪油>
+<Text|x=365.0|y=410.0|color=11022|size=16|text=大肉饼　=　鸡+猪肉+面粉>
+<Text|x=365.0|y=385.0|color=11022|size=16|text=肉　饼　=　猪肉+面粉>
+<Text|x=365.0|y=360.0|color=11022|size=16|text=东坡肉　=　猪肉+烹饪油>
+<Text|x=365.0|y=335.0|color=11022|size=16|text=烤　鱼　=　鱼+烹饪油>
+<Text|x=45.0|y=75.0|color=11004|size=18|text=烹饪介绍：>
+<Text|x=45.0|y=100.0|color=11037|size=16|text=1、食谱有很多种，比如肉类*1+烹饪油*1>
+<Text|x=45.0|y=150.0|color=11037|size=16|text=3、在苍月岛可获得各种肉类，在杂货店可\以购买面粉和烹饪油。>
+<Text|x=45.0|y=125.0|color=11037|size=16|text=2、烹饪时间过程会导致烹饪失败！>
+<Text|x=365.0|y=430.0|color=11007|size=16|text=(大肉饼只有烹饪大师才可以制作)>
+
+<Img|x=37.0|y=298.0|img=private/psllz/prhh.png|esc=0>
+<Img|x=359.0|y=68.0|width=310|img=private/xlxl/021600.png|esc=0>
+<Img|x=380.0|y=73.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+<Text|x=410.0|y=75.0|color=251|size=18|outlinecolor=0|outline=1|text=背包食材>
+<PercentImg|x=57.0|y=298.0|width=274|rotate=0|maxValue=100|minValue=<$STR(N$当前火候)>|img=private/psllz/prhh2.png|direction=0>
+
+<$str(S$背包食材)>
+<$str(S$制作按钮)>
+
+
+[@开始制作食材]
+#OR
+EQUAL T20 烹饪大师
+EQUAL T21 烹饪大师
+EQUAL T22 烹饪大师
+EQUAL T23 烹饪大师
+EQUAL T24 烹饪大师
+EQUAL T25 烹饪大师
+EQUAL T26 烹饪大师
+#ACT
+MOV N$大面饼 1
+#ELSEACT
+MOV N$大面饼 0
+
+#IF
+EQUAL S$1号食物框 
+EQUAL S$2号食物框 
+EQUAL S$3号食物框 
+#ACT
+SENDMSG 9 请放入食材后再进行烹饪
+BREAK
+
+#IF
+EQUAL S$1号食物名称 猪肉
+EQUAL S$2号食物名称 烹饪油
+EQUAL S$3号食物名称 
+CHECKITEM 猪肉 1
+CHECKITEM 烹饪油 1
+#ACT
+TAKE 猪肉 1
+TAKE 烹饪油 1
+MOV S$成功食品 东坡肉
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 烹饪油
+EQUAL S$2号食物名称 猪肉
+EQUAL S$3号食物名称 
+CHECKITEM 猪肉 1
+CHECKITEM 烹饪油 1
+#ACT
+TAKE 猪肉 1
+TAKE 烹饪油 1
+MOV S$成功食品 东坡肉
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 鸡
+EQUAL S$2号食物名称 烹饪油
+EQUAL S$3号食物名称 
+CHECKITEM 鸡 1
+CHECKITEM 烹饪油 1
+#ACT
+TAKE 鸡 1
+TAKE 烹饪油 1
+MOV S$成功食品 叫花鸡
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 烹饪油
+EQUAL S$2号食物名称 鸡
+EQUAL S$3号食物名称 
+CHECKITEM 鸡 1
+CHECKITEM 烹饪油 1
+#ACT
+TAKE 烹饪油 1
+TAKE 鸡 1
+MOV S$成功食品 叫花鸡
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 鱼
+EQUAL S$2号食物名称 烹饪油
+EQUAL S$3号食物名称 
+CHECKITEM 鱼 1
+CHECKITEM 烹饪油 1
+#ACT
+TAKE 烹饪油 1
+TAKE 鱼 1
+MOV S$成功食品 烤鱼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 烹饪油
+EQUAL S$2号食物名称 鱼
+EQUAL S$3号食物名称 
+CHECKITEM 鱼 1
+CHECKITEM 烹饪油 1
+#ACT
+TAKE 烹饪油 1
+TAKE 鱼 1
+MOV S$成功食品 烤鱼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 猪肉
+EQUAL S$2号食物名称 面粉
+EQUAL S$3号食物名称 
+CHECKITEM 猪肉 1
+CHECKITEM 面粉 1
+#ACT
+TAKE 猪肉 1
+TAKE 面粉 1
+MOV S$成功食品 肉饼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 面粉
+EQUAL S$2号食物名称 猪肉
+EQUAL S$3号食物名称 
+CHECKITEM 猪肉 1
+CHECKITEM 面粉 1
+#ACT
+TAKE 猪肉 1
+TAKE 面粉 1
+MOV S$成功食品 肉饼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 鸡
+EQUAL S$2号食物名称 猪肉
+EQUAL S$3号食物名称 面粉
+EQUAL N$大面饼 0
+#ACT
+SENDMSG 9 烹饪大师才可使用此配方
+GOTO @烹饪主界面
+BREAK
+#IF
+EQUAL S$1号食物名称 鸡
+EQUAL S$2号食物名称 面粉
+EQUAL S$3号食物名称 猪肉
+EQUAL N$大面饼 0
+#ACT
+SENDMSG 9 烹饪大师才可使用此配方
+GOTO @烹饪主界面
+BREAK
+#IF
+EQUAL S$1号食物名称 面粉
+EQUAL S$2号食物名称 鸡
+EQUAL S$3号食物名称 猪肉
+EQUAL N$大面饼 0
+#ACT
+SENDMSG 9 烹饪大师才可使用此配方
+GOTO @烹饪主界面
+BREAK
+#IF
+EQUAL S$1号食物名称 面粉
+EQUAL S$2号食物名称 猪肉
+EQUAL S$3号食物名称 鸡
+EQUAL N$大面饼 0
+#ACT
+SENDMSG 9 烹饪大师才可使用此配方
+GOTO @烹饪主界面
+BREAK
+#IF
+EQUAL S$1号食物名称 猪肉
+EQUAL S$2号食物名称 面粉
+EQUAL S$3号食物名称 鸡
+EQUAL N$大面饼 0
+#ACT
+SENDMSG 9 烹饪大师才可使用此配方
+GOTO @烹饪主界面
+BREAK
+#IF
+EQUAL S$1号食物名称 猪肉
+EQUAL S$2号食物名称 鸡
+EQUAL S$3号食物名称 面粉
+EQUAL N$大面饼 0
+#ACT
+SENDMSG 9 烹饪大师才可使用此配方
+GOTO @烹饪主界面
+BREAK
+
+#IF
+EQUAL S$1号食物名称 鸡
+EQUAL S$2号食物名称 猪肉
+EQUAL S$3号食物名称 面粉
+EQUAL N$大面饼 1
+CHECKITEM 鸡 1
+CHECKITEM 猪肉 1
+CHECKITEM 面粉 1
+#ACT
+TAKE 鸡 1
+TAKE 猪肉 1
+TAKE 面粉 1
+MOV S$成功食品 大肉饼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 鸡
+EQUAL S$2号食物名称 面粉
+EQUAL S$3号食物名称 猪肉
+EQUAL N$大面饼 1
+CHECKITEM 鸡 1
+CHECKITEM 猪肉 1
+CHECKITEM 面粉 1
+#ACT
+TAKE 鸡 1
+TAKE 猪肉 1
+TAKE 面粉 1
+MOV S$成功食品 大肉饼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 面粉
+EQUAL S$2号食物名称 鸡
+EQUAL S$3号食物名称 猪肉
+EQUAL N$大面饼 1
+CHECKITEM 鸡 1
+CHECKITEM 猪肉 1
+CHECKITEM 面粉 1
+#ACT
+TAKE 鸡 1
+TAKE 猪肉 1
+TAKE 面粉 1
+MOV S$成功食品 大肉饼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 面粉
+EQUAL S$2号食物名称 猪肉
+EQUAL S$3号食物名称 鸡
+EQUAL N$大面饼 1
+CHECKITEM 鸡 1
+CHECKITEM 猪肉 1
+CHECKITEM 面粉 1
+#ACT
+TAKE 鸡 1
+TAKE 猪肉 1
+TAKE 面粉 1
+MOV S$成功食品 大肉饼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#IF
+EQUAL S$1号食物名称 猪肉
+EQUAL S$2号食物名称 面粉
+EQUAL S$3号食物名称 鸡
+EQUAL N$大面饼 1
+CHECKITEM 鸡 1
+CHECKITEM 猪肉 1
+CHECKITEM 面粉 1
+#ACT
+TAKE 鸡 1
+TAKE 猪肉 1
+TAKE 面粉 1
+MOV S$成功食品 大肉饼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+#IF
+EQUAL S$1号食物名称 猪肉
+EQUAL S$2号食物名称 鸡
+EQUAL S$3号食物名称 面粉
+EQUAL N$大面饼 1
+CHECKITEM 鸡 1
+CHECKITEM 猪肉 1
+CHECKITEM 面粉 1
+#ACT
+TAKE 鸡 1
+TAKE 猪肉 1
+TAKE 面粉 1
+MOV S$成功食品 大肉饼
+MOV N$烹饪次数 3
+GOTO @烹饪开始
+BREAK
+
+#ELSEACT
+SENDMSG 9 请按正确配方放入食材！
+break
+
+
+[@烹饪开始]
+#if
+#ACT
+MOV S$制作按钮 <Button|x=145.0|y=410.0|width=110|height=35|rotate=0|nimg=public/1913000012.png|color=251|size=17|pimg=public/1913000011.png|text=停止烹饪|link=@停止制作食材>
+#IF
+EQUAL N$烹饪次数 0
+#ACT
+SENDMSG 9 烹饪时间过长，制作失败！
+GOTO @烹饪食物
+BREAK 
+
+#IF
+EQUAL N$当前火候 0
+EQUAL N$顺序 1
+#ACT
+MOV N$顺序 0
+INC N$当前火候 10
+GOTO @烹饪主界面
+DELAYGOTO 500 @烹饪开始
+BREAK
+
+#IF
+LARGE N$当前火候 0
+EQUAL N$顺序 1
+#ACT
+DEC N$当前火候 10
+GOTO @烹饪主界面
+DELAYGOTO 500 @烹饪开始
+BREAK
+
+#IF
+EQUAL N$当前火候 90
+#ACT
+INC N$当前火候 10
+MOV N$顺序 1
+DEC N$烹饪次数 1
+GOTO @烹饪主界面
+DELAYGOTO 500 @烹饪开始
+BREAK
+
+#IF
+SMALL N$当前火候 100
+EQUAL N$顺序 0
+#ACT
+INC N$当前火候 10
+GOTO @烹饪主界面
+DELAYGOTO 500 @烹饪开始
+BREAK
+
+[@停止制作食材]
+#IF
+RANDOMEX <$str(N$当前火候)> 100
+#ACT
+CLEARDELAYGOTO
+GIVE <$str(S$成功食品)> 1
+SENDMSG 9 恭喜你成功烹饪出：<$STR(S$成功食品)>*1
+GOTO @烹饪食物
+DELAYGOTO 100 @新区任务四
+BREAK
+#ELSEACT
+CLEARDELAYGOTO
+SENDMSG 9 火候不足，烹饪失败！
+DELAYGOTO 100 @新区任务四
+GOTO @烹饪食物
+BREAK 
+
+[@新区任务四]
+#IF
+SMALL J57 10
+#ACT
+INC J57 10
+INC J65 10
+INC U43 10
+
+#IF
+#ACT
+MOV N$记录时间4 <$STR(G201)>
+MOV N$当前时间 <$UTCNOW8>
+FORMULATION (<$STR(N$记录时间4)>+259200-<$STR(N$当前时间)>)/86400 N$新区时间4
+
+#IF
+SMALL N$新区时间4 1
+SMALL U144 1
+#ACT
+MOV U144 1
+ADDSTRVALUE T40 七日任务4 0
+BREAK
+
+
+[@放入食材跳转]
+#IF
+EQUAL S$1号食物框 
+EQUAL S$2号食物框 
+EQUAL S$3号食物框 
+#ACT
+MOV S$1号食物框 已放入
+MOV S$1号食物ID <$STR(S0)>
+INC S$已选食物过滤 <$STR(S$1号食物ID)>,
+GetItemNameByMakeIndex <$STR(S$1号食物ID)> S$1号食物名称
+MOV S$背包食材 
+INC S$背包食材 <ListView|children={2}|x=370.0|y=105.0|width=320|height=170|direction=1|bounce=0|margin=1|reload=0>
+INC S$背包食材 <BAGITEMS|id=2|condition=43|exclude=<$str(S$已选食物过滤)>|select=<$STR(S0)>|filter3=鸡,猪肉,鱼,面粉,烹饪油|count=126|row=32|selecttype=1|link=@放入食材跳转>
+GOTO @烹饪主界面
+BREAK
+
+#IF
+EQUAL S$1号食物框 
+#ACT
+MOV S$1号食物框 已放入
+MOV S$1号食物ID <$STR(S0)>
+INC S$已选食物过滤 <$STR(S$1号食物ID)>,
+GetItemNameByMakeIndex <$STR(S$1号食物ID)> S$1号食物名称
+
+MOV S$背包食材 
+INC S$背包食材 <ListView|children={2}|x=370.0|y=105.0|width=320|height=170|direction=1|bounce=0|margin=1|reload=0>
+INC S$背包食材 <BAGITEMS|id=2|condition=43|exclude=<$str(S$已选食物过滤)>|select=<$STR(S0)>|filter3=鸡,猪肉,鱼,面粉,烹饪油|count=126|row=32|selecttype=1|link=@放入食材跳转>
+GOTO @烹饪主界面
+BREAK
+
+#IF
+EQUAL S$2号食物框 
+#ACT
+MOV S$2号食物框 已放入
+MOV S$2号食物ID <$STR(S0)>
+INC S$已选食物过滤 <$STR(S$2号食物ID)>,
+GetItemNameByMakeIndex <$STR(S$2号食物ID)> S$2号食物名称
+
+MOV S$背包食材 
+INC S$背包食材 <ListView|children={2}|x=370.0|y=105.0|width=320|height=170|direction=1|bounce=0|margin=1|reload=0>
+INC S$背包食材 <BAGITEMS|id=2|condition=43|exclude=<$str(S$已选食物过滤)>|select=<$STR(S0)>|filter3=鸡,猪肉,鱼,面粉,烹饪油|count=126|row=32|selecttype=1|link=@放入食材跳转>
+GOTO @烹饪主界面
+BREAK
+
+
+#IF
+EQUAL S$3号食物框 
+#ACT
+MOV S$3号食物框 已放入
+MOV S$3号食物ID <$STR(S0)>
+INC S$已选食物过滤 <$STR(S$3号食物ID)>,
+GetItemNameByMakeIndex <$STR(S$3号食物ID)> S$3号食物名称
+
+MOV S$背包食材 
+INC S$背包食材 <ListView|children={2}|x=370.0|y=105.0|width=320|height=170|direction=1|bounce=0|margin=1|reload=0>
+INC S$背包食材 <BAGITEMS|id=2|condition=43|exclude=<$str(S$已选食物过滤)>|select=<$STR(S0)>|filter3=鸡,猪肉,鱼,面粉,烹饪油|count=126|row=32|selecttype=1|link=@放入食材跳转>
+GOTO @烹饪主界面
+BREAK
+
+[@食物返回]
+#if
+not EQUAL S$<$STR(S$食物位置)>食物框 
+#ACT
+MOV S0
+DEC S$已选食物过滤 <$STR(S$<$STR(S$食物位置)>食物ID)>,
+MOV S$<$STR(S$食物位置)>食物框 
+MOV S$<$STR(S$食物位置)>食物ID 
+MOV S$<$STR(S$食物位置)>食物名称
+MOV S$背包食材 
+INC S$背包食材 <ListView|children={2}|x=370.0|y=105.0|width=320|height=170|direction=1|bounce=0|margin=1|reload=0>
+INC S$背包食材 <BAGITEMS|id=2|condition=43|exclude=<$str(S$已选食物过滤)>|select=<$STR(S0)>|filter3=鸡,猪肉,鱼,面粉,烹饪油|count=126|row=32|selecttype=1|link=@放入食材跳转>
+GOTO @烹饪主界面
+BREAK
+
+
+
+
+
+[@天材地宝]
+<Img|x=0.0|y=20.0|height=300|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|scale9l=50|scale9b=50|img=public/bg_npc_01.png|esc=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01015.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=真正顶级的食物是大自然的馈赠，无需任何处理已是人间美味！>
+<Text|x=45.0|y=100.0|color=11012|text=蟠桃>
+<Text|x=45.0|y=130.0|color=11012|text=千年人参>
+<Text|x=45.0|y=160.0|color=11012|text=灵芝>
+<Text|x=45.0|y=190.0|color=11012|text=菩提果>
+<Text|x=45.0|y=220.0|color=11012|text=天山雪莲>
+<Text|x=45.0|y=250.0|color=11012|text=血灵芝>
+<Text|x=45.0|y=280.0|color=11012|text=血菩提>
+<Text|x=160.0|y=100.0|color=255|size=16|outline=1|outlinecolor=0|text=暴击率+1%>
+<Text|x=160.0|y=130.0|color=255|size=16|outline=1|outlinecolor=0|text=HP+1%>
+<Text|x=160.0|y=160.0|color=255|size=16|outline=1|outlinecolor=0|text=双防上限+1%>
+<Text|x=160.0|y=190.0|color=255|size=16|outline=1|outlinecolor=0|text=攻魔道上限+1%>
+<Text|x=160.0|y=220.0|color=255|size=16|outline=1|outlinecolor=0|text=被暴击率-2%>
+<Text|x=160.0|y=250.0|color=255|size=16|outline=1|outlinecolor=0|text=双防下限+1%>
+<Text|x=160.0|y=280.0|color=255|size=16|outline=1|outlinecolor=0|text=攻魔道下限+1%>
+<Text|x=315.0|y=100.0|color=255|size=16|outline=1|outlinecolor=0|text=已食用：<$str(U15)>/10>
+<Text|x=315.0|y=130.0|color=255|size=16|outline=1|outlinecolor=0|text=已食用：<$str(U16)>/10>
+<Text|x=315.0|y=160.0|color=255|size=16|outline=1|outlinecolor=0|text=已食用：<$str(U17)>/10>
+<Text|x=315.0|y=190.0|color=255|size=16|outline=1|outlinecolor=0|text=已食用：<$str(U18)>/10>
+<Text|x=315.0|y=220.0|color=255|size=16|outline=1|outlinecolor=0|text=已食用：<$str(U19)>/10>
+<Text|x=315.0|y=250.0|color=255|size=16|outline=1|outlinecolor=0|text=已食用：<$str(U20)>/10>
+<Text|x=315.0|y=280.0|color=255|size=16|outline=1|outlinecolor=0|text=已食用：<$str(U21)>/10>
+

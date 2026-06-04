@@ -1,0 +1,307 @@
+[@main]
+#IF
+#ACT
+MOV S$按钮1a 1
+MOV S$按钮1b 2
+MOV S$按钮1c 1025
+MOV S$按钮2a 2
+MOV S$按钮2b 1
+MOV S$按钮2c 1026
+MOV S$按钮3a 2
+MOV S$按钮3b 1
+MOV S$按钮3c 1026
+GOTO @攻城战争
+
+
+[@攻城主界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|ax=0|ay=1|x=0.0|y=0.0|width=790|height=536|hideMain=0|esc=1|scale9r=200|scale9t=50|bg=1|move=0|scale9b=50|scale9l=200|img=private/xlxl/0000.png|show=4|loadDelay=0|reset=1>
+<Layout|x=734.0|y=-16.0|width=80|height=80|link=@exit>
+<Button|x=749.0|y=19.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=346.0|y=8.0|img=private/biaoti/01010.png|esc=0>
+<Text|x=305.0|y=480.0|color=250|size=18|text=<$LORD>>
+<Text|x=600.0|y=480.0|color=250|size=18|text=<$OWNERGUILD>>
+<Img|x=193.0|y=86.0|width=550|height=378|rotate=0|esc=0|img=public/gsbg3.png>
+<Img|x=175.0|y=73.0|height=402|img=private/psllz/00010.png|esc=0>
+<Button|x=55.0|y=88.0|width=120|size=18|color=<$STR(S$按钮1c)>|nimg=private/pmh/00<$STR(S$按钮1b)>.png|pimg=private/pmh/00<$STR(S$按钮1a)>.png|text=攻城战争|link=@攻城战争#按钮1a=1#按钮1b=2#按钮1c=1025#按钮2a=2#按钮2b=1#按钮2c=1026#按钮3a=2#按钮3b=1#按钮3c=1026>
+<Button|x=55.0|y=128.0|width=120|size=18|color=<$STR(S$按钮2c)>|nimg=private/pmh/00<$STR(S$按钮2b)>.png|pimg=private/pmh/00<$STR(S$按钮2a)>.png|text=膜拜城主|link=@城主风采#按钮1a=2#按钮1b=1#按钮1c=1026#按钮2a=1#按钮2b=2#按钮2c=1025#按钮3a=2#按钮3b=1#按钮3c=1026>
+<Button|x=55.0|y=168.0|width=120|size=18|color=<$STR(S$按钮3c)>|nimg=private/pmh/00<$STR(S$按钮3b)>.png|pimg=private/pmh/00<$STR(S$按钮3a)>.png|text=攻城规则|link=@攻城规则#按钮1a=2#按钮1b=1#按钮1c=1026#按钮2a=2#按钮2b=1#按钮2c=1026#按钮3a=1#按钮3b=2#按钮3c=1025>
+<Text|x=200.0|y=480.0|color=11054|size=18|text=沙巴克城主：>
+<Text|x=510.0|y=480.0|color=11054|size=18|text=所属行会：>
+
+;<$STR(S$按钮)>
+<$STR(S$数据显示)>
+
+
+[@攻城战争]
+#IF
+#ACT
+MOV S$数据显示 
+INC S$数据显示 <Img|x=193.0|y=86.0|width=550|height=378|rotate=0|img=public/gsbg3.png|esc=0>
+INC S$数据显示 <Img|x=175.0|y=73.0|height=402|img=private/psllz/00010.png|esc=0>
+INC S$数据显示 <Button|x=55.0|y=88.0|width=120|size=18|color=<$STR(S$按钮1c)>|nimg=private/pmh/00<$STR(S$按钮1b)>.png|pimg=private/pmh/00<$STR(S$按钮1a)>.png|text=攻城战争|link=@攻城战争#按钮1a=1#按钮1b=2#按钮1c=1025#按钮2a=2#按钮2b=1#按钮2c=1026#按钮3a=2#按钮3b=1#按钮3c=1026>
+INC S$数据显示 <Button|x=55.0|y=128.0|width=120|size=18|color=<$STR(S$按钮2c)>|nimg=private/pmh/00<$STR(S$按钮2b)>.png|pimg=private/pmh/00<$STR(S$按钮2a)>.png|text=膜拜城主|link=@城主风采#按钮1a=2#按钮1b=1#按钮1c=1026#按钮2a=1#按钮2b=2#按钮2c=1025#按钮3a=2#按钮3b=1#按钮3c=1026>
+INC S$数据显示 <Button|x=55.0|y=168.0|width=120|size=18|color=<$STR(S$按钮3c)>|nimg=private/pmh/00<$STR(S$按钮3b)>.png|pimg=private/pmh/00<$STR(S$按钮3a)>.png|text=攻城规则|link=@攻城规则#按钮1a=2#按钮1b=1#按钮1c=1026#按钮2a=2#按钮2b=1#按钮2c=1026#按钮3a=1#按钮3b=2#按钮3c=1025>
+INC S$数据显示 <Img|x=213.0|y=207.0|width=520|height=175|scale9t=50|scale9b=50|img=public/002000.png|scale9r=50|esc=0|scale9l=50>
+INC S$数据显示 <Layout|x=243.0|y=250.0|width=130|height=50|rotate=0|link=@攻城点3>
+INC S$数据显示 <Layout|x=405.0|y=250.0|width=130|height=50|link=@攻城点4>
+INC S$数据显示 <Layout|x=565.0|y=250.0|width=130|height=50|link=@攻城点2>
+INC S$数据显示 <Layout|x=304.0|y=309.0|width=130|height=50|link=@攻城点1>
+INC S$数据显示 <Layout|x=500.0|y=309.0|width=130|height=50|link=@攻城点5>
+INC S$数据显示 <Text|x=272.0|y=260.0|color=11009|size=18|text=沙城复活点|link=@攻城点3>
+INC S$数据显示 <Text|x=432.0|y=260.0|color=11009|size=18|text=沙城衣服店|link=@攻城点4>
+INC S$数据显示 <Text|x=592.0|y=260.0|color=11009|size=18|text=沙城武器店|link=@攻城点2>
+INC S$数据显示 <Text|x=330.0|y=319.0|color=11009|size=18|text=沙巴克大门|link=@攻城点1>
+INC S$数据显示 <Text|x=525.0|y=319.0|color=11009|size=18|text=沙巴克密道|link=@攻城点5>
+INC S$数据显示 <Img|x=305.0|y=327.0|width=20|height=20|img=public/00014.png|esc=0>
+INC S$数据显示 <Img|x=500.0|y=327.0|width=20|height=20|img=public/00014.png|esc=0>
+INC S$数据显示 <Img|x=247.0|y=267.0|width=20|height=20|img=public/00014.png|esc=0>
+INC S$数据显示 <Img|x=407.0|y=267.0|width=20|height=20|img=public/00014.png|esc=0>
+INC S$数据显示 <Img|x=567.0|y=267.0|width=20|height=20|img=public/00014.png|esc=0>
+INC S$数据显示 <Img|x=245.0|y=100.0|width=450|height=95|scale9r=20|scale9l=20|esc=0|img=private/sbk/003.png|scale9b=20|scale9t=20>
+INC S$数据显示 <Text|x=411.0|y=214.0|color=1025|size=18|text=攻城位置传送>
+INC S$数据显示 <Img|x=201.0|y=376.0|scale9t=30|scale9r=30|scale9b=30|img=private/sbk/006.png|scale9l=30|esc=0>
+GOTO @攻城主界面
+
+
+[@城主风采]
+#IF
+#ACT
+MOV S$数据显示 
+
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+MOV S$模型大小 1
+#ELSEACT
+MOV S$模型大小 0.7
+
+#IF
+<$LORD>.gender man
+#ACT
+MOV N$性别 0
+#ELSEACT
+MOV N$性别 1
+
+#IF
+<$LORD>.Checkonline
+#ACT
+GetHumVar <$LORD> S$武器 <$WEAPON>
+GetHumVar <$LORD> S$衣服 <$DRESS>
+GetDBItemFieldValue <$STR(S$武器)> Looks  N$武器
+GetDBItemFieldValue <$STR(S$衣服)> Looks  N$衣服
+
+MOV S$数据显示 
+INC S$数据显示 <Img|x=402.0|y=85.0|img=private/sbk/011.png|esc=0>
+INC S$数据显示 <Img|x=345.0|y=175.0|width=250|height=150|esc=0|img=public/bg_fubentg_02.png>
+INC S$数据显示 <UIModel|x=470|y=205|hairID=1|scale=<$STR(S$模型大小)>|sex=<$STR(N$性别)>|clothID=<$STR(N$衣服)>|weaponID=<$STR(N$武器)>>
+INC S$数据显示 <Img|x=211.0|y=312.0|width=520|height=100|scale9t=50|scale9b=50|img=public/002000.png|scale9r=50|esc=0|scale9l=50>
+INC S$数据显示 <RText|x=215.0|y=320.0|color=11004|size=16|text=所有玩家可以使用<100万经验卷/FCOLOR=11004>膜拜城主，可以获得<10%/FCOLOR=11004>的额外经验！>
+INC S$数据显示 <RText|x=215.0|y=345.0|color=11004|size=16|text=城主被膜拜一次，可提取库存的<1万经验卷*1/FCOLOR=11004>，每天最多可提取<300张/FCOLOR=11004>。>
+INC S$数据显示 <RText|x=215.0|y=375.0|color=255|size=16|text=今日已提取<<$str(G3)>张/FCOLOR=11004>，库存剩余：<<$str(G4)>张/FCOLOR=11004>>
+#ELSEACT
+MOV S$数据显示 
+INC S$数据显示 <Img|x=402.0|y=85.0|img=private/sbk/011.png|esc=0>
+INC S$数据显示 <Img|x=400.0|y=125.0|img=public/bg_shacbz_02.png|esc=0>
+INC S$数据显示 <Img|x=211.0|y=312.0|width=520|height=100|scale9t=50|scale9b=50|img=public/002000.png|scale9r=50|esc=0|scale9l=50>
+INC S$数据显示 <RText|x=215.0|y=320.0|color=11004|size=16|text=所有玩家可以使用<100万经验卷/FCOLOR=11004>膜拜城主，可以获得<10%/FCOLOR=11004>的额外经验！>
+INC S$数据显示 <RText|x=215.0|y=345.0|color=11004|size=16|text=城主被膜拜一次，可提取库存的<1万经验卷*1/FCOLOR=11004>，每天最多可提取<300张/FCOLOR=11004>。>
+INC S$数据显示 <RText|x=215.0|y=375.0|color=255|size=16|text=今日已提取<<$str(G3)>张/FCOLOR=11004>，库存剩余：<<$str(G4)>张/FCOLOR=11004>>
+
+
+#IF
+ISCASTLEMASTER
+#ACT
+INC S$数据显示 <Button|x=410.0|y=420.0|color=1025|size=18|nimg=private/psllz/1900000680_3.png|pimg=private/psllz/1900000680_2.png|text=提取经验卷|link=@提取经验卷>
+#ELSEACT
+INC S$数据显示 <Button|x=410.0|y=420.0|color=1025|size=18|nimg=private/psllz/1900000680_3.png|pimg=private/psllz/1900000680_2.png|text=膜拜城主|link=@膜拜城主>
+
+
+
+#IF
+#ACT
+GOTO @攻城主界面
+
+[@攻城规则]
+#IF
+#ACT
+MOV S$数据显示 
+INC S$数据显示 <Text|x=200.0|y=90.0|color=11014|size=18|outline=1|outlinecolor=0|text=攻城时间：>
+INC S$数据显示 <RText|x=200.0|y=120.0|color=255|size=18|outline=1|outlinecolor=0|text=新区<第三天/FCOLOR=250>合区集体攻城，其后<每个星期六或合区/FCOLOR=250>开放攻城。>
+INC S$数据显示 <Text|x=200.0|y=275.0|color=11014|size=18|outline=1|outlinecolor=0|text=奖励发放：>
+INC S$数据显示 <Text|x=200.0|y=155.0|size=18|color=11014|outline=1|outlinecolor=0|text=奖励说明：>
+INC S$数据显示 <RText|x=200.0|y=360.0|size=18|color=255|outline=1|outlinecolor=0|text=奖励将通过皇宫内行会成员人数以<邮件/FCOLOR=250>方式平分当次攻沙奖励。>
+INC S$数据显示 <RText|x=201.0|y=399.0|size=18|color=255|outline=1|outlinecolor=0|text=奖励发放时间内，请确保<沙巴克行会会长及行会成员在线/FCOLOR=243>\不在线或不在皇宫的会长及成员将<无法获得/FCOLOR=249>奖励邮件！>
+INC S$数据显示 <RText|x=200.0|y=305.0|size=18|color=255|outline=1|outlinecolor=0|text=攻城结束后<22:01-22:30/FCOLOR=250>分内沙巴克老大在皇宫点击领奖员发放奖励>
+INC S$数据显示 <RText|x=200.0|y=330.0|size=18|color=255|outline=1|outlinecolor=0|text=<会长独享20%奖励/FCOLOR=250>，剩余奖励皇宫内行会成员平分(包括会长)。>
+INC S$数据显示 <RText|x=200.0|y=185.0|color=255|size=18|outline=1|outlinecolor=0|text=1、同一天新区合区攻城，奖励<5万/FCOLOR=250>元宝>
+INC S$数据显示 <RText|x=200.0|y=215.0|color=255|size=18|outline=1|outlinecolor=0|text=2、跨天区每次合区攻城，奖励<8万/FCOLOR=250>元宝>
+INC S$数据显示 <RText|x=200.0|y=245.0|color=255|size=18|outline=1|outlinecolor=0|text=3、小战区最终合区攻城，奖励<10万/FCOLOR=250>元宝>
+
+#IF
+#ACT
+GOTO @攻城主界面
+
+[@膜拜城主]
+#OR
+EQUAL <$LORD> 管理员
+EQUAL <$LORD> 
+#ACT
+MESSAGEBOX 当前沙巴克城主还未产生！
+BREAK
+
+#if
+not checkitem 100万经验卷 1
+#ACT
+MESSAGEBOX 你身上没有100万经验卷！
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+NOT SMALL <$EXP> <$cfg_jing_yan(<$LEVEL>_1)>
+#ACT
+MESSAGEBOX 请先突破等级后再来膜拜！
+BREAK
+
+#if
+checkitem 100万经验卷 1
+#ACT
+TAKE 100万经验卷 1
+INC G4 3
+GOTO @膜拜经验检查
+break
+
+[@膜拜经验检查]
+#IF
+#ACT
+MOV N$获得经验 1100000
+
+#IF
+CHECKLEVELEX < 80
+#ACT
+CHANGEEXP + 1100000
+sendmsg 9 <font color='#ffff00'>膜拜成功，经验提升10%！</font>
+GOTO @城主风采
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+NOT SMALL <$EXP> <$cfg_jing_yan(<$LEVEL>_1)>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+#ACT
+MOV  N$膜拜升级经验差 0
+FORMULATION (<$cfg_jing_yan(<$LEVEL>_1)>-<$EXP>)  N$膜拜升级经验差
+
+#IF
+SMALL N$获得经验 <$STR(N$膜拜升级经验差)>
+CHECKLEVELEX > 79
+#ACT
+CHANGEEXP + 1100000
+sendmsg 9 <font color='#ffff00'>膜拜成功，经验提升10%！</font>
+GOTO @城主风采
+BREAK
+
+#IF
+large N$获得经验 <$STR(N$膜拜升级经验差)>
+CHECKLEVELEX > 79
+#ACT
+CHANGEEXP + <$STR(N$膜拜升级经验差)>
+sendmsg 9 <font color='#ffff00'>膜拜成功，经验提升10%！</font>
+GOTO @城主风采
+BREAK
+
+[@提取经验卷]
+#IF
+LARGE G3 299
+#ACT
+MESSAGEBOX 今日已达到提取上限！
+break
+
+#IF
+EQUAL G4 0
+#ACT
+MESSAGEBOX 当前沙城已无经验卷库存！
+break
+
+#IF
+LARGE G4 0
+#ACT
+GiveStateItem 1万经验卷 1 1 1 0 0 1 1 1 1
+DEC G4 1
+INC G3 1
+GOTO @城主风采
+sendmsg 9 <font color='#79ff35'>提取成功，当前库存还剩：<$str(G4)>张</font>
+break
+
+
+[@攻城点5]
+#IF
+CHECKLEVELEX > 54
+#ACT
+mapmove d701 30 21 3
+SENDMSG 0 [沙城战报]：%s偷偷潜入沙巴克密道，企图偷袭沙巴克皇宫，沙城又掀起一片血雨腥风!
+#ELSEACT
+sendmsg 7 等级不足55级，无法参与攻城战争！
+sendmsg 7 等级不足55级，无法参与攻城战争！
+break
+
+
+[@攻城点1]
+#IF
+CHECKLEVELEX > 54
+#ACT
+mapmove 3 675 333
+SENDMSG 0 [沙城战报]：%s意气风发前往沙巴克攻城区域，沙城又掀起一片血雨腥风!
+#ELSEACT
+sendmsg 7 等级不足55级，无法参与攻城战争！
+sendmsg 7 等级不足55级，无法参与攻城战争！
+break
+
+[@攻城点3]
+#IF
+CHECKLEVELEX > 54
+#ACT
+mapmove 3 647 291
+SENDMSG 0 [沙城战报]：%s意气风发前往沙巴克攻城区域，沙城又掀起一片血雨腥风!
+#ELSEACT
+sendmsg 7 等级不足55级，无法参与攻城战争！
+sendmsg 7 等级不足55级，无法参与攻城战争！
+break
+
+[@攻城点4]
+#IF
+CHECKLEVELEX > 54
+#ACT
+mapmove 3 673 277
+SENDMSG 0 [沙城战报]：%s意气风发前往沙巴克攻城区域，沙城又掀起一片血雨腥风!
+#ELSEACT
+sendmsg 7 等级不足55级，无法参与攻城战争！
+sendmsg 7 等级不足55级，无法参与攻城战争！
+break
+
+[@攻城点3]
+#IF
+CHECKLEVELEX > 54
+#ACT
+mapmove 3 650 300
+SENDMSG 0 [沙城战报]：%s意气风发前往沙巴克攻城区域，沙城又掀起一片血雨腥风!
+#ELSEACT
+sendmsg 7 等级不足55级，无法参与攻城战争！
+sendmsg 7 等级不足55级，无法参与攻城战争！
+break
+
+[@攻城点2]
+#IF
+CHECKLEVELEX > 54
+#ACT
+mapmove 3 633 319
+SENDMSG 0 [沙城战报]：%s意气风发前往沙巴克攻城区域，沙城又掀起一片血雨腥风!
+#ELSEACT
+sendmsg 7 等级不足55级，无法参与攻城战争！
+sendmsg 7 等级不足55级，无法参与攻城战争！
+break

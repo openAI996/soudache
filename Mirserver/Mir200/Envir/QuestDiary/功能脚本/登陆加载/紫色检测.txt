@@ -1,0 +1,214 @@
+[@紫色命格激活判断]
+{
+#IF
+#ACT
+MOV S$取之有道
+MOV S$弑神者
+MOV S$神之打野
+MOV S$赏金猎人
+MOV S$酒中仙
+MOV S$妙手回春
+MOV S$草木之灵
+MOV S$道玄传人
+MOV S$天尊传人
+MOV S$御灵传人
+MOV S$意外之财
+MOV S$天下第一
+MOV S$逆水行舟
+MOV S$狩猎之心
+MOV S$诅咒护体
+MOV S$强化达人
+MOV S$鸿运当头
+
+;MOV S$药圣尊者
+;mov s$烹饪大师
+;MOV S$巧夺天工
+;MOV S$铁匠传人
+#OR
+EQUAL T20 天下第一
+EQUAL T21 天下第一
+EQUAL T22 天下第一
+EQUAL T23 天下第一
+EQUAL T24 天下第一
+EQUAL T25 天下第一
+EQUAL T26 天下第一
+#ACT
+MOV S$天下第一 激活
+
+#OR
+EQUAL T20 意外之财
+EQUAL T21 意外之财
+EQUAL T22 意外之财
+EQUAL T23 意外之财
+EQUAL T24 意外之财
+EQUAL T25 意外之财
+EQUAL T26 意外之财
+#ACT
+MOV S$意外之财 激活
+
+#OR
+EQUAL T20 取之有道
+EQUAL T21 取之有道
+EQUAL T22 取之有道
+EQUAL T23 取之有道
+EQUAL T24 取之有道
+EQUAL T25 取之有道
+EQUAL T26 取之有道
+#ACT
+MOV S$取之有道 激活
+
+#OR
+EQUAL T20 弑神者
+EQUAL T21 弑神者
+EQUAL T22 弑神者
+EQUAL T23 弑神者
+EQUAL T24 弑神者
+EQUAL T25 弑神者
+EQUAL T26 弑神者
+#ACT
+MOV S$弑神者 激活
+
+#OR
+EQUAL T20 神之打野
+EQUAL T21 神之打野
+EQUAL T22 神之打野
+EQUAL T23 神之打野
+EQUAL T24 神之打野
+EQUAL T25 神之打野
+EQUAL T26 神之打野
+#ACT
+MOV S$神之打野 激活
+
+#OR
+EQUAL T20 赏金猎人
+EQUAL T21 赏金猎人
+EQUAL T22 赏金猎人
+EQUAL T23 赏金猎人
+EQUAL T24 赏金猎人
+EQUAL T25 赏金猎人
+EQUAL T26 赏金猎人
+#ACT
+MOV S$赏金猎人 激活
+
+#OR
+EQUAL T20 酒中仙
+EQUAL T21 酒中仙
+EQUAL T22 酒中仙
+EQUAL T23 酒中仙
+EQUAL T24 酒中仙
+EQUAL T25 酒中仙
+EQUAL T26 酒中仙
+#ACT
+MOV S$酒中仙 激活
+
+#OR
+EQUAL T20 妙手回春
+EQUAL T21 妙手回春
+EQUAL T22 妙手回春
+EQUAL T23 妙手回春
+EQUAL T24 妙手回春
+EQUAL T25 妙手回春
+EQUAL T26 妙手回春
+#ACT
+MOV S$妙手回春 激活
+
+#OR
+EQUAL T20 草木之灵
+EQUAL T21 草木之灵
+EQUAL T22 草木之灵
+EQUAL T23 草木之灵
+EQUAL T24 草木之灵
+EQUAL T25 草木之灵
+EQUAL T26 草木之灵
+#ACT
+MOV S$草木之灵 激活
+
+#OR
+EQUAL T20 道玄传人
+EQUAL T21 道玄传人
+EQUAL T22 道玄传人
+EQUAL T23 道玄传人
+EQUAL T24 道玄传人
+EQUAL T25 道玄传人
+EQUAL T26 道玄传人
+#ACT
+MOV S$道玄传人 激活
+
+#OR
+EQUAL T20 天尊传人
+EQUAL T21 天尊传人
+EQUAL T22 天尊传人
+EQUAL T23 天尊传人
+EQUAL T24 天尊传人
+EQUAL T25 天尊传人
+EQUAL T26 天尊传人
+#ACT
+MOV S$天尊传人 激活
+
+#OR
+EQUAL T20 御灵传人
+EQUAL T21 御灵传人
+EQUAL T22 御灵传人
+EQUAL T23 御灵传人
+EQUAL T24 御灵传人
+EQUAL T25 御灵传人
+EQUAL T26 御灵传人
+#ACT
+MOV S$御灵传人 激活
+
+#OR
+EQUAL T20 逆水行舟
+EQUAL T21 逆水行舟
+EQUAL T22 逆水行舟
+EQUAL T23 逆水行舟
+EQUAL T24 逆水行舟
+EQUAL T25 逆水行舟
+EQUAL T26 逆水行舟
+#ACT
+MOV S$逆水行舟 激活
+
+#OR
+EQUAL T20 狩猎之心
+EQUAL T21 狩猎之心
+EQUAL T22 狩猎之心
+EQUAL T23 狩猎之心
+EQUAL T24 狩猎之心
+EQUAL T25 狩猎之心
+EQUAL T26 狩猎之心
+#ACT
+MOV S$狩猎之心 激活
+
+#OR
+EQUAL T20 诅咒护体
+EQUAL T21 诅咒护体
+EQUAL T22 诅咒护体
+EQUAL T23 诅咒护体
+EQUAL T24 诅咒护体
+EQUAL T25 诅咒护体
+EQUAL T26 诅咒护体
+#ACT
+MOV S$诅咒护体 激活
+
+#OR
+EQUAL T20 强化达人
+EQUAL T21 强化达人
+EQUAL T22 强化达人
+EQUAL T23 强化达人
+EQUAL T24 强化达人
+EQUAL T25 强化达人
+EQUAL T26 强化达人
+#ACT
+MOV S$强化达人 激活
+
+#OR
+EQUAL T20 鸿运当头
+EQUAL T21 鸿运当头
+EQUAL T22 鸿运当头
+EQUAL T23 鸿运当头
+EQUAL T24 鸿运当头
+EQUAL T25 鸿运当头
+EQUAL T26 鸿运当头
+#ACT
+MOV S$鸿运当头 激活
+
+}

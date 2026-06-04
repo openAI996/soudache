@@ -1,0 +1,314 @@
+[@橙色命格激活判断]
+{
+#IF
+#ACT
+MOV S$神魔之体
+MOV S$空间王者
+MOV S$韧性十足
+MOV S$天神赐福
+MOV S$绝处逢生
+MOV S$战神之怒
+MOV S$凤凰涅槃
+MOV S$不灭金身
+MOV S$与日俱进
+MOV S$柳暗花明
+MOV S$万人敬仰
+MOV S$唤龙术
+MOV S$恶贯满盈
+MOV S$奋勇向前
+MOV S$生命之王
+MOV S$巫蛊之术
+MOV S$诅咒之王
+MOV S$霸王之体
+MOV S$天雷之力
+MOV S$以彼之道
+MOV S$祸起萧墙
+MOV S$离火燎原
+
+#OR
+EQUAL T20 离火燎原
+EQUAL T21 离火燎原
+EQUAL T22 离火燎原
+EQUAL T23 离火燎原
+EQUAL T24 离火燎原
+EQUAL T25 离火燎原
+EQUAL T26 离火燎原
+#ACT
+MOV S$离火燎原 激活
+
+#OR
+EQUAL T20 祸起萧墙
+EQUAL T21 祸起萧墙
+EQUAL T22 祸起萧墙
+EQUAL T23 祸起萧墙
+EQUAL T24 祸起萧墙
+EQUAL T25 祸起萧墙
+EQUAL T26 祸起萧墙
+#ACT
+MOV S$祸起萧墙 激活
+
+#OR
+EQUAL T20 以彼之道
+EQUAL T21 以彼之道
+EQUAL T22 以彼之道
+EQUAL T23 以彼之道
+EQUAL T24 以彼之道
+EQUAL T25 以彼之道
+EQUAL T26 以彼之道
+#ACT
+MOV S$以彼之道 激活
+
+#OR
+EQUAL T20 天雷之力
+EQUAL T21 天雷之力
+EQUAL T22 天雷之力
+EQUAL T23 天雷之力
+EQUAL T24 天雷之力
+EQUAL T25 天雷之力
+EQUAL T26 天雷之力
+#ACT
+MOV S$天雷之力 激活
+
+#OR
+EQUAL T20 霸王之体
+EQUAL T21 霸王之体
+EQUAL T22 霸王之体
+EQUAL T23 霸王之体
+EQUAL T24 霸王之体
+EQUAL T25 霸王之体
+EQUAL T26 霸王之体
+#ACT
+MOV S$霸王之体 激活
+
+#OR
+EQUAL T20 诅咒之王
+EQUAL T21 诅咒之王
+EQUAL T22 诅咒之王
+EQUAL T23 诅咒之王
+EQUAL T24 诅咒之王
+EQUAL T25 诅咒之王
+EQUAL T26 诅咒之王
+#ACT
+MOV S$诅咒之王 激活
+
+#OR
+EQUAL T20 巫蛊之术
+EQUAL T21 巫蛊之术
+EQUAL T22 巫蛊之术
+EQUAL T23 巫蛊之术
+EQUAL T24 巫蛊之术
+EQUAL T25 巫蛊之术
+EQUAL T26 巫蛊之术
+#ACT
+MOV S$巫蛊之术 激活
+
+#OR
+EQUAL T20 生命之王
+EQUAL T21 生命之王
+EQUAL T22 生命之王
+EQUAL T23 生命之王
+EQUAL T24 生命之王
+EQUAL T25 生命之王
+EQUAL T26 生命之王
+#ACT
+MOV S$生命之王 激活
+
+#OR
+EQUAL T20 奋勇向前
+EQUAL T21 奋勇向前
+EQUAL T22 奋勇向前
+EQUAL T23 奋勇向前
+EQUAL T24 奋勇向前
+EQUAL T25 奋勇向前
+EQUAL T26 奋勇向前
+#ACT
+MOV S$奋勇向前 激活
+
+#OR
+EQUAL T20 恶贯满盈
+EQUAL T21 恶贯满盈
+EQUAL T22 恶贯满盈
+EQUAL T23 恶贯满盈
+EQUAL T24 恶贯满盈
+EQUAL T25 恶贯满盈
+EQUAL T26 恶贯满盈
+#ACT
+MOV S$恶贯满盈 激活
+
+
+#OR
+EQUAL T20 唤龙术
+EQUAL T21 唤龙术
+EQUAL T22 唤龙术
+EQUAL T23 唤龙术
+EQUAL T24 唤龙术
+EQUAL T25 唤龙术
+EQUAL T26 唤龙术
+#ACT
+MOV S$唤龙术 激活
+
+#OR
+EQUAL T20 万人敬仰
+EQUAL T21 万人敬仰
+EQUAL T22 万人敬仰
+EQUAL T23 万人敬仰
+EQUAL T24 万人敬仰
+EQUAL T25 万人敬仰
+EQUAL T26 万人敬仰
+#ACT
+MOV S$万人敬仰 激活
+
+#OR
+EQUAL T20 柳暗花明
+EQUAL T21 柳暗花明
+EQUAL T22 柳暗花明
+EQUAL T23 柳暗花明
+EQUAL T24 柳暗花明
+EQUAL T25 柳暗花明
+EQUAL T26 柳暗花明
+#ACT
+MOV S$柳暗花明 激活
+
+#OR
+EQUAL T20 与日俱进
+EQUAL T21 与日俱进
+EQUAL T22 与日俱进
+EQUAL T23 与日俱进
+EQUAL T24 与日俱进
+EQUAL T25 与日俱进
+EQUAL T26 与日俱进
+#ACT
+MOV S$与日俱进 激活
+
+#OR
+EQUAL T20 不灭金身
+EQUAL T21 不灭金身
+EQUAL T22 不灭金身
+EQUAL T23 不灭金身
+EQUAL T24 不灭金身
+EQUAL T25 不灭金身
+EQUAL T26 不灭金身
+#ACT
+MOV S$不灭金身 激活
+
+#OR
+EQUAL T20 凤凰涅槃
+EQUAL T21 凤凰涅槃
+EQUAL T22 凤凰涅槃
+EQUAL T23 凤凰涅槃
+EQUAL T24 凤凰涅槃
+EQUAL T25 凤凰涅槃
+EQUAL T26 凤凰涅槃
+#ACT
+MOV S$凤凰涅槃 激活
+
+#OR
+EQUAL T20 战神之怒
+EQUAL T21 战神之怒
+EQUAL T22 战神之怒
+EQUAL T23 战神之怒
+EQUAL T24 战神之怒
+EQUAL T25 战神之怒
+EQUAL T26 战神之怒
+#ACT
+MOV S$战神之怒 激活
+
+#OR
+EQUAL T20 绝处逢生
+EQUAL T21 绝处逢生
+EQUAL T22 绝处逢生
+EQUAL T23 绝处逢生
+EQUAL T24 绝处逢生
+EQUAL T25 绝处逢生
+EQUAL T26 绝处逢生
+#ACT
+MOV S$绝处逢生 激活
+
+#OR
+EQUAL T20 天神赐福
+EQUAL T21 天神赐福
+EQUAL T22 天神赐福
+EQUAL T23 天神赐福
+EQUAL T24 天神赐福
+EQUAL T25 天神赐福
+EQUAL T26 天神赐福
+#ACT
+MOV S$天神赐福 激活
+
+#OR
+EQUAL T20 韧性十足
+EQUAL T21 韧性十足
+EQUAL T22 韧性十足
+EQUAL T23 韧性十足
+EQUAL T24 韧性十足
+EQUAL T25 韧性十足
+EQUAL T26 韧性十足
+#ACT
+MOV S$韧性十足 激活
+
+#OR
+EQUAL T20 空间王者
+EQUAL T21 空间王者
+EQUAL T22 空间王者
+EQUAL T23 空间王者
+EQUAL T24 空间王者
+EQUAL T25 空间王者
+EQUAL T26 空间王者
+#ACT
+MOV S$空间王者 激活
+
+#OR
+EQUAL T20 神魔之体
+EQUAL T21 神魔之体
+EQUAL T22 神魔之体
+EQUAL T23 神魔之体
+EQUAL T24 神魔之体
+EQUAL T25 神魔之体
+EQUAL T26 神魔之体
+#ACT
+MOV S$神魔之体 激活
+
+#OR
+EQUAL T20 八面玲珑
+EQUAL T21 八面玲珑
+EQUAL T22 八面玲珑
+EQUAL T23 八面玲珑
+EQUAL T24 八面玲珑
+EQUAL T25 八面玲珑
+EQUAL T26 八面玲珑
+#ACT
+MOV S$八面玲珑 激活
+
+#OR
+EQUAL T20 百发百中
+EQUAL T21 百发百中
+EQUAL T22 百发百中
+EQUAL T23 百发百中
+EQUAL T24 百发百中
+EQUAL T25 百发百中
+EQUAL T26 百发百中
+#ACT
+MOV S$百发百中 激活
+
+#OR
+EQUAL T20 卓越守护
+EQUAL T21 卓越守护
+EQUAL T22 卓越守护
+EQUAL T23 卓越守护
+EQUAL T24 卓越守护
+EQUAL T25 卓越守护
+EQUAL T26 卓越守护
+#ACT
+MOV S$卓越守护 激活
+
+#OR
+EQUAL T20 金砖之力
+EQUAL T21 金砖之力
+EQUAL T22 金砖之力
+EQUAL T23 金砖之力
+EQUAL T24 金砖之力
+EQUAL T25 金砖之力
+EQUAL T26 金砖之力
+#ACT
+MOV S$金砖之力 激活
+}

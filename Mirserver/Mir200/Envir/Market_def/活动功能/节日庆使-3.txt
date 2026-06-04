@@ -1,0 +1,4 @@
+[@main]
+#IF
+#ACT
+#CALL [\相关NPC\节日庆使.txt] @节日活动界面

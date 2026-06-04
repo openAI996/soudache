@@ -1,0 +1,444 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=我经营这个肉店已经很多年了，要是你运气好能挖到几块干>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=肉的话，我保证你能小赚一笔！>
+;<Img|x=45.0|y=195.0|width=20|height=20|esc=0|img=public/00012.png>
+;<Img|x=45.0|y=143.0|width=20|height=20|esc=0|img=public/00012.png>
+;<Layout|x=65.0|y=135.0|width=100|height=35|link=@获得天书>
+;<Layout|x=63.0|y=188.0|width=100|height=35|link=@获得天命神石>
+;<Text|x=70.0|y=140.0|color=11008|size=17|text=获得|link=@获得天书>
+;<Text|x=70.0|y=193.0|color=11008|size=17|text=获得|link=@获得天命神石>
+;<Text|x=110.0|y=140.0|size=17|color=255|outline=1|outlinecolor=0|text=紫薇星石>
+;<Text|x=110.0|y=193.0|size=17|color=255|outline=1|outlinecolor=0|text=天外陨铁>
+;
+;<Layout|x=315.0|y=135.0|width=150|height=35|rotate=0|link=@几率公示>
+;<Text|x=314.0|y=140.0|color=11008|size=18|text=八门遁甲几率公示|link=@几率公示>
+;<Img|x=290.0|y=145.0|img=public/00013.png|esc=0>
+
+[@几率公示]
+<Img|x=0.0|y=20.0|height=370|img=public/bg_npc_01.png|move=0|esc=1|reset=1|show=0|scale9l=30|scale9b=80|scale9t=80|bg=1|scale9r=30|loadDelay=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=八门遁甲洗练几率如下：>
+<RText|x=45.0|y=97.0|outlinecolor=0|color=255|outline=1|size=17|text=<蓝色八门：/FCOLOR=154>56%的概率\<紫色八门：/FCOLOR=253>25%的概率\<橙色八门：/FCOLOR=70>15%的概率\<红色八门：/FCOLOR=58>极为罕见，每<100个/FCOLOR=250>八门属性中仅有3~4个数量的\八门会出现红色属性，其获得概率为4%。\<若想增加获得红色八门的机会，可以使用紫薇星石进行八门/FCOLOR=11003>\<洗练。每使用10个紫薇星石，获得红色八门的概率将/FCOLOR=11003><增加20%/FCOLOR=249>\<可以提高获得强大八门属性的机会！/FCOLOR=11003>\<需要注意的是，八门属性的获得是随机的，每位玩家的结果可/FCOLOR=11050>\<能会有所不同，请谨慎操作。/FCOLOR=11050>\<祝您好运，愿您能获得理想的八门属性！/FCOLOR=11050>>
+
+
+
+[@获得天命神石]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=比奇矿区被尸王占领多年，导致如今矿石稀缺。>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=如果你能去比奇矿区杀掉<10只尸王/FCOLOR=11003>，我可以免费送你>
+<RText|x=45.0|y=120.0|color=255|size=17|outlinecolor=0|outline=1|text=<1块天外陨铁/FCOLOR=11013>，说话算话，当天有效。>
+<Text|x=45.0|y=145.0|color=11003|size=17|outlinecolor=0|outline=1|text=该任务每天只可完成1次，每个角色最多完成30次！>
+<Img|x=235.0|y=222.0|width=16|height=20|esc=0|img=public/00016.png>
+<Img|x=45.0|y=220.0|width=20|height=20|esc=0|img=public/00025.png>
+<Layout|x=63.0|y=202.0|width=100|height=50|link=@接受任务>
+<Layout|x=253.0|y=208.0|width=100|height=50|link=@完成任务>
+<Text|x=70.0|y=217.0|color=11008|size=17|text=接受|link=@接受任务>
+<Text|x=260.0|y=217.0|color=11008|size=17|text=完成|link=@完成任务>
+<Text|x=112.0|y=217.0|color=255|size=17|outlinecolor=0|outline=1|text=任务>
+<Text|x=300.0|y=217.0|color=255|size=17|outlinecolor=0|outline=1|text=任务>
+<Text|x=46.0|y=170.0|color=11043|size=18|text=已完成：(<$HUMAN(天书任务次数)>/30)>
+
+[@接受任务]
+#IF
+CHECKVAR HUMAN 天书任务次数 = 30
+#ACT
+SENDMSG 9 你已完成了该任务30次，无法继续接取！
+BREAK
+
+#IF
+CHECKVAR HUMAN 天书当日次数 = 1
+#ACT
+SENDMSG 9 你今天已经完成该任务了！
+BREAK
+
+#IF
+CHECKVAR HUMAN 天书当日次数 = 0
+CHECKVAR HUMAN 天书任务接取 = 0
+#ACT
+CALCVAR HUMAN 天书任务接取 = 1
+SAVEVAR HUMAN 天书任务接取
+MESSAGEBOX 接受任务成功，请前往比奇矿区击杀10只尸王!
+NEWPICKTASK 9
+BREAK
+#ELSEACT
+MESSAGEBOX 你已经接受过这个任务了，请前往比奇矿区击杀10只尸王!
+BREAK
+
+[@完成任务]
+#IF
+CHECKVAR HUMAN 天书任务接取 = 0
+#ACT
+SENDMSG 9 请先接取任务！
+BREAK
+
+#IF
+CHECKVAR HUMAN 天书当日次数 = 1
+#ACT
+SENDMSG 9 你今天已经完成该任务了！
+BREAK
+
+#IF
+CHECKVAR HUMAN 天书任务次数 = 30
+#ACT
+SENDMSG 9 你已完成了该任务30次，无法继续完成！
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足，请先整理包裹！
+BREAK
+
+#IF
+CHECKVAR HUMAN 天书当日次数 = 0
+CHECKVAR HUMAN 天书任务接取 = 1
+CHECKVAR HUMAN 天书任务杀怪 = 10
+#ACT
+CALCVAR HUMAN 天书任务杀怪 = 0
+SAVEVAR HUMAN 天书任务杀怪
+CALCVAR HUMAN 天书任务接取 = 0
+SAVEVAR HUMAN 天书任务接取
+CALCVAR HUMAN 天书任务次数 + 1
+SAVEVAR HUMAN 天书任务次数
+CALCVAR HUMAN 天书当日次数 = 1
+SAVEVAR HUMAN 天书当日次数
+GiveStateItem 天外陨铁 1 1 1 0 0 1 1 1 1
+SENDMSG 9  恭喜你完成任务获得：天外陨铁*1
+NEWDELETETASK 9
+BREAK
+#ELSEACT
+SENDMSG 9 请前往比奇矿区击杀10只尸王后再来交还任务！
+BREAK
+
+
+
+[@获得天书]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=只有弱者才会顺应天意，强者往往逆天而为，强行改变自己>
+<RText|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=17|text=的命运！而想要做到这一切，你首先必须要拥有<“紫薇星石”/FCOLOR=11013>！>
+<Text|x=43.0|y=120.0|outlinecolor=0|color=255|outline=1|size=17|text=我曾有幸得到几颗，不过代价可是不菲的。>
+<Img|x=307.0|y=180.0|width=18|height=20|esc=0|img=public/00016.png>
+<Img|x=45.0|y=178.0|width=20|height=20|esc=0|img=public/00017.png>
+<Layout|x=64.0|y=165.0|width=100|height=50|link=@交换天书>
+<Layout|x=322.0|y=165.0|width=100|height=50|link=@天书任务>
+<Text|x=70.0|y=175.0|color=11008|size=17|text=交换|link=@交换天书>
+<Text|x=329.0|y=175.0|color=11008|size=17|text=紫薇星石|link=@天书任务>
+<Text|x=110.0|y=175.0|outlinecolor=0|color=255|outline=1|size=17|text=紫薇星石>
+<Text|x=400.0|y=175.0|color=255|size=17|outlinecolor=0|outline=1|text=任务>
+
+
+[@交换天书]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=46.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=如果你有<10块天命神石/FCOLOR=11003>的话，我倒是可以考虑交换一下。>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=数量有限，每人最多可与我兑换<30颗/FCOLOR=11003>。>
+<RText|x=45.0|y=120.0|color=255|size=17|outlinecolor=0|outline=1|text=当前已交换：<<$HUMAN(天书交换次数)>颗/FCOLOR=11008>>
+<Img|x=45.0|y=166.0|width=20|height=20|esc=0|img=public/00017.png>
+<Layout|x=65.0|y=155.0|width=120|height=40|rotate=0|link=@神铁交换天书>
+<Text|x=70.0|y=162.0|color=11008|size=17|text=使用神石交换|link=@神铁交换天书>
+<Img|x=45.0|y=218.0|width=20|height=20|esc=0|img=public/00020.png>
+<Layout|x=65.0|y=207.0|width=100|height=40|rotate=0|link=@exit>
+<Text|x=70.0|y=214.0|color=11008|size=17|text=离开|link=@exit>
+
+[@神铁交换天书]
+#IF
+CHECKVAR HUMAN 天书交换次数 = 30
+#ACT
+SENDMSG 9 已达到紫薇星石交换次数上限!
+BREAK
+
+
+#IF
+CHECKITEM 天命神石 10
+#ACT
+TAKE 天命神石 10
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 天书交换次数 + 1
+SAVEVAR HUMAN 天书交换次数
+SENDMSG 9  恭喜你成功交换获得：紫薇星石*1
+GOTO @交换天书
+BREAK
+#ELSEACT
+SENDMSG 9 请准备好10块天命神石再来交换吧！
+BREAK
+
+
+
+[@天书任务]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=46.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=前线的战士正急需战斗物资，如果你可以帮我收集物资，我>
+<RText|x=45.0|y=95.0|color=255|size=18|outlinecolor=0|outline=1|text=愿使用<紫微星石/FCOLOR=11013>与你交换！>
+<RText|x=45.0|y=120.0|size=17|color=11003|outlinecolor=0|outline=1|text=以下任务每人只能做1次！>
+<Img|x=45.0|y=163.0|width=20|height=20|esc=0|img=public/00012.png>
+<Img|x=225.0|y=163.0|width=20|height=20|esc=0|img=public/00025.png>
+<Img|x=395.0|y=163.0|width=20|height=18|esc=0|img=public/00026.png>
+<Img|x=45.0|y=215.0|width=20|height=18|esc=0|img=public/00026.png>
+<Img|x=225.0|y=215.0|width=18|height=20|esc=0|img=public/00017.png>
+<Layout|x=65.0|y=150.0|width=100|height=40|rotate=0|link=@书页换天书>
+<Layout|x=245.0|y=150.0|width=100|height=40|rotate=0|link=@武器换天书>
+<Layout|x=415.0|y=150.0|width=100|height=40|rotate=0|link=@套装1换天书>
+<Layout|x=65.0|y=204.0|width=100|height=40|rotate=0|link=@套装2换天书>
+<Layout|x=245.0|y=205.0|width=100|height=40|rotate=0|link=@药材换天书>
+<Text|x=70.0|y=160.0|color=11008|size=17|text=收集|link=@书页换天书>
+<Text|x=115.0|y=160.0|size=17|color=255|text=卷轴>
+<Text|x=250.0|y=160.0|color=11008|size=17|text=收集|link=@武器换天书>
+<Text|x=298.0|y=160.0|size=17|color=255|text=武器>
+<Text|x=420.0|y=160.0|color=11008|size=17|text=收集|link=@套装1换天书>
+<Text|x=465.0|y=160.0|size=17|color=255|text=套装>
+<Text|x=70.0|y=210.0|color=11008|size=17|text=收集|link=@套装2换天书>
+<Text|x=115.0|y=210.0|size=17|color=255|text=套装>
+<Text|x=250.0|y=210.0|color=11008|size=17|text=收集|link=@药材换天书>
+<Text|x=295.0|y=210.0|size=17|color=255|text=药材>
+
+
+[@药材换天书]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=46.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=前线的战士正急需战斗物资。>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=收集<1个蟠桃、2个菩提果、10个天山雪莲、10个千年人参/FCOLOR=11003>>
+<RText|x=45.0|y=120.0|color=255|size=17|outlinecolor=0|outline=1|text=<100个灵芝，100个血灵芝，5个血菩提/FCOLOR=11003>，我可以送予你一颗紫微星石。>
+<Img|x=45.0|y=170.0|width=16|height=20|esc=0|img=public/00016.png>
+<Layout|x=65.0|y=155.0|width=100|height=40|rotate=0|link=@确认药材换天书>
+<Text|x=70.0|y=165.0|color=11008|size=17|text=提交|link=@确认药材换天书>
+<Text|x=115.0|y=165.0|color=255|size=18|outlinecolor=0|outline=1|text=药材>
+<Img|x=45.0|y=218.0|width=20|height=20|esc=0|img=public/00020.png>
+<Layout|x=65.0|y=210.0|width=100|height=40|rotate=0|link=@exit>
+<Text|x=70.0|y=214.0|color=11008|size=17|text=离开|link=@exit>
+
+
+
+[@确认药材换天书]
+#IF
+CHECKVAR HUMAN 天书任务5 = 1
+#ACT
+SENDMSG 9 该任务每人仅能完成1次!
+BREAK
+
+#IF
+CHECKVAR HUMAN 天书任务5 = 0
+CHECKITEMS 蟠桃#1&菩提果#2&天山雪莲#10&千年人参#10&灵芝#100&血灵芝#100&血菩提#5  0 0
+#act
+TAKES 蟠桃#1&菩提果#2&天山雪莲#10&千年人参#10&灵芝#100&血灵芝#100&血菩提#5  N0 0
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 天书任务5 = 1
+SAVEVAR HUMAN 天书任务5
+SENDMSG 9  恭喜你完成收集任务获得：紫薇星石*1
+BREAK
+#ELSEACT
+SENDMSG 9 请准备好我所需要的药材物资再来兑换！
+BREAK
+
+
+[@套装2换天书]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=46.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=前线的战士正急需战斗物资。>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=收集<铜域、风域、藤域、鬼域、神域/FCOLOR=11003>5个套装！>
+<RText|x=45.0|y=120.0|color=255|size=17|outlinecolor=0|outline=1|text=我可以送予你一颗紫微星石。>
+<Img|x=45.0|y=170.0|width=16|height=20|esc=0|img=public/00016.png>
+<Layout|x=65.0|y=155.0|width=100|height=40|rotate=0|link=@确认套装2换天书>
+<Text|x=70.0|y=165.0|color=11008|size=17|text=提交|link=@确认套装2换天书>
+<Text|x=115.0|y=165.0|color=255|size=18|outlinecolor=0|outline=1|text=套装>
+<Img|x=45.0|y=218.0|width=20|height=20|esc=0|img=public/00020.png>
+<Layout|x=65.0|y=210.0|width=100|height=40|rotate=0|link=@exit>
+<Text|x=70.0|y=214.0|color=11008|size=17|text=离开|link=@exit>
+
+
+
+[@确认套装2换天书]
+#IF
+CHECKVAR HUMAN 天书任务4 = 1
+#ACT
+SENDMSG 9 该任务每人仅能完成1次!
+BREAK
+
+
+#IF
+CHECKITEMS 藤域头盔#1&藤域项链#1&藤域手镯#1&藤域戒指#1&藤域腰带#1&藤域靴子#1  0 0
+CHECKITEMS 鬼域头盔#1&鬼域项链#1&鬼域手镯#1&鬼域戒指#1&鬼域腰带#1&鬼域靴子#1  0 0
+CHECKITEMS 神域头盔#1&神域项链#1&神域手镯#1&神域戒指#1&神域腰带#1&神域靴子#1  0 0
+CHECKITEMS 铜域头盔#1&铜域项链#1&铜域手镯#1&铜域戒指#1&铜域腰带#1&铜域靴子#1  0 0
+CHECKITEMS 风域项链#1&风域手镯#1&风域戒指#1  0 0
+#ACT
+TAKES 藤域头盔#1&藤域项链#1&藤域手镯#1&藤域戒指#1&藤域腰带#1&藤域靴子#1  N0 0
+TAKES 鬼域头盔#1&鬼域项链#1&鬼域手镯#1&鬼域戒指#1&鬼域腰带#1&鬼域靴子#1  N0 0
+TAKES 神域头盔#1&神域项链#1&神域手镯#1&神域戒指#1&神域腰带#1&神域靴子#1  N0 0
+TAKES 铜域头盔#1&铜域项链#1&铜域手镯#1&铜域戒指#1&铜域腰带#1&铜域靴子#1  N0 0
+TAKES 风域项链#1&风域手镯#1&风域戒指#1   N0 0
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 天书任务4 = 1
+SAVEVAR HUMAN 天书任务4
+SENDMSG 9  恭喜你完成收集任务获得：紫薇星石*1
+BREAK
+#ELSEACT
+SENDMSG 9 请准备好铜域、风域、藤域、鬼域、神域5个套装物资再来兑换！
+BREAK
+
+
+
+[@套装1换天书]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=46.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=前线的战士正急需战斗物资。>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=收集<金域、木域、水域、土域、火域/FCOLOR=11003>5个套装！>
+<RText|x=45.0|y=120.0|color=255|size=17|outlinecolor=0|outline=1|text=我可以送予你一颗紫微星石。>
+<Img|x=45.0|y=170.0|width=16|height=20|esc=0|img=public/00016.png>
+<Layout|x=65.0|y=155.0|width=100|height=40|rotate=0|link=@确认套装1换天书>
+<Text|x=70.0|y=165.0|color=11008|size=17|text=提交|link=@确认套装1换天书>
+<Text|x=115.0|y=165.0|color=255|size=18|outlinecolor=0|outline=1|text=套装>
+<Img|x=45.0|y=218.0|width=20|height=20|esc=0|img=public/00020.png>
+<Layout|x=65.0|y=210.0|width=100|height=40|rotate=0|link=@exit>
+<Text|x=70.0|y=214.0|color=11008|size=17|text=离开|link=@exit>
+
+
+
+[@确认套装1换天书]
+#IF
+CHECKVAR HUMAN 天书任务3 = 1
+#ACT
+SENDMSG 9 该任务每人仅能完成1次!
+BREAK
+
+#IF
+CHECKITEMS 木域头盔#1&木域项链#1&木域手镯#1&木域戒指#1&木域腰带#1&木域靴子#1  0 0
+CHECKITEMS 土域头盔#1&土域项链#1&土域手镯#1&土域戒指#1&土域腰带#1&土域靴子#1  0 0
+CHECKITEMS 金域头盔#1&金域项链#1&金域手镯#1&金域戒指#1&金域腰带#1&金域靴子#1  0 0
+CHECKITEMS 火域头盔#1&火域项链#1&火域手镯#1&火域戒指#1&火域腰带#1&火域靴子#1  0 0
+CHECKITEMS 水域项链#1&水域手镯#1&水域戒指#1  0 0
+#ACT
+TAKES 木域头盔#1&木域项链#1&木域手镯#1&木域戒指#1&木域腰带#1&木域靴子#1  N0 0
+TAKES 土域头盔#1&土域项链#1&土域手镯#1&土域戒指#1&土域腰带#1&土域靴子#1  N0 0
+TAKES 金域头盔#1&金域项链#1&金域手镯#1&金域戒指#1&金域腰带#1&金域靴子#1  N0 0
+TAKES 火域头盔#1&火域项链#1&火域手镯#1&火域戒指#1&火域腰带#1&火域靴子#1  N0 0
+TAKES 水域项链#1&水域手镯#1&水域戒指#1  N0 0
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 天书任务3 = 1
+SAVEVAR HUMAN 天书任务3
+SENDMSG 9  恭喜你完成收集任务获得：紫薇星石*1
+BREAK
+#ELSEACT
+SENDMSG 9 请准备好金域、木域、水域、土域、火域5个套装物资再来兑换！
+BREAK
+
+
+[@武器换天书]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=46.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=前线的战士正急需战斗物资。>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=收集5把运7的武器可以与我交换一颗紫微星石！>
+<RText|x=45.0|y=120.0|color=249|size=17|outlinecolor=0|outline=1|text=请先将珍贵的武器放入仓库，武器最低45级！>
+<Img|x=45.0|y=170.0|width=16|height=20|esc=0|img=public/00016.png>
+<Layout|x=65.0|y=155.0|width=100|height=40|rotate=0|link=@确认武器换天书>
+<Text|x=70.0|y=165.0|color=11008|size=17|text=提交|link=@确认武器换天书>
+<Text|x=115.0|y=165.0|color=255|size=17|outlinecolor=0|outline=1|text=武器>
+<Img|x=45.0|y=218.0|width=20|height=20|esc=0|img=public/00020.png>
+<Layout|x=65.0|y=210.0|width=100|height=40|rotate=0|link=@exit>
+<Text|x=70.0|y=214.0|color=11008|size=17|text=离开|link=@exit>
+
+
+
+[@确认武器换天书]
+#IF
+CHECKVAR HUMAN 天书任务2 = 1
+#ACT
+SENDMSG 9 该任务每人仅能完成1次!
+BREAK
+
+#IF
+CHECKVAR HUMAN 天书任务2 = 0
+#ACT
+MOV N$幸运武器数量 0
+MOV S$递增武器ID
+LoopBagItems @遍历背包幸运武器 N$幸运武器ID S$幸运武器名称 S$物品的数量 S$物品的颜色 S$物品的标记 S$物品的极品
+
+#IF
+LARGE N$幸运武器数量 4
+CHECKVAR HUMAN 天书任务2 = 0
+CheckBagItem <$STR(S$递增武器ID)>
+#ACT
+DelItemByMakeIndex <$STR(S$递增武器ID)>
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 天书任务2 = 1
+SAVEVAR HUMAN 天书任务2
+SENDMSG 9  恭喜你完成收集任务获得：紫薇星石*1
+BREAK
+#ELSEACT
+SENDMSG 9 请准备好5把运7武器再来完成任务！
+BREAK
+
+[@遍历背包幸运武器]
+#IF
+#ACT
+LINKITEMBYMAKEINDEX <$STR(N$幸运武器ID)>
+
+#IF
+SMALL N$幸运武器数量 5
+CHECKTEXTLIST ..\QuestDiary\数据文件\天书任务武器.txt <$STR(S$幸运武器名称)>
+CheckItemAddValue -1 5 > 6
+#ACT
+INC N$幸运武器数量 1 
+INC S$递增武器ID <$STR(N$幸运武器ID)>,
+BREAK
+
+[@书页换天书]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01013.png|esc=0>
+<RText|x=46.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=前线的战士正急需战斗物资。>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=收集1000张精修卷轴可以与我交换一颗紫微星石！>
+<RText|x=45.0|y=120.0|color=11003|size=17|outlinecolor=0|outline=1|text=该收集任务每人仅能完成1次！>
+<Img|x=45.0|y=170.0|width=16|height=20|esc=0|img=public/00016.png>
+<Layout|x=65.0|y=155.0|width=100|height=40|rotate=0|link=@确认书页换天书>
+<Text|x=70.0|y=165.0|color=11008|size=17|text=提交|link=@确认书页换天书>
+<Text|x=115.0|y=165.0|color=255|size=17|outlinecolor=0|outline=1|text=精修卷轴>
+<Img|x=45.0|y=218.0|width=20|height=20|esc=0|img=public/00020.png>
+<Layout|x=65.0|y=210.0|width=100|height=40|rotate=0|link=@exit>
+<Text|x=70.0|y=214.0|color=11008|size=17|text=离开|link=@exit>
+
+[@确认书页换天书]
+#IF
+CHECKVAR HUMAN 天书任务1 = 1
+#ACT
+SENDMSG 9 该任务每人仅能完成1次!
+BREAK
+
+#IF
+CHECKITEM 精修卷轴 1000
+#ACT
+TAKE 精修卷轴 1000
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+CALCVAR HUMAN 天书任务1 = 1
+SAVEVAR HUMAN 天书任务1
+SENDMSG 9  恭喜你完成收集任务获得：紫薇星石*1
+BREAK
+#ELSEACT
+SENDMSG 9 请准备好1000张精修卷轴物资再来兑换！
+BREAK
+
+

@@ -1,0 +1,36 @@
+[@main]
+#IF
+RANDOM 10
+#ACT
+SENDMSG 4 走过路过不要错过，装备材料稀有物品全都有！
+
+#IF
+#SAY
+<Img|x=-0.0|y=20.0|width=546|height=241|show=0|bg=1|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=217.0|y=30.0|img=private/biaoti/01002.png|esc=0>
+<Text|x=45.0|y=70.0|width=374|height=24|size=17|outline=1|outlinecolor=0|color=255|text=我可以帮助往来的勇士寄售各类稀有宝物，>
+<Text|x=45.0|y=94.0|outlinecolor=0|color=255|outline=1|size=17|text=对于有杰出贡献的勇士，也可以使用元宝返利出售指定道具>
+<Text|x=45.0|y=120.0|outlinecolor=0|color=249|outline=1|size=17|text=提示：私下交易风险大，为保证财产安全请线上交易！>
+
+<Layout|x=45.0|y=170.0|width=100|height=40|color=x>
+<Img|x=45.0|y=180.0|width=18|height=20|esc=0|img=public/00023.png>
+<Text|x=70.0|y=175.0|color=11008|size=18|text=打开寄售行|link=@打开寄售行>
+
+
+<Layout|x=245.0|y=170.0|width=100|height=40|color=x>
+<Img|x=245.0|y=180.0|width=18|height=20|esc=0|img=public/00023.png>
+<Text|x=270.0|y=175.0|color=11008|size=18|text=返利材料行|link=@元宝返利>
+
+
+[@打开寄售行]
+#IF
+#ACT
+#CALL [\相关NPC\材料行.txt] @材料寄售
+
+[@元宝返利]
+#IF
+#ACT
+#CALL [\相关NPC\自助行.txt] @自助交易
+

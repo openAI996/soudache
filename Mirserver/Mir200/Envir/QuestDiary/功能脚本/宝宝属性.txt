@@ -1,0 +1,48 @@
+[@宝宝属性调整]
+
+{
+;如果宝宝数量小于1则脚本在此行结束
+#IF
+CHECKSLAVECOUNT < 1
+#ACT
+BREAK
+
+;初始化宝宝特殊属性加成
+#IF
+#ACT
+MOV N$加宝宝攻速 0
+MOV N$加宝宝移速 0
+MOV N$加宝宝暴击 0
+
+;兽灵靴附加宝宝移动速度加成
+#IF
+CHECKITEMW 兽灵靴
+#ACT
+INC N$加宝宝移速 20
+
+#IF
+EQUAL U50 9
+#act
+INC N$加宝宝移速 12
+INC N$加宝宝攻速 10
+
+#IF
+EQUAL S$唤龙术 激活
+#ACT
+INC N$加宝宝移速 8
+
+;御灵战甲术附加宝宝攻击速度和暴击属性加成
+;兽神战甲术
+#IF
+EQUAL U50 9
+LARGE U92 0
+hasbuff 50035
+#ACT
+INC N$加宝宝攻速 10
+INC N$加宝宝暴击 10
+
+#IF
+#ACT
+addbbatt
+
+}

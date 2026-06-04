@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE msbl03 281 106

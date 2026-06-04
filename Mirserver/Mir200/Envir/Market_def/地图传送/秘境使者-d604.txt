@@ -1,0 +1,36 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=40.0|y=71.0|size=18|color=11073|text=百眼魔君石一只修炼千年的变异蜈蚣，外形和触龙神一摸一样，>
+<Text|x=40.0|y=96.0|size=18|color=11073|text=巨大的钳子和毒牙能驱走所有不速之客。>
+<Text|x=40.0|y=121.0|size=18|color=11073|text=是否挑战？>
+<RText|x=40.0|y=150.0|color=255|size=18|text=挑战需要门票：<修罗*1/FCOLOR=249>>
+<Layout|x=205.0|y=200.0|width=150|height=45|rotate=0|color=*|link=@挑战百眼>
+<Text|x=222.0|y=212.0|color=251|size=18|text=挑战百眼魔君|link=@挑战百眼>
+
+[@挑战百眼]
+#IF
+CHECKITEM 修罗 1
+SMALL J63 5
+#ACT
+TAKE 修罗 1
+MAPMOVE qiancl 18 28
+INC J63 5
+INC J65 5
+INC U43 5
+BREAK
+
+
+#IF
+CHECKITEM 修罗 1
+#ACT
+TAKE 修罗 1
+MAPMOVE qiancl 18 28
+BREAK
+#ELSEACT
+SENDMSG 9 进入失败，需求一把修罗才能进入！
+BREAK
+
+
+

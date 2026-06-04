@@ -1,0 +1,406 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=如果你看习惯了那些暗淡无华的衣服；>
+<Text|x=45.0|y=95.0|size=17|color=255|text=不如来我这里挑几件华丽多姿的时装穿戴；>
+<Layout|x=44.0|y=198.0|width=135|height=40|color=*|link=@时装打造选择#选择位置=1#选择时装名字=天武战士(<$str(S$性别)>)#时装索引=天武战士#选择锁定=>
+<Text|x=60.0|y=203.0|color=11008|size=18|text=查看和制作时装|link=@时装打造选择#选择位置=1#选择时装名字=天武战士(<$str(S$性别)>)#时装索引=天武战士#选择锁定=>
+<Text|x=45.0|y=120.0|color=255|size=17|text=时装不仅华丽多姿，更有强悍的属性增幅！>
+<Text|x=25|y=20|color=255|size=18|text=Text>
+<Img|x=40.0|y=208.0|img=public/00021.png|esc=0>
+
+
+[@时装打造界面]
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$模型缩放 1
+#ELSEACT
+MOV S$模型缩放 0.7
+
+#IF
+gender man
+#ACT
+MOV P1 50817
+MOV P2 50818
+MOV P3 50819
+MOV P4 50820
+MOV P5 50821
+MOV P6 50822
+MOV P7 50823
+MOV P8 50824
+MOV P9 50825
+MOV S$性别 男
+#ELSEACT
+MOV P1 50829
+MOV P2 50830
+MOV P3 50831
+MOV P4 50832
+MOV P5 50833
+MOV P6 50834
+MOV P7 50835
+MOV P8 50836
+MOV P9 50837
+MOV S$性别 女
+
+#IF
+#ACT
+MOV P10 0
+MOV P11 0
+MOV P12 0
+
+#IF
+EQUAL <$GETSTRVALUE(T42,1)> 1
+#ACT
+INC P10 1
+MOV P20 0
+#ELSEACT
+MOV P20 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,4)> 1
+#ACT
+INC P10 1
+MOV P23 0
+#ELSEACT
+MOV P23 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,7)> 1
+#ACT
+INC P10 1
+MOV P26 0
+#ELSEACT
+MOV P26 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,2)> 1
+#ACT
+INC P11 1
+MOV P21 0
+#ELSEACT
+MOV P21 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,5)> 1
+#ACT
+INC P11 1
+MOV P24 0
+#ELSEACT
+MOV P24 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,8)> 1
+#ACT
+INC P11 1
+MOV P27 0
+#ELSEACT
+MOV P27 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,3)> 1
+#ACT
+INC P12 1
+MOV P22 0
+#ELSEACT
+MOV P22 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,6)> 1
+#ACT
+INC P12 1
+MOV P25 0
+#ELSEACT
+MOV P25 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,9)> 1
+#ACT
+INC P12 1
+MOV P28 0
+#ELSEACT
+MOV P28 1
+
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=600|height=460|loadDelay=0|show=4|esc=1|bg=1|img=private/psllz/00070.png|move=0|reset=1>
+<Layout|x=538.0|y=-15.0|width=80|height=80|link=@exit>
+<Img|x=260.0|y=58.0|height=390|img=private/psllz/00010.png|esc=0>
+<Button|x=557.0|y=17.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=253.0|y=3.0|img=private/biaoti/01076.png|esc=0>
+<Img|x=40.0|y=106.0|img=public/02128.png|esc=0>
+<Img|x=120.0|y=106.0|img=public/02128.png|esc=0>
+<Img|x=200.0|y=106.0|img=public/02128.png|esc=0>
+<Img|x=40.0|y=230.0|img=public/02128.png|esc=0>
+<Img|x=120.0|y=230.0|img=public/02128.png|esc=0>
+<Img|x=200.0|y=230.0|img=public/02128.png|esc=0>
+<Img|x=40.0|y=354.0|img=public/02128.png|esc=0>
+<Img|x=120.0|y=354.0|img=public/02128.png|esc=0>
+<Img|x=200.0|y=354.0|img=public/02128.png|esc=0>
+<Img|x=85.0|y=70.0|img=public/bg_hhzy_01_1.png|esc=0>
+<Text|x=95.0|y=75.0|color=11008|size=18|text=战士时装(<$STR(P10)>/3)>
+<Img|x=85.0|y=180.0|img=public/bg_hhzy_01_1.png|esc=0>
+<Text|x=95.0|y=185.0|color=11008|size=18|text=法师时装(<$STR(P11)>/3)>
+<Img|x=85.0|y=305.0|img=public/bg_hhzy_01_1.png|esc=0>
+<Text|x=95.0|y=310.0|color=11008|size=18|text=道士时装(<$STR(P12)>/3)>
+<Img|x=275.0|y=69.0|width=300|height=35|rotate=0|esc=0|img=private/psllz/05016.png>
+
+<ItemShow|children={选择锁定_1}|x=35.0|y=100.0|width=70|height=70|itemid=<$STR(P1)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P20)>|link=@时装打造选择#选择位置=1#选择时装名字=天武战士(<$str(S$性别)>)#时装索引=天武战士>
+<ItemShow|children={选择锁定_4}|x=115.0|y=100.0|width=70|height=70|itemid=<$STR(P4)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P23)>|link=@时装打造选择#选择位置=4#选择时装名字=神武战将(<$str(S$性别)>)#时装索引=神武战将>
+<ItemShow|children={选择锁定_7}|x=195.0|y=100.0|width=70|height=70|itemid=<$STR(P7)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P26)>|link=@时装打造选择#选择位置=7#选择时装名字=天龙战神(<$str(S$性别)>)#时装索引=天龙战神>
+
+<ItemShow|children={选择锁定_2}|x=35.0|y=225.0|width=70|height=70|itemid=<$STR(P2)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P21)>|link=@时装打造选择#选择位置=2#选择时装名字=幻魔法魄(<$str(S$性别)>)#时装索引=幻魔法魄>
+<ItemShow|children={选择锁定_5}|x=115.0|y=225.0|width=70|height=70|itemid=<$STR(P5)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P24)>|link=@时装打造选择#选择位置=5#选择时装名字=天幻法灵(<$str(S$性别)>)#时装索引=天幻法灵>
+<ItemShow|children={选择锁定_8}|x=195.0|y=225.0|width=70|height=70|itemid=<$STR(P8)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P27)>|link=@时装打造选择#选择位置=8#选择时装名字=魔天无极(<$str(S$性别)>)#时装索引=魔天无极>
+
+<ItemShow|children={选择锁定_3}|x=35.0|y=350.0|width=70|height=70|itemid=<$STR(P3)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P22)>|link=@时装打造选择#选择位置=3#选择时装名字=元道真人(<$str(S$性别)>)#时装索引=元道真人>
+<ItemShow|children={选择锁定_6}|x=115.0|y=350.0|width=70|height=70|itemid=<$STR(P6)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P25)>|link=@时装打造选择#选择位置=6#选择时装名字=无量天尊(<$str(S$性别)>)#时装索引=无量天尊>
+<ItemShow|children={选择锁定_9}|x=195.0|y=350.0|width=70|height=70|itemid=<$STR(P9)>|itemcount=1|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1|grey=<$STR(P28)>|link=@时装打造选择#选择位置=9#选择时装名字=沧澜蓝幽(<$str(S$性别)>)#时装索引=沧澜蓝幽>
+
+<Text|x=41.0|y=45.0|color=249|size=16|text=9件时装都可以打造，全部打造完激活3个套装属性>
+<Text|x=365.0|y=410.0|color=11008|size=18|text=时装激活套装属性介绍>
+<Layout|x=528.0|y=399.0|width=50|height=50|link=@介绍>
+<Button|x=540.0|y=409.0|color=255|size=18|nimg=public/001998.png|link=@介绍>
+
+
+<$str(S$材料展示)>
+<$str(S$选择锁定)>
+<$str(s$时装属性介绍)>
+
+[@时装打造选择]
+#IF
+NOT EQUAL S$选择位置 1
+NOT EQUAL S$选择位置 2
+NOT EQUAL S$选择位置 3
+#ACT
+MOV N$位置判断 <$STR(S$选择位置)>
+DEC N$位置判断 3
+#ELSEACT
+MOV N$位置判断 <$STR(S$选择位置)>
+
+#IF
+NOT EQUAL S$选择位置 1
+NOT EQUAL S$选择位置 2
+NOT EQUAL S$选择位置 3
+not EQUAL <$GETSTRVALUE(T42,<$STR(N$位置判断)>)> 1
+#ACT
+MOV S$选择锁定 <Img|id=选择锁定_<$str(S$选择位置)>|x=5.0|y=5.0|width=56|height=56|img=public/1900000678_4.png|esc=0>
+MOV S$材料展示 <Text|x=285.0|y=110.0|color=151|size=17|outlinecolor=0|outline=1|text=请先打造前一阶时装！>
+MOV S$选择时装名字
+MOV S$时装索引
+GOTO @时装打造界面
+BREAK
+
+#IF
+NOT EQUAL S$选择位置 1
+NOT EQUAL S$选择位置 2
+NOT EQUAL S$选择位置 3
+EQUAL <$GETSTRVALUE(T42,<$STR(N$位置判断)>)> 1
+#ACT
+MOV S$材料展示
+INC S$材料展示 <Text|x=305.0|y=75.0|color=253|size=18|text=时装【<$str(s$选择时装名字)>】打造说明>
+INC S$材料展示 <Text|x=285.0|y=110.0|color=151|size=17|outlinecolor=0|outline=1|text=打造<$str(s$选择时装名字)>需要以下物品：>
+INC S$材料展示 <Img|x=290.0|y=142.0|img=private/psllz/02128.png|esc=0>
+INC S$材料展示 <Img|x=290.0|y=215.0|img=private/psllz/02128.png|esc=0>
+INC S$材料展示 <Img|x=500.0|y=142.0|img=private/psllz/02128.png|esc=0>
+INC S$材料展示 <Img|x=360.0|y=142.0|img=private/psllz/02128.png|esc=0>
+INC S$材料展示 <Img|x=430.0|y=142.0|img=private/psllz/02128.png|esc=0>
+
+INC S$材料展示 <ItemShow|x=285.0|y=140.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_2)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_12)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+INC S$材料展示 <ItemShow|x=425.0|y=140.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_3)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_13)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+INC S$材料展示 <ItemShow|x=355.0|y=140.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_4)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_14)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+INC S$材料展示 <ItemShow|x=495.0|y=140.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_5)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_15)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+INC S$材料展示 <ItemShow|x=283.0|y=210.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_6)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_16)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+
+INC S$材料展示 <Button|x=373.0|y=290.0|nimg=private/psllz/02133.png|color=243|size=17|text=打造时装|link=@打造>
+
+MOV S$选择锁定 <Img|id=选择锁定_<$str(S$选择位置)>|x=5.0|y=5.0|width=56|height=56|img=public/1900000678_4.png|esc=0>
+GOTO @时装打造界面
+BREAK
+
+
+#IF
+#ACT
+MOV S$材料展示
+INC S$材料展示 <Text|x=305.0|y=75.0|color=253|size=18|text=时装【<$str(s$选择时装名字)>】打造说明>
+INC S$材料展示 <Text|x=285.0|y=110.0|color=151|size=17|outlinecolor=0|outline=1|text=打造<$str(s$选择时装名字)>需要以下物品：>
+INC S$材料展示 <Img|x=290.0|y=142.0|img=private/psllz/02128.png|esc=0>
+INC S$材料展示 <Img|x=290.0|y=215.0|img=private/psllz/02128.png|esc=0>
+INC S$材料展示 <Img|x=500.0|y=142.0|img=private/psllz/02128.png|esc=0>
+INC S$材料展示 <Img|x=360.0|y=142.0|img=private/psllz/02128.png|esc=0>
+INC S$材料展示 <Img|x=430.0|y=142.0|img=private/psllz/02128.png|esc=0>
+
+INC S$材料展示 <ItemShow|x=285.0|y=140.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_2)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_12)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+INC S$材料展示 <ItemShow|x=425.0|y=140.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_3)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_13)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+INC S$材料展示 <ItemShow|x=355.0|y=140.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_4)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_14)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+INC S$材料展示 <ItemShow|x=495.0|y=140.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_5)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_15)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+INC S$材料展示 <ItemShow|x=283.0|y=210.0|width=70|height=70|itemid=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_6)>|itemcount=<$cfg_SZyifu(<$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>_16)>|scale=<$STR(S$模型缩放)>|bgtype=0|showtips=1>
+
+INC S$材料展示 <Button|x=373.0|y=290.0|nimg=private/psllz/02133.png|color=243|size=17|text=打造时装|link=@打造>
+
+MOV S$选择锁定 <Img|id=选择锁定_<$str(S$选择位置)>|x=5.0|y=5.0|width=56|height=56|img=public/1900000678_4.png|esc=0>
+GOTO @时装打造界面
+BREAK
+
+
+
+
+
+[@介绍]
+#IF
+#ACT
+MOV s$时装属性介绍
+INC s$时装属性介绍 <Layout|children={1}|width=600|height=460|link=@关闭介绍>
+INC s$时装属性介绍 <Img|id=1|children={2,3,4,5,6,7}|x=107.0|y=111.0|width=400|height=250|scale9t=10|scale9b=10|img=public/1900000677.png|scale9r=10|scale9l=10|esc=0|link=@psss>
+INC s$时装属性介绍 <Text|id=2|x=15.0|y=10.0|color=11007|size=16|text=套装激活介绍：>
+INC s$时装属性介绍 <RText|id=3|x=15.0|y=40.0|color=255|size=16|text=天武战士、神武战将、天龙战神\全部合成后会激活套装属性：<命中+6/FCOLOR=250>>
+INC s$时装属性介绍 <RText|id=4|x=15.0|y=90.0|color=255|size=16|text=幻魔法魄、天幻法灵、魔天无极\全部合成后会激活套装属性：<物理魔法伤害减免+3%/FCOLOR=250>>
+INC s$时装属性介绍 <RText|id=5|x=15.0|y=140.0|color=255|size=16|text=元道真人、无量天尊、沧澜蓝幽\全部合成后会激活套装属性：<生命+5%/FCOLOR=250>>
+INC s$时装属性介绍 <RText|id=6|x=15.0|y=190.0|size=16|color=255|text=九件时装全部合成后，同时激活三个套装属性：\<命中+6、伤害减免+3%、生命+5%>>
+GOTO @时装打造界面
+BREAK
+
+[@关闭介绍]
+#IF
+#ACT
+MOV s$时装属性介绍
+GOTO @时装打造界面
+BREAK
+
+
+[@打造]
+#IF
+EQUAL <$GETSTRVALUE(T42,<$str(s$选择位置)>)> 1
+#ACT
+MESSAGEBOX 你已经打造过该时装，请前往角色面板时装衣橱查看！
+BREAK
+
+#IF
+#ACT
+MOV S$时装行  <$GetTypeBRow(cfg_SZyifu,1,<$str(s$时装索引)>)>
+
+#IF
+CHECKITEMS <$cfg_SZyifu(<$str(S$时装行)>_7)>#<$cfg_SZyifu(<$str(S$时装行)>_12)>&<$cfg_SZyifu(<$str(S$时装行)>_8)>#<$cfg_SZyifu(<$str(S$时装行)>_13)>&<$cfg_SZyifu(<$str(S$时装行)>_9)>#<$cfg_SZyifu(<$str(S$时装行)>_14)>&<$cfg_SZyifu(<$str(S$时装行)>_10)>#<$cfg_SZyifu(<$str(S$时装行)>_15)>&<$cfg_SZyifu(<$str(S$时装行)>_11)>#<$cfg_SZyifu(<$str(S$时装行)>_16)> 0 0
+#ACT
+TAKES <$cfg_SZyifu(<$str(S$时装行)>_7)>#<$cfg_SZyifu(<$str(S$时装行)>_12)>&<$cfg_SZyifu(<$str(S$时装行)>_8)>#<$cfg_SZyifu(<$str(S$时装行)>_13)>&<$cfg_SZyifu(<$str(S$时装行)>_9)>#<$cfg_SZyifu(<$str(S$时装行)>_14)>&<$cfg_SZyifu(<$str(S$时装行)>_10)>#<$cfg_SZyifu(<$str(S$时装行)>_15)>&<$cfg_SZyifu(<$str(S$时装行)>_11)>#<$cfg_SZyifu(<$str(S$时装行)>_16)> N0 0
+ADDSTRVALUE T42 <$str(s$选择位置)> 1
+#CALL [\功能脚本\登陆加载\时装BUFF增加.txt] @时装属性
+SENDMSG 9 恭喜你成功打造该时装，请前往角色面板时装衣橱查看！
+SENDMSG 7 恭喜你成功打造该时装，请前往角色面板时装衣橱查看！
+GOTO @时装件数判断
+BREAK
+#ELSEACT
+MESSAGEBOX 打造所需材料不足！
+break
+
+
+
+[@时装件数判断]
+#IF
+#ACT
+MOV P10 0
+MOV P11 0
+MOV P12 0
+MOV N$战士套装提示 0
+MOV N$法师套装提示 0
+MOV N$道士套装提示 0
+
+#IF
+EQUAL <$GETSTRVALUE(T42,1)> 1
+#ACT
+INC P10 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,4)> 1
+#ACT
+INC P10 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,7)> 1
+#ACT
+INC P10 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,2)> 1
+#ACT
+INC P11 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,5)> 1
+#ACT
+INC P11 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,8)> 1
+#ACT
+INC P11 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,3)> 1
+#ACT
+INC P12 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,6)> 1
+#ACT
+INC P12 1
+
+#IF
+EQUAL <$GETSTRVALUE(T42,9)> 1
+#ACT
+INC P12 1
+
+#OR
+EQUAL S$选择位置 1
+EQUAL S$选择位置 4
+EQUAL S$选择位置 7
+#ACT
+MOV N$战士套装提示 1
+
+#OR
+EQUAL S$选择位置 2
+EQUAL S$选择位置 5
+EQUAL S$选择位置 8
+#ACT
+MOV N$法师套装提示 1
+
+#OR
+EQUAL S$选择位置 3
+EQUAL S$选择位置 6
+EQUAL S$选择位置 9
+#ACT
+MOV N$道士套装提示 1
+
+#IF
+LARGE P10 2
+EQUAL N$战士套装提示 1
+#ACT
+MESSAGEBOX 恭喜你获得战士时装套装属性：命中+6
+GOTO @时装打造界面
+BREAK
+
+#IF
+LARGE P11 2
+EQUAL N$法师套装提示 1
+#ACT
+MESSAGEBOX 恭喜你获得法师时装套装属性：物理魔法伤害减免+3%
+GOTO @时装打造界面
+BREAK
+
+#IF
+LARGE P12 2
+EQUAL N$道士套装提示 1
+#ACT
+MESSAGEBOX 恭喜你获得道士时装套装属性：生命值+5%
+GOTO @时装打造界面
+BREAK
+
+#IF
+#ACT
+GOTO @时装打造界面
+BREAK

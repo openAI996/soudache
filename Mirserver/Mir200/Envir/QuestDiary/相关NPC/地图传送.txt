@@ -1,0 +1,475 @@
+[@地图传送界面]
+{
+
+<Img|width=546|height=200|img=public_win32/bg_npc_01.png|reset=1|esc=1|move=0|bg=1|loadDelay=1>
+<Layout|x=545|y=0|width=80|height=80|link=@exit>
+<Button|x=546|y=0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Button|x=207.0|y=103.0|size=18|color=1025|pimg=public/1900000661.png|nimg=public/1900000660.png|text=蜈蚣洞穴|link=@传送蜈蚣洞穴>
+<RText|x=17.0|y=20.0|color=255|outlinecolor=0|outline=1|size=16|text=法师可在<"蜈蚣洞穴"/FCOLOR=249>诱惑怪物，作为前期<"开荒"/FCOLOR=250>的宝宝。>
+
+[@11111]
+<Button|x=80.0|y=114.0|pimg=public/1900000661.png|nimg=public/1900000660.png|size=18|color=1025|text=半兽古墓|link=@传送半兽古墓>
+<Button|x=129.0|y=20.0|pimg=public/1900000661.png|nimg=public/1900000660.png|size=18|color=1025|text=骷髅洞穴|link=@传送骷髅洞穴>
+<Button|x=242.0|y=20.0|pimg=public/1900000661.png|nimg=public/1900000660.png|size=18|color=1025|text=废弃矿洞|link=@传送废弃矿洞>
+<Button|x=129.0|y=80.0|pimg=public/1900000661.png|nimg=public/1900000660.png|size=18|color=1025|text=石墓猪洞|link=@传送石墓猪洞>
+<Button|x=242.0|y=80.0|pimg=public/1900000661.png|nimg=public/1900000660.png|size=18|color=1025|text=沃玛寺庙|link=@传送沃玛寺庙>新手村|link=@传送新手村>
+
+[@传送新手村]
+#ACT
+mapmove lgf 62 62
+sendmsg 0 玩家：{<$USERNAME>|250:0:1}，闯入了危险区域{[新手村]|254:0:1}探索高级装备的下落......
+
+[@传送半兽古墓]
+#ACT
+mapmove d001
+sendmsg 0 玩家：{<$USERNAME>|250:0:1}，闯入了危险区域{[半兽古墓]|254:0:1}探索高级装备的下落......
+
+[@传送骷髅洞穴]
+#ACT
+mapmove d2051 112 175
+sendmsg 0 玩家：{<$USERNAME>|250:0:1}，闯入了危险区域{[骷髅洞穴]|254:0:1}探索高级装备的下落......
+
+[@传送废弃矿洞]
+#ACT
+mapmove d401 28 179
+sendmsg 0 玩家：{<$USERNAME>|250:0:1}，闯入了危险区域{[废弃矿洞]|254:0:1}探索高级装备的下落......
+
+[@传送蜈蚣洞穴]
+#ACT
+mapmove d601 206 233
+sendmsg 0 玩家：{<$USERNAME>|250:0:1}，闯入了危险区域{[蜈蚣洞穴]|254:0:1}探索高级装备的下落......
+
+[@传送石墓猪洞]
+#ACT
+mapmove d711 203 201
+sendmsg 0 玩家：{<$USERNAME>|250:0:1}，闯入了危险区域{[石墓猪洞]|254:0:1}探索高级装备的下落......
+
+[@传送沃玛寺庙]
+#ACT
+mapmove d021 70 68
+sendmsg 0 玩家：{<$USERNAME>|250:0:1}，闯入了危险区域{[沃玛寺庙]|254:0:1}探索高级装备的下落......
+
+
+
+
+
+
+
+
+[@111111111111]
+
+#IF
+#ACT
+MOV S$传送 初级
+GOTO @加载传送界面
+BREAK
+
+
+[@传送界面]
+<Img|x=0.0|y=20.0|width=430|height=500|scale9t=50|scale9b=50|bg=1|scale9r=50|move=0|loadDelay=0|reset=1|scale9l=50|esc=1|img=public/mapgb.png|show=0>
+<Layout|x=374.0|y=2.0|width=80|height=80|link=@exit>
+<Button|x=388.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=165.0|y=30.0|img=private/biaoti/01023.png|esc=0>
+<Img|x=146.0|y=62.0|height=445|img=public/mapbg1.png|esc=0>
+<Layout|x=32.0|y=55.0|width=115|height=250|color=x>
+<Layout|children={2,3,4,5,6}|x=32.0|y=75.0|width=115|height=250|color=x>
+<$STR(S$传送主按钮)>
+<$STR(S$传送显示)>
+<$STR(S$传送费用)>
+
+
+[@传送按钮初始化]
+#IF
+#ACT
+MOV S$传送主按钮
+INC S$传送主按钮 <Button|id=2|x=5.0|y=5.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=初级地图|link=@加载传送界面#传送=初级>
+INC S$传送主按钮 <Button|id=3|x=5.0|y=55.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=高级地图|link=@加载传送界面#传送=高级>
+INC S$传送主按钮 <Button|id=4|x=5.0|y=105.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=远古地图|link=@加载传送界面#传送=远古>
+INC S$传送主按钮 <Button|id=5|x=5.0|y=155.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=城市传送|link=@加载传送界面#传送=主城>
+INC S$传送主按钮 <Button|id=6|x=5.0|y=205.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=活动地图|link=@加载传送界面#传送=活动>
+
+
+[@加载传送界面]
+#IF
+#ACT
+GOTO @传送按钮初始化
+MOV S$传送显示
+MOV S$传送费用 
+
+#IF
+EQUAL S$传送 主城
+#ACT
+DEC S$传送主按钮 <Button|id=5|x=5.0|y=155.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=世界地图|link=@加载传送界面#传送=主城>
+INC S$传送主按钮 <Button|id=5|x=5.0|y=155.0|color=1025|nimg=public/1900000660.png|pimg=public/1900000661.png|size=18|text=世界地图|link=@加载传送界面#传送=主城>
+
+INC S$传送显示 <Button|x=160.0|y=85.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=盟重土城|link=@主城传送#地图=3#坐标1=330#坐标2=330#范围=5>
+INC S$传送显示 <Button|x=280.0|y=85.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=比奇省|link=@主城传送#地图=0#坐标1=331#坐标2=267#范围=3>
+INC S$传送显示 <Button|x=160.0|y=140.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=白日门|link=@主城传送#地图=11#坐标1=179#坐标2=322#范围=3>
+INC S$传送显示 <Button|x=280.0|y=140.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=封魔谷|link=@主城传送#地图=4#坐标1=237#坐标2=201#范围=3>
+INC S$传送显示 <Button|x=160.0|y=195.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=魔龙城|link=@主城传送#地图=6#坐标1=126#坐标2=156#范围=3>
+INC S$传送显示 <Button|x=280.0|y=195.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=苍月岛|link=@主城传送#地图=5#坐标1=140#坐标2=336#范围=3>
+INC S$传送显示 <Button|x=160.0|y=250.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=沃玛森林|link=@主城传送#地图=1#坐标1=220#坐标2=314#范围=3>
+INC S$传送显示 <Button|x=280.0|y=250.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=姻缘神殿|link=@主城传送#地图=m101#坐标1=22#坐标2=32#范围=3>
+INC S$传送显示 <RText|x=160.0|y=445.0|color=255|outline=1|outlinecolor=0|size=16|text=法师可在沃玛森林诱惑各种\常用<"强力宝宝"/FCOLOR=11003>增强自己的实力>
+
+#IF
+EQUAL S$传送 主城
+CHECK [311] 1
+#ACT
+INC S$传送显示 <Button|x=160.0|y=305.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=飞仙台|link=@主城传送#地图=lhsd#坐标1=26#坐标2=31#范围=3>
+
+
+
+#IF
+EQUAL S$传送 初级
+#ACT
+DEC S$传送主按钮 <Button|id=2|x=5.0|y=5.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=初级地图|link=@加载传送界面#传送=初级>
+INC S$传送主按钮 <Button|id=2|x=5.0|y=5.0|color=1025|nimg=public/1900000660.png|pimg=public/1900000661.png|size=18|text=初级地图|link=@加载传送界面#传送=初级>
+INC S$传送显示 <Button|x=160.0|y=85.0|color=1025|size=18|nimg=public/1900000660.png|pimg=public/1900000661.png|text=新手村|link=@危险传送#名字=新手村>
+INC S$传送显示 <Button|x=280.0|y=85.0|color=1025|size=18|nimg=public/1900000660.png|pimg=public/1900000661.png|text=半兽古墓|link=@危险传送#名字=半兽古墓>
+INC S$传送显示 <Button|x=160.0|y=140.0|color=1025|size=18|nimg=public/1900000660.png|pimg=public/1900000661.png|text=骷髅洞穴|link=@危险传送#名字=骷髅洞穴>
+INC S$传送显示 <Button|x=280.0|y=140.0|color=1025|size=18|nimg=public/1900000660.png|pimg=public/1900000661.png|text=废弃矿洞|link=@危险传送#名字=废弃矿洞>
+INC S$传送显示 <Button|x=160.0|y=195.0|color=1025|size=18|nimg=public/1900000660.png|pimg=public/1900000661.png|text=蜈蚣洞穴|link=@危险传送#名字=蜈蚣洞穴>
+INC S$传送显示 <Button|x=280.0|y=195.0|color=1025|size=18|nimg=public/1900000660.png|pimg=public/1900000661.png|text=石墓猪洞|link=@危险传送#名字=石墓猪洞>
+INC S$传送显示 <Button|x=160.0|y=250.0|color=1025|size=18|nimg=public/1900000660.png|pimg=public/1900000661.png|text=沃玛寺庙|link=@危险传送#名字=沃玛寺庙>
+INC S$传送显示 <RText|x=160.0|y=445.0|color=255|outline=1|outlinecolor=0|size=16|text=以上为初级发展地图，无需金币\<可直接传送/FCOLOR=11003>>
+INC S$传送显示 <RText|x=160.0|y=395.0|color=255|outline=1|outlinecolor=0|size=16|text=法师可在沃玛森林诱惑虎卫，鹰卫\龙卫作为前期<"开荒"/FCOLOR=11003>的宝宝。>
+
+
+#IF
+EQUAL S$传送 高级
+#ACT
+DEC S$传送主按钮 <Button|id=3|x=5.0|y=55.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=高级地图|link=@加载传送界面#传送=高级>
+INC S$传送主按钮 <Button|id=3|x=5.0|y=55.0|color=1025|nimg=public/1900000660.png|pimg=public/1900000661.png|size=18|text=高级地图|link=@加载传送界面#传送=高级>
+
+INC S$传送显示 <Button|x=160.0|y=85.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=祖玛寺庙|link=@危险传送#名字=祖玛寺庙>
+INC S$传送显示 <Button|x=280.0|y=85.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=封魔殿|link=@危险传送#名字=封魔殿>
+INC S$传送显示 <Button|x=160.0|y=140.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=骨魔洞穴|link=@危险传送#名字=骨魔洞穴>
+INC S$传送显示 <Button|x=280.0|y=140.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=牛魔寺庙|link=@危险传送#名字=牛魔寺庙>
+INC S$传送显示 <Button|x=160.0|y=195.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=赤月峡谷|link=@危险传送#名字=赤月峡谷>
+INC S$传送显示 <Button|x=280.0|y=195.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=魔龙山脉|link=@危险传送#名字=魔龙山脉>
+INC S$传送显示 <Button|x=160.0|y=250.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=未知暗殿|link=@危险传送#名字=未知暗殿>
+INC S$传送显示 <Button|x=280.0|y=250.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=通天塔|link=@危险传送#名字=通天塔>
+INC S$传送显示 <Button|x=160.0|y=305.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=世外桃源|link=@危险传送#名字=世外桃源>
+INC S$传送显示 <RText|x=160.0|y=445.0|color=255|outline=1|outlinecolor=0|size=16|text=前往以上地图需收取一定数量的\<"金币"/FCOLOR=11003>作为传送费用>
+
+
+#IF
+EQUAL S$传送 远古
+#ACT
+DEC S$传送主按钮 <Button|id=4|x=5.0|y=105.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=远古地图|link=@加载传送界面#传送=远古>
+INC S$传送主按钮 <Button|id=4|x=5.0|y=105.0|color=1025|nimg=public/1900000660.png|pimg=public/1900000661.png|size=18|text=远古地图|link=@加载传送界面#传送=远古>
+
+INC S$传送显示 <Button|x=160.0|y=85.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=幽灵船|link=@危险传送#名字=幽灵船>
+INC S$传送显示 <Button|x=280.0|y=85.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=迷失部落|link=@危险传送#名字=迷失部落>
+INC S$传送显示 <Button|x=160.0|y=140.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=地下王陵|link=@危险传送#名字=地下王陵>
+INC S$传送显示 <Button|x=280.0|y=140.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=蚂蚁洞穴|link=@危险传送#名字=蚂蚁洞穴>
+INC S$传送显示 <Button|x=160.0|y=195.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=天空之城|link=@危险传送#名字=天空之城>
+INC S$传送显示 <Button|x=280.0|y=195.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=寒冰世界|link=@危险传送#名字=寒冰世界>
+INC S$传送显示 <Button|x=160.0|y=250.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=古神领地|link=@危险传送#名字=古神领地>
+INC S$传送显示 <Button|x=280.0|y=250.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=神罚之地|link=@危险传送#名字=神罚之地>
+
+INC S$传送显示 <RText|x=160.0|y=445.0|color=255|outline=1|outlinecolor=0|size=16|text=前往以上地图需收取一定数量的\<"绿晶矿"/FCOLOR=11003>作为传送费用>
+
+#IF
+EQUAL S$传送 活动
+#ACT
+DEC S$传送主按钮 <Button|id=6|x=5.0|y=205.0|color=1026|nimg=public/1900000661.png|pimg=public/1900000660.png|size=18|text=活动地图|link=@加载传送界面#传送=商店>
+INC S$传送主按钮 <Button|id=6|x=5.0|y=205.0|color=1025|nimg=public/1900000660.png|pimg=public/1900000661.png|size=18|text=活动地图|link=@加载传送界面#传送=商店>
+
+INC S$传送显示 <Button|x=160.0|y=85.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=比武擂台|link=@比武传送>
+INC S$传送显示 <Button|x=280.0|y=85.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=夺宝奇兵|link=@夺宝传送>
+INC S$传送显示 <Button|x=160.0|y=140.0|color=1025|size=18|pimg=public/1900000661.png|nimg=public/1900000660.png|text=龙神祭坛|link=@祭坛传送#地图=lsjt#坐标1=34#坐标2=19#范围=1>
+INC S$传送显示 <RText|x=160.0|y=405.0|color=255|outline=1|outlinecolor=0|size=16|text=<[龙神祭坛]活动场地/FCOLOR=11014>\进入时间：<每天10:00~22:00点/FCOLOR=11003>\<[夺宝奇兵]活动场地/FCOLOR=11014>\开放时间：<每天21:00~24:00点/FCOLOR=11003>>
+
+#IF
+#ACT
+GOTO @传送界面
+BREAK
+
+[@主城传送]
+#IF
+EQUAL S$地图 lhsd
+CHECK [312] 0
+#ACT
+SET [312] 1
+NEWCHANGETASK 11
+
+#IF
+#ACT
+close
+mapmove <$STR(S$地图)> <$STR(S$坐标1)> <$STR(S$坐标2)> <$STR(S$范围)>
+BREAK
+
+[@祭坛传送]
+#IF
+CHECKMONEY 金币 < 10000
+#act
+sendmsg 9 金币不足1万！
+BREAK
+
+#IF
+large <$HOUR> 9
+small <$HOUR> 22
+CHECKMONEY 金币 > 9999
+#act
+MONEY 金币 - 10000 
+logact 10001 通过[土城传送]消耗10000金币，剩余金币：<$MONEY(金币)>。
+close
+mapmove <$STR(S$地图)> <$STR(S$坐标1)> <$STR(S$坐标2)> <$STR(S$范围)>
+GOTO @祭坛活跃
+BREAK
+#ELSEACT
+MESSAGEBOX 龙神祭坛只有每天10:00-22:00期间方可进入！
+BREAK
+
+[@祭坛活跃]
+#IF
+SMALL J59 5
+#ACT
+INC J59 5
+INC J65 5
+INC U43 5
+
+
+[@比武传送]
+#IF
+RANDOM 2
+#ACT
+ChangeModeEx 9 65535
+mapmove biwu 19 40
+#ELSEACT
+ChangeModeEx 9 65535
+mapmove biwu 36 22
+
+[@夺宝传送]
+#IF
+SMALL J62 5
+EQUAL A330 开启
+#ACT
+MAPMOVE dbsd 19 65 3
+INC J62 5
+INC J65 5
+INC U43 5
+BREAK
+#IF
+EQUAL A330 开启
+#ACT
+MAPMOVE dbsd 16 68 5
+BREAK
+#ELSEACT
+SENDMSG 9 夺宝奇兵活动尚未开启或者已经关闭了！
+BREAK
+
+
+
+[@危险传送]
+#IF
+LARGE <$KFDAY> 2
+#ACT
+GOTO @地图传送检测
+
+#IF
+CHECKGAMEGIRD < <$STR(N$检测金额)>
+CHECKLEVELEX  < <$STR(N$检测等级)>
+#ACT
+messagebox 尊敬的玩家，推荐您选择当日刚开的新区进行游戏。\老区为防止工作室无限创号，影响玩家游戏体验，现需等级达到<$STR(N$检测等级)>级或者充值<$STR(N$检测金额)>元才可以进入地图。
+BREAK
+
+#IF
+NOT EQUAL S$名字
+#ACT
+MOV S$地图名字所在行 <$GetTypeBRow(cfg_dtcs,1,<$STR(S$名字)>)>  
+;<<$cfg_dtcs(<$STR(S$地图名字所在行)>_1)>
+MOV S$传送地图名 <$cfg_dtcs(<$STR(S$地图名字所在行)>_9)> 
+MOV N$传送坐标X  <$cfg_dtcs(<$STR(S$地图名字所在行)>_10)> 
+MOV N$传送坐标Y  <$cfg_dtcs(<$STR(S$地图名字所在行)>_11)> 
+MOV N$传送范围   <$cfg_dtcs(<$STR(S$地图名字所在行)>_21)> 
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 1
+#ACT
+MOV S$费用展示  <RText|x=45.0|y=185.0|color=255|size=18|text=传送费用：<免费进入/FCOLOR=250>>
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 2
+#ACT
+MOV S$费用展示  <RText|x=45.0|y=185.0|color=255|size=18|text=传送费用：<<$cfg_dtcs(<$STR(S$地图名字所在行)>_3)>级+金币<$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>/FCOLOR=250>>
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 3
+#ACT
+MOV S$费用展示  <RText|x=45.0|y=185.0|color=255|size=18|text=传送费用：<<$cfg_dtcs(<$STR(S$地图名字所在行)>_3)>级+<$cfg_dtcs(<$STR(S$地图名字所在行)>_5)>*<$cfg_dtcs(<$STR(S$地图名字所在行)>_6)>/FCOLOR=250>>
+
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|width=600|height=300|reset=1|scale9r=40|scale9t=40|bg=1|scale9b=40|move=0|scale9l=40|loadDelay=1|esc=1|img=public/bg_npc_01.png|show=0>
+<Layout|x=523.0|y=10.0|width=70|height=70|link=@exit>
+<Img|x=40.0|y=75.0|width=520|height=190|rotate=0|scale9t=10|scale9r=10|scale9l=10|scale9b=10|img=private/xlxl/0018.png|esc=0>
+<Button|x=551.0|y=38.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<RText|x=45.0|y=75.0|color=255|size=18|outlinecolor=0|outline=1|text=您选择了移动到【<<$STR(S$名字)>/FCOLOR=251>】>
+<Button|x=320.0|y=266.0|color=11004|nimg=public/buyan.png|size=18|text=开始移动|link=@危险移动>
+<Button|x=150.0|y=266.0|width=104|height=36|rotate=0|size=18|color=251|nimg=public/buyan.png|text=返回上页|link=@加载传送界面>
+<Img|x=245.0|y=32.0|img=private/biaoti/01023.png|esc=0>
+<RText|x=45.0|y=125.0|color=11008|size=17|outlinecolor=0|outline=1|text=地图层数：<$cfg_dtcs(<$STR(S$地图名字所在行)>_12)>>
+<RText|x=45.0|y=150.0|color=11008|size=17|outlinecolor=0|outline=1|text=刷新时间：<$cfg_dtcs(<$STR(S$地图名字所在行)>_13)>>
+<RText|x=45.0|y=175.0|color=11008|size=17|outlinecolor=0|outline=1|text=怪物产出：<$cfg_dtcs(<$STR(S$地图名字所在行)>_14)>>
+<RText|x=45.0|y=200.0|color=11008|size=17|outlinecolor=0|outline=1|text=进入条件：<<$cfg_dtcs(<$STR(S$地图名字所在行)>_15)>/FCOLOR=255>>
+<RText|x=45.0|y=225.0|color=11008|size=17|outlinecolor=0|outline=1|text=挑战难度：<<$cfg_dtcs(<$STR(S$地图名字所在行)>_16)>/FCOLOR=58>>
+<Text|x=250.0|y=100.0|color=11014|size=18|text=地图详情>
+<Img|x=140.0|y=108.0|img=public/word_sxbt_05.png|esc=0>
+;<$STR(S$费用展示)>
+
+[@危险移动]
+#IF
+LARGE <$KFDAY> 2
+#ACT
+GOTO @地图传送检测
+
+#IF
+CHECKGAMEGIRD < <$STR(N$检测金额)>
+CHECKLEVELEX  < <$STR(N$检测等级)>
+#ACT
+messagebox 尊敬的玩家，推荐您选择当日刚开的新区进行游戏。\老区为防止工作室无限创号，影响玩家游戏体验，现需等级达到<$STR(N$检测等级)>级或者充值<$STR(N$检测金额)>元才可以进入地图。
+BREAK
+
+#IF
+CHECKLEVELEX < <$cfg_dtcs(<$STR(S$地图名字所在行)>_3)>
+#ACT
+MESSAGEBOX <$cfg_dtcs(<$STR(S$地图名字所在行)>_3)>级才能进入该地图！
+BREAK
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 2
+CHECKMONEY 金币 < <$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>
+#ACT
+MESSAGEBOX 金币不足，传送至该地图需要金币<$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>！
+BREAK
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 3
+NOT CHECKITEM <$cfg_dtcs(<$STR(S$地图名字所在行)>_5)> <$cfg_dtcs(<$STR(S$地图名字所在行)>_6)>
+#ACT
+MESSAGEBOX 传送至该地图需要消耗<$cfg_dtcs(<$STR(S$地图名字所在行)>_6)>个<$cfg_dtcs(<$STR(S$地图名字所在行)>_5)>！
+BREAK
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 1
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_7)> 0
+#ACT
+MAP <$str(S$传送地图名)>
+;sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了危险区域{[<$STR(S$名字)>]|254:0:1}探索高级装备的下落......
+BREAK
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 1
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_7)> 1
+#ACT
+mapmove <$str(S$传送地图名)> <$str(N$传送坐标X)> <$str(N$传送坐标Y)> <$str(N$传送范围)>
+;sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了危险区域{[<$STR(S$名字)>]|254:0:1}探索高级装备的下落......
+BREAK
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 2
+CHECKMONEY 金币 ? <$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_7)> 0
+#ACT
+MONEY 金币 - <$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>
+logact 10001 通过[土城传送]消耗<$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>金币，剩余金币：<$MONEY(金币)>。
+MAP <$str(S$传送地图名)>
+;sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了危险区域{[<$STR(S$名字)>]|254:0:1}探索高级装备的下落......
+BREAK
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 2
+CHECKMONEY 金币 ? <$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_7)> 1
+#ACT
+MONEY 金币 - <$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>
+logact 10001 通过[土城传送]消耗<$cfg_dtcs(<$STR(S$地图名字所在行)>_4)>金币，剩余金币：<$MONEY(金币)>。
+mapmove <$str(S$传送地图名)> <$str(N$传送坐标X)> <$str(N$传送坐标Y)> <$str(N$传送范围)>
+;sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了危险区域{[<$STR(S$名字)>]|254:0:1}探索高级装备的下落......
+BREAK
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 3
+CHECKITEM <$cfg_dtcs(<$STR(S$地图名字所在行)>_5)> <$cfg_dtcs(<$STR(S$地图名字所在行)>_6)>
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_7)> 0
+#ACT
+TAKE <$cfg_dtcs(<$STR(S$地图名字所在行)>_5)> <$cfg_dtcs(<$STR(S$地图名字所在行)>_6)>
+MAP <$str(S$传送地图名)>
+;sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了危险区域{[<$STR(S$名字)>]|254:0:1}探索高级装备的下落......
+BREAK
+
+#IF
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_2)> 3
+CHECKITEM <$cfg_dtcs(<$STR(S$地图名字所在行)>_5)> <$cfg_dtcs(<$STR(S$地图名字所在行)>_6)>
+EQUAL <$cfg_dtcs(<$STR(S$地图名字所在行)>_7)> 1
+#ACT
+TAKE <$cfg_dtcs(<$STR(S$地图名字所在行)>_5)> <$cfg_dtcs(<$STR(S$地图名字所在行)>_6)>
+mapmove <$str(S$传送地图名)> <$str(N$传送坐标X)> <$str(N$传送坐标Y)> <$str(N$传送范围)>
+;sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了危险区域{[<$STR(S$名字)>]|254:0:1}探索高级装备的下落......
+BREAK
+
+
+[@新手挂机]
+#IF
+#ACT
+StartAutoPlayGame
+BREAK
+
+
+[@地图传送检测]
+#IF
+LARGE <$KFDAY> 2
+SMALL <$KFDAY> 5
+#ACT
+MOV N$检测等级 46
+MOV N$检测金额 10
+#IF
+LARGE <$KFDAY> 4
+SMALL <$KFDAY> 7
+#ACT
+MOV N$检测等级 52
+MOV N$检测金额 10
+#IF
+LARGE <$KFDAY> 6
+SMALL <$KFDAY> 10
+#ACT
+MOV N$检测等级 56
+MOV N$检测金额 10
+#IF
+LARGE <$KFDAY> 9
+SMALL <$KFDAY> 15
+#ACT
+MOV N$检测等级 58
+MOV N$检测金额 30
+#IF
+LARGE <$KFDAY> 14
+SMALL <$KFDAY> 20
+#ACT
+MOV N$检测等级 60
+MOV N$检测金额 30
+
+#IF
+LARGE <$KFDAY> 19
+SMALL <$KFDAY> 30
+#ACT
+MOV N$检测等级 62
+MOV N$检测金额 30
+#IF
+LARGE <$KFDAY> 29
+SMALL <$KFDAY> 60
+#ACT
+MOV N$检测等级 65
+MOV N$检测金额 50
+#IF
+LARGE <$KFDAY> 59
+#ACT
+MOV N$检测等级 68
+MOV N$检测金额 50
+
+
+
+}

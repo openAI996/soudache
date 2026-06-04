@@ -1,0 +1,28 @@
+[@加载角色八门属性]
+{
+#IF
+EQUAL T20
+EQUAL T21
+EQUAL T22
+EQUAL T23
+EQUAL T24
+EQUAL T25
+EQUAL T26
+#ACT
+BREAK
+
+#IF
+#ACT
+#CALL [\功能脚本\登陆加载\蓝色检测.txt] @蓝色命格激活判断
+#CALL [\功能脚本\登陆加载\紫色检测.txt] @紫色命格激活判断
+#CALL [\功能脚本\登陆加载\橙色检测.txt] @橙色命格激活判断
+#CALL [\功能脚本\登陆加载\红色检测.txt] @红色命格激活判断
+
+
+
+
+
+
+
+}
+

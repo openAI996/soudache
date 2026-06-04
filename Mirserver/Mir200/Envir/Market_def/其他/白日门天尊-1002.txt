@@ -1,0 +1,215 @@
+[@MAIN]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|size=18|color=11073|text=我不是传说，但常跟我说话的少年，都成了传说！>
+<Text|x=45.0|y=95.0|color=11073|size=18|text=痛苦的是，毁灭让我们拾取了过去！幸运的是我们拥有现在..>
+<Text|x=45.0|y=120.0|color=11073|size=18|text=..以及未来！>
+<Text|x=45.0|y=145.0|color=11073|size=18|text=人类没有退路，没有怜悯，没有乞求，只有战！>
+
+<Layout|x=62.0|y=179.0|width=120|height=45|color=x|link=@神器锻造>
+<Text|x=70.0|y=188.0|color=11009|size=18|text=神器锻造|link=@神器锻造>
+<Layout|x=293.0|y=183.0|width=120|height=45|color=x|link=@指点迷津>
+<Text|x=300.0|y=188.0|color=11008|size=18|text=指点迷津|link=@指点迷津>
+<Img|x=45.0|y=193.0|width=18|height=18|esc=0|img=public/00025.png>
+<Img|x=275.0|y=193.0|width=18|height=18|esc=0|img=public/00013.png>
+
+
+[@指点迷津]
+#IF
+CheckContainsText <$STR(T20)>|<$STR(T21)>|<$STR(T22)>|<$STR(T23)>|<$STR(T24)>|<$STR(T25)>|<$STR(T26)> 指点迷津
+CHECK [352] 0
+#SAY
+<Img|x=0.0|y=20.0|height=160|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=493.0|y=6.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=45.0|y=70.0|color=255|size=17|text=恭喜你受到白日门天尊指点，获得全属性：1-1提升！>
+#ACT
+SET [352] 1
+INC U253 1
+#CALL [\功能脚本\登陆加载\八门属性加载.txt] @加载角色八门属性
+#CALL [\功能脚本\登陆加载\八门属性生效.txt] @八门属性执行
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+BREAK
+#ELSESAY
+<Img|x=0.0|y=20.0|height=160|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=493.0|y=6.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Text|x=45.0|y=70.0|color=11073|size=17|text=世界磨难，皆为人受，苍生何辜？>
+
+
+[@神器锻造]
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+MOV S$物品比例缩放 1
+#ELSEACT
+MOV S$物品比例缩放 0.9
+
+#IF
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=750|height=470|scale9t=100|img=private/xlxl/00000.png|move=0|loadDelay=0|reset=1|scale9l=100|scale9b=100|show=4|bg=1|scale9r=100|esc=1>
+<Layout|x=685.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=702.0|y=18.0|color=255|size=18|pimg=public/1990000511.png|nimg=public/1990000510.png|link=@exit>
+<Img|x=326.0|y=9.0|img=private/biaoti/01048.png|esc=0>
+<Text|x=55.0|y=80.0|outlinecolor=0|color=255|outline=1|size=17|text=想老夫我也是一届风云人物，凭借自身武艺，走遍玛法大陆，习得不少神兵锻造之法！>
+<Text|x=55.0|y=105.0|color=255|size=17|outlinecolor=0|outline=1|text=哎~~如今老也，留得无用，便将此法授予你们后生，但愿能将此些神兵发扬光大>
+
+<ListView|children={20,30,40,50}|x=50.0|y=140.0|width=855|height=260|direction=1|bounce=0|margin=1|reload=0|color=x>
+
+<Img|id=20|children={201,202,203,204,205,206,207,208,209,210,211,212,213,214,215}|x=0.0|y=0.0|width=650|esc=0|scale9b=5|img=public/hcbj.png|scale9r=5|scale9l=5|scale9t=5>
+<Img|id=201|x=10.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=202|x=100.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=203|x=190.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=204|x=280.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=205|x=370.0|y=3.0|img=public/02128.png|esc=0>
+<ItemShow|id=206|x=5.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(35_4)>|itemcount=<$cfg_hecheng_wuqi(35_5)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=207|x=95.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(35_7)>|itemcount=<$cfg_hecheng_wuqi(35_8)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=208|x=185.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(35_10)>|itemcount=<$cfg_hecheng_wuqi(35_11)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=209|x=275.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(35_13)>|itemcount=<$cfg_hecheng_wuqi(35_14)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=210|x=365.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(35_2)>|itemcount=1|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<Img|id=211|x=72.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=212|x=162.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=213|x=252.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=214|x=342.0|y=22.0|img=public/ddd.png|esc=0>
+<Button|id=215|x=540.0|y=15.0|nimg=private/xlxl/0011.png|size=18|color=1025|text=开始锻造|link=@材料合成一#合成索引=35>
+
+<Img|id=30|children={301,302,303,304,305,306,307,308,309,310,311,312,313,314,315}|x=0.0|y=0.0|width=650|esc=0|scale9b=5|img=public/hcbj.png|scale9r=5|scale9l=5|scale9t=5>
+<Img|id=301|x=10.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=302|x=100.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=303|x=190.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=304|x=280.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=305|x=370.0|y=3.0|img=public/02128.png|esc=0>
+<ItemShow|id=306|x=5.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(36_4)>|itemcount=<$cfg_hecheng_wuqi(36_5)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=307|x=95.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(36_7)>|itemcount=<$cfg_hecheng_wuqi(36_8)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=308|x=185.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(36_10)>|itemcount=<$cfg_hecheng_wuqi(36_11)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=309|x=275.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(36_13)>|itemcount=<$cfg_hecheng_wuqi(36_14)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=310|x=365.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(36_2)>|itemcount=1|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<Img|id=311|x=72.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=312|x=162.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=313|x=252.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=314|x=342.0|y=22.0|img=public/ddd.png|esc=0>
+<Button|id=315|x=540.0|y=15.0|nimg=private/xlxl/0011.png|size=18|color=1025|text=开始锻造|link=@材料合成一#合成索引=36>
+
+<Img|id=40|children={401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418}|x=0.0|y=0.0|width=650|esc=0|scale9b=5|img=public/hcbj.png|scale9r=5|scale9l=5|scale9t=5>
+<Img|id=401|x=10.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=402|x=100.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=403|x=190.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=404|x=280.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=405|x=370.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=406|x=460.0|y=3.0|img=public/02128.png|esc=0>
+<ItemShow|id=407|x=5.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(37_4)>|itemcount=<$cfg_hecheng_wuqi(37_5)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=408|x=95.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(37_7)>|itemcount=<$cfg_hecheng_wuqi(37_8)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=409|x=185.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(37_10)>|itemcount=<$cfg_hecheng_wuqi(37_11)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=410|x=275.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(37_13)>|itemcount=<$cfg_hecheng_wuqi(37_14)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=411|x=365.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(37_16)>|itemcount=<$cfg_hecheng_wuqi(37_17)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=412|x=455.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(37_2)>|itemcount=1|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<Img|id=413|x=72.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=414|x=162.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=415|x=252.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=416|x=342.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=417|x=432.0|y=22.0|img=public/ddd.png|esc=0>
+<Button|id=418|x=540.0|y=15.0|nimg=private/xlxl/0011.png|size=18|color=1025|text=开始锻造|link=@材料合成二#合成索引=37>
+
+<Img|id=50|children={501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521}|x=0.0|y=0.0|width=650|esc=0|scale9b=5|img=public/hcbj.png|scale9r=5|scale9l=5|scale9t=5>
+<Img|id=501|x=10.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=502|x=100.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=503|x=190.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=504|x=280.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=505|x=370.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=506|x=460.0|y=3.0|img=public/02128.png|esc=0>
+<Img|id=507|x=550.0|y=3.0|img=public/02128.png|esc=0>
+<ItemShow|id=508|x=5.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(38_4)>|itemcount=<$cfg_hecheng_wuqi(38_5)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=509|x=95.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(38_7)>|itemcount=<$cfg_hecheng_wuqi(38_8)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=510|x=185.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(38_10)>|itemcount=<$cfg_hecheng_wuqi(38_11)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=511|x=275.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(38_13)>|itemcount=<$cfg_hecheng_wuqi(38_14)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=512|x=365.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(38_16)>|itemcount=<$cfg_hecheng_wuqi(38_17)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=513|x=455.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(38_19)>|itemcount=<$cfg_hecheng_wuqi(38_20)>|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<ItemShow|id=514|x=545.0|y=0.0|width=70|height=70|itemid=<$cfg_hecheng_wuqi(38_2)>|itemcount=1|showtips=1|bgtype=0|scale=<$str(S$物品比例缩放)>>
+<Img|id=515|x=72.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=516|x=162.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=517|x=252.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=518|x=342.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=519|x=432.0|y=22.0|img=public/jjj.png|esc=0>
+<Img|id=520|x=522.0|y=22.0|img=public/ddd.png|esc=0>
+<Button|x=590.0|y=405.0|nimg=private/xlxl/0011.png|size=18|color=1025|text=开始锻造|link=@材料合成三#合成索引=38>
+
+[@材料合成一]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+#ACT
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+GIVE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)> 1
+SENDMSG 9 你成功锻造出：<$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)>！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料不足！
+BREAK
+
+[@材料合成二]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_15)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_17)>
+#ACT
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_15)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_17)>
+GIVE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)> 1
+SENDMSG 9 你成功锻造出：<$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)>！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料不足！
+BREAK
+
+[@材料合成三]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_15)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_17)>
+CHECKITEM <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_18)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_20)>
+#ACT
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_3)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_5)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_6)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_8)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_9)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_11)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_12)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_14)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_15)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_17)>
+TAKE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_18)> <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_20)>
+GIVE <$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)> 1
+SENDMSG 9 你成功锻造出：<$cfg_hecheng_wuqi(<$STR(S$合成索引)>_1)>！
+BREAK
+#ELSEACT
+SENDMSG 9 锻造失败，材料不足！
+BREAK

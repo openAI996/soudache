@@ -1,0 +1,36 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=40.0|y=75.0|size=18|color=11073|text=魔化黄泉获得不死不灭的身躯后，他的力量强大到连自己都不>
+<Text|x=40.0|y=100.0|size=18|color=11073|text=不敢相信。是否前往挑战？>
+<RText|x=40.0|y=127.0|color=255|size=18|text=挑战需要门票：<灰色药粉(大量)*1/FCOLOR=249>>
+<Layout|x=195.0|y=200.0|width=150|height=45|rotate=0|color=*|link=@挑战黄泉>
+<Text|x=216.0|y=210.0|color=251|size=18|text=挑战魔化黄泉|link=@挑战黄泉>
+
+
+[@挑战黄泉]
+#IF
+CHECKITEM 灰色药粉(大量) 1
+SMALL J63 5
+#ACT
+TAKE 灰色药粉(大量) 1
+MAPMOVE huqd 7 11
+INC J63 5
+INC J65 5
+INC U43 5
+BREAK
+
+
+#IF
+CHECKITEM 灰色药粉(大量) 1
+#ACT
+TAKE 灰色药粉(大量) 1
+MAPMOVE huqd 7 11
+BREAK
+#ELSEACT
+SENDMSG 9 进入失败，需求一个灰色药粉(大量)才能进入！
+BREAK
+
+
+

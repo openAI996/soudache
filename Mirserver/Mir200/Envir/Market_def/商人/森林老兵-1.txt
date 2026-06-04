@@ -1,0 +1,91 @@
+[@MAIN]
+<Img|x=0.0|y=20.0|height=280|show=0|esc=1|scale9t=20|scale9r=20|bg=1|move=0|loadDelay=1|scale9b=20|img=public/bg_npc_01.png|reset=1|scale9l=20>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01017.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=如果你很富有就来赞助我一下吧，想要什么宝宝给钱就可以>
+<Img|x=35.0|y=105.0|img=public/00010.png|esc=0>
+<Text|x=50.0|y=100.0|color=11003|size=18|text=牛魔侍卫(50级)>
+<Layout|x=155.0|y=95.0|width=120|height=35|color=x|link=@购买宠物#宝宝名字=牛魔侍卫#需求金币=100000#需求等级=50>
+<Text|x=165.0|y=100.0|color=11033|size=18|text=10万金币购买|link=@购买宠物#宝宝名字=牛魔侍卫#需求金币=100000#需求等级=50>
+<Img|x=280.0|y=105.0|img=public/00010.png|esc=0>
+<Text|x=295.0|y=100.0|color=11003|size=18|text=牛魔将军(55级)>
+<Layout|x=400.0|y=95.0|width=120|height=35|color=x|link=@购买宠物#宝宝名字=牛魔将军#需求金币=150000#需求等级=55>
+<Text|x=410.0|y=100.0|color=11033|size=18|text=15万金币购买|link=@购买宠物#宝宝名字=牛魔将军#需求金币=150000#需求等级=55>
+
+<Img|x=35.0|y=155.0|img=public/00010.png|esc=0>
+<Text|x=50.0|y=150.0|color=11003|size=18|text=牛魔祭司(58级)>
+<Layout|x=155.0|y=145.0|width=120|height=35|color=x|link=@购买宠物#宝宝名字=牛魔祭司#需求金币=180000#需求等级=58>
+<Text|x=165.0|y=150.0|color=11033|size=18|text=18万金币购买|link=@购买宠物#宝宝名字=牛魔祭司#需求金币=180000#需求等级=58>
+
+<Img|x=280.0|y=155.0|img=public/00010.png|esc=0>
+<Text|x=295.0|y=150.0|color=11003|size=18|text=黑锷蜘蛛(60级)>
+<Layout|x=400.0|y=145.0|width=120|height=35|color=x|link=@购买宠物#宝宝名字=黑锷蜘蛛#需求金币=200000#需求等级=60>
+<Text|x=410.0|y=150.0|color=11033|size=18|text=20万金币购买|link=@购买宠物#宝宝名字=黑锷蜘蛛#需求金币=200000#需求等级=60>
+<Img|x=35.0|y=205.0|img=public/00010.png|esc=0>
+<Text|x=50.0|y=200.0|color=11003|size=18|text=魔龙刺蛙(65级)>
+<Layout|x=155.0|y=195.0|width=120|height=35|color=x|link=@购买宠物#宝宝名字=魔龙刺蛙#需求金币=250000#需求等级=65>
+<Text|x=165.0|y=200.0|color=11033|size=18|text=25万金币购买|link=@购买宠物#宝宝名字=魔龙刺蛙#需求金币=250000#需求等级=65>
+<Img|x=280.0|y=205.0|img=public/00010.png|esc=0>
+<Text|x=295.0|y=200.0|color=11003|size=18|text=巡游兵(70级)>
+<Layout|x=400.0|y=195.0|width=120|height=35|color=x|link=@购买宠物#宝宝名字=迷失巡游兵#需求金币=300000#需求等级=70>
+<Text|x=410.0|y=200.0|color=11033|size=18|text=30万金币购买|link=@购买宠物#宝宝名字=迷失巡游兵#需求金币=300000#需求等级=70>
+<Img|x=35.0|y=255.0|img=public/00010.png|esc=0>
+<Text|x=50.0|y=250.0|color=11003|size=18|text=王陵卫士(74级)>
+<Layout|x=155.0|y=245.0|width=120|height=35|color=x|link=@购买宠物#宝宝名字=王陵卫士#需求金币=400000#需求等级=74>
+<Text|x=165.0|y=250.0|color=11033|size=18|text=40万金币购买|link=@购买宠物#宝宝名字=王陵卫士#需求金币=400000#需求等级=74>
+<Img|x=280.0|y=255.0|img=public/00010.png|esc=0>
+<Text|x=295.0|y=250.0|color=11003|size=18|text=兵蚁(78级)>
+<Layout|x=400.0|y=245.0|width=120|height=35|color=x|link=@购买宠物#宝宝名字=兵蚁#需求金币=500000#需求等级=78>
+<Text|x=410.0|y=250.0|color=11033|size=18|text=50万金币购买|link=@购买宠物#宝宝名字=兵蚁#需求金币=500000#需求等级=78>
+
+;<Img|x=280.0|y=255.0|img=public/00010.png|esc=0>
+;<Text|x=295.0|y=250.0|color=11003|size=18|text=返回土城>
+;<Layout|x=400.0|y=245.0|width=120|height=35|color=x|link=@返回土城>
+;<Text|x=410.0|y=250.0|color=11033|size=18|text=[ 主城 ]|link=@返回土城>
+
+
+[@购买宠物]
+#IF
+NOT CHECKJOB Wizard
+#ACT
+SENDMSG 9 你又不是法师，过来干嘛！
+BREAK
+
+#IF
+CHECKMONEY 金币 < <$STR(S$需求金币)>
+#ACT
+SENDMSG 9 购买失败，金币数量不足！
+BREAK
+
+#IF
+CHECKLEVELEX < <$STR(S$需求等级)>
+#ACT
+SENDMSG 9 以你现在的能力还驾驭不了这么强力的宝宝！
+BREAK
+
+#IF
+EQUAL U50 6
+LARGE U76 0
+#ACT
+MOV N$宝宝上限 6
+#ELSEACT
+MOV N$宝宝上限 5
+
+#IF
+CHECKSLAVECOUNT < <$STR(N$宝宝上限)>
+#ACT
+TAKE 金币 <$STR(S$需求金币)>
+logact 10001 通过[森林老兵]消耗<$STR(S$需求金币)>金币，剩余金币：<$MONEY(金币)>。
+RECALLMOB <$STR(S$宝宝名字)> 1 720 0 0 0 0
+BREAK
+#ELSEACT
+SENDMSG 9 购买失败，你的宝宝数量已经达到上限！
+BREAK
+
+
+[@返回土城]
+#IF
+#ACT
+MAPMOVE 3 330 330 6
+BREAK

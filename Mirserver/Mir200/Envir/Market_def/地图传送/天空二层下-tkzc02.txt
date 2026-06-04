@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE tkzc03 59 319

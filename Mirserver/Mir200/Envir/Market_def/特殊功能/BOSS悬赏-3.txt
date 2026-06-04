@@ -1,0 +1,670 @@
+[@main]
+#IF
+#ACT
+;MOV N$首杀时间_1 86400
+;MOV N$首杀时间_3 864000
+;MOV N$开区时间 <$str(A499)>
+;MOV N$时间差 <$UTCNOW8>
+;DEC N$时间差 <$STR(N$开区时间)>
+
+;#IF
+;SMALL N$时间差 <$str(N$首杀时间_1)>
+;#ACT
+;DEC N$首杀时间_1 <$STR(N$时间差)>
+;MOV S$时间_1 
+;INC S$时间_1 <COUNTDOWN|id=203|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=303|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=403|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=503|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=603|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=703|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=803|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=903|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1003|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1103|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1203|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1303|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1403|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1503|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1603|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1703|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1803|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=1903|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2003|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2103|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2203|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2303|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2403|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2503|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2603|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2703|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2803|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=2903|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3003|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3103|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3203|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3303|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3403|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3503|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3603|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3703|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_1 <COUNTDOWN|id=3803|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;#ELSEACT
+MOV S$时间_1 
+INC S$时间_1 <Text|id=203|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=303|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=403|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=503|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=603|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=703|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=803|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=903|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1003|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1103|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1203|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1303|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1403|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1503|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1603|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1703|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1803|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1903|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2003|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2103|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2203|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2303|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2403|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2503|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2603|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2703|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2803|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=2903|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3003|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3103|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3203|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3303|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3403|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3503|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3603|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3703|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=3803|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+
+;#IF
+;SMALL <$HFCOUNT> 1
+;#ACT
+MOV S$时间_2
+INC S$时间_2 <Text|id=3903|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_2 <Text|id=4003|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_2 <Text|id=4103|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_2 <Text|id=4203|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_2 <Text|id=4303|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+;#ELSEACT
+;MOV S$时间_2
+;INC S$时间_2 <Text|id=3903|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀已过期>
+;INC S$时间_2 <Text|id=4003|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀已过期>
+;INC S$时间_2 <Text|id=4103|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀已过期>
+;INC S$时间_2 <Text|id=4203|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀已过期>
+;INC S$时间_2 <Text|id=4303|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀已过期>
+
+
+;#IF
+;SMALL N$时间差 <$str(N$首杀时间_3)>
+;#ACT
+;DEC N$首杀时间_3 <$STR(N$时间差)>
+;MOV S$时间_3
+;INC S$时间_3 <COUNTDOWN|id=4403|x=333|y=5|time=<$str(N$首杀时间_3)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;INC S$时间_3 <COUNTDOWN|id=4503|x=333|y=5|time=<$str(N$首杀时间_3)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+;#ELSEACT
+MOV S$时间_3
+INC S$时间_3 <Text|id=4403|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_3 <Text|id=4503|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+
+
+#IF
+EQUAL A201
+#ACT
+MOV S$1号悬赏 <Text|id=204|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$1号悬赏 <Text|id=204|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A202
+#ACT
+MOV S$2号悬赏 <Text|id=304|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$2号悬赏 <Text|id=304|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A203
+#ACT
+MOV S$3号悬赏 <Text|id=404|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$3号悬赏 <Text|id=404|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A204
+#ACT
+MOV S$4号悬赏 <Text|id=504|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$4号悬赏 <Text|id=504|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A205
+#ACT
+MOV S$5号悬赏 <Text|id=604|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$5号悬赏 <Text|id=604|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A206
+#ACT
+MOV S$6号悬赏 <Text|id=704|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$6号悬赏 <Text|id=704|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A207
+#ACT
+MOV S$7号悬赏 <Text|id=804|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$7号悬赏 <Text|id=804|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A208
+#ACT
+MOV S$8号悬赏 <Text|id=904|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$8号悬赏 <Text|id=904|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A209
+#ACT
+MOV S$9号悬赏 <Text|id=1004|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$9号悬赏 <Text|id=1004|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A210
+#ACT
+MOV S$10号悬赏 <Text|id=1104|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$10号悬赏 <Text|id=1104|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A211
+#ACT
+MOV S$11号悬赏 <Text|id=1204|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$11号悬赏 <Text|id=1204|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A212
+#ACT
+MOV S$12号悬赏 <Text|id=1304|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$12号悬赏 <Text|id=1304|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A213
+#ACT
+MOV S$13号悬赏 <Text|id=1404|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$13号悬赏 <Text|id=1404|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A214
+#ACT
+MOV S$14号悬赏 <Text|id=1504|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$14号悬赏 <Text|id=1504|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A215
+#ACT
+MOV S$15号悬赏 <Text|id=1604|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$15号悬赏 <Text|id=1604|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A216
+#ACT
+MOV S$16号悬赏 <Text|id=1704|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$16号悬赏 <Text|id=1704|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A217
+#ACT
+MOV S$17号悬赏 <Text|id=1804|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$17号悬赏 <Text|id=1804|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A218
+#ACT
+MOV S$18号悬赏 <Text|id=1904|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$18号悬赏 <Text|id=1904|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A219
+#ACT
+MOV S$19号悬赏 <Text|id=2004|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$19号悬赏 <Text|id=2004|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A220
+#ACT
+MOV S$20号悬赏 <Text|id=2104|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$20号悬赏 <Text|id=2104|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A221
+#ACT
+MOV S$21号悬赏 <Text|id=2204|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$21号悬赏 <Text|id=2204|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A222
+#ACT
+MOV S$22号悬赏 <Text|id=2304|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$22号悬赏 <Text|id=2304|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A223
+#ACT
+MOV S$23号悬赏 <Text|id=2404|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$23号悬赏 <Text|id=2404|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A224
+#ACT
+MOV S$24号悬赏 <Text|id=2504|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$24号悬赏 <Text|id=2504|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A225
+#ACT
+MOV S$25号悬赏 <Text|id=2604|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$25号悬赏 <Text|id=2604|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A226
+#ACT
+MOV S$26号悬赏 <Text|id=2704|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$26号悬赏 <Text|id=2704|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A227
+#ACT
+MOV S$27号悬赏 <Text|id=2804|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$27号悬赏 <Text|id=2804|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A228
+#ACT
+MOV S$28号悬赏 <Text|id=2904|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$28号悬赏 <Text|id=2904|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A229
+#ACT
+MOV S$29号悬赏 <Text|id=3004|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$29号悬赏 <Text|id=3004|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A230
+#ACT
+MOV S$30号悬赏 <Text|id=3104|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$30号悬赏 <Text|id=3104|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A231
+#ACT
+MOV S$31号悬赏 <Text|id=3204|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$31号悬赏 <Text|id=3204|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A232
+#ACT
+MOV S$32号悬赏 <Text|id=3304|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$32号悬赏 <Text|id=3304|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A233
+#ACT
+MOV S$33号悬赏 <Text|id=3404|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$33号悬赏 <Text|id=3404|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A234
+#ACT
+MOV S$34号悬赏 <Text|id=3504|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$34号悬赏 <Text|id=3504|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A235
+#ACT
+MOV S$35号悬赏 <Text|id=3604|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$35号悬赏 <Text|id=3604|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A236
+#ACT
+MOV S$36号悬赏 <Text|id=3704|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$36号悬赏 <Text|id=3704|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A237
+#ACT
+MOV S$37号悬赏 <Text|id=3804|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$37号悬赏 <Text|id=3804|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A238
+#ACT
+MOV S$38号悬赏 <Text|id=3904|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$38号悬赏 <Text|id=3904|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A239
+#ACT
+MOV S$39号悬赏 <Text|id=4004|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$39号悬赏 <Text|id=4004|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A240
+#ACT
+MOV S$40号悬赏 <Text|id=4104|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$40号悬赏 <Text|id=4104|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A241
+#ACT
+MOV S$41号悬赏 <Text|id=4204|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$41号悬赏 <Text|id=4204|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A242
+#ACT
+MOV S$42号悬赏 <Text|id=4304|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$42号悬赏 <Text|id=4304|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A243
+#ACT
+MOV S$43号悬赏 <Text|id=4404|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$43号悬赏 <Text|id=4404|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A244
+#ACT
+MOV S$44号悬赏 <Text|id=4504|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$44号悬赏 <Text|id=4504|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=-1.0|width=670|height=470|bg=1|scale9l=50|scale9r=50|scale9t=50|scale9b=50|move=0|loadDelay=0|esc=1|reset=1|img=private/xlxl/00000.png|show=4>
+<Layout|x=607.0|y=-16.0|width=80|height=80|link=@exit>
+<Button|x=624.0|y=18.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=285.0|y=8.0|img=private/biaoti/01064.png|esc=0>
+<Text|x=92.0|y=416.0|outlinecolor=0|color=250|outline=1|size=17|text=新区开放生效倒计时结束后，首个击杀BOSS的玩家可获得其悬赏！>
+<ListView|children={2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45}|x=50.0|y=120.0|width=570|height=280|color=x|bounce=0|direction=1|reload=0|margin=2>
+<Img|id=2|x=0.0|children={201,202,203,204}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=3|x=0.0|children={301,302,303,304}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=4|x=0.0|children={401,402,403,404}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=5|x=0.0|children={501,502,503,504}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=6|x=0.0|children={601,602,603,604}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=7|x=0.0|children={701,702,703,704}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=8|x=0.0|children={801,802,803,804}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=9|x=0.0|children={901,902,903,904}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=10|x=0.0|children={1001,1002,1003,1004}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=11|x=0.0|children={1101,1102,1103,1104}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=12|x=0.0|children={1201,1202,1203,1204}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=13|x=0.0|children={1301,1302,1303,1304}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=14|x=0.0|children={1401,1402,1403,1404}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=15|x=0.0|children={1501,1502,1503,1504}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=16|x=0.0|children={1601,1602,1603,1604}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=17|x=0.0|children={1701,1702,1703,1704}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=18|x=0.0|children={1801,1802,1803,1804}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=19|x=0.0|children={1901,1902,1903,1904}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=20|x=0.0|children={2001,2002,2003,2004}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=21|x=0.0|children={2101,2102,2103,2104}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=22|x=0.0|children={2201,2202,2203,2204}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=23|x=0.0|children={2301,2302,2303,2304}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=24|x=0.0|children={2401,2402,2403,2404}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=25|x=0.0|children={2501,2502,2503,2504}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=26|x=0.0|children={2601,2602,2603,2604}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=27|x=0.0|children={2701,2702,2703,2704}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=28|x=0.0|children={2801,2802,2803,2804}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=29|x=0.0|children={2901,2902,2903,2904}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=30|x=0.0|children={3001,3002,3003,3004}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=31|x=0.0|children={3101,3102,3103,3104}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=32|x=0.0|children={3201,3202,3203,3204}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=33|x=0.0|children={3301,3302,3303,3304}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=34|x=0.0|children={3401,3402,3403,3404}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=35|x=0.0|children={3501,3502,3503,3504}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=36|x=0.0|children={3601,3602,3603,3604}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=37|x=0.0|children={3701,3702,3703,3704}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=38|x=0.0|children={3801,3802,3803,3804}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=39|x=0.0|children={3901,3902,3903,3904}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=40|x=0.0|children={4001,4002,4003,4004}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=41|x=0.0|children={4101,4102,4103,4104}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=42|x=0.0|children={4201,4202,4203,4204}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=43|x=0.0|children={4301,4302,4303,4304}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=44|x=0.0|children={4401,4402,4403,4404}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=45|x=0.0|children={4501,4502,4503,4504}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|x=42.0|y=79.0|width=590|esc=0|img=public/ssbt.png>
+<Text|x=85.0|y=83.0|size=17|color=100|outline=1|outlinecolor=0|text=Boss>
+<Text|x=215.0|y=83.0|size=17|color=100|outline=1|outlinecolor=0|text=悬赏奖励>
+<Text|x=375.0|y=83.0|size=17|color=100|outline=1|outlinecolor=0|text=生效倒计时>
+<Text|x=530.0|y=83.0|size=17|color=100|outline=1|outlinecolor=0|text=击杀状态>
+
+<Text|id=201|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(1_1)>>
+<Text|id=202|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(1_2)>>
+<$STR(S$1号悬赏)>
+
+<Text|id=301|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(2_1)>>
+<Text|id=302|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(2_2)>>
+<$STR(S$2号悬赏)>
+
+<Text|id=401|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(3_1)>>
+<Text|id=402|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(3_2)>>
+<$STR(S$3号悬赏)>
+
+<Text|id=501|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(4_1)>>
+<Text|id=502|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(4_2)>>
+<$STR(S$4号悬赏)>
+
+<Text|id=601|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(5_1)>>
+<Text|id=602|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(5_2)>>
+<$STR(S$5号悬赏)>
+
+<Text|id=701|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(6_1)>>
+<Text|id=702|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(6_2)>>
+<$STR(S$6号悬赏)>
+
+<Text|id=801|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(7_1)>>
+<Text|id=802|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(7_2)>>
+<$STR(S$7号悬赏)>
+
+<Text|id=901|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(8_1)>>
+<Text|id=902|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(8_2)>>
+<$STR(S$8号悬赏)>
+
+<Text|id=1001|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(9_1)>>
+<Text|id=1002|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(9_2)>>
+<$STR(S$9号悬赏)>
+
+<Text|id=1101|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(10_1)>>
+<Text|id=1102|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(10_2)>>
+<$STR(S$10号悬赏)>
+
+<Text|id=1201|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(11_1)>>
+<Text|id=1202|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(11_2)>>
+<$STR(S$11号悬赏)>
+
+<Text|id=1301|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(12_1)>>
+<Text|id=1302|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(12_2)>>
+<$STR(S$12号悬赏)>
+
+<Text|id=1401|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(13_1)>>
+<Text|id=1402|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(13_2)>>
+<$STR(S$13号悬赏)>
+
+<Text|id=1501|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(14_1)>>
+<Text|id=1502|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(14_2)>>
+<$STR(S$14号悬赏)>
+
+<Text|id=1601|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(15_1)>>
+<Text|id=1602|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(15_2)>>
+<$STR(S$15号悬赏)>
+
+<Text|id=1701|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(16_1)>>
+<Text|id=1702|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(16_2)>>
+<$STR(S$16号悬赏)>
+
+<Text|id=1801|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(17_1)>>
+<Text|id=1802|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(17_2)>>
+<$STR(S$17号悬赏)>
+
+<Text|id=1901|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(18_1)>>
+<Text|id=1902|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(18_2)>>
+<$STR(S$18号悬赏)>
+
+<Text|id=2001|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(19_1)>>
+<Text|id=2002|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(19_2)>>
+<$STR(S$19号悬赏)>
+
+<Text|id=2101|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(20_1)>>
+<Text|id=2102|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(20_2)>>
+<$STR(S$20号悬赏)>
+
+<Text|id=2201|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(21_1)>>
+<Text|id=2202|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(21_2)>>
+<$STR(S$21号悬赏)>
+
+<Text|id=2301|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(22_1)>>
+<Text|id=2302|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(22_2)>>
+<$STR(S$22号悬赏)>
+
+<Text|id=2401|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(23_1)>>
+<Text|id=2402|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(23_2)>>
+<$STR(S$23号悬赏)>
+
+<Text|id=2501|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(24_1)>>
+<Text|id=2502|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(24_2)>>
+<$STR(S$24号悬赏)>
+
+<Text|id=2601|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(25_1)>>
+<Text|id=2602|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(25_2)>>
+<$STR(S$25号悬赏)>
+
+<Text|id=2701|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(26_1)>>
+<Text|id=2702|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(26_2)>>
+<$STR(S$26号悬赏)>
+
+<Text|id=2801|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(27_1)>>
+<Text|id=2802|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(27_2)>>
+<$STR(S$27号悬赏)>
+
+<Text|id=2901|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(28_1)>>
+<Text|id=2902|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(28_2)>>
+<$STR(S$28号悬赏)>
+
+<Text|id=3001|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(29_1)>>
+<Text|id=3002|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(29_2)>>
+<$STR(S$29号悬赏)>
+
+<Text|id=3101|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(30_1)>>
+<Text|id=3102|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(30_2)>>
+<$STR(S$30号悬赏)>
+
+<Text|id=3201|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(31_1)>>
+<Text|id=3202|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(31_2)>>
+<$STR(S$31号悬赏)>
+
+<Text|id=3301|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(32_1)>>
+<Text|id=3302|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(32_2)>>
+<$STR(S$32号悬赏)>
+
+<Text|id=3401|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(33_1)>>
+<Text|id=3402|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(33_2)>>
+<$STR(S$33号悬赏)>
+
+<Text|id=3501|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(34_1)>>
+<Text|id=3502|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(34_2)>>
+<$STR(S$34号悬赏)>
+
+<Text|id=3601|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(35_1)>>
+<Text|id=3602|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(35_2)>>
+<$STR(S$35号悬赏)>
+
+<Text|id=3701|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(36_1)>>
+<Text|id=3702|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(36_2)>>
+<$STR(S$36号悬赏)>
+
+<Text|id=3801|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(37_1)>>
+<Text|id=3802|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(37_2)>>
+<$STR(S$37号悬赏)>
+
+<Text|id=3901|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(38_1)>>
+<Text|id=3902|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(38_2)>>
+<$STR(S$38号悬赏)>
+
+<Text|id=4001|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(39_1)>>
+<Text|id=4002|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(39_2)>>
+<$STR(S$39号悬赏)>
+
+<Text|id=4101|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(40_1)>>
+<Text|id=4102|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(40_2)>>
+<$STR(S$40号悬赏)>
+
+<Text|id=4201|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(41_1)>>
+<Text|id=4202|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(41_2)>>
+<$STR(S$41号悬赏)>
+
+<Text|id=4301|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(42_1)>>
+<Text|id=4302|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(42_2)>>
+<$STR(S$42号悬赏)>
+
+<Text|id=4401|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(43_1)>>
+<Text|id=4402|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(43_2)>>
+<$STR(S$43号悬赏)>
+
+<Text|id=4501|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(44_1)>>
+<Text|id=4502|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(44_2)>>
+<$STR(S$44号悬赏)>
+
+<$STR(S$时间_1)>
+<$STR(S$时间_2)>
+<$STR(S$时间_3)>

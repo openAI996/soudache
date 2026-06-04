@@ -1,0 +1,46 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01012.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=虽然鲜花并不是结婚手续的必需品，但是在这大喜的日子>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=给心爱的人买上一束鲜花，一定能为你们的婚礼增色不少！>
+<Img|x=45.0|y=216.0|width=18|height=18|esc=0|img=public/00015.png>
+<Layout|x=41.0|y=207.0|width=80|height=40|rotate=0|link=@exit>
+<Text|x=70.0|y=211.0|color=11008|size=17|outline=1|outlinecolor=0|text=离开|link=@exit>
+<Layout|x=101.0|y=140.0|width=100|height=50|link=@888鲜花>
+<Layout|x=325.0|y=140.0|width=100|height=50|link=@8888鲜花>
+<Text|x=110.0|y=150.0|color=11008|size=17|text=888元购买|link=@888鲜花>
+<Text|x=325.0|y=150.0|color=11008|size=17|text=8888元宝购买|link=@8888鲜花>
+<Img|x=45.0|y=135.0|img=public/02128.png|esc=0>
+<Img|x=260.0|y=135.0|img=public/02128.png|esc=0>
+<ItemShow|x=40.0|y=130.0|width=70|height=70|itemid=10397|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=255.0|y=130.0|width=70|height=70|itemid=10398|itemcount=1|showtips=1|bgtype=0>
+
+
+[@888鲜花]
+#IF
+CHECKMONEY 元宝 > 887
+#ACT
+MONEY 元宝 - 888
+logact 10002 通过[红娘]消耗888元宝，剩余元宝：<$GAMEGOLD>。
+GIVE 玫瑰花(99朵) 1
+SENDMSG 9 购买成功，快将玫瑰花赠送给你喜欢的人吧！
+BREAK
+#ELSEACT
+SENDMSG 9 元宝不足，购买失败！
+
+
+[@8888鲜花]
+#IF
+CHECKMONEY 元宝 > 8887
+#ACT
+MONEY 元宝 - 8888
+logact 10002 通过[红娘]消耗8888元宝，剩余元宝：<$GAMEGOLD>。
+GIVE 玫瑰花(999朵) 1
+SENDMSG 9 购买成功，快将玫瑰花赠送给你喜欢的人吧！
+BREAK
+#ELSEACT
+SENDMSG 9 元宝不足，购买失败！
+
+

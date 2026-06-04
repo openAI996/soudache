@@ -1,0 +1,94 @@
+[@首次充值界面]
+{
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+GOTO @电脑首次界面
+#ELSEACT
+GOTO @手机首次界面
+
+
+[@手机首次界面]
+#IF
+CHECK [222] 0
+#ACT
+MOV S$领取按钮 <Button|id=1108|x=300.0|y=300.0|color=11009|size=18|nimg=public/1-1.png|text=立即充值|link=@拉起首充充值>
+#ELSEACT
+MOV S$领取按钮 <Button|id=1108|x=300.0|y=300.0|color=11009|size=18|nimg=public/1-1.png|text=领取奖励|link=@领取首充奖励>
+
+#IF
+#ACT
+#SAY
+<Img|show=5|children={1105,1106,1107,1108,1109}|bg=1|loadDelay=0|move=0|reset=1|img=public/bg_shouchong_00.png|esc=1>
+<Button|id=1109|x=640.0|y=52.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|id=1105|children={11050}|x=250.0|y=220.0|esc=0|img=private/psllz/02128.png>
+<ItemShow|id=11050|x=-5.0|y=-5.0|width=70|height=70|itemid=10154|itemcount=1|showtips=1|bgtype=0>
+<Img|id=1106|children={11060}|x=350.0|y=220.0|esc=0|img=private/psllz/02128.png>
+<ItemShow|id=11060|x=-5.0|y=-5.0|width=70|height=70|itemid=10396|itemcount=2|showtips=1|bgtype=0>
+<Img|id=1107|children={11070}|x=450.0|y=220.0|esc=0|img=private/psllz/02128.png>
+<ItemShow|id=11070|x=-5.0|y=-5.0|width=70|height=70|itemid=10202|itemcount=3|showtips=1|bgtype=0>
+
+<$STR(S$领取按钮)>
+
+[@电脑首次界面]
+#IF
+CHECK [222] 0
+#ACT
+MOV S$领取按钮 <Button|id=1108|x=300.0|y=300.0|color=11009|size=18|nimg=public/1-1.png|text=立即充值|link=@拉起首充充值>
+#ELSEACT
+MOV S$领取按钮 <Button|id=1108|x=300.0|y=300.0|color=11009|size=18|nimg=public/1-1.png|text=领取奖励|link=@领取首充奖励>
+
+#IF
+#ACT
+#SAY
+<Img|show=5|children={1105,1106,1107,1108,id=1109}|bg=1|loadDelay=0|move=0|reset=1|img=public/bg_shouchong_00.png|esc=1>
+<Button|id=1109|x=783.0|y=235.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|id=1105|children={11050}|x=250.0|y=220.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=11050|x=-5.0|y=-5.0|width=70|height=70|itemid=10154|itemcount=1|showtips=1|bgtype=0>
+
+<Img|id=1106|children={11060}|x=350.0|y=220.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=11060|x=-5.0|y=-5|width=70|height=70|itemid=10396|itemcount=2|showtips=1|bgtype=0>
+
+<Img|id=1107|children={11070}|x=450.0|y=220.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=11070|x=-5.0|y=-5.0|width=70|height=70|itemid=10202|itemcount=3|showtips=1|bgtype=0>
+
+
+<$STR(S$领取按钮)>
+
+
+[@拉起首充充值]
+#IF
+#ACT
+Pullpay 10 1 2
+BREAK
+
+[@领取首充奖励]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [222] 1
+CHECK [223] 0
+LARGE J51 9
+#ACT
+set [223] 1
+GiveStateItem 金条 1 1 1 0 0 1 1 1 1
+GiveStateItem 女儿红 2 1 1 0 0 1 1 1 1
+GiveStateItem 精修卷轴 3 1 1 0 0 1 1 1 1
+SENDMSG 9 您的首次充值奖励已经发放至包裹内，请注意查收！
+close
+#CALL [\相关NPC\充值回馈.txt] @充值回馈
+GOTO @按钮刷新
+BREAK
+
+
+[@按钮刷新]
+#if
+#act
+#CALL [\功能脚本\主界面按钮\主界面按钮QF.txt] @按钮收起
+#CALL [\功能脚本\主界面按钮\主界面按钮QF.txt] @按钮展开
+}

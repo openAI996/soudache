@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE bg03 83 86

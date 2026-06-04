@@ -1,0 +1,276 @@
+[@角色挂机设置]
+{
+#IF
+CHECK [95] 0
+#ACT
+MOV N$勾选自动修理 0
+#ELSEACT
+MOV N$勾选自动修理 1
+
+#IF
+CHECK [96] 0
+#ACT
+MOV N$勾选保护回城 0
+#ELSEACT
+MOV N$勾选保护回城 1
+
+#IF
+CHECK [97] 0
+#ACT
+MOV N$勾选自动巡航 0
+#ELSEACT
+MOV N$勾选自动巡航 1
+
+#IF
+LARGE U130 0
+#ACT
+MOV S$文字提示 <Text|x=200.0|y=130.0|color=11003|size=18|text=<$STR(U130)>>
+INC S$文字提示 <Layout|x=170.0|y=128.0|width=80|height=28|color=x|link=@@InPutInteger20(请输入血量保护值,请高于内挂保护值，否则巡航无效！)>
+#ELSEACT
+MOV S$文字提示 <Text|x=175.0|y=132.0|color=11020|size=14|text=输入保护值>
+INC S$文字提示 <Layout|x=170.0|y=128.0|width=80|height=28|color=x|link=@@InPutInteger20(请输入血量保护值,请高于内挂保护值，否则巡航无效！)>
+
+#IF
+#ACT
+Conversion <$str(U9)>
+goto @挂机界面
+BREAK
+
+[@挂机界面]
+#IF
+NOT hasbuff 50409
+#ACT
+MOV S$挂机界面按钮 
+INC S$挂机界面按钮 <Text|x=45.0|y=296.0|color=255|size=17|outlinecolor=0|outline=1|text=剩余时间：>
+INC S$挂机界面按钮 <TIMETIPS|x=130.0|y=296.0|color=255|count=0|size=17|outlinecolor=0|outline=1|time=<$str(U9)>>
+
+#IF
+hasbuff 50409
+#ACT
+MOV S$挂机界面按钮 
+INC S$挂机界面按钮 <Text|x=45.0|y=296.0|outline=1|outlinecolor=0|color=255|size=17|text=剩余时间：无限制>
+
+#if
+#act
+#say
+<Img|x=0.0|y=20.0|height=400|show=4|scale9l=100|scale9t=100|scale9r=100|bg=1|move=1|reset=1|scale9b=100|img=public/bg_npc_01.png|esc=1|loadDelay=0>
+<Layout|x=470.0|y=0.0|width=80|height=80|link=@挂机界面关闭>
+<Img|x=35.0|y=293.0|width=475|height=35|rotate=0|scale9l=5|scale9r=5|scale9t=5|scale9b=5|img=private/pmh/016.png|esc=0>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@挂机界面关闭>
+<Img|x=224.0|y=30.0|img=private/biaoti/01019.png|esc=0>
+<Img|x=40.0|y=125.0|width=450|esc=0|img=private/psllz/02143.png>
+<Img|x=50.0|y=185.0|width=450|esc=0|img=private/psllz/02143.png>
+<Img|x=50.0|y=245.0|width=450|esc=0|img=private/psllz/02143.png>
+<Text|x=45.0|y=130.0|color=11043|size=18|text=血量低于百分之>
+<Img|x=168.0|y=130.0|width=85|rotate=0|scale9l=10|scale9b=10|img=private/pmh/016.png|scale9r=10|esc=0|scale9t=10>
+<Text|x=260.0|y=130.0|color=11043|size=18|text=时自动回城：>
+<Text|x=40.0|y=155.0|color=11022|size=16|text=（数值需高于内挂中的回城保护，否则不会巡航）>
+<Text|x=45.0|y=70.0|color=11008|size=18|text=装备耐久为0时自动修理(20万金币/次)：>
+<Text|x=40.0|y=95.0|color=11022|size=16|text=（勾选后，包袱中没有修复神水时才会自动修理）>
+<Text|x=45.0|y=190.0|color=11003|size=18|text=保护回城10秒后自动返回地图继续挂机：>
+<Text|x=40.0|y=215.0|color=11022|size=16|text=（开始挂机1分钟内无法巡航，每次巡航成功扣除5万金币）>
+<Text|x=39.0|y=381.0|size=16|color=11022|text=注意：每手动杀怪1只可增加挂机时间1分钟，最大时常为12小时！>
+<CheckBox|children={复选_1}|x=45.0|y=255.0|nimg=public/1900000550.png|checkboxid=1|pimg=public/1900000551.png|default=<$STR(N$勾选自动修理)>|link=@自动修理开启>
+<Text|id=复选_1|x=32.0|y=3.0|size=18|color=11008|text=自动修理>
+<CheckBox|children={复选_2}|x=210.0|y=255.0|nimg=public/1900000550.png|checkboxid=2|pimg=public/1900000551.png|default=<$STR(N$勾选保护回城)>|link=@保护回城开启>
+<Text|id=复选_2|x=37.0|y=3.0|size=18|color=11043|text=保护回城>
+<CheckBox|children={复选_3}|x=370.0|y=254.0|nimg=public/1900000550.png|checkboxid=3|pimg=public/1900000551.png|default=<$STR(N$勾选自动巡航)>|link=@自动巡航开启>
+<Text|id=复选_3|x=35.0|y=3.0|size=18|color=11003|text=自动巡航>
+
+<$STR(S$文字提示)>
+
+<Button|x=200.0|y=340.0|width=140|nimg=private/xlxl/0011.png|color=251|size=18|text=购买挂机时间|link=@挂机时间增加>
+
+<$STR(S$挂机界面按钮)>
+
+[@挂机界面关闭]
+#IF
+#ACT
+close
+break
+
+[@InPutInteger20]
+#IF
+SMALL N20 10
+#ACT
+MESSAGEBOX 血量保护值最低为10%，请重新输入！
+BREAK
+
+#IF
+LARGE N20 99
+#ACT
+MESSAGEBOX 血量保护值最大为99%，请重新输入！
+BREAK
+
+#IF
+#ACT
+MOV U130 <$STR(N20)>
+GOTO @角色挂机设置
+BREAK
+
+[@自动修理开启]
+#IF
+CHECK [95] 0
+#ACT
+SET [95] 1
+MOV N$勾选自动修理 1
+SENDMSG 9 你已开启自动修理功能，每次修理将扣除20万金币！
+GOTO @挂机界面
+BREAK
+#ELSEACT
+SET [95] 0
+MOV N$勾选自动修理 0
+SENDMSG 9 你已关闭自动修理功能！
+GOTO @挂机界面
+BREAK
+
+[@保护回城开启]
+#IF
+CHECK [94] 0
+#ACT
+MOV N$勾选保护回城 0
+MOV N$挂机界面展开 0
+GOTO @挂机界面
+MESSAGEBOX 使用过"畅玩交易卷"的玩家才可以设置挂机自动巡航！
+#CALL [\相关NPC\充值回馈.txt] @充值回馈
+break
+
+#IF
+EQUAL U130 0
+#ACT
+MOV N$勾选保护回城 0
+GOTO @挂机界面
+SENDMSG 9 请先输入血量保护值！
+break
+
+#IF
+CHECK [96] 0
+#ACT
+SET [96] 1
+MOV N$勾选保护回城 1
+SENDMSG 9 你已开启回城保护功能，请设置血量保护值高于内挂保护值！
+GOTO @挂机界面
+BREAK
+
+#IF
+CHECK [96] 1
+#ACT
+SET [96] 0
+SET [97] 0
+MOV N$勾选保护回城 0
+MOV N$勾选自动巡航 0
+SENDMSG 9 你已关闭保护回城和自动巡航功能！
+GOTO @挂机界面
+BREAK
+
+[@自动巡航开启]
+#IF
+CHECK [94] 0
+#ACT
+MOV N$勾选自动巡航 0
+MOV N$挂机界面展开 0
+GOTO @挂机界面
+MESSAGEBOX 使用过"畅玩交易卷"的玩家才可以设置挂机自动巡航！
+#CALL [\相关NPC\充值回馈.txt] @充值回馈
+break
+
+#IF
+CHECK [96] 0
+#ACT
+MOV N$勾选自动巡航 0
+GOTO @挂机界面
+MESSAGEBOX 请先开启保护回城后再开启自动巡航！
+BREAK
+
+#IF
+CHECK [97] 0
+#ACT
+SET [97] 1
+MOV N$巡航时间保护 0
+DSFUNCALL DINGSHICF_巡航时间保护 10000 0 0
+MOV N$勾选自动巡航 1
+SENDMSG 7 挂机巡航功能将在10秒后生效，生效前请勿停止挂机，否则巡航无效！
+SENDMSG 9 你已开启挂机自动巡航功能，保护回城10秒后自动返回原挂机地图！
+GOTO @挂机界面
+BREAK
+
+#IF
+CHECK [97] 1
+#ACT
+SET [97] 0
+MOV N$勾选自动巡航 0
+MOV N$巡航时间保护 0
+SENDMSG 9 你已关闭挂机自动巡航功能！
+GOTO @挂机界面
+BREAK
+
+
+[@挂机时间增加]
+#IF
+hasbuff 50409
+#act
+sendmsg 9 当前挂机无时间限制，无需购买！
+BREAK
+
+#IF
+EQUAL U9 0
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=485.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=224.0|y=30.0|img=private/biaoti/01019.png|esc=0>
+<Text|x=45.0|y=74.0|size=18|color=255|text=您的挂机时间没了，是否愿意花100万金币在我这里\购买12个小时挂机时间？>
+<Layout|x=45.0|y=200.0|width=140|height=50|link=@exit>
+<Text|x=45.0|y=212.0|color=251|size=18|text=不，我要手动去打|link=@exit>
+<Layout|x=34.0|y=134.0|width=140|height=50|link=@挂机时间购买>
+<Text|x=45.0|y=143.0|color=251|size=18|text=购买挂机时间|link=@挂机时间购买>
+
+#IF
+LARGE U9 0
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=485.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=224.0|y=30.0|img=private/biaoti/01019.png|esc=0>
+<Text|x=45.0|y=74.0|size=18|color=255|text=您当前挂机时间还有剩余，是否愿意花100万金币在我这里\继续将挂机时间续费为12个小时？>
+<Layout|x=45.0|y=200.0|width=140|height=50|link=@exit>
+<Text|x=45.0|y=212.0|color=251|size=18|text=暂时够用|link=@exit>
+<Layout|x=34.0|y=134.0|width=140|height=50|link=@挂机时间购买>
+<Text|x=45.0|y=143.0|color=251|size=18|text=购买挂机时间|link=@挂机时间购买>
+
+[@挂机时间购买]
+#IF
+hasbuff 50409
+#ACT
+MESSAGEBOX 当前挂机无时间限制，无需购买！
+BREAK
+
+#IF
+EQUAL U9 0
+CHECKMONEY 金币 > 999999
+#ACT
+MONEY 金币 - 1000000
+logact 10001 通过[挂机设置]消耗1000000金币，剩余金币：<$MONEY(金币)>。
+MOV U9 43200
+goto @开始挂机
+SENDMSG 9 挂机时间增加至12个小时！
+BREAK 
+
+#IF
+LARGE U9 0
+CHECKMONEY 金币 > 999999
+#ACT
+MONEY 金币 - 1000000
+logact 10001 通过[挂机设置]消耗1000000金币，剩余金币：<$MONEY(金币)>。
+MOV U9 43200
+goto @开始挂机
+SENDMSG 9 挂机时间增加至12个小时！
+BREAK 
+
+#ELSEACT
+CLOSE
+MESSAGEBOX 购买失败，金币不足100万！
+BREAK
+}

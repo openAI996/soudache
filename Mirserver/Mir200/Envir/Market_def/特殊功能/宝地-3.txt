@@ -1,0 +1,106 @@
+[@MAIN]
+#IF
+#ACT
+MOV S$地图层数 1
+MOV S$推荐 40级
+GOTO @加载界面数据
+BREAK
+
+
+
+[@游戏界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|reset=1|show=4|bg=1|move=0|img=private/psllz/00070.png|loadDelay=0|esc=1>
+<Layout|x=613.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=629.0|y=19.0|pimg=public/1990000511.png|color=255|nimg=public/1990000510.png|size=18|link=@exit>
+<Img|x=185.0|y=75.0|width=450|height=220|scale9r=10|scale9l=10|scale9t=10|img=private/xlxl/0018.png|scale9b=10|esc=0>
+<Img|x=162.0|y=61.0|height=395|img=private/psllz/00010.png|esc=0>
+<Img|x=185.0|y=75.0|width=450|height=280|rotate=0|img=public/cbbj.png|esc=0>
+<ListView|children={宝地1,宝地2,宝地3,宝地4}|x=36.0|y=72.0|width=150|height=320|direction=1|reload=0|bounce=0|margin=1|default=8>
+<Img|x=200.0|y=127.0|width=20|height=20|esc=0|img=public/00014.png>
+<Text|x=225.0|y=120.0|color=11003|size=18|text=活动时间：中午12:00-24:00　每2小时整点开门一次>
+<Img|x=180.0|y=75.0|width=460|height=34|scale9t=10|scale9b=10|img=private/psllz/05016.png|scale9r=10|esc=0|scale9l=10>
+<Img|x=200.0|y=160.0|width=20|height=20|esc=0|img=public/00014.png>
+<RText|x=225.0|y=155.0|color=11003|size=17|outlinecolor=0|outline=1|text=怪物刷新：活动刷新超级BOSS<《宝地守护神》/FCOLOR=249>>
+<Text|x=366.0|y=79.0|color=11054|size=18|text=活动信息>
+<Img|x=200.0|y=195.0|width=20|height=20|esc=0|img=public/00014.png>
+<Img|x=185.0|y=300.0|width=450|height=100|scale9r=10|scale9t=10|scale9l=10|img=private/xlxl/0018.png|scale9b=10|esc=0>
+<Text|x=225.0|y=190.0|color=11003|size=18|text=产出宝物：经验卷、七星珠、珍贵材料和终极装备>
+<Text|x=200.0|y=268.0|color=11043|size=16|text=注意:活动开启30分钟后不能进入。>
+<Text|x=365.0|y=303.0|color=1025|size=18|text=活动奖励>
+<Img|x=215.0|y=335.0|img=public/02128.png|esc=0>
+<Img|x=545.0|y=335.0|img=public/02128.png|esc=0>
+<Img|x=435.0|y=335.0|img=public/02128.png|esc=0>
+<Img|x=325.0|y=335.0|img=public/02128.png|esc=0>
+<Button|x=349.0|y=406.0|color=1025|nimg=private/xlxl/0011.png|size=18|text=进  入|link=@进入地图>
+<ItemShow|x=210.0|y=330.0|width=70|height=70|itemid=10584|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=540.0|y=330.0|width=70|height=70|itemid=10585|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=320.0|y=330.0|width=70|height=70|itemid=10464|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=430.0|y=330.0|width=70|height=70|itemid=10425|itemcount=1|showtips=1|bgtype=0>
+<Img|x=254.0|y=313.0|img=public/word_sxbt_05.png|esc=0>
+<Img|x=284.0|y=7.0|img=private/biaoti/01054.png|esc=0>
+<Text|x=225.0|y=225.0|color=11048|size=18|text=进入等级：<$str(s$推荐)>>
+<Img|x=200.0|y=230.0|width=20|height=20|esc=0|img=public/00014.png>
+
+<$STR(S$按钮界面)>
+
+
+
+[@加载界面数据]
+#IF
+#ACT
+MOV S$按钮界面
+INC S$按钮界面 <Button|id=宝地1|x=0.0|y=0.0|color=100|size=18|outline=1|outlinecolor=0|nimg=private/pmh/001.png|text=藏宝之地|link=@加载界面数据#地图层数=1#推荐=50级以上>
+;INC S$按钮界面 <Button|id=宝地2|x=0.0|y=0.0|color=100|size=18|outline=1|outlinecolor=0|nimg=private/pmh/001.png|text=藏宝二层|link=@加载界面数据#地图层数=2#推荐=61-70级>
+;INC S$按钮界面 <Button|id=宝地3|x=0.0|y=0.0|color=100|size=18|outline=1|outlinecolor=0|nimg=private/pmh/001.png|text=藏宝三层|link=@加载界面数据#地图层数=3#推荐=71-80级>
+;INC S$按钮界面 <Button|id=宝地4|x=0.0|y=0.0|color=100|size=18|outline=1|outlinecolor=0|nimg=private/pmh/001.png|text=藏宝四层|link=@加载界面数据#地图层数=4#推荐=81级以上>
+
+#IF
+EQUAL S$地图层数 1
+#ACT
+DEC S$按钮界面 <Button|id=宝地1|x=0.0|y=0.0|color=100|size=18|outline=1|outlinecolor=0|nimg=private/pmh/001.png|text=藏宝之地|link=@加载界面数据#地图层数=1#推荐=50级以上>
+INC S$按钮界面 <Button|id=宝地1|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|nimg=private/pmh/002.png|text=藏宝之地|link=@加载界面数据#地图层数=1#推荐=50级以上>
+#IF
+EQUAL S$地图层数 2
+#ACT
+DEC S$按钮界面 <Button|id=宝地2|x=0.0|y=0.0|color=100|size=18|outline=1|outlinecolor=0|nimg=private/pmh/001.png|text=藏宝二层|link=@加载界面数据#地图层数=2#推荐=61-70级>
+INC S$按钮界面 <Button|id=宝地2|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|nimg=private/pmh/002.png|text=藏宝二层|link=@加载界面数据#地图层数=2#推荐=61-70级>
+#IF
+EQUAL S$地图层数 3
+#ACT
+DEC S$按钮界面 <Button|id=宝地3|x=0.0|y=0.0|color=100|size=18|outline=1|outlinecolor=0|nimg=private/pmh/001.png|text=藏宝三层|link=@加载界面数据#地图层数=3#推荐=71-80级>
+INC S$按钮界面 <Button|id=宝地3|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|nimg=private/pmh/002.png|text=藏宝三层|link=@加载界面数据#地图层数=3#推荐=71-80级>
+#IF
+EQUAL S$地图层数 4
+#ACT
+DEC S$按钮界面 <Button|id=宝地4|x=0.0|y=0.0|color=100|size=18|outline=1|outlinecolor=0|nimg=private/pmh/001.png|text=藏宝四层|link=@加载界面数据#地图层数=4#推荐=81级以上>
+INC S$按钮界面 <Button|id=宝地4|x=0.0|y=0.0|color=251|size=18|outline=1|outlinecolor=0|nimg=private/pmh/002.png|text=藏宝四层|link=@加载界面数据#地图层数=4#推荐=81级以上>
+
+
+#IF
+#ACT
+GOTO @游戏界面
+BREAK
+
+[@进入地图]
+#IF
+CHECKLEVELEX < 40
+#ACT
+SENDMSG 9 等级不足40级，请提升自身实力后再来！
+BREAK
+
+#OR
+EQUAL A331 
+EQUAL A332 关闭
+#ACT
+MESSAGEBOX 藏宝之地入口已关闭，请下次趁早进入
+BREAK
+
+#IF
+EQUAL A331 开启
+EQUAL A332 
+#ACT
+MAP cbg
+sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了寻宝区域{[藏宝之地]|254:0:1}探索高级装备的下落......
+BREAK

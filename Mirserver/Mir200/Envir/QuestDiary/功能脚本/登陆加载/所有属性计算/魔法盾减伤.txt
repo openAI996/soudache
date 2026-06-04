@@ -1,0 +1,52 @@
+[@勋章属性]
+{
+#IF
+#ACT
+MOV N$魔法盾减伤 0
+
+#IF
+CHECKITEMW 法神勋章
+#ACT
+INC N$魔法盾减伤 4
+#IF
+CHECKITEMW 天之法神勋章
+#ACT
+INC N$魔法盾减伤 8
+#IF
+CHECKITEMW 烈焰勋章
+#ACT
+INC N$魔法盾减伤 12
+#IF
+CHECKITEMW 强化烈焰勋章
+#ACT
+INC N$魔法盾减伤 16
+#IF
+CHECKITEMW 朱雀勋章
+#ACT
+INC N$魔法盾减伤 20
+#IF
+CHECKITEMW 帝释勋章
+#ACT
+INC N$魔法盾减伤 24
+#IF
+CHECKITEMW 魔神凭证
+#ACT
+INC N$魔法盾减伤 28
+#IF
+CHECKITEMW 法魂幻月章
+#ACT
+INC N$魔法盾减伤 32
+#IF
+CHECKITEMW 天权烈焰章
+#ACT
+INC N$魔法盾减伤 32
+#IF
+CHECKITEMW 虎皇狱火章
+#ACT
+INC N$魔法盾减伤 40
+#IF
+CHECKITEMW 上古∶火龙焚天章
+#ACT
+INC N$魔法盾减伤 50
+
+}

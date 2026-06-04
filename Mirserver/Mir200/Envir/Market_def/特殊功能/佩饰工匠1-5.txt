@@ -1,0 +1,5249 @@
+[@main]
+#IF
+#ACT
+MOV S$化龙展示
+GETBAGITEMCOUNT 化龙符 N$化龙符数量
+
+#IF
+LARGE N$化龙符数量 0
+#ACT
+MOV S$化龙展示
+INC S$化龙展示 <Layout|x=396.0|y=196.0|width=100|height=50|link=@佩饰点化>
+INC S$化龙展示 <Text|x=420.0|y=200.0|color=11009|size=18|text=佩饰点化|link=@佩饰点化>
+INC S$化龙展示 <Img|x=395.0|y=205.0|img=public/btn_npcfh_03.png|esc=0>
+
+
+#IF
+NOT CHECKUSEITEM 14
+NOT CHECKITEM 源泉·天魔琴 1
+NOT CHECKITEM 怒刃·撼地锤 1
+NOT CHECKITEM 玄奥·玉如意 1
+NOT CHECKITEM 阴阳·无尘佛 1
+NOT CHECKITEM 锋刃·碧血钗 1
+NOT CHECKITEM 破法·鬼元盾 1
+NOT CHECKITEM 源泉·混天绫 1
+NOT CHECKITEM 怒刃·弑神枪 1
+NOT CHECKITEM 玄奥·轮回盘 1
+NOT CHECKITEM 阴阳·和氏璧 1
+NOT CHECKITEM 锋刃·雷音鼓 1
+NOT CHECKITEM 破法·燃魂灯 1
+NOT CHECKITEM 源泉·七宝莲 1
+NOT CHECKITEM 怒刃·番天印 1
+NOT CHECKITEM 玄奥·伏羲琴 1
+NOT CHECKITEM 阴阳·判官笔 1
+NOT CHECKITEM 锋刃·八卦炉 1
+NOT CHECKITEM 破法·混元伞 1
+NOT CHECKITEM 源泉·补天石 1
+NOT CHECKITEM 怒刃·崆峒印 1
+NOT CHECKITEM 玄奥·混沌莲 1
+NOT CHECKITEM 阴阳·宝莲灯 1
+NOT CHECKITEM 锋刃·东皇钟 1
+NOT CHECKITEM 破法·社稷图 1
+#ACT
+break
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=0|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01001.png|esc=0>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=11073|outline=1|size=17|text=勇士有何贵干？>
+<Text|x=45.0|y=95.0|size=18|color=11073|text=我在你的身上以及背包并没有发现佩饰的存在！>
+<Text|x=45.0|y=120.0|size=18|color=11043|text=(请拥有佩饰后再来找我吧)>
+
+
+
+
+
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01001.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=勇士！在我这里可以兑换各种等级的佩饰，以及对你中意的>
+<Text|x=46.0|y=95.0|color=255|size=17|text=佩饰进行激活和精加工。很乐意为您效劳！>
+<Layout|x=50.0|y=135.0|width=100|height=40|link=@工匠手册>
+<RText|x=25|y=20|text=;>
+<Layout|x=240.0|y=130.0|width=100|height=50|link=@佩饰激活>
+<Layout|x=42.0|y=195.0|width=100|height=50|link=@佩饰升华>
+<Layout|x=228.0|y=195.0|width=100|height=50|link=@佩饰清洗>
+<Text|x=70.0|y=140.0|color=11009|size=18|text=工匠手册|link=@工匠手册>
+<Text|x=250.0|y=140.0|color=11009|size=18|text=佩饰激活|link=@佩饰激活>
+<Text|x=70.0|y=200.0|color=11009|size=18|text=佩饰升华|link=@佩饰升华>
+<Text|x=250.0|y=200.0|color=11009|size=18|text=佩饰清洗|link=@佩饰清洗>
+<Img|x=45.0|y=145.0|width=16|height=20|esc=0|img=public/00016.png>
+<Img|x=225.0|y=145.0|width=18|height=20|img=public/00012.png|esc=0>
+<Img|x=45.0|y=205.0|img=public/btn_npcfh_03.png|esc=0>
+<Img|x=225.0|y=205.0|img=public/btn_npcfh_03.png|esc=0>
+<$str(S$化龙展示)>
+
+
+[@工匠手册]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=780|height=520|bg=1|scale9l=150|scale9r=150|scale9t=150|scale9b=150|move=0|loadDelay=0|reset=1|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=720.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=733.0|y=19.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=163.0|y=58.0|height=450|img=private/psllz/00010.png|esc=0>
+<Button|x=35.0|y=75.0|width=130|height=42|rotate=0|pimg=private/psllz/02134.png|color=251|nimg=private/psllz/02133.png|size=18|text=佩饰获得>
+<Button|x=35.0|y=125.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰激活|link=@佩饰的激活>
+<Button|x=35.0|y=175.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰升华|link=@佩饰的升华>
+<Button|x=35.0|y=225.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰清洗|link=@佩饰的清洗>
+<Button|x=35.0|y=275.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰点化|link=@佩饰的点化>
+<Text|x=195.0|y=80.0|color=243|size=18|outlinecolor=0|outline=1|text=【佩饰的获得】>
+<Text|x=200.0|y=110.0|color=100|size=17|outlinecolor=0|outline=1|text=佩饰可以在土城佩饰兑换处用玉胚兑换也可以在其他玩家处购买！>
+<Text|x=195.0|y=140.0|outlinecolor=0|color=243|outline=1|size=18|text=【玉胚的获得】>
+<Text|x=200.0|y=170.0|outlinecolor=0|color=100|outline=1|size=17|text=可以在苍月岛神秘商人处分解佩饰获得玉胚也可以在其他玩家处购买！>
+<Text|x=195.0|y=200.0|color=243|size=18|outlinecolor=0|outline=1|text=【佩饰的属性】>
+<Text|x=200.0|y=230.0|color=100|size=17|outlinecolor=0|outline=1|text=佩饰的属性由主副属性组成，主属性类型由佩饰的前缀决定，副属性则\随机生成。佩饰等级越高，属性条数越多、属性值也越高。只有已激活\的属性才能通过升华进一步提升！>
+
+[@佩饰的激活]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+
+<Img|x=0.0|y=0.0|width=780|height=520|bg=1|reset=1|scale9r=150|scale9t=150|scale9b=150|move=0|loadDelay=0|scale9l=150|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=720.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=733.0|y=19.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=163.0|y=58.0|height=450|img=private/psllz/00010.png|esc=0>
+<Button|x=35.0|y=75.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰获得|link=@工匠手册>
+<Button|x=35.0|y=125.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=251|size=18|text=佩饰激活>
+<Button|x=35.0|y=175.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰升华|link=@佩饰的升华>
+<Button|x=35.0|y=225.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰清洗|link=@佩饰的清洗>
+<Button|x=35.0|y=275.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰点化|link=@佩饰的点化>
+<Text|x=195.0|y=80.0|outlinecolor=0|color=243|outline=1|size=18|text=【佩饰的激活】>
+<Text|x=200.0|y=110.0|outlinecolor=0|color=100|outline=1|size=17|text=佩饰的副属性随着灵力值的提升而逐条激活，灵力值满时，副属性全部\激活！>
+<Text|x=195.0|y=165.0|outlinecolor=0|color=243|outline=1|size=18|text=【灵力值的提升】>
+<Text|x=200.0|y=195.0|outlinecolor=0|color=100|outline=1|size=17|text=在佩饰工匠处，消耗不同等级的玉胚可以快速增加佩饰的灵力值。\1级玉胚可为佩饰增加1000点灵力值。\2级玉胚可为佩饰增加3000点灵力值。\3级玉胚可为佩饰增加5000点灵力值。\4级玉胚可为佩饰增加9000点灵力值。>
+
+
+[@佩饰的升华]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+
+<Img|x=0.0|y=0.0|width=780|height=520|bg=1|reset=1|scale9r=150|scale9t=150|scale9b=150|move=0|loadDelay=0|scale9l=150|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=720.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=733.0|y=19.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=163.0|y=58.0|height=450|img=private/psllz/00010.png|esc=0>
+<Button|x=35.0|y=75.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰获得|link=@工匠手册>
+<Button|x=35.0|y=125.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰激活|link=@佩饰的激活>
+<Button|x=35.0|y=175.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=251|size=18|text=佩饰升华>
+<Button|x=35.0|y=225.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰清洗|link=@佩饰的清洗>
+<Button|x=35.0|y=275.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰点化|link=@佩饰的点化>
+<Text|x=195.0|y=80.0|color=243|size=18|outlinecolor=0|outline=1|text=【佩饰的升华】>
+<Text|x=200.0|y=110.0|color=100|size=17|outlinecolor=0|outline=1|text=玩家可以对佩饰的已激活属性进行升华操作来提升佩饰的属性。佩饰的\主属性初始即激活，而副属性需要通过灵力值来激活。升华的成功率随\着已成功次数的增加而降低。>
+<Text|x=195.0|y=190.0|color=243|size=18|outlinecolor=0|outline=1|text=【升华的效果】>
+<Text|x=200.0|y=220.0|color=100|size=17|outlinecolor=0|outline=1|text=升华佩饰的1条属性有升华失败、升华成功、完美升华三种结果，升华\成功会使该条属性翻倍，完美升华则使之变为原属性的3倍，升华失败\则属性不变。\佩饰的主副属性全部升华成功，还将觉醒一条稀有的额外属性。>
+<Text|x=195.0|y=325.0|outlinecolor=0|color=243|outline=1|size=18|text=【升华的消耗】>
+<Text|x=200.0|y=355.0|outlinecolor=0|color=100|outline=1|size=17|text=升华需要消耗升华符。1、2级佩饰消耗低级升华符，3级佩饰消耗中级\升华符，4级佩饰消耗高级升华符。>
+
+
+[@佩饰的清洗]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+
+<Img|x=0.0|y=0.0|width=780|height=520|bg=1|reset=1|scale9r=150|scale9t=150|scale9b=150|move=0|loadDelay=0|scale9l=150|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=720.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=733.0|y=19.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=163.0|y=58.0|height=450|img=private/psllz/00010.png|esc=0>
+<Button|x=35.0|y=75.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰获得|link=@工匠手册>
+<Button|x=35.0|y=125.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰激活|link=@佩饰的激活>
+<Button|x=35.0|y=175.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰升华|link=@佩饰的升华>
+<Button|x=35.0|y=225.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=251|size=18|text=佩饰清洗>
+<Button|x=35.0|y=275.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰点化|link=@佩饰的点化>
+<Text|x=195.0|y=80.0|outlinecolor=0|color=243|outline=1|size=18|text=【佩饰的清洗】>
+<Text|x=200.0|y=110.0|outlinecolor=0|color=100|outline=1|size=17|text=对升华结果不满意时，可以使用清洗符在佩饰工匠处移除佩饰的所有\升华效果，同时返还已使用的升华次数。>
+<Text|x=195.0|y=165.0|outlinecolor=0|color=243|outline=1|size=18|text=【清洗注意事项】>
+<Text|x=200.0|y=195.0|outlinecolor=0|color=100|outline=1|size=17|text=佩饰一旦清洗就会恢复成原始激活状态，所有升华属性以及额外属性\均会消失！>
+<Text|x=200.0|y=246.0|outlinecolor=0|color=100|outline=1|size=17|text=佩饰的清洗无次数限制，如对属性不满意，可随时清洗掉升华属性！>
+
+[@佩饰的点化]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+
+<Img|x=0.0|y=0.0|width=780|height=520|bg=1|reset=1|scale9r=150|scale9t=150|scale9b=150|move=0|loadDelay=0|scale9l=150|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=720.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=733.0|y=19.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=163.0|y=58.0|height=450|img=private/psllz/00010.png|esc=0>
+<Button|x=35.0|y=75.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰获得|link=@工匠手册>
+<Button|x=35.0|y=125.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰激活|link=@佩饰的激活>
+<Button|x=35.0|y=175.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰升华|link=@佩饰的升华>
+<Button|x=35.0|y=225.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=160|size=18|text=佩饰清洗|link=@佩饰的清洗>
+<Button|x=35.0|y=275.0|width=130|height=42|rotate=0|nimg=private/psllz/02133.png|pimg=private/psllz/02134.png|color=251|size=18|text=佩饰点化>
+<Text|x=195.0|y=80.0|outlinecolor=0|color=243|outline=1|size=18|text=【佩饰的点化】>
+<Text|x=200.0|y=110.0|outlinecolor=0|color=100|outline=1|size=17|text=在佩饰工匠处，还可以使用化龙符点化佩饰！点化佩饰可以将任意一条\没有完美升华的属性变为完美升华。点化不消耗升华次数，可升华次数\为0时也能进行。>
+<Text|x=195.0|y=189.0|outlinecolor=0|color=243|outline=1|size=18|text=【点化注意事项】>
+<Text|x=200.0|y=219.0|outlinecolor=0|color=100|outline=1|size=17|text=只有已激活、升华过的属性才可以进行点化，未激活和完美升华属性无\法进行点化！>
+
+
+
+[@佩饰激活]
+#IF
+#ACT
+MOV N$屏宽 <$SCREENWIDTH>
+MOV N$屏高 <$SCREENHEIGHT>
+DIV N$屏宽 5
+DIV N$屏高 5
+MOV S$佩饰选择
+MOV S$放入佩饰名称
+MOV S$放入佩饰等级
+MOV S$玉胚选择 
+MOV N$佩饰当前灵力值  0
+MOV N$佩饰总灵力值    0
+MOV N$佩饰激活灵力值  0
+MOV N$4级玉胚数量 0
+MOV N$3级玉胚数量 0
+MOV N$2级玉胚数量 0
+MOV N$1级玉胚数量 0
+MOV S$激活特效
+
+MOV S$放入按钮 <Layout|x=205.0|y=165.0|width=80|height=80|color=x|link=@选择佩饰>
+INC S$放入按钮 <Img|x=214.0|y=174.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$佩饰介绍
+INC S$佩饰介绍 <Layout|x=708.0|y=464.0|width=40|height=40|color=x>
+INC S$佩饰介绍 <Button|x=723.0|y=472.0|size=18|pimg=public/1904300009.png|mimg=public/1904300008.png|color=255|nimg=private/psllz/1904300007.png|link=@工匠手册>
+INC S$佩饰介绍 <Text|x=658.0|y=472.0|color=1020|size=18|text=工匠手册>
+
+INC S$佩饰介绍 <Text|x=473.0|y=80.0|color=243|size=18|outlinecolor=0|outline=1|text=【佩饰属性激活】>
+INC S$佩饰介绍 <Text|x=480.0|y=110.0|color=100|size=16|outlinecolor=0|outline=1|text=佩饰的副属性随着灵力值的提升而逐\条激活，灵力值满时副属性全部激活。>
+INC S$佩饰介绍 <Text|x=480.0|y=180.0|color=224|size=16|outlinecolor=0|outline=1|text=点击左边框中“＋”号放入佩饰，选择\对应玉胚点击激活即可为佩饰注入灵\力值。\详细说明可查看工匠手册!>
+
+MOV S$玉胚 
+INC S$玉胚 <ItemShow|x=70.0|children={40}|y=350.0|width=70|height=70|itemid=10437|itemcount=<$STR(N$4级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|x=165.0|children={30}|y=350.0|width=70|height=70|itemid=10436|itemcount=<$STR(N$3级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|x=260.0|children={20}|y=350.0|width=70|height=70|itemid=10435|itemcount=<$STR(N$2级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|x=355.0|children={10}|y=350.0|width=70|height=70|itemid=10434|itemcount=<$STR(N$1级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+
+goto @佩饰激活主界面
+
+
+[@佩饰激活主界面]
+#IF
+#ACT
+CLEARDELAYGOTO
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+
+<Img|x=0.0|y=-1.0|width=780|height=520|scale9t=150|scale9b=150|bg=1|scale9r=150|move=0|loadDelay=0|reset=1|scale9l=150|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=724.0|y=-20.0|width=80|height=80|link=@exit>
+<Button|x=739.0|y=17.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=25.0|y=59.0|width=440|height=430|rotate=0|esc=0|img=private/psllz/00020.png>
+<Img|x=452.0|y=59.0|height=450|img=private/psllz/00010.png|esc=0>
+<Img|x=213.0|y=168.0|children={50}|width=66|height=66|img=private/psllz/05003.png|esc=0>
+<$STR(S$放入按钮)>
+<Img|x=75.0|y=355.0|img=private/psllz/02128.png|esc=0>
+<Img|x=170.0|y=355.0|img=private/psllz/02128.png|esc=0>
+<Img|x=265.0|y=356.0|img=private/psllz/02128.png|esc=0>
+<Img|x=360.0|y=356.0|img=private/psllz/02128.png|esc=0>
+
+<Text|x=65.0|y=446.0|size=16|color=150|outlinecolor=0|outline=1|text=灵力值：>
+<Img|x=45.0|y=415.0|height=46|img=private/psllz/02143.png|esc=0>
+<RText|x=100.0|y=420.0|size=16|color=103|outlinecolor=0|outline=1|text=激活下条属性需灵力值达到　<<$STR(N$佩饰激活灵力值)>/FCOLOR=151>　点>
+<Img|x=130.0|y=450.0|img=private/psllz/001010.png|esc=0>
+<PercentImg|x=130.0|y=450.0|maxValue=<$STR(N$佩饰总灵力值)>|minValue=<$STR(N$佩饰当前灵力值)>|direction=0|esc=0|img=private/psllz/001011.png>
+<Text|x=236.0|y=445.0|outlinecolor=0|color=150|outline=1|size=15|text=<$STR(N$灵力值计算)>/<$STR(N$佩饰总灵力值)>>
+<$STR(S$佩饰介绍)>
+<$STR(S$玉胚)>
+<$STR(S$玉胚选择)>
+<$STR(S$佩饰选择)>
+<$STR(S$激活特效)>
+
+[@选择佩饰]
+#IF
+#ACT
+MOV S$佩饰选择
+INC S$佩饰选择 <Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|scale9l=200|scale9r=200|scale9b=200|img=public/1851400083.png|esc=0|scale9t=200|link=@关闭挑选>
+INC S$佩饰选择 <Img|x=195.0|y=115.0|width=450|height=360|scale9b=50|scale9r=50|scale9t=50|img=private/psllz/021604.png|scale9l=50|esc=0|link=@穿透层>
+INC S$佩饰选择 <Text|x=217.0|y=129.0|outlinecolor=0|outline=1|color=243|size=18|text=请选择背包中需要激活属性的佩饰>
+INC S$佩饰选择 <Layout|x=590.0|y=110.0|width=50|height=50|link=@关闭挑选>
+INC S$佩饰选择 <Button|x=605.0|y=127.0|color=255|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|size=18|link=@关闭挑选>
+INC S$佩饰选择 <ListView|children={2}|x=210.0|y=165.0|width=420|height=280|direction=1|bounce=0|color=x|margin=1>
+INC S$佩饰选择 <BAGITEMS|id=2|x=205.0|y=165.0|count=126|row=21|select=<$STR(S0)>|condition=65|link=@挑选背包佩饰>
+GOTO @佩饰激活主界面
+
+[@关闭挑选]
+#IF
+#ACT
+MOV S$佩饰选择
+GOTO @佩饰激活主界面
+
+[@挑选背包佩饰]
+#IF
+#ACT
+MOV S$佩饰选择
+MOV S$唯一ID <$STR(S0)>
+LINKITEMBYMAKEINDEX <$STR(S$唯一ID)>
+GetItemNameByMakeIndex <$STR(S$唯一ID)> S$唯一ID物品名称
+GetDBItemFieldValue <$STR(S$唯一ID物品名称)> idx N$放入佩饰IDX
+MOV S$放入按钮 <DBItemShow|makeindex=<$STR(S0)>|id=50|x=0.0|y=0.0>
+INC S$放入按钮 <Button|x=680.0|y=85.0|pimg=private/psllz/02162.png|color=255|size=18|nimg=private/psllz/02161.png|link=@返回佩饰>
+INC S$放入按钮 <Img|x=488.0|y=88.0|img=private/psllz/02128.png|esc=0>
+INC S$放入按钮 <DBItemShow|makeindex=<$STR(S0)>|showtips=0|x=485.0|y=85.0>
+GOTO @佩饰数据获取
+
+[@佩饰数据获取]
+#if
+#act
+;读取背包玉胚数量
+GETBAGITEMCOUNT 1级玉胚 N$1级玉胚数量
+GETBAGITEMCOUNT 2级玉胚 N$2级玉胚数量
+GETBAGITEMCOUNT 3级玉胚 N$3级玉胚数量
+GETBAGITEMCOUNT 4级玉胚 N$4级玉胚数量
+
+;读佩饰表所在行获取佩饰名字等级
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_peishi.csv  <$STR(S$唯一ID物品名称)>  1~24 1 0 N$佩饰所在行
+MOV S$放入佩饰名称 <$cfg_peishi(<$str(N$佩饰所在行)>_1)>
+MOV S$放入佩饰等级 佩饰等级：<$cfg_peishi(<$str(N$佩饰所在行)>_2)>
+MOV N$佩饰总灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_10)>
+
+;读佩饰每阶段灵力值
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_5)> 0
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+#ACT
+MOV N$佩饰激活灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_5)>
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_6)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+#ACT
+MOV N$佩饰激活灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_6)>
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_7)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)>  0
+#ACT
+MOV N$佩饰激活灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_7)>
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_8)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)>  0
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)>  0
+#ACT
+MOV N$佩饰激活灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_8)>
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_9)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)>  0
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)>  0
+#ACT
+MOV N$佩饰激活灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_9)>
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_9)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)>  0
+#ACT
+MOV N$佩饰激活灵力值 0
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 1
+#ACT
+MOV S$玉胚 
+INC S$玉胚 <ItemShow|x=70.0|children={40}|y=350.0|width=70|height=70|itemid=10437|itemcount=<$STR(N$4级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=4#玉胚经验=9000>
+INC S$玉胚 <ItemShow|x=165.0|children={30}|y=350.0|width=70|height=70|itemid=10436|itemcount=<$STR(N$3级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=3#玉胚经验=5000>
+INC S$玉胚 <ItemShow|x=260.0|children={20}|y=350.0|width=70|height=70|itemid=10435|itemcount=<$STR(N$2级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=2#玉胚经验=3000>
+INC S$玉胚 <ItemShow|x=355.0|children={10}|y=350.0|width=70|height=70|itemid=10434|itemcount=<$STR(N$1级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=1#玉胚经验=1000>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 2
+#ACT
+MOV S$玉胚 
+INC S$玉胚 <ItemShow|x=70.0|children={40}|y=350.0|width=70|height=70|itemid=10437|itemcount=<$STR(N$4级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=4#玉胚经验=9000>
+INC S$玉胚 <ItemShow|x=165.0|children={30}|y=350.0|width=70|height=70|itemid=10436|itemcount=<$STR(N$3级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=3#玉胚经验=5000>
+INC S$玉胚 <ItemShow|x=260.0|children={20}|y=350.0|width=70|height=70|itemid=10435|itemcount=<$STR(N$2级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=2#玉胚经验=3000>
+INC S$玉胚 <ItemShow|x=355.0|children={10}|y=350.0|width=70|height=70|itemid=10434|itemcount=<$STR(N$1级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 3
+#ACT
+MOV S$玉胚 
+INC S$玉胚 <ItemShow|children={40}|x=70.0|y=350.0|width=70|height=70|itemid=10437|itemcount=<$STR(N$4级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=4#玉胚经验=9000>
+INC S$玉胚 <ItemShow|children={30}|x=165.0|y=350.0|width=70|height=70|itemid=10436|itemcount=<$STR(N$3级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=3#玉胚经验=5000>
+INC S$玉胚 <ItemShow|children={20}|x=260.0|y=350.0|width=70|height=70|itemid=10435|itemcount=<$STR(N$2级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|children={10}|x=355.0|y=350.0|width=70|height=70|itemid=10434|itemcount=<$STR(N$1级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 4
+#ACT
+MOV S$玉胚 
+INC S$玉胚 <ItemShow|children={40}|x=70.0|y=350.0|width=70|height=70|itemid=10437|itemcount=<$STR(N$4级玉胚数量)>|showtips=1|grey=0|bgtype=0|link=@玉胚选择#玉胚等级=4#玉胚经验=9000>
+INC S$玉胚 <ItemShow|children={30}|x=165.0|y=350.0|width=70|height=70|itemid=10436|itemcount=<$STR(N$3级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|children={20}|x=260.0|y=350.0|width=70|height=70|itemid=10435|itemcount=<$STR(N$2级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|children={10}|x=355.0|y=350.0|width=70|height=70|itemid=10434|itemcount=<$STR(N$1级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+
+;根据位置获取自定义显示ID值
+#IF
+#ACT
+MOV N$取值位置 0
+GETCUSTOMPROPERTYPOS -1  0  N$主属性ID  0
+GETCUSTOMPROPERTYPOS -1  0  N$1号属性ID  1
+GETHUMCUSTOMITEMVALUE -1 240 N$佩饰当前灵力值 N$无用 0 0
+MOV N$灵力值计算 <$str(N$佩饰当前灵力值)>
+
+#IF
+LARGE N$佩饰当前灵力值 N$佩饰总灵力值
+#ACT
+MOV N$灵力值计算 <$str(N$佩饰总灵力值)>
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$2号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$2号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$3号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$3号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$4号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$4号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$5号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$5号属性ID  1
+
+;属性名字及状态取值段
+#IF
+LARGE N$主属性ID 0
+#ACT
+MOV S$主属性名 <$cfg_pssx3(<$str(N$主属性ID)>_1)>
+MOV S$主属性状态 <$cfg_pssx3(<$str(N$主属性ID)>_3)>
+MOV S$主属性颜色 <$cfg_pssx3(<$str(N$主属性ID)>_7)>
+
+#IF
+LARGE N$1号属性ID 0
+#ACT
+MOV S$1号副属性名 <$cfg_pssx3(<$str(N$1号属性ID)>_1)>
+MOV S$1号属性状态 <$cfg_pssx3(<$str(N$1号属性ID)>_3)>
+MOV S$1号属性颜色 <$cfg_pssx3(<$str(N$1号属性ID)>_7)>
+
+#IF
+LARGE N$2号属性ID 0
+#ACT
+MOV S$2号副属性名 <$cfg_pssx3(<$str(N$2号属性ID)>_1)>
+MOV S$2号属性状态 <$cfg_pssx3(<$str(N$2号属性ID)>_3)>
+MOV S$2号属性颜色 <$cfg_pssx3(<$str(N$2号属性ID)>_7)>
+
+#IF
+LARGE N$3号属性ID 0
+#ACT
+MOV S$3号副属性名 <$cfg_pssx3(<$str(N$3号属性ID)>_1)>
+MOV S$3号属性状态 <$cfg_pssx3(<$str(N$3号属性ID)>_3)>
+MOV S$3号属性颜色 <$cfg_pssx3(<$str(N$3号属性ID)>_7)>
+
+#IF
+LARGE N$4号属性ID 0
+#ACT
+MOV S$4号副属性名 <$cfg_pssx3(<$str(N$4号属性ID)>_1)>
+MOV S$4号属性状态 <$cfg_pssx3(<$str(N$4号属性ID)>_3)>
+MOV S$4号属性颜色 <$cfg_pssx3(<$str(N$4号属性ID)>_7)>
+
+#IF
+LARGE N$5号属性ID 0
+#ACT
+MOV S$5号副属性名 <$cfg_pssx3(<$str(N$5号属性ID)>_1)>
+MOV S$5号属性状态 <$cfg_pssx3(<$str(N$5号属性ID)>_3)>
+MOV S$5号属性颜色 <$cfg_pssx3(<$str(N$5号属性ID)>_7)>
+
+;双属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$主属性ID)>_5)>  | N$主属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$主属性分割1)> N$主属性值_1 N$无用 0 0
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$主属性分割2)> N$主属性值_2 N$无用 0 0
+MOV S$主属性值 <$STR(N$主属性值_1)>-<$STR(N$主属性值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$1号属性ID)>_5)>  | N$1号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$1号属性分割1)> N$1号值_1 N$无用 0 1
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$1号属性分割2)> N$1号值_2 N$无用 0 1 
+MOV S$1号副属性值 <$STR(N$1号值_1)>-<$STR(N$1号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$2号属性ID)>_5)>  | N$2号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$2号属性分割1)> N$2号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$2号属性分割2)> N$2号值_2 N$无用 0 1 
+MOV S$2号副属性值 <$STR(N$2号值_1)>-<$STR(N$2号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$3号属性ID)>_5)>  | N$3号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$3号属性分割1)> N$3号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$3号属性分割2)> N$3号值_2 N$无用 0 1 
+MOV S$3号副属性值 <$STR(N$3号值_1)>-<$STR(N$3号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$4号属性ID)>_5)>  | N$4号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$4号属性分割1)> N$4号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$4号属性分割2)> N$4号值_2 N$无用 0 1 
+MOV S$4号副属性值 <$STR(N$4号值_1)>-<$STR(N$4号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$5号属性ID)>_5)>  | N$5号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$5号属性分割1)> N$5号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$5号属性分割2)> N$5号值_2 N$无用 0 1 
+MOV S$5号副属性值 <$STR(N$5号值_1)>-<$STR(N$5号值_2)>
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$主属性ID)>_5)> N$主属性值_1 N$无用 0 0
+MOV S$主属性值 <$STR(N$主属性值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$1号属性ID)>_5)> N$1号值_1 N$无用 0 1
+MOV S$1号副属性值 <$STR(N$1号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$2号属性ID)>_5)> N$2号值_1 N$无用 0 1
+MOV S$2号副属性值 <$STR(N$2号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$3号属性ID)>_5)> N$3号值_1 N$无用 0 1
+MOV S$3号副属性值 <$STR(N$3号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$4号属性ID)>_5)> N$4号值_1 N$无用 0 1
+MOV S$4号副属性值 <$STR(N$4号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$5号属性ID)>_5)> N$5号值_1 N$无用 0 1
+MOV S$5号副属性值 <$STR(N$5号值_1)>
+
+#IF
+#ACT
+MOV S$佩饰介绍
+INC S$佩饰介绍 <Text|x=565.0|y=85.0|color=125|size=18|outlinecolor=0|outline=1|text=<$STR(S$放入佩饰名称)>>
+INC S$佩饰介绍 <Text|x=565.0|y=115.0|color=125|size=18|outlinecolor=0|outline=1|text=<$STR(S$放入佩饰等级)>>
+INC S$佩饰介绍 <Img|x=468.0|y=155.0|width=280|rotate=0|esc=0|img=private/psllz/02143.png>
+
+INC S$佩饰介绍 <Text|x=580.0|y=160.0|color=243|size=18|outlinecolor=0|outline=1|text=主属性>
+INC S$佩饰介绍 <RText|x=480.0|y=185.0|color=<$STR(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$主属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=185.0|color=<$STR(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$主属性ID)>_6)><$STR(S$主属性值)>>
+INC S$佩饰介绍 <RText|x=675.0|y=185.0|color=<$str(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$主属性状态)>>
+
+INC S$佩饰介绍 <Img|x=468.0|y=210.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <Text|x=580.0|y=220.0|color=243|size=18|outlinecolor=0|outline=1|text=副属性>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 1
+#ACT
+INC S$佩饰介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 2
+#ACT
+INC S$佩饰介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+
+INC S$佩饰介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 3
+#ACT
+INC S$佩饰介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+INC S$佩饰介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+INC S$佩饰介绍 <RText|children={300}|x=480.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$3号属性ID)>_6)><$STR(S$3号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=335.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 5
+#ACT
+INC S$佩饰介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+
+INC S$佩饰介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+
+INC S$佩饰介绍 <RText|children={300}|x=480.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$3号属性ID)>_6)><$STR(S$3号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=335.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号属性状态)>>
+
+
+INC S$佩饰介绍 <RText|children={400}|x=480.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$4号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$4号属性ID)>_6)><$STR(S$4号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=365.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$4号属性状态)>>
+
+
+INC S$佩饰介绍 <RText|children={500}|x=480.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$5号副属性名)>：>
+INC S$佩饰介绍 <RText|x=580.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$5号属性ID)>_6)><$STR(S$5号副属性值)>>
+INC S$佩饰介绍 <Img|x=468.0|y=395.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰介绍 <RText|x=675.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$5号属性状态)>>
+
+#if
+#act
+INC S$佩饰介绍 <Button|x=560.0|y=455.0|color=251|size=18|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=激活|link=@佩饰属性激活>
+DELAYGOTO 20  @佩饰激活主界面
+
+
+[@玉胚选择]
+#IF
+EQUAL S$玉胚等级 4
+#ACT
+MOV S$玉胚选择 <Img|id=40|x=3.0|y=5.0|width=60|height=60|esc=0|img=private/psllz/4005400042.png>
+
+#IF
+EQUAL S$玉胚等级 3
+#ACT
+MOV S$玉胚选择 <Img|id=30|x=3.0|y=5.0|width=60|height=60|esc=0|img=private/psllz/4005400041.png>
+
+#IF
+EQUAL S$玉胚等级 2
+#ACT
+MOV S$玉胚选择 <Img|id=20|x=3.0|y=5.0|width=60|height=60|esc=0|img=private/psllz/4005400040.png>
+
+#IF
+EQUAL S$玉胚等级 1
+#ACT
+MOV S$玉胚选择 <Img|id=10||x=3.0|y=5.0|width=60|height=60|esc=0|img=private/psllz/4005400039.png>
+
+#IF
+#ACT
+GOTO @佩饰激活主界面
+
+
+[@返回佩饰]
+#IF
+#ACT
+MOV S0 
+MOV S$唯一ID 
+
+MOV S$佩饰选择
+MOV S$放入佩饰名称
+MOV S$放入佩饰等级
+MOV N$佩饰当前灵力值  0
+MOV N$佩饰总灵力值    0
+MOV N$佩饰激活灵力值  0
+MOV N$4级玉胚数量 0
+MOV N$3级玉胚数量 0
+MOV N$4级玉胚数量 0
+MOV N$1级玉胚数量 0
+MOV S$激活特效
+MOV S$放入按钮 <Layout|x=205.0|y=165.0|width=80|height=80|color=x|link=@选择佩饰>
+INC S$放入按钮 <Img|x=214.0|y=174.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$佩饰介绍
+INC S$佩饰介绍 <Layout|x=708.0|y=464.0|width=40|height=40|color=x>
+INC S$佩饰介绍 <Button|x=723.0|y=472.0|size=18|pimg=public/1904300009.png|mimg=public/1904300008.png|color=255|nimg=private/psllz/1904300007.png|link=@工匠手册>
+INC S$佩饰介绍 <Text|x=658.0|y=472.0|color=1020|size=18|text=工匠手册>
+
+INC S$佩饰介绍 <Text|x=473.0|y=80.0|color=243|size=18|outlinecolor=0|outline=1|text=【佩饰属性激活】>
+INC S$佩饰介绍 <Text|x=480.0|y=110.0|color=100|size=16|outlinecolor=0|outline=1|text=佩饰的副属性随着灵力值的提升而逐\条激活，灵力值满时副属性全部激活。>
+INC S$佩饰介绍 <Text|x=480.0|y=180.0|color=224|size=16|outlinecolor=0|outline=1|text=点击左边框中“＋”号放入佩饰，选择\对应玉胚点击激活即可为佩饰注入灵\力值。\详细说明可查看工匠手册!>
+
+
+MOV S$玉胚 
+INC S$玉胚 <ItemShow|x=70.0|y=350.0|width=70|height=70|itemid=10437|itemcount=<$STR(N$4级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|x=165.0|y=350.0|width=70|height=70|itemid=10436|itemcount=<$STR(N$3级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|x=260.0|y=350.0|width=70|height=70|itemid=10435|itemcount=<$STR(N$2级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+INC S$玉胚 <ItemShow|x=355.0|y=350.0|width=70|height=70|itemid=10434|itemcount=<$STR(N$1级玉胚数量)>|showtips=1|grey=1|bgtype=0>
+
+MOV S$玉胚选择 
+
+GOTO @佩饰激活主界面
+
+
+[@佩饰属性激活]
+#IF
+EQUAL S$玉胚选择 
+#ACT
+SENDMSG 9 请先选择对应玉胚后再激活
+BREAK
+
+#IF
+NOT CHECKITEM <$STR(S$玉胚等级)>级玉胚 1
+#ACT
+SENDMSG 9 <$STR(S$玉胚等级)>级玉胚数量不足
+BREAK
+
+#OR
+LARGE N$佩饰当前灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_10)>
+EQUAL N$佩饰当前灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_10)>
+#ACT
+SENDMSG 9 该佩饰当前灵力值已升满
+BREAK
+
+#IF
+EQUAL N$佩饰当前灵力值 0
+#ACT
+MESSAGEBOX 佩饰获取灵力后将绑定不可交易，是否确认增加佩饰灵力？ @确认增加 @取消
+break
+
+#IF
+NOT EQUAL S$玉胚等级 
+CHECKITEM <$STR(S$玉胚等级)>级玉胚 1
+#ACT
+MOV N$玉胚经验增加 <$STR(S$玉胚经验)>
+TAKE <$STR(S$玉胚等级)>级玉胚 1
+CHANGECUSTOMITEMABIL   -1 8 1 240 0
+CHANGECUSTOMITEMVALUE  -1 8 + <$STR(N$玉胚经验增加)> 0
+SENDMSG 9 佩饰灵力值增加
+
+#IF
+#ACT
+GETHUMCUSTOMITEMVALUE -1 240 N$佩饰当前灵力值 N$无用 0 0
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_5)> 0
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+NOT SMALL N$佩饰当前灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_5)>
+#ACT
+GOTO @1号新属性产生
+MOV S$激活特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+sendmsg 9 佩饰副属性[一]状态：已激活
+BREAK
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_6)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+NOT SMALL N$佩饰当前灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_6)>
+#ACT
+GOTO @2号新属性产生
+MOV S$激活特效 <Effect|id=200|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+sendmsg 9 佩饰副属性[二]状态：已激活
+BREAK
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_7)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)>  0
+NOT SMALL N$佩饰当前灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_7)>
+#ACT
+GOTO @3号新属性产生
+MOV S$激活特效 <Effect|id=300|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+sendmsg 9 佩饰副属性[三]状态：已激活
+BREAK
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_8)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)>  0
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)>  0
+NOT SMALL N$佩饰当前灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_8)>
+#ACT
+SetItemFlag -1 5 1
+MOV S$激活特效 <Effect|id=400|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @4号新属性产生
+sendmsg 9 佩饰副属性[四]状态：已激活
+BREAK
+
+#IF
+LARGE <$cfg_peishi(<$str(N$佩饰所在行)>_9)> 0
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)>  0
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)>  0
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)>  0
+NOT SMALL N$佩饰当前灵力值 <$cfg_peishi(<$str(N$佩饰所在行)>_9)>
+#ACT
+MOV S$激活特效 <Effect|id=500|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @5号新属性产生
+sendmsg 9 佩饰副属性[五]状态：已激活
+BREAK
+
+#IF
+#ACT
+delayGOTO 20 @佩饰数据获取
+BREAK
+
+[@确认增加]
+#IF
+NOT EQUAL S$玉胚等级 
+CHECKITEM <$STR(S$玉胚等级)>级玉胚 1
+#ACT
+MOV N$玉胚经验增加 <$STR(S$玉胚经验)>
+TAKE <$STR(S$玉胚等级)>级玉胚 1
+CHANGECUSTOMITEMABIL   -1 8 1 240 0
+CHANGECUSTOMITEMVALUE  -1 8 + <$STR(N$玉胚经验增加)> 0
+SetItemState -1 0 1
+SetItemState -1 1 1
+SetItemState -1 2 0
+SetItemState -1 3 0
+SetItemState -1 4 1
+SetItemState -1 5 1
+SetItemState -1 8 1
+UpDateBoxItem -1
+GOTO  @佩饰数据获取
+SENDMSG 9 佩饰灵力值增加
+BREAK
+
+
+
+
+[@1号新属性产生]
+#IF
+LARGE N$1号属性ID 0
+#ACT
+MOV N$1号新属性 <$STR(N$1号属性ID)>
+INC N$1号新属性 20
+
+;新双属性取值分割
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号新属性)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$1号新属性)>_5)>  | N$1号新属性分割
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号新属性)>_2)> 0
+#ACT
+MOV N$1号新属性ID <$cfg_pssx3(<$str(N$1号新属性)>_5)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号新属性)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 1 <$str(N$1号新属性分割1)> 1
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$1号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 0 3 0 1
+CHANGECUSTOMITEMABIL  -1 0 4 0 1
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$1号值_1)> 1
+CHANGECUSTOMITEMABIL  -1 1 1 <$str(N$1号新属性分割2)> 1
+CHANGECUSTOMITEMABIL  -1 1 3 0 1
+CHANGECUSTOMITEMABIL  -1 1 4 0 1
+CHANGECUSTOMITEMVALUE -1 1 = <$STR(N$1号值_2)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号新属性)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 1 <$str(N$1号新属性ID)> 1
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$1号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 0 3 0 1
+CHANGECUSTOMITEMABIL  -1 0 4 0 1
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$1号值_1)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+[@2号新属性产生]
+#IF
+LARGE N$2号属性ID 0
+#ACT
+MOV N$2号新属性 <$STR(N$2号属性ID)>
+INC N$2号新属性 20
+MOV N$新属性位置 0
+MOV N$新属性位置2  0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+;新双属性取值分割
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号新属性)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$2号新属性)>_5)>  | N$2号新属性分割
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号新属性)>_2)> 0
+#ACT
+MOV N$2号新属性ID <$cfg_pssx3(<$str(N$2号新属性)>_5)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号新属性)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$2号新属性分割1)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 2 <$cfg_pssx3(<$str(N$2号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$2号值_1)> 1
+MOV N$新属性位置2 <$str(N$新属性位置)>
+INC N$新属性位置 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$2号新属性分割2)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置2)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$2号值_2)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号新属性)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$2号新属性ID)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 2 <$cfg_pssx3(<$str(N$2号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$2号值_1)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+[@3号新属性产生]
+#IF
+LARGE N$3号属性ID 0
+#ACT
+MOV N$3号新属性 <$STR(N$3号属性ID)>
+INC N$3号新属性 20
+MOV N$新属性位置 0
+MOV N$新属性位置3 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+
+;新双属性取值分割
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号新属性)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$3号新属性)>_5)>  | N$3号新属性分割
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号新属性)>_2)> 0
+#ACT
+MOV N$3号新属性ID <$cfg_pssx3(<$str(N$3号新属性)>_5)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号新属性)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$3号新属性分割1)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 2 <$cfg_pssx3(<$str(N$3号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$3号值_1)> 1
+MOV N$新属性位置3 <$str(N$新属性位置)>
+INC N$新属性位置 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$3号新属性分割2)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置3)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$3号值_2)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号新属性)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$3号新属性ID)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 2 <$cfg_pssx3(<$str(N$3号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$3号值_1)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+[@4号新属性产生]
+#IF
+LARGE N$4号属性ID 0
+#ACT
+MOV N$4号新属性 <$STR(N$4号属性ID)>
+INC N$4号新属性 20
+MOV N$新属性位置 0
+MOV N$新属性位置4 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+;新双属性取值分割
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号新属性)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$4号新属性)>_5)>  | N$4号新属性分割
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号新属性)>_2)> 0
+#ACT
+MOV N$4号新属性ID <$cfg_pssx3(<$str(N$4号新属性)>_5)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号新属性)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$4号新属性分割1)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 2 <$cfg_pssx3(<$str(N$4号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$4号值_1)> 1
+MOV N$新属性位置4 <$str(N$新属性位置)>
+INC N$新属性位置 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$4号新属性分割2)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置4)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$4号值_2)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号新属性)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$4号新属性ID)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 2 <$cfg_pssx3(<$str(N$4号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$4号值_1)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+[@5号新属性产生]
+#IF
+LARGE N$5号属性ID 0
+#ACT
+MOV N$5号新属性 <$STR(N$5号属性ID)>
+INC N$5号新属性 20
+MOV N$新属性位置 0
+MOV N$新属性位置5 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)>  1
+#ACT
+INC N$新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)>  0
+#ACT
+INC N$新属性位置 1
+
+;新双属性取值分割
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号新属性)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$5号新属性)>_5)>  | N$5号新属性分割
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号新属性)>_2)> 0
+#ACT
+MOV N$5号新属性ID <$cfg_pssx3(<$str(N$5号新属性)>_5)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号新属性)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$5号新属性分割1)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 2 <$cfg_pssx3(<$str(N$5号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$5号值_1)> 1
+MOV N$新属性位置5 <$str(N$新属性位置)>
+INC N$新属性位置 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$5号新属性分割2)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置5)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$5号值_2)> 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号新属性)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 1 <$str(N$5号新属性ID)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 2 <$cfg_pssx3(<$str(N$5号新属性)>_0)> 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 3 0 1
+CHANGECUSTOMITEMABIL  -1 <$STR(N$新属性位置)> 4 <$STR(N$新属性位置)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$新属性位置)> = <$STR(N$5号值_1)> 1
+
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + 1 0
+GOTO  @佩饰数据获取
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@佩饰升华]
+#IF
+#ACT
+MOV N$屏宽 <$SCREENWIDTH>
+MOV N$屏高 <$SCREENHEIGHT>
+DIV N$屏宽 5
+DIV N$屏高 5
+
+MOV S0 
+MOV S$升华物品唯一ID 
+MOV S$升华佩饰选择
+MOV S$放入佩饰名称
+MOV S$放入佩饰等级
+MOV S$升华所需材料
+MOV N$升华材料数 0
+MOV S$额外所需材料
+MOV N$额外材料数 0
+MOV N$可升华次数 0
+MOV S$材料显示
+MOV N$升华保护 0
+MOV N$所需蕴灵符数量 0
+MOV N$蕴灵符判断 0
+MOV S$激活特效
+MOV S$升华特效 
+MOV S$放入按钮 <Layout|x=205.0|y=165.0|width=80|height=80|color=x|link=@选择升华佩饰>
+INC S$放入按钮 <Img|x=214.0|y=174.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$蕴灵符放入按钮 <Layout|x=302.0|y=255.0|width=80|height=80|color=x|link=@选择蕴灵符>
+INC S$蕴灵符放入按钮 <Img|x=302.0|y=264.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$佩饰升华介绍
+INC S$佩饰升华介绍 <Layout|x=708.0|y=464.0|width=40|height=40|color=x>
+INC S$佩饰升华介绍 <Button|x=723.0|y=472.0|size=18|pimg=public/1904300009.png|mimg=public/1904300008.png|color=255|nimg=private/psllz/1904300007.png|link=@工匠手册>
+INC S$佩饰升华介绍 <Text|x=658.0|y=472.0|color=1020|size=18|text=工匠手册>
+INC S$佩饰升华介绍 <Text|x=480.0|y=230.0|color=224|size=16|outlinecolor=0|outline=1|text=点击左边框中“＋”号放入佩饰，消耗\对应的升华符即可为佩饰已激活的属\性进行升华。\详细说明可查看工匠手册!>
+INC S$佩饰升华介绍 <Text|x=473.0|y=80.0|color=243|size=18|outlinecolor=0|outline=1|text=【佩饰的升华】>
+INC S$佩饰升华介绍 <Text|x=480.0|y=110.0|outlinecolor=0|color=100|outline=1|size=16|text=玩家可以对佩饰已激活的属性进行升\华，升华的成功率随着已成功升华次\数的增加而降低！\佩饰的主副属性全部升华成功，还将\觉醒一条稀有额外属性。>
+
+goto @佩饰升华主界面
+
+
+[@佩饰升华主界面]
+#IF
+#ACT
+CLEARDELAYGOTO
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+
+<Img|x=0.0|y=-1.0|width=780|height=520|scale9t=150|scale9b=150|bg=1|scale9r=150|move=0|loadDelay=0|reset=1|scale9l=150|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=724.0|y=-20.0|width=80|height=80|link=@exit>
+<Button|x=739.0|y=17.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+
+<Img|x=25.0|y=59.0|width=440|height=430|rotate=0|img=private/psllz/00020.png|esc=0>
+<Img|x=452.0|y=59.0|height=450|img=private/psllz/00010.png|esc=0>
+
+<Layout|x=295.0|y=235.0|children={5000}|width=150|height=20|color=x>
+<Text|x=140.0|y=245.0|color=251|size=15|text=升华符>
+<Text|x=310.0|y=245.0|color=251|size=15|text=蕴灵符>
+<Img|x=213.0|y=168.0|children={50}|width=66|height=66|esc=0|img=private/psllz/05003.png>
+<Img|x=130.0|y=260.0|img=private/psllz/05003.png|esc=0>
+<$str(S$材料显示)>
+<Img|x=300.0|y=260.0|img=private/psllz/05003.png|esc=0>
+<$str(S$蕴灵符放入按钮)>
+<Text|x=65.0|y=360.0|size=16|color=100|text=当前剩余可升华次数：<$STR(N$可升华次数)>>
+<Text|x=65.0|y=385.0|size=16|color=100|text=升华消耗：<$STR(S$升华所需材料)>*<$STR(N$升华材料数)>>
+<Text|x=128.0|y=448.0|color=243|size=18|text=升华全部成功后可激活额外属性>
+
+<$STR(S$佩饰升华介绍)>
+<$STR(S$放入按钮)>
+<$STR(S$升华佩饰选择)>
+<$STR(S$升华特效)>
+;<Effect|x=10.0|y=10.0|effecttype=0|effectid=30013|dir=5|scale=1|act=0|speed=1>
+
+
+[@选择升华佩饰]
+#IF
+#ACT
+MOV S$升华佩饰选择
+INC S$升华佩饰选择 <Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|scale9l=200|scale9r=200|scale9b=200|img=public/1851400083.png|esc=0|scale9t=200|link=@关闭升华挑选>
+INC S$升华佩饰选择 <Img|x=195.0|y=115.0|width=450|height=360|scale9b=50|scale9r=50|scale9t=50|img=private/psllz/021604.png|scale9l=50|esc=0|link=@穿透层>
+INC S$升华佩饰选择 <Text|x=217.0|y=129.0|outlinecolor=0|outline=1|color=243|size=18|text=请选择背包中需要升华属性的佩饰>
+INC S$升华佩饰选择 <Layout|x=590.0|y=110.0|width=50|height=50|link=@关闭升华挑选>
+INC S$升华佩饰选择 <Button|x=605.0|y=127.0|color=255|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|size=18|link=@关闭升华挑选>
+INC S$升华佩饰选择 <ListView|children={2}|x=210.0|y=165.0|width=420|height=280|direction=1|bounce=0|color=x|margin=1>
+INC S$升华佩饰选择 <BAGITEMS|id=2|x=205.0|y=165.0|count=126|row=21|select=<$STR(S0)>|condition=65|link=@挑选背包升华佩饰>
+GOTO @佩饰升华主界面
+
+[@关闭升华挑选]
+#IF
+#ACT
+MOV S$升华佩饰选择
+GOTO @佩饰升华主界面
+
+[@挑选背包升华佩饰]
+#IF
+#ACT
+MOV S$升华佩饰选择
+MOV S$升华物品唯一ID <$STR(S0)>
+LINKITEMBYMAKEINDEX <$STR(S$升华物品唯一ID)>
+GetItemNameByMakeIndex <$STR(S$升华物品唯一ID)> S$升华物品名称
+MOV S$放入按钮 <DBItemShow|makeindex=<$STR(S0)>|id=50|x=0.0|y=0.0>
+INC S$放入按钮 <Button|x=680.0|y=85.0|pimg=private/psllz/02162.png|color=255|size=18|nimg=private/psllz/02161.png|link=@返回升华佩饰>
+INC S$放入按钮 <Img|x=488.0|y=88.0|img=private/psllz/02128.png|esc=0>
+INC S$放入按钮 <DBItemShow|makeindex=<$STR(S0)>|showtips=0|x=485.0|y=85.0>
+GOTO @佩饰升华数据获取
+
+
+[@返回升华佩饰]
+#IF
+#ACT
+MOV S0 
+MOV S$升华物品唯一ID 
+MOV S$放入佩饰名称
+MOV S$放入佩饰等级
+MOV S$升华所需材料
+MOV N$升华材料数 0
+MOV S$额外所需材料
+MOV N$额外材料数 0
+MOV N$可升华次数 0
+MOV S$材料显示 
+MOV S$升华特效 
+MOV N$所需蕴灵符数量 0
+MOV N$蕴灵符判断 0
+
+MOV S$放入按钮 <Layout|x=205.0|y=165.0|width=80|height=80|color=x|link=@选择升华佩饰>
+INC S$放入按钮 <Img|x=214.0|y=174.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$蕴灵符放入按钮 <Layout|x=302.0|y=255.0|width=80|height=80|color=x|link=@选择蕴灵符>
+INC S$蕴灵符放入按钮 <Img|x=302.0|y=264.0|img=private/psllz/02130.png|esc=0>
+
+
+MOV S$佩饰升华介绍
+INC S$佩饰升华介绍 <Layout|x=708.0|y=464.0|width=40|height=40|color=x>
+INC S$佩饰升华介绍 <Button|x=723.0|y=472.0|size=18|pimg=public/1904300009.png|mimg=public/1904300008.png|color=255|nimg=private/psllz/1904300007.png|link=@工匠手册>
+INC S$佩饰升华介绍 <Text|x=658.0|y=472.0|color=1020|size=18|text=工匠手册>
+INC S$佩饰升华介绍 <Text|x=480.0|y=230.0|color=224|size=16|outlinecolor=0|outline=1|text=点击左边框中“＋”号放入佩饰，消耗\对应的升华符即可为佩饰已激活的属\性进行升华。\详细说明可查看工匠手册!>
+INC S$佩饰升华介绍 <Text|x=473.0|y=80.0|color=243|size=18|outlinecolor=0|outline=1|text=【佩饰的升华】>
+INC S$佩饰升华介绍 <Text|x=480.0|y=110.0|outlinecolor=0|color=100|outline=1|size=16|text=玩家可以对佩饰已激活的属性进行升\华，升华的成功率随着已成功升华次\数的增加而降低！\佩饰的主副属性全部升华成功，还将\觉醒一条稀有额外属性。>
+
+goto @佩饰升华主界面
+
+
+[@选择蕴灵符]
+#IF
+EQUAL S$升华物品唯一ID
+#ACT
+SENDMSG 9 请先放入佩饰
+BREAK
+
+#IF
+NOT EQUAL S$升华物品唯一ID
+#ACT
+MOV S$升华特效 
+MOV N$蕴灵符判断  1
+GOTO @佩饰升华数据获取
+
+
+[@蕴灵符卸下]
+#ACT
+MOV S$升华特效 
+MOV N$升华保护 0
+MOV N$所需蕴灵符数量 0
+MOV N$蕴灵符判断 0
+MOV S$蕴灵符放入按钮 <Layout|x=302.0|y=255.0|width=80|height=80|color=x|link=@选择蕴灵符>
+INC S$蕴灵符放入按钮 <Img|x=302.0|y=264.0|img=private/psllz/02130.png|esc=0>
+GOTO @佩饰升华主界面
+
+
+[@佩饰升华数据获取]
+#IF
+#ACT
+;读佩饰表所在行获取佩饰名字等级
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_peishi.csv  <$STR(S$升华物品名称)>  1~24 1 0 N$佩饰所在行
+MOV S$放入佩饰名称 <$cfg_peishi(<$str(N$佩饰所在行)>_1)>
+MOV S$放入佩饰等级 佩饰等级：<$cfg_peishi(<$str(N$佩饰所在行)>_2)>
+
+#OR
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 1
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 2
+#ACT
+GETBAGITEMCOUNT 低级升华符 N$背包材料数
+MOV S$升华所需材料 低级升华符
+MOV N$升华材料数 3
+MOV N$材料IDX 10438
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 3
+#ACT
+GETBAGITEMCOUNT 中级升华符 N$背包材料数
+MOV S$升华所需材料 中级升华符
+MOV N$升华材料数 3
+MOV N$材料IDX 10439
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 4
+#ACT
+GETBAGITEMCOUNT 高级升华符 N$背包材料数
+MOV S$升华所需材料 高级升华符
+MOV N$升华材料数 3
+MOV N$材料IDX 10440
+
+#IF
+#ACT
+GETHUMCUSTOMITEMVALUE -1 241 N$可升华次数 N$无用 0 0
+MOV S$材料显示 <ItemShow|x=130.0|y=260.0|width=70|height=70|itemid=<$str(N$材料IDX)>|itemcount=<$str(N$背包材料数)>|showtips=1|bgtype=0>
+
+;=======================================属性数据获取段落
+;根据位置获取自定义显示ID值
+#IF
+#ACT
+MOV N$取值位置 0
+MOV N$主属性ID 0
+MOV N$1号属性ID 0
+MOV N$2号属性ID 0
+MOV N$3号属性ID 0
+MOV N$4号属性ID 0
+MOV N$5号属性ID 0
+MOV N$主属性值_1 0
+MOV N$主属性值_2 0
+MOV N$1号值_1 0
+MOV N$1号值_2 0
+MOV N$2号值_1 0
+MOV N$2号值_2 0
+MOV N$3号值_1 0
+MOV N$3号值_2 0
+MOV N$4号值_1 0
+MOV N$4号值_2 0
+MOV N$5号值_1 0
+MOV N$5号值_2 0
+GETCUSTOMPROPERTYPOS -1  0  N$主属性ID  0
+GETCUSTOMPROPERTYPOS -1  0  N$1号属性ID  1
+GETCUSTOMPROPERTYPOS -1  0  N$额外属性ID  2
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$2号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$2号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$3号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$3号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$4号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$4号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$5号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$5号属性ID  1
+
+;属性名字及状态取值段
+#IF
+LARGE N$主属性ID 0
+#ACT
+MOV S$主属性名 <$cfg_pssx3(<$str(N$主属性ID)>_1)>
+MOV S$主属性状态 <$cfg_pssx3(<$str(N$主属性ID)>_3)>
+MOV S$主属性颜色 <$cfg_pssx3(<$str(N$主属性ID)>_7)>
+
+#IF
+LARGE N$1号属性ID 0
+#ACT
+MOV S$1号副属性名 <$cfg_pssx3(<$str(N$1号属性ID)>_1)>
+MOV S$1号属性状态 <$cfg_pssx3(<$str(N$1号属性ID)>_3)>
+MOV S$1号属性颜色 <$cfg_pssx3(<$str(N$1号属性ID)>_7)>
+
+#IF
+LARGE N$2号属性ID 0
+#ACT
+MOV S$2号副属性名 <$cfg_pssx3(<$str(N$2号属性ID)>_1)>
+MOV S$2号属性状态 <$cfg_pssx3(<$str(N$2号属性ID)>_3)>
+MOV S$2号属性颜色 <$cfg_pssx3(<$str(N$2号属性ID)>_7)>
+
+#IF
+LARGE N$3号属性ID 0
+#ACT
+MOV S$3号副属性名 <$cfg_pssx3(<$str(N$3号属性ID)>_1)>
+MOV S$3号属性状态 <$cfg_pssx3(<$str(N$3号属性ID)>_3)>
+MOV S$3号属性颜色 <$cfg_pssx3(<$str(N$3号属性ID)>_7)>
+
+#IF
+LARGE N$4号属性ID 0
+#ACT
+MOV S$4号副属性名 <$cfg_pssx3(<$str(N$4号属性ID)>_1)>
+MOV S$4号属性状态 <$cfg_pssx3(<$str(N$4号属性ID)>_3)>
+MOV S$4号属性颜色 <$cfg_pssx3(<$str(N$4号属性ID)>_7)>
+
+#IF
+LARGE N$5号属性ID 0
+#ACT
+MOV S$5号副属性名 <$cfg_pssx3(<$str(N$5号属性ID)>_1)>
+MOV S$5号属性状态 <$cfg_pssx3(<$str(N$5号属性ID)>_3)>
+MOV S$5号属性颜色 <$cfg_pssx3(<$str(N$5号属性ID)>_7)>
+
+#IF
+LARGE N$额外属性ID 0
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$无用 N$额外属性值 0 2
+
+#IF
+LARGE N$额外属性值 99
+#ACT
+DIV N$额外属性值 <$STR(N$额外属性值)> 100
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+SMALL N$额外属性值 100
+#ACT
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+EQUAL N$额外属性ID 116
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$额外属性值 N$无用 0 2
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+EQUAL N$额外属性ID 108
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$额外属性值 N$无用 0 2
+MUL N$额外属性值 <$STR(N$额外属性值)> 10
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+;双属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$主属性ID)>_5)>  | N$主属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$主属性分割1)> N$主属性值_1 N$无用 0 0
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$主属性分割2)> N$主属性值_2 N$无用 0 0
+MOV S$主属性值 <$STR(N$主属性值_1)>-<$STR(N$主属性值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$1号属性ID)>_5)>  | N$1号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$1号属性分割1)> N$1号值_1 N$无用 0 1
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$1号属性分割2)> N$1号值_2 N$无用 0 1 
+MOV S$1号副属性值 <$STR(N$1号值_1)>-<$STR(N$1号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$2号属性ID)>_5)>  | N$2号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$2号属性分割1)> N$2号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$2号属性分割2)> N$2号值_2 N$无用 0 1 
+MOV S$2号副属性值 <$STR(N$2号值_1)>-<$STR(N$2号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$3号属性ID)>_5)>  | N$3号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$3号属性分割1)> N$3号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$3号属性分割2)> N$3号值_2 N$无用 0 1 
+MOV S$3号副属性值 <$STR(N$3号值_1)>-<$STR(N$3号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$4号属性ID)>_5)>  | N$4号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$4号属性分割1)> N$4号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$4号属性分割2)> N$4号值_2 N$无用 0 1 
+MOV S$4号副属性值 <$STR(N$4号值_1)>-<$STR(N$4号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$5号属性ID)>_5)>  | N$5号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$5号属性分割1)> N$5号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$5号属性分割2)> N$5号值_2 N$无用 0 1 
+MOV S$5号副属性值 <$STR(N$5号值_1)>-<$STR(N$5号值_2)>
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$主属性ID)>_5)> N$主属性值_1 N$无用 0 0
+MOV S$主属性值 <$STR(N$主属性值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$1号属性ID)>_5)> N$1号值_1 N$无用 0 1
+MOV S$1号副属性值 <$STR(N$1号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$2号属性ID)>_5)> N$2号值_1 N$无用 0 1
+MOV S$2号副属性值 <$STR(N$2号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$3号属性ID)>_5)> N$3号值_1 N$无用 0 1
+MOV S$3号副属性值 <$STR(N$3号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$4号属性ID)>_5)> N$4号值_1 N$无用 0 1
+MOV S$4号副属性值 <$STR(N$4号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$5号属性ID)>_5)> N$5号值_1 N$无用 0 1
+MOV S$5号副属性值 <$STR(N$5号值_1)>
+
+;=======================================主副属性显示段落
+#IF
+#ACT
+MOV S$佩饰升华介绍
+INC S$佩饰升华介绍 <Text|x=565.0|y=85.0|color=125|size=18|outlinecolor=0|outline=1|text=<$STR(S$放入佩饰名称)>>
+INC S$佩饰升华介绍 <Text|x=565.0|y=115.0|color=125|size=18|outlinecolor=0|outline=1|text=<$STR(S$放入佩饰等级)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=155.0|width=280|rotate=0|esc=0|img=private/psllz/02143.png>
+
+INC S$佩饰升华介绍 <Text|x=580.0|y=160.0|color=243|size=18|outlinecolor=0|outline=1|text=主属性>
+INC S$佩饰升华介绍 <RText|x=480.0|y=185.0|color=<$STR(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$主属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=185.0|color=<$STR(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$主属性ID)>_6)><$STR(S$主属性值)>>
+INC S$佩饰升华介绍 <RText|x=675.0|y=185.0|color=<$str(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$主属性状态)>>
+
+INC S$佩饰升华介绍 <Img|x=468.0|y=210.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <Text|x=580.0|y=220.0|color=243|size=18|outlinecolor=0|outline=1|text=副属性>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 1
+#ACT
+INC S$佩饰升华介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 2
+#ACT
+INC S$佩饰升华介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+
+INC S$佩饰升华介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 3
+#ACT
+INC S$佩饰升华介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+INC S$佩饰升华介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+INC S$佩饰升华介绍 <RText|children={300}|x=480.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$3号属性ID)>_6)><$STR(S$3号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=335.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 5
+#ACT
+INC S$佩饰升华介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+
+INC S$佩饰升华介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+
+INC S$佩饰升华介绍 <RText|children={300}|x=480.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$3号属性ID)>_6)><$STR(S$3号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=335.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号属性状态)>>
+
+
+INC S$佩饰升华介绍 <RText|children={400}|x=480.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$4号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$4号属性ID)>_6)><$STR(S$4号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=365.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$4号属性状态)>>
+
+
+INC S$佩饰升华介绍 <RText|children={500}|x=480.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$5号副属性名)>：>
+INC S$佩饰升华介绍 <RText|x=580.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$5号属性ID)>_6)><$STR(S$5号副属性值)>>
+INC S$佩饰升华介绍 <Img|x=468.0|y=395.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰升华介绍 <RText|x=675.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$5号属性状态)>>
+
+
+;=======================================额外属性显示段落
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 1
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+INC S$佩饰升华介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰升华介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 2
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+INC S$佩饰升华介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰升华介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 3
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+INC S$佩饰升华介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰升华介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 4
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+INC S$佩饰升华介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰升华介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 108
+#ACT
+INC S$佩饰升华介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+INC S$佩饰升华介绍 <Text|x=580.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=：<$cfg_pssx3(<$str(N$额外属性ID)>_6)><$STR(S$额外属性值)><$cfg_pssx3(<$str(N$额外属性ID)>_4)>>
+INC S$佩饰升华介绍 <Button|x=560.0|y=455.0|color=251|size=18|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=清洗|link=@佩饰属性清洗>
+
+#IF
+SMALL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 119
+NOT EQUAL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 108
+#ACT
+INC S$佩饰升华介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+INC S$佩饰升华介绍 <Text|x=580.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=：<$cfg_pssx3(<$str(N$额外属性ID)>_6)><$STR(S$额外属性值)><$cfg_pssx3(<$str(N$额外属性ID)>_4)>>
+
+#IF
+LARGE  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 118
+#ACT
+INC S$佩饰升华介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=16|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+
+;========================================蕴灵符选择段落
+#IF
+EQUAL N$蕴灵符判断 1
+#ACT
+GETBAGITEMCOUNT 蕴灵符 N$背包蕴灵符数量
+MOV N$所需蕴灵符数量 0
+
+#IF
+EQUAL N$蕴灵符判断 1
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+#ACT
+INC N$所需蕴灵符数量 1
+
+#IF
+EQUAL N$蕴灵符判断 1
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+#ACT
+INC N$所需蕴灵符数量 2
+
+#IF
+EQUAL N$蕴灵符判断 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+INC N$所需蕴灵符数量 1
+
+#IF
+EQUAL N$蕴灵符判断 1
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+INC N$所需蕴灵符数量 1
+
+#IF
+EQUAL N$蕴灵符判断 1
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+INC N$所需蕴灵符数量 1
+
+#IF
+EQUAL N$蕴灵符判断 1
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+#ACT
+INC N$所需蕴灵符数量 1
+
+#IF
+EQUAL N$蕴灵符判断 1
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+INC N$所需蕴灵符数量 1
+
+#IF
+EQUAL N$蕴灵符判断 1
+#ACT
+MOV S$蕴灵符放入按钮 
+INC S$蕴灵符放入按钮 <ItemShow|x=300.0|y=260.0|width=70|height=70|itemid=10441|itemcount=<$str(N$背包蕴灵符数量)>|showtips=1|bgtype=0>
+INC S$蕴灵符放入按钮 <Button|x=360.0|y=265.0|color=255|size=18|nimg=private/psllz/02162.png|link=@蕴灵符卸下>
+MOV S$额外所需材料 蕴灵符
+MOV N$额外材料数 <$STR(N$所需蕴灵符数量)>
+INC S$蕴灵符放入按钮 <RText|x=65.0|y=410.0|color=100|size=16|text=额外消耗：<$STR(S$额外所需材料)>*<$STR(N$额外材料数)><(若升华失败不计算升华次数)/FCOLOR=249>>
+
+#if
+#act
+INC S$佩饰升华介绍 <Button|x=560.0|y=455.0|color=251|size=18|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=升华|link=@佩饰属性升华>
+DELAYGOTO 20 @佩饰升华主界面
+
+
+[@佩饰属性升华]
+#IF
+#ACT
+MOV N$升华保护 0
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 0
+#ACT
+SENDMSG 9  当前佩饰第1条副属性状态：暂未激活！
+break
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 0
+#ACT
+SENDMSG 9  当前佩饰第2条副属性状态：暂未激活！
+break
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 0
+#ACT
+SENDMSG 9  当前佩饰第3条副属性状态：暂未激活！
+break
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 0
+#ACT
+SENDMSG 9  当前佩饰第4条副属性状态：暂未激活！
+break
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 0
+#ACT
+SENDMSG 9  当前佩饰第5条副属性状态：暂未激活！
+break
+
+#IF
+EQUAL N$可升华次数 0
+#ACT
+SENDMSG 9  此佩饰可升华次数已用完！
+break
+
+#IF
+NOT CHECKITEM <$STR(S$升华所需材料)> <$STR(N$升华材料数)>
+#ACT
+SENDMSG 9 <$STR(S$升华所需材料)>不足<$STR(N$升华材料数)>张！
+break
+
+#IF
+EQUAL N$蕴灵符判断 1
+NOT CHECKITEM <$STR(S$额外所需材料)>  <$STR(N$额外材料数)>
+#ACT
+SENDMSG 9 <$STR(S$额外所需材料)>不足<$STR(N$额外材料数)>张！
+break
+
+#IF
+EQUAL N$蕴灵符判断 1
+CHECKITEM <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+#ACT
+MOV N$升华保护 1
+
+#IF
+CHECKITEM <$STR(S$升华所需材料)> <$STR(N$升华材料数)>
+#ACT
+MOV s$成功几率 
+TAKE <$STR(S$升华所需材料)> <$STR(N$升华材料数)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+#ACT
+RANSJSTR 失败#<$cfg_peishi(<$str(N$佩饰所在行)>_18)>|升华#<$cfg_peishi(<$str(N$佩饰所在行)>_19)>|完美#<$cfg_peishi(<$str(N$佩饰所在行)>_20)> 1 3 S$成功几率 S1
+GOTO @主属性升华
+BREAK
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+#ACT
+RANSJSTR 失败#<$cfg_peishi(<$str(N$佩饰所在行)>_21)>|升华#<$cfg_peishi(<$str(N$佩饰所在行)>_22)>|完美#<$cfg_peishi(<$str(N$佩饰所在行)>_23)> 1 3 S$成功几率 S1
+GOTO @1号属性升华
+BREAK
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+#ACT
+RANSJSTR 失败#<$cfg_peishi(<$str(N$佩饰所在行)>_24)>|升华#<$cfg_peishi(<$str(N$佩饰所在行)>_25)>|完美#<$cfg_peishi(<$str(N$佩饰所在行)>_26)> 1 3 S$成功几率 S1
+GOTO @2号属性升华
+BREAK
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+#ACT
+RANSJSTR 失败#<$cfg_peishi(<$str(N$佩饰所在行)>_27)>|升华#<$cfg_peishi(<$str(N$佩饰所在行)>_28)>|完美#<$cfg_peishi(<$str(N$佩饰所在行)>_29)> 1 3 S$成功几率 S1
+GOTO @3号属性升华
+BREAK
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 1
+#ACT
+RANSJSTR 失败#<$cfg_peishi(<$str(N$佩饰所在行)>_30)>|升华#<$cfg_peishi(<$str(N$佩饰所在行)>_31)>|完美#<$cfg_peishi(<$str(N$佩饰所在行)>_32)> 1 3 S$成功几率 S1
+GOTO @4号属性升华
+BREAK
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 1
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 1
+#ACT
+RANSJSTR 失败#<$cfg_peishi(<$str(N$佩饰所在行)>_33)>|升华#<$cfg_peishi(<$str(N$佩饰所在行)>_34)>|完美#<$cfg_peishi(<$str(N$佩饰所在行)>_35)> 1 3 S$成功几率 S1
+GOTO @5号属性升华
+GOTO @额外属性获取
+BREAK
+
+
+[@5号属性升华]
+#IF
+EQUAL N$升华保护 1
+EQUAL S$成功几率 失败
+CHECKITEM <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+#ACT
+TAKE <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+SENDMSG 9 在蕴灵符的保护下，成功躲避此次失败！
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+#ACT
+MOV N$升华新属性位置 0
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 - 1 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL S$成功几率 失败
+#ACT
+MOV N$升华新副属性5 <$STR(N$5号属性ID)>
+INC N$升华新副属性5 20
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性5)>_0)> 1
+GOTO @佩饰升华数据获取
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+BREAK
+
+#IF
+EQUAL S$成功几率 升华
+#ACT
+MOV N$升华新副属性5 <$STR(N$5号属性ID)>
+INC N$升华新副属性5 40
+MUL N$5号值_1 2
+MUL N$5号值_2 2
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL S$成功几率 完美
+#ACT
+MOV N$升华新副属性5 <$STR(N$5号属性ID)>
+INC N$升华新副属性5 60
+MUL N$5号值_1 3
+MUL N$5号值_2 3
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性5)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)>  = <$STR(N$5号值_1)> 1
+INC N$升华新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)> = <$STR(N$5号值_2)> 1
+GOTO @佩饰升华数据获取
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性5)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)> = <$STR(N$5号值_1)> 1
+GOTO @佩饰升华数据获取
+break
+
+[@4号属性升华]
+#IF
+EQUAL N$升华保护 1
+EQUAL S$成功几率 失败
+CHECKITEM <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+#ACT
+TAKE <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+SENDMSG 9 在蕴灵符的保护下，成功躲避此次失败！
+GOTO @佩饰升华数据获取
+BREAK
+
+
+#IF
+#ACT
+MOV N$升华新属性位置 0
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 - 1 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL S$成功几率 失败
+#ACT
+MOV N$升华新副属性4 <$STR(N$4号属性ID)>
+INC N$升华新副属性4 20
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性4)>_0)> 1
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+EQUAL S$成功几率 升华
+#ACT
+MOV N$升华新副属性4 <$STR(N$4号属性ID)>
+INC N$升华新副属性4 40
+MUL N$4号值_1 2
+MUL N$4号值_2 2
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL S$成功几率 完美
+#ACT
+MOV N$升华新副属性4 <$STR(N$4号属性ID)>
+INC N$升华新副属性4 60
+MUL N$4号值_1 3
+MUL N$4号值_2 3
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性4)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)>  = <$STR(N$4号值_1)> 1
+INC N$升华新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)> = <$STR(N$4号值_2)> 1
+GOTO @佩饰升华数据获取
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性4)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)> = <$STR(N$4号值_1)> 1
+GOTO @佩饰升华数据获取
+break
+
+
+[@3号属性升华]
+#IF
+EQUAL N$升华保护 1
+EQUAL S$成功几率 失败
+CHECKITEM <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+#ACT
+TAKE <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+SENDMSG 9 在蕴灵符的保护下，成功躲避此次失败！
+GOTO @佩饰升华数据获取
+BREAK
+
+
+#IF
+#ACT
+MOV N$升华新属性位置 0
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 - 1 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL S$成功几率 失败
+#ACT
+MOV N$升华新副属性3 <$STR(N$3号属性ID)>
+INC N$升华新副属性3 20
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性3)>_0)> 1
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+EQUAL S$成功几率 升华
+#ACT
+MOV N$升华新副属性3 <$STR(N$3号属性ID)>
+INC N$升华新副属性3 40
+MUL N$3号值_1 2
+MUL N$3号值_2 2
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL S$成功几率 完美
+#ACT
+MOV N$升华新副属性3 <$STR(N$3号属性ID)>
+INC N$升华新副属性3 60
+MUL N$3号值_1 3
+MUL N$3号值_2 3
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性3)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)>  = <$STR(N$3号值_1)> 1
+INC N$升华新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)> = <$STR(N$3号值_2)> 1
+GOTO @佩饰升华数据获取
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性3)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)> = <$STR(N$3号值_1)> 1
+GOTO @佩饰升华数据获取
+break
+
+[@2号属性升华]
+#IF
+EQUAL N$升华保护 1
+EQUAL S$成功几率 失败
+CHECKITEM <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+#ACT
+TAKE <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+SENDMSG 9 在蕴灵符的保护下，成功躲避此次失败！
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+#ACT
+MOV N$升华新属性位置 0
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 - 1 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$升华新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$升华新属性位置 1
+
+#IF
+EQUAL S$成功几率 失败
+#ACT
+MOV N$升华新副属性2 <$STR(N$2号属性ID)>
+INC N$升华新副属性2 20
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性2)>_0)> 1
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+EQUAL S$成功几率 升华
+#ACT
+MOV N$升华新副属性2 <$STR(N$2号属性ID)>
+INC N$升华新副属性2 40
+MUL N$2号值_1 2
+MUL N$2号值_2 2
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL S$成功几率 完美
+#ACT
+MOV N$升华新副属性2 <$STR(N$2号属性ID)>
+INC N$升华新副属性2 60
+MUL N$2号值_1 3
+MUL N$2号值_2 3
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性2)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)>  = <$STR(N$2号值_1)> 1
+INC N$升华新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)> = <$STR(N$2号值_2)> 1
+GOTO @佩饰升华数据获取
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$升华新属性位置)> 2 <$cfg_pssx3(<$str(N$升华新副属性2)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$升华新属性位置)> = <$STR(N$2号值_1)> 1
+GOTO @佩饰升华数据获取
+break
+
+[@1号属性升华]
+#IF
+EQUAL N$升华保护 1
+EQUAL S$成功几率 失败
+CHECKITEM <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+#ACT
+TAKE <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+SENDMSG 9 在蕴灵符的保护下，成功躲避此次失败！
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+#ACT
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 - 1 0
+
+#IF
+EQUAL S$成功几率 失败
+#ACT
+MOV N$升华新副属性1 <$STR(N$1号属性ID)>
+INC N$升华新副属性1 20
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$升华新副属性1)>_0)> 1
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+EQUAL S$成功几率 升华
+#ACT
+MOV N$升华新副属性1 <$STR(N$1号属性ID)>
+INC N$升华新副属性1 40
+MUL N$1号值_1 2
+MUL N$1号值_2 2
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL S$成功几率 完美
+#ACT
+MOV N$升华新副属性1 <$STR(N$1号属性ID)>
+INC N$升华新副属性1 60
+MUL N$1号值_1 3
+MUL N$1号值_2 3
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$升华新副属性1)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$1号值_1)> 1
+CHANGECUSTOMITEMVALUE -1 1 = <$STR(N$1号值_2)> 1
+GOTO @佩饰升华数据获取
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$升华新副属性1)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$1号值_1)> 1
+GOTO @佩饰升华数据获取
+break
+
+[@主属性升华]
+#IF
+EQUAL N$升华保护 1
+EQUAL S$成功几率 失败
+CHECKITEM <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+#ACT
+TAKE <$STR(S$额外所需材料)> <$STR(N$额外材料数)>
+SENDMSG 9 在蕴灵符的保护下，成功躲避此次失败！
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+#ACT
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 - 1 0
+
+#IF
+EQUAL S$成功几率 失败
+#ACT
+MOV N$升华新主属性 <$STR(N$主属性ID)>
+INC N$升华新主属性 20
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$升华新主属性)>_0)> 
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+EQUAL S$成功几率 升华
+#ACT
+MOV N$升华新主属性 <$STR(N$主属性ID)>
+INC N$升华新主属性 40
+MUL N$主属性值_1 2
+MUL N$主属性值_2 2
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#IF
+EQUAL S$成功几率 完美
+#ACT
+MOV N$升华新主属性 <$STR(N$主属性ID)>
+INC N$升华新主属性 60
+MUL N$主属性值_1 3
+MUL N$主属性值_2 3
+;MOV S$升华特效 <Effect|id=100|x=0.0|y=-15.0|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$升华新主属性)>_0)> 0
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$主属性值_1)> 0
+CHANGECUSTOMITEMVALUE -1 1 = <$STR(N$主属性值_2)> 0
+GOTO @佩饰升华数据获取
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$升华新主属性)>_0)> 0
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$主属性值_1)> 0
+GOTO @佩饰升华数据获取
+break
+
+
+[@额外属性获取]
+#IF
+#ACT
+GOTO @佩饰升华数据获取
+MOV S$取出额外属性
+MOV N$额外属性行 0
+
+#IF
+CHECKJOB Warrior
+#ACT
+MOV N$对应权重表 36
+
+#IF
+CHECKJOB Wizard
+#ACT
+MOV N$对应权重表 37
+
+#IF
+CHECKJOB Taoist
+#ACT
+MOV N$对应权重表 38
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 1
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+RANSJSTR <$cfg_peishi(<$str(N$佩饰所在行)>_<$STR(N$对应权重表)>)> 1 3 S$取出额外属性 S$剩余额外属性
+;根据取出属性查找额外属性表
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_pssx2.csv  <$STR(S$取出额外属性)>  1~23 1 0 N$额外属性行
+CHANGECUSTOMITEMTEXT -1 [额外属性]:  2
+CHANGECUSTOMITEMTEXTCOLOR -1 146 2
+CHANGECUSTOMITEMABIL  -1 0 1 <$cfg_pssx2(<$str(N$额外属性行)>_4)> 2
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx2(<$str(N$额外属性行)>_5)> 2
+CHANGECUSTOMITEMABIL  -1 0 3 <$cfg_pssx2(<$str(N$额外属性行)>_10)> 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_pssx2(<$str(N$额外属性行)>_6)> 2
+MOV S$升华特效 <Effect|id=6000|x=0.0|y=-35|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 2
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+RANSJSTR <$cfg_peishi(<$str(N$佩饰所在行)>_<$STR(N$对应权重表)>)> 1 3 S$取出额外属性 S$剩余额外属性
+;根据取出属性查找额外属性表
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_pssx2.csv  <$STR(S$取出额外属性)>  1~23 1 0 N$额外属性行
+CHANGECUSTOMITEMTEXT -1 [额外属性]:  2
+CHANGECUSTOMITEMTEXTCOLOR -1 146 2
+CHANGECUSTOMITEMABIL  -1 0 1 <$cfg_pssx2(<$str(N$额外属性行)>_4)> 2
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx2(<$str(N$额外属性行)>_5)> 2
+CHANGECUSTOMITEMABIL  -1 0 3 <$cfg_pssx2(<$str(N$额外属性行)>_10)> 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_pssx2(<$str(N$额外属性行)>_7)> 2
+MOV S$升华特效 <Effect|id=6000|x=0.0|y=-35|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 3
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+RANSJSTR <$cfg_peishi(<$str(N$佩饰所在行)>_<$STR(N$对应权重表)>)> 1 3 S$取出额外属性 S$剩余额外属性
+;根据取出属性查找额外属性表
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_pssx2.csv  <$STR(S$取出额外属性)>  1~23 1 0 N$额外属性行
+CHANGECUSTOMITEMTEXT -1 [额外属性]:  2
+CHANGECUSTOMITEMTEXTCOLOR -1 146 2
+CHANGECUSTOMITEMABIL  -1 0 1 <$cfg_pssx2(<$str(N$额外属性行)>_4)> 2
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx2(<$str(N$额外属性行)>_5)> 2
+CHANGECUSTOMITEMABIL  -1 0 3 <$cfg_pssx2(<$str(N$额外属性行)>_10)> 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_pssx2(<$str(N$额外属性行)>_8)> 2
+MOV S$升华特效 <Effect|id=6000|x=0.0|y=-35|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 4
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+RANSJSTR <$cfg_peishi(<$str(N$佩饰所在行)>_<$STR(N$对应权重表)>)> 1 3 S$取出额外属性 S$剩余额外属性
+;根据取出属性查找额外属性表
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_pssx2.csv  <$STR(S$取出额外属性)>  1~23 1 0 N$额外属性行
+CHANGECUSTOMITEMTEXT -1 [额外属性]:  2
+CHANGECUSTOMITEMTEXTCOLOR -1 146 2
+CHANGECUSTOMITEMABIL  -1 0 1 <$cfg_pssx2(<$str(N$额外属性行)>_4)> 2
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx2(<$str(N$额外属性行)>_5)> 2
+CHANGECUSTOMITEMABIL  -1 0 3 <$cfg_pssx2(<$str(N$额外属性行)>_10)> 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_pssx2(<$str(N$额外属性行)>_9)> 2
+MOV S$升华特效 <Effect|id=6000|x=0.0|y=-35|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @佩饰升华数据获取
+BREAK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@佩饰清洗]
+#IF
+#ACT
+MOV N$屏宽 <$SCREENWIDTH>
+MOV N$屏高 <$SCREENHEIGHT>
+DIV N$屏宽 5
+DIV N$屏高 5
+
+MOV S0 
+MOV S$升华物品唯一ID 
+MOV S$升华佩饰选择
+MOV S$放入佩饰名称
+MOV S$放入佩饰等级
+MOV N$可升华次数 0
+MOV S$清洗佩饰选择
+
+MOV S$激活特效
+MOV S$升华特效 
+
+MOV S$放入按钮 <Layout|x=205.0|y=165.0|width=80|height=80|color=x|link=@选择清洗佩饰>
+INC S$放入按钮 <Img|x=214.0|y=174.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$佩饰清洗介绍
+INC S$佩饰清洗介绍 <Text|x=480.0|y=230.0|outlinecolor=0|color=224|outline=1|size=16|text=点击左边框中“＋”号放入佩饰，消耗\对应的清洗符即可清洗掉佩饰已升华\的属性，同时返还所有已使用的升华\次数。\详细说明可查看工匠手册!>
+INC S$佩饰清洗介绍 <Text|x=473.0|y=80.0|outlinecolor=0|color=243|outline=1|size=18|text=【佩饰的清洗】>
+INC S$佩饰清洗介绍 <Text|x=480.0|y=110.0|outlinecolor=0|color=100|outline=1|size=16|text=对升华结果不满意时，可以使用清洗\符移除佩饰的所有升华效果，同时返\还已使用的升华次数。\>
+INC S$佩饰清洗介绍 <Button|x=723.0|y=472.0|size=18|pimg=public/1904300009.png|mimg=public/1904300008.png|color=255|nimg=private/psllz/1904300007.png|link=@工匠手册>
+INC S$佩饰清洗介绍 <Text|x=658.0|y=472.0|color=1020|size=18|text=工匠手册>
+
+goto @佩饰清洗主界面
+
+
+[@佩饰清洗主界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+
+<Img|x=0.0|y=-1.0|width=780|height=520|scale9t=150|scale9b=150|bg=1|scale9r=150|move=0|loadDelay=0|reset=1|scale9l=150|esc=1|img=private/psllz/00070.png|show=4>
+<Layout|x=724.0|y=-20.0|width=80|height=80|link=@exit>
+<Button|x=739.0|y=17.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=25.0|y=59.0|width=440|height=430|rotate=0|esc=0|img=private/psllz/00020.png>
+<Img|x=452.0|y=59.0|height=450|img=private/psllz/00010.png|esc=0>
+<Layout|x=295.0|y=235.0|width=150|height=20|color=x>
+<Text|x=223.0|y=244.0|size=15|color=251|text=清洗符>
+<Img|x=213.0|y=168.0|width=66|height=66|children={50}|img=private/psllz/05003.png|esc=0>
+<Img|x=213.0|y=260.0|img=private/psllz/05003.png|esc=0>
+<Text|x=65.0|y=360.0|color=100|size=16|text=当前剩余可升华次数：<$STR(N$可升华次数)>>
+<Text|x=65.0|y=385.0|size=16|color=100|text=清洗消耗：清洗符*1>
+<Text|x=129.0|y=446.0|size=18|color=243|text=清洗完成后将重置可升华次数>
+<$STR(S$佩饰清洗介绍)>
+<$STR(S$放入按钮)>
+<$STR(S$清洗佩饰选择)>
+
+[@选择清洗佩饰]
+#IF
+#ACT
+MOV S$清洗佩饰选择
+INC S$清洗佩饰选择 <Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|scale9l=200|scale9r=200|scale9b=200|img=public/1851400083.png|esc=0|scale9t=200|link=@关闭清洗挑选>
+INC S$清洗佩饰选择 <Img|x=195.0|y=115.0|width=450|height=360|scale9b=50|scale9r=50|scale9t=50|img=private/psllz/021604.png|scale9l=50|esc=0|link=@穿透层>
+INC S$清洗佩饰选择 <Text|x=217.0|y=129.0|outlinecolor=0|outline=1|color=243|size=18|text=请选择背包中需要清洗属性的佩饰>
+INC S$清洗佩饰选择 <Layout|x=590.0|y=110.0|width=50|height=50|link=@关闭清洗挑选>
+INC S$清洗佩饰选择 <Button|x=605.0|y=127.0|color=255|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|size=18|link=@关闭清洗挑选>
+INC S$清洗佩饰选择 <ListView|children={2}|x=210.0|y=165.0|width=420|height=280|direction=1|bounce=0|color=x|margin=1>
+INC S$清洗佩饰选择 <BAGITEMS|id=2|x=205.0|y=165.0|count=126|row=21|select=<$STR(S0)>|condition=65|link=@挑选背包清洗佩饰>
+GOTO @佩饰清洗主界面
+
+[@关闭清洗挑选]
+#IF
+#ACT
+MOV S$清洗佩饰选择
+GOTO @佩饰清洗主界面
+
+
+[@挑选背包清洗佩饰]
+#IF
+#ACT
+MOV S$清洗佩饰选择
+MOV S$清洗物品ID <$STR(S0)>
+LINKITEMBYMAKEINDEX <$STR(S$清洗物品ID)>
+GetItemNameByMakeIndex <$STR(S$清洗物品ID)> S$清洗物品名称
+MOV S$放入按钮 <DBItemShow|makeindex=<$STR(S0)>|id=50|x=0.0|y=0.0>
+INC S$放入按钮 <Button|x=680.0|y=85.0|pimg=private/psllz/02162.png|color=255|size=18|nimg=private/psllz/02161.png|link=@返回清洗佩饰>
+INC S$放入按钮 <Img|x=488.0|y=88.0|img=private/psllz/02128.png|esc=0>
+INC S$放入按钮 <DBItemShow|makeindex=<$STR(S0)>|showtips=0|x=485.0|y=85.0>
+
+GOTO @清洗佩饰数据获取
+
+
+[@返回清洗佩饰]
+#IF
+#ACT
+MOV S0 
+MOV S$升华物品唯一ID 
+MOV S$升华佩饰选择
+MOV S$放入佩饰名称
+MOV S$放入佩饰等级
+MOV N$可升华次数 0
+MOV S$清洗佩饰选择
+
+MOV S$激活特效
+MOV S$升华特效 
+
+MOV S$放入按钮 <Layout|x=205.0|y=165.0|width=80|height=80|color=x|link=@选择清洗佩饰>
+INC S$放入按钮 <Img|x=214.0|y=174.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$佩饰清洗介绍
+INC S$佩饰清洗介绍 <Text|x=480.0|y=230.0|outlinecolor=0|color=224|outline=1|size=16|text=点击左边框中“＋”号放入佩饰，消耗\对应的清洗符即可清洗掉佩饰已升华\的属性，同时返还所有已使用的升华\次数。\详细说明可查看工匠手册!>
+INC S$佩饰清洗介绍 <Text|x=473.0|y=80.0|outlinecolor=0|color=243|outline=1|size=18|text=【佩饰的清洗】>
+INC S$佩饰清洗介绍 <Text|x=480.0|y=110.0|outlinecolor=0|color=100|outline=1|size=16|text=对升华结果不满意时，可以使用清洗\符移除佩饰的所有升华效果，同时返\还已使用的升华次数。\>
+INC S$佩饰清洗介绍 <Button|x=723.0|y=472.0|size=18|pimg=public/1904300009.png|mimg=public/1904300008.png|color=255|nimg=private/psllz/1904300007.png|link=@工匠手册>
+INC S$佩饰清洗介绍 <Text|x=658.0|y=472.0|color=1020|size=18|text=工匠手册>
+
+GOTO @佩饰清洗主界面
+
+
+[@清洗佩饰数据获取]
+#IF
+#ACT
+;读佩饰表所在行获取佩饰名字等级
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_peishi.csv  <$STR(S$清洗物品名称)>  1~24 1 0 N$佩饰所在行
+MOV S$放入佩饰名称 <$cfg_peishi(<$str(N$佩饰所在行)>_1)>
+MOV S$放入佩饰等级 佩饰等级：<$cfg_peishi(<$str(N$佩饰所在行)>_2)>
+GETBAGITEMCOUNT 清洗符 N$背包清洗材料数
+GETHUMCUSTOMITEMVALUE -1 241 N$可升华次数 N$无用 0 0
+INC S$放入按钮 <ItemShow|x=215.0|y=263.0|width=70|height=70|itemid=10442|itemcount=<$str(N$背包清洗材料数)>|showtips=1|bgtype=0>
+
+;=======================================属性数据获取段落
+;根据位置获取自定义显示ID值
+#IF
+#ACT
+MOV N$取值位置 0
+MOV N$主属性ID 0
+MOV N$1号属性ID 0
+MOV N$2号属性ID 0
+MOV N$3号属性ID 0
+MOV N$4号属性ID 0
+MOV N$5号属性ID 0
+MOV N$主属性值_1 0
+MOV N$主属性值_2 0
+MOV N$1号值_1 0
+MOV N$1号值_2 0
+MOV N$2号值_1 0
+MOV N$2号值_2 0
+MOV N$3号值_1 0
+MOV N$3号值_2 0
+MOV N$4号值_1 0
+MOV N$4号值_2 0
+MOV N$5号值_1 0
+MOV N$5号值_2 0
+GETCUSTOMPROPERTYPOS -1  0  N$主属性ID  0
+GETCUSTOMPROPERTYPOS -1  0  N$1号属性ID  1
+GETCUSTOMPROPERTYPOS -1  0  N$额外属性ID  2
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$2号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$2号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$3号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$3号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$4号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$4号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$5号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$5号属性ID  1
+
+;属性名字及状态取值段
+#IF
+LARGE N$主属性ID 0
+#ACT
+MOV S$主属性名 <$cfg_pssx3(<$str(N$主属性ID)>_1)>
+MOV S$主属性状态 <$cfg_pssx3(<$str(N$主属性ID)>_3)>
+MOV S$主属性颜色 <$cfg_pssx3(<$str(N$主属性ID)>_7)>
+
+#IF
+LARGE N$1号属性ID 0
+#ACT
+MOV S$1号副属性名 <$cfg_pssx3(<$str(N$1号属性ID)>_1)>
+MOV S$1号属性状态 <$cfg_pssx3(<$str(N$1号属性ID)>_3)>
+MOV S$1号属性颜色 <$cfg_pssx3(<$str(N$1号属性ID)>_7)>
+
+#IF
+LARGE N$2号属性ID 0
+#ACT
+MOV S$2号副属性名 <$cfg_pssx3(<$str(N$2号属性ID)>_1)>
+MOV S$2号属性状态 <$cfg_pssx3(<$str(N$2号属性ID)>_3)>
+MOV S$2号属性颜色 <$cfg_pssx3(<$str(N$2号属性ID)>_7)>
+
+#IF
+LARGE N$3号属性ID 0
+#ACT
+MOV S$3号副属性名 <$cfg_pssx3(<$str(N$3号属性ID)>_1)>
+MOV S$3号属性状态 <$cfg_pssx3(<$str(N$3号属性ID)>_3)>
+MOV S$3号属性颜色 <$cfg_pssx3(<$str(N$3号属性ID)>_7)>
+
+#IF
+LARGE N$4号属性ID 0
+#ACT
+MOV S$4号副属性名 <$cfg_pssx3(<$str(N$4号属性ID)>_1)>
+MOV S$4号属性状态 <$cfg_pssx3(<$str(N$4号属性ID)>_3)>
+MOV S$4号属性颜色 <$cfg_pssx3(<$str(N$4号属性ID)>_7)>
+
+#IF
+LARGE N$5号属性ID 0
+#ACT
+MOV S$5号副属性名 <$cfg_pssx3(<$str(N$5号属性ID)>_1)>
+MOV S$5号属性状态 <$cfg_pssx3(<$str(N$5号属性ID)>_3)>
+MOV S$5号属性颜色 <$cfg_pssx3(<$str(N$5号属性ID)>_7)>
+
+#IF
+LARGE N$额外属性ID 0
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$无用 N$额外属性值 0 2
+
+#IF
+LARGE N$额外属性值 99
+#ACT
+DIV N$额外属性值 <$STR(N$额外属性值)> 100
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+SMALL N$额外属性值 100
+#ACT
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+EQUAL N$额外属性ID 116
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$额外属性值 N$无用 0 2
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+EQUAL N$额外属性ID 108
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$额外属性值 N$无用 0 2
+MUL N$额外属性值 <$STR(N$额外属性值)> 10
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+;双属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$主属性ID)>_5)>  | N$主属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$主属性分割1)> N$主属性值_1 N$无用 0 0
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$主属性分割2)> N$主属性值_2 N$无用 0 0
+MOV S$主属性值 <$STR(N$主属性值_1)>-<$STR(N$主属性值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$1号属性ID)>_5)>  | N$1号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$1号属性分割1)> N$1号值_1 N$无用 0 1
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$1号属性分割2)> N$1号值_2 N$无用 0 1 
+MOV S$1号副属性值 <$STR(N$1号值_1)>-<$STR(N$1号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$2号属性ID)>_5)>  | N$2号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$2号属性分割1)> N$2号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$2号属性分割2)> N$2号值_2 N$无用 0 1 
+MOV S$2号副属性值 <$STR(N$2号值_1)>-<$STR(N$2号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$3号属性ID)>_5)>  | N$3号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$3号属性分割1)> N$3号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$3号属性分割2)> N$3号值_2 N$无用 0 1 
+MOV S$3号副属性值 <$STR(N$3号值_1)>-<$STR(N$3号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$4号属性ID)>_5)>  | N$4号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$4号属性分割1)> N$4号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$4号属性分割2)> N$4号值_2 N$无用 0 1 
+MOV S$4号副属性值 <$STR(N$4号值_1)>-<$STR(N$4号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$5号属性ID)>_5)>  | N$5号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$5号属性分割1)> N$5号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$5号属性分割2)> N$5号值_2 N$无用 0 1 
+MOV S$5号副属性值 <$STR(N$5号值_1)>-<$STR(N$5号值_2)>
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$主属性ID)>_5)> N$主属性值_1 N$无用 0 0
+MOV S$主属性值 <$STR(N$主属性值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$1号属性ID)>_5)> N$1号值_1 N$无用 0 1
+MOV S$1号副属性值 <$STR(N$1号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$2号属性ID)>_5)> N$2号值_1 N$无用 0 1
+MOV S$2号副属性值 <$STR(N$2号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$3号属性ID)>_5)> N$3号值_1 N$无用 0 1
+MOV S$3号副属性值 <$STR(N$3号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$4号属性ID)>_5)> N$4号值_1 N$无用 0 1
+MOV S$4号副属性值 <$STR(N$4号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$5号属性ID)>_5)> N$5号值_1 N$无用 0 1
+MOV S$5号副属性值 <$STR(N$5号值_1)>
+
+;=======================================主副属性显示段落
+#IF
+#ACT
+MOV S$佩饰清洗介绍
+INC S$佩饰清洗介绍 <Text|x=565.0|y=85.0|color=125|size=18|outlinecolor=0|outline=1|text=<$STR(S$放入佩饰名称)>>
+INC S$佩饰清洗介绍 <Text|x=565.0|y=115.0|color=125|size=18|outlinecolor=0|outline=1|text=<$STR(S$放入佩饰等级)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=155.0|width=280|rotate=0|esc=0|img=private/psllz/02143.png>
+
+INC S$佩饰清洗介绍 <Text|x=580.0|y=160.0|color=243|size=18|outlinecolor=0|outline=1|text=主属性>
+INC S$佩饰清洗介绍 <RText|x=480.0|y=185.0|color=<$STR(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$主属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=185.0|color=<$STR(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$主属性ID)>_6)><$STR(S$主属性值)>>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=185.0|color=<$str(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$主属性状态)>>
+
+INC S$佩饰清洗介绍 <Img|x=468.0|y=210.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <Text|x=580.0|y=220.0|color=243|size=18|outlinecolor=0|outline=1|text=副属性>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 1
+#ACT
+INC S$佩饰清洗介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 2
+#ACT
+INC S$佩饰清洗介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+
+INC S$佩饰清洗介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 3
+#ACT
+INC S$佩饰清洗介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+INC S$佩饰清洗介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+INC S$佩饰清洗介绍 <RText|children={300}|x=480.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$3号属性ID)>_6)><$STR(S$3号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=335.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 5
+#ACT
+INC S$佩饰清洗介绍 <RText|children={100}|x=480.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+
+INC S$佩饰清洗介绍 <RText|children={200}|x=480.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+
+INC S$佩饰清洗介绍 <RText|children={300}|x=480.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$3号属性ID)>_6)><$STR(S$3号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=335.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号属性状态)>>
+
+
+INC S$佩饰清洗介绍 <RText|children={400}|x=480.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$4号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$4号属性ID)>_6)><$STR(S$4号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=365.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$4号属性状态)>>
+
+
+INC S$佩饰清洗介绍 <RText|children={500}|x=480.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$5号副属性名)>：>
+INC S$佩饰清洗介绍 <RText|x=580.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$5号属性ID)>_6)><$STR(S$5号副属性值)>>
+INC S$佩饰清洗介绍 <Img|x=468.0|y=395.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰清洗介绍 <RText|x=675.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$5号属性状态)>>
+
+;=======================================额外属性显示段落
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 1
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+INC S$佩饰清洗介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰清洗介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 2
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+INC S$佩饰清洗介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰清洗介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 3
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+INC S$佩饰清洗介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰清洗介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 4
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+INC S$佩饰清洗介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰清洗介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+
+#IF
+EQUAL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 108
+#ACT
+INC S$佩饰清洗介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+INC S$佩饰清洗介绍 <Text|x=580.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=：<$cfg_pssx3(<$str(N$额外属性ID)>_6)><$STR(S$额外属性值)><$cfg_pssx3(<$str(N$额外属性ID)>_4)>>
+INC S$佩饰清洗介绍 <Button|x=560.0|y=455.0|color=251|size=18|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=清洗|link=@佩饰属性清洗>
+
+
+#IF
+SMALL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 119
+NOT EQUAL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 108
+#ACT
+INC S$佩饰清洗介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+INC S$佩饰清洗介绍 <Text|x=580.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=：<$cfg_pssx3(<$str(N$额外属性ID)>_6)><$STR(S$额外属性值)><$cfg_pssx3(<$str(N$额外属性ID)>_4)>>
+
+#IF
+LARGE  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 118
+#ACT
+INC S$佩饰清洗介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=16|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+
+#IF
+#ACT
+INC S$佩饰清洗介绍 <Button|x=560.0|y=455.0|color=251|size=18|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=清洗|link=@佩饰属性清洗>
+GOTO @佩饰清洗主界面
+
+
+[@佩饰属性清洗]
+#IF
+NOT CHECKITEM 清洗符 1
+#ACT
+SENDMSG 9 清洗符不足1张！
+break
+
+#IF
+#ACT
+MOV N$返回升华次数 0
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+#ACT
+INC N$返回升华次数 1
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+#ACT
+INC N$返回升华次数 1
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+#ACT
+INC N$返回升华次数 1
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+#ACT
+INC N$返回升华次数 1
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 1
+#ACT
+INC N$返回升华次数 1
+
+#IF
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 1
+#ACT
+INC N$返回升华次数 1
+
+#OR
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 1
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 1
+#ACT
+MESSAGEBOX 您即将清洗佩饰：【<$STR(S$放入佩饰名称)>】升华过的属性！\清洗过后属性将恢复为原始属性，同时返还该佩饰已升华的次数！\是否确认清洗佩饰升华属性？  @确认清洗属性 @取消
+BREAK
+#ELSEACT
+MESSAGEBOX 该佩饰暂未升华过属性！
+BREAK
+
+
+[@确认清洗属性]
+#IF
+CHECKITEM 清洗符 1
+#ACT
+TAKE 清洗符 1
+CHANGECUSTOMITEMABIL   -1 7 1 241 0
+CHANGECUSTOMITEMVALUE  -1 7 + <$str(N$返回升华次数)> 0
+MOV N$清洗新属性位置 0
+MOV S$原主属性等级
+MOV S$原副属性等级1
+MOV S$原副属性等级2
+MOV S$原副属性等级3
+MOV S$原副属性等级4
+MOV S$原副属性等级5
+CHANGECUSTOMITEMTEXT -1 -1  2
+CHANGECUSTOMITEMTEXTCOLOR -1 -1 2
+CHANGECUSTOMITEMABIL  -1 0 1 0 2
+CHANGECUSTOMITEMABIL  -1 0 2 0 2
+CHANGECUSTOMITEMABIL  -1 0 3 0 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = 0 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+#ACT
+MOV N$清洗新主属性 <$STR(N$主属性ID)>
+DEC N$清洗新主属性 20
+MOV S$原主属性等级 失败
+GOTO @主属性还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 3
+#ACT
+MOV N$清洗新主属性 <$STR(N$主属性ID)>
+DEC N$清洗新主属性 40
+DIV N$主属性值_1 2
+DIV N$主属性值_2 2
+GOTO @主属性还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 4
+#ACT
+MOV N$清洗新主属性 <$STR(N$主属性ID)>
+DEC N$清洗新主属性 60
+DIV N$主属性值_1 3
+DIV N$主属性值_2 3
+GOTO @主属性还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+MOV N$清洗新副属性 <$STR(N$1号属性ID)>
+DEC N$清洗新副属性 20
+MOV S$原副属性等级1 失败
+GOTO @副属性1还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 3
+#ACT
+MOV N$清洗新副属性 <$STR(N$1号属性ID)>
+DEC N$清洗新副属性 40
+DIV N$1号值_1 2
+DIV N$1号值_2 2
+GOTO @副属性1还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 4
+#ACT
+MOV N$清洗新副属性 <$STR(N$1号属性ID)>
+DEC N$清洗新副属性 60
+DIV N$1号值_1 3
+DIV N$1号值_2 3
+GOTO @副属性1还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+MOV N$清洗新副属性 <$STR(N$2号属性ID)>
+DEC N$清洗新副属性 20
+MOV S$原副属性等级2 失败
+GOTO @副属性2还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 3
+#ACT
+MOV N$清洗新副属性 <$STR(N$2号属性ID)>
+DEC N$清洗新副属性 40
+DIV N$2号值_1 2
+DIV N$2号值_2 2
+GOTO @副属性2还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 4
+#ACT
+MOV N$清洗新副属性 <$STR(N$2号属性ID)>
+DEC N$清洗新副属性 60
+DIV N$2号值_1 3
+DIV N$2号值_2 3
+GOTO @副属性2还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+MOV N$清洗新副属性 <$STR(N$3号属性ID)>
+DEC N$清洗新副属性 20
+MOV S$原副属性等级3 失败
+GOTO @副属性3还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 3
+#ACT
+MOV N$清洗新副属性 <$STR(N$3号属性ID)>
+DEC N$清洗新副属性 40
+DIV N$3号值_1 2
+DIV N$3号值_2 2
+GOTO @副属性3还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 4
+#ACT
+MOV N$清洗新副属性 <$STR(N$3号属性ID)>
+DEC N$清洗新副属性 60
+DIV N$3号值_1 3
+DIV N$3号值_2 3
+GOTO @副属性3还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+#ACT
+MOV N$清洗新副属性 <$STR(N$4号属性ID)>
+DEC N$清洗新副属性 20
+MOV S$原副属性等级4 失败
+GOTO @副属性4还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 3
+#ACT
+MOV N$清洗新副属性 <$STR(N$4号属性ID)>
+DEC N$清洗新副属性 40
+DIV N$4号值_1 2
+DIV N$4号值_2 2
+GOTO @副属性4还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 4
+#ACT
+MOV N$清洗新副属性 <$STR(N$4号属性ID)>
+DEC N$清洗新副属性 60
+DIV N$4号值_1 3
+DIV N$4号值_2 3
+GOTO @副属性4还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+MOV N$清洗新副属性 <$STR(N$5号属性ID)>
+DEC N$清洗新副属性 20
+MOV S$原副属性等级5 失败
+GOTO @副属性5还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 3
+#ACT
+MOV N$清洗新副属性 <$STR(N$5号属性ID)>
+DEC N$清洗新副属性 40
+DIV N$5号值_1 2
+DIV N$5号值_2 2
+GOTO @副属性5还原
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 4
+#ACT
+MOV N$清洗新副属性 <$STR(N$5号属性ID)>
+DEC N$清洗新副属性 60
+DIV N$5号值_1 3
+DIV N$5号值_2 3
+GOTO @副属性5还原
+
+#IF
+#ACT
+SENDMSG 9 已成功佩饰的升华属性，升华次数已返还！
+GOTO @清洗佩饰数据获取
+BREAK
+
+[@副属性5还原]
+#ACT
+MOV N$清洗新属性位置 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL S$原副属性等级5 失败
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)>  2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+BREAK
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)> 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$5号值_1)> 1
+INC N$清洗新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$5号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)> 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$5号值_1)> 1
+break
+
+[@副属性4还原]
+#ACT
+MOV N$清洗新属性位置 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL S$原副属性等级4 失败
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)>  2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+BREAK
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)> 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$4号值_1)> 1
+INC N$清洗新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$4号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)> 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$4号值_1)> 1
+break
+
+
+[@副属性3还原]
+#ACT
+MOV N$清洗新属性位置 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL S$原副属性等级3 失败
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)>  2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+BREAK
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)> 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$3号值_1)> 1
+INC N$清洗新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$3号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)> 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$3号值_1)> 1
+break
+
+
+[@副属性2还原]
+#ACT
+MOV N$清洗新属性位置 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$清洗新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$清洗新属性位置 1
+
+#IF
+EQUAL S$原副属性等级2 失败
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)>  2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+BREAK
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)> 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$2号值_1)> 1
+INC N$清洗新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$2号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$清洗新属性位置)> 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$清洗新属性位置)> = <$STR(N$2号值_1)> 1
+break
+
+
+[@副属性1还原]
+#IF
+EQUAL S$原副属性等级1 失败
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+BREAK
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$1号值_1)> 1
+CHANGECUSTOMITEMVALUE -1 1 = <$STR(N$1号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$清洗新副属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$1号值_1)> 1
+break
+
+[@主属性还原]
+#IF
+EQUAL S$原主属性等级 失败
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$清洗新主属性)>_0)> 0
+BREAK
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$清洗新主属性)>_0)> 0
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$主属性值_1)> 0
+CHANGECUSTOMITEMVALUE -1 1 = <$STR(N$主属性值_2)> 0
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$清洗新主属性)>_0)> 0
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$主属性值_1)> 0
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[@佩饰点化]
+#IF
+#ACT
+MOV N$屏宽 <$SCREENWIDTH>
+MOV N$屏高 <$SCREENHEIGHT>
+DIV N$屏宽 5
+DIV N$屏高 5
+
+MOV S0 
+MOV S$升华物品唯一ID 
+MOV S$升华佩饰选择
+MOV S$放入佩饰名称
+MOV S$放入佩饰等级
+MOV N$主属性勾选 0
+MOV N$副属性1勾选 0
+MOV N$副属性2勾选 0
+MOV N$副属性3勾选 0
+MOV N$副属性4勾选 0 
+MOV N$副属性5勾选 0
+MOV S$点化特效
+MOV S$放入按钮 <Layout|x=205.0|y=165.0|width=80|height=80|color=x|link=@选择点化佩饰>
+INC S$放入按钮 <Img|x=214.0|y=174.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$佩饰点化介绍
+INC S$佩饰点化介绍 <Text|x=480.0|y=230.0|outlinecolor=0|color=224|outline=1|size=16|text=点击左边框中“＋”号放入佩饰，消耗\对应的化龙符即可点化佩饰的任何一\条未完美升华的属性，同时返还所有\已使用的升华次数。\详细说明可查看工匠手册!>
+INC S$佩饰点化介绍 <Text|x=473.0|y=80.0|outlinecolor=0|color=243|outline=1|size=18|text=【佩饰的点化】>
+INC S$佩饰点化介绍 <Text|x=480.0|y=110.0|outlinecolor=0|color=100|outline=1|size=16|text=如果你拥有化龙符，即可用化龙符点\化佩饰。点化佩饰可以将任意一条没\有完美升华的属性变为完美升华。点\化不消耗升华次数，可升华次数为0时\也能进行。>
+INC S$佩饰点化介绍 <Button|x=723.0|y=472.0|size=18|pimg=public/1904300009.png|mimg=public/1904300008.png|color=255|nimg=private/psllz/1904300007.png|link=@工匠手册>
+INC S$佩饰点化介绍 <Text|x=658.0|y=472.0|color=1020|size=18|text=工匠手册>
+
+goto @佩饰点化主界面
+
+[@佩饰点化主界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+
+<Img|x=0.0|y=-1.0|width=780|height=520|scale9r=150|bg=1|scale9t=150|scale9b=150|move=0|scale9l=150|esc=1|loadDelay=0|img=private/psllz/00070.png|reset=1|show=4>
+<Layout|x=712.0|y=2.0|width=50|height=50|link=@exit>
+<Button|x=726.0|y=20.0|color=255|size=18|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|link=@exit>
+<Img|x=340.0|y=5.0|img=private/biaoti/01001.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=25.0|y=59.0|width=440|height=430|rotate=0|img=private/psllz/00020.png|esc=0>
+<Img|x=452.0|y=59.0|height=450|img=private/psllz/00010.png|esc=0>
+<Layout|x=295.0|y=235.0|width=150|height=20|color=x>
+<Text|x=223.0|y=244.0|size=15|color=251|text=化龙符>
+<Img|x=213.0|y=168.0|children={50}|width=66|height=66|esc=0|img=private/psllz/05003.png>
+<Img|x=213.0|y=260.0|img=private/psllz/05003.png|esc=0>
+<Text|x=60.0|y=365.0|size=18|color=100|text=点化消耗：化龙符*1>
+<Text|x=60.0|y=400.0|size=18|color=243|text=使用化龙符可直接完美升华指定属性，并且不消\耗佩饰的升华次数。>
+<$STR(S$佩饰点化介绍)>
+<$STR(S$放入按钮)>
+<$STR(S$点化佩饰选择)>
+<$STR(S$点化特效)>
+
+[@选择点化佩饰]
+#IF
+#ACT
+MOV S$点化佩饰选择
+INC S$点化佩饰选择 <Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|scale9l=200|scale9r=200|scale9b=200|img=public/1851400083.png|esc=0|scale9t=200|link=@关闭点化挑选>
+INC S$点化佩饰选择 <Img|x=195.0|y=115.0|width=450|height=360|scale9b=50|scale9r=50|scale9t=50|img=private/psllz/021604.png|scale9l=50|esc=0|link=@穿透层>
+INC S$点化佩饰选择 <Text|x=217.0|y=129.0|outlinecolor=0|outline=1|color=243|size=18|text=请选择背包中需要点化属性的佩饰>
+INC S$点化佩饰选择 <Layout|x=590.0|y=110.0|width=50|height=50|link=@关闭点化挑选>
+INC S$点化佩饰选择 <Button|x=605.0|y=127.0|color=255|pimg=private/psllz/1900111001.png|nimg=private/psllz/1900111000.png|size=18|link=@关闭点化挑选>
+INC S$点化佩饰选择 <ListView|children={2}|x=210.0|y=165.0|width=420|height=280|direction=1|bounce=0|color=x|margin=1>
+INC S$点化佩饰选择 <BAGITEMS|id=2|x=205.0|y=165.0|count=126|row=21|select=<$STR(S0)>|condition=65|link=@挑选背包点化佩饰>
+GOTO @佩饰点化主界面
+
+
+[@关闭点化挑选]
+#IF
+#ACT
+MOV S$点化佩饰选择
+GOTO @佩饰点化主界面
+
+
+
+[@挑选背包点化佩饰]
+#IF
+#ACT
+MOV S$点化佩饰选择
+MOV S$点化物品ID <$STR(S0)>
+LINKITEMBYMAKEINDEX <$STR(S$点化物品ID)>
+GetItemNameByMakeIndex <$STR(S$点化物品ID)> S$点化物品名称
+MOV S$放入按钮 <DBItemShow|makeindex=<$STR(S0)>|id=50|x=0.0|y=0.0>
+INC S$放入按钮 <Button|x=680.0|y=85.0|pimg=private/psllz/02162.png|color=255|size=18|nimg=private/psllz/02161.png|link=@返回点化佩饰>
+INC S$放入按钮 <Img|x=488.0|y=88.0|img=private/psllz/02128.png|esc=0>
+INC S$放入按钮 <DBItemShow|makeindex=<$STR(S0)>|showtips=0|x=485.0|y=85.0>
+
+GOTO @点化佩饰数据获取
+
+
+[@返回点化佩饰]
+#IF
+#ACT
+MOV S0 
+MOV S$化龙物品唯一ID 
+MOV S$化龙佩饰选择
+MOV S$放入佩饰名称
+MOV S$放入佩饰等级
+MOV N$可升华次数 0
+MOV S$点化佩饰选择
+MOV N$主属性勾选 0
+MOV N$副属性1勾选 0
+MOV N$副属性2勾选 0
+MOV N$副属性3勾选 0
+MOV N$副属性4勾选 0 
+MOV N$副属性5勾选 0
+MOV S$激活特效
+MOV S$升华特效 
+MOV S$点化特效
+MOV S$放入按钮 <Layout|x=205.0|y=165.0|width=80|height=80|color=x|link=@选择点化佩饰>
+INC S$放入按钮 <Img|x=214.0|y=174.0|img=private/psllz/02130.png|esc=0>
+
+MOV S$佩饰点化介绍
+INC S$佩饰点化介绍 <Text|x=480.0|y=230.0|outlinecolor=0|color=224|outline=1|size=16|text=点击左边框中“＋”号放入佩饰，消耗\对应的化龙符即可点化佩饰的任何一\条未完美升华的属性，同时返还所有\已使用的升华次数。\详细说明可查看工匠手册!>
+INC S$佩饰点化介绍 <Text|x=473.0|y=80.0|outlinecolor=0|color=243|outline=1|size=18|text=【佩饰的点化】>
+INC S$佩饰点化介绍 <Text|x=480.0|y=110.0|outlinecolor=0|color=100|outline=1|size=16|text=如果你拥有化龙符，即可用化龙符点\化佩饰。点化佩饰可以将任意一条没\有完美升华的属性变为完美升华。点\化不消耗升华次数，可升华次数为0时\也能进行。>
+INC S$佩饰点化介绍 <Button|x=723.0|y=472.0|size=18|pimg=public/1904300009.png|mimg=public/1904300008.png|color=255|nimg=private/psllz/1904300007.png|link=@工匠手册>
+INC S$佩饰点化介绍 <Text|x=658.0|y=472.0|color=1020|size=18|text=工匠手册>
+
+GOTO @佩饰点化主界面
+
+
+[@点化佩饰数据获取]
+#IF
+#ACT
+;读佩饰表所在行获取佩饰名字等级
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_peishi.csv  <$STR(S$点化物品名称)>  1~24 1 0 N$佩饰所在行
+MOV S$放入佩饰名称 <$cfg_peishi(<$str(N$佩饰所在行)>_1)>
+MOV S$放入佩饰等级 佩饰等级：<$cfg_peishi(<$str(N$佩饰所在行)>_2)>
+GETBAGITEMCOUNT 化龙符 N$背包点化材料数
+INC S$放入按钮 <ItemShow|x=215.0|y=263.0|width=70|height=70|itemid=10443|itemcount=<$str(N$背包点化材料数)>|showtips=1|bgtype=0>
+
+;=======================================属性数据获取段落
+;根据位置获取自定义显示ID值
+#IF
+#ACT
+MOV N$取值位置 0
+MOV N$主属性ID 0
+MOV N$1号属性ID 0
+MOV N$2号属性ID 0
+MOV N$3号属性ID 0
+MOV N$4号属性ID 0
+MOV N$5号属性ID 0
+MOV N$主属性值_1 0
+MOV N$主属性值_2 0
+MOV N$1号值_1 0
+MOV N$1号值_2 0
+MOV N$2号值_1 0
+MOV N$2号值_2 0
+MOV N$3号值_1 0
+MOV N$3号值_2 0
+MOV N$4号值_1 0
+MOV N$4号值_2 0
+MOV N$5号值_1 0
+MOV N$5号值_2 0
+GETCUSTOMPROPERTYPOS -1  0  N$主属性ID  0
+GETCUSTOMPROPERTYPOS -1  0  N$1号属性ID  1
+GETCUSTOMPROPERTYPOS -1  0  N$额外属性ID  2
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$2号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$2号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$3号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$3号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$4号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$4号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+INC N$取值位置 2
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$5号属性ID  1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+INC N$取值位置 1
+GETCUSTOMPROPERTYPOS -1  <$STR(N$取值位置)>  N$5号属性ID  1
+
+;属性名字及状态取值段
+#IF
+LARGE N$主属性ID 0
+#ACT
+MOV S$主属性名 <$cfg_pssx3(<$str(N$主属性ID)>_1)>
+MOV S$主属性状态 <$cfg_pssx3(<$str(N$主属性ID)>_3)>
+MOV S$主属性颜色 <$cfg_pssx3(<$str(N$主属性ID)>_7)>
+
+#IF
+LARGE N$1号属性ID 0
+#ACT
+MOV S$1号副属性名 <$cfg_pssx3(<$str(N$1号属性ID)>_1)>
+MOV S$1号属性状态 <$cfg_pssx3(<$str(N$1号属性ID)>_3)>
+MOV S$1号属性颜色 <$cfg_pssx3(<$str(N$1号属性ID)>_7)>
+
+#IF
+LARGE N$2号属性ID 0
+#ACT
+MOV S$2号副属性名 <$cfg_pssx3(<$str(N$2号属性ID)>_1)>
+MOV S$2号属性状态 <$cfg_pssx3(<$str(N$2号属性ID)>_3)>
+MOV S$2号属性颜色 <$cfg_pssx3(<$str(N$2号属性ID)>_7)>
+
+#IF
+LARGE N$3号属性ID 0
+#ACT
+MOV S$3号副属性名 <$cfg_pssx3(<$str(N$3号属性ID)>_1)>
+MOV S$3号属性状态 <$cfg_pssx3(<$str(N$3号属性ID)>_3)>
+MOV S$3号属性颜色 <$cfg_pssx3(<$str(N$3号属性ID)>_7)>
+
+#IF
+LARGE N$4号属性ID 0
+#ACT
+MOV S$4号副属性名 <$cfg_pssx3(<$str(N$4号属性ID)>_1)>
+MOV S$4号属性状态 <$cfg_pssx3(<$str(N$4号属性ID)>_3)>
+MOV S$4号属性颜色 <$cfg_pssx3(<$str(N$4号属性ID)>_7)>
+
+#IF
+LARGE N$5号属性ID 0
+#ACT
+MOV S$5号副属性名 <$cfg_pssx3(<$str(N$5号属性ID)>_1)>
+MOV S$5号属性状态 <$cfg_pssx3(<$str(N$5号属性ID)>_3)>
+MOV S$5号属性颜色 <$cfg_pssx3(<$str(N$5号属性ID)>_7)>
+
+#IF
+LARGE N$额外属性ID 0
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$无用 N$额外属性值 0 2
+
+#IF
+LARGE N$额外属性值 99
+#ACT
+DIV N$额外属性值 <$STR(N$额外属性值)> 100
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+SMALL N$额外属性值 100
+#ACT
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+EQUAL N$额外属性ID 116
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$额外属性值 N$无用 0 2
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+#IF
+EQUAL N$额外属性ID 108
+#ACT
+MOV S$额外属性名 <$cfg_pssx3(<$str(N$额外属性ID)>_1)>
+MOV S$额外属性颜色 <$cfg_pssx3(<$str(N$额外属性ID)>_7)>
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$额外属性ID)>_5)>  N$额外属性值 N$无用 0 2
+MUL N$额外属性值 <$STR(N$额外属性值)> 10
+MOV S$额外属性值 <$STR(N$额外属性值)>
+
+;双属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$主属性ID)>_5)>  | N$主属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$主属性分割1)> N$主属性值_1 N$无用 0 0
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$主属性分割2)> N$主属性值_2 N$无用 0 0
+MOV S$主属性值 <$STR(N$主属性值_1)>-<$STR(N$主属性值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$1号属性ID)>_5)>  | N$1号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$1号属性分割1)> N$1号值_1 N$无用 0 1
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$1号属性分割2)> N$1号值_2 N$无用 0 1 
+MOV S$1号副属性值 <$STR(N$1号值_1)>-<$STR(N$1号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$2号属性ID)>_5)>  | N$2号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$2号属性分割1)> N$2号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$2号属性分割2)> N$2号值_2 N$无用 0 1 
+MOV S$2号副属性值 <$STR(N$2号值_1)>-<$STR(N$2号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$3号属性ID)>_5)>  | N$3号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$3号属性分割1)> N$3号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$3号属性分割2)> N$3号值_2 N$无用 0 1 
+MOV S$3号副属性值 <$STR(N$3号值_1)>-<$STR(N$3号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$4号属性ID)>_5)>  | N$4号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$4号属性分割1)> N$4号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$4号属性分割2)> N$4号值_2 N$无用 0 1 
+MOV S$4号副属性值 <$STR(N$4号值_1)>-<$STR(N$4号值_2)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 1
+#ACT
+GETVALIDSTRSUPER <$cfg_pssx3(<$str(N$5号属性ID)>_5)>  | N$5号属性分割
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$5号属性分割1)> N$5号值_1 N$无用 0 1 
+GETHUMCUSTOMITEMVALUE -1 <$STR(N$5号属性分割2)> N$5号值_2 N$无用 0 1 
+MOV S$5号副属性值 <$STR(N$5号值_1)>-<$STR(N$5号值_2)>
+
+;单属性取值段
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$主属性ID)>_5)> N$主属性值_1 N$无用 0 0
+MOV S$主属性值 <$STR(N$主属性值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$1号属性ID)>_5)> N$1号值_1 N$无用 0 1
+MOV S$1号副属性值 <$STR(N$1号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$2号属性ID)>_5)> N$2号值_1 N$无用 0 1
+MOV S$2号副属性值 <$STR(N$2号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$3号属性ID)>_5)> N$3号值_1 N$无用 0 1
+MOV S$3号副属性值 <$STR(N$3号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$4号属性ID)>_5)> N$4号值_1 N$无用 0 1
+MOV S$4号副属性值 <$STR(N$4号值_1)>
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 0
+#ACT
+GETHUMCUSTOMITEMVALUE -1 <$cfg_pssx3(<$str(N$5号属性ID)>_5)> N$5号值_1 N$无用 0 1
+MOV S$5号副属性值 <$STR(N$5号值_1)>
+
+;=======================================主副属性显示段落
+#IF
+#ACT
+MOV S$佩饰点化介绍
+INC S$佩饰点化介绍 <Text|x=565.0|y=85.0|color=125|size=18|outlinecolor=0|outline=1|text=<$STR(S$放入佩饰名称)>>
+INC S$佩饰点化介绍 <Text|x=565.0|y=115.0|color=125|size=18|outlinecolor=0|outline=1|text=<$STR(S$放入佩饰等级)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=155.0|width=280|rotate=0|esc=0|img=private/psllz/02143.png>
+
+;=======================================复选框显示段落
+INC S$佩饰点化介绍 <CheckBox|x=472.0|y=182.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$STR(N$主属性勾选)>|link=@主属性点化>
+INC S$佩饰点化介绍 <CheckBox|x=472.0|y=247.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=2|default=<$STR(N$副属性1勾选)>|link=@副属性1点化>
+INC S$佩饰点化介绍 <CheckBox|x=472.0|y=277.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=3|default=<$STR(N$副属性2勾选)>|link=@副属性2点化>
+INC S$佩饰点化介绍 <CheckBox|x=472.0|y=307.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=4|default=<$STR(N$副属性3勾选)>|link=@副属性3点化>
+INC S$佩饰点化介绍 <CheckBox|x=472.0|y=337.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=5|default=<$STR(N$副属性4勾选)>|link=@副属性4点化>
+INC S$佩饰点化介绍 <CheckBox|x=472.0|y=367.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=6|default=<$STR(N$副属性5勾选)>|link=@副属性5点化>
+
+INC S$佩饰点化介绍 <Text|x=580.0|y=160.0|color=243|size=18|outlinecolor=0|outline=1|text=主属性>
+INC S$佩饰点化介绍 <RText|x=505.0|y=185.0|color=<$STR(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$主属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=185.0|color=<$STR(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$主属性ID)>_6)><$STR(S$主属性值)>>
+INC S$佩饰点化介绍 <RText|x=675.0|y=185.0|color=<$str(S$主属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$主属性状态)>>
+
+INC S$佩饰点化介绍 <Img|x=468.0|y=210.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <Text|x=580.0|y=220.0|color=243|size=18|outlinecolor=0|outline=1|text=副属性>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 1
+#ACT
+INC S$佩饰点化介绍 <RText|children={100}|x=505.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 2
+#ACT
+INC S$佩饰点化介绍 <RText|children={100}|x=505.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+
+INC S$佩饰点化介绍 <RText|children={200}|x=505.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 3
+#ACT
+INC S$佩饰点化介绍 <RText|children={100}|x=505.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+INC S$佩饰点化介绍 <RText|children={200}|x=505.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+INC S$佩饰点化介绍 <RText|children={300}|x=505.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$3号属性ID)>_6)><$STR(S$3号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=335.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号属性状态)>>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_3)> 5
+#ACT
+INC S$佩饰点化介绍 <RText|children={100}|x=505.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$1号属性ID)>_6)><$STR(S$1号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=275.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=250.0|color=<$str(S$1号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$1号属性状态)>>
+
+
+INC S$佩饰点化介绍 <RText|children={200}|x=505.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$2号属性ID)>_6)><$STR(S$2号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=305.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=280.0|color=<$str(S$2号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$2号属性状态)>>
+
+INC S$佩饰点化介绍 <RText|children={300}|x=505.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$3号属性ID)>_6)><$STR(S$3号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=335.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=310.0|color=<$str(S$3号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$3号属性状态)>>
+
+INC S$佩饰点化介绍 <RText|children={400}|x=505.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$4号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$4号属性ID)>_6)><$STR(S$4号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=365.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=340.0|color=<$str(S$4号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$4号属性状态)>>
+
+INC S$佩饰点化介绍 <RText|children={500}|x=505.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$5号副属性名)>：>
+INC S$佩饰点化介绍 <RText|x=595.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$cfg_pssx3(<$str(N$5号属性ID)>_6)><$STR(S$5号副属性值)>>
+INC S$佩饰点化介绍 <Img|x=468.0|y=395.0|width=280|img=private/psllz/02143.png>
+INC S$佩饰点化介绍 <RText|x=675.0|y=370.0|color=<$str(S$5号属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$5号属性状态)>>
+
+
+;=======================================额外属性显示段落
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 1
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+INC S$佩饰点化介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰点化介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 2
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+INC S$佩饰点化介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰点化介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 3
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+INC S$佩饰点化介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰点化介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 4
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+INC S$佩饰点化介绍 <Text|x=570.0|y=400.0|color=243|size=18|outlinecolor=0|outline=1|text=额外属性>
+INC S$佩饰点化介绍 <Img|children={6000}|x=468.0|y=450.0|width=280|img=private/psllz/02143.png>
+
+#IF
+EQUAL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 108
+#ACT
+INC S$佩饰点化介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+INC S$佩饰点化介绍 <Text|x=580.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=：<$cfg_pssx3(<$str(N$额外属性ID)>_6)><$STR(S$额外属性值)><$cfg_pssx3(<$str(N$额外属性ID)>_4)>>
+INC S$佩饰点化介绍 <Button|x=560.0|y=455.0|color=251|size=18|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=清洗|link=@佩饰属性清洗>
+
+#IF
+SMALL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 119
+NOT EQUAL  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 108
+#ACT
+INC S$佩饰点化介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+INC S$佩饰点化介绍 <Text|x=580.0|y=425.0|color=<$str(S$额外属性颜色)>|size=18|outlinecolor=0|outline=1|text=：<$cfg_pssx3(<$str(N$额外属性ID)>_6)><$STR(S$额外属性值)><$cfg_pssx3(<$str(N$额外属性ID)>_4)>>
+
+#IF
+LARGE  <$cfg_pssx3(<$str(N$额外属性ID)>_0)> 118
+#ACT
+INC S$佩饰点化介绍 <Text|x=480.0|y=425.0|color=<$str(S$额外属性颜色)>|size=16|outlinecolor=0|outline=1|text=<$STR(S$额外属性名)>>
+
+#IF
+#ACT
+INC S$佩饰点化介绍 <Button|x=560.0|y=455.0|color=251|size=18|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=点化|link=@佩饰属性点化>
+GOTO @佩饰点化主界面
+
+[@主属性点化]
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 4
+#ACT
+MOV N$主属性勾选 0
+SENDMSG 9 该条属性已完美升华，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+#ACT
+MOV N$主属性勾选 0
+SENDMSG 9 该条属性暂未升华过，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$主属性勾选 0
+#ACT
+MOV N$主属性勾选 1
+MOV N$副属性1勾选 0
+MOV N$副属性2勾选 0
+MOV N$副属性3勾选 0
+MOV N$副属性4勾选 0
+MOV N$副属性5勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$主属性勾选 1
+#ACT
+MOV N$主属性勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+[@副属性1点化]
+#IF
+not large <$cfg_pssx3(<$str(N$1号属性ID)>_8)>  0
+#ACT
+MOV N$副属性1勾选 0
+SENDMSG 9 暂无属性！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 4
+#ACT
+MOV N$副属性1勾选 0
+SENDMSG 9 该条属性已完美升华，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 0
+#ACT
+MOV N$副属性1勾选 0
+SENDMSG 9 该条属性暂未激活，无法直接点化！
+GOTO @点化佩饰数据获取
+BREAK
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+#ACT
+MOV N$副属性1勾选 0
+SENDMSG 9 该条属性暂未升华过，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性1勾选 0
+#ACT
+MOV N$副属性1勾选 1
+MOV N$主属性勾选 0
+MOV N$副属性2勾选 0
+MOV N$副属性3勾选 0
+MOV N$副属性4勾选 0
+MOV N$副属性5勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性1勾选 1
+#ACT
+MOV N$副属性1勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+
+[@副属性2点化]
+#IF
+not large <$cfg_pssx3(<$str(N$2号属性ID)>_8)>  0
+#ACT
+MOV N$副属性2勾选 0
+SENDMSG 9 暂无属性！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 0
+#ACT
+MOV N$副属性2勾选 0
+SENDMSG 9 该条属性暂未激活，无法直接点化！
+GOTO @点化佩饰数据获取
+BREAK
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+#ACT
+MOV N$副属性2勾选 0
+SENDMSG 9 该条属性暂未升华过，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 4
+#ACT
+MOV N$副属性2勾选 0
+SENDMSG 9 该条属性已完美升华，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性2勾选 0
+#ACT
+MOV N$副属性2勾选 1
+MOV N$主属性勾选 0
+MOV N$副属性1勾选 0
+MOV N$副属性3勾选 0
+MOV N$副属性4勾选 0
+MOV N$副属性5勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性2勾选 1
+#ACT
+MOV N$副属性2勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+[@副属性3点化]
+#IF
+not large <$cfg_pssx3(<$str(N$3号属性ID)>_8)>  0
+#ACT
+MOV N$副属性3勾选 0
+SENDMSG 9 暂无属性！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 0
+#ACT
+MOV N$副属性3勾选 0
+SENDMSG 9 该条属性暂未激活，无法直接点化！
+GOTO @点化佩饰数据获取
+BREAK
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+#ACT
+MOV N$副属性3勾选 0
+SENDMSG 9 该条属性暂未升华过，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 4
+#ACT
+MOV N$副属性3勾选 0
+SENDMSG 9 该条属性已完美升华，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性3勾选 0
+#ACT
+MOV N$副属性3勾选 1
+MOV N$主属性勾选 0
+MOV N$副属性1勾选 0
+MOV N$副属性2勾选 0
+MOV N$副属性4勾选 0
+MOV N$副属性5勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性3勾选 1
+#ACT
+MOV N$副属性3勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+[@副属性4点化]
+#IF
+not large <$cfg_pssx3(<$str(N$4号属性ID)>_8)>  0
+#ACT
+MOV N$副属性4勾选 0
+SENDMSG 9 暂无属性！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 0
+#ACT
+MOV N$副属性4勾选 0
+SENDMSG 9 该条属性暂未激活，无法直接点化！
+GOTO @点化佩饰数据获取
+BREAK
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 1
+#ACT
+MOV N$副属性4勾选 0
+SENDMSG 9 该条属性暂未升华过，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 4
+#ACT
+MOV N$副属性4勾选 0
+SENDMSG 9 该条属性已完美升华，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性4勾选 0
+#ACT
+MOV N$副属性4勾选 1
+MOV N$主属性勾选 0
+MOV N$副属性1勾选 0
+MOV N$副属性2勾选 0
+MOV N$副属性3勾选 0
+MOV N$副属性5勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性4勾选 1
+#ACT
+MOV N$副属性4勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+[@副属性5点化]
+#IF
+not large <$cfg_pssx3(<$str(N$5号属性ID)>_8)>  0
+#ACT
+MOV N$副属性5勾选 0
+SENDMSG 9 暂无属性！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 0
+#ACT
+MOV N$副属性5勾选 0
+SENDMSG 9 该条属性暂未激活，无法直接点化！
+GOTO @点化佩饰数据获取
+BREAK
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 1
+#ACT
+MOV N$副属性5勾选 0
+SENDMSG 9 该条属性暂未升华过，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 4
+#ACT
+MOV N$副属性5勾选 0
+SENDMSG 9 该条属性已完美升华，无法点化！
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性5勾选 0
+#ACT
+MOV N$副属性5勾选 1
+MOV N$主属性勾选 0
+MOV N$副属性1勾选 0
+MOV N$副属性2勾选 0
+MOV N$副属性3勾选 0
+MOV N$副属性4勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL N$副属性5勾选 1
+#ACT
+MOV N$副属性5勾选 0
+GOTO @点化佩饰数据获取
+BREAK
+
+[@佩饰属性点化]
+#IF
+NOT CHECKITEM 化龙符 1
+#ACT
+SENDMSG 9 化龙符不足1张
+BREAK
+
+#IF
+EQUAL N$主属性勾选 0
+EQUAL N$副属性1勾选 0
+EQUAL N$副属性2勾选 0
+EQUAL N$副属性3勾选 0
+EQUAL N$副属性4勾选 0
+EQUAL N$副属性5勾选 0
+#ACT
+SENDMSG 9 请勾选你要点化的属性条目
+BREAK
+
+#IF
+EQUAL N$主属性勾选 1
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 4
+#ACT
+SENDMSG 9 该条属性已完美升华，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性1勾选 1
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 4
+#ACT
+SENDMSG 9 该条属性已完美升华，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性2勾选 1
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 4
+#ACT
+SENDMSG 9 该条属性已完美升华，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性3勾选 1
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 4
+#ACT
+SENDMSG 9 该条属性已完美升华，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性4勾选 1
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 4
+#ACT
+SENDMSG 9 该条属性已完美升华，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性5勾选 1
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 4
+#ACT
+SENDMSG 9 该条属性已完美升华，无法点化！
+BREAK
+
+#IF
+EQUAL N$主属性勾选 1
+SMALL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+#ACT
+SENDMSG 9 该条属性暂未升华过，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性1勾选 1
+SMALL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+SENDMSG 9 该条属性暂未升华过，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性2勾选 1
+SMALL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+SENDMSG 9 该条属性暂未升华过，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性3勾选 1
+SMALL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+SENDMSG 9 该条属性暂未升华过，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性4勾选 1
+SMALL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+#ACT
+SENDMSG 9 该条属性暂未升华过，无法点化！
+BREAK
+
+#IF
+EQUAL N$副属性5勾选 1
+SMALL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+SENDMSG 9 该条属性暂未升华过，无法点化！
+BREAK
+
+
+#IF
+CHECKITEM 化龙符 1
+EQUAL N$主属性勾选 1
+#ACT
+TAKE 化龙符 1
+GOTO @主属性点化执行
+GOTO @点化额外属性获取
+BREAK
+
+#IF
+CHECKITEM 化龙符 1
+EQUAL N$副属性1勾选 1
+#ACT
+TAKE 化龙符 1
+GOTO @副属性1点化执行
+GOTO @点化额外属性获取
+BREAK
+
+#IF
+CHECKITEM 化龙符 1
+EQUAL N$副属性2勾选 1
+#ACT
+TAKE 化龙符 1
+GOTO @副属性2点化执行
+GOTO @点化额外属性获取
+BREAK
+
+#IF
+CHECKITEM 化龙符 1
+EQUAL N$副属性3勾选 1
+#ACT
+TAKE 化龙符 1
+GOTO @副属性3点化执行
+GOTO @点化额外属性获取
+BREAK
+
+#IF
+CHECKITEM 化龙符 1
+EQUAL N$副属性4勾选 1
+#ACT
+TAKE 化龙符 1
+GOTO @副属性4点化执行
+GOTO @点化额外属性获取
+BREAK
+
+#IF
+CHECKITEM 化龙符 1
+EQUAL N$副属性5勾选 1
+#ACT
+TAKE 化龙符 1
+GOTO @副属性5点化执行
+GOTO @点化额外属性获取
+BREAK
+
+
+
+[@主属性点化执行]
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 1
+#ACT
+MOV N$点化新主属性 <$STR(N$主属性ID)>
+INC N$点化新主属性 60
+MUL N$主属性值_1 3
+MUL N$主属性值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+#ACT
+MOV N$点化新主属性 <$STR(N$主属性ID)>
+INC N$点化新主属性 40
+MUL N$主属性值_1 3
+MUL N$主属性值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_8)> 3
+#ACT
+MOV N$点化新主属性 <$STR(N$主属性ID)>
+INC N$点化新主属性 20
+DIV N$主属性值_1 2
+DIV N$主属性值_2 2
+MUL N$主属性值_1 3
+MUL N$主属性值_2 3
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 0
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$主属性值_1)> 0
+CHANGECUSTOMITEMVALUE -1 1 = <$STR(N$主属性值_2)> 0
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$主属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 0
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$主属性值_1)> 0
+break
+
+
+[@副属性1点化执行]
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 1
+#ACT
+MOV N$点化新主属性 <$STR(N$1号属性ID)>
+INC N$点化新主属性 60
+MUL N$1号值_1 3
+MUL N$1号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+MOV N$点化新主属性 <$STR(N$1号属性ID)>
+INC N$点化新主属性 40
+MUL N$1号值_1 3
+MUL N$1号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 3
+#ACT
+MOV N$点化新主属性 <$STR(N$1号属性ID)>
+INC N$点化新主属性 20
+DIV N$1号值_1 2
+DIV N$1号值_2 2
+MUL N$1号值_1 3
+MUL N$1号值_2 3
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$1号值_1)> 1
+CHANGECUSTOMITEMVALUE -1 1 = <$STR(N$1号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 0 = <$STR(N$1号值_1)> 1
+break
+
+
+[@副属性2点化执行]
+#IF
+#ACT
+MOV N$点化新属性位置 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 1
+#ACT
+MOV N$点化新主属性 <$STR(N$2号属性ID)>
+INC N$点化新主属性 60
+MUL N$2号值_1 3
+MUL N$2号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+MOV N$点化新主属性 <$STR(N$2号属性ID)>
+INC N$点化新主属性 40
+MUL N$2号值_1 3
+MUL N$2号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 3
+#ACT
+MOV N$点化新主属性 <$STR(N$2号属性ID)>
+INC N$点化新主属性 20
+DIV N$2号值_1 2
+DIV N$2号值_2 2
+MUL N$2号值_1 3
+MUL N$2号值_2 3
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$点化新属性位置)> 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$2号值_1)> 1
+INC N$点化新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$2号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$点化新属性位置)> 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$2号值_1)> 1
+break
+
+
+[@副属性3点化执行]
+#IF
+#ACT
+MOV N$点化新属性位置 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 1
+#ACT
+MOV N$点化新主属性 <$STR(N$3号属性ID)>
+INC N$点化新主属性 60
+MUL N$3号值_1 3
+MUL N$3号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+MOV N$点化新主属性 <$STR(N$3号属性ID)>
+INC N$点化新主属性 40
+MUL N$3号值_1 3
+MUL N$3号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 3
+#ACT
+MOV N$点化新主属性 <$STR(N$3号属性ID)>
+INC N$点化新主属性 20
+DIV N$3号值_1 2
+DIV N$3号值_2 2
+MUL N$3号值_1 3
+MUL N$3号值_2 3
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$点化新属性位置)> 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$3号值_1)> 1
+INC N$点化新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$3号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$点化新属性位置)> 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$3号值_1)> 1
+break
+
+
+[@副属性4点化执行]
+#IF
+#ACT
+MOV N$点化新属性位置 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 1
+#ACT
+MOV N$点化新主属性 <$STR(N$4号属性ID)>
+INC N$点化新主属性 60
+MUL N$4号值_1 3
+MUL N$4号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+#ACT
+MOV N$点化新主属性 <$STR(N$4号属性ID)>
+INC N$点化新主属性 40
+MUL N$4号值_1 3
+MUL N$4号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 3
+#ACT
+MOV N$点化新主属性 <$STR(N$4号属性ID)>
+INC N$点化新主属性 20
+DIV N$4号值_1 2
+DIV N$4号值_2 2
+MUL N$4号值_1 3
+MUL N$4号值_2 3
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$点化新属性位置)> 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$4号值_1)> 1
+INC N$点化新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$4号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$点化新属性位置)> 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$4号值_1)> 1
+break
+
+[@副属性5点化执行]
+#IF
+#ACT
+MOV N$点化新属性位置 0
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$1号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$2号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$3号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)>  1
+#ACT
+INC N$点化新属性位置 2
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$4号属性ID)>_2)>  0
+#ACT
+INC N$点化新属性位置 1
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 1
+#ACT
+MOV N$点化新主属性 <$STR(N$5号属性ID)>
+INC N$点化新主属性 60
+MUL N$5号值_1 3
+MUL N$5号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+MOV N$点化新主属性 <$STR(N$5号属性ID)>
+INC N$点化新主属性 40
+MUL N$5号值_1 3
+MUL N$5号值_2 3
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 3
+#ACT
+MOV N$点化新主属性 <$STR(N$5号属性ID)>
+INC N$点化新主属性 20
+DIV N$5号值_1 2
+DIV N$5号值_2 2
+MUL N$5号值_1 3
+MUL N$5号值_2 3
+
+#if
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 1
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$点化新属性位置)> 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$5号值_1)> 1
+INC N$点化新属性位置 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$5号值_2)> 1
+break
+
+#IF
+EQUAL <$cfg_pssx3(<$str(N$5号属性ID)>_2)> 0
+#ACT
+CHANGECUSTOMITEMABIL  -1 <$STR(N$点化新属性位置)> 2 <$cfg_pssx3(<$str(N$点化新主属性)>_0)> 1
+CHANGECUSTOMITEMVALUE -1 <$STR(N$点化新属性位置)> = <$STR(N$5号值_1)> 1
+break
+
+
+[@点化额外属性获取]
+#IF
+#ACT
+GETCUSTOMPROPERTYPOS -1  0  N$额外属性ID  2
+
+#IF
+LARGE N$额外属性ID 0
+#ACT
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+#ACT
+GOTO @点化佩饰数据获取
+MOV S$取出点化额外属性
+MOV N$点化额外属性行 0
+
+#IF
+CHECKJOB Warrior
+#ACT
+MOV N$点化对应权重表 36
+
+#IF
+CHECKJOB Wizard
+#ACT
+MOV N$点化对应权重表 37
+
+#IF
+CHECKJOB Taoist
+#ACT
+MOV N$点化对应权重表 38
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 1
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+#ACT
+RANSJSTR <$cfg_peishi(<$str(N$佩饰所在行)>_<$STR(N$点化对应权重表)>)> 1 3 S$取出点化额外属性 S$剩余额外属性
+;根据取出属性查找额外属性表
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_pssx2.csv  <$STR(S$取出点化额外属性)>  1~23 1 0 N$点化额外属性行
+CHANGECUSTOMITEMTEXT -1 [额外属性]:  2
+CHANGECUSTOMITEMTEXTCOLOR -1 146 2
+CHANGECUSTOMITEMABIL  -1 0 1 <$cfg_pssx2(<$str(N$点化额外属性行)>_4)> 2
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx2(<$str(N$点化额外属性行)>_5)> 2
+CHANGECUSTOMITEMABIL  -1 0 3 <$cfg_pssx2(<$str(N$点化额外属性行)>_10)> 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_pssx2(<$str(N$点化额外属性行)>_6)> 2
+MOV S$点化特效 <Effect|id=6000|x=0.0|y=-35|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 2
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+#ACT
+RANSJSTR <$cfg_peishi(<$str(N$佩饰所在行)>_<$STR(N$点化对应权重表)>)> 1 3 S$取出点化额外属性 S$剩余额外属性
+;根据取出属性查找额外属性表
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_pssx2.csv  <$STR(S$取出点化额外属性)>  1~23 1 0 N$点化额外属性行
+CHANGECUSTOMITEMTEXT -1 [额外属性]:  2
+CHANGECUSTOMITEMTEXTCOLOR -1 146 2
+CHANGECUSTOMITEMABIL  -1 0 1 <$cfg_pssx2(<$str(N$点化额外属性行)>_4)> 2
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx2(<$str(N$点化额外属性行)>_5)> 2
+CHANGECUSTOMITEMABIL  -1 0 3 <$cfg_pssx2(<$str(N$点化额外属性行)>_10)> 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_pssx2(<$str(N$点化额外属性行)>_7)> 2
+MOV S$点化特效 <Effect|id=6000|x=0.0|y=-35|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 3
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+#ACT
+RANSJSTR <$cfg_peishi(<$str(N$佩饰所在行)>_<$STR(N$点化对应权重表)>)> 1 3 S$取出点化额外属性 S$剩余额外属性
+;根据取出属性查找额外属性表
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_pssx2.csv  <$STR(S$取出点化额外属性)>  1~23 1 0 N$点化额外属性行
+CHANGECUSTOMITEMTEXT -1 [额外属性]:  2
+CHANGECUSTOMITEMTEXTCOLOR -1 146 2
+CHANGECUSTOMITEMABIL  -1 0 1 <$cfg_pssx2(<$str(N$点化额外属性行)>_4)> 2
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx2(<$str(N$点化额外属性行)>_5)> 2
+CHANGECUSTOMITEMABIL  -1 0 3 <$cfg_pssx2(<$str(N$点化额外属性行)>_10)> 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_pssx2(<$str(N$点化额外属性行)>_8)> 2
+MOV S$点化特效 <Effect|id=6000|x=0.0|y=-35|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @点化佩饰数据获取
+BREAK
+
+#IF
+EQUAL <$cfg_peishi(<$str(N$佩饰所在行)>_2)> 4
+LARGE <$cfg_pssx3(<$str(N$主属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$1号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$2号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$3号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$4号属性ID)>_8)> 2
+LARGE <$cfg_pssx3(<$str(N$5号属性ID)>_8)> 2
+#ACT
+RANSJSTR <$cfg_peishi(<$str(N$佩饰所在行)>_<$STR(N$点化对应权重表)>)> 1 3 S$取出点化额外属性 S$剩余额外属性
+;根据取出属性查找额外属性表
+GetGJCSV ..\QuestDiary\功能脚本\加载数据\cfg_pssx2.csv  <$STR(S$取出点化额外属性)>  1~23 1 0 N$点化额外属性行
+CHANGECUSTOMITEMTEXT -1 [额外属性]:  2
+CHANGECUSTOMITEMTEXTCOLOR -1 146 2
+CHANGECUSTOMITEMABIL  -1 0 1 <$cfg_pssx2(<$str(N$点化额外属性行)>_4)> 2
+CHANGECUSTOMITEMABIL  -1 0 2 <$cfg_pssx2(<$str(N$点化额外属性行)>_5)> 2
+CHANGECUSTOMITEMABIL  -1 0 3 <$cfg_pssx2(<$str(N$点化额外属性行)>_10)> 2
+CHANGECUSTOMITEMABIL  -1 0 4 0 2
+CHANGECUSTOMITEMVALUE -1 0 = <$cfg_pssx2(<$str(N$点化额外属性行)>_9)> 2
+MOV S$点化特效 <Effect|id=6000|x=0.0|y=-35|count=1|act=0|dir=5|speed=1|effectid=30003|effecttype=0|scale=0.9>
+GOTO @点化佩饰数据获取
+BREAK

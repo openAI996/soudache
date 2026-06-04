@@ -1,0 +1,2250 @@
+[@三职六派]
+{
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+MOV S$图标大小 1
+#ELSEACT
+MOV S$图标大小 0.75
+
+#IF
+#ACT
+MOV S$学习按钮 <Button|x=335.0|y=475.0|width=95|height=32|rotate=0|nimg=private/mp/1910000001.png|pimg=private/mp/1910000002.png|color=11009|size=18|text=精修|link=@技能学习>
+MOV S$技能选择锁定 
+MOV S$技能标示 
+MOV N$战神_技能1灰化 0
+MOV N$战神_技能2灰化 0
+MOV N$战神_技能3灰化 0
+MOV N$战神_技能4灰化 0
+MOV N$战神_技能5灰化 0
+MOV N$战神_技能6灰化 0
+MOV N$武圣_技能1灰化 0
+MOV N$武圣_技能2灰化 0
+MOV N$武圣_技能3灰化 0
+MOV N$武圣_技能4灰化 0
+MOV N$武圣_技能5灰化 0
+MOV N$武圣_技能6灰化 0
+MOV N$狂魔_技能1灰化 0
+MOV N$狂魔_技能2灰化 0
+MOV N$狂魔_技能3灰化 0
+MOV N$狂魔_技能4灰化 0
+MOV N$狂魔_技能5灰化 0
+MOV N$狂魔_技能6灰化 0
+MOV N$雷神_技能1灰化 0
+MOV N$雷神_技能2灰化 0
+MOV N$雷神_技能3灰化 0
+MOV N$雷神_技能4灰化 0
+MOV N$雷神_技能5灰化 0
+MOV N$雷神_技能6灰化 0
+MOV N$炎帝_技能1灰化 0
+MOV N$炎帝_技能2灰化 0
+MOV N$炎帝_技能3灰化 0
+MOV N$炎帝_技能4灰化 0
+MOV N$炎帝_技能5灰化 0
+MOV N$炎帝_技能6灰化 0
+MOV N$冰皇_技能1灰化 0
+MOV N$冰皇_技能2灰化 0
+MOV N$冰皇_技能3灰化 0
+MOV N$冰皇_技能4灰化 0
+MOV N$冰皇_技能5灰化 0
+MOV N$冰皇_技能6灰化 0
+MOV N$道尊_技能1灰化 0
+MOV N$道尊_技能2灰化 0
+MOV N$道尊_技能3灰化 0
+MOV N$道尊_技能4灰化 0
+MOV N$道尊_技能5灰化 0
+MOV N$道尊_技能6灰化 0
+MOV N$医圣_技能1灰化 0
+MOV N$医圣_技能2灰化 0
+MOV N$医圣_技能3灰化 0
+MOV N$医圣_技能4灰化 0
+MOV N$医圣_技能5灰化 0
+MOV N$医圣_技能6灰化 0
+MOV N$医圣_技能7灰化 0
+MOV N$兽神_技能1灰化 0
+MOV N$兽神_技能2灰化 0
+MOV N$兽神_技能3灰化 0
+MOV N$兽神_技能4灰化 0
+MOV N$兽神_技能5灰化 0
+MOV N$兽神_技能6灰化 0
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 0
+#ACT
+MOV S$流派 战将
+MOV S$按钮1 11009
+MOV S$按钮2 11024
+MOV S$按钮3 11024
+MOV S$按钮1图1 002
+MOV S$按钮2图2 001
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 0
+#ACT
+MOV S$流派 魔神
+MOV S$按钮1 11009
+MOV S$按钮2 11024
+MOV S$按钮3 11024
+MOV S$按钮1图1 002
+MOV S$按钮2图2 001
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 0
+#ACT
+MOV S$流派 天尊
+MOV S$按钮1 11009
+MOV S$按钮2 11024
+MOV S$按钮3 11024
+MOV S$按钮1图1 002
+MOV S$按钮2图2 001
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+
+#IF
+EQUAL U50 1
+#ACT
+MOV S$流派 战将
+MOV S$按钮1 11009
+MOV S$按钮2 11024
+MOV S$按钮3 11024
+MOV S$按钮1图1 002
+MOV S$按钮2图2 001
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+#IF
+EQUAL U50 2
+#ACT
+MOV S$流派 武宗
+MOV S$按钮1 11024
+MOV S$按钮2 11009
+MOV S$按钮3 11024
+MOV S$按钮1图1 001
+MOV S$按钮2图2 002
+MOV S$按钮2图1 002
+MOV S$按钮2图2 001
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+#IF
+EQUAL U50 3
+#ACT
+MOV S$流派 暴君
+MOV S$按钮1 11024
+MOV S$按钮2 11024
+MOV S$按钮3 11009
+MOV S$按钮1图1 001
+MOV S$按钮2图2 002
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 002
+MOV S$按钮3图2 001
+#IF
+EQUAL U50 4
+#ACT
+MOV S$流派 魔神
+MOV S$按钮1 11009
+MOV S$按钮2 11024
+MOV S$按钮3 11024
+MOV S$按钮1图1 002
+MOV S$按钮2图2 001
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+
+#IF
+EQUAL U50 5
+#ACT
+MOV S$流派 赤焰
+MOV S$按钮1 11024
+MOV S$按钮2 11009
+MOV S$按钮3 11024
+MOV S$按钮1图1 001
+MOV S$按钮2图2 002
+MOV S$按钮2图1 002
+MOV S$按钮2图2 001
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+#IF
+EQUAL U50 6
+#ACT
+MOV S$流派 冰雪
+MOV S$按钮1 11024
+MOV S$按钮2 11024
+MOV S$按钮3 11009
+MOV S$按钮1图1 001
+MOV S$按钮2图2 002
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 002
+MOV S$按钮3图2 001
+#IF
+EQUAL U50 7
+#ACT
+MOV S$流派 天尊
+MOV S$按钮1 11009
+MOV S$按钮2 11024
+MOV S$按钮3 11024
+MOV S$按钮1图1 002
+MOV S$按钮2图2 001
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+#IF
+EQUAL U50 8
+#ACT
+MOV S$流派 道玄
+MOV S$按钮1 11024
+MOV S$按钮2 11009
+MOV S$按钮3 11024
+MOV S$按钮1图1 001
+MOV S$按钮2图2 002
+MOV S$按钮2图1 002
+MOV S$按钮2图2 001
+MOV S$按钮3图1 001
+MOV S$按钮3图2 002
+#IF
+EQUAL U50 9
+#ACT
+MOV S$流派 御灵
+MOV S$按钮1 11024
+MOV S$按钮2 11024
+MOV S$按钮3 11009
+MOV S$按钮1图1 001
+MOV S$按钮2图2 002
+MOV S$按钮2图1 001
+MOV S$按钮2图2 002
+MOV S$按钮3图1 002
+MOV S$按钮3图2 001
+
+#IF
+#ACT
+GOTO @职业数据面板
+GOTO @技能学习主界面
+
+[@职业数据面板]
+#if
+#act
+MOV S$数据提示
+MOV S$技能选择锁定 
+MOV S$学习按钮 <Button|x=338.0|y=475.0|width=95|height=32|rotate=0|nimg=private/mp/1910000001.png|pimg=private/mp/1910000002.png|color=11009|size=18|text=精修|link=@技能学习>
+
+#IF
+EQUAL S$流派 战将
+CHECKJOB Warrior
+EQUAL U50 0
+#ACT
+MOV S$职业提示
+INC S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=战士职业可选择：战将、武宗、暴君其中一种进行技能精修。>
+INC S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修战将特点：以烈火剑法为核心技能，可瞬间爆发出恐怖的伤害！>
+INC S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=419.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=427.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=战将·基本剑术>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=战将·刺杀剑术>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=战将·野蛮冲撞>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=战将·斩月烈火>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=战将·龙啸功>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=战将·开天斩>
+
+
+#IF
+EQUAL S$流派 战将
+CHECKJOB Warrior
+EQUAL U50 1
+#ACT
+MOV S$职业提示 
+INC S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=你已选择战将作为核心，进行技能精修。>
+INC S$职业提示 <RText|x=45.0|y=541.0|color=11009|size=16|text=精修战将特点：以烈火剑法为核心技能，可瞬间爆发出恐怖的伤害！>
+INC S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=419.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=427.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=战将·基本剑术>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=战将·刺杀剑术>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=战将·野蛮冲撞>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=战将·斩月烈火>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=战将·龙啸功>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=战将·开天斩>
+
+
+
+#IF
+EQUAL S$流派 武宗
+CHECKJOB Warrior
+EQUAL U50 0
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=战士职业可选择：战将、武宗、暴君其中一种进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修武宗特点：身躯无比坚韧的战士，精通寒冰剑气，擅长控制。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=419.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=武宗·基本剑术>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=武宗·回血精通>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=武宗·寒冰真气>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=武宗·防御精通>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=武宗·狮子吼>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=武宗·开天斩>
+
+#IF
+EQUAL S$流派 武宗
+CHECKJOB Warrior
+EQUAL U50 2
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=你已选择武宗作为核心，进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修武宗特点：身躯无比坚韧的战士，精通寒冰剑气，擅长控制。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=419.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=427.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=武宗·基本剑术>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=武宗·回血精通>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=武宗·寒冰真气>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=武宗·防御精通>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=武宗·狮子吼>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=武宗·开天斩>
+
+#IF
+EQUAL S$流派 暴君
+CHECKJOB Warrior
+EQUAL U50 0
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=战士职业可选择：战将、武宗、暴君其中一种进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修暴君特点：追求速度、嗜血如命的流派，攻击可附带流血效果。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+MOV S$数据提示 
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=419.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=427.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=暴君·嗜血精通>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=暴君·攻速精通>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=暴君·刺杀强化>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=暴君·刺杀剑术>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=暴君·狂暴>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=暴君·十步一杀>
+
+#IF
+EQUAL S$流派 暴君
+CHECKJOB Warrior
+EQUAL U50 3
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=你已选择暴君作为核心，进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修暴君特点：追求速度、嗜血如命的流派，攻击可附带流血效果。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+MOV S$数据提示 
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=419.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=427.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=暴君·嗜血精通>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=暴君·攻速精通>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=暴君·刺杀强化>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=暴君·刺杀剑术>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=暴君·狂暴>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=暴君·十步一杀>
+
+
+#IF
+EQUAL S$流派 魔神
+CHECKJOB Wizard
+EQUAL U50 0
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=法师职业可选择：魔神、赤焰、冰雪其中一种进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=541.0|color=11009|size=16|text=精修魔神的特点：精通雷系魔法，高爆发的法师流派。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=魔神·雷系精通>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=魔神·感电精通>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=魔神·雷电术>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=魔神·魔法盾>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=魔神·狂龙紫电>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=魔神·群雷域>
+
+#IF
+EQUAL S$流派 魔神
+CHECKJOB Wizard
+EQUAL U50 4
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=你已选择魔神作为核心，进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=541.0|color=11009|size=16|text=精修魔神的特点：精通雷系魔法，高爆发的法师流派。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=魔神·雷系精通>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=魔神·感电精通>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=魔神·雷电术>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=魔神·魔法盾>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=魔神·狂龙紫电>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=魔神·群雷域>
+
+
+#IF
+EQUAL S$流派 赤焰
+CHECKJOB Wizard
+EQUAL U50 0
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=法师职业可选择：魔神、赤焰、冰雪其中一种进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修赤焰的特点：精精通火系魔法，能打出极强的范围伤害！>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=赤焰·火系精通>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=赤焰·火墙>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=赤焰·灭天火>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=赤焰·魔法盾>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=赤焰·神之召唤>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=赤焰·流星火雨>
+
+#IF
+EQUAL S$流派 赤焰
+CHECKJOB Wizard
+EQUAL U50 5
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=你已选择赤焰作为核心，进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修赤焰的特点：精精通火系魔法，能打出极强的范围伤害！>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=赤焰·火系精通>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=赤焰·火墙>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=赤焰·灭天火>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=赤焰·魔法盾>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=赤焰·神之召唤>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=赤焰·流星火雨>
+
+
+#IF
+EQUAL S$流派 冰雪
+CHECKJOB Wizard
+EQUAL U50 0
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=法师职业可选择：魔神、赤焰、冰雪其中一种进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修冰雪的特点：精通冰系魔法和驯化宠物，控制强力的辅助系法师流派。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=冰雪·寒冰血脉>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=冰雪·冰霜雷电>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=冰雪·冰系精通>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=冰雪·玄冰刃>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=冰雪·冰霜护盾>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=冰雪·寒冰掌>
+
+#IF
+EQUAL S$流派 冰雪
+CHECKJOB Wizard
+EQUAL U50 6
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=你已选择冰雪作为核心，进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修冰雪的特点：精通冰系魔法和驯化宠物，控制强力的辅助系法师流派。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=冰雪·寒冰血脉>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=冰雪·冰霜雷电>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=冰雪·冰系精通>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=冰雪·玄冰刃>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=冰雪·冰霜护盾>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=冰雪·寒冰掌>
+
+#IF
+EQUAL S$流派 天尊
+CHECKJOB Taoist
+EQUAL U50 0
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=道士职业可选择：天尊、道玄、御灵其中一种进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修天尊的特点：以追求极致道术为目标灵魂火符可以打出恐怖伤害的流派。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=天尊·精神战力法>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=天尊·群体施毒术>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=天尊·灵魂火符>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=天尊·元阳道术>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=天尊·无极真气>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=天尊·召唤月灵>
+
+#IF
+EQUAL S$流派 天尊
+CHECKJOB Taoist
+EQUAL U50 7
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=你已选择天尊作为核心，进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修天尊的特点：以追求极致道术为目标灵魂火符可以打出恐怖伤害的流派。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=天尊·精神战力法>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=天尊·群体施毒术>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=天尊·灵魂火符>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=天尊·元阳道术>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=天尊·无极真气>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=天尊·召唤月灵>
+
+#IF
+EQUAL S$流派 道玄
+CHECKJOB Taoist
+EQUAL U50 0
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=道士职业可选择：天尊、道玄、御灵其中一种进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修道玄的特点：精通治愈术和战甲术，还具备极强的控制和生存能力。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=170.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=225.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=280.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=335.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=390.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=445.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=170.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=436.0|y=225.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=280.0|color=255|size=16|text=100>
+Inc S$数据提示 <Text|x=427.0|y=335.0|color=255|size=16|text=1000>
+Inc S$数据提示 <Text|x=427.0|y=390.0|color=255|size=16|text=1500>
+Inc S$数据提示 <Text|x=427.0|y=445.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=道玄·精神战力法>
+Inc S$数据提示 <Text|x=420.0|y=143.0|color=11037|size=18|text=道玄·治愈术精通>
+Inc S$数据提示 <Text|x=420.0|y=198.0|color=11037|size=18|text=道玄·施毒术>
+Inc S$数据提示 <Text|x=420.0|y=253.0|color=11037|size=18|text=道玄·神圣战甲术>
+Inc S$数据提示 <Text|x=420.0|y=308.0|color=11037|size=18|text=道玄·定身术>
+Inc S$数据提示 <Text|x=420.0|y=363.0|color=11037|size=18|text=道玄·移形换影>
+Inc S$数据提示 <Text|x=420.0|y=418.0|color=11037|size=18|text=道玄·召唤麒麟>
+
+#IF
+EQUAL S$流派 道玄
+CHECKJOB Taoist
+EQUAL U50 8
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11009|size=16|text=你已选择道玄作为核心，进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11009|size=16|text=精修道玄的特点：精通治愈术和战甲术，还具备极强的控制和生存能力。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=170.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=225.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=280.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=335.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=390.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=445.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=170.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=436.0|y=225.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=280.0|color=255|size=16|text=100>
+Inc S$数据提示 <Text|x=427.0|y=335.0|color=255|size=16|text=1000>
+Inc S$数据提示 <Text|x=427.0|y=390.0|color=255|size=16|text=1500>
+Inc S$数据提示 <Text|x=427.0|y=445.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=道玄·精神战力法>
+Inc S$数据提示 <Text|x=420.0|y=143.0|color=11037|size=18|text=道玄·治愈术精通>
+Inc S$数据提示 <Text|x=420.0|y=198.0|color=11037|size=18|text=道玄·施毒术>
+Inc S$数据提示 <Text|x=420.0|y=253.0|color=11037|size=18|text=道玄·神圣战甲术>
+Inc S$数据提示 <Text|x=420.0|y=308.0|color=11037|size=18|text=道玄·定身术>
+Inc S$数据提示 <Text|x=420.0|y=363.0|color=11037|size=18|text=道玄·移形换影>
+Inc S$数据提示 <Text|x=420.0|y=418.0|color=11037|size=18|text=道玄·召唤麒麟>
+
+#IF
+EQUAL S$流派 御灵
+CHECKJOB Taoist
+EQUAL U50 0
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11007|size=16|text=道士职业可选择：天尊、道玄、御灵其中一种进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11007|size=16|text=精修御灵的特点：精通御兽之术的召唤流道士，能与宠物心灵合一。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=御灵·精神战力法>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=御灵·神圣战甲术>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=御灵·召唤精通>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=御灵·兽灵之心>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=御灵·无极真气>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=御灵·召唤圣兽>
+
+#IF
+EQUAL S$流派 御灵
+CHECKJOB Taoist
+EQUAL U50 9
+#ACT
+MOV S$职业提示 
+Inc S$职业提示 <RText|x=45.0|y=515.0|color=11007|size=16|text=你已选择御灵作为核心，进行技能精修。>
+Inc S$职业提示 <RText|x=45.0|y=540.0|color=11007|size=16|text=精修御灵的特点：精通御兽之术的召唤流道士，能与宠物心灵合一。>
+Inc S$职业提示 <Text|x=45.0|y=50.0|color=11003|size=18|text=点击技能按钮即可查看该技能精修特点。>
+
+Inc S$数据提示 <Img|x=420.0|y=115.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=180.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=245.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=310.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=375.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+Inc S$数据提示 <Img|x=420.0|y=440.0|width=50|height=20|scale9r=2|scale9t=2|esc=0|img=private/mp/4005400032.png|scale9b=2|scale9l=2>
+
+Inc S$数据提示 <Text|x=440.0|y=115.0|color=255|size=16|text=0>
+Inc S$数据提示 <Text|x=436.0|y=180.0|color=255|size=16|text=50>
+Inc S$数据提示 <Text|x=431.0|y=245.0|color=255|size=16|text=150>
+Inc S$数据提示 <Text|x=431.0|y=310.0|color=255|size=16|text=700>
+Inc S$数据提示 <Text|x=427.0|y=375.0|color=255|size=16|text=1800>
+Inc S$数据提示 <Text|x=427.0|y=440.0|color=255|size=16|text=3200>
+
+Inc S$数据提示 <Text|x=420.0|y=88.0|color=11037|size=16|text=御灵·精神战力法>
+Inc S$数据提示 <Text|x=420.0|y=153.0|color=11037|size=18|text=御灵·神圣战甲术>
+Inc S$数据提示 <Text|x=420.0|y=218.0|color=11037|size=18|text=御灵·召唤精通>
+Inc S$数据提示 <Text|x=420.0|y=283.0|color=11037|size=18|text=御灵·兽灵之心>
+Inc S$数据提示 <Text|x=420.0|y=348.0|color=11037|size=18|text=御灵·无极真气>
+Inc S$数据提示 <Text|x=420.0|y=413.0|color=11037|size=18|text=御灵·召唤圣兽>
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 0
+#ACT
+MOV N$战神_技能2灰化 1
+MOV N$战神_技能3灰化 1
+MOV N$战神_技能4灰化 1
+MOV N$战神_技能5灰化 1
+MOV N$战神_技能6灰化 1
+
+MOV N$武圣_技能2灰化 1
+MOV N$武圣_技能3灰化 1
+MOV N$武圣_技能4灰化 1
+MOV N$武圣_技能5灰化 1
+MOV N$武圣_技能6灰化 1
+
+MOV N$狂魔_技能2灰化 1
+MOV N$狂魔_技能3灰化 1
+MOV N$狂魔_技能4灰化 1
+MOV N$狂魔_技能5灰化 1
+MOV N$狂魔_技能6灰化 1
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 1
+#ACT
+MOV N$武圣_技能1灰化 1
+MOV N$武圣_技能2灰化 1
+MOV N$武圣_技能3灰化 1
+MOV N$武圣_技能4灰化 1
+MOV N$武圣_技能5灰化 1
+MOV N$武圣_技能6灰化 1
+MOV N$狂魔_技能1灰化 1
+MOV N$狂魔_技能2灰化 1
+MOV N$狂魔_技能3灰化 1
+MOV N$狂魔_技能4灰化 1
+MOV N$狂魔_技能5灰化 1
+MOV N$狂魔_技能6灰化 1
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 2
+#ACT
+MOV N$战神_技能1灰化 1
+MOV N$战神_技能2灰化 1
+MOV N$战神_技能3灰化 1
+MOV N$战神_技能4灰化 1
+MOV N$战神_技能5灰化 1
+MOV N$战神_技能6灰化 1
+
+MOV N$狂魔_技能1灰化 1
+MOV N$狂魔_技能2灰化 1
+MOV N$狂魔_技能3灰化 1
+MOV N$狂魔_技能4灰化 1
+MOV N$狂魔_技能5灰化 1
+MOV N$狂魔_技能6灰化 1
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 3
+#ACT
+MOV N$战神_技能1灰化 1
+MOV N$战神_技能2灰化 1
+MOV N$战神_技能3灰化 1
+MOV N$战神_技能4灰化 1
+MOV N$战神_技能5灰化 1
+MOV N$战神_技能6灰化 1
+
+MOV N$武圣_技能1灰化 1
+MOV N$武圣_技能2灰化 1
+MOV N$武圣_技能3灰化 1
+MOV N$武圣_技能4灰化 1
+MOV N$武圣_技能5灰化 1
+MOV N$武圣_技能6灰化 1
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 0
+#ACT
+MOV N$雷神_技能2灰化 1
+MOV N$雷神_技能3灰化 1
+MOV N$雷神_技能4灰化 1
+MOV N$雷神_技能5灰化 1
+MOV N$雷神_技能6灰化 1
+
+MOV N$炎帝_技能2灰化 1
+MOV N$炎帝_技能3灰化 1
+MOV N$炎帝_技能4灰化 1
+MOV N$炎帝_技能5灰化 1
+MOV N$炎帝_技能6灰化 1
+
+MOV N$冰皇_技能2灰化 1
+MOV N$冰皇_技能3灰化 1
+MOV N$冰皇_技能4灰化 1
+MOV N$冰皇_技能5灰化 1
+MOV N$冰皇_技能6灰化 1
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 4
+#ACT
+MOV N$炎帝_技能1灰化 1
+MOV N$炎帝_技能2灰化 1
+MOV N$炎帝_技能3灰化 1
+MOV N$炎帝_技能4灰化 1
+MOV N$炎帝_技能5灰化 1
+MOV N$炎帝_技能6灰化 1
+
+MOV N$冰皇_技能1灰化 1
+MOV N$冰皇_技能2灰化 1
+MOV N$冰皇_技能3灰化 1
+MOV N$冰皇_技能4灰化 1
+MOV N$冰皇_技能5灰化 1
+MOV N$冰皇_技能6灰化 1
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 5
+#ACT
+MOV N$雷神_技能1灰化 1
+MOV N$雷神_技能2灰化 1
+MOV N$雷神_技能3灰化 1
+MOV N$雷神_技能4灰化 1
+MOV N$雷神_技能5灰化 1
+MOV N$雷神_技能6灰化 1
+
+MOV N$冰皇_技能1灰化 1
+MOV N$冰皇_技能2灰化 1
+MOV N$冰皇_技能3灰化 1
+MOV N$冰皇_技能4灰化 1
+MOV N$冰皇_技能5灰化 1
+MOV N$冰皇_技能6灰化 1
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 6
+#ACT
+MOV N$雷神_技能1灰化 1
+MOV N$雷神_技能2灰化 1
+MOV N$雷神_技能3灰化 1
+MOV N$雷神_技能4灰化 1
+MOV N$雷神_技能5灰化 1
+MOV N$雷神_技能6灰化 1
+
+MOV N$炎帝_技能1灰化 1
+MOV N$炎帝_技能2灰化 1
+MOV N$炎帝_技能3灰化 1
+MOV N$炎帝_技能4灰化 1
+MOV N$炎帝_技能5灰化 1
+MOV N$炎帝_技能6灰化 1
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 0
+#ACT
+MOV N$道尊_技能2灰化 1
+MOV N$道尊_技能3灰化 1
+MOV N$道尊_技能4灰化 1
+MOV N$道尊_技能5灰化 1
+MOV N$道尊_技能6灰化 1
+
+MOV N$医圣_技能2灰化 1
+MOV N$医圣_技能3灰化 1
+MOV N$医圣_技能4灰化 1
+MOV N$医圣_技能5灰化 1
+MOV N$医圣_技能6灰化 1
+MOV N$医圣_技能7灰化 1
+
+MOV N$兽神_技能2灰化 1
+MOV N$兽神_技能3灰化 1
+MOV N$兽神_技能4灰化 1
+MOV N$兽神_技能5灰化 1
+MOV N$兽神_技能6灰化 1
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 7
+#ACT
+MOV N$医圣_技能1灰化 1
+MOV N$医圣_技能2灰化 1
+MOV N$医圣_技能3灰化 1
+MOV N$医圣_技能4灰化 1
+MOV N$医圣_技能5灰化 1
+MOV N$医圣_技能6灰化 1
+MOV N$医圣_技能7灰化 1
+
+MOV N$兽神_技能1灰化 1
+MOV N$兽神_技能2灰化 1
+MOV N$兽神_技能3灰化 1
+MOV N$兽神_技能4灰化 1
+MOV N$兽神_技能5灰化 1
+MOV N$兽神_技能6灰化 1
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 8
+#ACT
+MOV N$道尊_技能1灰化 1
+MOV N$道尊_技能2灰化 1
+MOV N$道尊_技能3灰化 1
+MOV N$道尊_技能4灰化 1
+MOV N$道尊_技能5灰化 1
+MOV N$道尊_技能6灰化 1
+
+MOV N$兽神_技能1灰化 1
+MOV N$兽神_技能2灰化 1
+MOV N$兽神_技能3灰化 1
+MOV N$兽神_技能4灰化 1
+MOV N$兽神_技能5灰化 1
+MOV N$兽神_技能6灰化 1
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 9
+#ACT
+MOV N$道尊_技能1灰化 1
+MOV N$道尊_技能2灰化 1
+MOV N$道尊_技能3灰化 1
+MOV N$道尊_技能4灰化 1
+MOV N$道尊_技能5灰化 1
+MOV N$道尊_技能6灰化 1
+
+MOV N$医圣_技能1灰化 1
+MOV N$医圣_技能2灰化 1
+MOV N$医圣_技能3灰化 1
+MOV N$医圣_技能4灰化 1
+MOV N$医圣_技能5灰化 1
+MOV N$医圣_技能6灰化 1
+MOV N$医圣_技能7灰化 1
+
+#IF
+EQUAL U50 1
+#ACT
+dec S$数据提示 <$cfg_mpjn(1_9)>
+INC S$数据提示 <$cfg_mpjn(1_11)>
+
+#IF
+EQUAL U50 2
+#ACT
+dec S$数据提示 <$cfg_mpjn(7_9)>
+INC S$数据提示 <$cfg_mpjn(7_11)>
+
+#IF
+EQUAL U50 3
+#ACT
+dec S$数据提示 <$cfg_mpjn(13_9)>
+INC S$数据提示 <$cfg_mpjn(13_11)>
+
+#IF
+EQUAL U50 4
+#ACT
+dec S$数据提示 <$cfg_mpjn(19_9)>
+INC S$数据提示 <$cfg_mpjn(19_11)>
+
+#IF
+EQUAL U50 5
+#ACT
+dec S$数据提示 <$cfg_mpjn(25_9)>
+INC S$数据提示 <$cfg_mpjn(25_11)>
+
+#IF
+EQUAL U50 6
+#ACT
+dec S$数据提示 <$cfg_mpjn(31_9)>
+INC S$数据提示 <$cfg_mpjn(31_11)>
+
+#IF
+EQUAL U50 7
+#ACT
+dec S$数据提示 <$cfg_mpjn(37_9)>
+INC S$数据提示 <$cfg_mpjn(37_11)>
+
+
+#IF
+EQUAL U50 8
+#ACT
+dec S$数据提示 <$cfg_mpjn(43_9)>
+INC S$数据提示 <$cfg_mpjn(43_11)>
+
+#IF
+EQUAL U50 9
+#ACT
+dec S$数据提示 <$cfg_mpjn(50_9)>
+INC S$数据提示 <$cfg_mpjn(50_11)>
+
+#IF
+EQUAL U51 0
+#ACT
+MOV N$战神_技能2灰化 1
+#ELSEACT
+MOV N$战神_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(2_9)>
+INC S$数据提示 <$cfg_mpjn(2_11)>
+
+#IF
+EQUAL U52 0
+#ACT
+MOV N$战神_技能3灰化 1
+#ELSEACT
+MOV N$战神_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(3_9)>
+INC S$数据提示 <$cfg_mpjn(3_11)>
+
+#IF
+EQUAL U53 0
+#ACT
+MOV N$战神_技能4灰化 1
+#ELSEACT
+MOV N$战神_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(4_9)>
+INC S$数据提示 <$cfg_mpjn(4_11)>
+
+#IF
+EQUAL U54 0
+#ACT
+MOV N$战神_技能5灰化 1
+#ELSEACT
+MOV N$战神_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(5_9)>
+INC S$数据提示 <$cfg_mpjn(5_11)>
+
+#IF
+EQUAL U55 0
+#ACT
+MOV N$战神_技能6灰化 1
+#ELSEACT
+MOV N$战神_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(6_9)>
+INC S$数据提示 <$cfg_mpjn(6_11)>
+
+#IF
+EQUAL U56 0
+#ACT
+MOV N$武圣_技能2灰化 1
+#ELSEACT
+MOV N$武圣_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(8_9)>
+INC S$数据提示 <$cfg_mpjn(8_11)>
+
+#IF
+EQUAL U57 0
+#ACT
+MOV N$武圣_技能3灰化 1
+#ELSEACT
+MOV N$武圣_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(9_9)>
+INC S$数据提示 <$cfg_mpjn(9_11)>
+
+#IF
+EQUAL U58 0
+#ACT
+MOV N$武圣_技能4灰化 1
+#ELSEACT
+MOV N$武圣_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(10_9)>
+INC S$数据提示 <$cfg_mpjn(10_11)>
+
+#IF
+EQUAL U59 0
+#ACT
+MOV N$武圣_技能5灰化 1
+#ELSEACT
+MOV N$武圣_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(11_9)>
+INC S$数据提示 <$cfg_mpjn(11_11)>
+
+#IF
+EQUAL U60 0
+#ACT
+MOV N$武圣_技能6灰化 1
+#ELSEACT
+MOV N$武圣_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(12_9)>
+INC S$数据提示 <$cfg_mpjn(12_11)>
+
+#IF
+EQUAL U61 0
+#ACT
+MOV N$狂魔_技能2灰化 1
+#ELSEACT
+MOV N$狂魔_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(14_9)>
+INC S$数据提示 <$cfg_mpjn(14_11)>
+
+#IF
+EQUAL U62 0
+#ACT
+MOV N$狂魔_技能3灰化 1
+#ELSEACT
+MOV N$狂魔_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(15_9)>
+INC S$数据提示 <$cfg_mpjn(15_11)>
+
+#IF
+EQUAL U63 0
+#ACT
+MOV N$狂魔_技能4灰化 1
+#ELSEACT
+MOV N$狂魔_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(16_9)>
+INC S$数据提示 <$cfg_mpjn(16_11)>
+
+#IF
+EQUAL U64 0
+#ACT
+MOV N$狂魔_技能5灰化 1
+#ELSEACT
+MOV N$狂魔_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(17_9)>
+INC S$数据提示 <$cfg_mpjn(17_11)>
+
+#IF
+EQUAL U65 0
+#ACT
+MOV N$狂魔_技能6灰化 1
+#ELSEACT
+MOV N$狂魔_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(18_9)>
+INC S$数据提示 <$cfg_mpjn(18_11)>
+
+#IF
+EQUAL U66 0
+#ACT
+MOV N$雷神_技能2灰化 1
+#ELSEACT
+MOV N$雷神_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(20_9)>
+INC S$数据提示 <$cfg_mpjn(20_11)>
+
+#IF
+EQUAL U67 0
+#ACT
+MOV N$雷神_技能3灰化 1
+#ELSEACT
+MOV N$雷神_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(21_9)>
+INC S$数据提示 <$cfg_mpjn(21_11)>
+
+#IF
+EQUAL U68 0
+#ACT
+MOV N$雷神_技能4灰化 1
+#ELSEACT
+MOV N$雷神_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(22_9)>
+INC S$数据提示 <$cfg_mpjn(22_11)>
+
+#IF
+EQUAL U69 0
+#ACT
+MOV N$雷神_技能5灰化 1
+#ELSEACT
+MOV N$雷神_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(23_9)>
+INC S$数据提示 <$cfg_mpjn(23_11)>
+
+#IF
+EQUAL U70 0
+#ACT
+MOV N$雷神_技能6灰化 1
+#ELSEACT
+MOV N$雷神_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(24_9)>
+INC S$数据提示 <$cfg_mpjn(24_11)>
+
+#IF 
+EQUAL U71 0
+#ACT
+MOV N$炎帝_技能2灰化 1
+#ELSEACT
+MOV N$炎帝_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(26_9)>
+INC S$数据提示 <$cfg_mpjn(26_11)>
+#IF
+EQUAL U72 0
+#ACT
+MOV N$炎帝_技能3灰化 1
+#ELSEACT
+MOV N$炎帝_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(27_9)>
+INC S$数据提示 <$cfg_mpjn(27_11)>
+
+#IF
+EQUAL U73 0
+#ACT
+MOV N$炎帝_技能4灰化 1
+#ELSEACT
+MOV N$炎帝_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(28_9)>
+INC S$数据提示 <$cfg_mpjn(28_11)>
+
+#IF
+EQUAL U74 0
+#ACT
+MOV N$炎帝_技能5灰化 1
+#ELSEACT
+MOV N$炎帝_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(29_9)>
+INC S$数据提示 <$cfg_mpjn(29_11)>
+
+#IF
+EQUAL U75 0
+#ACT
+MOV N$炎帝_技能6灰化 1
+#ELSEACT
+MOV N$炎帝_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(30_9)>
+INC S$数据提示 <$cfg_mpjn(30_11)>
+
+#IF
+EQUAL U76 0
+#ACT
+MOV N$冰皇_技能2灰化 1
+#ELSEACT
+MOV N$冰皇_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(32_9)>
+INC S$数据提示 <$cfg_mpjn(32_11)>
+
+#IF
+EQUAL U77 0
+#ACT
+MOV N$冰皇_技能3灰化 1
+#ELSEACT
+MOV N$冰皇_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(33_9)>
+INC S$数据提示 <$cfg_mpjn(33_11)>
+
+#IF
+EQUAL U78 0
+#ACT
+MOV N$冰皇_技能4灰化 1
+#ELSEACT
+MOV N$冰皇_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(34_9)>
+INC S$数据提示 <$cfg_mpjn(34_11)>
+
+
+#IF
+EQUAL U79 0
+#ACT
+MOV N$冰皇_技能5灰化 1
+#ELSEACT
+MOV N$冰皇_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(35_9)>
+INC S$数据提示 <$cfg_mpjn(35_11)>
+
+
+#IF
+EQUAL U80 0
+#ACT
+MOV N$冰皇_技能6灰化 1
+#ELSEACT
+MOV N$冰皇_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(36_9)>
+INC S$数据提示 <$cfg_mpjn(36_11)>
+
+
+#IF
+EQUAL U81 0
+#ACT
+MOV N$道尊_技能2灰化 1
+#ELSEACT
+MOV N$道尊_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(38_9)>
+INC S$数据提示 <$cfg_mpjn(38_11)>
+
+
+#IF
+EQUAL U82 0
+#ACT
+MOV N$道尊_技能3灰化 1
+#ELSEACT
+MOV N$道尊_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(39_9)>
+INC S$数据提示 <$cfg_mpjn(39_11)>
+
+
+#IF
+EQUAL U83 0
+#ACT
+MOV N$道尊_技能4灰化 1
+#ELSEACT
+MOV N$道尊_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(40_9)>
+INC S$数据提示 <$cfg_mpjn(40_11)>
+
+
+#IF
+EQUAL U84 0
+#ACT
+MOV N$道尊_技能5灰化 1
+#ELSEACT
+MOV N$道尊_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(41_9)>
+INC S$数据提示 <$cfg_mpjn(41_11)>
+
+
+#IF
+EQUAL U85 0
+#ACT
+MOV N$道尊_技能6灰化 1
+#ELSEACT
+MOV N$道尊_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(42_9)>
+INC S$数据提示 <$cfg_mpjn(42_11)>
+
+#IF
+EQUAL U86 0
+#ACT
+MOV N$医圣_技能2灰化 1
+#ELSEACT
+MOV N$医圣_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(44_9)>
+INC S$数据提示 <$cfg_mpjn(44_11)>
+
+
+#IF
+EQUAL U87 0
+#ACT
+MOV N$医圣_技能3灰化 1
+#ELSEACT
+MOV N$医圣_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(45_9)>
+INC S$数据提示 <$cfg_mpjn(45_11)>
+
+#IF
+EQUAL U88 0
+#ACT
+MOV N$医圣_技能4灰化 1
+#ELSEACT
+MOV N$医圣_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(46_9)>
+INC S$数据提示 <$cfg_mpjn(46_11)>
+#IF
+EQUAL U89 0
+#ACT
+MOV N$医圣_技能5灰化 1
+#ELSEACT
+MOV N$医圣_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(47_9)>
+INC S$数据提示 <$cfg_mpjn(47_11)>
+
+#IF
+EQUAL U90 0
+#ACT
+MOV N$医圣_技能6灰化 1
+#ELSEACT
+MOV N$医圣_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(48_9)>
+INC S$数据提示 <$cfg_mpjn(48_11)>
+
+#IF
+EQUAL U91 0
+#ACT
+MOV N$医圣_技能7灰化 1
+#ELSEACT
+MOV N$医圣_技能7灰化 0
+dec S$数据提示 <$cfg_mpjn(49_9)>
+INC S$数据提示 <$cfg_mpjn(49_11)>
+
+#IF
+EQUAL U92 0
+#ACT
+MOV N$兽神_技能2灰化 1
+#ELSEACT
+MOV N$兽神_技能2灰化 0
+dec S$数据提示 <$cfg_mpjn(51_9)>
+INC S$数据提示 <$cfg_mpjn(51_11)>
+
+#IF
+EQUAL U93 0
+#ACT
+MOV N$兽神_技能3灰化 1
+#ELSEACT
+MOV N$兽神_技能3灰化 0
+dec S$数据提示 <$cfg_mpjn(52_9)>
+INC S$数据提示 <$cfg_mpjn(52_11)>
+
+#IF
+EQUAL U94 0
+#ACT
+MOV N$兽神_技能4灰化 1
+#ELSEACT
+MOV N$兽神_技能4灰化 0
+dec S$数据提示 <$cfg_mpjn(53_9)>
+INC S$数据提示 <$cfg_mpjn(53_11)>
+
+#IF
+EQUAL U95 0
+#ACT
+MOV N$兽神_技能5灰化 1
+#ELSEACT
+MOV N$兽神_技能5灰化 0
+dec S$数据提示 <$cfg_mpjn(54_9)>
+INC S$数据提示 <$cfg_mpjn(54_11)>
+
+#IF
+EQUAL U96 0
+#ACT
+MOV N$兽神_技能6灰化 1
+#ELSEACT
+MOV N$兽神_技能6灰化 0
+dec S$数据提示 <$cfg_mpjn(55_9)>
+INC S$数据提示 <$cfg_mpjn(55_11)>
+
+
+#IF
+EQUAL S$流派 战将
+CHECKJOB Warrior
+NOT EQUAL U50 0
+NOT EQUAL U50 1
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 武宗
+CHECKJOB Warrior
+NOT EQUAL U50 0
+NOT EQUAL U50 2
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 暴君
+CHECKJOB Warrior
+NOT EQUAL U50 0
+NOT EQUAL U50 3
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 魔神
+CHECKJOB Wizard
+NOT EQUAL U50 0
+NOT EQUAL U50 4
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 赤焰
+CHECKJOB Wizard
+NOT EQUAL U50 0
+NOT EQUAL U50 5
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 冰雪
+CHECKJOB Wizard
+NOT EQUAL U50 0
+NOT EQUAL U50 6
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 天尊
+CHECKJOB Taoist
+NOT EQUAL U50 0
+NOT EQUAL U50 7
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 道玄
+CHECKJOB Taoist
+NOT EQUAL U50 0
+NOT EQUAL U50 8
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 御灵
+CHECKJOB Taoist
+NOT EQUAL U50 0
+NOT EQUAL U50 9
+#ACT
+MOV S$数据提示 
+
+#IF
+EQUAL S$流派 暴君
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=155.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=220.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=285.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=350.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=415.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10345|itemcount=0|grey=<$STR(N$狂魔_技能1灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=13>
+Inc S$技能展示 <ItemShow|x=351.0|y=144.0|itemid=10346|itemcount=0|grey=<$STR(N$狂魔_技能2灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=14>
+Inc S$技能展示 <ItemShow|x=351.0|y=209.0|itemid=10347|itemcount=0|grey=<$STR(N$狂魔_技能3灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=15>
+Inc S$技能展示 <ItemShow|x=351.0|y=274.0|itemid=10348|itemcount=0|grey=<$STR(N$狂魔_技能4灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=16>
+Inc S$技能展示 <ItemShow|x=351.0|y=339.0|itemid=10349|itemcount=0|grey=<$STR(N$狂魔_技能5灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=17>
+Inc S$技能展示 <ItemShow|x=351.0|y=404.0|itemid=10350|itemcount=0|grey=<$STR(N$狂魔_技能6灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=18>
+
+#IF
+EQUAL S$流派 武宗
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=155.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=220.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=285.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=350.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=415.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10340|itemcount=0|grey=<$STR(N$武圣_技能1灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=7>
+Inc S$技能展示 <ItemShow|x=351.0|y=144.0|itemid=10592|itemcount=0|grey=<$STR(N$武圣_技能2灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=8>
+Inc S$技能展示 <ItemShow|x=351.0|y=209.0|itemid=10341|itemcount=0|grey=<$STR(N$武圣_技能3灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=9>
+Inc S$技能展示 <ItemShow|x=351.0|y=274.0|itemid=10342|itemcount=0|grey=<$STR(N$武圣_技能4灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=10>
+Inc S$技能展示 <ItemShow|x=351.0|y=339.0|itemid=10343|itemcount=0|grey=<$STR(N$武圣_技能5灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=11>
+Inc S$技能展示 <ItemShow|x=351.0|y=404.0|itemid=10344|itemcount=0|grey=<$STR(N$武圣_技能6灰化)>|scale=<$STR(S$图标大小)>|showtips=1|link=@技能选择#技能标示=12>
+
+
+#IF
+EQUAL S$流派 战将
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=155.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=220.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=285.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=350.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=415.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10335|itemcount=0|scale=<$STR(S$图标大小)>|grey=<$STR(N$战神_技能1灰化)>|showtips=1|link=@技能选择#技能标示=1>
+Inc S$技能展示 <ItemShow|x=351.0|y=144.0|itemid=10591|itemcount=0|scale=<$STR(S$图标大小)>|grey=<$STR(N$战神_技能2灰化)>|showtips=1|link=@技能选择#技能标示=2>
+Inc S$技能展示 <ItemShow|x=351.0|y=209.0|itemid=10336|itemcount=0|scale=<$STR(S$图标大小)>|grey=<$STR(N$战神_技能3灰化)>|showtips=1|link=@技能选择#技能标示=3>
+Inc S$技能展示 <ItemShow|x=351.0|y=274.0|itemid=10337|itemcount=0|scale=<$STR(S$图标大小)>|grey=<$STR(N$战神_技能4灰化)>|showtips=1|link=@技能选择#技能标示=4>
+Inc S$技能展示 <ItemShow|x=351.0|y=339.0|itemid=10338|itemcount=0|scale=<$STR(S$图标大小)>|grey=<$STR(N$战神_技能5灰化)>|showtips=1|link=@技能选择#技能标示=5>
+Inc S$技能展示 <ItemShow|x=351.0|y=404.0|itemid=10339|itemcount=0|scale=<$STR(S$图标大小)>|grey=<$STR(N$战神_技能6灰化)>|showtips=1|link=@技能选择#技能标示=6>
+
+#IF
+EQUAL S$流派 魔神
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=155.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=220.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=285.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=350.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=415.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10351|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$雷神_技能1灰化)>|link=@技能选择#技能标示=19>
+Inc S$技能展示 <ItemShow|x=351.0|y=144.0|itemid=10352|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$雷神_技能2灰化)>|link=@技能选择#技能标示=20>
+Inc S$技能展示 <ItemShow|x=351.0|y=209.0|itemid=10353|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$雷神_技能3灰化)>|link=@技能选择#技能标示=21>
+Inc S$技能展示 <ItemShow|x=351.0|y=274.0|itemid=10354|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$雷神_技能4灰化)>|link=@技能选择#技能标示=22>
+Inc S$技能展示 <ItemShow|x=351.0|y=339.0|itemid=10355|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$雷神_技能5灰化)>|link=@技能选择#技能标示=23>
+Inc S$技能展示 <ItemShow|x=351.0|y=404.0|itemid=10356|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$雷神_技能6灰化)>|link=@技能选择#技能标示=24>
+
+#IF
+EQUAL S$流派 赤焰
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=155.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=220.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=285.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=350.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=415.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10357|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$炎帝_技能1灰化)>|link=@技能选择#技能标示=25>
+Inc S$技能展示 <ItemShow|x=351.0|y=144.0|itemid=10358|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$炎帝_技能2灰化)>|link=@技能选择#技能标示=26>
+Inc S$技能展示 <ItemShow|x=351.0|y=209.0|itemid=10359|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$炎帝_技能3灰化)>|link=@技能选择#技能标示=27>
+Inc S$技能展示 <ItemShow|x=351.0|y=274.0|itemid=10360|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$炎帝_技能4灰化)>|link=@技能选择#技能标示=28>
+Inc S$技能展示 <ItemShow|x=351.0|y=339.0|itemid=10361|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$炎帝_技能5灰化)>|link=@技能选择#技能标示=29>
+Inc S$技能展示 <ItemShow|x=351.0|y=404.0|itemid=10362|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$炎帝_技能6灰化)>|link=@技能选择#技能标示=30>
+
+
+#IF
+EQUAL S$流派 冰雪
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=155.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=220.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=285.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=350.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=415.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10363|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$冰皇_技能1灰化)>|link=@技能选择#技能标示=31>
+Inc S$技能展示 <ItemShow|x=351.0|y=144.0|itemid=10364|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$冰皇_技能2灰化)>|link=@技能选择#技能标示=32>
+Inc S$技能展示 <ItemShow|x=351.0|y=209.0|itemid=10365|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$冰皇_技能3灰化)>|link=@技能选择#技能标示=33>
+Inc S$技能展示 <ItemShow|x=351.0|y=274.0|itemid=10366|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$冰皇_技能4灰化)>|link=@技能选择#技能标示=34>
+Inc S$技能展示 <ItemShow|x=351.0|y=339.0|itemid=10367|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$冰皇_技能5灰化)>|link=@技能选择#技能标示=35>
+Inc S$技能展示 <ItemShow|x=351.0|y=404.0|itemid=10368|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$冰皇_技能6灰化)>|link=@技能选择#技能标示=36>
+
+#IF
+EQUAL S$流派 天尊
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=155.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=220.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=285.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=350.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=415.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10369|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$道尊_技能1灰化)>|link=@技能选择#技能标示=37>
+Inc S$技能展示 <ItemShow|x=351.0|y=144.0|itemid=10370|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$道尊_技能2灰化)>|link=@技能选择#技能标示=38>
+Inc S$技能展示 <ItemShow|x=351.0|y=209.0|itemid=10371|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$道尊_技能3灰化)>|link=@技能选择#技能标示=39>
+Inc S$技能展示 <ItemShow|x=351.0|y=274.0|itemid=10372|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$道尊_技能4灰化)>|link=@技能选择#技能标示=40>
+Inc S$技能展示 <ItemShow|x=351.0|y=339.0|itemid=10373|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$道尊_技能5灰化)>|link=@技能选择#技能标示=41>
+Inc S$技能展示 <ItemShow|x=351.0|y=404.0|itemid=10374|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$道尊_技能6灰化)>|link=@技能选择#技能标示=42>
+
+#IF
+EQUAL S$流派 道玄
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=145.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=200.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=255.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=310.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=365.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=420.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10375|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$医圣_技能1灰化)>|link=@技能选择#技能标示=43>
+Inc S$技能展示 <ItemShow|x=351.0|y=134.0|itemid=10376|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$医圣_技能2灰化)>|link=@技能选择#技能标示=44>
+Inc S$技能展示 <ItemShow|x=351.0|y=189.0|itemid=10377|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$医圣_技能3灰化)>|link=@技能选择#技能标示=45>
+Inc S$技能展示 <ItemShow|x=351.0|y=244.0|itemid=10378|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$医圣_技能4灰化)>|link=@技能选择#技能标示=46>
+Inc S$技能展示 <ItemShow|x=351.0|y=299.0|itemid=10379|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$医圣_技能5灰化)>|link=@技能选择#技能标示=47>
+Inc S$技能展示 <ItemShow|x=351.0|y=354.0|itemid=10380|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$医圣_技能6灰化)>|link=@技能选择#技能标示=48>
+Inc S$技能展示 <ItemShow|x=351.0|y=409.0|itemid=10381|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$医圣_技能7灰化)>|link=@技能选择#技能标示=49>
+
+#IF
+EQUAL S$流派 御灵
+#ACT
+MOV S$技能展示
+Inc S$技能展示 <Img|x=363.0|y=90.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=155.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=220.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=285.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=350.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+Inc S$技能展示 <Img|x=363.0|y=415.0|width=44|height=45|scale9l=5|scale9b=5|scale9r=5|scale9t=5|img=private/mp/4005510012.png|esc=0>
+
+Inc S$技能展示 <ItemShow|x=351.0|y=79.0|itemid=10382|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$兽神_技能1灰化)>|link=@技能选择#技能标示=50>
+Inc S$技能展示 <ItemShow|x=351.0|y=144.0|itemid=10383|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$兽神_技能2灰化)>|link=@技能选择#技能标示=51>
+Inc S$技能展示 <ItemShow|x=351.0|y=209.0|itemid=10384|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$兽神_技能3灰化)>|link=@技能选择#技能标示=52>
+Inc S$技能展示 <ItemShow|x=351.0|y=274.0|itemid=10385|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$兽神_技能4灰化)>|link=@技能选择#技能标示=53>
+Inc S$技能展示 <ItemShow|x=351.0|y=339.0|itemid=10386|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$兽神_技能5灰化)>|link=@技能选择#技能标示=54>
+Inc S$技能展示 <ItemShow|x=351.0|y=404.0|itemid=10387|itemcount=0|showtips=1|scale=<$STR(S$图标大小)>|grey=<$STR(N$兽神_技能6灰化)>|link=@技能选择#技能标示=55>
+
+
+[@技能学习主界面]
+#IF
+CHECKJOB Warrior
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=650|height=580|bg=1|show=4|scale9r=100|scale9t=100|scale9b=100|move=0|esc=1|loadDelay=0|reset=1|img=private/xlxl/00000.png|scale9l=100>
+<Layout|x=599.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=607.0|y=19.0|width=35|height=35|rotate=0|size=18|color=255|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=210.0|y=83.0|width=393|height=428|rotate=0|scale9t=5|scale9r=5|scale9l=5|scale9b=5|img=private/xlxl/0018.png|esc=0>
+<Img|x=282.0|y=8.0|img=private/biaoti/01003.png|esc=0>
+<Img|x=190.0|y=68.0|height=435|img=private/psllz/00010.png|esc=0>
+<Img|x=380.0|y=95.0|height=350|img=private/mp/4005400026.png|esc=0>
+<Img|x=50|y=83.0|width=145|height=428|rotate=0|scale9t=5|scale9r=5|scale9l=5|scale9b=5|img=private/xlxl/0018.png|esc=0>
+<Button|x=57.0|y=90.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮1图1)>.png|pimg=private/pmh/<$str(s$按钮1图2)>.png|color=<$str(s$按钮1)>|size=18|text=精修-战将|link=@流派副界面#流派=战将#按钮1=11009#按钮2=11024#按钮3=11024#按钮1图1=002#按钮2图2=001#按钮2图1=001#按钮2图2=002#按钮3图1=001#按钮3图2=002>
+<Button|x=57.0|y=140.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮2图1)>.png|pimg=private/pmh/<$str(s$按钮2图2)>.png|color=<$str(s$按钮2)>|size=18|text=精修-武宗|link=@流派副界面#流派=武宗#按钮1=11024#按钮2=11009#按钮3=11024#按钮1图1=001#按钮2图2=002#按钮2图1=002#按钮2图2=001#按钮3图1=001#按钮3图2=002>
+<Button|x=57.0|y=190.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮3图1)>.png|pimg=private/pmh/<$str(s$按钮3图2)>.png|color=<$str(s$按钮3)>|size=18|text=精修-暴君|link=@流派副界面#流派=暴君#按钮1=11024#按钮2=11024#按钮3=11009#按钮1图1=001#按钮2图2=002#按钮2图1=001#按钮2图2=002#按钮3图1=002#按钮3图2=001>
+<$STR(S$技能选择锁定)>
+<$STR(S$技能展示)>
+<$STR(S$职业提示)>
+<$STR(S$数据提示)>
+<$STR(S$学习按钮)>
+
+
+#IF
+CHECKJOB Wizard
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=650|height=580|bg=1|show=4|scale9r=100|scale9t=100|scale9b=100|move=0|esc=1|loadDelay=0|reset=1|img=private/xlxl/00000.png|scale9l=100>
+<Layout|x=599.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=607.0|y=19.0|width=35|height=35|rotate=0|size=18|color=255|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=210.0|y=83.0|width=393|height=428|rotate=0|scale9t=5|scale9r=5|scale9l=5|scale9b=5|img=private/xlxl/0018.png|esc=0>
+<Img|x=282.0|y=8.0|img=private/biaoti/01003.png|esc=0>
+<Img|x=190.0|y=68.0|height=435|img=private/psllz/00010.png|esc=0>
+<Img|x=380.0|y=95.0|height=350|img=private/mp/4005400026.png|esc=0>
+<Img|x=50|y=83.0|width=145|height=428|rotate=0|scale9t=5|scale9r=5|scale9l=5|scale9b=5|img=private/xlxl/0018.png|esc=0>
+<Button|x=57.0|y=90.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮1图1)>.png|pimg=private/pmh/<$str(s$按钮1图2)>.png|color=<$str(s$按钮1)>|size=18|text=精修-魔神|link=@流派副界面#流派=魔神#按钮1=11009#按钮2=11024#按钮3=11024#按钮1图1=002#按钮2图2=001#按钮2图1=001#按钮2图2=002#按钮3图1=001#按钮3图2=002>
+<Button|x=57.0|y=140.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮2图1)>.png|pimg=private/pmh/<$str(s$按钮2图2)>.png|color=<$str(s$按钮2)>|size=18|text=精修-赤焰|link=@流派副界面#流派=赤焰#按钮1=11024#按钮2=11009#按钮3=11024#按钮1图1=001#按钮2图2=002#按钮2图1=002#按钮2图2=001#按钮3图1=001#按钮3图2=002>
+<Button|x=57.0|y=190.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮3图1)>.png|pimg=private/pmh/<$str(s$按钮3图2)>.png|color=<$str(s$按钮3)>|size=18|text=精修-冰雪|link=@流派副界面#流派=冰雪#按钮1=11024#按钮2=11024#按钮3=11009#按钮1图1=001#按钮2图2=002#按钮2图1=001#按钮2图2=002#按钮3图1=002#按钮3图2=001>
+<$STR(S$技能选择锁定)>
+<$STR(S$技能展示)>
+<$STR(S$职业提示)>
+<$STR(S$数据提示)>
+<$STR(S$学习按钮)>
+#IF
+CHECKJOB Taoist
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=650|height=580|bg=1|show=4|scale9r=100|scale9t=100|scale9b=100|move=0|esc=1|loadDelay=0|reset=1|img=private/xlxl/00000.png|scale9l=100>
+<Layout|x=599.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=607.0|y=19.0|width=35|height=35|rotate=0|size=18|color=255|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=210.0|y=83.0|width=393|height=428|rotate=0|scale9t=5|scale9r=5|scale9l=5|scale9b=5|img=private/xlxl/0018.png|esc=0>
+<Img|x=282.0|y=8.0|img=private/biaoti/01003.png|esc=0>
+<Img|x=190.0|y=68.0|height=435|img=private/psllz/00010.png|esc=0>
+<Img|x=380.0|y=95.0|height=350|img=private/mp/4005400026.png|esc=0>
+<Img|x=50|y=83.0|width=145|height=428|rotate=0|scale9t=5|scale9r=5|scale9l=5|scale9b=5|img=private/xlxl/0018.png|esc=0>
+<Button|x=57.0|y=90.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮1图1)>.png|pimg=private/pmh/<$str(s$按钮1图2)>.png|color=<$str(s$按钮1)>|size=18|text=精修-天尊|link=@流派副界面#流派=天尊#按钮1=11009#按钮2=11024#按钮3=11024#按钮1图1=002#按钮2图2=001#按钮2图1=001#按钮2图2=002#按钮3图1=001#按钮3图2=002>
+<Button|x=57.0|y=140.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮2图1)>.png|pimg=private/pmh/<$str(s$按钮2图2)>.png|color=<$str(s$按钮2)>|size=18|text=精修-道玄|link=@流派副界面#流派=道玄#按钮1=11024#按钮2=11009#按钮3=11024#按钮1图1=001#按钮2图2=002#按钮2图1=002#按钮2图2=001#按钮3图1=001#按钮3图2=002>
+<Button|x=57.0|y=190.0|width=132|height=38|rotate=0|nimg=private/pmh/<$str(s$按钮3图1)>.png|pimg=private/pmh/<$str(s$按钮3图2)>.png|color=<$str(s$按钮3)>|size=18|text=精修-御灵|link=@流派副界面#流派=御灵#按钮1=11024#按钮2=11024#按钮3=11009#按钮1图1=001#按钮2图2=002#按钮2图1=001#按钮2图2=002#按钮3图1=002#按钮3图2=001>
+<$STR(S$技能选择锁定)>
+<$STR(S$技能展示)>
+<$STR(S$职业提示)>
+<$STR(S$数据提示)>
+<$STR(S$学习按钮)>
+
+[@流派副界面]
+#IF
+NOT EQUAL S$流派
+#ACT
+mov S$技能标示 
+GOTO @职业数据面板
+GOTO @技能学习主界面
+BREAK
+
+
+[@技能学习]
+#IF
+EQUAL S$技能标示 
+#ACT
+SENDMSG 9 请先选择要精修的技能
+break
+
+#IF
+LARGE <$cfg_mpjn(<$STR(S$技能标示)>_4)> 0
+#ACT
+SENDMSG 9 你已经精修过此技能！
+BREAK
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)>  1
+#ACT
+MESSAGEBOX 你是否选择精修“战将”技能？\选择之后将不能精修“武宗”、“暴君”的技能。  @战神职业确定  @取消
+BREAK
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> 2
+#ACT
+MESSAGEBOX 你是否选择精修“武宗”技能？\选择之后将不能精修“战将”、“暴君”的技能。  @武圣职业确定  @取消
+BREAK
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> 3
+#ACT
+MESSAGEBOX 你是否选择精修“暴君”技能？\选择之后将不能精修“战将”、“武宗”的技能。  @狂魔职业确定  @取消
+BREAK
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> 4
+#ACT
+MESSAGEBOX 你是否选择精修“魔神”技能？\选择之后将不能精修“赤焰”、“冰雪”的技能。  @雷神职业确定  @取消
+BREAK
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> 5
+#ACT
+MESSAGEBOX 你是否选择精修“赤焰”技能？\选择之后将不能精修“魔神”、“冰雪”的技能。  @炎帝职业确定  @取消
+BREAK
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> 6
+#ACT
+MESSAGEBOX 你是否选择精修“冰雪”技能？\选择之后将不能精修“魔神”、“赤焰”的技能。  @冰皇职业确定  @取消
+BREAK
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> 7
+#ACT
+MESSAGEBOX 你是否选择精修“天尊”技能？\选择之后将不能精修“道玄”、“御灵”的技能。  @道尊职业确定  @取消
+BREAK
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> 8
+#ACT
+MESSAGEBOX 你是否选择精修“道玄”技能？\选择之后将不能精修“天尊”、“御灵”的技能。  @医圣职业确定  @取消
+BREAK
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 0
+EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> 9
+#ACT
+MESSAGEBOX 你是否选择精修“御灵”技能？\选择之后将不能精修“天尊”、“道玄”的技能。  @兽神职业确定  @取消
+BREAK
+
+
+#IF
+CHECKLEVELEX < <$cfg_mpjn(<$STR(S$技能标示)>_2)>
+#ACT
+MESSAGEBOX 等级不足<$cfg_mpjn(<$STR(S$技能标示)>_2)>级。
+break
+
+#IF
+NOT CHECKITEM 精修卷轴 <$cfg_mpjn(<$STR(S$技能标示)>_3)>
+#ACT
+MESSAGEBOX 精修卷轴不足<$cfg_mpjn(<$STR(S$技能标示)>_3)>张。
+break
+
+#IF
+CHECKJOB <$cfg_mpjn(<$STR(S$技能标示)>_1)>
+CHECKITEM 精修卷轴 <$cfg_mpjn(<$STR(S$技能标示)>_3)>
+CHECKLEVELEX ? <$cfg_mpjn(<$STR(S$技能标示)>_2)>
+#ACT
+TAKE 精修卷轴 <$cfg_mpjn(<$STR(S$技能标示)>_3)>
+MOV <$cfg_mpjn(<$STR(S$技能标示)>_4)> 1
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+#CALL [\登陆设置\技能改变.txt] @技能特效改变
+GOTO @职业数据面板
+GOTO @技能选择
+SENDMSG 9 精修成功
+BREAK
+
+
+[@战神职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 0
+#ACT
+MOV U50 1
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“战将”技能！
+BREAK
+
+[@武圣职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 0
+#ACT
+MOV U50 2
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“武宗”技能！
+BREAK
+
+[@狂魔职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 0
+#ACT
+MOV U50 3
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“暴君”技能！
+BREAK
+
+[@雷神职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 0
+#ACT
+MOV U50 4
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“魔神”技能！
+BREAK
+
+[@炎帝职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 0
+#ACT
+MOV U50 5
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“赤焰”技能！
+BREAK
+
+[@冰皇职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Wizard
+EQUAL U50 0
+#ACT
+MOV U50 6
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“冰雪”技能！
+BREAK
+
+[@道尊职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 0
+#ACT
+MOV U50 7
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“天尊”技能！
+BREAK
+
+[@医圣职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 0
+#ACT
+MOV U50 8
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“道玄”技能！
+BREAK
+
+[@兽神职业确定]
+#IF
+CHECK [21] 0
+#ACT
+CHANGEEXP + 1000
+SET [21] 1
+NEWDELETETASK 6
+
+#IF
+CHECKJOB Taoist
+EQUAL U50 0
+#ACT
+MOV U50 9
+#CALL [\功能脚本\登陆加载\属性设置.txt] @属性计算
+#CALL [\功能脚本\登陆加载\技能精修提升.txt] @技能精修效果
+GOTO @职业数据面板
+GOTO @技能学习主界面
+DELAYGOTO 100 @职业显示
+SENDMSG 9 恭喜你成功精修“御灵”技能！
+BREAK
+
+[@职业显示]
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV N$流派坐标x 225
+MOV N$流派坐标y 25
+MOV N$流派宽 40
+MOV N$流派高 65
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV N$流派坐标x 285
+MOV N$流派坐标y 45
+MOV N$流派宽 50
+MOV N$流派高 80
+
+#IF
+EQUAL U50 1
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/001.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+#IF
+EQUAL U50 2
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/002.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+#IF
+EQUAL U50 3
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/003.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+#IF
+EQUAL U50 4
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/004.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+#IF
+EQUAL U50 5
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/005.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+#IF
+EQUAL U50 6
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/006.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+#IF
+EQUAL U50 7
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/007.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+#IF
+EQUAL U50 8
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/008.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+#IF
+EQUAL U50 9
+#ACT
+MOV S$流派显示 <Img|x=<$STR(N$流派坐标x)>|y=<$STR(N$流派坐标y)>|width=<$STR(N$流派宽)>|height=<$STR(N$流派高)>|img=private/mp/009.png|esc=0>
+ADDBUTTON 3001 15 <$STR(S$流派显示)>
+
+
+[@技能选择]
+#IF
+EQUAL U50 0
+LARGE <$cfg_mpjn(<$STR(S$技能标示)>_2)> 0
+#ACT
+MOV S$技能选择锁定 <Img|x=<$cfg_mpjn(<$STR(S$技能标示)>_5)>|y=<$cfg_mpjn(<$STR(S$技能标示)>_6)>|width=47|height=47|img=public/1900000678_3.png|scale9l=5|scale9t=5|scale9r=5|scale9b=5>
+MOV S$学习按钮 <Button|x=338.0|y=475.0|width=95|height=32|rotate=0|nimg=private/mp/1910000001.png|pimg=private/mp/1910000001.png|color=11024|size=18|text=不可精修>
+GOTO @技能学习主界面
+BREAK
+
+#IF
+LARGE U50 0
+NOT EQUAL <$cfg_mpjn(<$STR(S$技能标示)>_7)> <$STR(U50)>
+#ACT
+MOV S$技能选择锁定 <Img|x=<$cfg_mpjn(<$STR(S$技能标示)>_5)>|y=<$cfg_mpjn(<$STR(S$技能标示)>_6)>|width=47|height=47|img=public/1900000678_3.png|scale9l=5|scale9t=5|scale9r=5|scale9b=5>
+MOV S$学习按钮 <Button|x=338.0|y=475.0|width=95|height=32|rotate=0|nimg=private/mp/1910000001.png|pimg=private/mp/1910000001.png|color=11024|size=18|text=不可精修>
+GOTO @技能学习主界面
+BREAK
+
+#IF
+large <$cfg_mpjn(<$STR(S$技能标示)>_4)> 0
+#ACT
+MOV S$技能选择锁定 <Img|x=<$cfg_mpjn(<$STR(S$技能标示)>_5)>|y=<$cfg_mpjn(<$STR(S$技能标示)>_6)>|width=47|height=47|img=public/1900000678_3.png|scale9l=5|scale9t=5|scale9r=5|scale9b=5>
+MOV S$学习按钮 <Button|x=338.0|y=475.0|width=95|height=32|rotate=0|nimg=private/mp/1910000001.png|pimg=private/mp/1910000001.png|color=11024|size=18|text=已精修>
+GOTO @技能学习主界面
+BREAK
+
+#IF
+LARGE U50 0
+#ACT
+MOV N$上级检测 <$STR(S$技能标示)>
+DEC N$上级检测 1
+
+#IF
+NOT EQUAL <$cfg_mpjn(<$STR(N$上级检测)>_0)> 1
+EQUAL <$cfg_mpjn(<$STR(N$上级检测)>_4)> 0
+#ACT
+MOV S$技能选择锁定 <Img|x=<$cfg_mpjn(<$STR(S$技能标示)>_5)>|y=<$cfg_mpjn(<$STR(S$技能标示)>_6)>|width=47|height=47|img=public/1900000678_3.png|scale9l=5|scale9t=5|scale9r=5|scale9b=5>
+MOV S$学习按钮 <Button|x=338.0|y=475.0|width=95|height=32|rotate=0|nimg=private/mp/1910000001.png|pimg=private/mp/1910000001.png|color=11024|size=18|text=不可精修>
+GOTO @技能学习主界面
+BREAK
+
+#IF
+#ACT
+MOV S$技能选择锁定 <Img|x=<$cfg_mpjn(<$STR(S$技能标示)>_5)>|y=<$cfg_mpjn(<$STR(S$技能标示)>_6)>|width=47|height=47|img=public/1900000678_3.png|scale9l=5|scale9t=5|scale9r=5|scale9b=5>
+MOV S$学习按钮 <Button|x=338.0|y=475.0|width=95|height=32|rotate=0|nimg=private/mp/1910000001.png|pimg=private/mp/1910000002.png|color=11009|size=18|text=精修|link=@技能学习>
+GOTO @技能学习主界面
+BREAK
+
+ 
+}

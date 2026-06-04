@@ -1,0 +1,15 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=藏宝之地一旦关闭入口，在想进来就难了！>
+<Text|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=17|text=大量宝藏在等着你，你确定要离开这是非之地吗？>
+<Layout|x=65.0|y=152.0|width=100|height=40|link=@返回土城>
+<Text|x=75.0|y=155.0|color=11009|size=18|outline=1|outlinecolor=0|text=返回土城|link=@返回土城>
+<Img|x=49.0|y=163.0|width=18|height=18|esc=0|img=public/00013.png>
+
+
+[@返回土城]
+#IF
+#ACT
+MAPMOVE 3 333 333 5

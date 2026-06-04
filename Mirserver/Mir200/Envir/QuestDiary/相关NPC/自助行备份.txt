@@ -1,0 +1,432 @@
+[@自助交易]
+
+{
+
+;G211--祝福油库存
+;G212--绿晶矿库存
+;G213--女娲石碎片库存
+;G214--天命神石库存
+;G215--1万经验卷库存
+;G216--10万经验卷库存
+;G217--100万经验卷库存
+;G218--声望令牌库存
+;G219--精修卷轴库存
+;G220--紫薇星石库存
+;G221--沃玛碎片库存
+;G222--祖玛碎片库存
+;G223--赤月碎片库存
+;G224--兽灵丹库存
+;G225--材料行本周税收
+;G226--材料行上周税收
+;U159--个人已回收元宝数量
+
+#IF
+#ACT
+MOV S$提示内容
+MOV N$充值元宝 <$GAMEGIRD>
+MUL N$充值元宝 N$充值元宝 100
+MOV N$回收元宝 <$STR(N$充值元宝)>
+CalcPer <$STR(N$回收元宝)> 50 N$回收元宝
+;INC N$回收元宝 U159
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$提示内容 <Img|x=336.0|y=48.0|tips=说明：^1.库存上限为50000，达到库存上限后，可以继续出售，但库存上限不再增加。^2.充值低于100元的玩家，出售的1万、10万经验卷、精修卷轴不会增加库存。|tipsy=40|img=public/001998.png|esc=0>
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$提示内容 <Button|x=336.0|y=48.0|tips=说明：^1.库存上限为50000，达到库存上限后，可以继续出售，但库存上限不再增加。^2.充值低于100元的玩家，出售的1万、10万经验卷、精修卷轴不会增加库存。|tipsy=40|size=18|nimg=public/001998.png|color=255>
+
+;#IF
+;ISCASTLEMASTER
+;DAYOFWEEK SAT
+;#ACT
+;INC S$提示内容 <Button|x=690.0|y=430.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=领取税收|link=@领取税收>
+
+
+#IF
+#ACT
+MOV S$改变变量
+MOV S$出售价格
+MOV S$购买价格
+MOV S$道具名称
+MOV N$回收金币 0
+MOV N$消耗元宝 0
+MOV N$税收元宝 0
+MOV P10 <$STR(S$跳转索引)>
+MOV S$跳转索引
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=-1.0|width=820|height=550|bg=1|scale9l=70|scale9r=70|scale9t=70|scale9b=70|move=0|loadDelay=0|esc=1|reset=1|img=private/xlxl/00000.png|show=4>
+<Layout|x=773.0|y=-9.0|width=80|height=80|link=@exit>
+<Button|x=775.0|y=20.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=365.0|y=18.0|img=private/biaoti/22012.png|esc=0>
+
+<Text|x=95.0|y=50.0|color=255|size=18|outline=1|outlinecolor=0|text=物品>
+<Text|x=300.0|y=50.0|color=255|size=18|outline=1|outlinecolor=0|text=库存>
+<Text|x=460.0|y=50.0|color=255|size=18|outline=1|outlinecolor=0|text=出售>
+<Text|x=650.0|y=50.0|color=255|size=18|outline=1|outlinecolor=0|text=购买>
+
+<RText|x=45.0|y=460.0|color=255|size=16|outline=1|outlinecolor=0|text=您的充值：<<$STR(N$充值元宝)>/FCOLOR=250>元宝，可回收材料：<<$STR(U159)>/<$STR(N$回收元宝)>/FCOLOR=250>元宝>
+<Text|x=45.0|y=485.0|color=251|size=16|outline=1|outlinecolor=0|text=回收额度不足时，将以1元宝：500金币的价格，自动变为金币>
+<Text|x=45.0|y=505.0|color=251|size=16|outline=1|outlinecolor=0|text=城主每周六22:00后可平分材料行上周交易额的5%作为额外奖励！上周税收：<$STR(G225)>元宝。>
+
+
+<ListView|children={2,3,4,5,6,7,8,9,10,11,12,13,14,15}|x=45|y=78|width=730|height=380|direction=1|bounce=0|margin=3|reload=0|default=<$STR(P10)>>
+
+<Img|id=2|children={21,22,23,24,25,26,27,28,29}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=21|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=绿晶矿>
+<ItemShow|id=22|x=140.0|y=0.0|width=70|height=70|itemid=10462|itemcount=1|showtips=1|bgtype=0>
+<Text|id=23|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G212)>>
+<Text|id=24|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=1元宝>
+<Button|id=25|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=绿晶矿#出售价格=1#改变变量=G212#跳转索引=1>
+<Text|id=26|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=3元宝>
+<Button|id=27|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=绿晶矿#购买价格=3#改变变量=G212#跳转索引=1>
+
+
+<Img|id=3|children={31,32,33,34,35,36,37,38,39}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=31|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=女娲石>
+<ItemShow|id=32|x=140.0|y=0.0|width=70|height=70|itemid=10463|itemcount=1|showtips=1|bgtype=0>
+<Text|id=33|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G213)>>
+<Text|id=34|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=100元宝>
+<Button|id=35|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=女娲石#出售价格=100#改变变量=G213#跳转索引=2>
+<Text|id=36|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=300元宝>
+<Button|id=37|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=女娲石#购买价格=300#改变变量=G213#跳转索引=2>
+
+
+<Img|id=4|children={41,42,43,44,45,46,47,48,49}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=41|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=天命神石>
+<ItemShow|id=42|x=140.0|y=0.0|width=70|height=70|itemid=10464|itemcount=1|showtips=1|bgtype=0>
+<Text|id=43|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G214)>>
+<Text|id=44|x=405.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=2000元宝>
+<Button|id=45|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=天命神石#出售价格=2000#改变变量=G214#跳转索引=3>
+<Text|id=46|x=600.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=3000元宝>
+<Button|id=47|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=天命神石#购买价格=3000#改变变量=G214#跳转索引=3>
+
+
+
+<Img|id=5|children={51,52,53,54,55,56,57,58,59}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=51|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=祝福油>
+<ItemShow|id=52|x=140.0|y=0.0|width=70|height=70|itemid=10140|itemcount=1|showtips=1|bgtype=0>
+<Text|id=53|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G211)>>
+<Text|id=54|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=15元宝>
+<Button|id=55|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=祝福油#出售价格=15#改变变量=G211#跳转索引=4>
+<Text|id=56|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=25元宝>
+<Button|id=57|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=祝福油#购买价格=25#改变变量=G211#跳转索引=4>
+
+
+<Img|id=6|children={61,62,63,64,65,66,67,68,69}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=61|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=1万经验卷>
+<ItemShow|id=62|x=140.0|y=0.0|width=70|height=70|itemid=10388|itemcount=1|showtips=1|bgtype=0>
+<Text|id=63|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G215)>>
+<Text|id=64|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=5元宝>
+<Button|id=65|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=1万经验卷#出售价格=5#改变变量=G215#跳转索引=5>
+<Text|id=66|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=10元宝>
+<Button|id=67|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=1万经验卷#购买价格=10#改变变量=G215#跳转索引=5>
+
+
+<Img|id=7|children={71,72,73,74,75,76,77,78,79}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=71|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=10万经验卷>
+<ItemShow|id=72|x=140.0|y=0.0|width=70|height=70|itemid=10389|itemcount=1|showtips=1|bgtype=0>
+<Text|id=73|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G216)>>
+<Text|id=74|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=50元宝>
+<Button|id=75|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=10万经验卷#出售价格=50#改变变量=G216#跳转索引=6>
+<Text|id=76|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=80元宝>
+<Button|id=77|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=10万经验卷#购买价格=80#改变变量=G216#跳转索引=6>
+
+
+<Img|id=8|children={81,82,83,84,85,86,87,88,89}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=81|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=100万经验卷>
+<ItemShow|id=82|x=140.0|y=0.0|width=70|height=70|itemid=10390|itemcount=1|showtips=1|bgtype=0>
+<Text|id=83|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G217)>>
+<Text|id=84|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=500元宝>
+<Button|id=85|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=100万经验卷#出售价格=500#改变变量=G217#跳转索引=7>
+<Text|id=86|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=750元宝>
+<Button|id=87|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=100万经验卷#购买价格=750#改变变量=G217#跳转索引=7>
+
+
+<Img|id=9|children={91,92,93,94,95,96,97,98,99}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=91|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=声望令牌>
+<ItemShow|id=92|x=140.0|y=0.0|width=70|height=70|itemid=10259|itemcount=1|showtips=1|bgtype=0>
+<Text|id=93|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G218)>>
+<Text|id=94|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=30元宝>
+<Button|id=95|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=声望令牌#出售价格=30#改变变量=G218#跳转索引=8>
+<Text|id=96|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=90元宝>
+<Button|id=97|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=声望令牌#购买价格=90#改变变量=G218#跳转索引=8>
+
+
+<Img|id=10|children={101,102,103,104,105,106,107,108,109}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=101|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=精修卷轴>
+<ItemShow|id=102|x=140.0|y=0.0|width=70|height=70|itemid=10202|itemcount=1|showtips=1|bgtype=0>
+<Text|id=103|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G219)>>
+<Text|id=104|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=25元宝>
+<Button|id=105|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=精修卷轴#出售价格=25#改变变量=G219#跳转索引=9>
+<Text|id=106|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=50元宝>
+<Button|id=107|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=精修卷轴#购买价格=50#改变变量=G219#跳转索引=9>
+
+
+
+<Img|id=11|children={111,112,113,114,115,116,117,118,119}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=111|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=沃玛碎片>
+<ItemShow|id=112|x=140.0|y=0.0|width=70|height=70|itemid=10406|itemcount=1|showtips=1|bgtype=0>
+<Text|id=113|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G221)>>
+<Text|id=114|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=20元宝>
+<Button|id=115|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=沃玛碎片#出售价格=20#改变变量=G221#跳转索引=10>
+<Text|id=116|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=30元宝>
+<Button|id=117|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=沃玛碎片#购买价格=30#改变变量=G221#跳转索引=10>
+
+
+<Img|id=12|children={121,122,123,124,125,126,127,128,129}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=121|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=祖玛碎片>
+<ItemShow|id=122|x=140.0|y=0.0|width=70|height=70|itemid=10408|itemcount=1|showtips=1|bgtype=0>
+<Text|id=123|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G222)>>
+<Text|id=124|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=65元宝>
+<Button|id=125|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=祖玛碎片#出售价格=65#改变变量=G222#跳转索引=11>
+<Text|id=126|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=100元宝>
+<Button|id=127|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=祖玛碎片#购买价格=100#改变变量=G222#跳转索引=11>
+
+
+<Img|id=13|children={131,132,133,134,135,136,137,138,139}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=131|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=赤月碎片>
+<ItemShow|id=132|x=140.0|y=0.0|width=70|height=70|itemid=10410|itemcount=1|showtips=1|bgtype=0>
+<Text|id=133|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G223)>>
+<Text|id=134|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=200元宝>
+<Button|id=135|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=赤月碎片#出售价格=200#改变变量=G223#跳转索引=12>
+<Text|id=136|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=300元宝>
+<Button|id=137|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=赤月碎片#购买价格=300#改变变量=G223#跳转索引=12>
+
+
+<Img|id=14|children={141,142,143,144,145,146,147,148,149}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+<Text|id=141|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=紫薇星石>
+<ItemShow|id=142|x=140.0|y=0.0|width=70|height=70|itemid=10404|itemcount=1|showtips=1|bgtype=0>
+<Text|id=143|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G220)>>
+<Text|id=144|x=405.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=20000元宝>
+<Button|id=145|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=紫薇星石#出售价格=20000#改变变量=G220#跳转索引=13>
+<Text|id=146|x=600.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=28500元宝>
+<Button|id=147|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=紫薇星石#购买价格=28500#改变变量=G220#跳转索引=13>
+
+;<Img|id=15|children={151,152,153,154,155,156,157,158,159}|x=30.0|y=95.0|width=730|height=70|scale9l=50|scale9r=50|scale9t=10|scale9b=10|img=public/1900015004.png|esc=0>
+;<Text|id=151|x=35.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=兽灵丹>
+;<ItemShow|id=152|x=140.0|y=0.0|width=70|height=70|itemid=10600|itemcount=1|showtips=1|bgtype=0>
+;<Text|id=153|x=285.0|y=20.0|color=255|size=18|outline=1|outlinecolor=0|text=<$STR(G224)>>
+;<Text|id=154|x=415.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=175元宝>
+;<Button|id=155|x=400.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=出售|link=@出售道具#道具名称=兽灵丹#出售价格=175#改变变量=G224#跳转索引=14>
+;<Text|id=156|x=610.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=200元宝>
+;<Button|id=157|x=595.0|y=30.0|width=85|height=35|color=11007|nimg=private/pmh/011.png|text=购买|link=@购买道具#道具名称=兽灵丹#购买价格=200#改变变量=G224#跳转索引=14>
+
+<$STR(S$提示内容)>
+
+
+[@出售道具]
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=0.0|width=400|height=180|move=0|esc=1|loadDelay=1|scale9t=10|img=public/1900000600.png|reset=1|scale9l=10|scale9b=10|show=4|bg=1|scale9r=10|bagPos=1>
+<Layout|x=341.0|y=-26.0|width=80|height=80|link=@自助交易>
+<Button|x=360.0|y=9.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@自助交易>
+<RText|x=20.0|y=15.0|color=255|size=18|text=请输入出售数量：>
+<Img|x=40.0|y=60.0|width=300|height=28|rotate=0|img=public/1900000668.png|esc=0>
+<Input|x=43.0|y=63.0|width=290|height=25|rotate=0|type=1|maxcount=4|inputid=3|color=255|size=14>
+<Layout|x=69.0|y=118.0|width=100|height=50|rotate=0|link=@自助交易>
+<Button|x=80.0|y=125.0|color=1025|size=18|pimg=public/1900000679_1.png|nimg=public/1900000679.png|text=取消|link=@自助交易>
+<Layout|x=242.0|y=118.0|width=100|height=50|submitInput=3|link=@确认出售道具>
+<Button|x=250.0|y=125.0|nimg=public/1900000679.png|submitInput=3|pimg=public/1900000679_1.png|size=18|color=1025|text=确定|link=@确认出售道具>
+
+[@确认出售道具]
+#IF
+SMALL <$NPCINPUT(3)> 1
+#ACT
+SENDMSG 9 请输入你要出售的数量！
+BREAK
+
+#IF
+#ACT
+MOV N$出售数量 <$NPCINPUT(3)>
+
+#IF
+NOT CHECKITEM <$STR(S$道具名称)> <$STR(N$出售数量)>
+#ACT
+SENDMSG 9 你没有 <$STR(N$出售数量)>个<$STR(S$道具名称)>用来出售！
+BREAK
+
+#IF
+#ACT
+MOV N$回收元宝 <$GAMEGIRD>
+MUL N$回收元宝 N$回收元宝 100
+CalcPer <$STR(N$回收元宝)> 50 N$回收元宝
+DEC N$回收元宝 U159
+
+MOV N$道具价格 <$STR(S$出售价格)>
+MUL N$道具价格 N$道具价格 N$出售数量
+
+
+#IF
+SMALL N$回收元宝 1
+#ACT
+TAKE <$STR(S$道具名称)>  <$STR(N$出售数量)>
+MOV N$回收金币 0
+MUL N$回收金币 N$道具价格 500
+GIVE 金币 <$STR(N$回收金币)>
+SENDMSG 0 玩家<$USERNAME>在材料行出售了<$STR(S$道具名称)>* <$STR(N$出售数量)>，获得了<$STR(N$回收金币)>金币。
+GOTO @出售计算
+DELAYGOTO 50 @自助交易
+BREAK
+#IF
+NOT SMALL N$回收元宝 N$道具价格
+#ACT
+TAKE <$STR(S$道具名称)>  <$STR(N$出售数量)>
+GAMEGOLD + <$STR(N$道具价格)>
+INC U159 <$STR(N$道具价格)>
+SENDMSG 0 玩家<$USERNAME>在材料行出售了<$STR(S$道具名称)>* <$STR(N$出售数量)>，获得了<$STR(N$道具价格)>元宝。
+GOTO @出售计算
+DELAYGOTO 50 @自助交易
+BREAK
+
+#IF
+LARGE N$回收元宝 0
+SMALL N$回收元宝 N$道具价格
+#ACT
+TAKE <$STR(S$道具名称)>  <$STR(N$出售数量)>
+GAMEGOLD + <$STR(N$回收元宝)>
+INC U159 <$STR(N$回收元宝)>
+MOV N$回收金币 <$STR(N$道具价格)>
+DEC N$回收金币 N$回收元宝
+MUL N$回收金币 N$回收金币 500
+GIVE 金币 <$STR(N$回收金币)>
+SENDMSG 0 玩家<$USERNAME>在材料行出售了<$STR(S$道具名称)>* <$STR(N$出售数量)>，获得了<$STR(N$道具价格)>元宝+<$STR(N$回收金币)>金币。
+GOTO @出售计算
+DELAYGOTO 50 @自助交易
+BREAK
+
+[@出售计算]
+#IF
+CHECKGAMEGIRD < 100
+EQUAL <$STR(S$道具名称)> 1万经验卷
+#ACT
+BREAK
+#IF
+CHECKGAMEGIRD < 100
+EQUAL <$STR(S$道具名称)> 10万经验卷
+#ACT
+BREAK
+#IF
+CHECKGAMEGIRD < 100
+EQUAL <$STR(S$道具名称)> 精修卷轴
+#ACT
+BREAK
+
+#IF
+LARGE  <$STR(N$出售数量)> 0
+#ACT
+INC <$STR(S$改变变量)>  <$STR(N$出售数量)>
+
+#IF
+LARGE <$STR(S$改变变量)> 50000
+#ACT
+MOV <$STR(S$改变变量)> 50000
+BREAK
+
+
+
+
+[@购买道具]
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=0.0|width=400|height=180|move=0|esc=1|loadDelay=1|scale9t=10|img=public/1900000600.png|reset=1|scale9l=10|scale9b=10|show=4|bg=1|scale9r=10|bagPos=1>
+<Layout|x=341.0|y=-26.0|width=80|height=80|link=@自助交易>
+<Button|x=360.0|y=9.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@自助交易>
+<RText|x=20.0|y=15.0|color=255|size=18|text=请输入购买数量：>
+<Img|x=40.0|y=60.0|width=300|height=28|rotate=0|img=public/1900000668.png|esc=0>
+<Input|x=43.0|y=63.0|width=290|height=25|rotate=0|maxcount=4|type=1|color=255|size=14|inputid=4|place=1>
+<Layout|x=69.0|y=118.0|width=100|height=50|rotate=0|link=@自助交易>
+<Button|x=80.0|y=125.0|color=1025|size=18|pimg=public/1900000679_1.png|nimg=public/1900000679.png|text=取消|link=@自助交易>
+<Layout|x=242.0|y=118.0|width=100|height=50|submitInput=4|link=@确认购买道具>
+<Button|x=250.0|y=125.0|nimg=public/1900000679.png|submitInput=4|pimg=public/1900000679_1.png|size=18|color=1025|text=确定|link=@确认购买道具>
+
+[@确认购买道具]
+#IF
+SMALL <$NPCINPUT(4)> 1
+#ACT
+SENDMSG 9 请输入你要购买的数量！
+BREAK
+
+#IF
+#ACT
+MOV N$购买数量 <$NPCINPUT(4)>
+
+#IF
+SMALL <$STR(S$改变变量)> <$STR(N$购买数量)>
+#ACT
+SENDMSG 9 购买失败，<$STR(S$道具名称)>的库存数量不足<$STR(N$购买数量)>个！
+BREAK
+
+#IF
+EQUAL <$STR(S$道具名称)> 100万经验卷
+NOT CHECKBAGSIZE <$STR(N$购买数量)>
+#ACT
+SENDMSG 9 购买失败，背包空格数量不足<$STR(N$购买数量)>格！
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 购买失败，背包空格数量不足5格！
+BREAK
+
+#IF
+#ACT
+MOV N$消耗元宝 <$STR(S$购买价格)>
+MUL N$消耗元宝 N$消耗元宝 N$购买数量
+
+#IF
+CHECKGAMEGOLD ? <$STR(N$消耗元宝)>
+#ACT
+GAMEGOLD - <$STR(N$消耗元宝)>
+GIVE <$STR(S$道具名称)> <$STR(N$购买数量)>
+SENDMSG 0 玩家<$USERNAME>在材料行消耗<$STR(N$消耗元宝)>元宝，购买了<$STR(S$道具名称)>*<$STR(N$购买数量)>。
+DEC <$STR(S$改变变量)> <$STR(N$购买数量)>
+MOV N$税收元宝 0
+CalcPer <$STR(N$消耗元宝)> 5 N$税收元宝
+INC G225 N$税收元宝
+DELAYGOTO 50 @自助交易
+BREAK
+#ELSEACT
+SENDMSG 9 购买失败，购买<$STR(S$道具名称)>*<$STR(N$购买数量)>需要消耗<$STR(N$消耗元宝)>元宝！
+BREAK
+
+[@领取税收]
+#IF
+NOT ISCASTLEMASTER
+#ACT
+SENDMSG 9 领取失败，你不是沙巴克城主，无权领取！
+BREAK
+
+#IF
+SMALL G226 1
+#ACT
+SENDMSG 9 领取失败，没有查询到可领取的奖励！
+BREAK
+
+#IF
+NOT DAYOFWEEK SAT
+#ACT
+SENDMSG 9 材料行税收领取时间为：每周六22:00~23:55！
+BREAK
+
+#IF
+HOUR 22 23
+MIN 0 55
+#ACT
+GAMEGOLD + <$STR(G226)>
+SENDMSG 0 沙巴克城主<$USERNAME>成功领取上周材料行税收<$STR(G226)>元宝！
+MOV G226 0
+BREAK
+#ELSEACT
+SENDMSG 9 材料行税收领取时间为：每周六22:00~23:55！
+BREAK
+
+}

@@ -1,0 +1,656 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01006.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=我曾在上古洞穴找到了一本秘籍经过不断的学习和反复的推敲>
+<Text|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=终于感受了蕴藏在项链之中的万物之灵。>
+<Text|x=45.0|y=120.0|color=11003|size=17|text=我不仅能帮你洗练运2的项链，甚至还可以提炼出项链中蕴藏罕>
+<Text|x=45.0|y=145.0|color=11003|size=17|text=见的暴击属性！>
+<Text|x=45.0|y=170.0|color=11008|size=17|text=运9的超强属性，将使你在PK或是打怪，都能立于不败之地!>
+<Layout|x=42.0|y=203.0|width=150|height=50|rotate=0|link=@开始洗练>
+<Text|x=72.0|y=211.0|color=11009|size=18|outline=1|outlinecolor=0|text=洗练项链幸运|link=@开始洗练>
+<Img|x=47.0|y=218.0|width=20|height=20|esc=0|img=public/00014.png>
+<Layout|x=261.0|y=203.0|width=150|height=50|rotate=0|link=@超油打造>
+<Text|x=291.0|y=211.0|color=11009|size=18|outline=1|outlinecolor=0|text=祝福油的秘密|link=@超油打造>
+<Img|x=266.0|y=218.0|width=20|height=20|esc=0|img=public/00013.png>
+
+
+[@超油打造]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01006.png|esc=0>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=幸运与诅咒只在一瞬之间，勇士你的祝福油足够多吗？>
+<Text|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=17|text=如果你在苦苦追求最高的幸运不如给我点小费，我可以帮助你。>
+<Text|x=45.0|y=120.0|size=17|color=11003|text=超级祝福油打造公式：祝福油*1000+1000万金币>
+<Text|x=45.0|y=146.0|size=17|color=11008|text=使用超级祝福油后将100%几率增加武器幸运1点！>
+<Layout|x=185.0|y=203.0|width=150|height=50|rotate=0|link=@开始打造超油>
+<Text|x=215.0|y=211.0|color=11009|size=18|outline=1|outlinecolor=0|text=打造超级祝福油|link=@开始打造超油>
+<Img|x=190.0|y=218.0|width=20|height=20|esc=0|img=public/00021.png>
+
+[@开始打造超油]
+#IF
+CHECKITEM 祝福油 1000
+CHECKMONEY 金币 > 9999999
+#act
+take 祝福油 1000
+MONEY 金币 - 10000000
+GIVE 超级祝福油 1
+sendmsg 9 打造成功！
+BREAK
+#ELSEACT
+MESSAGEBOX 材料不足，休想骗我！
+BREAK
+
+[@开始洗练]
+#IF
+#ACT
+MOV S$项链显示
+MOV S$项链锁定
+MOV S$项链唯一ID
+
+MOV S$洗练项链介绍 <Text|x=375.0|y=90.0|outline=1|outlinecolor=0|color=250|size=18|text=【洗练介绍】：>
+INC S$洗练项链介绍 <Text|x=385.0|y=120.0|outline=1|outlinecolor=0|color=100|size=16|text=1.成功洗练一次：项链幸运+1>
+INC S$洗练项链介绍 <Text|x=385.0|y=145.0|outline=1|outlinecolor=0|color=100|size=16|text=2.成功洗练二次：项链幸运+2>
+INC S$洗练项链介绍 <Text|x=385.0|y=170.0|outline=1|outlinecolor=0|color=100|size=16|text=3.成功洗练三次：项链幸运+2>
+INC S$洗练项链介绍 <Text|x=511.0|y=195.0|outline=1|outlinecolor=0|color=100|size=16|text=对怪增伤随机1%~10%>
+INC S$洗练项链介绍 <Text|x=386.0|y=220.0|outline=1|outlinecolor=0|color=100|size=16|text=4.洗练幸运成功率5%，20次必成>
+INC S$洗练项链介绍 <Text|x=399.0|y=245.0|outline=1|outlinecolor=0|color=100|size=16|text=洗练对怪增伤成功率5%，无保底！>
+MOV N$洗练成功率 0
+MOV N$洗练元宝 0
+MOV S$选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|text=选择身上|link=@身上项链>
+INC S$选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|text=选择背包|link=@背包项链>
+
+GOTO @洗练界面
+
+[@洗练界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=7.0|y=0.0|width=720|height=500|bg=1|esc=1|scale9r=35|scale9t=35|scale9b=30|move=0|reset=1|loadDelay=0|scale9l=35|img=private/xlxl/0000.png|show=4>
+<Img|x=320.0|y=10.0|img=private/biaoti/01006.png|esc=0>
+<Layout|x=669.0|y=-18.0|width=80|height=80|link=@exit>
+<Img|x=360.0|y=71.0|height=366|img=private/psllz/00010.png|esc=0>
+<Button|x=684.0|y=18.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=53.0|y=83.0|width=310|height=350|esc=0|img=private/xlxl/0013.png>
+<Text|x=172.0|y=322.0|color=251|size=16|outline=1|outlinecolor=0|text=成功率：<$STR(N$洗练成功率)>%>
+<Button|children={2}|x=-10.0|y=80.0|width=40|height=90|size=18|nimg=private/xlxl/0008.png|color=255|link=@开始洗练>
+<Text|id=2|x=10.0|y=5.0|color=255|size=18|outline=1|outlinecolor=0|text=洗\练>
+<Button|children={3}|x=-10.0|y=160.0|width=40|height=90|size=18|nimg=private/xlxl/0009.png|color=255|link=@开光>
+<Text|id=3|x=10.0|y=5.0|color=160|size=18|outline=1|outlinecolor=0|text=开\光>
+
+<ListView|children={<$str(S$容器串)>}|x=380|y=120|width=295|height=300|direction=1|bounce=0|margin=2|reload=0|color=x>
+<Text|x=80.0|y=355.0|color=100|size=16|outline=1|outlinecolor=0|text=消耗元宝：>
+<Text|x=80.0|y=385.0|color=100|size=16|outline=1|outlinecolor=0|text=洗练次数：>
+<Img|x=160.0|y=356.0|width=150|height=25|esc=0|img=private/xlxl/0018.png>
+<Img|x=160.0|y=385.0|width=150|height=25|esc=0|img=private/xlxl/0018.png>
+<Text|x=170.0|y=357.0|color=255|size=16|outline=1|outlinecolor=0|text=<$STR(N$洗练元宝)>>
+<Text|x=170.0|y=386.0|color=255|size=16|outline=1|outlinecolor=0|text=<$STR(N$洗练次数)>次>
+<Img|x=175.0|children={4}|y=130.0|img=private/xlxl/0003.png|esc=0>
+
+<Button|x=158.0|y=440.0|color=251|nimg=private/xlxl/0011.png|size=17|outline=1|outlinecolor=0|text=开始洗练|link=@洗练项链开始>
+<$str(S$洗练项链介绍)>
+<$str(S$选择按钮)>
+<$str(S$项链显示)>
+<$str(S$项链锁定)>
+
+
+[@身上项链]
+#IF
+NOT EQUAL <$NECKLACE>
+#ACT
+MOV S$选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|color=100|size=16|nimg=private/psllz/02134.png|outline=1|outlinecolor=0|text=选择身上>
+INC S$选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|outline=1|outlinecolor=0|text=选择背包|link=@背包项链>
+
+MOV S$项链显示
+MOV S$项链锁定
+MOV S$项链唯一ID
+MOV N$洗练次数 0
+MOV N$洗练成功率 0
+MOV N$洗练元宝 0
+MOV S$项链唯一ID <$NECKLACEID>
+MOV S$洗练项链介绍 
+INC S$洗练项链介绍 <Img|x=378.0|y=82.0|width=300|esc=0|img=private/xlxl/021600.png>
+INC S$洗练项链介绍 <Img|x=401.0|y=87.0|width=30|height=30|esc=0|img=private/xlxl/0015.png>
+INC S$洗练项链介绍 <Text|x=432.0|y=89.0|color=251|size=18|outline=1|outlinecolor=0|text=身上项链>
+INC S$洗练项链介绍 <Img|children={项链IDX,项链名称,项链位置,500}|x=380.0|y=120.0|width=295|scale9r=100|scale9t=30|esc=0|img=private/xlxl/0017.png|scale9b=30|scale9l=100|link=@确认身上项链>
+INC S$洗练项链介绍 <Text|id=项链名称|outline=1|outlinecolor=0|x=80.0|y=5.0|color=255|size=19|text=<$NECKLACE>>
+INC S$洗练项链介绍 <Text|id=项链位置|outline=1|outlinecolor=0|x=80.0|y=40.0|color=150|size=17|text=项链>
+INC S$洗练项链介绍 <DBItemShow|id=项链IDX||x=3|y=5|makeindex=<$str(S$项链唯一ID)>>
+GOTO @洗练界面
+BREAK
+#ELSEACT
+SENDMSG 9 角色身上没有佩戴项链！
+BREAK
+
+
+[@确认身上项链]
+#IF
+#ACT
+MOV N$幸运数值 0
+LINKITEMBYMAKEINDEX <$str(S$项链唯一ID)>
+MOV S$项链显示 <DBItemShow|id=4|x=0|y=0|makeindex=<$str(S$项链唯一ID)>>
+MOV S$项链锁定 <Img|id=500|x=-3.0|y=-2.0|width=300|height=85|scale9r=15|esc=0|scale9b=15|scale9t=15|scale9l=15|img=public/1900000678_1.png>
+GETITEMADDVALUE -1 42 N$洗练次数 0
+GETITEMADDVALUE -1 5 N$幸运数值 1
+
+#IF
+SMALL N$幸运数值 0
+#ACT
+MOV S$项链唯一ID
+MOV S$项链显示
+MOV S$项链锁定
+SENDMSG 9 被诅咒的项链不能接受祝福！
+GOTO @开始洗练
+BREAK
+
+
+#if
+EQUAL N$幸运数值 0
+#act
+MOV N$洗练成功率 5
+MOV N$洗练元宝 500
+
+#if
+EQUAL N$幸运数值 1
+#act
+MOV N$洗练成功率 5
+MOV N$洗练元宝 2000
+
+#if
+LARGE N$幸运数值 1
+#act
+MOV N$洗练成功率 2
+MOV N$洗练元宝 5000
+
+#if
+#act
+GOTO @洗练界面
+BREAK
+
+
+[@背包项链]
+#IF
+#ACT
+MOV S$项链显示
+MOV S$项链锁定
+MOV S$项链唯一ID
+MOV S$容器串
+MOV N$容器序号 0
+MOV N$洗练次数 0
+MOV N$洗练成功率 0
+MOV N$洗练元宝 0
+MOV S$选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|outline=1|outlinecolor=0|text=选择身上|link=@身上项链>
+INC S$选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|color=100|size=16|nimg=private/psllz/02134.png|outline=1|outlinecolor=0|text=选择背包>
+MOV S$洗练项链介绍 
+INC S$洗练项链介绍 <Img|children={500}|x=378.0|y=82.0|width=300|esc=0|img=private/xlxl/021600.png>
+INC S$洗练项链介绍 <Img|x=401.0|y=87.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$洗练项链介绍 <Text|x=432.0|y=89.0|color=251|size=18|outline=1|outlinecolor=0|text=背包项链>
+LoopBagItems @遍历背包项链 N$项链ID S$背包项链名称 S$物品的数量 S$物品的颜色 S$物品的标记
+ 
+GOTO @洗练界面
+
+
+[@遍历背包项链]
+#IF
+#ACT
+GetDBItemFieldValue <$STR(S$背包项链名称)> StdMode N$物品STM
+
+#OR
+EQUAL N$物品STM 19
+EQUAL N$物品STM 20
+EQUAL N$物品STM 21
+#ACT
+INC N$容器序号 1
+INC S$容器串 <$STR(N$项链ID)>,
+INC S$洗练项链介绍 <Img|id=<$STR(N$项链ID)>|children={<$STR(N$容器序号)>号项链IDX,<$STR(N$容器序号)>号项链名称,<$STR(N$容器序号)>号项链位置}|x=380.0|y=120.0|width=295|height=80|scale9r=100|scale9t=30|esc=0|img=private/xlxl/0017.png|scale9b=30|scale9l=100|link=@选择背包项链#项链唯一ID=<$STR(N$项链ID)>#项链锁定索引=<$STR(N$容器序号)>>
+INC S$洗练项链介绍 <Text|id=<$STR(N$容器序号)>号项链名称|outline=1|outlinecolor=0|x=80.0|y=5.0|color=255|size=19|text=<$STR(S$背包项链名称)>>
+INC S$洗练项链介绍 <Text|id=<$STR(N$容器序号)>号项链位置|outline=1|outlinecolor=0|x=80.0|y=40.0|color=150|size=17|text=项链>
+INC S$洗练项链介绍 <DBItemShow|id=<$STR(N$容器序号)>号项链IDX|children={<$STR(N$容器序号)>号项链锁定}|x=3|y=5|makeindex=<$str(N$项链ID)>>
+BREAK
+
+[@选择背包项链]
+#IF
+#ACT
+MOV N$幸运数值 0
+LINKITEMBYMAKEINDEX <$str(S$项链唯一ID)>
+MOV S$项链显示 <DBItemShow|id=4|x=0|y=0|makeindex=<$str(s$项链唯一ID)>>
+MOV S$项链锁定 <Img|id=<$str(s$项链锁定索引)>号项链锁定|x=-5.0|y=-8.0|width=300|height=85|scale9r=15|esc=0|scale9b=15|scale9t=15|scale9l=15|img=public/1900000678_1.png>
+GETITEMADDVALUE -1 42 N$洗练次数 0
+GETITEMADDVALUE -1 5 N$幸运数值 1
+
+#IF
+SMALL N$幸运数值 0
+#ACT
+MOV S$项链唯一ID
+MOV S$项链显示
+MOV S$项链锁定
+SENDMSG 9 被诅咒的项链不能接受祝福！
+GOTO @开始洗练
+BREAK
+
+#if
+EQUAL N$幸运数值 0
+#act
+MOV N$洗练成功率 5
+MOV N$洗练元宝 500
+
+#if
+EQUAL N$幸运数值 1
+#act
+MOV N$洗练成功率 5
+MOV N$洗练元宝 2000
+
+#if
+LARGE N$幸运数值 1
+#act
+MOV N$洗练成功率 2
+MOV N$洗练元宝 5000
+
+
+#if
+#act
+GOTO @洗练界面
+BREAK
+
+[@洗练项链开始]
+#IF
+EQUAL S$项链唯一ID
+#ACT
+SENDMSG 9 请先选择要洗练的项链！
+break
+
+#IF
+NOT EQUAL S$项链唯一ID
+#ACT
+MOV N$幸运数值 0
+LINKITEMBYMAKEINDEX <$str(S$项链唯一ID)>
+GETITEMADDVALUE -1 42 N$洗练次数 0
+GETITEMADDVALUE -1 5 N$幸运数值 1
+
+#if
+EQUAL N$幸运数值 0
+#act
+MOV N$洗练成功率 5
+MOV N$洗练元宝 500
+
+#if
+EQUAL N$幸运数值 1
+#act
+MOV N$洗练成功率 5
+MOV N$洗练元宝 2000
+
+#if
+LARGE N$幸运数值 1
+#act
+MOV N$洗练成功率 2
+MOV N$洗练元宝 5000
+
+#IF
+CheckBindMoney 元宝 < <$STR(N$洗练元宝)>
+#ACT
+SENDMSG 9 元宝数量不足<$STR(N$洗练元宝)>个！
+break
+
+#IF
+CheckItemFlag -1 25
+#ACT
+SENDMSG 9 该项链已达到最高属性，无法继续洗练！
+break
+
+#IF
+CHECK [358] 0
+#ACT
+;不可交易
+SetItemState -1 1 1
+;禁止爆出
+SetItemState -1 5 1
+;丢弃消失
+SetItemState -1 6 1
+;禁止摆摊或上架拍卖行
+SetItemState -1 8 1
+
+
+#IF
+RANDOMEX 5 100
+LARGE N$幸运数值 1
+CheckBindMoney 元宝 ? 5000
+#ACT
+ChangeBindMoney 元宝 5000
+logact 10002 通过[幸运项链]消耗5000元宝，剩余元宝：<$GAMEGOLD>。
+RANSJSTR 100#100|200#100|300#100|400#100|500#100|600#100|700#100|800#100|900#100|1000#100 1 3 S$取出数值 S$无用
+CHANGECUSTOMITEMTEXT -1 [强化属性]： 2
+CHANGECUSTOMITEMTEXTCOLOR -1 154 2
+CHANGECUSTOMITEMABIL -1 1 0 243 2
+CHANGECUSTOMITEMABIL -1 1 1 75 2
+CHANGECUSTOMITEMABIL -1 1 3 1 2
+CHANGECUSTOMITEMABIL -1 1 4 1 2
+CHANGECUSTOMITEMVALUE -1 1 = <$STR(S$取出数值)> 2
+CHANGEITEMADDVALUE -1 42 = 0
+SetItemFlag -1 25 1
+UpDateBoxItem -1
+DELAYGOTO 50 @洗练界面
+GOTO @几率重置
+DEC S$取出数值 00
+SENDMSG 9 洗练成功，项链对怪增伤+<$STR(S$取出数值)>%！
+break
+
+#IF
+CHECKITEMADDVALUE -1 42 = 19
+EQUAL N$幸运数值 1
+CheckBindMoney 元宝 ? 2000
+#ACT
+ChangeBindMoney 元宝 2000
+logact 10002 通过[幸运项链]消耗2000元宝，剩余元宝：<$GAMEGOLD>。
+CHANGEITEMADDVALUE -1 5 + 1
+CHANGEITEMADDVALUE -1 42 = 0
+UpDateBoxItem -1
+DELAYGOTO 50 @洗练界面
+GOTO @几率重置
+SENDMSG 9 洗练成功，项链幸运值+1点！
+MESSAGEBOX 您的项链幸运属性已经达到2点，是否继续洗练其他属性？ @洗练项链开始 @取消
+break
+
+#IF
+CHECKITEMADDVALUE -1 42 = 19
+EQUAL N$幸运数值 0
+CheckBindMoney 元宝 ? 500
+#ACT
+ChangeBindMoney 元宝 500
+logact 10002 通过[幸运项链]消耗500元宝，剩余元宝：<$GAMEGOLD>。
+CHANGEITEMADDVALUE -1 5 + 1
+CHANGEITEMADDVALUE -1 42 = 0
+UpDateBoxItem -1
+DELAYGOTO 50 @洗练界面
+GOTO @几率重置
+SENDMSG 9 洗练成功，项链幸运值+1点！
+break
+
+#IF
+RANDOMEX 5 100
+EQUAL N$幸运数值 1
+CheckBindMoney 元宝 ? 2000
+#ACT
+ChangeBindMoney 元宝 2000
+logact 10002 通过[幸运项链]消耗2000元宝，剩余元宝：<$GAMEGOLD>。
+CHANGEITEMADDVALUE -1 5 + 1
+CHANGEITEMADDVALUE -1 42 = 0
+UpDateBoxItem -1
+DELAYGOTO 50 @洗练界面
+GOTO @几率重置
+SENDMSG 9 洗练成功，项链幸运值+1点！
+MESSAGEBOX 您的项链幸运属性已经达到2点，是否继续洗练其他属性？ @洗练项链开始 @取消
+break
+
+#IF
+RANDOMEX 5 100
+EQUAL N$幸运数值 0
+CheckBindMoney 元宝 ? 500
+#ACT
+ChangeBindMoney 元宝 500
+logact 10002 通过[幸运项链]消耗500元宝，剩余元宝：<$GAMEGOLD>。
+CHANGEITEMADDVALUE -1 5 + 1
+CHANGEITEMADDVALUE -1 42 = 0
+UpDateBoxItem -1
+DELAYGOTO 50 @洗练界面
+GOTO @几率重置
+SENDMSG 9 洗练成功，项链幸运值+1点！
+break
+
+#IF
+LARGE N$幸运数值 1
+#ACT
+ChangeBindMoney 元宝 5000
+logact 10002 通过[幸运项链]消耗5000元宝，剩余元宝：<$GAMEGOLD>。
+CHANGEITEMADDVALUE -1 42 + 1
+UpDateBoxItem -1
+SENDMSG 9 很遗憾，此次洗练失败！
+GOTO @洗练界面
+break
+
+#IF
+EQUAL N$幸运数值 1
+#ACT
+ChangeBindMoney 元宝 2000
+logact 10002 通过[幸运项链]消耗2000元宝，剩余元宝：<$GAMEGOLD>。
+CHANGEITEMADDVALUE -1 42 + 1
+GETITEMADDVALUE -1 42 N$洗练次数 0
+UpDateBoxItem -1
+SENDMSG 9 很遗憾，此次洗练失败！
+GOTO @洗练界面
+break
+
+#IF
+EQUAL N$幸运数值 0
+#ACT
+ChangeBindMoney 元宝 500
+logact 10002 通过[幸运项链]消耗500元宝，剩余元宝：<$GAMEGOLD>。
+CHANGEITEMADDVALUE -1 42 + 1
+GETITEMADDVALUE -1 42 N$洗练次数 0
+UpDateBoxItem -1
+SENDMSG 9 很遗憾，此次洗练失败！
+GOTO @洗练界面
+break
+
+[@几率重置]
+#IF
+#ACT
+MOV N$幸运数值 0
+GETITEMADDVALUE -1 42 N$洗练次数 0
+GETITEMADDVALUE -1 5 N$幸运数值 1
+
+#if
+EQUAL N$幸运数值 0
+#act
+MOV N$洗练成功率 5
+MOV N$洗练元宝 500
+#if
+EQUAL N$幸运数值 1
+#act
+MOV N$洗练成功率 5
+MOV N$洗练元宝 2000
+#if
+LARGE N$幸运数值 1
+#act
+MOV N$洗练成功率 2
+MOV N$洗练元宝 5000
+
+
+[@开光]
+#IF
+#ACT
+MOV S$开光项链显示
+MOV S$开光项链锁定
+MOV S$开光项链唯一ID
+
+MOV S$开光项链介绍 <Text|x=375.0|y=90.0|outline=1|outlinecolor=0|color=250|size=18|text=【开光介绍】：>
+INC S$开光项链介绍 <Text|x=385.0|y=120.0|outline=1|outlinecolor=0|color=100|size=16|text=1.只有蓝魔之泪可以开光>
+INC S$开光项链介绍 <Text|x=385.0|y=145.0|outline=1|outlinecolor=0|color=100|size=16|text=2.每次开光消耗一个祝福油>
+INC S$开光项链介绍 <Text|x=385.0|y=170.0|outline=1|outlinecolor=0|color=100|size=16|text=3.非月享用户开光后的装备不可交易！>
+
+MOV N$洗练金币 10000000
+
+MOV S$开光选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|text=选择身上|link=@身上开光项链>
+INC S$开光选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|text=选择背包|link=@背包开光项链>
+
+GOTO @开光界面
+
+
+[@开光界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=7.0|y=0.0|width=720|height=500|bg=1|loadDelay=0|scale9r=35|scale9t=35|scale9b=30|move=0|reset=1|esc=1|scale9l=35|img=private/xlxl/0000.png|show=4>
+<Img|x=320.0|y=10.0|img=private/biaoti/01006.png|esc=0>
+<Layout|x=669.0|y=-18.0|width=80|height=80|link=@exit>
+<Img|x=360.0|y=70.0|height=366|img=private/psllz/00010.png|esc=0>
+<Button|x=684.0|y=18.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=54.0|y=79.0|width=310|height=350|esc=0|img=private/xlxl/0004.png>
+<Button|children={2}|x=-10.0|y=80.0|width=40|height=90|size=18|nimg=private/xlxl/0009.png|color=255|link=@开始洗练>
+<Text|id=2|x=10.0|y=5.0|color=160|outline=1|size=18|outlinecolor=0|text=洗\练>
+<Button|children={3}|x=-10.0|y=160.0|width=40|height=90|size=18|nimg=private/xlxl/0008.png|color=255|link=@开光>
+<Text|id=3|x=10.0|y=5.0|color=255|outline=1|size=18|outlinecolor=0|text=开\光>
+<ListView|children={<$STR(S$开光容器串)>}|x=380|y=120|width=295|height=300|direction=1|bounce=0|reload=0|color=x|margin=2>
+<Text|x=100.0|y=392.0|color=100|size=15|outlinecolor=0|outline=1|text=消耗金币：>
+<Text|x=171.0|y=392.0|color=255|size=15|outlinecolor=0|outline=1|text=<$STR(N$洗练金币)>>
+<Img|x=175.0|y=130.0|children={4}|img=private/xlxl/0003.png|esc=0>
+<Button|x=158.0|y=440.0|nimg=private/xlxl/0011.png|outlinecolor=0|outline=1|size=17|color=251|text=项链开光|link=@开光项链开始>
+<ItemShow|x=176.0|y=317.0|width=70|height=70|itemid=10140|itemcount=1|showtips=1|bgtype=0>
+<$str(S$开光项链介绍)>
+<$str(S$开光选择按钮)>
+<$str(S$开光项链显示)>
+<$str(S$开光项链锁定)>
+
+
+[@背包开光项链]
+#IF
+#ACT
+MOV S$跳转 背包
+MOV S$开光项链显示
+MOV S$开光项链锁定
+MOV S$开光项链唯一ID
+MOV S$开光容器串
+MOV N$开光容器序号 0
+MOV S$开光选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|outline=1|outlinecolor=0|text=选择身上|link=@身上开光项链>
+INC S$开光选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|color=100|size=16|nimg=private/psllz/02134.png|outline=1|outlinecolor=0|text=选择背包>
+MOV S$开光项链介绍 
+INC S$开光项链介绍 <Img|children={500}|x=378.0|y=82.0|width=300|esc=0|img=private/xlxl/021600.png>
+INC S$开光项链介绍 <Img|x=401.0|y=87.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$开光项链介绍 <Text|x=432.0|y=89.0|color=251|size=18|outline=1|outlinecolor=0|text=背包项链>
+LoopBagItems @遍历背包开光项链 N$开光项链ID S$开光项链名称 S$物品的数量 S$物品的颜色 S$物品的标记
+ 
+GOTO @开光界面
+
+[@遍历背包开光项链]
+#IF
+EQUAL S$开光项链名称 蓝魔之泪
+#ACT
+INC N$开光容器序号 1
+INC S$开光容器串 <$STR(N$开光项链ID)>,
+INC S$开光项链介绍 <Img|id=<$STR(N$开光项链ID)>|children={<$STR(N$开光容器序号)>号项链IDX,<$STR(N$开光容器序号)>号项链名称,<$STR(N$开光容器序号)>号项链位置}|x=380.0|y=120.0|width=295|height=80|scale9r=100|scale9t=30|esc=0|img=private/xlxl/0017.png|scale9b=30|scale9l=100|link=@选择背包开光项链#开光项链唯一ID=<$STR(N$开光项链ID)>#开光项链锁定索引=<$STR(N$开光容器序号)>>
+INC S$开光项链介绍 <Text|id=<$STR(N$开光容器序号)>号项链名称|outline=1|outlinecolor=0|x=80.0|y=5.0|color=255|size=19|text=<$STR(S$开光项链名称)>>
+INC S$开光项链介绍 <Text|id=<$STR(N$开光容器序号)>号项链位置|outline=1|outlinecolor=0|x=80.0|y=40.0|color=150|size=17|text=项链>
+INC S$开光项链介绍 <DBItemShow|id=<$STR(N$开光容器序号)>号项链IDX|children={<$STR(N$开光容器序号)>号项链锁定}|x=3|y=5|makeindex=<$str(N$开光项链ID)>>
+BREAK
+
+
+[@选择背包开光项链]
+#IF
+#ACT
+LINKITEMBYMAKEINDEX <$str(S$开光项链唯一ID)>
+MOV S$开光项链显示 <DBItemShow|id=4|x=0|y=0|makeindex=<$str(s$开光项链唯一ID)>>
+MOV S$开光项链锁定 <Img|id=<$str(s$开光项链锁定索引)>号项链锁定|x=-5.0|y=-8.0|width=300|height=85|scale9r=15|esc=0|scale9b=15|scale9t=15|scale9l=15|img=public/1900000678_1.png>
+GOTO @开光界面
+BREAK
+
+
+[@身上开光项链]
+#IF
+EQUAL <$NECKLACE> 蓝魔之泪
+#ACT
+MOV S$开光选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|color=100|size=16|nimg=private/psllz/02134.png|outline=1|outlinecolor=0|text=选择身上>
+INC S$开光选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|outline=1|outlinecolor=0|text=选择背包|link=@背包开光项链>
+
+MOV S$跳转 身上
+MOV S$开光项链显示
+MOV S$开光项链锁定
+MOV S$开光项链唯一ID <$NECKLACEID>
+MOV S$开光项链介绍 
+INC S$开光项链介绍 <Img|x=378.0|y=82.0|width=300|esc=0|img=private/xlxl/021600.png>
+INC S$开光项链介绍 <Img|x=401.0|y=87.0|width=30|height=30|esc=0|img=private/xlxl/0015.png>
+INC S$开光项链介绍 <Text|x=432.0|y=89.0|color=251|size=18|outline=1|outlinecolor=0|text=身上项链>
+INC S$开光项链介绍 <Img|children={开光项链IDX,开光项链名称,开光项链位置,500}|x=380.0|y=120.0|width=295|scale9r=100|scale9t=30|esc=0|img=private/xlxl/0017.png|scale9b=30|scale9l=100|link=@确认身上开光项链>
+INC S$开光项链介绍 <Text|id=开光项链名称|outline=1|outlinecolor=0|x=80.0|y=5.0|color=255|size=19|text=<$NECKLACE>>
+INC S$开光项链介绍 <Text|id=开光项链位置|outline=1|outlinecolor=0|x=80.0|y=40.0|color=150|size=17|text=项链>
+INC S$开光项链介绍 <DBItemShow|id=开光项链IDX||x=3|y=5|makeindex=<$str(S$开光项链唯一ID)>>
+GOTO @开光界面
+BREAK
+#ELSEACT
+MOV S$开光选择按钮 <Button|x=410.0|y=440.0|width=110|height=35|color=100|size=16|nimg=private/psllz/02134.png|outline=1|outlinecolor=0|text=选择身上>
+INC S$开光选择按钮 <Button|x=550.0|y=440.0|width=110|height=35|color=160|size=16|nimg=private/psllz/02133.png|outline=1|outlinecolor=0|text=选择背包|link=@背包开光项链>
+
+MOV S$开光项链显示
+MOV S$开光项链锁定
+MOV S$开光项链唯一ID 
+MOV S$开光项链介绍 
+INC S$开光项链介绍 <Img|x=378.0|y=82.0|width=300|esc=0|img=private/xlxl/021600.png>
+INC S$开光项链介绍 <Img|x=401.0|y=87.0|width=30|height=30|esc=0|img=private/xlxl/0015.png>
+INC S$开光项链介绍 <Text|x=432.0|y=89.0|color=251|size=18|outline=1|outlinecolor=0|text=身上项链>
+SENDMSG 9 角色身上没有佩戴蓝魔之泪！
+GOTO @开光界面
+BREAK
+
+
+[@确认身上开光项链]
+#IF
+#ACT
+LINKITEMBYMAKEINDEX <$str(S$开光项链唯一ID)>
+MOV S$开光项链显示 <DBItemShow|id=4|x=0|y=0|makeindex=<$str(S$开光项链唯一ID)>>
+MOV S$开光项链锁定 <Img|id=500|x=-3.0|y=-2.0|width=300|height=85|scale9r=15|esc=0|scale9b=15|scale9t=15|scale9l=15|img=public/1900000678_1.png>
+GOTO @开光界面
+BREAK
+
+
+[@开光项链开始]
+#IF
+EQUAL S$开光项链唯一ID
+#ACT
+SENDMSG 9 请选择要开光的项链！
+BREAK
+
+#IF
+NOT CHECKITEM 祝福油 1
+#ACT
+SENDMSG 9 开光项链需消耗祝福油*1！
+BREAK
+
+#IF
+CheckBindMoney 金币 < 10000000
+#ACT
+SENDMSG 9 开光项链需消耗金币*1000万！
+BREAK
+
+#IF
+NOT EQUAL S$开光项链唯一ID
+CHECKITEM 祝福油 1
+CheckBindMoney 金币 ? 10000000
+CHECK [358] 1
+#ACT
+ChangeBindMoney 金币 10000000
+logact 10001 通过[幸运项链]消耗10000000金币，剩余金币：<$MONEY(金币)>。
+TAKE 祝福油 1
+RANSJSTR 50640#325|50641#50|50642#50|50643#50|50644#50|50645#325|50646#50|50647#50|50648#50  1 3 S$权重IDX S$剩余
+CHANGEITEMINDEX <$str(S$开光项链唯一ID)> <$STR(S$权重IDX)>
+GetDBIdxItemFieldValue <$STR(S$权重IDX)> Name  S$新物品名
+GOTO @<$STR(S$跳转)>开光项链
+SENDMSG 9 恭喜你成功将蓝魔之泪开光成为<$str(S$新物品名)>
+MOV S$开光项链唯一ID
+MOV S$权重IDX
+BREAK
+
+#IF
+NOT EQUAL S$开光项链唯一ID
+CHECKITEM 祝福油 1
+CheckBindMoney 金币 ? 10000000
+CHECK [358] 0
+#ACT
+ChangeBindMoney 金币 10000000
+logact 10001 通过[幸运项链]消耗10000000金币，剩余金币：<$MONEY(金币)>。
+TAKE 祝福油 1
+RANSJSTR 50640#325|50641#50|50642#50|50643#50|50644#50|50645#325|50646#50|50647#50|50648#50  1 3 S$权重IDX S$剩余
+CHANGEITEMINDEX <$str(S$开光项链唯一ID)> <$STR(S$权重IDX)>
+GetDBIdxItemFieldValue <$STR(S$权重IDX)> Name  S$新物品名
+GOTO @<$STR(S$跳转)>开光项链
+SENDMSG 9 恭喜你成功将蓝魔之泪开光成为<$str(S$新物品名)>
+MOV S$开光项链唯一ID
+MOV S$权重IDX
+;不可交易
+SetItemState -1 1 1
+;禁止出售
+SetItemState -1 4 1
+;禁止爆出
+SetItemState -1 5 1
+;丢弃消失
+SetItemState -1 6 1
+;禁止摆摊或上架拍卖行
+SetItemState -1 8 1
+BREAK

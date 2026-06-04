@@ -1,0 +1,26 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01023.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=要进入神罚之地，您需要一块稀有的百炼龙魂石。我是神罚之\地的守门人，负责控制进入的通行权，只有持有百炼龙魂石的\勇士才能通过我的审查进入这片神秘的地方。>
+<Text|x=45.0|y=135.0|outlinecolor=0|color=255|outline=1|size=17|text=准备好迎接挑战了吗？拿起您的百炼龙魂石，我将为您打开神\罚之地的大门，让您踏上属于勇者的征程！>
+<Layout|x=60.0|y=200.0|width=100|height=35|color=*|link=@进入神罚之地>
+<Text|x=56.0|y=205.0|color=11009|size=18|text=进入神罚之地|link=@进入神罚之地>
+<Layout|x=221.0|y=200.0|width=100|height=35|color=*|link=@EXIT>
+<Text|x=241.0|y=205.0|color=11009|size=18|text=不去了|link=@EXIT>
+
+
+
+[@进入神罚之地]
+#IF
+CHECKITEM 百炼龙魂石 1
+#ACT
+TAKE 百炼龙魂石 1
+MAP qyzd
+sendmsg 0  %s成功进入了神罚之地...
+BREAK
+#ELSEACT
+MESSAGEBOX 你没有百炼龙魂石，我不能让你进去！
+BREAK
+

@@ -1,0 +1,196 @@
+[@main]
+<Img|x=0.0|y=20.0|height=280|reset=1|bg=1|move=0|img=public/bg_npc_01.png|loadDelay=1|show=0>
+<Layout|x=489.0|y=5.0|width=80|height=80|link=@exit>
+<Button|x=505.0|y=44.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01043.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=你可以用玉胚来兑换这些佩饰，祝你好运！>
+<Layout|x=40.0|y=108.0|width=80|height=45|link=@佩饰1>
+<Text|x=45.0|y=115.0|color=11008|size=18|text=1级佩饰|link=@佩饰1>
+<Layout|x=150.0|y=108.0|width=80|height=45|link=@佩饰2>
+<Text|x=160.0|y=115.0|color=11008|size=18|text=2级佩饰|link=@佩饰2>
+<Layout|x=260.0|y=108.0|width=80|height=45|link=@佩饰3>
+<Text|x=275.0|y=115.0|color=11008|size=18|text=3级佩饰|link=@佩饰3>
+<Layout|x=385.0|y=108.0|width=80|height=45|link=@佩饰4>
+<Text|x=390.0|y=115.0|color=11008|size=18|text=4级佩饰|link=@佩饰4>
+<Text|x=45.0|y=160.0|color=11054|size=18|text=佩饰说明：>
+<Text|x=45.0|y=185.0|outlinecolor=0|color=255|outline=1|size=16|text=佩饰的属性由主副属性组成,主属性类型由佩饰的前缀决定,副属>
+<Text|x=46.0|y=210.0|outlinecolor=0|color=255|outline=1|size=16|text=性则随机生成。佩饰等级越高，属性条数越多、属性值也越高。>
+<RText|x=46.0|y=235.0|outlinecolor=0|color=255|outline=1|size=16|text=若果你想激活佩饰属性，可以前往<苍月岛找佩饰工匠/FCOLOR=11003>看看，或许\能有意外收获哦！>
+
+
+
+
+
+
+[@佩饰1]
+<Img|x=0.0|y=20.0|height=240|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=490.0|y=3.0|width=80|height=80|link=@exit>
+<Button|x=505.0|y=41.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01043.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=是否确认使用4个1级玉胚兑换1个1级佩饰盒?>
+<Text|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=1级佩饰盒打开后能随机获得1个1级佩饰。>
+<Text|x=47.0|y=120.0|color=11003|size=17|text=开启1级佩饰盒不仅能获得1级佩饰，更有机会获得2级佩饰>
+<Layout|x=50.0|y=160.0|width=100|height=40|link=@1级佩饰1>
+<Text|x=70.0|y=166.0|color=11008|size=18|text=兑换1个|link=@1级佩饰1>
+<Layout|x=210.0|y=160.0|width=100|height=40|link=@1级佩饰10>
+<Text|x=220.0|y=166.0|color=11008|size=18|text=兑换10个|link=@1级佩饰10>
+<Layout|x=45.0|y=210.0|width=100|height=40|link=@main>
+<Text|x=70.0|y=215.0|color=11008|size=18|text=返回|link=@main>
+<Img|x=45.0|y=170.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=195.0|y=170.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=45.0|y=218.0|width=18|height=20|esc=0|img=public/00017.png>
+
+
+
+
+[@佩饰2]
+<Img|x=0.0|y=20.0|height=240|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=490.0|y=3.0|width=80|height=80|link=@exit>
+<Button|x=505.0|y=41.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01043.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=是否确认使用4个2级玉胚兑换1个2级佩饰盒?>
+<Text|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=2级佩饰盒打开后能随机获得1个2级佩饰。>
+<Text|x=47.0|y=120.0|color=11003|size=17|text=开启2级佩饰盒不仅能获得1级佩饰，更有机会获得3级佩饰>
+<Layout|x=50.0|y=160.0|width=100|height=40|link=@2级佩饰1>
+<Text|x=70.0|y=166.0|color=11008|size=18|text=兑换1个|link=@2级佩饰1>
+<Layout|x=210.0|y=160.0|width=100|height=40|link=@2级佩饰10>
+<Text|x=220.0|y=166.0|color=11008|size=18|text=兑换10个|link=@2级佩饰10>
+<Layout|x=45.0|y=210.0|width=100|height=40|link=@main>
+<Text|x=70.0|y=215.0|color=11008|size=18|text=返回|link=@main>
+<Img|x=45.0|y=170.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=195.0|y=170.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=45.0|y=218.0|width=18|height=20|esc=0|img=public/00017.png>
+
+
+[@佩饰3]
+<Img|x=0.0|y=20.0|height=240|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=490.0|y=3.0|width=80|height=80|link=@exit>
+<Button|x=505.0|y=41.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01043.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=是否确认使用4个3级玉胚兑换1个3级佩饰盒?>
+<Text|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=3级佩饰盒打开后能随机获得1个3级佩饰。>
+<Text|x=47.0|y=120.0|color=11003|size=17|text=开启2级佩饰盒不仅能获得1级佩饰，更有机会获得4级佩饰>
+<Layout|x=50.0|y=160.0|width=100|height=40|link=@3级佩饰1>
+<Text|x=70.0|y=166.0|color=11008|size=18|text=兑换1个|link=@3级佩饰1>
+<Layout|x=210.0|y=160.0|width=100|height=40|link=@3级佩饰10>
+<Text|x=220.0|y=166.0|color=11008|size=18|text=兑换10个|link=@3级佩饰10>
+<Layout|x=45.0|y=210.0|width=100|height=40|link=@main>
+<Text|x=70.0|y=215.0|color=11008|size=18|text=返回|link=@main>
+<Img|x=45.0|y=170.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=195.0|y=170.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=45.0|y=218.0|width=18|height=20|esc=0|img=public/00017.png>
+
+
+[@佩饰4]
+<Img|x=0.0|y=20.0|height=240|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=490.0|y=3.0|width=80|height=80|link=@exit>
+<Button|x=505.0|y=41.0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01043.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=是否确认使用4个4级玉胚兑换1个4级佩饰盒?>
+<Text|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=4级佩饰盒打开后能随机获得1个4级佩饰。>
+<Layout|x=50.0|y=160.0|width=100|height=40|link=@4级佩饰1>
+<Text|x=70.0|y=166.0|color=11008|size=18|text=兑换1个|link=@4级佩饰1>
+<Layout|x=210.0|y=160.0|width=100|height=40|link=@4级佩饰10>
+<Text|x=220.0|y=166.0|color=11008|size=18|text=兑换10个|link=@4级佩饰10>
+<Layout|x=45.0|y=210.0|width=100|height=40|link=@main>
+<Text|x=70.0|y=215.0|color=11008|size=18|text=返回|link=@main>
+<Img|x=45.0|y=170.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=195.0|y=170.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=45.0|y=218.0|width=18|height=20|esc=0|img=public/00017.png>
+
+[@1级佩饰10]
+#IF
+CHECKITEM 1级玉胚 40
+#ACT
+TAKE 1级玉胚 40
+GIVE 1级佩饰盒 10
+SENDMSG 9 兑换成功
+break
+#ELSEACT
+MESSAGEBOX 1级玉胚不足40个
+break
+
+[@2级佩饰10]
+#IF
+CHECKITEM 2级玉胚 40
+#ACT
+TAKE 2级玉胚 40
+GIVE 2级佩饰盒 10
+SENDMSG 9 兑换成功
+break
+#ELSEACT
+MESSAGEBOX 2级玉胚不足40个
+break
+
+[@3级佩饰10]
+#IF
+CHECKITEM 3级玉胚 40
+#ACT
+TAKE 3级玉胚 40
+GIVE 3级佩饰盒 10
+SENDMSG 9 兑换成功
+break
+#ELSEACT
+MESSAGEBOX 3级玉胚不足40个
+break
+
+[@4级佩饰10]
+#IF
+CHECKITEM 4级玉胚 40
+#ACT
+TAKE 4级玉胚 40
+GIVE 4级佩饰盒 10
+SENDMSG 9 兑换成功
+break
+#ELSEACT
+MESSAGEBOX 4级玉胚不足40个
+break
+
+
+[@1级佩饰1]
+#IF
+CHECKITEM 1级玉胚 4
+#ACT
+TAKE 1级玉胚 4
+GIVE 1级佩饰盒 1
+SENDMSG 9 兑换成功
+break
+#ELSEACT
+MESSAGEBOX 1级玉胚不足4个
+break
+
+[@2级佩饰1]
+#IF
+CHECKITEM 2级玉胚 4
+#ACT
+TAKE 2级玉胚 4
+GIVE 2级佩饰盒 1
+SENDMSG 9 兑换成功
+break
+#ELSEACT
+MESSAGEBOX 2级玉胚不足4个
+break
+
+[@3级佩饰1]
+#IF
+CHECKITEM 3级玉胚 4
+#ACT
+TAKE 3级玉胚 4
+GIVE 3级佩饰盒 1
+SENDMSG 9 兑换成功
+break
+#ELSEACT
+MESSAGEBOX 3级玉胚不足4个
+break
+
+[@4级佩饰1]
+#IF
+CHECKITEM 4级玉胚 4
+#ACT
+TAKE 4级玉胚 4
+GIVE 4级佩饰盒 1
+SENDMSG 9 兑换成功
+break
+#ELSEACT
+MESSAGEBOX 4级玉胚不足4个
+break

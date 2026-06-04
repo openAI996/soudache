@@ -1,0 +1,38 @@
+[@天才地宝]
+{
+;-----------------------------------------------------计算天才地宝属性;-----------------------------------------------------
+;蟠桃
+#IF
+LARGE U15 0
+#ACT
+DELbuff 50305
+addbuff 50305 0 <$str(U15)>
+
+;千年人参
+#IF
+LARGE U16 0
+#ACT
+DELbuff 50306
+addbuff 50306 0 <$str(U16)>
+
+;灵芝
+#IF
+LARGE U17 0
+#ACT
+DELbuff 50307
+addbuff 50307 0 <$str(U17)>
+
+;菩提果
+#IF
+LARGE U18 0
+#ACT
+DELbuff 50308
+addbuff 50308 0 <$str(U18)>
+
+;天山雪莲
+#IF
+LARGE U19 0
+#ACT
+DELbuff 50309
+addbuff 50309 0 <$str(U19)>
+}

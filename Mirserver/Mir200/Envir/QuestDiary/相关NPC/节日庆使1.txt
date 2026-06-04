@@ -1,0 +1,495 @@
+[@节日活动界面]
+{
+#if
+equal <$MONTH> 4
+#act
+mov N$天数1 25
+mov N$天数2 31
+
+#if
+equal <$MONTH> 5
+#act
+mov N$天数1 0
+mov N$天数2 11
+
+#if
+LARGE <$DAY> <$STR(N$天数1)>
+small <$DAY> <$STR(N$天数2)>
+#ACT
+GOTO @活动界面
+BREAK
+#ELSEACT 
+MESSAGEBOX 活动开启时间为04月26日00:00至5月10日23:59
+BREAK
+
+
+[@活动界面]
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+mov s$道具大小 0.85
+#ELSEACT
+mov s$道具大小 0.7
+
+#IF
+#ACT
+#SAY
+<Img|ax=0|x=0.0|y=19.0|width=680|height=600|scale9t=150|move=0|img=private/bgzz/bgbj.png|reset=1|show=0|scale9b=150|loadDelay=1|bg=1|scale9l=150|scale9r=150|esc=1>
+<Layout|x=619.0|y=4.0|width=80|height=80|link=@exit>
+<Button|x=635.0|y=36.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=288.0|y=28.0|img=private/biaoti/01073.png|esc=0>
+<Text|x=44.0|y=70.0|outlinecolor=0|color=11003|outline=1|size=17|text=搜打撤传奇五一狂欢活动！在这个快乐的节日里，我们将一起感受搜打撤传奇的\激情与热血，共享劳动的喜悦！>
+<Text|x=45.0|y=125.0|outlinecolor=0|color=11013|outline=1|size=17|text=1、节日福袋惊喜：>
+<RText|x=45.0|y=150.0|outlinecolor=0|color=255|outline=1|size=16|text=活动期间49级以上玩家每天可花<88万金币/FCOLOR=11003>开启<"福袋"/FCOLOR=1s1033>1个(每天最多开启5个)>
+<RText|x=45.0|y=180.0|color=255|size=16|outlinecolor=0|outline=1|text=福袋展示：　　　　　　今日已开启(<<$str(J88)>/5/FCOLOR=251>)>
+<Img|x=145.0|y=173.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=136.0|y=162.0|width=70|height=70|itemid=10614|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<Text|x=45.0|y=220.0|color=11013|size=17|outlinecolor=0|outline=1|text=2、充值回馈大礼：>
+<RText|x=45.0|y=245.0|color=255|size=16|outlinecolor=0|outline=1|text=每<单笔/FCOLOR=11043>充值为　<288元/FCOLOR=11003>，额外增送一个<"紫微星石"+悦享卡/FCOLOR=11033>(每个角色限5次)>
+<RText|x=45.0|y=275.0|color=255|size=16|outlinecolor=0|outline=1|text=活动赠送预览：　　　　　　　　已参与次数(<<$str(u190)>/5/FCOLOR=251>)>
+<Img|x=165.0|y=265.0|width=45|height=45|esc=0|img=public/02128.png>
+<Img|x=230.0|y=265.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=154.0|y=254.0|width=70|height=70|itemid=10404|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<ItemShow|x=220.0|y=255.0|width=70|height=70|itemid=10613|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<RText|x=45.0|y=310.0|color=255|size=16|outlinecolor=0|outline=1|text=每<单笔/FCOLOR=11043>充值为　<588元/FCOLOR=11003>，额外增送一个<"凤凰羽"/FCOLOR=11033>(每个角色限5次)>
+<RText|x=45.0|y=340.0|color=255|size=16|outlinecolor=0|outline=1|text=活动赠送预览：　　　　　　　　已参与次数(<<$str(u191)>/5/FCOLOR=251>)>
+<Img|x=200.0|y=330.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=190.0|y=320.0|width=70|height=70|itemid=10611|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<RText|x=45.0|y=375.0|color=255|size=16|outlinecolor=0|outline=1|text=每<单笔/FCOLOR=11043>充值为　<888元/FCOLOR=11003>，额外增送一个<"燕雀石"/FCOLOR=11033>(每个角色限5次)>
+<RText|x=45.0|y=405.0|color=255|size=16|outlinecolor=0|outline=1|text=活动赠送预览：　　　　　　　　已参与次数(<<$str(u192)>/5/FCOLOR=251>)>
+<Img|x=200.0|y=399.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=190.0|y=388.0|width=70|height=70|itemid=10612|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<Text|x=27.0|y=559.0|color=11043|size=16|outlinecolor=0|outline=1|text=（活动期间玩家单笔充值达到活动金额，将自动通过邮件发放活动赠送奖励，无需领取）>
+<Text|x=27.0|y=539.0|color=11043|size=16|outlinecolor=0|outline=1|text=（以上活动需单笔充值指定金额，单笔充值未达到指定金额将无法获得活动赠送奖励）>
+<Text|x=455.0|y=180.0|color=11008|size=18|outline=1|outlinecolor=0|text=开启福袋|link=@开启福袋>
+<Text|x=455.0|y=275.0|color=11008|size=18|outline=1|outlinecolor=0|text=充值参与活动|link=@活动充值拉起1>
+<Text|x=455.0|y=340.0|color=11008|size=18|outline=1|outlinecolor=0|text=充值参与活动|link=@活动充值拉起2>
+<Text|x=455.0|y=405.0|color=11008|size=18|outline=1|outlinecolor=0|text=充值参与活动|link=@活动充值拉起3>
+<Text|x=39.0|y=580.0|color=11067|size=18|text=活动日期：04月26日00:00-05月10日23:59>
+<Text|x=46.0|y=445.0|color=11013|size=18|text=3、庆典礼盒：>
+<RText|x=45.0|y=470.0|color=255|size=16|outlinecolor=0|outline=1|text=活动期间：每位玩家可花费<888元宝/FCOLOR=11043>开启庆典礼盒，随机获得<"庆典积分"和"荣誉之羽"/FCOLOR=11003>>
+<Text|x=45.0|y=505.0|color=255|size=16|outline=1|outlinecolor=0|text=礼盒预览：>
+<Img|x=135.0|y=495.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=125.0|y=485.0|width=70|height=70|itemid=10623|itemcount=1|scale=<$str(s$道具大小)>|showtips=1|bgtype=0>
+<Layout|x=428.0|y=490.0|width=100|height=50|link=@开启礼盒>
+<Text|x=460.0|y=505.0|color=11008|size=18|text=开启礼盒|link=@开启礼盒>
+;<Text|x=304.0|y=506.0|color=11002|size=16|text=(活动累积充值：0元)>
+<Text|x=199.0|y=505.0|color=255|size=16|outline=1|outlinecolor=0|text=限量时装预览：>
+<Img|x=320.0|y=495.0|width=45|height=45|img=public/02128.png|esc=0>
+<ItemShow|x=315.0|y=485.0|width=70|height=70|itemid=50826|itemcount=1|showtips=1|scale=<$str(s$道具大小)>|bgtype=0>
+<Layout|x=550.0|y=490.0|width=100|height=50|link=@兑换商城>
+<Text|x=555.0|y=505.0|color=11008|size=18|text=兑换商城|link=@兑换商城>
+
+[@兑换商城]
+#IF
+#ACT
+GETBAGITEMCOUNT 荣耀之羽 N1
+#say
+<Img|x=0.0|y=20.0|height=160|show=0|loadDelay=0|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=493.0|y=6.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|size=17|color=11053|text=你可以使用庆典积分和荣耀之羽开启或兑换以下物品>
+<Layout|x=60.0|y=130.0|width=80|height=40|rotate=0|link=@MAIN>
+<Text|x=70.0|y=135.0|color=251|size=18|text=返回|link=@MAIN>
+<Img|x=45.0|y=140.0|img=public/00024.png|esc=0>
+<Img|id=50|x=18.0|y=179.0|img=public/buybg.png|esc=0|link=@空>
+<Img|id=51|x=27.0|y=191.0|img=public/bg_npcsm_01.png>
+<Img|id=52|x=27.0|y=254.0|img=public/bg_npcsm_01.png>
+<Img|id=53|x=27.0|y=317.0|img=public/bg_npcsm_01.png>
+<Img|id=54|x=27.0|y=380.0|img=public/bg_npcsm_01.png>
+<Img|id=55|x=27.0|y=443.0|img=public/bg_npcsm_01.png>
+<ItemShow|x=178.0|y=502.0|width=70|height=70|itemid=10620|itemcount=1|scale=0.6|showtips=1|bgtype=0>
+<ItemShow|x=16.0|y=502.0|width=70|height=70|itemid=10621|itemcount=1|scale=0.6|showtips=1|bgtype=0>
+<Text|x=67.0|y=524.0|color=255|size=16|text=<$str(U194)>>
+<Text|x=224.0|y=525.0|color=255|size=16|text=<$str(N1)>>
+<Layout|id=57|y=565|width=130|height=50|link=@兑换商城>
+<Layout|id=58|x=200|y=565|width=130|height=50|link=@兑换商城2>
+<Button|id=59|x=92.0|y=570.0|pimg=public/btn_fanye_01_1.png|nimg=public/btn_fanye_01.png|link=@兑换商城>
+<Button|id=62|x=225.0|y=570.0|pimg=public/btn_fanye_02_1.png|nimg=public/btn_fanye_02.png|link=@兑换商城2>
+<Img|id=60|x=144.0|y=570.0|img=public/1900000676.png>
+<Text|id=61|x=162.0|y=575.0|size=16|text=1／3>
+<ItemShow|id=63|x=25.0|y=190.0|itemid=10622|showtips=1>
+<Text|id=64|x=100|y=195|size=18|color=1005|text=庆典礼盒>
+<Text|id=65|x=100.0|y=225.0|size=17|color=255|text=庆典积分*10>
+<Button|id=67|x=255|y=210|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=打开|link=@积分开启礼盒>
+<ItemShow|id=68|x=25.0|y=253.0|itemid=10433|showtips=1>
+<Text|id=69|x=100|y=255|size=18|color=1005|text=天外陨铁>
+<Text|id=70|x=100|y=287|size=17|color=255|text=荣耀之羽*2>
+<Button|id=72|x=255|y=274|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=天外陨铁#羽毛兑换价格=2#兑换数量=1#返回=兑换商城>
+<ItemShow|id=73|x=25.0|y=316.0|itemid=10459|showtips=1>
+<Text|id=74|x=100.0|y=320.0|size=18|color=1005|text=黑铁矿(纯度25)>
+<Text|id=75|x=100|y=350|size=17|color=255|text=荣耀之羽*2>
+<Button|id=77|x=255|y=337|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=黑铁矿(纯度25)#羽毛兑换价格=2#兑换数量=1#返回=兑换商城>
+<ItemShow|id=78|x=25.0|y=379.0|itemid=10396|showtips=1>
+<Text|id=79|x=100.0|y=385.0|size=18|color=1005|text=女儿红*10>
+<Text|id=80|x=100.0|y=415.0|size=17|color=255|text=荣耀之羽*2>
+<Button|id=82|x=255|y=399|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品2#羽毛兑换道具=女儿红#羽毛兑换价格=2#兑换数量=10#返回=兑换商城>
+<ItemShow|id=83|x=25.0|y=442.0|itemid=10397|showtips=1>
+<Text|id=84|x=100.0|y=445.0|size=18|color=1005|text=玫瑰花(99朵)>
+<Text|id=85|x=100.0|y=475.0|size=17|color=255|text=荣耀之羽*3>
+<Button|id=87|x=255|y=463|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=玫瑰花(99朵)#羽毛兑换价格=3#兑换数量=1#返回=兑换商城>
+
+[@兑换商城2]
+#IF
+#ACT
+GETBAGITEMCOUNT 荣耀之羽 N1
+#say
+<Img|x=0.0|y=20.0|height=160|show=0|loadDelay=0|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=493.0|y=6.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|size=17|color=11053|text=你可以使用庆典积分和荣耀之羽开启或兑换以下物品>
+<Layout|x=60.0|y=130.0|width=80|height=40|rotate=0|link=@MAIN>
+<Text|x=70.0|y=135.0|color=251|size=18|text=返回|link=@MAIN>
+<Img|x=45.0|y=140.0|img=public/00024.png|esc=0>
+<Img|id=50|x=18.0|y=179.0|img=public/buybg.png|esc=0|link=@空>
+<Img|id=51|x=27.0|y=191.0|img=public/bg_npcsm_01.png>
+<Img|id=52|x=27.0|y=254.0|img=public/bg_npcsm_01.png>
+<Img|id=53|x=27.0|y=317.0|img=public/bg_npcsm_01.png>
+<Img|id=54|x=27.0|y=380.0|img=public/bg_npcsm_01.png>
+<Img|id=55|x=27.0|y=443.0|img=public/bg_npcsm_01.png>
+<ItemShow|x=178.0|y=502.0|width=70|height=70|itemid=10620|itemcount=1|scale=0.6|showtips=1|bgtype=0>
+<ItemShow|x=16.0|y=502.0|width=70|height=70|itemid=10621|itemcount=1|scale=0.6|showtips=1|bgtype=0>
+<Text|x=67.0|y=524.0|color=255|size=16|text=<$str(U194)>>
+<Text|x=224.0|y=525.0|color=255|size=16|text=<$str(N1)>>
+<Layout|id=57|y=565|width=130|height=50|link=@兑换商城>
+<Layout|id=58|x=200|y=565|width=130|height=50|link=@兑换商城3>
+<Button|id=59|x=92.0|y=570.0|pimg=public/btn_fanye_01_1.png|nimg=public/btn_fanye_01.png|link=@兑换商城>
+<Button|id=62|x=225.0|y=570.0|pimg=public/btn_fanye_02_1.png|nimg=public/btn_fanye_02.png|link=@兑换商城3>
+<Img|id=60|x=144.0|y=570.0|img=public/1900000676.png>
+<Text|id=61|x=162.0|y=575.0|size=16|text=2／3>
+<ItemShow|id=63|x=25.0|y=190.0|itemid=10437|showtips=1>
+<Text|id=64|x=100|y=195|size=18|color=1005|text=4级玉胚>
+<Text|id=65|x=100.0|y=225.0|size=17|color=255|text=荣耀之羽*4>
+<Button|id=67|x=255|y=210|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=4级玉胚#羽毛兑换价格=4#兑换数量=1#返回=兑换商城2>
+<ItemShow|id=68|x=25.0|y=253.0|itemid=10429|showtips=1>
+<Text|id=69|x=100|y=255|size=18|color=1005|text=上古卷轴>
+<Text|id=70|x=100|y=287|size=17|color=255|text=荣耀之羽*5>
+<Button|id=72|x=255|y=274|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=上古卷轴#羽毛兑换价格=5#兑换数量=1#返回=兑换商城2>
+<ItemShow|id=73|x=25.0|y=316.0|itemid=10586|showtips=1>
+<Text|id=74|x=100.0|y=320.0|size=18|color=1005|text=热血征战包>
+<Text|id=75|x=100|y=350|size=17|color=255|text=荣耀之羽*8>
+<Button|id=77|x=255|y=337|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=热血征战包#羽毛兑换价格=8#兑换数量=1#返回=兑换商城2>
+<ItemShow|id=78|x=25.0|y=379.0|itemid=10156|showtips=1>
+<Text|id=79|x=100.0|y=385.0|size=18|color=1005|text=金盒>
+<Text|id=80|x=100.0|y=415.0|size=17|color=255|text=荣耀之羽*25>
+<Button|id=82|x=255|y=399|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=金盒#羽毛兑换价格=25#兑换数量=1#返回=兑换商城2>
+<ItemShow|id=83|x=25.0|y=442.0|itemid=10398|showtips=1>
+<Text|id=84|x=100.0|y=445.0|size=18|color=1005|text=玫瑰花(999朵)>
+<Text|id=85|x=100.0|y=475.0|size=17|color=255|text=荣耀之羽*30>
+<Button|id=87|x=255|y=463|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=玫瑰花(999朵)#羽毛兑换价格=30#兑换数量=1#返回=兑换商城2>
+
+[@兑换商城3]
+#IF
+#ACT
+GETBAGITEMCOUNT 荣耀之羽 N1
+#say
+<Img|x=0.0|y=20.0|height=160|show=0|loadDelay=0|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=493.0|y=6.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|size=17|color=11053|text=你可以使用庆典积分和荣耀之羽开启或兑换以下物品>
+<Layout|x=60.0|y=130.0|width=80|height=40|rotate=0|link=@MAIN>
+<Text|x=70.0|y=135.0|color=251|size=18|text=返回|link=@MAIN>
+<Img|x=45.0|y=140.0|img=public/00024.png|esc=0>
+<Img|id=50|x=18.0|y=179.0|img=public/buybg.png|esc=0|link=@空>
+<Img|id=51|x=27.0|y=191.0|img=public/bg_npcsm_01.png>
+<Img|id=52|x=27.0|y=254.0|img=public/bg_npcsm_01.png>
+<Img|id=53|x=27.0|y=317.0|img=public/bg_npcsm_01.png>
+<Img|id=54|x=27.0|y=380.0|img=public/bg_npcsm_01.png>
+<Img|id=55|x=27.0|y=443.0|img=public/bg_npcsm_01.png>
+<ItemShow|x=178.0|y=502.0|width=70|height=70|itemid=10620|itemcount=1|scale=0.6|showtips=1|bgtype=0>
+<ItemShow|x=16.0|y=502.0|width=70|height=70|itemid=10621|itemcount=1|scale=0.6|showtips=1|bgtype=0>
+<Text|x=67.0|y=524.0|color=255|size=16|text=<$str(U194)>>
+<Text|x=224.0|y=525.0|color=255|size=16|text=<$str(N1)>>
+<Layout|id=57|y=565|width=130|height=50|link=@兑换商城2>
+<Layout|id=58|x=200|y=565|width=130|height=50|link=@兑换商城3>
+<Button|id=59|x=92.0|y=570.0|pimg=public/btn_fanye_01_1.png|nimg=public/btn_fanye_01.png|link=@兑换商城2>
+<Button|id=62|x=225.0|y=570.0|pimg=public/btn_fanye_02_1.png|nimg=public/btn_fanye_02.png|link=@兑换商城3>
+<Img|id=60|x=144.0|y=570.0|img=public/1900000676.png>
+<Text|id=61|x=162.0|y=575.0|size=16|text=3／3>
+<ItemShow|id=63|x=25.0|y=190.0|itemid=10464|showtips=1>
+<Text|id=64|x=100|y=195|size=18|color=1005|text=天命神石>
+<Text|id=65|x=100.0|y=225.0|size=17|color=255|text=荣耀之羽*28>
+<Button|id=67|x=255|y=210|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=天命神石#羽毛兑换价格=28#兑换数量=1#返回=兑换商城3>
+<ItemShow|id=68|x=25.0|y=253.0|itemid=10328|showtips=1>
+<Text|id=69|x=100|y=255|size=18|color=1005|text=绫罗袋(18格)>
+<Text|id=70|x=100|y=287|size=17|color=255|text=荣耀之羽*99>
+<Button|id=72|x=255|y=274|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=绫罗袋(18格)#羽毛兑换价格=99#兑换数量=1#返回=兑换商城3>
+<ItemShow|id=73|x=25.0|y=316.0|itemid=10404|showtips=1>
+<Text|id=74|x=100.0|y=320.0|size=18|color=1005|text=紫薇星石>
+<Text|id=75|x=100|y=350|size=17|color=255|text=荣耀之羽*108>
+<Button|id=77|x=255|y=337|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=紫薇星石#羽毛兑换价格=108#兑换数量=1#返回=兑换商城3>
+<ItemShow|id=78|x=25.0|y=379.0|itemid=10330|showtips=1>
+<Text|id=79|x=100.0|y=385.0|size=18|color=1005|text=乾坤袋(20格)>
+<Text|id=80|x=100.0|y=415.0|size=17|color=255|text=荣耀之羽*198>
+<Button|id=82|x=255|y=399|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@羽毛兑换物品#羽毛兑换道具=乾坤袋(20格)#羽毛兑换价格=198#兑换数量=1#返回=兑换商城3>
+<ItemShow|id=83|x=25.0|y=442.0|itemid=10619|showtips=1>
+<Text|id=84|x=100.0|y=445.0|size=18|color=1005|text=君临天下(限量)>
+<Text|id=85|x=100.0|y=475.0|size=17|color=255|text=荣耀之羽*588>
+<Button|id=87|x=255|y=463|width=80|height=35|color=255|nimg=public/buyan.png|size=16|text=兑换|link=@荣耀之羽兑换>
+
+
+[@羽毛兑换物品]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 兑换失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKITEM 荣耀之羽 <$STR(S$羽毛兑换价格)>
+#ACT
+TAKE 荣耀之羽 <$STR(S$羽毛兑换价格)>
+GiveStateItem <$STR(S$羽毛兑换道具)>  1 1 1 0 0 1 1 1 1
+SENDMSG 6 兑换成功，你消耗<$STR(S$羽毛兑换价格)>荣耀之羽兑换获得：<$STR(S$羽毛兑换道具)>*1！
+GOTO @<$str(s$返回)>
+BREAK
+#ELSEACT
+SENDMSG 9 兑换失败，荣耀之羽数量不足<$STR(S$羽毛兑换价格)>！
+BREAK
+
+[@羽毛兑换物品2]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 兑换失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKITEM 荣耀之羽 <$STR(S$羽毛兑换价格)>
+#ACT
+TAKE 荣耀之羽 <$STR(S$羽毛兑换价格)>
+GiveStateItem 女儿红  10 1 1 0 0 1 1 1 1
+SENDMSG 6 兑换成功，你消耗<$STR(S$羽毛兑换价格)>荣耀之羽兑换获得：<$STR(S$羽毛兑换道具)>*10！
+GOTO @兑换商城
+BREAK
+#ELSEACT
+SENDMSG 9 兑换失败，荣耀之羽数量不足<$STR(S$羽毛兑换价格)>！
+BREAK
+
+[@开启礼盒]
+#IF
+CHECKMONEY 元宝 < 888
+#ACT
+MESSAGEBOX 开启庆典礼包需要888元宝，请准备好再来开启！
+BREAK
+
+#IF
+CHECKMONEY 元宝 ? 888
+SMALL U193 1764
+#act
+MONEY 元宝 - 888
+RANSJSTR 积分#1394|羽毛#588 1 3 S$取出物品 S$剩余物品
+GOTO @给予物品
+BREAK
+
+#IF
+LARGE U193 1763
+SMALL U193 3528
+CHECKMONEY 元宝 ? 888
+#act
+MONEY 元宝 - 888
+RANSJSTR 积分#1195|羽毛#588 1 3 S$取出物品 S$剩余物品
+GOTO @给予物品
+BREAK
+
+#IF
+LARGE U193 3527
+SMALL U193 5292
+CHECKMONEY 元宝 ? 888
+#act
+MONEY 元宝 - 888
+RANSJSTR 积分#988|羽毛#588 1 3 S$取出物品 S$剩余物品
+GOTO @给予物品
+BREAK
+
+#IF
+LARGE U193 5291
+SMALL U193 7056
+CHECKMONEY 元宝 ? 888
+#act
+MONEY 元宝 - 888
+RANSJSTR 积分#799|羽毛#588 1 3 S$取出物品 S$剩余物品
+GOTO @给予物品
+BREAK
+
+#IF
+LARGE U193 7055
+SMALL U193 8820
+CHECKMONEY 元宝 ? 888
+#act
+MONEY 元宝 - 888
+RANSJSTR 积分#601|羽毛#588 1 3 S$取出物品 S$剩余物品
+GOTO @给予物品
+BREAK
+
+#IF
+LARGE U193 8819
+#act
+MONEY 元宝 - 888
+RANSJSTR 积分#403|羽毛#588 1 3 S$取出物品 S$剩余物品
+GOTO @给予物品
+BREAK
+
+[@给予物品]
+#IF
+EQUAL S$取出物品 积分
+#ACT
+INC U194 1
+MOV S$取出物品
+SENDMSG 5 恭喜你开启庆典礼盒获得庆典积分*1
+BREAK
+
+#IF
+EQUAL S$取出物品 羽毛
+#ACT
+GiveStateItem 荣耀之羽 1 1 1 0 0 1 1 1 1
+MOV S$取出物品
+SENDMSG 7 恭喜你开启庆典礼盒获得荣耀之羽 *1
+BREAK
+
+[@荣耀之羽兑换]
+#IF
+CHECKITEM 荣耀之羽 588
+CHECK [180] 0
+#act
+SET [180] 1
+TAKE 荣耀之羽 588
+GiveStateItem 君临天下(限量) 1 1 1 0 0 1 1 1 1
+MOV S$屏蔽名字  <$USERNAME>
+DEC S$屏蔽名字 3 16
+INC S$屏蔽名字 *****
+SENDMSGNEW 254 0 恭喜玩家:<<$STR(S$屏蔽名字)>/FCOLOR=251>使用<【荣耀之羽】/FCOLOR=250>成功兑换<限量版时装！/FCOLOR=70>  1 3
+SENDMSG 9 <font color='#79ff35'>恭喜你使用【荣耀之羽】成功兑换限量版时装！</font>
+GOTO @兑换商城3
+BREAK
+#ELSEACT
+MESSAGEBOX 兑换失败：荣耀之羽数量不足588个!
+BREAK
+
+[@积分开启礼盒]
+
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 开启失败，背包空格数量不足5格！
+BREAK
+
+
+#IF
+LARGE U194 9
+#ACT
+DEC U194 10
+MOV S$庆典物品权重  物品1#40|物品2#30|物品3#30|物品4#25|物品5#20|物品6#40|物品7#30|物品8#30|物品9#25|物品10#20|物品11#40|物品12#30|物品13#30|物品14#25|物品15#20|物品16#35|物品17#30|物品18#25|物品19#20|物品20#35|物品21#25|物品22#25|物品23#35|物品24#30|物品25#25|物品26#10|物品27#35|物品28#25|物品29#20|物品30#20|物品31#30|物品32#25|物品33#20|物品34#15|物品35#10|物品36#20|物品37#20|物品38#10|物品39#5|物品40#5|物品41#4|物品42#3|物品43#2|物品44#1
+RANSJSTR <$STR(S$庆典物品权重)> 1 3 S$取出庆典活动物品 S$剩余活动物品
+goto @积分正式开启
+BREAK
+#ELSEACT
+MESSAGEBOX 庆典积分不足10点，开启失败！
+BREAK
+
+[@积分正式开启]
+#or
+equal S$取出庆典活动物品 物品1
+equal S$取出庆典活动物品 物品2
+equal S$取出庆典活动物品 物品3
+equal S$取出庆典活动物品 物品4
+equal S$取出庆典活动物品 物品5
+#act
+MONEY 金币 + <$cfg_ryhd(<$GetTypeBRow(cfg_ryhd,0,<$STR(S$取出庆典活动物品)>)>_2)>
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》开启"庆典福袋"获得了<$cfg_ryhd(<$GetTypeBRow(cfg_ryhd,0,<$STR(S$取出庆典活动物品)>)>_1)>*<$cfg_ryhd(<$GetTypeBRow(cfg_ryhd,0,<$STR(S$取出庆典活动物品)>)>_2)>，搜打撤传奇祝大家节日快乐！
+MOV S$取出庆典活动物品
+GOTO @兑换商城
+BREAK
+
+#IF
+not equal S$取出庆典活动物品 物品1
+not equal S$取出庆典活动物品 物品2
+not equal S$取出庆典活动物品 物品3
+not equal S$取出庆典活动物品 物品4
+not equal S$取出庆典活动物品 物品5
+#ACT
+GiveStateItem <$cfg_ryhd(<$GetTypeBRow(cfg_ryhd,0,<$STR(S$取出庆典活动物品)>)>_1)> <$cfg_ryhd(<$GetTypeBRow(cfg_ryhd,0,<$STR(S$取出庆典活动物品)>)>_2)>  1 1 0 0 1 1 1 1
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》开启"庆典福袋"获得了<$cfg_ryhd(<$GetTypeBRow(cfg_ryhd,0,<$STR(S$取出庆典活动物品)>)>_1)>*<$cfg_ryhd(<$GetTypeBRow(cfg_ryhd,0,<$STR(S$取出庆典活动物品)>)>_2)>，搜打撤传奇祝大家节日快乐！
+MOV S$取出庆典活动物品
+GOTO @兑换商城
+BREAK
+
+
+[@开启福袋]
+#IF
+CHECKLEVELEX  < 50
+#ACT
+MESSAGEBOX 活动参与等级最低等级为50级，请先升级后再来参与！
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 开启失败，背包空格数量不足5格！
+BREAK
+
+#IF
+LARGE J88 4
+#ACT
+MESSAGEBOX 每天最多开启5次福袋，请明日再来开启！
+BREAK
+
+#IF
+CHECKMONEY 金币 < 880000
+#ACT
+MESSAGEBOX 开启福袋需要88万金币，请准备好再来开启！
+BREAK
+
+#IF
+SMALL J88 5
+CHECKMONEY 金币 >  879999
+#ACT
+INC J88 1
+MONEY 金币 - 880000
+MOV S$活动物品权重  物品1#40|物品2#30|物品3#30|物品4#25|物品5#20|物品6#40|物品7#30|物品8#30|物品9#25|物品10#20|物品11#40|物品12#30|物品13#30|物品14#25|物品15#20|物品16#35|物品17#30|物品18#25|物品19#20|物品20#35|物品21#25|物品22#25|物品23#35|物品24#30|物品25#25|物品26#10|物品27#35|物品28#25|物品29#20|物品30#20|物品31#30|物品32#25|物品33#20|物品34#15|物品35#10|物品36#20|物品37#20|物品38#10|物品39#5|物品40#5|物品41#4|物品42#3|物品43#2|物品44#1
+RANSJSTR <$STR(S$活动物品权重)> 1 3 S$取出活动物品 S$剩余活动物品
+goto @福袋正式开启
+BREAK
+
+[@福袋正式开启]
+#or
+equal S$取出活动物品 物品1
+equal S$取出活动物品 物品2
+equal S$取出活动物品 物品3
+equal S$取出活动物品 物品4
+equal S$取出活动物品 物品5
+#act
+MONEY 金币 + <$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_2)>
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》开启"节日福袋"获得了<$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_1)>*<$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_2)>，搜打撤传奇祝各位玩家节日快乐！
+MOV S$取出活动物品
+GOTO @活动界面
+BREAK
+
+
+#IF
+not equal S$取出活动物品 物品1
+not equal S$取出活动物品 物品2
+not equal S$取出活动物品 物品3
+not equal S$取出活动物品 物品4
+not equal S$取出活动物品 物品5
+#ACT
+GiveStateItem <$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_1)> <$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_2)>  1 1 0 0 1 1 1 1
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》开启"节日福袋"获得了<$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_1)>*<$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_2)>，搜打撤传奇祝各位玩家节日快乐！
+MOV S$取出活动物品
+GOTO @活动界面
+BREAK
+
+[@活动充值拉起1]
+#act
+Pullpay 288 1 2
+
+[@活动充值拉起2]
+#act
+Pullpay 588 1 2
+
+[@活动充值拉起3]
+#act
+Pullpay 888 1 2
+
+
+}

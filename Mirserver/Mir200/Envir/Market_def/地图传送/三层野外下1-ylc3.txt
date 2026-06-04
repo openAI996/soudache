@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE ylc32 54 42

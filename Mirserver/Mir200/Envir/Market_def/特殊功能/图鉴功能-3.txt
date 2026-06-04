@@ -1,0 +1,673 @@
+[@main]
+#if
+equal <$CLIENTFLAG> 1
+#act
+mov N$标题Y坐标 7
+#ELSEACT
+mov N$标题Y坐标 3
+
+#IF
+#ACT
+MOV N$图鉴当页 1
+MOV N$图鉴总页 5
+MOV N$图鉴位置_1 1
+MOV N$图鉴位置_2 2
+MOV N$图鉴位置_3 3
+MOV N$图鉴位置_4 4
+MOV N$图鉴位置_5 5
+MOV N$图鉴位置_6 6
+MOV N$图鉴位置_7 7
+MOV N$图鉴位置_8 8
+MOV N$图鉴位置_9 9
+MOV N$图鉴位置_10 10
+MOV N$图鉴位置_11 11
+MOV N$图鉴位置_12 12
+MOV N$页面展开 0
+MOV S$锁定页面
+MOV S$展开页面
+MOV S$图鉴切换 宠物
+GOTO @图鉴标示获取
+GOTO @图鉴主页面
+
+[@图鉴主页面]
+#IF
+EQUAL N$页面展开 0
+#ACT
+MOV S$关闭按钮 <Layout|x=245.0|y=2.0|width=80|height=80|link=@exit>
+INC S$关闭按钮 <Button|x=245.0|y=2.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+#ELSEACT
+MOV S$关闭按钮 <Layout|x=565.0|y=2.0|width=80|height=80|link=@exit>
+INC S$关闭按钮 <Button|x=565.0|y=2.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+
+#IF
+#ACT
+#SAY
+<Img|ax=0|ay=1|x=-135.0|y=0.0|width=380|height=480|move=0|bg=1|scale9t=10|scale9b=10|img=private/zbtj/4005740000.png|reset=1|scale9r=10|loadDelay=0|scale9l=10|show=4|esc=1>
+<Layout|x=779.0|y=11.0|width=80|height=80|link=@exit>
+<Button|x=780.0|y=11.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=-0.0|y=0.0|img=public/<$STR(S$背景)>.png|esc=0>
+<Text|x=-108.0|y=<$STR(N$标题Y坐标)>|color=1027|size=18|text=玛法图鉴>
+<$STR(S$关闭按钮)>
+
+<Button|x=-88.0|y=60.0|children={1,<$STR(N$图鉴位置_1)>_0}|width=125|height=40|rotate=0|outlinecolor=0|nimg=private/zbtj/4005250094.png|outline=2|size=16|color=161|pimg=private/zbtj/4005250096.png|text= <$cfg_tj(<$STR(N$图鉴位置_1)>_1)>|link=@图鉴数据调取#锁定位置=1>
+<Button|x=60.0|y=60.0|children={2,<$STR(N$图鉴位置_2)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_2)>_1)>|link=@图鉴数据调取#锁定位置=2>
+
+<Button|x=-88.0|y=120.0|children={3,<$STR(N$图鉴位置_3)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_3)>_1)>|link=@图鉴数据调取#锁定位置=3>
+<Button|x=60.0|y=120.0|children={4,<$STR(N$图鉴位置_4)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_4)>_1)>|link=@图鉴数据调取#锁定位置=4>
+
+<Button|x=-88.0|y=180.0|children={5,<$STR(N$图鉴位置_5)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_5)>_1)>|link=@图鉴数据调取#锁定位置=5>
+<Button|x=60.0|y=180.0|children={6,<$STR(N$图鉴位置_6)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_6)>_1)>|link=@图鉴数据调取#锁定位置=6>
+
+<Button|x=-88.0|y=240.0|children={7,<$STR(N$图鉴位置_7)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_7)>_1)>|link=@图鉴数据调取#锁定位置=7>
+<Button|x=60.0|y=240.0|children={8,<$STR(N$图鉴位置_8)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_8)>_1)>|link=@图鉴数据调取#锁定位置=8>
+
+<Button|x=-88.0|y=300.0|children={9,<$STR(N$图鉴位置_9)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_9)>_1)>|link=@图鉴数据调取#锁定位置=9>
+<Button|x=60.0|y=300.0|children={10,<$STR(N$图鉴位置_10)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_10)>_1)>|link=@图鉴数据调取#锁定位置=10>
+
+<Button|x=-88.0|y=360.0|children={11,<$STR(N$图鉴位置_11)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_11)>_1)>|link=@图鉴数据调取#锁定位置=11>
+<Button|x=60.0|y=360.0|children={12,<$STR(N$图鉴位置_12)>_0}|width=125|height=40|rotate=0|outlinecolor=0|outline=2|pimg=private/zbtj/4005250096.png|nimg=private/zbtj/4005250094.png|size=16|color=161|text=<$cfg_tj(<$STR(N$图鉴位置_12)>_1)>|link=@图鉴数据调取#锁定位置=12>
+
+<Layout|x=195.0|y=130.0|width=35|height=80|link=@装备图鉴上页>
+<Button|x=200.0|y=135.0|height=80|color=255|nimg=private/zbtj/4005250074.png|pimg=private/zbtj/4005250075.png|size=18|link=@装备图鉴上页>
+<Layout|x=195.0|y=240.0|width=35|height=80|link=@装备图鉴下页>
+<Button|x=200.0|y=242.0|height=80|color=255|nimg=private/zbtj/4005250078.png|pimg=private/zbtj/4005250079.png|size=18|link=@装备图鉴下页>
+
+<Text|x=198.0|y=215.0|color=255|size=16|text=<$STR(N$图鉴当页)>/<$STR(N$图鉴总页)>>
+
+<Layout|x=-15.0|y=415.0|width=140|height=50|rotate=0|link=@图鉴切换>
+<Button|x=-7.0|y=419.0|width=120|height=35|nimg=private/zbtj/4005250094.png|pimg=private/zbtj/4005250095.png|color=1025|size=18|text=<$STR(S$图鉴切换)>图鉴|link=@图鉴切换>
+<$STR(S$锁定页面)>
+<$STR(S$图鉴标示)>
+<$STR(S$展开页面)>
+
+
+[@图鉴数据调取]
+#IF
+EQUAL S$图鉴切换 装备
+LARGE S$锁定位置 7
+#ACT
+BREAK 
+
+#IF
+#ACT
+MOV N$页面展开 1
+MOV S$锁定页面 <Button|x=0.0|y=0.0|id=<$STR(S$锁定位置)>|width=125|height=40|rotate=0|outlinecolor=0|nimg=private/zbtj/4005250096.png|outline=2|size=16|color=161|pimg=private/zbtj/4005250094.png|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_1)>|link=@图鉴数据调取#锁定位置=<$STR(S$锁定位置)>>
+MOV S$展开页面
+
+#IF
+CheckStringlength <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_1)> > 6
+#ACT
+MOV N$字符坐标X 365
+#ELSEACT
+MOV N$字符坐标X 380
+
+#IF
+EQUAL S$图鉴切换 宠物
+#ACT
+INC S$展开页面 <Img|x=245.0|y=0.0|width=320|height=478|rotate=0|scale9t=50|scale9r=20|scale9l=20|scale9b=50|img=private/zbtj/4005090000.png|esc=0|link=@空>
+INC S$展开页面 <Img|x=258.0|y=21.0|width=295|height=435|rotate=0|img=private/zbtj/40057400010.png|esc=0>
+INC S$展开页面 <Img|x=349.0|y=28.0|img=public/1900000678.png|esc=0>
+INC S$展开页面 <Text|x=<$str(N$字符坐标X)>|y=30.0|color=1025|size=18|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_1)>>
+
+INC S$展开页面 <RText|x=320.0|y=360.0|color=255|size=16|text=<图鉴属性：/FCOLOR=250><<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_24)>/FCOLOR=251>>
+INC S$展开页面 <Button|x=290.0|y=407.0|width=100|height=35|nimg=private/zbtj/4005200032.png|pimg=private/zbtj/4005200034.png|size=16|color=255|text=一键放入|link=@一键放入>
+INC S$展开页面 <Button|x=425.0|y=407.0|width=100|height=35|nimg=private/zbtj/4005200032.png|pimg=private/zbtj/4005200034.png|size=16|color=255|text=激活属性|link=@激活属性>
+
+#IF
+EQUAL S$图鉴切换 装备
+#ACT
+INC S$展开页面 <Img|x=245.0|y=0.0|width=320|height=478|rotate=0|scale9t=50|scale9r=20|scale9l=20|scale9b=50|img=private/zbtj/4005090000.png|esc=0|link=@空>
+INC S$展开页面 <Img|x=258.0|y=21.0|width=295|height=435|rotate=0|img=private/zbtj/40057400010.png|esc=0>
+INC S$展开页面 <Img|x=349.0|y=28.0|img=public/1900000678.png|esc=0>
+INC S$展开页面 <Text|x=<$str(N$字符坐标X)>|y=30.0|color=1025|size=18|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_1)>>
+
+INC S$展开页面 <RText|x=270.0|y=300.0|color=250|size=16|text=图鉴属性：<<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_24)>/FCOLOR=251>>
+INC S$展开页面 <RText|x=270.0|y=330.0|color=250|size=16|text=集齐触发：>
+INC S$展开页面 <RText|x=350.0|y=330.0|color=251|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_25)>>
+
+
+INC S$展开页面 <Button|x=360.0|y=407.0|width=100|height=35|nimg=private/zbtj/4005200032.png|pimg=private/zbtj/4005200034.png|size=16|color=255|text=一键放入|link=@一键放入>
+;INC S$展开页面 <Button|x=425.0|y=407.0|width=100|height=35|nimg=private/zbtj/4005200032.png|pimg=private/zbtj/4005200034.png|size=16|color=255|text=激活属性|link=@激活属性>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_10)> 0
+#ACT
+MOV N$1号灰化 1
+#ELSEACT
+MOV N$1号灰化 0
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_11)> 0
+#ACT
+MOV N$2号灰化 1
+#ELSEACT
+MOV N$2号灰化 0
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_12)> 0
+#ACT
+MOV N$3号灰化 1
+#ELSEACT
+MOV N$3号灰化 0
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_13)> 0
+#ACT
+MOV N$4号灰化 1
+#ELSEACT
+MOV N$4号灰化 0
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_14)> 0
+#ACT
+MOV N$5号灰化 1
+#ELSEACT
+MOV N$5号灰化 0
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_15)> 0
+#ACT
+MOV N$6号灰化 1
+#ELSEACT
+MOV N$6号灰化 0
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_16)> 0
+#ACT
+MOV N$7号灰化 1
+#ELSEACT
+MOV N$7号灰化 0
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 2
+#ACT
+INC S$展开页面 <ItemShow|x=265.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_17)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$1号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_18)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$2号灰化)>>
+
+INC S$展开页面 <Img|x=335.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+
+INC S$展开页面 <Text|x=350.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_10)>/1>
+INC S$展开页面 <Text|x=500.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_11)>/1>
+
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 3
+#ACT
+INC S$展开页面 <ItemShow|x=265.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_17)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$1号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_18)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$2号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_19)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$3号灰化)>>
+
+INC S$展开页面 <Img|x=335.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+
+INC S$展开页面 <Text|x=350.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_10)>/1>
+INC S$展开页面 <Text|x=500.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_11)>/1>
+INC S$展开页面 <Text|x=350.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_12)>/1>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 4
+#ACT
+INC S$展开页面 <ItemShow|x=265.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_17)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$1号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_18)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$2号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_19)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$3号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_20)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$4号灰化)>>
+
+INC S$展开页面 <Img|x=335.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+
+INC S$展开页面 <Text|x=350.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_10)>/1>
+INC S$展开页面 <Text|x=500.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_11)>/1>
+INC S$展开页面 <Text|x=350.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_12)>/1>
+INC S$展开页面 <Text|x=500.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_13)>/1>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 5
+#ACT
+INC S$展开页面 <ItemShow|x=265.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_17)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$1号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_18)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$2号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_19)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$3号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_20)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$4号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=210.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_21)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$5号灰化)>>
+
+INC S$展开页面 <Img|x=335.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=230.0|img=private/zbtj/4005500014.png|esc=0>
+
+INC S$展开页面 <Text|x=350.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_10)>/1>
+INC S$展开页面 <Text|x=500.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_11)>/1>
+INC S$展开页面 <Text|x=350.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_12)>/1>
+INC S$展开页面 <Text|x=500.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_13)>/1>
+INC S$展开页面 <Text|x=350.0|y=230.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_14)>/1>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 6
+#ACT
+INC S$展开页面 <ItemShow|x=265.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_17)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$1号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_18)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$2号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_19)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$3号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_20)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$4号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=210.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_21)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$5号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=210.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_22)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$6号灰化)>>
+
+INC S$展开页面 <Img|x=335.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=230.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=230.0|img=private/zbtj/4005500014.png|esc=0>
+
+INC S$展开页面 <Text|x=350.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_10)>/1>
+INC S$展开页面 <Text|x=500.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_11)>/1>
+INC S$展开页面 <Text|x=350.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_12)>/1>
+INC S$展开页面 <Text|x=500.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_13)>/1>
+INC S$展开页面 <Text|x=350.0|y=230.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_14)>/1>
+INC S$展开页面 <Text|x=500.0|y=230.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_15)>/1>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 7
+#ACT
+INC S$展开页面 <ItemShow|x=265.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_17)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$1号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=70.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_18)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$2号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_19)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$3号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=140.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_20)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$4号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=210.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_21)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$5号灰化)>>
+INC S$展开页面 <ItemShow|x=415.0|y=210.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_22)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$6号灰化)>>
+INC S$展开页面 <ItemShow|x=265.0|y=280.0|width=70|height=70|itemid=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_23)>|itemcount=1|showtips=1|bgtype=1|grey=<$STR(N$7号灰化)>>
+
+INC S$展开页面 <Img|x=335.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=90.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=160.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=230.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=485.0|y=230.0|img=private/zbtj/4005500014.png|esc=0>
+INC S$展开页面 <Img|x=335.0|y=300.0|img=private/zbtj/4005500014.png|esc=0>
+
+INC S$展开页面 <Text|x=350.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_10)>/1>
+INC S$展开页面 <Text|x=500.0|y=90.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_11)>/1>
+INC S$展开页面 <Text|x=350.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_12)>/1>
+INC S$展开页面 <Text|x=500.0|y=160.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_13)>/1>
+INC S$展开页面 <Text|x=350.0|y=230.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_14)>/1>
+INC S$展开页面 <Text|x=500.0|y=230.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_15)>/1>
+INC S$展开页面 <Text|x=350.0|y=300.0|color=255|size=16|text=<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_16)>/1>
+
+#IF
+#ACT
+GOTO @图鉴主页面
+
+[@一键放入]
+#IF
+#ACT
+MOV N$收录数量 0
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 2
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)> = 1
+#ACT
+MESSAGEBOX 该系列装备已完成收录，请激活属性
+break
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 3
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_30)> = 1
+#ACT
+MESSAGEBOX 该系列装备已完成收录，请激活属性
+break
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 4
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_30)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_31)> = 1
+#ACT
+MESSAGEBOX 该系列装备已完成收录，请激活属性
+break
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 5
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_30)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_31)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_32)> = 1
+#ACT
+MESSAGEBOX 该系列装备已完成收录，请激活属性
+break
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 6
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_30)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_31)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_32)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_33)> = 1
+#ACT
+MESSAGEBOX 该系列装备已完成收录，请激活属性
+break
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)> 7
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_30)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_31)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_32)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_33)> = 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_34)> = 1
+#ACT
+MESSAGEBOX 该系列装备已完成收录，请激活属性
+break
+
+#IF
+NOT EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_3)>
+CHECKITEM <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_3)> 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)> = 0
+#ACT
+TAKE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_3)> 1
+CALCVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)> = 1
+SAVEVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_28)>
+INC <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 1
+INC N$收录数量 1
+
+#IF
+NOT EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_4)>
+CHECKITEM <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_4)> 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)> = 0
+#ACT
+TAKE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_4)> 1
+CALCVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)> = 1
+SAVEVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_29)>
+INC <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 1
+INC N$收录数量 1
+
+#IF
+NOT EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_5)>
+CHECKITEM <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_5)> 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_30)> = 0
+#ACT
+TAKE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_5)> 1
+CALCVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_30)> = 1
+SAVEVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_30)>
+INC <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 1
+INC N$收录数量 1
+
+#IF
+NOT EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_6)>
+CHECKITEM <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_6)> 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_31)> = 0
+#ACT
+TAKE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_6)> 1
+CALCVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_31)> = 1
+SAVEVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_31)>
+INC <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 1
+INC N$收录数量 1
+
+#IF
+NOT EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_7)>
+CHECKITEM <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_7)> 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_32)> = 0
+#ACT
+TAKE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_7)> 1
+CALCVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_32)> = 1
+SAVEVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_32)>
+INC <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 1
+INC N$收录数量 1
+
+#IF
+NOT EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_8)>
+CHECKITEM <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_8)> 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_33)> = 0
+#ACT
+TAKE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_8)> 1
+CALCVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_33)> = 1
+SAVEVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_33)>
+INC <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 1
+INC N$收录数量 1
+
+#IF
+NOT EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_9)>
+CHECKITEM <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_9)> 1
+CHECKVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_34)> = 0
+#ACT
+TAKE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_9)> 1
+CALCVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_34)> = 1
+SAVEVAR HUMAN <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_34)>
+INC <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 1
+INC N$收录数量 1
+
+#IF
+LARGE N$收录数量 0
+#ACT
+GOTO @图鉴数据调取
+SENDMSG 9 一键收录完成
+break
+
+#ELSEACT
+SENDMSG 9 收录失败，请检查背包是否有<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_1)>系列物品
+BREAK
+
+[@激活属性]
+#IF
+SMALL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)>
+#ACT
+MESSAGEBOX 图鉴暂未全部收录！
+BREAK
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 10
+#ACT
+MESSAGEBOX 你已激活该属性！
+BREAK
+
+#IF
+SMALL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_0)> 52
+CheckBindMoney 金币 < <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_26)>
+#ACT
+MESSAGEBOX 激活属性所需金币<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_26)>
+BREAK
+
+#IF
+LARGE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_0)> 51
+SMALL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_0)> 61
+CheckBindMoney 元宝 < <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_26)>
+#ACT
+MESSAGEBOX 激活属性所需元宝<$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_26)>
+BREAK
+
+#IF
+SMALL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_0)> 52
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)>
+CheckBindMoney 金币 ? <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_26)>
+#ACT
+ChangeBindMoney 金币 <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_26)>
+MOV <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 10
+SENDMSG 9 成功激活该属性！
+break
+
+#IF
+LARGE <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_0)> 51
+SMALL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_0)> 61
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_2)>
+CheckBindMoney 元宝 ? <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_26)>
+#ACT
+ChangeBindMoney 元宝 <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_26)>
+MOV <$cfg_tj(<$STR(N$图鉴位置_<$STR(S$锁定位置)>)>_35)> 10
+GOTO @图鉴标示获取
+SENDMSG 9 成功激活该属性！
+break
+
+[@装备图鉴上页]
+#IF
+EQUAL S$图鉴切换 装备
+#ACT
+BREAK
+
+#if
+EQUAL N$图鉴当页 1
+#ACT
+BREAK 
+
+#IF
+LARGE N$图鉴当页 1
+#ACT
+DEC N$图鉴当页 1
+DEC N$图鉴位置_1 12
+DEC N$图鉴位置_2 12
+DEC N$图鉴位置_3 12
+DEC N$图鉴位置_4 12
+DEC N$图鉴位置_5 12
+DEC N$图鉴位置_6 12
+DEC N$图鉴位置_7 12
+DEC N$图鉴位置_8 12
+DEC N$图鉴位置_9 12
+DEC N$图鉴位置_10 12
+DEC N$图鉴位置_11 12
+DEC N$图鉴位置_12 12
+MOV S$锁定页面
+MOV N$页面展开 0
+MOV S$展开页面
+GOTO @图鉴标示获取
+goto @图鉴主页面
+BREAK
+
+
+[@装备图鉴下页]
+#if
+EQUAL N$图鉴当页 5
+#ACT
+BREAK 
+
+#IF
+EQUAL S$图鉴切换 装备
+#ACT
+BREAK
+
+#if
+SMALL N$图鉴当页 5
+#act
+INC N$图鉴当页 1
+INC N$图鉴位置_1 12
+INC N$图鉴位置_2 12
+INC N$图鉴位置_3 12
+INC N$图鉴位置_4 12
+INC N$图鉴位置_5 12
+INC N$图鉴位置_6 12
+INC N$图鉴位置_7 12
+INC N$图鉴位置_8 12
+INC N$图鉴位置_9 12
+INC N$图鉴位置_10 12
+INC N$图鉴位置_11 12
+INC N$图鉴位置_12 12
+MOV S$锁定页面
+MOV N$页面展开 0
+MOV S$展开页面
+GOTO @图鉴标示获取
+goto @图鉴主页面
+BREAK
+
+[@图鉴切换]
+#IF
+EQUAL S$图鉴切换 装备
+#ACT
+GOTO @MAIN
+BREAK 
+
+#IF
+EQUAL S$图鉴切换 宠物
+#ACT
+MOV S$图鉴切换 装备
+MOV N$图鉴当页 1
+MOV N$图鉴总页 1
+MOV N$图鉴位置_1 61
+MOV N$图鉴位置_2 62
+MOV N$图鉴位置_3 63
+MOV N$图鉴位置_4 64
+MOV N$图鉴位置_5 65
+MOV N$图鉴位置_6 66
+MOV N$图鉴位置_7 67
+MOV N$图鉴位置_8 68
+MOV N$图鉴位置_9 69
+MOV N$图鉴位置_10 70
+MOV N$图鉴位置_11 71
+MOV N$图鉴位置_12 72
+MOV S$锁定页面
+MOV N$页面展开 0
+MOV S$展开页面
+GOTO @图鉴标示获取
+goto @图鉴主页面
+BREAK
+
+[@图鉴标示获取]
+#IF
+#ACT
+MOV S$图鉴标示 
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_1)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_1)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_2)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_2)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_3)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_3)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_4)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_4)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_5)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_5)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_6)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_6)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_7)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_7)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_8)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_8)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_9)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_9)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_10)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_10)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_11)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_11)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>
+
+#IF
+EQUAL <$cfg_tj(<$STR(N$图鉴位置_12)>_35)> 10 
+#ACT
+INC S$图鉴标示 <Img|id=<$STR(N$图鉴位置_12)>_0|x=0.0|y=0.0|img=private/zbtj/1821100033.png|esc=0>

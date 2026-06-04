@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE bg05 199 79

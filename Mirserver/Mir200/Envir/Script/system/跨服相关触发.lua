@@ -1,0 +1,511 @@
+--function kflogin(player)
+--    ServerCache.onInitPlayer(player)
+--    if Stats and Stats.load then
+--        Stats.load(player)
+--    end
+--    ----GameEvent.push(EventCfg.onLogin, player)
+--    setontimer(player,66,10,0,1)
+--    ------iniplayvar(player,"integer","HUMAN","阵营对抗积分")
+--    ------iniplayvar(player,"integer","HUMAN","跨服攻城积分")
+--    lualib:SetVar(player,"N$跨服CD",os.time())
+--    if ServerCache.Players[player].StringVars["当前地图"] == nil then
+--        ServerCache.onUpdatePlayerStringVars(player, "当前地图", lualib:GetMapInfo(player))
+--    end
+--
+--    if lualib:GetMapId(player) == "阵营对战" then
+--        print(getplayvar(player,"KFSZ2") ,lualib:GetDBVar(VarCfg["阵营对抗蓝方"]),lualib:GetDBVar(VarCfg["阵营对抗蓝方"]))
+--        if getplayvar(player,"KFSZ2") == 0 then
+--            if lualib:GetDBVar(VarCfg["阵营对抗红方"]) > lualib:GetDBVar(VarCfg["阵营对抗蓝方"]) then
+--                setplayvar(player,"HUMAN","KFSZ2",1,1)
+--                lualib:SetDBVar(VarCfg["阵营对抗蓝方"],lualib:GetDBVar(VarCfg["阵营对抗蓝方"]) + 1)
+--            else
+--                setplayvar(player,"HUMAN","KFSZ2",2,1)
+--                lualib:SetDBVar(VarCfg["阵营对抗红方"],lualib:GetDBVar(VarCfg["阵营对抗红方"]) + 1)
+--            end
+--        end
+--
+--        local xx = getplayvar(player,"KFSZ2")
+--        if xx == 1 then
+--            lualib:SendMsgGetColor(player,9,"#ff0000|当前阵营:蓝方！！！")
+--            setcamp(player, 1)
+--            seticon(player, 1, 1,5129,0,85)
+--        else
+--            lualib:SendMsgGetColor(player,9,"#ff0000|当前阵营:红方！！！")
+--            setcamp(player, 2)
+--            seticon(player, 1, 1,5126,0,85)
+--        end
+--
+--        kfbackcall(12,lualib:UserId(player),"强制攻击模式")
+--        delaygoto(player,1000,"@gongjimoshi",1)
+--    end
+--end
+----
+--function gongjimoshi(player)
+--   --- print("跨服执行")
+--    if lualib:GetMapId(player) == "阵营对战" then
+--        ----if checkkuafuconnect() then
+--            ---print("跨服执行")
+--            setattackmode(player,8,600)
+--            kfbackcall(12,lualib:UserId(player),"强制攻击模式")
+--        ----end
+--    end
+--end
+--
+--function kuafuend(player)
+--    if getattackmode(player) == 8 then
+--        setattackmode(player,0,0)
+--        changeattackmode(player,0)
+--    end
+--
+--    ServerCache.onInitPlayer(player)
+--    GameEvent.push(EventCfg.onLogin, player)
+--    if Stats and Stats.load then
+--        Stats.load(player)
+--    end
+--    ---zhuXianRenWu.main(player)
+--    lualib:ShowFormWithContent(player,"任务_show")
+--    lualib:SetVar(player,"N$挂机状态",0)
+--    lualib:SetVar(player,"N$跨服CD",os.time())
+--    setofftimer(player,66)
+--    print("离开跨服成功！！")
+--end
+---------------------
+--function cardie(player,car)
+--    local num = lualib:GetVar(player,VarCfg["跨服劫镖次数"])
+--    if num >= 3 then
+--        lualib:SendMsgGetColor(player,9,"#ff0000|您已经劫镖3次了！！！")
+--        return ""
+--    end
+--
+--    if getbaseinfo(car,59) == "0" then
+--        lualib:SendMsgGetColor(player,9,"#ff0000|没有归属的镖车无法获得奖励！！！")
+--        return ""
+--    end
+--
+--    if getbaseinfo(car,59) == player then
+--        lualib:SendMsgGetColor(player,9,"#ff0000|击杀自己镖车无法获得奖励！！！")
+--        return ""
+--    end
+--
+--    local name = lualib:Name(car)
+--    if name == "黄金镖车" then
+--        lualib:SendMail(player,1,"黄金镖车劫镖奖励","黄金镖车奖励",guZhu.config[2].sMail)
+--        lualib:SendMsgGetColor(player,9,"#00ff40|恭喜您成功黄金镖车奖励，奖励邮件发放！")
+--    else
+--        lualib:SendMail(player,1,"普通镖车劫镖奖励","普通镖车奖励",guZhu.config[1].sMail)
+--        lualib:SendMsgGetColor(player,9,"#00ff40|恭喜您成功普通镖车奖励，奖励邮件发放！")
+--    end
+--
+--    lualib:SetVar(player,VarCfg["跨服劫镖次数"],lualib:GetVar(player,VarCfg["跨服劫镖次数"]) + 1)
+--    ---kfbackcall(7,getbaseinfo(player, 2),2)
+--end
+-----------跨服通知本服  buff相关
+--function kfsyscall1(player,arg1,arg2)
+--    if arg1 == "" then
+--        print("跨服通知本服  buff相关")
+--        return ""
+--    end
+--
+--    if arg2 == "0" then
+--        lualib:DelBuff(player,tonumber(arg1))
+--    else
+--        local data = json2tbl(arg1)
+--        if lualib:HasBuff(player,data[1]) then
+--            return ""
+--        end
+--
+--        if not lualib:AddBuff(player,data[1],data[2],1,player,data[3]) then
+--            print("增加buff失败")
+--        end
+--    end
+--end
+--
+----跨服通知本服  称号相关
+--function kfsyscall2(player,arg1,arg2)
+--    if  arg1 == "" then
+--        print("跨服通知本服  称号相关")
+--        return ""
+--    end
+--
+--    if arg1 == "0" then
+--        lualib:DelTitle(player,arg2)
+--    else
+--        lualib:AddTitle(player,arg1,1)
+--    end
+--end
+--
+-----跨服通知本服  回城
+-----kfbackcall(3,getbaseinfo(player, 2))
+--function kfsyscall3(player,arg1,arg2)
+--    print("跨服通知本服  回本服主城")
+--    if lualib:Is_Die(player) then
+--        lualib:Realive(player)
+--    end
+--    lualib:GoHome( player)
+--    ---lualib:MapMove(player,"第一大陆",290,392,9)
+--end
+-----跨服通知本服  回城
+--function kfsyscall4(player,arg1,arg2)
+--    if "击杀狂暴" == arg1 then
+--        lualib:SendMailEx(player,1,"击杀狂暴玩家","击杀狂暴玩家获得奖励",rage.config[1].kill[1][1].."#"..rage.config[1].kill[1][2].."#307")
+--    end
+--
+--    if "被击杀狂暴" == arg1 then
+--        lualib:SendMailEx(player,1,"玩家击杀","玩家 "..arg2.." 击杀了你获得你的赏金","")
+--    end
+--end
+-----跨服通知本服  回城
+--function kfsyscall5(player,arg1,arg2)
+--    print("xxxxx-",arg1,arg2)
+--    if arg1 == "" or arg1 == nil then
+--        print("跨服通知本服  增加货币 异常")
+--        return
+--    end
+--
+--    if arg2 == "" or arg2 == nil then
+--        print("跨服通知本服  增加货币 异常")
+--        return
+--    end
+--
+--    local need_tb = json2tbl(arg1)
+--    if arg2 == "跨服增加货币" then
+--        lualib:AddNeedItems(player,need_tb,arg2)
+--    elseif arg2 == "跨服删除货币" then
+--        lualib:DelNeedItems(player,need_tb,arg2)
+--    elseif arg2 == "跨服删除不绑定货币" then
+--        lualib:DelNeedItemsNoBind(player,need_tb,arg2)
+--    end
+--end
+--
+-----跨服通知本服 邮件
+--function kfsyscall6(player,arg1,arg2)
+--    if arg1 == "" then
+--        print("跨服通知本服  邮件 异常")
+--        return
+--    end
+--
+--    if arg2 == "" then
+--        print("跨服通知本服  邮件 异常")
+--        return
+--    end
+--
+--    local data = json2tbl(arg1)
+--    lualib:SendMail(player,data[1],data[2],data[3],json2tbl(arg2))
+--end
+------跨服通知本服 增加押镖次数
+--function kfsyscall7(player,arg1,arg2)
+--    print("跨服通知本服 增加押镖次数",arg1)
+--    --if arg1 == "1" then
+--    --    lualib:SetVar(player,VarCfg["跨服押镖次数"],lualib:GetVar(player,VarCfg["跨服押镖次数"]) + 1)
+--    --else
+--    --    lualib:SetVar(player,VarCfg["跨服劫镖次数"],lualib:GetVar(player,VarCfg["跨服劫镖次数"]) + 1)
+--    --end
+--end
+--
+-----跨服通知本服  添加东西和删除东西
+--function kfsyscall8(player,arg1,arg2)
+--    if arg1 == "" then
+--        print("跨服通知本服 增删物品 异常")
+--        return
+--    end
+--
+--    if arg2 == "" then
+--        print("跨服通知本服  增删物品 异常")
+--        return
+--    end
+--    print(arg1,arg2,lualib:Name(player))
+--    local _data = json2tbl(arg1)
+--    if arg2 == "添加物品" then
+--        lualib:AddItem(player,_data[1],_data[2],_data[3],_data[4])
+--    elseif arg2 == "删除物品" then
+--        lualib:DelItem(player,_data[1],_data[2],_data[3],_data[4])
+--    end
+--    return "返回值返回值"
+--end
+--
+-----跨服通知本服  清空随机石，回城石
+--function kfsyscall9(player,arg1,arg2)
+--    if arg1 == "" then
+--        print("跨服通知本服 清空随机石 异常")
+--        return
+--    end
+--
+--    local num = lualib:ItemCount(player,"随机传送石")
+--    local temp = 0
+--    if num > 0 then
+--        temp = 1
+--        lualib:DelItem(player,"随机传送石",num)
+--    end
+--
+--    num = lualib:ItemCount(player,"回城传送石")
+--    if num > 0 then
+--        temp = 1
+--        lualib:DelItem(player,"回城传送石",num)
+--    end
+--
+--    --if temp == 1 then
+--    --    lualib:SendBuffMsg(player,"{"..arg1.."/FCOLOR=251}BUFF触发：{清空敌人所有随机石、传送石../FCOLOR=249}")
+--    --end
+--
+--    return ""
+--end
+-----跨服通知本服  增加自定义变量
+--function kfsyscall10(player,arg1,arg2)
+--    print(arg1,globalinfo(11))
+--    if arg1 == "" then
+--        print("跨服通知本服 传递跨服沙巴克名称 异常")
+--        return
+--    end
+--
+--    if not lualib:GetCastle() then
+--        print("今日不是攻城")
+--        return ""
+--    end
+--
+--
+--    if not (lualib:GetDBVar(VarCfg["只开启一次本服攻城"]) == 1 and lualib:GetDBVar(VarCfg["今日是否攻城"]) == 0) then
+--        print("没有本服合成")
+--        return ""
+--    end
+--
+--    print("跨服攻城奖励")
+--    local tb = string.splitEX(arg1,"_")
+--    if #tb == 0 then
+--        return ""
+--    end
+--
+--    if lualib:GetDBVar(VarCfg["跨服胜利方奖励领取"]) == 1 then
+--        print("已领取")
+--        return ""
+--    end
+--    lualib:SetDBVar(VarCfg["跨服胜利方奖励领取"] ,1)
+--    lualib:SetDBVar(VarCfg["跨服攻城胜利方"] ,serialize(tb))
+--
+--    print(arg1,globalinfo(11) , tb[1])
+--    if "k"..tostring(globalinfo(11)) ~= tostring(tb[1]) then
+--        local ranking = sorthumvar("KFSZ1",0,1,0)
+--        for i = 1, #ranking, 2 do
+--            if ranking[i+1] <= 0 then
+--                break
+--            end
+--            lualib:SendMailToName(ranking[i],1,"参与跨服攻城奖励","尊敬的勇士：你参与【跨服沙巴克】，获得积分："..ranking[i+1].."积分,奖励如下",{{"绑定灵符",ranking[i+1]*30},{"绑定金币",ranking[i+1]*10000}})
+--        end
+--        return ""
+--    end
+--
+--    local guild = findguild(1,tb[2])
+--    local name_list = getguildinfo(guild,3)
+--    local list = lualib:ReverseKeyValue(name_list)
+--    local ranking = sorthumvar("KFSZ1",0,1,0)
+--    local chengZhu = getguildinfo(guild,4)
+--    local index = 0
+--    ----print(serialize(list))
+--    for i = 1, #ranking, 2 do
+--        if ranking[i+1] <= 0 then
+--            break
+--        end
+--
+--        if ranking[i+1] >= 100 then
+--            if list[ranking[i]] ~= nil then
+--                if ranking[i] == chengZhu then
+--                    lualib:SendMailToName(ranking[i],1,"跨服攻城胜方城主","尊敬的勇士：你参与【跨服沙巴克】，你们行会为获胜方城主",kuaFuShaBaKe.config[1].mail)
+--                else
+--                    lualib:SendMailToName(ranking[i],1,"跨服攻城胜方成员","尊敬的勇士：你参与【跨服沙巴克】，你们行会为获胜方成员",kuaFuShaBaKe.config[2].mail)
+--                end
+--            end
+--        end
+--
+--        lualib:SendMailToName(ranking[i],2  ,"参与跨服攻城奖励","尊敬的勇士：你参与【跨服沙巴克】，获得积分："..ranking[i+1].."积分,奖励如下",{{"绑定灵符",ranking[i+1]*30},{"绑定金币",ranking[i+1]*10000}})
+--        index = index + 1
+--    end
+--end
+--
+--function kfsyscall12(player,arg1,arg2)
+--    print(arg1,globalinfo(11))
+--    if arg1 == '强制攻击模式' then
+--        setattackmode(player,8,600)
+--    end
+--end
+--
+----------------------------------------------本服通知跨服------------------------------------------------
+-----本服通知跨服 跨服传音
+--function bfsyscall1(player,arg1,arg2)
+--    local role_name = lualib:Name(player)
+--    --release_print("本服通知触发跨服QF",role_name,arg1,arg2)
+--    sendtopchatboardmsg(player,0,0,254,15,arg2,1)
+--    callscript(player,"sendmsg",0,18,215,arg1)
+--    sendmovemsg(player,1,254,0,230,1,arg1)
+--    sendmovemsg(player,1,254,0,260,1,arg1)
+--end
+-----本服通知跨服 跨服攻城
+--function bfsyscall3(player,arg1,arg2)
+--    print(arg1)
+--    if arg1 == "通知跨服攻城" then
+--        if lualib:GetDBVar(VarCfg["今日是否跨服攻城"]) == 0 then
+--            local h = lualib:GetNumConst(globalinfo(0),"<$HOUR>")
+--            if h < 20 then
+--                addtocastlewarlistex("*")
+--                addattacksabakall()
+--                local guild_list = getcastlewarlist()
+--                print("今日跨服攻城列表：",serialize(guild_list))
+--            end
+--            lualib:SetDBVar(VarCfg["今日是否跨服攻城"],1)
+--        end
+--
+--        sendmsgnew(globalinfo(0),255,0,"<【跨服沙巴克公告】/FCOLOR=250>：今晚20点准点开启跨服攻城，21点攻城结束！！",1,5)
+--        sendmovemsg(globalinfo(0),1,253,0,100,1,"<【跨服沙巴克公告】/FCOLOR=250>：今晚20点准点开启跨服攻城，21点攻城结束！！")
+--
+--    elseif arg1 == "结束跨服攻城" then
+--        sendmsgnew(globalinfo(0),58,0,"<【沙巴克公告】/FCOLOR=58>：攻城已经结束，奖励自动发放，请邮件领取！",1,5)
+--        sendmovemsg(globalinfo(0),1,253,0,100,1,"<【跨服沙巴克公告】/FCOLOR=250>：攻城已经结束，奖励自动发放，请邮件领取！！")
+--        lualib:SetDBVar(VarCfg["跨服攻沙开启"],0)
+--        -----强制结束攻城
+--        --local id = globalinfo(11)
+--        --if 1881 == id then
+--        --    addtocastlewarlistex("*")
+--        --    gmexecute("0","ForcedWallconquestWar","@ForcedWallconquestWar")
+--        --end
+--    elseif arg1 == "提示开始攻城" then
+--        lualib:SetDBVar(VarCfg["跨服攻沙开启"],1)
+--        sendmsgnew(globalinfo(0),58,0,"【跨服公告】万军齐聚，王城争夺战正式打响！来自各大服务器的顶尖行会现已集结，为荣耀、为权力、为王座而战！",1,5)
+--        sendmovemsg(globalinfo(0),1,253,0,100,1,"【跨服公告】万军齐聚，王城争夺战正式打响！来自各大服务器的顶尖行会现已集结，为荣耀、为权力、为王座而战！")
+--        ----本地强制开启攻城
+--        --local id = globalinfo(11)
+--        --if 1881 == id then
+--        --    addtocastlewarlistex("*")
+--        --    gmexecute("0","ForcedWallconquestWar","@ForcedWallconquestWar")
+--        --end
+--    elseif arg1 == "通知跨服本服攻城" then
+--        print("本服通知跨服，今日本服攻城")
+--        if lualib:GetDBVar(VarCfg["今日是否攻城"]) == 0 then
+--            lualib:SetDBVar(VarCfg["今日是否攻城"],1)
+--        end
+--    end
+--end
+----同步变量
+----------------------------------------------------押镖-----------------------------------------------
+--function bfsyscall2(player,arg1,arg2)
+--    if arg1 == "开始押镖" then
+--        local page = tonumber(arg2)
+--        --print("开始押镖",page)
+--        if not (page == 1 or page == 2) then
+--            return ""
+--        end
+--
+--        local num = lualib:GetVar(player,VarCfg["跨服押镖次数"])
+--        if num < 3 then
+--            local mapName,x,y = lualib:GetMapId(player),lualib:X(player),lualib:Y(player)
+--            if mapName ~= "跨服押镖"  then
+--                lualib:SendMsgGetColor(player,9,"#ff0000|请在跨服押镖上押镖！！！")
+--                return ""
+--            end
+--
+--            if lualib:GetDBVar(VarCfg["跨服押镖开启"]) == 0 then
+--                lualib:MsgBox(player,"活动已经结束！！！")
+--                return ""
+--            end
+--
+--            if (x <= (390 - 5) or  x >= (390+5)) or ((y >= 504 + 5) or y <= (504 - 5)) then
+--                lualib:SendMsgGetColor(player,9,"#ff0000|距离太远了！！！")
+--                return ""
+--            end
+--
+--            local ncount = getbaseinfo(player,38)
+--            if ncount > 0 then
+--                lualib:SendMsgGetColor(player,9,"#ff0000|镖车已经存在！！！")
+--                return ""
+--            end
+--            ---print(serialize(biaoShi.config[page].need))
+--            lualib:DelNeedItemsNoBind(player,biaoShi.config[page].need,"押镖")
+--
+--            local bb = recallmob(player,guZhu.config[page].bb,70,200,0)
+--            darttime(player,3000,1)
+--            lualib:SetVar(player,VarCfg["跨服押镖次数"],num+1)
+--            ---kfbackcall(7,getbaseinfo(player, 2),1)
+--            lualib:SendMsgEx(player,9,"<font color='#00ff40'>请押镖到雇主处(578：432)！！！</font>")
+--        else
+--            lualib:SendMsgGetColor(player,9,"#ff0000|您已经押镖3次了，请明天再来！！！")
+--        end
+--    elseif arg1 == "提交押镖" then
+--        local num = lualib:GetVar(player,VarCfg["跨服押镖次数"])
+--        if num <= 3 then
+--            local flag = 0
+--            local page = 1
+--            local ncount = getbaseinfo(player,38)
+--            for i = 0 ,ncount-1 do
+--                local mon = getslavebyindex(player, i)
+--                if mon and isnotnull(mon) then
+--                    if lualib:Name(mon) == "普通镖车" then
+--                        flag = mon
+--                        page = 1
+--                        break
+--                    end
+--
+--                    if lualib:Name(mon) == "黄金镖车" then
+--                        flag = mon
+--                        page = 2
+--                        break
+--                    end
+--                end
+--            end
+--
+--            if flag == 0 then
+--                lualib:SendMsgEx(player,9,"<font color='#00ff40'>我的货物呢！！！</font>")
+--                return ""
+--            end
+--
+--            if not callcheckscriptex(player,"CheckSlaveInRange",guZhu.config[page].bb,5) then
+--                lualib:SendMsgEx(player,9,"<font color='#00ff40'>镖车距离我太远了，叫我如何核查货物呢？！！！</font>")
+--                return ""
+--            end
+--
+--            local mapName,x,y = lualib:GetMapId(player),lualib:X(player),lualib:Y(player)
+--            if mapName ~= "跨服押镖"  then
+--                lualib:SendMsgGetColor(player,9,"#ff0000|请在跨服押镖上押镖！！！")
+--                return ""
+--            end
+--
+--            if (x <= (578  - 5) or  x >= (578 +5)) or ((y >= 432 + 5) or y <= (432 - 5)) then
+--                lualib:SendMsgGetColor(player,9,"#ff0000|距离太远了！！！")
+--                return ""
+--            end
+--
+--            killmonbyobj(player,flag,false,true,false)
+--
+--            if lualib:GetDBVar(VarCfg["跨服押镖开启"]) == 0 then
+--                lualib:MsgBox(player,"活动已经结束！！！")
+--                return ""
+--            end
+--
+--            lualib:SendMail(player,1,"黄金镖车奖励","押镖成功获得押镖奖励",guZhu.config[page].cMail)
+--            lualib:SendMsgGetColor(player,9,"#00ff40|恭喜您押镖成功！")
+--        else
+--            lualib:SendMsgGetColor(player,9,"##ff0000|你已经没有押镖次数了！！")
+--        end
+--    end
+--end
+------战斗状态
+--function bfsyscall4(player,arg1,arg2)
+--    if arg1 == "回城石" then
+--        print("回城石")
+--        local num = ServerCache.Players[player].NumberVars["战斗状态"] or 0
+--        local times = os.time() - num
+--        if times < 3 then
+--            lualib:SendMsgEx(player,9,"<font color='10801'>提示：</font><font color='#f2ff00'>战斗状态无法回城，剩余"..(3 - times).."秒。</font>")
+--            return false
+--        end
+--
+--        detoxifcation(player,-1)
+--        healthspellchanged(player)
+--
+--        lualib:SendMsgEx(player,7,"使用回城石自动满血满蓝解除异常状态！！！")
+--        lualib:GoHome(player)
+--    end
+--end
+--
+--function bfsyscall5(player,arg1,arg2)
+--    if arg1 == "强制攻击模式" then
+--        ---print("本服强制修改攻击模式")
+--        setattackmode(player,8,600)
+--    end
+--end

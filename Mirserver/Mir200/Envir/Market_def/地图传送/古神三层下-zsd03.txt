@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE zsd04 118 34

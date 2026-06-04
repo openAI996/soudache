@@ -1,0 +1,332 @@
+[@红色命格激活判断]
+{
+#IF
+#ACT
+MOV S$老当益壮
+MOV S$天生神力
+MOV S$血之狂暴
+MOV S$疾风劲火
+MOV S$无相神功
+MOV S$霸权压制
+MOV S$藐视神罚
+MOV S$热血沸腾
+MOV S$布衣神相
+MOV S$道法自然
+MOV S$毁灭之力
+MOV S$暴走战神
+MOV S$降神附体
+MOV S$斗转星移
+MOV S$九鼎之力
+MOV S$生命献祭
+MOV S$神雷天罚
+MOV S$重燃战火
+MOV S$紫龙归隐
+MOV S$破幻苍穹
+MOV S$御兽天师
+MOV S$清风明月
+MOV S$阴阳逆转
+MOV S$魔力穿刺
+MOV S$血债血偿
+MOV S$恶魔血脉
+MOV S$铁血守护
+
+#OR
+EQUAL T20 清风明月
+EQUAL T21 清风明月
+EQUAL T22 清风明月
+EQUAL T23 清风明月
+EQUAL T24 清风明月
+EQUAL T25 清风明月
+EQUAL T26 清风明月
+#ACT
+MOV S$清风明月 激活
+
+#OR
+EQUAL T20 御兽天师
+EQUAL T21 御兽天师
+EQUAL T22 御兽天师
+EQUAL T23 御兽天师
+EQUAL T24 御兽天师
+EQUAL T25 御兽天师
+EQUAL T26 御兽天师
+#ACT
+MOV S$御兽天师 激活
+
+#OR
+EQUAL T20 破幻苍穹
+EQUAL T21 破幻苍穹
+EQUAL T22 破幻苍穹
+EQUAL T23 破幻苍穹
+EQUAL T24 破幻苍穹
+EQUAL T25 破幻苍穹
+EQUAL T26 破幻苍穹
+#ACT
+MOV S$破幻苍穹 激活
+
+#OR
+EQUAL T20 紫龙归隐
+EQUAL T21 紫龙归隐
+EQUAL T22 紫龙归隐
+EQUAL T23 紫龙归隐
+EQUAL T24 紫龙归隐
+EQUAL T25 紫龙归隐
+EQUAL T26 紫龙归隐
+#ACT
+MOV S$紫龙归隐 激活
+
+#OR
+EQUAL T20 重燃战火
+EQUAL T21 重燃战火
+EQUAL T22 重燃战火
+EQUAL T23 重燃战火
+EQUAL T24 重燃战火
+EQUAL T25 重燃战火
+EQUAL T26 重燃战火
+#ACT
+MOV S$重燃战火 激活
+
+#OR
+EQUAL T20 神雷天罚
+EQUAL T21 神雷天罚
+EQUAL T22 神雷天罚
+EQUAL T23 神雷天罚
+EQUAL T24 神雷天罚
+EQUAL T25 神雷天罚
+EQUAL T26 神雷天罚
+#ACT
+MOV S$神雷天罚 激活
+
+#OR
+EQUAL T20 生命献祭
+EQUAL T21 生命献祭
+EQUAL T22 生命献祭
+EQUAL T23 生命献祭
+EQUAL T24 生命献祭
+EQUAL T25 生命献祭
+EQUAL T26 生命献祭
+#ACT
+MOV S$生命献祭 激活
+
+#OR
+EQUAL T20 九鼎之力
+EQUAL T21 九鼎之力
+EQUAL T22 九鼎之力
+EQUAL T23 九鼎之力
+EQUAL T24 九鼎之力
+EQUAL T25 九鼎之力
+EQUAL T26 九鼎之力
+#ACT
+MOV S$九鼎之力 激活
+
+#OR
+EQUAL T20 斗转星移
+EQUAL T21 斗转星移
+EQUAL T22 斗转星移
+EQUAL T23 斗转星移
+EQUAL T24 斗转星移
+EQUAL T25 斗转星移
+EQUAL T26 斗转星移
+#ACT
+MOV S$斗转星移 激活
+
+
+#OR
+EQUAL T20 降神附体
+EQUAL T21 降神附体
+EQUAL T22 降神附体
+EQUAL T23 降神附体
+EQUAL T24 降神附体
+EQUAL T25 降神附体
+EQUAL T26 降神附体
+#ACT
+MOV S$降神附体 激活
+
+#OR
+EQUAL T20 暴走战神
+EQUAL T21 暴走战神
+EQUAL T22 暴走战神
+EQUAL T23 暴走战神
+EQUAL T24 暴走战神
+EQUAL T25 暴走战神
+EQUAL T26 暴走战神
+#ACT
+MOV S$暴走战神 激活
+
+#OR
+EQUAL T20 毁灭之力
+EQUAL T21 毁灭之力
+EQUAL T22 毁灭之力
+EQUAL T23 毁灭之力
+EQUAL T24 毁灭之力
+EQUAL T25 毁灭之力
+EQUAL T26 毁灭之力
+#ACT
+MOV S$毁灭之力 激活
+
+#OR
+EQUAL T20 道法自然
+EQUAL T21 道法自然
+EQUAL T22 道法自然
+EQUAL T23 道法自然
+EQUAL T24 道法自然
+EQUAL T25 道法自然
+EQUAL T26 道法自然
+#ACT
+MOV S$道法自然 激活
+
+#OR
+EQUAL T20 布衣神相
+EQUAL T21 布衣神相
+EQUAL T22 布衣神相
+EQUAL T23 布衣神相
+EQUAL T24 布衣神相
+EQUAL T25 布衣神相
+EQUAL T26 布衣神相
+#ACT
+MOV S$布衣神相 激活
+
+#OR
+EQUAL T20 热血沸腾
+EQUAL T21 热血沸腾
+EQUAL T22 热血沸腾
+EQUAL T23 热血沸腾
+EQUAL T24 热血沸腾
+EQUAL T25 热血沸腾
+EQUAL T26 热血沸腾
+#ACT
+MOV S$热血沸腾 激活
+
+
+#OR
+EQUAL T20 藐视神罚
+EQUAL T21 藐视神罚
+EQUAL T22 藐视神罚
+EQUAL T23 藐视神罚
+EQUAL T24 藐视神罚
+EQUAL T25 藐视神罚
+EQUAL T26 藐视神罚
+#ACT
+MOV S$藐视神罚 激活
+
+#OR
+EQUAL T20 霸权压制
+EQUAL T21 霸权压制
+EQUAL T22 霸权压制
+EQUAL T23 霸权压制
+EQUAL T24 霸权压制
+EQUAL T25 霸权压制
+EQUAL T26 霸权压制
+#ACT
+MOV S$霸权压制 激活
+
+#OR
+EQUAL T20 无相神功
+EQUAL T21 无相神功
+EQUAL T22 无相神功
+EQUAL T23 无相神功
+EQUAL T24 无相神功
+EQUAL T25 无相神功
+EQUAL T26 无相神功
+#ACT
+MOV S$无相神功 激活
+
+#OR
+EQUAL T20 疾风劲火
+EQUAL T21 疾风劲火
+EQUAL T22 疾风劲火
+EQUAL T23 疾风劲火
+EQUAL T24 疾风劲火
+EQUAL T25 疾风劲火
+EQUAL T26 疾风劲火
+#ACT
+MOV S$疾风劲火 激活
+
+#OR
+EQUAL T20 血之狂暴
+EQUAL T21 血之狂暴
+EQUAL T22 血之狂暴
+EQUAL T23 血之狂暴
+EQUAL T24 血之狂暴
+EQUAL T25 血之狂暴
+EQUAL T26 血之狂暴
+#ACT
+MOV S$血之狂暴 激活
+
+#OR
+EQUAL T20 老当益壮
+EQUAL T21 老当益壮
+EQUAL T22 老当益壮
+EQUAL T23 老当益壮
+EQUAL T24 老当益壮
+EQUAL T25 老当益壮
+EQUAL T26 老当益壮
+#ACT
+MOV S$老当益壮 激活
+
+#OR
+EQUAL T20 天生神力
+EQUAL T21 天生神力
+EQUAL T22 天生神力
+EQUAL T23 天生神力
+EQUAL T24 天生神力
+EQUAL T25 天生神力
+EQUAL T26 天生神力
+#ACT
+MOV S$天生神力 激活
+
+#OR
+EQUAL T20 阴阳逆转
+EQUAL T21 阴阳逆转
+EQUAL T22 阴阳逆转
+EQUAL T23 阴阳逆转
+EQUAL T24 阴阳逆转
+EQUAL T25 阴阳逆转
+EQUAL T26 阴阳逆转
+#ACT
+MOV S$阴阳逆转 激活
+
+
+#OR
+EQUAL T20 魔力穿刺
+EQUAL T21 魔力穿刺
+EQUAL T22 魔力穿刺
+EQUAL T23 魔力穿刺
+EQUAL T24 魔力穿刺
+EQUAL T25 魔力穿刺
+EQUAL T26 魔力穿刺
+#ACT
+MOV S$魔力穿刺 激活
+
+#OR
+EQUAL T20 血债血偿
+EQUAL T21 血债血偿
+EQUAL T22 血债血偿
+EQUAL T23 血债血偿
+EQUAL T24 血债血偿
+EQUAL T25 血债血偿
+EQUAL T26 血债血偿
+#ACT
+MOV S$血债血偿 激活
+
+#OR
+EQUAL T20 恶魔血脉
+EQUAL T21 恶魔血脉
+EQUAL T22 恶魔血脉
+EQUAL T23 恶魔血脉
+EQUAL T24 恶魔血脉
+EQUAL T25 恶魔血脉
+EQUAL T26 恶魔血脉
+#ACT
+MOV S$恶魔血脉 激活
+
+#OR
+EQUAL T20 铁血守护
+EQUAL T21 铁血守护
+EQUAL T22 铁血守护
+EQUAL T23 铁血守护
+EQUAL T24 铁血守护
+EQUAL T25 铁血守护
+EQUAL T26 铁血守护
+#ACT
+MOV S$铁血守护 激活
+}

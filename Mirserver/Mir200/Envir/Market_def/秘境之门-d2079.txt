@@ -1,0 +1,54 @@
+[@MAIN]
+#IF
+#ACT
+FindMapMonster d2079 暗之牛魔王 N$牛魔王数量 1
+
+#IF
+LARGE N$牛魔王数量 0
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01023.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=暗之牛魔王被击退后，牛魔秘境的大门也随之打开>
+<Text|x=45.0|y=95.0|size=17|color=255|text=如果你带有牛魔王的头颅，那么我就可以帮你进入牛魔秘境！>
+#ELSESAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01023.png|esc=0>
+<Text|x=45.0|y=70.0|size=17|color=255|text=暗之牛魔王被击退，牛魔秘境的大门也随之打开>
+<Text|x=45.0|y=95.0|size=17|color=255|text=想不想前去挑战强大的上古牛魔天神？如果你带有>
+<Text|x=45.0|y=120.0|color=255|size=18|text=牛魔王的头颅，那么我就可以帮你进入牛魔秘境！>
+
+<Layout|x=50.0|y=170.0|width=120|height=40|color=*|link=@牛魔秘境>
+<Text|x=55.0|y=175.0|color=11009|size=18|text=进入牛魔秘境|link=@牛魔秘境>
+
+<Layout|x=260.0|y=170.0|width=130|height=40|color=x|link=@牛魔头颅>
+<Text|x=265.0|y=175.0|color=11009|size=18|text=牛魔王的头颅？|link=@牛魔头颅>
+
+
+[@牛魔秘境]
+#IF
+CHECKITEM 牛魔王的头颅 1
+#ACT
+TAKE 牛魔王的头颅 1
+MAP jjc14
+BREAK
+#ELSEACT
+SENDMSG 9 进入失败，你没有带来我需要的信物！
+BREAK
+
+[@牛魔头颅]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01017.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=牛魔王在牛魔洞中享有着至高无上的权利与地位，在牛魔王死>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=后，它的头颅将会被牛魔一族割下来用作祭祀。>
+<Text|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=祭祀的地点就在牛魔七层中间的那座祭坛处，只需将牛魔王的>
+<Text|x=45.0|y=145.0|color=255|size=17|outline=1|outlinecolor=0|text=头颅带往那里，便可启动牛魔一组遗传千年的魔法大阵！>
+<Img|x=45.0|y=202.0|width=15|height=16|esc=0|img=public/btn_npcfh_03.png>
+<Layout|x=43.0|y=192.0|width=100|height=40|link=@exit>
+<Text|x=70.0|y=195.0|color=11009|size=18|outline=1|outlinecolor=0|text=感谢指点|link=@exit>

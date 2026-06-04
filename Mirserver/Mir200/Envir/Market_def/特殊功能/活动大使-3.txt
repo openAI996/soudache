@@ -1,0 +1,598 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01008.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=为庆祝新区开放，我们准备了以下活动：>
+<Text|x=45.0|y=95.0|color=11003|size=17|outline=1|outlinecolor=0|text=上古卷轴、双倍经验、书页、上古卷轴、封印石......>
+<Text|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=更有及其稀有的神器、神甲盒等你来拿！>
+<Layout|x=75.0|y=165.0|width=100|height=50|link=@冲级奖励>
+<Img|x=45.0|y=180.0|width=20|height=20|esc=0|img=public/00017.png>
+<Text|x=70.0|y=175.0|color=11009|size=18|outline=1|outlinecolor=0|text=【冲级奖励】|link=@冲级奖励>
+<Img|x=290.0|y=182.0|width=20|height=20|esc=0|img=public/00014.png>
+<Layout|x=319.0|y=165.0|width=100|height=50|link=@BOSS悬赏>
+<Text|x=315.0|y=175.0|color=11009|size=18|outline=1|outlinecolor=0|text=【Boss悬赏】|link=@BOSS悬赏>
+
+
+[@冲级奖励]
+#IF
+#ACT
+MOV N$原始ID 0
+MOV S$奖励详情
+MOV S$领取编号
+MOV S$奖励标识
+
+#IF
+CHECK [80] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(1_4)>|itemcount=<$cfg_sjjl(1_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(1_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$cfg_sjjl(1_6)>>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=1#奖励标识=80>
+
+#IF
+CHECK [81] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(2_4)>|itemcount=<$cfg_sjjl(2_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(2_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$cfg_sjjl(2_6)>>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=2#奖励标识=81>
+
+#IF
+CHECK [82] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(3_4)>|itemcount=<$cfg_sjjl(3_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(3_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(3_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=3#奖励标识=82>
+
+#IF
+CHECK [83] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(4_4)>|itemcount=<$cfg_sjjl(4_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(4_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(4_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=4#奖励标识=83>
+
+#IF
+CHECK [84] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(5_4)>|itemcount=<$cfg_sjjl(5_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(5_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(5_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=5#奖励标识=84>
+
+#IF
+CHECK [85] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(6_4)>|itemcount=<$cfg_sjjl(6_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(6_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(6_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=6#奖励标识=85>
+
+#IF
+CHECK [86] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(7_4)>|itemcount=<$cfg_sjjl(7_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(7_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(7_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=7#奖励标识=86>
+
+#IF
+CHECK [87] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(8_4)>|itemcount=<$cfg_sjjl(8_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(8_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(8_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=8#奖励标识=87>
+
+#IF
+CHECK [88] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(9_4)>|itemcount=<$cfg_sjjl(9_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(9_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(9_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=9#奖励标识=88>
+
+#IF
+CHECK [89] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(10_4)>|itemcount=<$cfg_sjjl(10_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(10_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(10_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=10#奖励标识=89>
+
+#IF
+CHECK [90] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(11_4)>|itemcount=<$cfg_sjjl(11_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(11_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(11_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=11#奖励标识=90>
+
+#IF
+CHECK [91] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(12_4)>|itemcount=<$cfg_sjjl(12_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(12_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(12_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=12#奖励标识=91>
+
+#IF
+CHECK [92] 0
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(13_4)>|itemcount=<$cfg_sjjl(13_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(13_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(13_6)>)>人>
+INC S$奖励详情 <Button|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=32|pimg=private/pmh/006.png|color=1025|size=18|nimg=private/pmh/005.png|text=领取|link=@确认领取#领取编号=13#奖励标识=92>
+
+;=========================================
+
+#IF
+CHECK [80] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(1_4)>|itemcount=<$cfg_sjjl(1_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(1_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$cfg_sjjl(1_6)>>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [81] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(2_4)>|itemcount=<$cfg_sjjl(2_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(2_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$cfg_sjjl(2_6)>>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [82] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(3_4)>|itemcount=<$cfg_sjjl(3_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(3_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(3_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [83] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(4_4)>|itemcount=<$cfg_sjjl(4_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(4_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(4_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [84] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(5_4)>|itemcount=<$cfg_sjjl(5_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(5_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(5_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [85] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(6_4)>|itemcount=<$cfg_sjjl(6_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(6_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(6_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [86] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(7_4)>|itemcount=<$cfg_sjjl(7_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(7_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(7_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [87] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(8_4)>|itemcount=<$cfg_sjjl(8_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(8_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(8_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [88] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(9_4)>|itemcount=<$cfg_sjjl(9_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(9_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(9_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [89] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(10_4)>|itemcount=<$cfg_sjjl(10_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(10_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(10_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [90] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(11_4)>|itemcount=<$cfg_sjjl(11_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(11_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(11_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [91] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(12_4)>|itemcount=<$cfg_sjjl(12_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(12_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(12_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+CHECK [92] 1
+#ACT
+INC N$原始ID 1
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>01|x=245.0|y=3.0|img=private/psllz/02128.png|esc=0>
+INC S$奖励详情 <ItemShow|id=<$STR(N$原始ID)>02|x=240.0|y=-3|width=70|height=70|itemid=<$cfg_sjjl(13_4)>|itemcount=<$cfg_sjjl(13_3)>|showtips=1|bgtype=0|scale=0.95>
+INC S$奖励详情 <RText|id=<$STR(N$原始ID)>03|x=15.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=玩家达到　<<$cfg_sjjl(13_1)>/FCOLOR=250>　级，可领取：>
+INC S$奖励详情 <Text|id=<$STR(N$原始ID)>04|x=305.0|y=18.0|size=17|color=255|outline=1|outlinecolor=0|text=剩余名额：<$str(<$cfg_sjjl(13_6)>)>人>
+INC S$奖励详情 <Img|id=<$STR(N$原始ID)>05|x=480.0|y=15.0|width=85|height=35|esc=0|img=public/ylq.png>
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=-1.0|width=670|height=470|bg=1|loadDelay=0|scale9r=50|scale9t=50|scale9b=50|move=0|scale9l=50|reset=1|esc=1|img=private/xlxl/00000.png|show=4>
+<Layout|x=612.0|y=-16.0|width=80|height=80|link=@exit>
+<Button|x=626.0|y=18.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=285.0|y=8.0|img=private/biaoti/01008.png|esc=0>
+<Text|x=55.0|y=415.0|color=250|outline=1|outlinecolor=0|size=17|text=新区庆典活动，活动期间，玩家达到指定对应等级即可领取对应冲级奖励！>
+<ListView|children={1,2,3,4,5,6,7,8,9,10,11,12,13}|x=50.0|y=85.0|width=570|height=310|direction=1|bounce=0|margin=1|reload=0|color=x>
+<Img|id=1|children={101,102,103,104,105}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg1.png>
+<Img|id=2|children={201,202,203,204,205}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg2.png>
+<Img|id=3|children={301,302,303,304,305}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg1.png>
+<Img|id=4|children={401,402,403,404,405}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg2.png>
+<Img|id=5|children={501,502,503,504,505}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg1.png>
+<Img|id=6|children={601,602,603,604,605}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg2.png>
+<Img|id=7|children={701,702,703,704,705}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg1.png>
+<Img|id=8|children={801,802,803,804,805}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg2.png>
+<Img|id=9|children={901,902,903,904,905}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg1.png>
+<Img|id=10|children={1001,1002,1003,1004,1005}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg2.png>
+<Img|id=11|children={1101,1102,1103,1104,1105}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg1.png>
+<Img|id=12|children={1201,1202,1203,1204,1205}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg2.png>
+<Img|id=13|children={1301,1302,1303,1304,1305}|x=0.0|y=0.0|width=575|esc=0|img=private/mh/bg1.png>
+<$STR(S$奖励详情)>
+
+
+[@确认领取]
+#IF
+#ACT
+MOV N$奖励索引  <$GetTypeBRow(cfg_sjjl,0,<$STR(S$领取编号)>)>
+
+#IF
+CHECK [<$STR(S$奖励标识)>] 1
+#ACT
+SENDMSG 9 你已经领取过本档的奖励了！
+Break
+
+#IF
+EQUAL <$cfg_sjjl(<$STR(N$奖励索引)>_6)> 不限
+CHECKLEVELEX > <$cfg_sjjl(<$STR(N$奖励索引)>_5)> 
+#ACT
+SET [<$STR(S$奖励标识)>] 1
+GiveStateItem <$cfg_sjjl(<$STR(N$奖励索引)>_2)> <$cfg_sjjl(<$STR(N$奖励索引)>_3)> 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功领取了<$cfg_sjjl(<$STR(N$奖励索引)>_1)>级的奖励！
+GOTO @冲级奖励
+Break
+
+
+#IF
+not EQUAL <$cfg_sjjl(<$STR(N$奖励索引)>_6)> 不限
+EQUAL <$cfg_sjjl(<$STR(N$奖励索引)>_6)> 0
+#ACT
+SENDMSG 9 该奖励已被领完！
+break
+
+#IF
+CHECKLEVELEX > <$cfg_sjjl(<$STR(N$奖励索引)>_5)> 
+CHECK [<$STR(S$奖励标识)>] 0
+#ACT
+SET [<$STR(S$奖励标识)>] 1
+DEC <$cfg_sjjl(<$STR(N$奖励索引)>_6)> 1
+GiveStateItem <$cfg_sjjl(<$STR(N$奖励索引)>_2)> <$cfg_sjjl(<$STR(N$奖励索引)>_3)> 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功领取了<$cfg_sjjl(<$STR(N$奖励索引)>_1)>级的奖励！
+GOTO @冲级奖励
+Break
+#ELSEACT
+SENDMSG 9 等级不够，领取失败！
+break
+
+
+
+[@BOSS悬赏]
+#IF
+#ACT
+MOV N$首杀时间_1 86400
+MOV N$首杀时间_2 432000
+MOV N$首杀时间_3 864000
+MOV N$首杀时间_4 1296000
+MOV N$开区时间 <$str(A499)>
+MOV N$时间差 <$UTCNOW8>
+DEC N$时间差 <$STR(N$开区时间)>
+
+#IF
+SMALL N$时间差 <$str(N$首杀时间_1)>
+#ACT
+DEC N$首杀时间_1 <$STR(N$时间差)>
+MOV S$时间_1 
+INC S$时间_1 <COUNTDOWN|id=203|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=303|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=403|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=503|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=603|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=703|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=803|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=903|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=1003|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+INC S$时间_1 <COUNTDOWN|id=1103|x=333|y=5|time=<$str(N$首杀时间_1)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+#ELSEACT
+MOV S$时间_1 
+INC S$时间_1 <Text|id=203|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=303|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=403|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=503|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=603|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=703|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=803|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=903|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1003|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+INC S$时间_1 <Text|id=1103|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+
+#IF
+SMALL N$时间差 <$str(N$首杀时间_2)>
+#ACT
+DEC N$首杀时间_2 <$STR(N$时间差)>
+MOV S$时间_2 <COUNTDOWN|id=1203|x=333|y=5|time=<$str(N$首杀时间_2)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+#ELSEACT
+MOV S$时间_2 <Text|id=1203|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+
+#IF
+SMALL N$时间差 <$str(N$首杀时间_3)>
+#ACT
+DEC N$首杀时间_3 <$STR(N$时间差)>
+MOV S$时间_3 <COUNTDOWN|id=1303|x=333|y=5|time=<$str(N$首杀时间_3)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+#ELSEACT
+MOV S$时间_3 <Text|id=1303|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+
+#IF
+SMALL N$时间差 <$str(N$首杀时间_4)>
+#ACT
+DEC N$首杀时间_4 <$STR(N$时间差)>
+MOV S$时间_4 <COUNTDOWN|id=1403|x=333|y=5|time=<$str(N$首杀时间_4)>|showWay=1|outline=1|outlinecolor=0|count=0|size=17|color=149>\
+#ELSEACT
+MOV S$时间_4 <Text|id=1403|x=325.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=首杀生效中>
+
+#IF
+EQUAL A100 
+#ACT
+MOV S$1号悬赏 <Text|id=204|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$1号悬赏 <Text|id=204|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A101
+#ACT
+MOV S$2号悬赏 <Text|id=304|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$2号悬赏 <Text|id=304|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A102
+#ACT
+MOV S$3号悬赏 <Text|id=404|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$3号悬赏 <Text|id=404|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A103
+#ACT
+MOV S$4号悬赏 <Text|id=504|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$4号悬赏 <Text|id=504|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A104
+#ACT
+MOV S$5号悬赏 <Text|id=604|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$5号悬赏 <Text|id=604|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A105
+#ACT
+MOV S$6号悬赏 <Text|id=704|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$6号悬赏 <Text|id=704|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A106
+#ACT
+MOV S$7号悬赏 <Text|id=804|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$7号悬赏 <Text|id=804|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A107
+#ACT
+MOV S$8号悬赏 <Text|id=904|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$8号悬赏 <Text|id=904|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A108
+#ACT
+MOV S$9号悬赏 <Text|id=1004|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$9号悬赏 <Text|id=1004|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A109
+#ACT
+MOV S$10号悬赏 <Text|id=1104|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$10号悬赏 <Text|id=1104|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A110
+#ACT
+MOV S$11号悬赏 <Text|id=1204|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$11号悬赏 <Text|id=1204|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A111
+#ACT
+MOV S$12号悬赏 <Text|id=1304|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$12号悬赏 <Text|id=1304|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+EQUAL A112
+#ACT
+MOV S$13号悬赏 <Text|id=1404|x=490.0|y=5.0|color=250|size=17|outline=1|outlinecolor=0|text=未击杀>
+#ELSEACT
+MOV S$13号悬赏 <Text|id=1404|x=490.0|y=5.0|color=249|size=17|outline=1|outlinecolor=0|text=已击杀>
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=-1.0|width=670|height=470|bg=1|scale9l=50|scale9r=50|scale9t=50|scale9b=50|move=0|loadDelay=0|esc=1|reset=1|img=private/xlxl/00000.png|show=4>
+<Layout|x=607.0|y=-16.0|width=80|height=80|link=@exit>
+<Button|x=624.0|y=18.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=285.0|y=8.0|img=private/biaoti/01008.png|esc=0>
+<Text|x=92.0|y=416.0|outlinecolor=0|color=250|outline=1|size=17|text=新区开放生效倒计时结束后，首个击杀BOSS的玩家可获得其悬赏！>
+<ListView|children={2,3,4,5,6,7,8,9,10,11,12,13,14}|x=50.0|y=120.0|width=570|height=280|color=x|bounce=0|direction=1|reload=0|margin=2>
+<Img|id=2|x=0.0|children={201,202,203,204}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=3|x=0.0|children={301,302,303,304}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=4|x=0.0|children={401,402,403,404}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=5|x=0.0|children={501,502,503,504}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=6|x=0.0|children={601,602,603,604}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=7|x=0.0|children={701,702,703,704}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=8|x=0.0|children={801,802,803,804}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=9|x=0.0|children={901,902,903,904}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=10|x=0.0|children={1001,1002,1003,1004}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=11|x=0.0|children={1101,1102,1103,1104}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=12|x=0.0|children={1201,1202,1203,1204}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=13|x=0.0|children={1301,1302,1303,1304}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|id=14|x=0.0|children={1401,1402,1403,1404}|y=0.0|width=575|esc=0|img=public/ss.png>
+<Img|x=42.0|y=79.0|width=590|esc=0|img=public/ssbt.png>
+<Text|x=85.0|y=83.0|size=17|color=100|outline=1|outlinecolor=0|text=Boss>
+<Text|x=215.0|y=83.0|size=17|color=100|outline=1|outlinecolor=0|text=悬赏奖励>
+<Text|x=375.0|y=83.0|size=17|color=100|outline=1|outlinecolor=0|text=生效倒计时>
+<Text|x=530.0|y=83.0|size=17|color=100|outline=1|outlinecolor=0|text=击杀状态>
+
+<Text|id=201|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(1_1)>>
+<Text|id=202|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(1_2)>>
+<$STR(S$1号悬赏)>
+
+<Text|id=301|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(2_1)>>
+<Text|id=302|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(2_2)>>
+<$STR(S$2号悬赏)>
+
+<Text|id=401|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(3_1)>>
+<Text|id=402|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(3_2)>>
+<$STR(S$3号悬赏)>
+
+<Text|id=501|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(4_1)>>
+<Text|id=502|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(4_2)>>
+<$STR(S$4号悬赏)>
+
+<Text|id=601|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(5_1)>>
+<Text|id=602|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(5_2)>>
+<$STR(S$5号悬赏)>
+
+<Text|id=701|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(6_1)>>
+<Text|id=702|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(6_2)>>
+<$STR(S$6号悬赏)>
+
+<Text|id=801|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(7_1)>>
+<Text|id=802|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(7_2)>>
+<$STR(S$7号悬赏)>
+
+<Text|id=901|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(8_1)>>
+<Text|id=902|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(8_2)>>
+<$STR(S$8号悬赏)>
+
+<Text|id=1001|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(9_1)>>
+<Text|id=1002|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(9_2)>>
+<$STR(S$9号悬赏)>
+
+<Text|id=1101|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(10_1)>>
+<Text|id=1102|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(10_2)>>
+<$STR(S$10号悬赏)>
+
+<Text|id=1201|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(11_1)>>
+<Text|id=1202|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(11_2)>>
+<$STR(S$11号悬赏)>
+
+<Text|id=1301|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(12_1)>>
+<Text|id=1302|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(12_2)>>
+<$STR(S$12号悬赏)>
+
+<Text|id=1401|x=25.0|y=5.0|color=116|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(13_1)>>
+<Text|id=1402|x=165.0|y=5.0|color=149|size=17|outline=1|outlinecolor=0|text=<$cfg_Bosssx(13_2)>>
+<$STR(S$13号悬赏)>
+
+<$STR(S$时间_1)>
+<$STR(S$时间_2)>
+<$STR(S$时间_3)>
+<$STR(S$时间_4)>

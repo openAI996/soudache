@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE dxhl02 119 27

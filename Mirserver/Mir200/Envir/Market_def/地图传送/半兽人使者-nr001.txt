@@ -1,0 +1,27 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01023.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=18|outlinecolor=0|outline=1|text=江湖传言半兽人统领在异域获得修炼，>
+<Text|x=45.0|y=95.0|color=255|size=18|outlinecolor=0|outline=1|text=实力变得超乎想象的强大，你要是不怕死，>
+<RText|x=45.0|y=120.0|color=255|size=18|outlinecolor=0|outline=1|text=只需一个<女儿红/FCOLOR=249>，我便可以送你进去。>
+<Layout|x=30.0|y=170.0|width=100|height=35|color=*|link=@传送地图>
+<Text|x=50.0|y=175.0|color=251|size=18|text=传送|link=@传送地图>
+<Layout|x=210.0|y=170.0|width=100|height=35|color=*|link=@EXIT>
+<Text|x=230.0|y=175.0|color=251|size=18|text=我害怕|link=@EXIT>
+
+
+
+[@传送地图]
+#IF
+CHECKITEM 女儿红 1
+#ACT
+TAKE 女儿红 1
+MAPMOVE srld 20 22
+SENDMSG 0 %s成功潜入兽人领地，开始挑战半兽人统领！
+BREAK
+#ELSEACT
+SENDMSG 9 进入失败，你没有女儿红
+BREAK
+

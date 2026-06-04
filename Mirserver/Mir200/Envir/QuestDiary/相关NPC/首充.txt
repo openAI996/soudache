@@ -1,0 +1,81 @@
+[@首充开启]
+{
+#IF
+hasbuff 50409
+#ACT
+MOV S$悦享显示 <Text|x=145.0|y=250.0|size=18|color=11003|text=剩余：>
+INC S$悦享显示 <TIMETIPS|a=0|x=192|y=251|time=<$BUFFTR(50409)>|count=0|size=16|outline=1|outlinecolor=0|color=251>
+INC S$悦享显示 <Layout|x=196.0|y=265.0|width=150|height=50|color=*|link=@领取奖励>
+INC S$悦享显示 <Button|x=205.0|y=277.0|color=11033|pimg=private/pmh/006.png|size=17|nimg=private/pmh/005.png|text=领　取|link=@领取奖励>
+INC S$悦享显示 <Layout|x=305.0|y=270.0|width=100|height=50|color=x|link=@悦享拉起>
+INC S$悦享显示 <Text|x=306.0|y=285.0|color=251|size=16|outline=1|outlinecolor=0|text=(续费)|link=@悦享拉起>
+
+
+#ELSEACT
+MOV S$悦享显示 <Text|x=168.0|y=254.0|color=11038|size=18|text=（未购买悦享礼包）>
+INC S$悦享显示 <Layout|x=171.0|y=274.0|width=150|height=50|color=*|link=@悦享拉起>
+INC S$悦享显示 <Button|x=180.0|y=282.0|width=130|rotate=0|pimg=private/pmh/006.png|color=11033|size=18|nimg=private/pmh/005.png|text=购买悦享礼包|link=@悦享拉起>
+
+#IF
+#SAY
+<Img|x=0.0|y=20.0|width=485|height=410|img=public/bg_npc_01.png|scale9t=100|move=0|loadDelay=1|reset=1|scale9l=100|scale9b=100|show=0|bg=1|scale9r=100|esc=1>
+<Layout|x=414.0|y=0.0|width=80|height=80|link=@exit>
+<Button|x=444.0|y=40.0|height=32|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=190.0|y=29.0|img=private/biaoti/01061.png|esc=0>
+<Text|x=45.0|y=70.0|color=11008|size=18|text=购买悦享礼包即可获得：>
+<Img|x=45.0|y=105.0|img=private/pmh/015.png|esc=0>
+<Img|x=130.0|y=104.0|img=private/pmh/015.png|esc=0>
+<Img|x=215.0|y=105.0|img=private/pmh/015.png|esc=0>
+<Img|x=40.0|y=165.0|img=private/psllz/02143.png|esc=0>
+<Text|x=45.0|y=170.0|color=11008|size=18|text=购买后每日可领取以下物品：>
+<ItemShow|x=40.0|y=100.0|width=70|height=70|itemid=2|itemcount=3500|showtips=1|bgtype=0>
+<ItemShow|x=125.0|y=100.0|width=70|height=70|itemid=10588|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=210.0|y=100.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=0>
+<Img|x=45.0|y=195.0|img=private/pmh/015.png|esc=0>
+<Img|x=130.0|y=195.0|img=private/pmh/015.png|esc=0>
+<Img|x=215.0|y=195.0|img=private/pmh/015.png|esc=0>
+<Img|x=300.0|y=195.0|img=private/pmh/015.png|esc=0>
+<Img|x=385.0|y=195.0|img=private/pmh/015.png|esc=0>
+<ItemShow|x=40.0|y=190.0|width=70|height=70|itemid=10538|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=125.0|y=188.0|width=70|height=70|itemid=10396|itemcount=3|showtips=1|bgtype=0>
+<ItemShow|x=210.0|y=190.0|width=70|height=70|itemid=10433|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=295.0|y=190.0|width=70|height=70|itemid=10202|itemcount=10|showtips=1|bgtype=0>
+<ItemShow|x=380.0|y=190.0|width=70|height=70|itemid=10428|itemcount=1|showtips=1|bgtype=0>
+<Text|x=45.0|y=320.0|color=11052|text=悦享礼包购买规则：>
+<Text|x=45.0|y=345.0|color=11052|text=1、必须单笔充值68元整(数额不为68元整则购买失败)>
+<Text|x=45.0|y=370.0|color=11052|text=2、单笔充值后6800元宝将自动扣除>
+<Text|x=45.0|y=395.0|color=11052|text=3、悦享礼包可以分多次购买，可参与充值回馈>
+
+<$STR(S$悦享显示)>
+
+[@悦享拉起]
+#IF
+#ACT
+Pullpay 68 1 2
+MESSAGEBOX 暂未获得购买资格！\必须单笔一次性充值68元整，充值数额不为68元则无法购买该礼包！
+BREAK 
+
+[@领取奖励]
+#IF
+LARGE J20 0
+#ACT
+SENDMSG 9 <font color='#79ff35'>你已经领取过今日的悦享礼包了！</font>
+BREAK
+
+#IF
+CHECKBAGSIZE 10
+#ACT
+MOV J20 999
+GiveStateItem 金币卷 1 1 1 0 0 1 1 1 1
+GiveStateItem 女儿红 3 1 1 0 0 1 1 1 1
+GiveStateItem 天外陨铁 1 1 1 0 0 1 1 1 1
+GiveStateItem 精修卷轴 10 1 1 0 0 1 1 1 1
+GiveStateItem 灵兽碎片 1 1 1 0 0 1 1 1 1
+#CALL [\功能脚本\主界面按钮\主界面按钮QF.txt] @按钮展开
+CLOSE
+BREAK
+#ELSEACT
+SENDMSG 9 请先预留10格背包空格数量！
+BREAK
+
+}

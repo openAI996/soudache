@@ -1,0 +1,841 @@
+[@节日活动界面]
+{
+#if
+equal <$MONTH> 6
+#act
+mov N$天数1 16
+mov N$天数2 27
+
+#if
+equal <$MONTH> 6
+#act
+mov N$天数1 16
+mov N$天数2 27
+
+#if
+LARGE <$DAY> <$STR(N$天数1)>
+small <$DAY> <$STR(N$天数2)>
+#ACT
+GOTO @活动界面
+BREAK
+#ELSEACT 
+MESSAGEBOX 活动开启时间为06月17日00:00至06月26日23:59
+BREAK
+
+
+[@活动界面]
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+mov s$道具大小 0.85
+#ELSEACT
+mov s$道具大小 0.7
+
+#IF
+#act
+While U170 > 99
+DEC U170 100
+Inc U171 1
+Inc U174 1
+EndWhile
+
+#IF
+#act
+While U172 > 99
+DEC U172 100
+Inc U173 1
+Inc U175 1
+EndWhile
+
+#IF
+LARGE U171 0
+#ACT
+MOV S$上古领取按钮 <RText|x=470.0|y=195.0|outlinecolor=0|outline=1|color=255|size=17|text=可领取(<<$str(U171)>/FCOLOR=249>)个>
+INC S$上古领取按钮 <Text|x=645.0|y=195.0|outlinecolor=0|outline=1|color=11008|size=17|text=领取上古碎片|link=@领取上古碎片>
+#ELSEACT
+MOV S$上古领取按钮 <Text|x=645.0|y=195.0|outlinecolor=0|outline=1|color=11008|size=17|text=充值参与活动|link=@活动充值拉起4>
+
+#IF
+LARGE U173 0
+#ACT
+MOV S$金币卷领取按钮 <RText|x=470.0|y=262.0|outlinecolor=0|outline=1|color=255|size=17|text=可领取(<<$str(U173)>/FCOLOR=249>)个>
+INC S$金币卷领取按钮 <Text|x=645.0|y=262.0|outlinecolor=0|outline=1|color=11008|size=17|text=领取金币卷|link=@领取金币卷>
+#ELSEACT
+MOV S$金币卷领取按钮 <Text|x=645.0|y=262.0|outlinecolor=0|outline=1|color=11008|size=17|text=充值参与活动|link=@活动充值拉起4>
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=820|height=600|rotate=0|scale9t=150|move=0|img=private/xlxl/00000.png|reset=1|show=4|scale9b=150|loadDelay=0|bg=1|scale9l=150|scale9r=150|esc=1>
+<Layout|x=748.0|y=-10.0|width=80|height=80|link=@exit>
+<Button|x=769.0|y=16.0|width=35|height=35|rotate=0|size=18|color=255|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=360.0|y=8.0|img=private/biaoti/01073.png|esc=0>
+<Img|x=190.0|y=68.0|height=472|img=private/psllz/00010.png|esc=0>
+<Button|x=57.0|y=90.0|width=132|height=38|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=11009|size=18|text=端午礼包|link=@活动界面>
+<Button|x=57.0|y=140.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=端午赠礼|link=@端午赠礼>
+<Button|x=57.0|y=190.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=全民兑换|link=@全民兑换>
+<Button|x=57.0|y=240.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=灵兽兑换|link=@灵兽兑换>
+
+<Text|x=215.0|y=82.0|color=11003|size=17|outlinecolor=0|outline=1|text=龙舟闹端午，战火燃传奇。端午佳节，共享传奇乐趣！在这个快乐的节日\里，搜打撤传奇将与你一起感受端午的喜悦，共享激情与热血！>
+<Text|x=45.0|y=555.0|color=11043|size=16|outlinecolor=0|outline=1|text=（活动期间玩家单笔充值达到活动金额，将自动通过邮件发放活动赠送奖励，无需领取）>
+<Text|x=45.0|y=535.0|color=11043|size=16|outlinecolor=0|outline=1|text=（以上活动需单笔充值指定金额，单笔充值未达到指定金额将无法获得活动赠送奖励）>
+<Text|x=52.0|y=48.0|color=11068|size=18|text=活动日期：06月17日00:00-06月26日23:59>
+<Text|x=215.0|y=135.0|color=11054|size=18|text=活动期间：>
+<RText|x=215.0|y=160.0|color=255|size=17|outlinecolor=0|outline=1|text=每<充值/FCOLOR=11043><100元/FCOLOR=11003>，额外赠送1个<"神之碎片"/FCOLOR=11033>，可兑换指定橙色灵兽。>
+<Img|x=335.0|y=185.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=325.0|y=174.0|width=70|height=70|itemid=10624|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<RText|x=215.0|y=195.0|color=255|size=17|outlinecolor=0|outline=1|text=活动赠送预览：>
+<RText|x=215.0|y=227.0|color=255|size=17|outlinecolor=0|outline=1|text=每<充值/FCOLOR=11043><100元/FCOLOR=11003>，额外赠送1个<"金币卷"/FCOLOR=11033>，可以随机开出8~88万金币>
+<Img|x=334.0|y=255.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=325.0|y=242.0|width=70|height=70|itemid=10625|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<RText|x=215.0|y=262.0|color=255|size=17|outlinecolor=0|outline=1|text=活动赠送预览：>
+<RText|x=215.0|y=310.0|color=255|size=17|outlinecolor=0|outline=1|text=每<单笔/FCOLOR=11043>充值为　<288元/FCOLOR=11003>，额外增送一个<"紫微星石"+悦享卡/FCOLOR=11033>(每个角色限5次)>
+<RText|x=215.0|y=345.0|color=255|size=17|outlinecolor=0|outline=1|text=活动赠送预览：　　　　　　　　已参与次数(<<$str(u230)>/5/FCOLOR=251>)>
+<Img|x=335.0|y=335.0|width=45|height=45|esc=0|img=public/02128.png>
+<Img|x=410.0|y=335.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=325.0|y=325.0|width=70|height=70|itemid=10404|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<ItemShow|x=405.0|y=325.0|width=70|height=70|itemid=10613|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<Img|x=375.0|y=405.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=365.0|y=393.0|width=70|height=70|itemid=10611|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<Img|x=375.0|y=480.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=365.0|y=470.0|width=70|height=70|itemid=10612|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<RText|x=215.0|y=380.0|color=255|size=17|outlinecolor=0|outline=1|text=每<单笔/FCOLOR=11043>充值为　<588元/FCOLOR=11003>，额外增送一个<"凤凰羽"/FCOLOR=11033>(每个角色限5次)>
+<RText|x=215.0|y=414.0|color=255|size=17|outlinecolor=0|outline=1|text=活动赠送预览：　　　　　　　　已参与次数(<<$str(u231)>/5/FCOLOR=251>)>
+<RText|x=215.0|y=450.0|color=255|size=17|outlinecolor=0|outline=1|text=每<单笔/FCOLOR=11043>充值为　<888元/FCOLOR=11003>，额外增送一个<"燕雀石"/FCOLOR=11033>(每个角色限5次)>
+<RText|x=215.0|y=485.0|color=255|size=17|outlinecolor=0|outline=1|text=活动赠送预览：　　　　　　　　已参与次数(<<$str(u232)>/5/FCOLOR=251>)>
+
+<$str(S$上古领取按钮)>
+<$str(S$金币卷领取按钮)>
+
+<Text|x=645.0|y=345.0|color=11008|size=18|outline=1|outlinecolor=0|text=充值参与活动|link=@活动充值拉起1>
+<Text|x=645.0|y=415.0|color=11008|size=18|outline=1|outlinecolor=0|text=充值参与活动|link=@活动充值拉起2>
+<Text|x=645.0|y=485.0|color=11008|size=18|outline=1|outlinecolor=0|text=充值参与活动|link=@活动充值拉起3>
+
+
+[@领取上古碎片]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 领取失败，背包空格数量不足2格！
+BREAK
+
+#IF
+LARGE U171 0
+#ACT
+GiveStateItem 神之碎片 <$str(U171)> 1 1 0 0 1 1 1 1
+sendmsg 9 恭喜您成功领取神之碎片*<$str(U171)>，祝您节日快乐！
+MOV U171 0
+BREAK
+
+[@领取金币卷]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 领取失败，背包空格数量不足2格！
+BREAK
+
+#IF
+LARGE U173 0
+#ACT
+GiveStateItem 金币卷(活动) <$str(U173)> 1 1 0 0 1 1 1 1
+sendmsg 9 恭喜您成功领取金币卷*<$str(U173)>，祝您节日快乐！
+MOV U173 0
+BREAK
+
+
+[@端午赠礼]
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+mov s$道具大小 0.85
+#ELSEACT
+mov s$道具大小 0.7
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=820|height=600|rotate=0|scale9t=150|move=0|img=private/xlxl/00000.png|reset=1|show=4|scale9b=150|loadDelay=0|bg=1|scale9l=150|scale9r=150|esc=1>
+<Layout|x=748.0|y=-10.0|width=80|height=80|link=@exit>
+<Button|x=769.0|y=16.0|width=35|height=35|rotate=0|size=18|color=255|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=360.0|y=8.0|img=private/biaoti/01073.png|esc=0>
+<Img|x=190.0|y=68.0|height=472|img=private/psllz/00010.png|esc=0>
+<Button|x=57.0|y=90.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=端午礼包|link=@活动界面>
+<Button|x=57.0|y=140.0|width=132|height=38|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=11009|size=18|text=端午赠礼|link=@端午赠礼>
+<Button|x=57.0|y=190.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=全民兑换|link=@全民兑换>
+<Button|x=57.0|y=240.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=灵兽兑换|link=@灵兽兑换>
+<Text|x=215.0|y=82.0|color=11003|size=17|outlinecolor=0|outline=1|text=龙舟闹端午，战火燃传奇。端午佳节，共享传奇乐趣！在这个快乐的节日\里，搜打撤传奇将与你一起感受端午的喜悦，共享激情与热血！>
+<Text|x=52.0|y=48.0|color=11068|size=18|text=活动日期：06月17日00:00-06月26日23:59>
+<Text|x=215.0|y=145.0|color=11054|size=18|text=活动期间：>
+<RText|x=215.0|y=180.0|color=255|size=17|outlinecolor=0|outline=1|text=玩家每日持续在线<3小时/FCOLOR=11043>，可免费领取1个<"女儿红+东坡肉"/FCOLOR=11033>>
+<Img|x=335.0|y=210.0|width=45|height=45|esc=0|img=public/02128.png>
+
+<RText|x=215.0|y=220.0|color=255|size=17|outlinecolor=0|outline=1|text=活动赠送预览：>
+<Img|x=414.0|y=210.0|width=45|height=45|esc=0|img=public/02128.png>
+<Img|x=335.0|y=324.0|width=45|height=45|esc=0|img=public/02128.png>
+<ItemShow|x=324.0|y=313.0|width=70|height=70|itemid=10614|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<ItemShow|x=326.0|y=200.0|width=70|height=70|itemid=10396|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<ItemShow|x=406.0|y=200.0|width=70|height=70|itemid=10421|itemcount=1|scale=<$str(s$道具大小)>|bgtype=0|showtips=1>
+<RText|x=215.0|y=290.0|color=255|size=17|outlinecolor=0|outline=1|text=活动期间49级以上玩家每天可花<88万金币/FCOLOR=11003>开启<"福袋"/FCOLOR=1s1033>1个(每天最多开启5个)>
+<RText|x=215.0|y=330.0|color=255|size=17|outlinecolor=0|outline=1|text=福袋展示：　　　　　　今日已开启(<<$str(J88)>/5/FCOLOR=251>)>
+
+
+<Layout|x=600.0|y=210.0|width=120|height=50|link=@领取赠礼>
+<Text|x=620.0|y=220.0|color=11008|size=18|outline=1|outlinecolor=0|text=领取赠礼|link=@领取赠礼>
+
+<Layout|x=600.0|y=320.0|width=120|height=50|link=@开启福袋>
+<Text|x=620.0|y=330.0|color=11008|size=18|outline=1|outlinecolor=0|text=开启福袋|link=@开启福袋>
+
+<Text|x=212.0|y=501.0|color=251|size=18|text=今日在线时长：<$LOGINLONG>>
+
+[@领取赠礼]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 领取失败，背包空格数量不足2格！
+BREAK
+
+#IF
+LARGE J92 0
+#ACT
+MESSAGEBOX 你今日已经领取过该赠礼，请明日再来！
+BREAK
+
+#IF
+ONLINELONGMIN < 180
+#ACT
+MESSAGEBOX 领取失败，连续在线时长<$LOGINLONG>,尚未达到180分钟，请稍后再来！
+BREAK
+
+#IF
+EQUAL J92 0
+ONLINELONGMIN > 179
+#ACT
+MOV J92 99
+GiveStateItem 女儿红 1 1 1 0 0 1 1 1 1
+GiveStateItem 东坡肉 1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功领取端午赠礼，祝您节日快乐！
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》成功领取"端午在线"赠礼，获得了女儿红*和东坡肉*1，并祝大家节日快乐！
+BREAK
+
+[@开启福袋]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 开启失败，背包空格数量不足2格！
+BREAK
+
+
+#IF
+CHECKLEVELEX  < 50
+#ACT
+MESSAGEBOX 活动参与等级最低等级为50级，请先升级后再来参与！
+BREAK
+
+#IF
+LARGE J88 4
+#ACT
+MESSAGEBOX 每天最多开启5次福袋，请明日再来开启！
+BREAK
+
+#IF
+CHECKMONEY 金币 < 880000
+#ACT
+MESSAGEBOX 开启福袋需要88万金币，请准备好再来开启！
+BREAK
+
+#IF
+SMALL J88 5
+CHECKMONEY 金币 >  879999
+#ACT
+INC J88 1
+MONEY 金币 - 880000
+MOV S$活动物品权重  物品1#40|物品2#30|物品3#30|物品4#25|物品5#20|物品6#40|物品7#30|物品8#30|物品9#25|物品10#20|物品11#40|物品12#30|物品13#30|物品14#25|物品15#20|物品16#35|物品17#30|物品18#25|物品19#20|物品20#35|物品21#25|物品22#25|物品23#35|物品24#30|物品25#25|物品26#10|物品27#35|物品28#25|物品29#20|物品30#20|物品31#30|物品32#25|物品33#20|物品34#15|物品35#10|物品36#20|物品37#20|物品38#10|物品39#5|物品40#5|物品41#4|物品42#3|物品43#2|物品44#1
+RANSJSTR <$STR(S$活动物品权重)> 1 3 S$取出活动物品 S$剩余活动物品
+goto @福袋正式开启
+BREAK
+
+[@福袋正式开启]
+#or
+equal S$取出活动物品 物品1
+equal S$取出活动物品 物品2
+equal S$取出活动物品 物品3
+equal S$取出活动物品 物品4
+equal S$取出活动物品 物品5
+#act
+MONEY 金币 + <$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_2)>
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》开启"节日福袋"获得了<$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_1)>*<$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_2)>，搜打撤传奇祝各位玩家节日快乐！
+MOV S$取出活动物品
+GOTO @端午赠礼
+BREAK
+
+#IF
+not equal S$取出活动物品 物品1
+not equal S$取出活动物品 物品2
+not equal S$取出活动物品 物品3
+not equal S$取出活动物品 物品4
+not equal S$取出活动物品 物品5
+#ACT
+GiveStateItem <$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_1)> <$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_2)>  1 1 0 0 1 1 1 1
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》开启"节日福袋"获得了<$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_1)>*<$cfg_qfhd(<$GetTypeBRow(cfg_qfhd,0,<$STR(S$取出活动物品)>)>_2)>，搜打撤传奇祝各位玩家节日快乐！
+
+MOV S$取出活动物品
+GOTO @端午赠礼
+BREAK
+
+
+[@全民兑换]
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+mov s$道具大小 0.85
+#ELSEACT
+mov s$道具大小 0.7
+
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=820|height=600|rotate=0|scale9t=150|move=0|img=private/xlxl/00000.png|reset=1|show=4|scale9b=150|loadDelay=0|bg=1|scale9l=150|scale9r=150|esc=1>
+<Layout|x=748.0|y=-10.0|width=80|height=80|link=@exit>
+<Button|x=769.0|y=16.0|width=35|height=35|rotate=0|size=18|color=255|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=360.0|y=8.0|img=private/biaoti/01073.png|esc=0>
+<Img|x=190.0|y=68.0|height=472|img=private/psllz/00010.png|esc=0>
+<Button|x=57.0|y=90.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=端午礼包|link=@活动界面>
+<Button|x=57.0|y=140.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=端午赠礼|link=@端午赠礼>
+<Button|x=57.0|y=190.0|width=132|height=38|rotate=0|nimg=private/pmh/002.png|pimg=private/pmh/001.png|color=11009|size=18|text=全民兑换|link=@全民兑换>
+<Button|x=57.0|y=240.0|width=132|height=38|rotate=0|nimg=private/pmh/001.png|pimg=private/pmh/002.png|color=11024|size=18|text=灵兽兑换|link=@灵兽兑换>
+<Text|x=215.0|y=82.0|color=11003|size=17|outlinecolor=0|outline=1|text=龙舟闹端午，战火燃传奇。端午佳节，共享传奇乐趣！在这个快乐的节日\里，搜打撤传奇将与你一起感受端午的喜悦，共享激情与热血！>
+<Text|x=52.0|y=48.0|color=11068|size=18|text=活动日期：06月17日00:00-06月26日23:59>
+<Text|x=215.0|y=135.0|color=11054|size=18|text=活动期间：>
+<RText|x=215.0|y=160.0|color=255|size=17|outlinecolor=0|outline=1|text=1、使用<188/FCOLOR=11043>个<"祝福油"/FCOLOR=11033>可兑换1个上古卷轴（限<$str(U110)>/1次）>
+<Text|x=690.0|y=160.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴1>
+<RText|x=215.0|y=200.0|color=255|size=17|outlinecolor=0|outline=1|text=2、使用<3套/FCOLOR=11043>个<"1-7星龙珠"/FCOLOR=11033>可兑换1个上古卷轴（限<$str(U111)>/1次）>
+<Text|x=690.0|y=200.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴2>
+<RText|x=215.0|y=240.0|color=255|size=17|outlinecolor=0|outline=1|text=3、使用<888块/FCOLOR=11043><"绿晶矿"/FCOLOR=11033>可兑换1个上古卷轴（限<$str(U112)>/3次）>
+<Text|x=690.0|y=240.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴3>
+<RText|x=215.0|y=280.0|color=255|size=17|outlinecolor=0|outline=1|text=4、使用<10块/FCOLOR=11043><"女娲石"/FCOLOR=11033>可兑换1个上古卷轴（限<$str(U113)>/3次）>
+<Text|x=690.0|y=280.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴4>
+<RText|x=215.0|y=320.0|color=255|size=17|outlinecolor=0|outline=1|text=5、使用<1块/FCOLOR=11043><"天命神石"/FCOLOR=11033>可兑换2个上古卷轴（限<$str(U114)>/3次）>
+<Text|x=690.0|y=320.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴5>
+<RText|x=215.0|y=360.0|color=255|size=17|outlinecolor=0|outline=1|text=6、使用<5块/FCOLOR=11043><"百炼龙魂石"/FCOLOR=11033>可兑换1个上古卷轴（限<$str(U115)>/3次）>
+<Text|x=690.0|y=360.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴6>
+<RText|x=215.0|y=400.0|color=255|size=17|outlinecolor=0|outline=1|text=7、使用<1块/FCOLOR=11043><"混元晶石"/FCOLOR=11033>可兑换1个上古卷轴（限<$str(U116)>/3次）>
+<Text|x=690.0|y=400.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴7>
+<RText|x=215.0|y=441.0|color=255|size=17|outlinecolor=0|outline=1|text=8、使用本职业<T1/FCOLOR=11043><"首饰6件套"/FCOLOR=11033>可兑换1个紫薇星石（限<$str(U117)>/1次）>
+<Text|x=690.0|y=440.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴8>
+<RText|x=215.0|y=478.0|color=255|size=17|outlinecolor=0|outline=1|text=9、使用<"500声望+300精修卷轴+1个天命神石/FCOLOR=11043>可兑换1个紫薇星石（限<$str(U118)>/1次）>
+<Text|x=692.0|y=503.0|color=11008|size=18|outline=1|outlinecolor=0|text=兑换卷轴|link=@兑换卷轴9>
+<Text|x=45.0|y=555.0|outlinecolor=0|color=11043|outline=1|size=16|text=（活动兑换物品为绑定物品，不可交易，不可丢弃）>
+<Text|x=45.0|y=535.0|outlinecolor=0|color=11043|outline=1|size=16|text=（为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动）>
+
+[@兑换卷轴9]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U118 0
+#ACT
+MESSAGEBOX 该活动每人仅限兑换1次!
+BREAK
+
+#IF
+EQUAL U118 0
+CHECKITEMS 精修卷轴#300&天命神石#1 0 0
+CHECKCREDITPOINT > 499
+#ACT
+CREDITPOINT - 500
+TAKES 精修卷轴#300&天命神石#1 N0 0
+INC U118 1
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得紫薇星石*1
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"紫薇星石"活动，获得了紫薇星石*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好500点声望+300精修卷轴+1个天命神石后再来参与活动！
+BREAK
+
+[@兑换卷轴8]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U117 0
+#ACT
+MESSAGEBOX 该活动每人仅限兑换1次!
+BREAK
+
+#IF
+EQUAL U117 0
+CHECKJOB Warrior
+CHECKITEMS 白虎头盔#1&白虎项链#1&白虎手镯#1&白虎战戒#1&白虎腰带#1&白虎战靴#1 0 0
+#ACT
+TAKES 白虎头盔#1&白虎项链#1&白虎手镯#1&白虎战戒#1&白虎腰带#1&白虎战靴#1 N0 0
+INC U117 1
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得紫薇星石*1
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"紫薇星石"活动，获得了紫薇星石*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+
+#IF
+EQUAL U117 0
+CHECKJOB Wizard
+CHECKITEMS 朱雀头盔#1&朱雀项链#1&朱雀手镯#1&朱雀法戒#1&朱雀腰带#1&朱雀法靴#1 0 0
+#ACT
+TAKES 朱雀头盔#1&朱雀项链#1&朱雀手镯#1&朱雀法戒#1&朱雀腰带#1&朱雀法靴#1 N0 0
+INC U117 1
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得紫薇星石*1
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"紫薇星石"活动，获得了紫薇星石*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+
+#IF
+EQUAL U117 0
+CHECKJOB Taoist
+CHECKITEMS 青龙头盔#1&青龙项链#1&青龙手镯#1&青龙道戒#1&青龙腰带#1&青龙道靴#1 0 0
+#ACT
+TAKES 青龙头盔#1&青龙项链#1&青龙手镯#1&青龙道戒#1&青龙腰带#1&青龙道靴#1 N0 0
+INC U117 1
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得紫薇星石*1
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"紫薇星石"活动，获得了紫薇星石*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好对应职业T1首饰后再来参与活动！
+BREAK
+
+[@兑换卷轴7]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U116 2
+#ACT
+MESSAGEBOX 该活动每人仅限兑换3次!
+BREAK
+
+#IF
+SMALL U116 3
+CHECKITEM 混元晶石 1
+#ACT
+TAKE 混元晶石 1
+INC U116 1
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得上古卷轴*1
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"全民兑换"活动，获得了上古卷轴*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好1块混元晶石后再来参与活动！
+BREAK
+
+[@兑换卷轴6]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U115 2
+#ACT
+MESSAGEBOX 该活动每人仅限兑换3次!
+BREAK
+
+#IF
+SMALL U115 3
+CHECKITEM 百炼龙魂石 5
+#ACT
+TAKE 百炼龙魂石 5
+INC U115 1
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得上古卷轴*1
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"全民兑换"活动，获得了上古卷轴*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好5块百炼龙魂石后再来参与活动！
+BREAK
+
+[@兑换卷轴5]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U114 2
+#ACT
+MESSAGEBOX 该活动每人仅限兑换3次!
+BREAK
+
+#IF
+SMALL U114 3
+CHECKITEM 天命神石 1
+#ACT
+TAKE 天命神石 1
+INC U114 1
+GiveStateItem 上古卷轴 2 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得上古卷轴*2
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"全民兑换"活动，获得了上古卷轴*2，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好1块天命神石后再来参与活动！
+BREAK
+
+[@兑换卷轴4]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U113 2
+#ACT
+MESSAGEBOX 该活动每人仅限兑换3次!
+BREAK
+
+#IF
+SMALL U113 3
+CHECKITEM 女娲石 10
+#ACT
+TAKE 女娲石 10
+INC U113 1
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得上古卷轴*1
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"全民兑换"活动，获得了上古卷轴*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好10块女娲石后再来参与活动！
+BREAK
+
+
+[@兑换卷轴3]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U112 2
+#ACT
+MESSAGEBOX 该活动每人仅限兑换3次!
+BREAK
+
+#IF
+SMALL U112 3
+CHECKITEM 绿晶矿 888
+#ACT
+TAKE 绿晶矿 888
+INC U112 1
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+sendmsg 9  兑换成功，你获得上古卷轴*1
+GOTO @全民兑换
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"全民兑换"活动，获得了上古卷轴*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好888块绿晶矿后再来参与活动！
+BREAK
+
+
+[@兑换卷轴2]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U111 0
+#ACT
+MESSAGEBOX 该活动每人仅限兑换1次!
+BREAK
+
+#IF
+EQUAL U111 0
+CHECKITEMS 一星珠#3&二星珠#3&三星珠#3&四星珠#3&五星珠#3&六星珠#3&七星珠#3 0 0
+#ACT
+TAKES 一星珠#3&二星珠#3&三星珠#3&四星珠#3&五星珠#3&六星珠#3&七星珠#3 N0 0
+INC U111 1
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+GOTO @全民兑换
+sendmsg 9  兑换成功，你获得上古卷轴*1
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"全民兑换"活动，获得了上古卷轴*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好3套1~7星龙珠再来参与活动！
+BREAK
+
+
+[@兑换卷轴1]
+#IF
+NOT CHECKBAGSIZE 2 
+#ACT
+MESSAGEBOX 兑换失败，背包空格数量不足2格！
+BREAK
+
+#IF
+CHECK [600] 0
+#ACT
+MESSAGEBOX 为防止工作室恶意捣乱，活动期间，充值任意金额后方可参与兑换活动！
+BREAK
+
+#IF
+LARGE U110 0
+#ACT
+MESSAGEBOX 该活动每人仅限兑换1次!
+BREAK
+
+#IF
+EQUAL U110 0
+CHECKITEM 祝福油 188
+#ACT
+TAKE 祝福油 188
+INC U110 1
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+GOTO @全民兑换
+sendmsg 9  兑换成功，你获得上古卷轴*1
+SENDMSG 0 249 251 【节日庆使】：恭喜玩家《<$username>》参与"全民兑换"活动，获得了上古卷轴*1，搜打撤传奇祝各位玩家端午节日快乐！
+BREAK
+#ELSEACT
+MESSAGEBOX 请准备好188瓶祝福油后再来参与活动！
+BREAK
+
+
+
+
+[@灵兽兑换]
+#IF
+#ACT
+MOV N$当前页数 1
+MOV N$最大页数 1
+MOV N$索引物品1 1
+MOV N$索引物品2 2
+MOV N$索引物品3 3
+MOV N$索引物品4 4
+MOV N$索引物品5 5
+GOTO @神之卷数据加载
+BREAK
+
+[@神之卷购买界面]
+#IF
+#ACT
+GETBAGITEMCOUNT 神之碎片 N$神之碎片数量
+#SAY
+<Img|x=0.0|y=20.0|height=160|show=0|loadDelay=1|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|esc=1>
+<Layout|x=493.0|y=6.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|size=17|color=255|text=如果你有足够多的“神之碎片”可在我这里换取你想要的灵兽！\不同的灵兽收取的“神之碎片”也就不同。>
+<Layout|x=60.0|y=130.0|width=80|height=40|rotate=0|link=@节日活动界面>
+<Text|x=70.0|y=135.0|color=251|size=18|text=返回|link=@节日活动界面>
+<Img|x=45.0|y=140.0|img=public/00024.png|esc=0>
+<Img|id=50|x=18.0|y=179.0|img=public/buybg.png|esc=0|link=@空>
+<Img|id=51|x=27.0|y=191.0|img=public/bg_npcsm_01.png>
+<Img|id=52|x=27.0|y=254.0|img=public/bg_npcsm_01.png>
+<Img|id=53|x=27.0|y=317.0|img=public/bg_npcsm_01.png>
+<Img|id=54|x=27.0|y=380.0|img=public/bg_npcsm_01.png>
+<Img|id=55|x=27.0|y=443.0|img=public/bg_npcsm_01.png>
+<ItemShow|x=16.0|y=502.0|width=70|height=70|itemid=10624|itemcount=1|scale=0.5|showtips=1|bgtype=0>
+<Text|x=67.0|y=524.0|color=255|size=16|text=<$str(N$神之碎片数量)>>
+<Layout|id=57|y=565|width=130|height=50|link=@上一页>
+<Layout|id=58|x=200|y=565|width=130|height=50|link=@下一页>
+<Button|id=59|x=92.0|y=570.0|pimg=public/btn_fanye_01_1.png|nimg=public/btn_fanye_01.png|link=@上一页>
+<Button|id=62|x=225.0|y=570.0|pimg=public/btn_fanye_02_1.png|nimg=public/btn_fanye_02.png|link=@下一页>
+<Img|id=60|x=144.0|y=570.0|img=public/1900000676.png>
+<Text|id=61|x=162.0|y=575.0|size=16|text=<$STR(N$当前页数)>／<$cfg_buy_lingshou(1_5)>>
+<$STR(S$商品数据)>
+
+
+[@神之卷数据加载]
+#IF
+#ACT
+MOV S$商品数据
+
+#IF
+NOT Equal <$cfg_buy_lingshou(<$STR(N$索引物品1)>_1)>
+#ACT
+INC S$商品数据 <ItemShow|id=63|x=25|y=188|itemid=<$cfg_buy_lingshou(<$STR(N$索引物品1)>_2)>|showtips=1>
+INC S$商品数据 <Text|id=64|text=<$cfg_buy_lingshou(<$STR(N$索引物品1)>_1)>|x=100|y=195|size=18|color=1005>
+INC S$商品数据 <Text|id=65|text=神之碎片：<$cfg_buy_lingshou(<$STR(N$索引物品1)>_3)>|x=100|y=224|size=18>
+INC S$商品数据 <Layout|id=66|x=255|y=200|width=80|height=50|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品1)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品1)>_3)>>
+INC S$商品数据 <Button|id=67|x=255|y=210|width=80|height=35|size=16|nimg=public/buyan.png|text=兑换|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品1)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品1)>_3)>>
+
+#IF
+NOT Equal <$cfg_buy_lingshou(<$STR(N$索引物品2)>_1)>
+#ACT
+INC S$商品数据 <ItemShow|id=68|x=25|y=252|itemid=<$cfg_buy_lingshou(<$STR(N$索引物品2)>_2)>|showtips=<$STR(S$Itemtips)>>
+INC S$商品数据 <Text|id=69|text=<$cfg_buy_lingshou(<$STR(N$索引物品2)>_1)>|x=100|y=255|size=18|color=1005>
+INC S$商品数据 <Text|id=70|text=神之碎片：<$cfg_buy_lingshou(<$STR(N$索引物品2)>_3)>|x=100|y=287|size=18>
+INC S$商品数据 <Layout|id=71|x=255|y=264|width=80|height=50|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品2)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品2)>_3)>>
+INC S$商品数据 <Button|id=72|x=255|y=274|width=80|height=35|size=16|nimg=public/buyan.png|text=兑换|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品2)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品2)>_3)>>
+
+#IF
+NOT Equal <$cfg_buy_lingshou(<$STR(N$索引物品3)>_1)>
+#ACT
+INC S$商品数据 <ItemShow|id=73|x=25|y=314|itemid=<$cfg_buy_lingshou(<$STR(N$索引物品3)>_2)>|showtips=1>
+INC S$商品数据 <Text|id=74|text=<$cfg_buy_lingshou(<$STR(N$索引物品3)>_1)>|x=100|y=319|size=18|color=1005>
+INC S$商品数据 <Text|id=75|text=神之碎片：<$cfg_buy_lingshou(<$STR(N$索引物品3)>_3)>|x=100|y=350|size=18>
+INC S$商品数据 <Layout|id=76|x=255|y=327|width=80|height=50|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品3)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品3)>_3)>>
+INC S$商品数据 <Button|id=77|x=255|y=337|width=80|height=35|size=16|nimg=public/buyan.png|text=兑换|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品3)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品3)>_3)>>
+
+#IF
+NOT Equal <$cfg_buy_lingshou(<$STR(N$索引物品4)>_1)>
+#ACT
+INC S$商品数据 <ItemShow|id=78|x=25|y=376|itemid=<$cfg_buy_lingshou(<$STR(N$索引物品4)>_2)>|showtips=1>
+INC S$商品数据 <Text|id=79|text=<$cfg_buy_lingshou(<$STR(N$索引物品4)>_1)>|x=100|y=383|size=18|color=1005>
+INC S$商品数据 <Text|id=80|text=神之碎片：<$cfg_buy_lingshou(<$STR(N$索引物品4)>_3)>|x=100|y=413|size=18>
+INC S$商品数据 <Layout|id=81|x=255|y=389|width=80|height=50|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品4)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品4)>_3)>>
+INC S$商品数据 <Button|id=82|x=255|y=399|width=80|height=35|size=16|nimg=public/buyan.png|text=兑换|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品4)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品4)>_3)>>
+
+#IF
+NOT Equal <$cfg_buy_lingshou(<$STR(N$索引物品5)>_1)>
+#ACT
+INC S$商品数据 <ItemShow|id=83|x=25|y=440|itemid=<$cfg_buy_lingshou(<$STR(N$索引物品5)>_2)>|showtips=1>
+INC S$商品数据 <Text|id=84|text=<$cfg_buy_lingshou(<$STR(N$索引物品5)>_1)>|x=100|y=444|size=18|color=1005>
+INC S$商品数据 <Text|id=85|text=神之碎片：<$cfg_buy_lingshou(<$STR(N$索引物品5)>_3)>|x=100|y=476|size=18>
+INC S$商品数据 <Layout|id=86|x=255|y=453|width=80|height=50|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品5)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品5)>_3)>>
+INC S$商品数据 <Button|id=87|x=255|y=463|width=80|height=35|size=16|nimg=public/buyan.png|text=兑换|link=@神之兑换物品#物品名字=<$cfg_buy_lingshou(<$STR(N$索引物品5)>_1)>#物品价格=<$cfg_buy_lingshou(<$STR(N$索引物品5)>_3)>>
+
+#IF
+#ACT
+GOTO @神之卷购买界面
+BREAK
+
+[@神之兑换物品]
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 兑换失败，背包空格数量已满！
+BREAK
+
+#IF
+checkitem 神之碎片 <$STR(S$物品价格)>
+#ACT
+TAKE 神之碎片 <$STR(S$物品价格)>
+GIVE <$STR(S$物品名字)> 1
+sendmsg 5 兑换<$STR(S$物品名字)>成功！
+sendmsg 9 兑换<$STR(S$物品名字)>成功！
+GOTO @神之卷购买界面
+break
+#ELSEACT
+MESSAGEBOX 你没有足够的神之碎片来兑换此物品！
+BREAK
+
+[@上一页]
+#IF
+LARGE N$当前页数 1
+#ACT
+DEC N$当前页数 1
+DEC N$索引物品1 5
+DEC N$索引物品2 5
+DEC N$索引物品3 5
+DEC N$索引物品4 5
+DEC N$索引物品5 5
+GOTO @神之卷数据加载
+BREAK
+#ELSEACT
+BREAK
+
+[@下一页]
+#IF
+SMALL N$当前页数 <$cfg_buy_lingshou(1_5)>
+#ACT
+INC N$当前页数 1
+INC N$索引物品1 5
+INC N$索引物品2 5
+INC N$索引物品3 5
+INC N$索引物品4 5
+INC N$索引物品5 5
+GOTO @神之卷数据加载
+BREAK
+#ELSEACT
+BREAK
+
+[@活动充值拉起1]
+#act
+Pullpay 288 1 2
+
+[@活动充值拉起2]
+#act
+Pullpay 588 1 2
+
+[@活动充值拉起3]
+#act
+Pullpay 888 1 2
+
+[@活动充值拉起4]
+#act
+Pullpay 100 1 2
+
+}

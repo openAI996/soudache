@@ -1,0 +1,519 @@
+[@MAIN]
+#IF
+CHECK [2] 1
+CHECK [23] 0
+EQUAL S$分解引导 开启
+#ACT
+Navigation 0 339 点击分解装备
+
+#IF
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=220.0|y=30.0|img=private/biaoti/01044.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=这是一口汇聚着天地灵气的神炉，装备投入其中可以分解为>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=<珍贵的材料/FCOLOR=11003>，此外<“高级装备”/FCOLOR=11008>还可以使用神炉合成！>
+<Img|x=50.0|y=141.0|width=18|height=18|esc=0|img=public/00021.png>
+<Layout|id=339|x=70.0|y=130.0|width=100|height=40|link=@分解装备>
+<Text|x=75.0|y=136.0|color=11008|size=17|outline=1|outlinecolor=0|text=分解装备|link=@分解装备>
+<Img|x=50.0|y=205.0|width=16|height=20|esc=0|img=public/00016.png>
+<Layout|x=70.0|y=195.0|width=100|height=40|rotate=0|link=@合成装备>
+<Text|x=75.0|y=200.0|color=11008|size=17|outline=1|outlinecolor=0|text=合成装备|link=@合成装备>
+
+
+[@分解装备]
+#IF
+CHECK [2] 1
+CHECK [23] 0
+#ACT
+SET [23] 1
+NEWDELETETASK 4
+CHANGEEXP + 1000
+
+#IF
+#ACT
+#CALL [\系统功能\回收系统\回收功能.txt] @开启回收
+BREAK
+
+
+
+
+
+[@合成装备]
+#IF
+#ACT
+MOV S$合成介绍
+INC S$合成介绍 <Text|x=424.0|y=80.0|color=243|size=18|text=【合成介绍】：>
+INC S$合成介绍 <Text|x=424.0|y=110.0|color=100|size=17|text=使用5件T1级首饰可以合成1件T2级首饰。>
+INC S$合成介绍 <Text|x=424.0|y=140.0|color=100|size=17|text=使用5件T2级首饰可以合成1件T3级首饰。>
+INC S$合成介绍 <Text|x=424.0|y=170.0|color=100|size=17|text=.....最高可合成至T7首饰！>
+INC S$合成介绍 <Text|x=424.0|y=200.0|color=243|size=18|text=【合成规则】：>
+INC S$合成介绍 <RText|x=424.0|y=230.0|color=100|size=17|text=1、使用5件<不同职业/FCOLOR=250>的首饰合成，100%随\机合成战法道任意首饰1件。>
+INC S$合成介绍 <RText|x=425.0|y=280.0|color=100|size=17|text=2、使用5件<同职业不同部位/FCOLOR=250>的首饰，100%\随机合成本职业下一级首饰1件！>
+INC S$合成介绍 <RText|x=425.0|y=330.0|color=100|size=17|text=3、使用5件<同职业一样部位/FCOLOR=250>的首饰，100%\合成该部位下一级首饰！>
+INC S$合成介绍 <Button|x=522.0|y=450.0|width=110|rotate=0|size=18|color=251|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=背包首饰|link=@放入首饰>
+
+MOV S$1号位置框 
+MOV S$2号位置框 
+MOV S$3号位置框 
+MOV S$4号位置框 
+MOV S$5号位置框 
+MOV S0
+MOV S$1号物品ID 
+MOV S$2号物品ID 
+MOV S$3号物品ID 
+MOV S$4号物品ID 
+MOV S$5号物品ID 
+MOV S$1号物品名称
+MOV S$2号物品名称
+MOV S$3号物品名称
+MOV S$4号物品名称
+MOV S$5号物品名称
+MOV S$1号物品种类
+MOV S$2号物品种类
+MOV S$3号物品种类
+MOV S$4号物品种类
+MOV S$5号物品种类
+GOTO @合成主界面
+
+
+[@合成主界面]
+
+
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=-1.0|width=780|height=520|scale9t=150|scale9b=150|bg=1|scale9r=150|move=0|loadDelay=0|reset=1|esc=1|scale9l=150|img=private/psllz/00070.png|show=4>
+<Layout|x=724.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=739.0|y=18.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=340.0|y=6.0|img=private/biaoti/01053.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=398.0|y=58.0|height=450|img=private/psllz/00010.png|esc=0>
+<Img|x=70.0|y=75.0|width=300|height=300|rotate=0|img=private/zbhc/002.png|esc=0>
+<Img|x=40.0|y=72.0|width=358|height=315|rotate=0|scale9l=5|scale9t=5|scale9b=5|img=private/xlxl/0018.png|scale9r=5|esc=0>
+<Img|x=40.0|y=386.0|width=358|height=110|rotate=0|scale9l=5|scale9t=5|scale9b=5|img=private/xlxl/0018.png|scale9r=5|esc=0>
+<Text|x=87.0|y=390.0|size=18|color=11023|text=请同时放入五件同等级的装备(T1-T6)>
+<Text|x=92.0|y=415.0|size=18|color=11023|text=双击框内首饰可返回包裹重新选择>
+<Button|x=168.0|y=450.0|width=110|rotate=0|size=18|color=251|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=合成|link=@开始合成>
+<Img|children={物品_1}|x=185.0|y=105.0|width=70|height=70|img=private/zbhc/003.png|esc=0>
+<DBItemShow|id=物品_1|x=1|y=3|makeindex=<$STR(S$1号物品ID)>|dblink=@物品返回#物品位置=1号>
+<Img|children={物品_2}|x=95.0|y=185.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<DBItemShow|id=物品_2|x=1|y=3|makeindex=<$STR(S$2号物品ID)>|dblink=@物品返回#物品位置=2号>
+<Img|children={物品_3}|x=275.0|y=185.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<DBItemShow|id=物品_3|x=1|y=3|makeindex=<$STR(S$3号物品ID)>|dblink=@物品返回#物品位置=3号>
+<Img|children={物品_4}|x=120.0|y=285.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<DBItemShow|id=物品_4|x=1|y=3|makeindex=<$STR(S$4号物品ID)>|dblink=@物品返回#物品位置=4号>
+<Img|children={物品_5}|x=255.0|y=285.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<DBItemShow|id=物品_5|x=1|y=3|makeindex=<$STR(S$5号物品ID)>|dblink=@物品返回#物品位置=5号>
+
+<$STR(S$合成介绍)>
+<$STR(S$物品展示)>
+
+[@放入首饰]
+#IF
+#ACT
+MOV S$放入类型 15,20,23,26,52,54
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|filter1=50364,50365,50366,50367,50368,50369,50371,50372,50373,50374,50375,50376,50378,50379,50380,50381,50382,50383|link=@显示跳转>
+MOV S$已选择过滤
+GOTO @合成主界面
+
+[@显示跳转]
+#IF
+#ACT
+MOV S$物品ID <$STR(S0)>
+GetItemNameByMakeIndex <$STR(S$物品ID)> S$物品名称检测
+
+#if
+NOT CHECKTEXTLIST ..\QuestDiary\数据文件\可合成首饰.txt <$str(S$物品名称检测)>
+#ACT
+MOV S0 
+SENDMSG 9 请放入T1-T6级别首饰
+BREAK 
+
+#IF
+EQUAL S$1号位置框 
+EQUAL S$2号位置框 
+EQUAL S$3号位置框 
+EQUAL S$4号位置框 
+EQUAL S$5号位置框 
+#ACT
+MOV S$1号位置框 已放入
+MOV S$1号物品ID <$STR(S0)>
+INC S$已选择过滤 <$STR(S$1号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$1号物品ID)> S$1号物品名称
+GetDBItemFieldValue <$STR(S$1号物品名称)> Job S$1号物品种类
+MOV S$1号物品行 <$GetTypeBRow(cfg_zbhc,1,<$STR(S$1号物品名称)>)>  
+MOV S$物品过滤 <$cfg_zbhc(<$STR(S$1号物品行)>_2)> 
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择过滤)>|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|filter3=<$STR(S$物品过滤)>|count=126|row=32|selecttype=1|link=@显示跳转>
+GOTO @合成主界面
+BREAK
+
+#IF
+EQUAL S$1号位置框 
+#ACT
+MOV S$1号位置框 已放入
+MOV S$1号物品ID <$STR(S0)>
+INC S$已选择过滤 <$STR(S$1号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$1号物品ID)> S$1号物品名称
+GetDBItemFieldValue <$STR(S$1号物品名称)> Job S$1号物品种类
+MOV S$1号物品行 <$GetTypeBRow(cfg_zbhc,1,<$STR(S$1号物品名称)>)>  
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择过滤)>|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|filter3=<$STR(S$物品过滤)>|count=126|row=32|selecttype=1|link=@显示跳转>
+GOTO @合成主界面
+BREAK
+
+#IF
+EQUAL S$2号位置框 
+#ACT
+MOV S$2号位置框 已放入
+MOV S$2号物品ID <$STR(S0)>
+INC S$已选择过滤 <$STR(S$2号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$2号物品ID)> S$2号物品名称
+GetDBItemFieldValue <$STR(S$2号物品名称)> Job S$2号物品种类
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择过滤)>|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|filter3=<$STR(S$物品过滤)>|count=126|row=32|selecttype=1|link=@显示跳转>
+GOTO @合成主界面
+BREAK
+
+#IF
+EQUAL S$3号位置框 
+#ACT
+MOV S$3号位置框 已放入
+MOV S$3号物品ID <$STR(S0)>
+INC S$已选择过滤 <$STR(S$3号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$3号物品ID)> S$3号物品名称
+GetDBItemFieldValue <$STR(S$3号物品名称)> Job S$3号物品种类
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择过滤)>|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|filter3=<$STR(S$物品过滤)>|count=126|row=32|selecttype=1|link=@显示跳转>
+GOTO @合成主界面
+BREAK
+
+#IF
+EQUAL S$4号位置框 
+#ACT
+MOV S$4号位置框 已放入
+MOV S$4号物品ID <$STR(S0)>
+INC S$已选择过滤 <$STR(S$4号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$4号物品ID)> S$4号物品名称
+GetDBItemFieldValue <$STR(S$4号物品名称)> Job S$4号物品种类
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择过滤)>|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|filter3=<$STR(S$物品过滤)>|count=126|row=32|selecttype=1|link=@显示跳转>
+GOTO @合成主界面
+BREAK
+
+#IF
+EQUAL S$5号位置框 
+#ACT
+MOV S$5号位置框 已放入
+MOV S$5号物品ID <$STR(S0)>
+INC S$已选择过滤 <$STR(S$5号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$5号物品ID)> S$5号物品名称
+GetDBItemFieldValue <$STR(S$5号物品名称)> Job S$5号物品种类
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择过滤)>|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|filter3=<$STR(S$物品过滤)>|count=126|row=32|selecttype=1|link=@显示跳转>
+GOTO @合成主界面
+BREAK
+
+[@物品返回]
+#IF
+NOT EQUAL S$1号位置框 
+EQUAL S$2号位置框 
+EQUAL S$3号位置框 
+EQUAL S$4号位置框 
+EQUAL S$5号位置框 
+#ACT
+DEC S$已选择过滤 <$STR(S$<$STR(S$物品位置)>物品ID)>,
+MOV S$<$STR(S$物品位置)>位置框 
+MOV S0
+MOV S$<$STR(S$物品位置)>物品ID 
+MOV S$<$STR(S$物品位置)>物品名称
+MOV S$<$STR(S$物品位置)>物品种类
+
+MOV S$放入类型 15,20,23,26,52,54
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@显示跳转>
+MOV S$物品展示
+MOV S$已选择过滤
+GOTO @合成主界面
+BREAK
+
+#if
+not EQUAL S$<$STR(S$物品位置)>位置框 
+#ACT
+DEC S$已选择过滤 <$STR(S$<$STR(S$物品位置)>物品ID)>,
+MOV S$<$STR(S$物品位置)>位置框 
+MOV S0
+MOV S$<$STR(S$物品位置)>物品ID 
+MOV S$<$STR(S$物品位置)>物品名称
+MOV S$<$STR(S$物品位置)>物品种类
+MOV S$合成介绍
+INC S$合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择过滤)>|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|filter3=<$STR(S$物品过滤)>|count=126|row=32|selecttype=1|link=@显示跳转>
+GOTO @合成主界面
+BREAK
+
+
+[@开始合成]
+#OR
+EQUAL S$1号位置框 
+EQUAL S$2号位置框 
+EQUAL S$3号位置框 
+EQUAL S$4号位置框 
+EQUAL S$5号位置框
+#ACT
+SENDMSG 9 请放入五件同等级首饰！
+break
+
+#IF
+CHECK [358] 0
+#ACT
+GOTO @绑定合成
+#ELSEACT
+GOTO @非绑合成
+BREAK
+
+
+[@绑定合成]
+#OR
+EQUAL S$1号位置框 
+EQUAL S$2号位置框 
+EQUAL S$3号位置框 
+EQUAL S$4号位置框 
+EQUAL S$5号位置框
+#ACT
+SENDMSG 9 请放入五件同等级首饰！
+break
+
+#IF
+EQUAL S$2号物品名称 <$STR(S$1号物品名称)>
+EQUAL S$3号物品名称 <$STR(S$1号物品名称)>
+EQUAL S$4号物品名称 <$STR(S$1号物品名称)>
+EQUAL S$5号物品名称 <$STR(S$1号物品名称)>
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+GiveStateItem <$cfg_zbhc(<$STR(S$1号物品行)>_7)>  1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功合成1个【<$cfg_zbhc(<$STR(S$1号物品行)>_7)>】
+GOTO @数据清空
+BREAK
+
+#IF
+EQUAL S$2号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$3号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$4号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$5号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$1号物品种类 0
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+RANSJSTR <$cfg_zbhc(<$STR(S$1号物品行)>_4)> 1 3 S$权重随机物品 S$权重剩余
+GiveStateItem <$STR(S$权重随机物品)>  1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机物品)>】
+GOTO @数据清空
+BREAK
+
+#IF
+EQUAL S$2号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$3号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$4号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$5号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$1号物品种类 1
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+RANSJSTR <$cfg_zbhc(<$STR(S$1号物品行)>_5)> 1 3 S$权重随机物品 S$权重剩余
+GiveStateItem <$STR(S$权重随机物品)>  1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机物品)>】
+GOTO @数据清空
+BREAK
+
+#IF
+EQUAL S$2号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$3号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$4号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$5号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$1号物品种类 2
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+RANSJSTR <$cfg_zbhc(<$STR(S$1号物品行)>_6)> 1 3 S$权重随机物品 S$权重剩余
+GiveStateItem <$STR(S$权重随机物品)>  1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机物品)>】
+GOTO @数据清空
+BREAK
+
+#IF
+NOT EQUAL S$1号位置框 
+NOT EQUAL S$2号位置框 
+NOT EQUAL S$3号位置框 
+NOT EQUAL S$4号位置框 
+NOT EQUAL S$5号位置框
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+RANSJSTR <$cfg_zbhc(<$STR(S$1号物品行)>_3)> 1 3 S$权重随机物品 S$权重剩余
+GiveStateItem <$STR(S$权重随机物品))>  1 1 1 0 0 1 1 1 1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机物品)>】
+GOTO @数据清空
+BREAK
+
+[@非绑合成]
+#OR
+EQUAL S$1号位置框 
+EQUAL S$2号位置框 
+EQUAL S$3号位置框 
+EQUAL S$4号位置框 
+EQUAL S$5号位置框
+#ACT
+SENDMSG 9 请放入五件同等级首饰！
+break
+
+#IF
+EQUAL S$2号物品名称 <$STR(S$1号物品名称)>
+EQUAL S$3号物品名称 <$STR(S$1号物品名称)>
+EQUAL S$4号物品名称 <$STR(S$1号物品名称)>
+EQUAL S$5号物品名称 <$STR(S$1号物品名称)>
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+GIVE <$cfg_zbhc(<$STR(S$1号物品行)>_7)>  1
+SENDMSG 9 恭喜你成功合成1个【<$cfg_zbhc(<$STR(S$1号物品行)>_7)>】
+GOTO @数据清空
+BREAK
+
+#IF
+EQUAL S$2号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$3号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$4号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$5号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$1号物品种类 0
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+RANSJSTR <$cfg_zbhc(<$STR(S$1号物品行)>_4)> 1 3 S$权重随机物品 S$权重剩余
+GIVE <$STR(S$权重随机物品)>  1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机物品)>】
+GOTO @数据清空
+BREAK
+
+#IF
+EQUAL S$2号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$3号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$4号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$5号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$1号物品种类 1
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+RANSJSTR <$cfg_zbhc(<$STR(S$1号物品行)>_5)> 1 3 S$权重随机物品 S$权重剩余
+GIVE <$STR(S$权重随机物品)>  1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机物品)>】
+GOTO @数据清空
+BREAK
+
+#IF
+EQUAL S$2号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$3号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$4号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$5号物品种类 <$STR(S$1号物品种类)>
+EQUAL S$1号物品种类 2
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+RANSJSTR <$cfg_zbhc(<$STR(S$1号物品行)>_6)> 1 3 S$权重随机物品 S$权重剩余
+GIVE <$STR(S$权重随机物品)>  1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机物品)>】
+GOTO @数据清空
+BREAK
+
+#IF
+NOT EQUAL S$1号位置框 
+NOT EQUAL S$2号位置框 
+NOT EQUAL S$3号位置框 
+NOT EQUAL S$4号位置框 
+NOT EQUAL S$5号位置框
+CHECKITEMS <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$1号物品名称)>#1&<$STR(S$2号物品名称)>#1&<$STR(S$3号物品名称)>#1&<$STR(S$4号物品名称)>#1&<$STR(S$5号物品名称)>#1 N0 0
+RANSJSTR <$cfg_zbhc(<$STR(S$1号物品行)>_3)> 1 3 S$权重随机物品 S$权重剩余
+GIVE <$STR(S$权重随机物品))>  1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机物品)>】
+GOTO @数据清空
+BREAK
+
+
+
+
+[@数据清空]
+#IF
+#ACT
+MOV S$权重随机物品
+MOV S$1号位置框 
+MOV S$2号位置框 
+MOV S$3号位置框 
+MOV S$4号位置框 
+MOV S$5号位置框 
+MOV S0
+MOV S$1号物品ID 
+MOV S$2号物品ID 
+MOV S$3号物品ID 
+MOV S$4号物品ID 
+MOV S$5号物品ID 
+MOV S$1号物品名称
+MOV S$2号物品名称
+MOV S$3号物品名称
+MOV S$4号物品名称
+MOV S$5号物品名称
+MOV S$1号物品种类
+MOV S$2号物品种类
+MOV S$3号物品种类
+MOV S$4号物品种类
+MOV S$5号物品种类
+MOV S$已选择过滤
+MOV S$放入类型 15,20,23,26,52,54
+MOV S$合成介绍
+INC S$合成介绍 <Text|x=480.0|y=78.0|color=255|size=18|text=请选择5件同等级首饰放入>
+INC S$合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@显示跳转>
+MOV S$已选择过滤
+GOTO @合成主界面
+BREAK
+
+

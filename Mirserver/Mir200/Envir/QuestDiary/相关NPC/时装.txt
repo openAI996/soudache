@@ -1,0 +1,355 @@
+[@角色时装]
+{
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$模型缩放 1
+MOV S$时装模型缩放 1
+#ELSEACT
+MOV S$模型缩放 0.7
+MOV S$时装模型缩放 0.7
+
+#IF
+gender man
+#ACT
+MOV S$模型 <UIModel|x=450|y=265|sex=0|clothID=000060|scale=<$str(S$模型缩放)>>
+MOV P1 50817
+MOV P2 50818
+MOV P3 50819
+MOV P4 50820
+MOV P5 50821
+MOV P6 50822
+MOV P7 50823
+MOV P8 50824
+MOV P9 50825
+MOV P10 50826
+#ELSEACT
+MOV S$模型 <UIModel|x=450|y=265|sex=1|clothID=000080|scale=<$str(S$模型缩放)>>
+MOV P1 50829
+MOV P2 50830
+MOV P3 50831
+MOV P4 50832
+MOV P5 50833
+MOV P6 50834
+MOV P7 50835
+MOV P8 50836
+MOV P9 50837
+MOV P10 50826
+
+#IF
+EQUAL <$GETSTRVALUE(T43,1)> 1
+#ACT
+MOV S$时装编号 1
+MOV S$特效ID 40002
+MOV S$时装名字 天武战士
+#IF
+EQUAL <$GETSTRVALUE(T43,2)> 1
+#ACT
+MOV S$时装编号 2
+MOV S$特效ID 40004
+MOV S$时装名字 幻魔法魄
+#IF
+EQUAL <$GETSTRVALUE(T43,3)> 1
+#ACT
+MOV S$时装编号 3
+MOV S$特效ID 40006
+MOV S$时装名字 元道真人
+#IF
+EQUAL <$GETSTRVALUE(T43,4)> 1
+#ACT
+MOV S$时装编号 4
+MOV S$特效ID 40008
+MOV S$时装名字 神武战将
+#IF
+EQUAL <$GETSTRVALUE(T43,5)> 1
+#ACT
+MOV S$时装编号 5
+MOV S$特效ID 40010
+MOV S$时装名字 天幻法灵
+#IF
+EQUAL <$GETSTRVALUE(T43,6)> 1
+#ACT
+MOV S$时装编号 6
+MOV S$特效ID 40012
+MOV S$时装名字 无量天尊
+#IF
+EQUAL <$GETSTRVALUE(T43,7)> 1
+#ACT
+MOV S$时装编号 7
+MOV S$特效ID 40032
+MOV S$时装名字 天龙战神
+#IF
+EQUAL <$GETSTRVALUE(T43,8)> 1
+#ACT
+MOV S$时装编号 8
+MOV S$特效ID 40028
+MOV S$时装名字 魔天无极
+#IF
+EQUAL <$GETSTRVALUE(T43,9)> 1
+#ACT
+MOV S$时装编号 9
+MOV S$特效ID 40034
+MOV S$时装名字 沧澜蓝幽
+#IF
+EQUAL <$GETSTRVALUE(T43,10)> 1
+#ACT
+MOV S$时装编号 10
+MOV S$特效ID 40000
+MOV S$时装名字 君临天下
+#IF
+EQUAL <$GETSTRVALUE(T43,11)> 1
+#ACT
+MOV S$时装编号 11
+#IF
+EQUAL <$GETSTRVALUE(T43,12)> 1
+#ACT
+MOV S$时装编号 12
+
+#IF
+#ACT
+MOV S$数据显示 
+MOV S$穿戴提示
+
+#IF
+NOT EQUAL <$GETSTRVALUE(T42,1)> 1
+NOT EQUAL <$GETSTRVALUE(T42,2)> 1
+NOT EQUAL <$GETSTRVALUE(T42,3)> 1
+NOT EQUAL <$GETSTRVALUE(T42,4)> 1
+NOT EQUAL <$GETSTRVALUE(T42,5)> 1
+NOT EQUAL <$GETSTRVALUE(T42,6)> 1
+NOT EQUAL <$GETSTRVALUE(T42,7)> 1
+NOT EQUAL <$GETSTRVALUE(T42,8)> 1
+NOT EQUAL <$GETSTRVALUE(T42,9)> 1
+NOT EQUAL <$GETSTRVALUE(T42,10)> 1
+NOT EQUAL <$GETSTRVALUE(T42,11)> 1
+NOT EQUAL <$GETSTRVALUE(T42,12)> 1
+#ACT
+MOV S$数据显示  <Text|id=1|x=0.0|y=0.0|color=11063|size=18|text=当前暂未获得时装>
+
+#IF
+EQUAL <$GETSTRVALUE(T42,1)> 1
+#ACT
+INC S$数据显示 <Img|id=1|children={物品框_1,物品道具_1,物品名_1,时装提示_1,时装锁定_1}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=1#时装名字=天武战士#特效ID=40002#外显ID=10001>
+INC S$数据显示 <Img|id=物品框_1|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_1|x=65.0|y=20.0|color=243|size=18|text=天武战士>
+INC S$数据显示 <ItemShow|id=物品道具_1|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P1)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,2)> 1
+#ACT
+INC S$数据显示 <Img|id=2|children={物品框_2,物品道具_2,物品名_2,时装提示_2,时装锁定_2}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=2#时装名字=幻魔法魄#特效ID=40004#外显ID=10002>
+INC S$数据显示 <Img|id=物品框_2|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_2|x=65.0|y=20.0|color=243|size=18|text=幻魔法魄>
+INC S$数据显示 <ItemShow|id=物品道具_2|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P2)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,3)> 1
+#ACT
+INC S$数据显示 <Img|id=3|children={物品框_3,物品道具_3,物品名_3,时装提示_3,时装锁定_3}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=3#时装名字=元道真人#特效ID=40006#外显ID=10003>
+INC S$数据显示 <Img|id=物品框_3|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_3|x=65.0|y=20.0|color=243|size=18|text=元道真人>
+INC S$数据显示 <ItemShow|id=物品道具_3|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P3)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,4)> 1
+#ACT
+INC S$数据显示 <Img|id=4|children={物品框_4,物品道具_4,物品名_4,时装提示_4,时装锁定_4}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=4#时装名字=神武战将#特效ID=40008#外显ID=10004>
+INC S$数据显示 <Img|id=物品框_4|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_4|x=65.0|y=20.0|color=243|size=18|text=神武战将>
+INC S$数据显示 <ItemShow|id=物品道具_4|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P4)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,5)> 1
+#ACT
+INC S$数据显示 <Img|id=5|children={物品框_5,物品道具_5,物品名_5,时装提示_5,时装锁定_5}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=5#时装名字=天幻法灵#特效ID=40010#外显ID=10005>
+INC S$数据显示 <Img|id=物品框_5|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_5|x=65.0|y=20.0|color=243|size=18|text=天幻法灵>
+INC S$数据显示 <ItemShow|id=物品道具_5|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P5)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,6)> 1
+#ACT
+INC S$数据显示 <Img|id=6|children={物品框_6,物品道具_6,物品名_6,时装提示_6,时装锁定_6}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=6#时装名字=无量天尊#特效ID=40012#外显ID=10006>
+INC S$数据显示 <Img|id=物品框_6|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_6|x=65.0|y=20.0|color=243|size=18|text=无量天尊>
+INC S$数据显示 <ItemShow|id=物品道具_6|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P6)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,7)> 1
+#ACT
+INC S$数据显示 <Img|id=7|children={物品框_7,物品道具_7,物品名_7,时装提示_7,时装锁定_7}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=7#时装名字=天龙战神#特效ID=40032#外显ID=10016>
+INC S$数据显示 <Img|id=物品框_7|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_7|x=65.0|y=20.0|color=243|size=18|text=天龙战神>
+INC S$数据显示 <ItemShow|id=物品道具_7|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P7)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,8)> 1
+#ACT
+INC S$数据显示 <Img|id=8|children={物品框_8,物品道具_8,物品名_8,时装提示_8,时装锁定_8}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=8#时装名字=魔天无极#特效ID=40028#外显ID=10014>
+INC S$数据显示 <Img|id=物品框_8|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_8|x=65.0|y=20.0|color=243|size=18|text=魔天无极>
+INC S$数据显示 <ItemShow|id=物品道具_8|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P8)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,9)> 1
+#ACT
+INC S$数据显示 <Img|id=9|children={物品框_9,物品道具_9,物品名_9,时装提示_9,时装锁定_9}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=9#时装名字=沧澜蓝幽#特效ID=40034#外显ID=10017>
+INC S$数据显示 <Img|id=物品框_9|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_9|x=65.0|y=20.0|color=243|size=18|text=沧澜蓝幽>
+INC S$数据显示 <ItemShow|id=物品道具_9|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P9)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,10)> 1
+#ACT
+INC S$数据显示 <Img|id=10|children={物品框_10,物品道具_10,物品名_10,时装提示_10,时装锁定_10}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=10#时装名字=君临天下#特效ID=40000#外显ID=10000>
+INC S$数据显示 <Img|id=物品框_10|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_10|x=65.0|y=20.0|color=243|size=18|text=君临天下>
+INC S$数据显示 <ItemShow|id=物品道具_10|x=-2.0|y=2.0|width=70|height=70|itemid=<$str(P10)>|itemcount=1|showtips=1|bgtype=0|scale=<$STR(S$时装模型缩放)>>
+#IF
+EQUAL <$GETSTRVALUE(T42,11)> 1
+#ACT
+INC S$数据显示 <Img|id=11|children={物品框_11,物品道具_11,物品名_11,时装提示_11,时装锁定_11}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=11#时装名字=王者无双>
+INC S$数据显示 <Img|id=物品框_11|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_11|x=65.0|y=20.0|color=243|size=18|text=王者无双(男)>
+INC S$数据显示 <ItemShow|id=物品道具_11|x=-2.0|y=2.0|width=70|height=70|itemid=1|itemcount=1|showtips=1|bgtype=0>
+#IF
+EQUAL <$GETSTRVALUE(T42,12)> 1
+#ACT
+INC S$数据显示 <Img|id=12|children={物品框_12,物品道具_12,物品名_12,时装提示_12,时装锁定_12}|x=0.0|y=0.0|width=235|height=65|rotate=0|img=public/1900012391.png|scale9t=5|esc=0|scale9r=5|scale9l=5|scale9b=5|link=@时装选择#时装编号=12#时装名字=王者无双>
+INC S$数据显示 <Img|id=物品框_12|x=5.0|y=5.0|img=private/psllz/02128.png|esc=0>
+INC S$数据显示 <Text|id=物品名_12|x=65.0|y=20.0|color=243|size=18|text=王者无双(男)>
+INC S$数据显示 <ItemShow|id=物品道具_12|x=-2.0|y=2.0|width=70|height=70|itemid=1|itemcount=1|showtips=1|bgtype=0>
+
+#OR
+EQUAL <$GETSTRVALUE(T43,1)> 1
+EQUAL <$GETSTRVALUE(T43,2)> 1
+EQUAL <$GETSTRVALUE(T43,3)> 1
+EQUAL <$GETSTRVALUE(T43,4)> 1
+EQUAL <$GETSTRVALUE(T43,5)> 1
+EQUAL <$GETSTRVALUE(T43,6)> 1
+EQUAL <$GETSTRVALUE(T43,7)> 1
+EQUAL <$GETSTRVALUE(T43,8)> 1
+EQUAL <$GETSTRVALUE(T43,9)> 1
+EQUAL <$GETSTRVALUE(T43,10)> 1
+EQUAL <$GETSTRVALUE(T43,11)> 1
+EQUAL <$GETSTRVALUE(T43,12)> 1
+#ACT 
+MOV S$穿戴提示 <Img|id=时装提示_<$str(S$时装编号)>|x=150.0|y=20.0|img=public/word_bqzy_08.png|esc=0>
+
+#IF
+#ACT
+GOTO @时装选择
+
+[@角色时装界面]
+<Img|x=1.0|y=0.0|width=640|height=480|show=4|loadDelay=0|scale9r=100|scale9t=100|bg=1|move=0|scale9l=100|scale9b=100|reset=1|img=private/psllz/00070.png|esc=1>
+<Layout|x=582.0|y=-20.0|width=80|height=80|link=@exit>
+<Button|x=596.0|y=18.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=285.0|y=72.0|width=320|height=315|rotate=0|img=public/1900012391.png|scale9l=5|esc=0|scale9r=5|scale9t=5|scale9b=5>
+<Img|x=296.0|y=161.0|width=300|height=260|img=public/bg_fubentg_02.png|esc=0>
+<Img|x=266.0|y=58.0|height=410|img=private/psllz/00010.png|esc=0>
+<Img|x=286.0|y=392.0|width=320|height=65|rotate=0|img=public/1900012391.png|scale9t=5|scale9r=5|scale9l=5|esc=0|scale9b=5>
+<Img|x=399.0|y=68.0|width=100|rotate=0|img=private/psllz/02999.png|esc=0>
+<Img|x=270.0|y=4.0|img=private/biaoti/01075.png|esc=0>
+
+<$str(S$模型)>
+
+<Img|x=32.0|y=67.0|width=240|scale9r=100|scale9l=100|scale9t=5|img=private/xlxl/021600.png|scale9b=5|esc=0>
+<Text|x=61.0|y=73.0|size=18|color=11009|text=时装衣橱>
+
+<Text|x=408.0|y=75.0|color=11054|size=18|text=<$STR(S$时装名字)>>
+
+<ListView|children={1,2,3,4,5,6,7,8,9,10,11,12,13,14}|x=38.0|y=105.0|bounce=0|width=230|height=350|rotate=0|color=x|margin=5>
+
+<$STR(S$数据显示)>
+<$STR(S$穿戴提示)>
+<$STR(S$时装选择)>
+<$STR(S$穿戴按钮)>
+
+
+
+[@时装选择]
+#IF
+gender man
+#ACT
+MOV p15 <$str(S$特效ID)>
+#ELSEACT
+MOV p15 <$str(S$特效ID)>
+INC P15 1
+
+#IF
+EQUAL <$GETSTRVALUE(T44,<$STR(S$时装编号)>)> 1
+#act
+MOV N$是否外显 0
+#ELSEACT
+MOV N$是否外显 1
+
+#IF
+EQUAL <$GETSTRVALUE(T43,<$STR(S$时装编号)>)> 1
+#ACT
+MOV S$穿戴按钮 <Button|x=395.0|y=410.0|size=18|nimg=private/psllz/02133.png|color=94|text=卸　下|link=@卸下时装>
+INC S$穿戴按钮 <Text|x=540.0|y=430.0|color=251|size=16|text=取消外显>
+INC S$穿戴按钮 <CheckBox|x=510.0|y=425.0|nimg=public/1900000550.png|pimg=public/1900000551.png|checkboxid=1|default=<$str(N$是否外显)>|link=@外显选择>
+#ELSEACT
+MOV S$穿戴按钮 <Button|x=395.0|y=410.0|size=18|nimg=private/psllz/02133.png|color=94|text=穿　戴|link=@穿戴时装>
+
+#IF
+NOT EQUAL <$GETSTRVALUE(T43,<$STR(S$时装编号)>)> 
+#ACT
+MOV S$时装选择 <Img|id=时装锁定_<$str(s$时装编号)>|x=0.0|y=0.0|width=230|height=70|rotate=0|scale9l=10|scale9r=10|scale9t=10|img=public/bg_lhgm_04.png|scale9b=10|esc=0>
+MOV S$模型 <Effect|x=360.0|y=200.0|scale=0.9|speed=1|effecttype=0|effectid=<$STR(P15)>|act=0|dir=5>
+GOTO @角色时装界面
+BREAK
+#ELSEACT
+GOTO @角色时装界面
+BREAK
+
+[@穿戴时装]
+#IF
+#ACT
+MOV T43 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0,9=0,9=0,10=0,11=0,12=0
+MOV T44 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0,9=0,9=0,10=0,11=0,12=0
+ADDSTRVALUE T43 <$STR(S$时装编号)> 1
+ADDSTRVALUE T44 <$STR(S$时装编号)> 1
+SetFeature 0 <$str(s$外显ID)> 655355 0 3
+SetFeature 1 99999 655355 0 3
+SetFeature 2 99999 655355 0 3
+SetFeature 3 99999 655355 0 3
+MOV S$穿戴提示 <Img|id=时装提示_<$str(S$时装编号)>|x=150.0|y=20.0|img=public/word_bqzy_08.png|esc=0>
+SENDMSG 5 成功穿戴该时装！
+GOTO @时装选择
+BREAK
+
+[@卸下时装]
+#IF
+#ACT
+MOV T43 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0,9=0,9=0,10=0,11=0,12=0
+MOV T44 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0,9=0,9=0,10=0,11=0,12=0
+SetFeature 0 -1 
+SetFeature 1 -1 
+SetFeature 2 -1 
+SetFeature 3 -1 
+MOV S$穿戴提示 
+MESSAGEBOX 已成功卸下该时装！
+GOTO @时装选择
+BREAK
+
+[@外显选择]
+#IF
+EQUAL N$是否外显 0
+#ACT
+MOV N$是否外显 1
+MOV T44 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0,9=0,9=0,10=0,11=0,12=0
+SetFeature 0 -1 
+SetFeature 1 -1 
+SetFeature 2 -1 
+SetFeature 3 -1 
+SENDMSG 9 已取消时装外显
+GOTO @时装选择
+break
+
+#IF
+EQUAL N$是否外显 1
+#ACT
+MOV N$是否外显 0
+MOV T44 1=0,2=0,3=0,4=0,5=0,6=0,7=0,8=0,9=0,9=0,10=0,11=0,12=0
+ADDSTRVALUE T44 <$STR(S$时装编号)> 1
+SetFeature 0 <$str(s$外显ID)> 655355 0 3
+SetFeature 1 99999 655355 0 3
+SetFeature 2 99999 655355 0 3
+SetFeature 3 99999 655355 0 3
+SENDMSG 9 已开启时装外显
+GOTO @时装选择
+break
+
+}

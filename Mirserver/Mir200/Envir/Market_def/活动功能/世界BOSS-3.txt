@@ -1,0 +1,184 @@
+[@MAIN]
+#IF
+#ACT
+MOV S$地图索引 shijie01
+MOV S$坐标X 47
+MOV S$坐标Y 54
+MOV S$名字 持国天王
+MOV N$魔戒编号 50683
+GOTO @加载世界BOSS
+BREAK
+
+[@加载世界BOSS]
+#IF
+#ACT
+FindMapMonster shijie01 东胜神州◆持国天王 N$持国天王 1
+FindMapMonster shijie02 南赡部洲◆增长天王 N$增长天王 1
+FindMapMonster shijie03 西牛贺洲◆广目天王 N$广目天王 1
+FindMapMonster shijie04 北俱芦洲◆多闻天王 N$多闻天王 1
+
+
+#IF
+LARGE N$持国天王 0
+#ACT
+MOV S$持国刷新 已刷新
+MOV N$持国刷新颜色 11003
+
+#IF
+SMALL N$持国天王 1
+#ACT
+MOV S$持国刷新 未刷新
+MOV N$持国刷新颜色 11042
+
+#IF
+LARGE N$增长天王 0
+#ACT
+MOV S$增长刷新 已刷新
+MOV N$增长刷新颜色 11003
+
+#IF
+SMALL N$增长天王 1
+#ACT
+MOV S$增长刷新 未刷新
+MOV N$增长刷新颜色 11042
+
+#IF
+LARGE N$广目天王 0
+#ACT
+MOV S$广目刷新 已刷新
+MOV N$广目刷新颜色 11003
+
+#IF
+SMALL N$广目天王 1
+#ACT
+MOV S$广目刷新 未刷新
+MOV N$广目刷新颜色 11042
+
+#IF
+LARGE N$多闻天王 0
+#ACT
+MOV S$多闻刷新 已刷新
+MOV N$多闻刷新颜色 11003
+
+#IF
+SMALL N$多闻天王 1
+#ACT
+MOV S$多闻刷新 未刷新
+MOV N$多闻刷新颜色 11042
+
+#IF
+#ACT
+MOV S$界面按钮
+INC S$界面按钮 <Button|id=2|x=0.0|y=0.0|width=125|height=32|rotate=0|color=160|size=18|pimg=public/1913000012.png|nimg=public/1913000011.png|text=持国天王|link=@加载世界BOSS#地图索引=shijie01#坐标X=47#坐标Y=54#名字=持国天王>
+INC S$界面按钮 <Button|id=3|x=0.0|y=0.0|width=125|height=32|rotate=0|color=160|size=18|pimg=public/1913000012.png|nimg=public/1913000011.png|text=增长天王|link=@加载世界BOSS#地图索引=shijie02#坐标X=66#坐标Y=66#名字=增长天王>
+INC S$界面按钮 <Button|id=4|x=0.0|y=0.0|width=125|height=32|rotate=0|color=160|size=18|pimg=public/1913000012.png|nimg=public/1913000011.png|text=广目天王|link=@加载世界BOSS#地图索引=shijie03#坐标X=48#坐标Y=54#名字=广目天王>
+INC S$界面按钮 <Button|id=5|x=0.0|y=0.0|width=125|height=32|rotate=0|color=160|size=18|pimg=public/1913000012.png|nimg=public/1913000011.png|text=多闻天王|link=@加载世界BOSS#地图索引=shijie04#坐标X=39#坐标Y=54#名字=多闻天王>
+
+#IF
+EQUAL S$地图索引 shijie01
+#ACT
+MOV S$教主说明
+INC S$教主说明 <Effect|x=380.0|y=280.0|scale=0.8|speed=1.2|dir=4|effectid=10088|effecttype=2|act=0>
+INC S$教主说明 <Text|x=41.0|y=49.0|color=11022|size=18|text=慈悲为怀，保护众生，护持国土，故名持国天王，负责守护东胜神洲。>
+INC S$教主说明 <Text|x=170.0|y=400.0|color=11053|size=18|text=刷新时间：13:00，23:00>
+INC S$界面按钮 <Text|x=369.0|y=85.0|color=11034|size=18|text=持国天王>
+DEC S$界面按钮 <Button|id=2|x=0.0|y=0.0|width=125|height=32|rotate=0|color=160|size=18|pimg=public/1913000011.png|nimg=public/1913000011.png|text=持国天王|link=@加载世界BOSS#地图索引=shijie01#坐标X=47#坐标Y=54#名字=持国天王>
+INC S$界面按钮 <Button|id=2|x=0.0|y=0.0|width=125|height=32|rotate=0|color=251|size=18|pimg=public/1913000012.png|nimg=public/1913000012.png|text=持国天王|link=@加载世界BOSS#地图索引=shijie01#坐标X=47#坐标Y=54#名字=持国天王>
+INC S$界面按钮 <Text|x=255.0|y=427.0|color=<$STR(N$持国刷新颜色)>|size=18|text=<$STR(S$持国刷新)>>
+MOV N$魔戒编号 50683
+GOTO @世界BOSS界面
+BREAK
+
+#IF
+EQUAL S$地图索引 shijie02
+#ACT
+MOV S$教主说明
+INC S$教主说明 <Text|x=41.0|y=49.0|color=11022|size=18|text=意为能传令众生，增长善根，护持佛法，故名增长天王，负责守护南赡部洲。>
+INC S$教主说明 <Text|x=170.0|y=400.0|color=11053|size=18|text=刷新时间：13:00，23:00>
+INC S$界面按钮 <Text|x=369.0|y=85.0|color=11034|size=18|text=增长天王>
+INC S$教主说明 <Effect|x=380.0|y=280.0|scale=0.8|speed=1.2|dir=4|effectid=10089|effecttype=2|act=0>
+DEC S$界面按钮 <Button|id=3|x=0.0|y=0.0|width=125|height=32|rotate=0|color=160|size=18|pimg=public/1913000011.png|nimg=public/1913000011.png|text=增长天王|link=@加载世界BOSS#地图索引=shijie02#坐标X=66#坐标Y=66#名字=增长天王>
+INC S$界面按钮 <Button|id=3|x=0.0|y=0.0|width=125|height=32|rotate=0|color=251|size=18|pimg=public/1913000012.png|nimg=public/1913000012.png|text=增长天王|link=@加载世界BOSS#地图索引=shijie02#坐标X=66#坐标Y=66#名字=增长天王>
+INC S$界面按钮 <Text|x=255.0|y=427.0|color=<$STR(N$增长刷新颜色)>|size=18|text=<$STR(S$增长刷新)>>
+MOV N$魔戒编号 50684
+GOTO @世界BOSS界面
+BREAK
+
+#IF
+EQUAL S$地图索引 shijie03
+#ACT
+MOV S$教主说明
+INC S$教主说明 <Text|x=41.0|y=49.0|color=11022|size=18|text=意为能以净天眼随时观察世界，护持人民，故名广目天王，负责守护西牛贺洲。>
+INC S$教主说明 <Text|x=170.0|y=400.0|color=11053|size=18|text=刷新时间：13:00，23:00>
+INC S$界面按钮 <Text|x=369.0|y=85.0|color=11034|size=18|text=广目天王>
+INC S$教主说明 <Effect|x=380.0|y=270.0|scale=0.8|speed=1.2|dir=4|effectid=10087|effecttype=2|act=0>
+DEC S$界面按钮 <Button|id=4|x=0.0|y=0.0|width=125|height=32|rotate=0|color=160|size=18|pimg=public/1913000011.png|nimg=public/1913000011.png|text=广目天王|link=@加载世界BOSS#地图索引=shijie03#坐标X=48#坐标Y=54#名字=广目天王>
+INC S$界面按钮 <Button|id=4|x=0.0|y=0.0|width=125|height=32|rotate=0|color=251|size=18|pimg=public/1913000012.png|nimg=public/1913000012.png|text=广目天王|link=@加载世界BOSS#地图索引=shijie03#坐标X=48#坐标Y=54#名字=广目天王>
+INC S$界面按钮 <Text|x=255.0|y=427.0|color=<$STR(N$广目刷新颜色)>|size=18|text=<$STR(S$广目刷新)>>
+MOV N$魔戒编号 50685
+GOTO @世界BOSS界面
+BREAK
+
+#IF
+EQUAL S$地图索引 shijie04
+#ACT
+MOV S$教主说明
+INC S$教主说明 <Text|x=41.0|y=49.0|color=11022|size=18|text=用以制服魔众，护持众生资粮。又名施财天，是古印度的财神。>
+INC S$教主说明 <Text|x=170.0|y=400.0|color=11053|size=18|text=刷新时间：13:00，23:00>
+INC S$界面按钮 <Text|x=369.0|y=85.0|color=11034|size=18|text=多闻天王>
+INC S$教主说明 <Effect|x=380.0|y=270.0|scale=0.8|speed=1.2|dir=4|effectid=10090|effecttype=2|act=0>
+DEC S$界面按钮 <Button|id=5|x=0.0|y=0.0|width=125|height=32|rotate=0|color=160|size=18|pimg=public/1913000011.png|nimg=public/1913000011.png|text=多闻天王|link=@加载世界BOSS#地图索引=shijie04#坐标X=39#坐标Y=54#名字=多闻天王>
+INC S$界面按钮 <Button|id=5|x=0.0|y=0.0|width=125|height=32|rotate=0|color=251|size=18|pimg=public/1913000012.png|nimg=public/1913000012.png|text=多闻天王|link=@加载世界BOSS#地图索引=shijie04#坐标X=39#坐标Y=54#名字=多闻天王>
+INC S$界面按钮 <Text|x=255.0|y=427.0|color=<$STR(N$多闻刷新颜色)>|size=18|text=<$STR(S$多闻刷新)>>
+MOV N$魔戒编号 50686
+GOTO @世界BOSS界面
+BREAK
+
+
+
+[@世界BOSS界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=0|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|ax=0|x=0|y=0|reset=1|show=4|bg=1|move=0|img=public/000bd.png|loadDelay=0|esc=1>
+<Layout|x=667.0|y=-14.0|width=80|height=80|link=@exit>
+<Button|x=685.0|y=19.0|pimg=public/1900000511.png|color=255|nimg=public/1900000510.png|size=18|link=@exit>
+<ListView|children={2,3,4,5}|x=36.0|y=80.0|width=150|height=320|direction=1|bounce=0|margin=12|reload=0|default=8>
+<Layout|x=534.0|y=405.0|width=150|height=50|color=x|link=@开始挑战>
+<Button|x=554.0|y=410.0|width=110|rotate=0|size=18|color=251|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=前往挑战|link=@开始挑战>
+<Img|x=303.0|y=7.0|img=private/biaoti/01055.png|esc=0>
+<$STR(S$教主说明)>
+<Text|x=170.0|y=425.0|color=11053|size=16|text=击杀状态：>
+<Img|x=220.0|y=337.0|img=public/02128.png|esc=0>
+<Img|x=305.0|y=337.0|img=public/02128.png|esc=0>
+<Img|x=390.0|y=337.0|img=public/02128.png|esc=0>
+<Img|x=475.0|y=337.0|img=public/02128.png|esc=0>
+<Img|x=560.0|y=337.0|img=public/02128.png|esc=0>
+<ItemShow|x=215.0|y=332.0|width=70|height=70|itemid=10463|itemcount=1|showtips=1|bgtype=0|scale=0.9>
+<ItemShow|x=298.0|y=332.0|width=70|height=70|itemid=10437|itemcount=1|showtips=1|bgtype=0|scale=0.9>
+<ItemShow|x=386.0|y=332.0|width=70|height=70|itemid=10464|itemcount=1|showtips=1|bgtype=0|scale=0.9>
+<ItemShow|x=470.0|y=332.0|width=70|height=70|itemid=10585|itemcount=1|showtips=1|bgtype=0|scale=0.9>
+<ItemShow|x=556.0|y=332.0|width=70|height=70|itemid=<$str(N$魔戒编号)>|itemcount=1|showtips=1|bgtype=0|scale=0.9>
+<Img|x=289.0|y=84.0|height=30|img=private/psllz/1910500017.png|scale9b=5|esc=0|scale9t=5|scale9l=5|scale9r=5>
+
+
+
+<$STR(S$界面按钮)>
+
+
+
+[@开始挑战]
+#IF
+#ACT 
+MAPMOVE  <$STR(S$地图索引)>  <$STR(S$坐标X)>  <$STR(S$坐标Y)>
+sendmsg 0  玩家：{<$USERNAME>|250:0:1}闯入了世界BOSS区域挑战{[<$STR(S$名字)>]|254:0:1}探索终级装备的下落......
+BREAK
+
+
+
+
+
+
+
+
+
+

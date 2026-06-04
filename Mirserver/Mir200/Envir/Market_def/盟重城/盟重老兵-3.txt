@@ -1,0 +1,252 @@
+[@main]
+<Img|reset=1|loadDelay=1|show=0|bg=1|img=public_win32/bg_npc_01.png|move=0>
+<Layout|x=545|y=0|width=80|height=80|link=@exit>
+<Button|x=546|y=0|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=17.0|y=18.0|outlinecolor=0|color=255|outline=1|size=17|text=我是这座荒漠土城的老兵，当今的世道非常混乱，单枪匹马闯>
+<Text|x=17.0|y=43.0|outlinecolor=0|color=255|outline=1|size=17|text=荡江湖可是件危险的事情。>
+<Img|x=50.0|y=160.0|width=18|height=18|img=public/00012.png|esc=0>
+<Text|x=17.0|y=105.0|size=18|color=251|outline=1|outlinecolor=0|text=前往武器店|link=@前往武器店>
+<Text|x=129.0|y=105.0|size=18|color=251|outline=1|outlinecolor=0|text=前往服装店|link=@前往服装店>
+<Text|x=244.0|y=105.0|size=18|color=251|outline=1|outlinecolor=0|text=前往首饰店|link=@前往首饰店>
+<Text|x=357.0|y=105.0|size=18|color=251|outline=1|outlinecolor=0|text=前往仓库|link=@前往仓库>
+<Text|x=454.0|y=105.0|size=18|color=251|outline=1|outlinecolor=0|text=前往药店|link=@前往药店>
+
+[@前往武器店]
+#ACT
+mapmove 0159 6 13 2
+
+[@前往服装店]
+#ACT
+mapmove 0149 16 21 2
+
+[@前往首饰店]
+#ACT
+mapmove 0158 16 16 2
+
+[@前往仓库]
+#ACT
+mapmove 0145 7 14 2
+
+[@前往药店]
+#ACT
+mapmove 3 357 334 2
+
+
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01017.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=我是这座荒漠土城的老兵，当今的世道非常混乱，单枪匹马闯>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=荡江湖可是件危险的事情。>
+<Text|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=在这个乱世中，你是否也想创建一个行会成就一番伟业？>
+<Img|x=50.0|y=160.0|width=18|height=18|esc=0|img=public/00012.png>
+;<Layout|x=65.0|y=152.0|width=100|height=40|link=@创建行会>
+;<Text|x=75.0|y=155.0|color=11009|size=18|outline=1|outlinecolor=0|text=创建行会|link=@创建行会>
+;<Layout|x=382.0|y=152.0|width=100|height=35|color=x|link=@补领技能>
+;<Text|x=390.0|y=155.0|color=11009|size=18|text=补领技能|link=@补领技能>
+;<Layout|x=224.0|y=152.0|width=100|height=35|color=x|link=@申请攻城>
+;<Img|x=214.0|y=161.0|width=18|height=18|esc=0|img=public/00012.png>
+;<Text|x=234.0|y=155.0|color=11009|size=18|text=申请攻城|link=@申请攻城>
+<Img|x=50.0|y=215.0|width=18|height=18|esc=0|img=public/00013.png>
+<Layout|x=73.0|y=152.0|width=150|height=40|link=@牛魔王的头颅>
+<Text|x=75.0|y=152.0|color=11009|size=18|outline=1|outlinecolor=0|text=打听牛魔王的头颅|link=@牛魔王的头颅>
+<Img|x=295.0|y=152.0|width=18|height=18|esc=0|img=public/00013.png>
+<Layout|x=315.0|y=152.0|width=150|height=40|rotate=0|link=@盟重土城霸主>
+<Text|x=320.0|y=152.0|color=11009|size=18|outline=1|outlinecolor=0|text=打听盟重土城霸主|link=@盟重土城霸主>
+<Img|x=365.0|y=152.0|width=18|height=18|esc=0|img=public/00012.png>
+
+[@申请攻城]
+#IF
+NOT ISGUILDMASTER
+#ACT
+MESSAGEBOX 你不是行会老大，无法提交申请攻城
+BREAK
+
+#IF
+NOT large <$HFCOUNT> 0
+#ACT
+MESSAGEBOX 当前新区无法提交申请攻城
+BREAK
+
+#IF
+HOUR 20 23
+MIN 00 59
+#ACT
+MESSAGEBOX 20:00-00:00时间段无法申请攻城！
+BREAK
+
+#IF
+equal <$HFDAYS> 1
+#ACT
+MESSAGEBOX 攻城将于晚上8点开启，请勿重复提交申请攻城！
+BREAK
+#IF
+DAYOFWEEK SAT
+#ACT
+MESSAGEBOX 攻城将于晚上8点开启，请勿重复提交申请攻城！
+BREAK
+
+#IF
+LARGE G112 0
+#ACT
+MESSAGEBOX 攻城将于晚上8点开启，请勿重复提交申请攻城！
+BREAK
+
+#IF
+NOT CHECKITEM 祖玛头像 1
+#ACT
+MESSAGEBOX 请准备好1个祖玛头像再来申请攻城
+BREAK
+
+#IF
+ISGUILDMASTER 
+CHECKITEM 祖玛头像 1
+EQUAL G112 0
+#ACT
+MOV G112 1
+TAKE 祖玛头像 1
+AddAttackSabukAll 0
+SENDMOVEMSG 0 58 255 0 2 <$username>使用沃玛号角申请了攻城战争，沙巴克攻城战争将于今天晚上8点准时开启，请各行会做好战前准备！
+BREAK
+
+
+[@创建行会]
+#IF
+#ACT
+OPENHYPERLINK 31
+
+[@牛魔王的头颅]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01017.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=牛魔王在牛魔洞中享有着至高无上的权利与地位，在牛魔王死>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=后，它的头颅将会被牛魔一族割下来用作祭祀。>
+<Text|x=45.0|y=120.0|color=255|size=17|outline=1|outlinecolor=0|text=祭祀的地点就在牛魔七层中间的那座祭坛处，只需将牛魔王的>
+<Text|x=45.0|y=145.0|color=255|size=17|outline=1|outlinecolor=0|text=头颅带往那里，便可启动牛魔一族遗传千年的魔法大阵！>
+<Img|x=45.0|y=202.0|width=15|height=16|esc=0|img=public/btn_npcfh_03.png>
+<Layout|x=43.0|y=192.0|width=100|height=40|link=@exit>
+<Text|x=70.0|y=195.0|color=11009|size=18|outline=1|outlinecolor=0|text=感谢指点|link=@exit>
+
+
+[@盟重土城霸主]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01017.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=盟重土城霸主早已携带<“锐金旗”/FCOLOR=251>消失多年，据说最近又出现在>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=玛法大陆，如果你非要见他一面，我可以送你过去！>
+<Text|x=45.0|y=125.0|outlinecolor=0|color=11033|outline=1|size=17|text=提示：盟重土城霸主只会在每天11点、14点、16点出现！>
+<RText|x=95.0|y=150.0|outlinecolor=0|color=11033|outline=1|size=17|text=击杀盟重土城霸主必获得霸主信物：<锐金旗/FCOLOR=251>>
+<Img|x=45.0|y=205.0|width=18|height=18|esc=0|img=public/00025.png>
+<Layout|x=68.0|y=195.0|width=110|height=40|rotate=0|link=@盟重信使之地>
+<Text|x=70.0|y=198.0|color=11009|text=前往信使之地|link=@盟重信使之地>
+
+
+[@盟重信使之地]
+#IF
+CHECKMONEY 金币 > 9999
+#ACT
+MONEY 金币 - 10000
+logact 10001 通过[盟重老兵]消耗10000金币，剩余金币：<$MONEY(金币)>。
+MAPMOVE mzbz 14 32
+GOTO @祭坛活跃
+break
+#ELSEACT
+MESSAGEBOX 1万金币都没有，我怎么送你过去！
+break
+
+[@祭坛活跃]
+#IF
+SMALL J59 5
+#ACT
+INC J59 5
+INC J65 5
+INC U43 5
+
+
+
+[@补领技能]
+#IF
+checkjob warrior
+#ACT
+ADDSKILL 基本剑术 3
+ADDSKILL 攻杀剑术 3
+ADDSKILL 刺杀剑术 3
+ADDSKILL 半月弯刀 3
+ADDSKILL 野蛮冲撞 3
+ADDSKILL 烈火剑法 3
+GOTO @技能删除
+SENDMSG 9 你的技能已经修复完毕！
+BREAK
+#IF
+checkjob wizard
+#ACT
+ADDSKILL 抗拒火环 3
+ADDSKILL 疾光电影 3
+ADDSKILL 火墙 3
+ADDSKILL 雷电术 3
+ADDSKILL 诱惑之光 3
+ADDSKILL 魔法盾 3
+ADDSKILL 冰咆哮 3
+GOTO @技能删除
+SENDMSG 9 你的技能已经修复完毕！
+BREAK
+#IF
+checkjob taoist
+#ACT
+ADDSKILL 治愈术 3
+ADDSKILL 精神力战法 3
+ADDSKILL 施毒术 3
+ADDSKILL 灵魂火符 3
+ADDSKILL 幽灵盾 3
+ADDSKILL 神圣战甲术 3
+ADDSKILL 召唤神兽 3
+ADDSKILL 隐身术 3
+GOTO @技能删除
+SENDMSG 9 你的技能已经修复完毕！
+break
+
+[@技能删除]
+#IF
+CheckMagicName 斩月烈火
+CheckMagicName 烈火剑法
+#ACT
+DELSKILL 烈火剑法
+
+#IF
+CheckMagicName 赤焰疾光
+CheckMagicName 疾光电影
+#ACT
+DELSKILL 疾光电影
+
+#IF
+CheckMagicName 冰霜雷电
+CheckMagicName 雷电术
+#ACT
+DELSKILL 雷电术
+
+#IF
+CheckMagicName 召唤月灵
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽
+
+#IF
+CheckMagicName 召唤月灵
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽
+
+#IF
+CheckMagicName 召唤麒麟
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽
+
+#IF
+CheckMagicName 御灵圣兽
+CheckMagicName 召唤神兽
+#ACT
+DELSKILL 召唤神兽

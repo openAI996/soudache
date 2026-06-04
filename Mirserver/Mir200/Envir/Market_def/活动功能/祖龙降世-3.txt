@@ -1,0 +1,40 @@
+[@main]
+<Img|x=3.0|y=20.0|height=300|show=0|loadDelay=1|scale9l=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|scale9t=50|reset=1>
+<Layout|x=491.0|y=8.0|width=80|height=80|link=@exit>
+<Button|x=509.0|y=41.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01016.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=祖龙神是玛法世界的至高神，他在玛法大陆的信使分为别：>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=<盟重土城霸主/FCOLOR=11031>：掌管着召唤祖龙神的信旗：<锐金旗/FCOLOR=251>>
+<RText|x=45.0|y=120.0|color=255|size=17|outlinecolor=0|outline=1|text=<封魔谷的谷主/FCOLOR=11031>：掌管着召唤祖龙神的信旗：<青木旗/FCOLOR=250>>
+<RText|x=45.0|y=145.0|color=255|size=17|outlinecolor=0|outline=1|text=<苍月岛的岛主/FCOLOR=11031>：掌管着召唤祖龙神的信旗：<弱水旗/FCOLOR=254>>
+<RText|x=45.0|y=170.0|color=255|size=17|outlinecolor=0|outline=1|text=<白日门的门主/FCOLOR=11031>：掌管着召唤祖龙神的信旗：<烈火旗/FCOLOR=249>>
+<RText|x=45.0|y=195.0|color=255|size=17|outlinecolor=0|outline=1|text=<比奇城的城主/FCOLOR=11031>：掌管着召唤祖龙神的信旗：<厚土旗/FCOLOR=243>>
+<RText|x=45.0|y=220.0|color=255|size=17|outlinecolor=0|outline=1|text=如果你有能力获得以上5面信旗，我将与你交换<祖龙召唤令/FCOLOR=11013>！>
+<Layout|x=75.0|y=250.0|width=120|height=50|link=@兑换祖龙召唤令>
+<Text|x=70.0|y=260.0|color=11008|size=17|outline=1|outlinecolor=0|text=兑换祖龙召唤令|link=@兑换祖龙召唤令>
+<Layout|x=325.0|y=250.0|width=120|height=50|link=@打听信使>
+<Text|x=330.0|y=261.0|color=11008|size=17|outline=1|outlinecolor=0|text=打听信使位置|link=@打听信使>
+<Img|x=45.0|y=264.0|width=18|height=20|esc=0|img=public/00017.png>
+<Img|x=305.0|y=265.0|width=20|height=20|esc=0|img=public/00013.png>
+
+
+[@打听信使]
+<Img|x=3.0|y=20.0|height=240|show=0|loadDelay=1|scale9l=50|scale9r=50|bg=1|move=0|esc=1|scale9b=50|img=public/bg_npc_01.png|scale9t=50|reset=1>
+<Layout|x=490.0|y=20.0|width=50|height=50|link=@exit>
+<Button|x=500.0|y=40.0|nimg=public/1990000510.png|pimg=public/1990000511.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01016.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=请前往各大主城老兵询问，他们将告诉你们各大信使所在下落！>
+<Text|x=45.0|y=100.0|color=255|size=17|outlinecolor=0|outline=1|text=如果你给的好处足够多，他们将直接送你去见各位信使！>
+
+
+[@兑换祖龙召唤令]
+#IF
+CHECKITEMS 锐金旗#1&青木旗#1&弱水旗#1&烈火旗#1&厚土旗#1 0 0
+#ACT
+TAKES 锐金旗#1&青木旗#1&弱水旗#1&烈火旗#1&厚土旗#1 N0 0
+GIVE 祖龙召唤令 1
+SENDMSG 9 恭喜获得了召唤祖龙的物品：祖龙召唤令！
+break
+#ELSEACT
+SENDMSG 9 请准备好5面信旗再来找我！
+break

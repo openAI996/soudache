@@ -1,0 +1,460 @@
+[@八门属性执行]
+{
+#IF
+EQUAL T20
+EQUAL T21
+EQUAL T22
+EQUAL T23
+EQUAL T24
+EQUAL T25
+EQUAL T26
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV S$名家武器
+DELBUFF 50410
+DELbuff 50105
+DELbuff 50106
+DELbuff 50445
+DELBUFF 50444
+DELbuff 50124
+DELBUFF 50413
+DELBUFF 50478
+DELBUFF 50478
+DELBUFF 50479
+delbuff 50483
+delbuff 50485
+delbuff 50486
+delbuff 50485
+delbuff 50489
+DELBUFF 50488
+
+
+#IF
+EQUAL S$神秘之姿 激活
+#act
+addbuff  50483 
+
+#IF
+EQUAL S$狩猎之心 激活
+#act
+addbuff  50485 
+
+#IF
+EQUAL S$八面玲珑 激活
+#act
+addbuff  50486 
+
+#IF
+EQUAL S$百发百中 激活
+#act
+addbuff  50487
+
+#IF
+EQUAL S$御兽天师 激活
+#ACT
+addbuff 50478
+
+#IF
+EQUAL S$铁血守护 激活
+#act
+addbuff  50489
+
+#IF
+EQUAL S$御兽天师 激活
+#ACT
+addbuff 50478
+
+#IF
+EQUAL S$天下第一 激活
+EQUAL A35 <$USERNAME>
+#ACT
+addbuff 50479
+
+#IF
+EQUAL S$天下第一 激活
+EQUAL A36 <$USERNAME>
+#ACT
+addbuff 50479
+
+#IF
+EQUAL S$天下第一 激活
+EQUAL A37 <$USERNAME>
+#ACT
+addbuff 50479
+
+#IF
+EQUAL S$天下第一 激活
+EQUAL A38 <$USERNAME>
+#ACT
+addbuff 50479
+
+#IF
+EQUAL S$天下第一 激活
+EQUAL A39 <$USERNAME>
+#ACT
+addbuff 50479
+
+#IF
+EQUAL S$天下第一 激活
+EQUAL A40 <$USERNAME>
+#ACT
+addbuff 50479
+
+;天纵奇才：手持红色品质武器时，增加全属性(包含HP)8-8加成
+#OR
+EQUAL <$WEAPON> 火龙刀
+EQUAL <$WEAPON> 火龙扇
+EQUAL <$WEAPON> 火龙仗
+EQUAL <$WEAPON> 神器·雷霆
+EQUAL <$WEAPON> 神器·逍遥
+EQUAL <$WEAPON> 神器·游龙
+EQUAL <$WEAPON> 暗月无双
+EQUAL <$WEAPON> 至尊鬼炎
+EQUAL <$WEAPON> 干将莫邪
+EQUAL <$WEAPON> 至尊屠龙
+EQUAL <$WEAPON> 上古：渊虹剑
+EQUAL <$WEAPON> 上古：水寒剑
+EQUAL <$WEAPON> 上古：天问剑
+EQUAL <$WEAPON> 弑神
+EQUAL <$WEAPON> 毒龙
+EQUAL <$WEAPON> 凤舞
+EQUAL <$WEAPON> 巨阙
+EQUAL <$WEAPON> 乾坤
+EQUAL <$WEAPON> 无影
+#ACT
+MOV S$名家武器 激活
+
+#IF
+EQUAL S$天纵奇才 激活
+EQUAL S$名家武器 激活
+#ACT
+addbuff 50410
+
+#IF
+EQUAL S$天纵奇才 激活
+EQUAL S$名家武器 激活
+#ACT
+addbuff 50410
+
+;布衣神相穿戴布衣时时暴击伤害将会从150%提高至180%
+#IF
+EQUAL S$布衣神相 激活
+CHECKITEMW 布衣(男)
+#ACT
+addbuff 50124 0 1
+#IF
+EQUAL S$布衣神相 激活
+CHECKITEMW 布衣(女)
+#ACT
+addbuff 50124 0 1
+
+;九劫涅槃血量低于20%时，将会立刻回复20%的血量，冷却30秒
+#IF
+EQUAL S$柳暗花明
+EQUAL S$绝处逢生
+EQUAL S$降神附体
+#ACT
+DELbuff 50430
+
+;九劫涅槃血量低于20%时，将会立刻回复20%的血量，冷却30秒
+#IF
+EQUAL S$柳暗花明 激活
+NOT HASBUFF 50430
+#ACT
+addbuff 50430
+
+;绝处逢生血量低于20%时，将会进入无敌状态，持续时间2秒，冷却30秒
+#IF
+EQUAL S$绝处逢生 激活
+NOT HASBUFF 50430
+#ACT
+addbuff 50430
+
+;降神附体BUFF增加
+#IF
+EQUAL S$降神附体 激活
+NOT HASBUFF 50430
+#ACT
+addbuff 50430
+
+#IF
+EQUAL S$天生神力 激活
+#ACT
+addbuff 50216
+#ELSEACT
+DELbuff 50216
+
+#IF
+EQUAL S$唤龙术 激活
+#ACT
+addbuff 50453
+#ELSEACT
+delbuff 50453
+
+;日进斗金每日首次登陆获得8~88万金币
+#IF
+EQUAL S$日进斗金 激活
+SMALL J220 1
+#ACT
+MOVR N$日进斗金 8 88
+GIVE 金币 <$STR(N$日进斗金)>0000
+logact 10001 通过[日进斗金]获得<$STR(N$日进斗金)>0000金币，剩余金币：<$MONEY(金币)>。
+MOV J220 500
+SENDMSG 6 八门属性：日进斗金使您今日获得金币：<$STR(N$日进斗金)>0000
+MOV  N$日进斗金 0
+
+;青云直上获得经验加成
+#OR
+EQUAL T20 青云直上
+EQUAL T21 青云直上
+EQUAL T22 青云直上
+EQUAL T23 青云直上
+EQUAL T24 青云直上
+EQUAL T25 青云直上
+EQUAL T26 青云直上
+#ACT
+addbuff 50104
+#ELSEACT
+DELbuff 50104
+
+#IF
+EQUAL S$德高望重 激活
+LARGE <$MONEY(声望)> 199
+small <$MONEY(声望)> 400
+#ACT
+DELBUFF 50413
+addbuff  50413 0 1
+#IF
+EQUAL S$德高望重 激活
+LARGE <$MONEY(声望)> 399
+small <$MONEY(声望)> 600
+#ACT
+DELBUFF 50413
+addbuff  50413 0 2
+#IF
+EQUAL S$德高望重 激活
+LARGE <$MONEY(声望)> 599
+small <$MONEY(声望)> 800
+#ACT
+DELBUFF 50413
+addbuff  50413 0 3
+#IF
+EQUAL S$德高望重 激活
+LARGE <$MONEY(声望)> 799
+small <$MONEY(声望)> 1000
+#ACT
+DELBUFF 50413
+addbuff  50413 0 4
+#IF
+EQUAL S$德高望重 激活
+LARGE <$MONEY(声望)> 999
+#ACT
+DELBUFF 50413
+addbuff  50413 0 5
+
+#IF
+EQUAL S$昼伏夜行 激活
+LARGE <$HOUR> 18
+SMALL <$HOUR> 24
+#ACT
+DELbuff 50105
+DELbuff 50106
+addbuff 50106
+
+#IF
+EQUAL S$昼伏夜行 激活
+LARGE <$HOUR> 0
+SMALL <$HOUR> 5
+#ACT
+DELbuff 50105
+DELbuff 50106
+addbuff 50106
+
+#IF
+EQUAL S$昼伏夜行 激活
+LARGE <$HOUR> 4
+SMALL <$HOUR> 19
+#ACT
+DELbuff 50105
+DELbuff 50106
+addbuff 50105
+
+
+;高人指点：与名士NPC对话，可增加全属性(不含HP)1-1，游戏内共有五位名士
+#IF
+EQUAL S$指点迷津 激活
+LARGE U253 0
+#ACT
+DELbuff 50122
+addbuff 50122 0 <$str(u253)>
+#ELSEACT
+DELbuff 50122
+
+;女中豪杰:女性玩家打怪增加3%的额外伤害
+#IF
+EQUAL S$女中豪杰 激活
+gender woman
+#ACT
+DELbuff 50414
+addbuff 50414
+#ELSEACT
+DELbuff 50414
+
+#IF
+EQUAL S$桃李天下 激活
+CHECKVAR HUMAN 徒弟出师 > 2
+#ACT
+DELBUFF 50412
+addbuff  50412
+#ELSEACT
+DELBUFF 50412
+
+#IF
+EQUAL S$蓝魔附体 激活
+#ACT
+DELBUFF 50442
+addbuff  50442
+#ELSEACT
+DELBUFF 50442
+
+#IF
+EQUAL S$红魔附体 激活
+#ACT
+DELBUFF 50443
+addbuff  50443
+#ELSEACT
+DELBUFF 50443
+
+#IF
+NOT EQUAL <$DEARNAME>
+#ACT
+GetHumVar <$DEARNAME> S$配偶八门属性 <$str(S$情比金坚)>
+
+#IF
+EQUAL S$情比金坚 激活
+CHECKLEVELEX > 49
+gender man
+NOT EQUAL <$DEARNAME>
+#ACT
+addbuff 50444
+sendmsg 6  情比金坚属性生效，全属性增加5-5...
+
+;妙手回春:药品恢复增加33%
+#IF
+EQUAL S$妙手回春 激活
+#ACT
+DELbuff 50415
+addbuff 50415
+#ELSEACT
+DELbuff 50415
+
+;草木之灵:中毒恢复增加20%
+#OR
+EQUAL S$草木之灵 激活
+#ACT
+DELbuff 50416
+addbuff 50416
+#ELSEACT
+DELbuff 50416
+
+;酒中仙额外增加5%生命
+#IF
+EQUAL S$酒中仙
+HASBUFF 50121
+#ACT
+DELBUFF 50121
+
+;拓荒者每有10格背包空格则增加1点闪避，无上限
+#IF
+EQUAL S$空间王者 激活
+#ACT
+MOV N$背包空格 0
+CalcPer <$ADVBAGSIZE> 10 N$背包空格
+
+#IF
+EQUAL S$空间王者 激活
+LARGE N$背包空格 0
+#ACT
+addbuff 50445 0 <$str(N$背包空格)>
+
+#IF
+EQUAL S$天神赐福 激活
+#ACT
+addbuff 50446
+#ELSEACT
+DELBUFF 50446
+
+
+;与日俱进服务器每开放1天可额外增加1点物理防御上限为36点
+#IF
+EQUAL S$与日俱进 激活
+LARGE <$KFDAY> 0
+#ACT
+delbuff 50447
+addbuff 50447 0 <$KFDAY>
+#ELSEACT
+DELBUFF 50447
+
+;万人敬仰：魅力值大于1万时，被暴击的概率降低20%
+#IF
+EQUAL S$万人敬仰 激活
+CHECKMONEY 魅力值 > 9999
+#ACT
+DELbuff 50123
+addbuff 50123 0 1
+#ELSEACT
+DELbuff 50123
+
+#IF
+EQUAL S$生命之王 激活
+#ACT
+DELBUFF 50448
+addbuff  50448
+#ELSEACT
+DELBUFF 50448
+
+#IF
+EQUAL S$霸王之体 激活
+#ACT
+DELBUFF 50449
+addbuff  50449
+#ELSEACT
+DELBUFF 50449
+
+#IF
+EQUAL S$毁灭之力 激活
+#ACT
+addbuff 50119
+#ELSEACT
+DELbuff 50119
+
+;血之狂暴：杀人数大于100人,增加5-5攻魔道 ，杀人数大于1000人,增加10-10攻魔道，杀人数大于5000人,增加15-15攻魔道
+#IF
+EQUAL S$血之狂暴 激活
+#ACT
+DELbuff 50115
+DELbuff 50215
+DELbuff 50117
+
+#IF
+EQUAL S$血之狂暴 激活
+LARGE <$PKPOINT> 5000
+SMALL <$PKPOINT> 10000
+#ACT
+addbuff 50115
+#IF
+EQUAL S$血之狂暴 激活
+LARGE <$PKPOINT> 10000
+SMALL <$PKPOINT> 20000
+#ACT
+addbuff 50215
+#IF
+EQUAL S$血之狂暴 激活
+LARGE <$PKPOINT> 20000
+#ACT
+addbuff 50117
+
+}

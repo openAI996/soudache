@@ -1,0 +1,28 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01023.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=18|outlinecolor=0|outline=1|text=消灭猪皇后即可开启通往石墓尸王殿的通道，>
+<Text|x=45.0|y=95.0|color=255|size=18|outlinecolor=0|outline=1|text=石墓尸王殿隐藏在曲折错落的石墓阵深处。>
+<Text|x=45.0|y=120.0|color=255|size=18|outlinecolor=0|outline=1|text=即使是经验丰富的猎人和猎犬稍不留神也会迷失其中...>
+<RText|x=45.0|y=145.0|color=255|size=18|outlinecolor=0|outline=1|text=凭借卓越的智慧和敏锐的洞察力，找到那个隐藏的神殿！>
+
+<Layout|x=80.0|y=185.0|width=100|height=35|color=*|link=@传送地图>
+<Button|x=85.0|y=186.0|color=251|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=传送|link=@传送地图>
+<Layout|x=305.0|y=185.0|width=100|height=35|color=*|link=@EXIT>
+<Button|x=310.0|y=186.0|color=251|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=我害怕|link=@EXIT>
+
+
+
+[@传送地图]
+#IF
+CheckMapSameMonCount d717 猪皇 = 0 
+#ACT
+MAPMOVE d71601 25 12
+SENDMSG 0 %s成功潜入石墓阵，开始寻找石墓尸王殿的入口！
+BREAK
+#ELSEACT
+SENDMSG 9 进入失败，传送门被猪皇强大的魔力封印了！
+BREAK
+

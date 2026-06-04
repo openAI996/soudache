@@ -1,0 +1,3 @@
+[@main]
+#ACT
+MAPMOVE tkzc02 90 260

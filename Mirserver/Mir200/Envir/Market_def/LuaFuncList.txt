@@ -1,0 +1,9 @@
+addbbnumber
+wqupgrade
+conversion
+delitem
+addbbnumberhp
+kingdotarget
+getbufftime
+baobaomove
+addbbatt

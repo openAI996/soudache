@@ -1,0 +1,39 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=39.0|y=72.0|color=255|size=18|text=常在河边走，哪有不湿鞋。人家江湖漂，哪有不挨刀>
+<Img|x=39.0|y=164.0|img=public/btn_npcfh_03.png|esc=0>
+<Layout|x=54.0|y=147.0|width=200|height=50|link=@瞬间治疗>
+<Text|x=57.0|y=159.0|color=251|size=18|text=瞬间满血|link=@瞬间治疗>
+<Text|x=136.0|y=161.0|size=18|color=249|text=(30000金币一次，CD15秒)>
+<Text|x=39.0|y=97.0|color=255|size=18|text=被砍了没关系，带上大药去找回场子就是了。>
+<Text|x=39.0|y=216.0|color=11003|size=18|text=注意：只能在安全区域内进行治疗>
+
+[@瞬间治疗]
+#IF
+NOT InSafeZone
+#ACT
+SENDMSG 9 <font color='#ff0000'>请在安全区内进行治疗</font>
+BREAK
+
+#If
+NOT LARGE <$UTCNOW8> <$STR(N$治疗时间)>
+#ACT
+SENDMSG 9 <font color='#ff0000'>每次治疗过后需等待15秒后才能继续治疗</font>
+BREAK
+
+#IF
+CHECKMONEY 金币 > 29999
+#ACT
+MOV N$治疗时间 <$UTCNOW8>
+INC N$治疗时间 15
+MONEY 金币 - 30000
+logact 10001 通过[药店]消耗30000金币，剩余金币：<$MONEY(金币)>。
+DETOXIFCATION
+HUMANHP + <$MAXHP> 4
+HUMANMP + <$MAXMP> 4
+SendCenterMsg 250 0 已为您恢复至最佳状态 0
+BREAK
+#ELSEACT
+MESSAGEBOX 治疗失败，金币不足3万！

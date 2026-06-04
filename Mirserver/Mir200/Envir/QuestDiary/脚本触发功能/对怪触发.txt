@@ -1,0 +1,177 @@
+[@攻击怪物触发]
+{
+#IF
+CHECKCURRTARGETRACE = 0
+#ACT
+BREAK
+
+;技能对怪增减伤害段落
+#IF
+EQUAL <$CURRRUSEMAGICID> 12
+#ACT
+MOV N$技能索引 4
+
+#OR
+EQUAL <$CURRRUSEMAGICID> 11
+EQUAL <$CURRRUSEMAGICID> 3023
+EQUAL <$CURRRUSEMAGICID> 45
+#ACT
+MOV N$技能索引 7
+
+
+;刺杀伤害加减
+#IF
+EQUAL N$技能索引 4
+LARGE <$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)> 0
+EQUAL <$cfg_magicjc(<$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)>_4)> 0
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> <$cfg_magicjc(<$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)>_6)>  N$伤害计算
+INC N$总附加伤害 <$str(N$伤害计算)>
+#IF
+EQUAL N$技能索引 4
+LARGE <$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)> 0
+EQUAL <$cfg_magicjc(<$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)>_4)> 1
+LARGE <$DAMAGEVALUE> 0
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> <$cfg_magicjc(<$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)>_6)>  N$伤害计算
+DEC N$总附加伤害 <$str(N$伤害计算)>
+
+;雷电伤害加减
+#IF
+EQUAL N$技能索引 7
+LARGE <$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)> 0
+EQUAL <$cfg_magicjc(<$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)>_7)> 0
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> <$cfg_magicjc(<$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)>_9)>  N$伤害计算
+INC N$总附加伤害 <$str(N$伤害计算)>
+#IF
+EQUAL N$技能索引 7
+LARGE <$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)> 0
+EQUAL <$cfg_magicjc(<$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)>_7)> 1
+LARGE <$DAMAGEVALUE> 0
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> <$cfg_magicjc(<$GetTypeBRow(cfg_magicjc,0,<$CURRRTARGETFULLNAME>)>_9)>  N$伤害计算
+DEC N$总附加伤害 <$str(N$伤害计算)>
+
+;斩月烈火对怪增伤20%
+;#IF
+;EQUAL <$CURRRUSEMAGICID> 56
+;#ACT
+;MOV N$伤害计算 0
+;CalcPer <$DAMAGEVALUE> 20  N$伤害计算
+;INC N$总附加伤害 N$伤害计算
+
+;雷神雷系对怪增伤10%
+;#OR
+;EQUAL <$CURRRUSEMAGICID> 11
+;EQUAL <$CURRRUSEMAGICID> 10
+;EQUAL <$CURRRUSEMAGICID> 3022
+;EQUAL <$CURRRUSEMAGICID> 3039
+;#ACT
+;MOV S$雷系增伤害 生效
+
+;#IF
+;EQUAL U50 4
+;LARGE U66 0
+;EQUAL s$感电技能 生效
+;#ACT
+;MOV N$伤害计算 0
+;CalcPer <$DAMAGEVALUE> 10  N$伤害计算
+;INC N$总附加伤害 N$伤害计算
+
+
+;攻击感电BUFF状态下的敌人伤害增加15%
+#IF
+M.HASBUFF 50015
+checkmonbuff 50015 3
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 10 N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+#IF
+M.HASBUFF 50015
+getmonbuff 50015 3
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 20 N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+
+#IF
+EQUAL <$CURRRTARGETNAME> 上古祖龙神
+SMALL J59 5
+#ACT
+INC J59 5
+INC J65 5
+INC U43 5
+
+;佩饰效果，攻击时有概率麻痹怪物3秒
+#IF
+LARGE <$CUSTABIL[238]> 0
+RANDOMEX 5 100
+#ACT
+M.MAKEPOSION 5 3 
+
+;佩饰效果，攻击时有概率冰冻敌人3秒
+#IF
+LARGE <$CUSTABIL[237]> 0
+RANDOMEX 5 100
+#ACT
+M.MAKEPOSION 12 3
+
+;佩饰效果，攻击时有概率禁锢怪物3秒
+#IF
+LARGE <$CUSTABIL[236]> 0
+RANDOMEX 5 100
+#ACT
+M.PLAYEFFECT 8123 0 0 4 0
+RangeHarm <$X> <$Y> 0 0 10 3000 0 0 8123
+
+#IF
+CheckMagicName 刺杀强化
+LARGE N$真实伤害值 0
+EQUAL <$CURRRUSEMAGICID> 12
+#ACT
+m.HUMANHP - <$STR(N$真实伤害值)>
+
+
+#IF
+EQUAL <$CURRRUSEMAGICID> 3010
+#act
+MOV N$寒冰掌伤害计算 0
+FORMULATION (<$ATTACKMONSTER_MAXHPEX>/10) N$寒冰掌伤害计算
+
+#IF
+EQUAL <$CURRRUSEMAGICID> 3010
+large N$寒冰掌伤害计算 1999
+#act
+m.HUMANHP - 2000
+MOV N$寒冰掌伤害计算 0
+
+#IF
+EQUAL <$CURRRUSEMAGICID> 3010
+SMALL N$寒冰掌伤害计算 2000
+LARGE N$寒冰掌伤害计算 0
+#act
+m.HUMANHP - <$STR(N$寒冰掌伤害计算)>
+
+#IF
+M.hasbuff 50013
+#ACT
+MOV N$伤害计算 0
+CalcPer <$DAMAGEVALUE> 10  N$伤害计算
+INC N$总附加伤害 N$伤害计算
+
+#IF
+EQUAL S$恶魔血脉 激活
+#ACT
+MOV N$恶魔血脉  0 
+CalcPer <$MAXHP> 1 N$恶魔血脉计算
+m.HUMANHP - <$STR(N$恶魔血脉计算)>
+
+}

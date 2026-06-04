@@ -1,0 +1,394 @@
+[@MAIN]
+#IF
+CHECKUSEITEM 14
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=0|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01063.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=我或许有你想要的东西，你说的是强力的装备？>
+<Text|x=45.0|y=95.0|color=255|size=18|text=确实有，但是需要一些“好处”。>
+<Text|x=45.0|y=120.0|color=250|size=18|text=(在这里可购买和兑换稀有道具)>
+<Layout|x=30.0|y=160.0|width=150|height=40|color=*|link=@货架界面>
+<Img|x=50.0|y=170.0|img=public/00023.png|esc=0>
+<Text|x=65.0|y=165.0|color=251|size=18|text=神秘货架|link=@货架界面>
+<Layout|x=290.0|y=160.0|width=150|height=40|color=*|link=@加载选择数据#道具ID=*>
+<Img|x=310.0|y=170.0|img=public/00023.png|esc=0>
+<Text|x=325.0|y=165.0|color=251|size=18|text=佩饰回收|link=@加载选择数据#道具ID=*>
+#ELSESAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=0|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01063.png|esc=0>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=11073|outline=1|size=17|text=我或许有你想要的东西，你说的是强力的装备？>
+<Text|x=45.0|y=95.0|size=18|color=11073|text=确实有，但是需要一些“好处”。>
+<Text|x=45.0|y=120.0|size=18|color=11043|text=(请佩戴佩饰后再来找我吧)>
+
+
+[@货架界面]
+<Img|x=0.0|y=20.0|height=160|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=0|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=493.0|y=6.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01063.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=我这里可全都是价值连城的宝贝！>
+<Layout|x=60.0|y=130.0|width=80|height=40|rotate=0|link=@MAIN>
+<Text|x=70.0|y=135.0|color=251|size=18|text=返回|link=@MAIN>
+<Img|x=45.0|y=140.0|img=public/00024.png|esc=0>
+<Img|id=50|x=18.0|y=179.0|img=public/buybg.png|esc=0|link=@空>
+<Img|id=51|x=27.0|y=191.0|img=public/bg_npcsm_01.png>
+<Img|id=52|x=27.0|y=254.0|img=public/bg_npcsm_01.png>
+<Img|id=53|x=27.0|y=317.0|img=public/bg_npcsm_01.png>
+<Img|id=54|x=27.0|y=380.0|img=public/bg_npcsm_01.png>
+<Img|id=55|x=27.0|y=443.0|img=public/bg_npcsm_01.png>
+<ItemShow|x=178.0|y=502.0|width=70|height=70|itemid=2|itemcount=1|bgtype=0|scale=0.6|showtips=1>
+<ItemShow|x=16.0|y=502.0|width=70|height=70|itemid=1|itemcount=1|bgtype=0|scale=0.6|showtips=1>
+<Text|x=67.0|y=524.0|color=255|size=16|text=$STM(ITEMCOUNT_金币)>
+<Text|x=224.0|y=525.0|color=255|size=16|text=$STM(ITEMCOUNT_元宝)>
+<Layout|id=57|y=565|width=130|height=50|link=@货架界面>
+<Layout|id=58|x=200|y=565|width=130|height=50|link=@货架界面2>
+<Button|id=59|x=92.0|y=570.0|pimg=public/btn_fanye_01_1.png|nimg=public/btn_fanye_01.png|link=@货架界面>
+<Button|id=62|x=225.0|y=570.0|pimg=public/btn_fanye_02_1.png|nimg=public/btn_fanye_02.png|link=@货架界面2>
+<Img|id=60|x=144.0|y=570.0|img=public/1900000676.png>
+<Text|id=61|x=162.0|y=575.0|size=16|text=1／2>
+
+<ItemShow|id=63|x=25|y=198|itemid=10436|showtips=1>
+<Text|id=64|text=3级玉胚|x=100|y=195|size=18|color=1005>
+<Text|id=65|text=元宝：500|x=100|y=224|size=18>
+<Layout|id=66|x=255|y=200|width=80|height=50|link=@购买物品#购买道具=3级玉胚#购买价格=500>
+<Button|id=67|x=255|y=210|width=80|height=35|size=16|nimg=public/buyan.png|text=购买|link=@购买物品#购买道具=3级玉胚#购买价格=500>
+
+<ItemShow|id=68|x=25|y=262|itemid=10437|showtips=1>
+<Text|id=69|text=4级玉胚|x=100|y=255|size=18|color=1005>
+<Text|id=70|text=元宝：1200|x=100|y=287|size=18>
+<Layout|id=71|x=255|y=264|width=80|height=50|link=@购买物品#购买道具=4级玉胚#购买价格=1200>
+<Button|id=72|x=255|y=274|width=80|height=35|size=16|nimg=public/buyan.png|text=购买|link=@购买物品#购买道具=4级玉胚#购买价格=1200>
+
+<ItemShow|id=73|x=25|y=324|itemid=10441|showtips=1>
+<Text|id=74|text=蕴灵符|x=100|y=319|size=18|color=1005>
+<Text|id=75|text=元宝：25000|x=100|y=350|size=18>
+<Layout|id=76|x=255|y=327|width=80|height=50|link=@购买物品#购买道具=蕴灵符#购买价格=25000>
+<Button|id=77|x=255|y=337|width=80|height=35|size=16|nimg=public/buyan.png|text=购买|link=@购买物品#购买道具=蕴灵符#购买价格=25000>
+
+<ItemShow|id=78|x=25|y=386|itemid=10439|showtips=1>
+<Text|id=79|text=中级升华符|x=100|y=383|size=18|color=1005>
+<Text|id=80|text=元宝：500|x=100|y=413|size=18>
+<Layout|id=81|x=255|y=389|width=80|height=50|link=@购买物品#购买道具=中级升华符#购买价格=500>
+<Button|id=82|x=255|y=399|width=80|height=35|size=16|nimg=public/buyan.png|text=购买|link=@购买物品#购买道具=中级升华符#购买价格=500>
+
+<ItemShow|id=83|x=25|y=450|itemid=10440|showtips=1>
+<Text|id=84|text=高级升华符|x=100|y=444|size=18|color=1005>
+<Text|id=85|text=元宝：1000|x=100|y=476|size=18>
+<Layout|id=86|x=255|y=453|width=80|height=50|link=@购买物品#购买道具=高级升华符#购买价格=1000>
+<Button|id=87|x=255|y=463|width=80|height=35|size=16|nimg=public/buyan.png|text=购买|link=@购买物品#购买道具=高级升华符#购买价格=1000>
+
+
+[@货架界面2]
+<Img|x=0.0|y=20.0|height=160|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|loadDelay=1|scale9b=50|img=public/bg_npc_01.png|reset=1|scale9l=50>
+<Layout|x=493.0|y=6.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01063.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=17|text=我这里可全都是价值连城的宝贝！>
+<Layout|x=60.0|y=130.0|width=80|height=40|rotate=0|link=@MAIN>
+<Text|x=70.0|y=135.0|color=251|size=18|text=返回|link=@MAIN>
+<Img|x=45.0|y=140.0|img=public/00024.png|esc=0>
+<Img|id=50|x=18.0|y=179.0|img=public/buybg.png|esc=0|link=@空>
+<Img|id=51|x=27.0|y=191.0|img=public/bg_npcsm_01.png>
+<Img|id=52|x=27.0|y=254.0|img=public/bg_npcsm_01.png>
+<Img|id=53|x=27.0|y=317.0|img=public/bg_npcsm_01.png>
+<Img|id=54|x=27.0|y=380.0|img=public/bg_npcsm_01.png>
+<Img|id=55|x=27.0|y=443.0|img=public/bg_npcsm_01.png>
+<ItemShow|x=178.0|y=502.0|width=70|height=70|itemid=2|itemcount=1|bgtype=0|scale=0.6|showtips=1>
+<ItemShow|x=16.0|y=502.0|width=70|height=70|itemid=1|itemcount=1|bgtype=0|scale=0.6|showtips=1>
+<Text|x=67.0|y=524.0|color=255|size=16|text=$STM(ITEMCOUNT_金币)>
+<Text|x=224.0|y=525.0|color=255|size=16|text=$STM(ITEMCOUNT_元宝)>
+<Layout|id=57|y=565|width=130|height=50|link=@货架界面>
+<Layout|id=58|x=200|y=565|width=130|height=50|link=@货架界面2>
+<Button|id=59|x=92.0|y=570.0|pimg=public/btn_fanye_01_1.png|nimg=public/btn_fanye_01.png|link=@货架界面>
+<Button|id=62|x=225.0|y=570.0|pimg=public/btn_fanye_02_1.png|nimg=public/btn_fanye_02.png|link=@货架界面2>
+<Img|id=60|x=144.0|y=570.0|img=public/1900000676.png>
+<Text|id=61|x=162.0|y=575.0|size=16|text=2／2>
+
+<ItemShow|id=63|x=25|y=198|itemid=10442|showtips=1>
+<Text|id=64|text=清洗符|x=100|y=195|size=18|color=1005>
+<Text|id=65|text=元宝：2000|x=100|y=224|size=18>
+<Layout|id=66|x=255|y=200|width=80|height=50|link=@购买物品#购买道具=清洗符#购买价格=2000>
+<Button|id=67|x=255|y=210|width=80|height=35|size=16|nimg=public/buyan.png|text=购买|link=@购买物品#购买道具=清洗符#购买价格=2000>
+
+<ItemShow|id=68|x=25|y=262|itemid=10615|showtips=1>
+<RText|id=69|text=神秘之水<(每日限购1个)/FCOLOR=249>|x=100|y=255|size=18|color=1005>
+<Text|id=70|text=金币：500万|x=100|y=287|size=18>
+<Layout|id=71|x=255|y=264|width=80|height=50|link=@购买物品2#购买道具=神秘之水#购买价格=5000000>
+<Button|id=72|x=255|y=274|width=80|height=35|size=16|nimg=public/buyan.png|text=购买|link=@购买物品2#购买物品=神秘之水#购买价格=5000000>
+
+
+
+[@购买物品2]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 购买失败，背包空格数量不足5格！
+BREAK
+
+#IF
+large j90  0
+#ACT
+SENDMSG 9 购买失败，今日已达到购买次数上限！
+BREAK
+
+#IF
+CHECKMONEY 金币 > 4999999
+#ACT
+MOV J90 100
+MONEY 金币 - 5000000
+GiveStateItem 神秘之水 1 1 1 0 0 1 1 1 1
+SENDMSG 6 购买成功，你消耗500万金币获得：神秘之水*1！
+BREAK
+#ELSEACT
+SENDMSG 9 购买失败，金币数量不足500万！
+BREAK
+
+
+[@购买物品]
+#IF
+NOT CHECKBAGSIZE 5 
+#ACT
+SENDMSG 9 购买失败，背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKGAMEGOLD ? <$STR(S$购买价格)>
+#ACT
+GAMEGOLD - <$STR(S$购买价格)>
+logact 10002 通过[神秘商人]消耗<$STR(S$购买价格)>元宝，剩余元宝：<$GAMEGOLD>。
+GIVE <$STR(S$购买道具)> 1
+SENDMSG 6 购买成功，你消耗<$STR(S$购买价格)>获得：<$STR(S$购买道具)>*1！
+BREAK
+#ELSEACT
+SENDMSG 9 购买失败，元宝数量不足<$STR(S$购买价格)>！
+BREAK
+
+[@回收界面]
+<Img|x=0.0|y=20.0|height=200|img=public/bg_npc_01.png|move=0|loadDelay=0|scale9t=20|reset=1|show=0|scale9r=0|scale9l=0|scale9b=0|bg=1|esc=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Layout|x=455.0|y=224.0|width=40|height=40|color=*|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01063.png|esc=0>
+<Text|x=45.0|y=70.0|color=11008|size=17|outlinecolor=0|outline=1|text=我喜欢那些特殊的佩饰，如果你有多余的佩饰可以交给我>
+<Text|x=45.0|y=95.0|color=11008|size=17|outlinecolor=0|outline=1|text=我愿意用同级别的玉胚和你交换！>
+<Img|x=60.0|y=137.0|img=public/02128.png|esc=0>
+<Img|x=20.0|y=218.0|width=480|height=270|scale9r=50|scale9l=50|scale9b=50|img=private/psllz/021604.png|scale9t=50|esc=0>
+<Text|x=60.0|y=232.0|color=11058|size=18|text=请选择下方背包内多余的佩饰>
+<ListView|children={2}|x=35|y=263|width=450|height=190|default=8|margin=1|direction=1|bounce=0|reload=0>
+<BAGITEMS|id=2|x=2.0|y=0.0|exclude=<$STR(S$道具ID)>|select=<$STR(S$道具ID)>|row=30|count=180|selecttype=1|condition=65#*|link=@选择数据>
+<$STR(S$选择显示)>
+
+
+[@加载选择数据]
+#IF
+EQUAL S$道具ID *
+#ACT
+MOV S$道具ID
+
+#IF
+EQUAL S$道具ID
+#ACT
+MOV S$选择显示
+MOV S$道具名称
+
+
+
+
+#IF
+NOT EQUAL S$道具ID
+#ACT
+MOV S$选择显示
+INC S$选择显示 <DBItemShow|x=55|y=133|makeindex=<$STR(S$道具ID)>|dblink=@加载选择数据#道具ID=*>
+GetItemNameByMakeIndex <$STR(S$道具ID)> S$道具名称
+
+#OR
+EQUAL S$道具名称 源泉·天魔琴
+EQUAL S$道具名称 怒刃·撼地锤
+EQUAL S$道具名称 玄奥·玉如意
+EQUAL S$道具名称 阴阳·无尘佛
+EQUAL S$道具名称 锋刃·碧血钗
+EQUAL S$道具名称 破法·鬼元盾
+#ACT
+INC S$选择显示 <Text|x=135.0|y=140.0|color=11073|size=18|text=你这件物品颇有些价值，可以拆解>
+INC S$选择显示 <Text|x=135.0|y=165.0|color=11073|size=18|text=得到1级玉胚*1>
+INC S$选择显示 <Button|x=410.0|y=165.0|color=11008|size=18|nimg=public/buyan.png|text=确定拆解|link=@拆解佩饰>
+
+#OR
+EQUAL S$道具名称 源泉·混天绫
+EQUAL S$道具名称 怒刃·弑神枪
+EQUAL S$道具名称 玄奥·轮回盘
+EQUAL S$道具名称 阴阳·和氏璧
+EQUAL S$道具名称 锋刃·雷音鼓
+EQUAL S$道具名称 破法·燃魂灯
+#ACT
+INC S$选择显示 <Text|x=135.0|y=140.0|color=11073|size=18|text=你这件物品颇有些价值，可以拆解>
+INC S$选择显示 <Text|x=135.0|y=165.0|color=11073|size=18|text=得到2级玉胚*1>
+INC S$选择显示 <Button|x=410.0|y=165.0|color=11008|size=18|nimg=public/buyan.png|text=确定拆解|link=@拆解佩饰>
+
+#OR
+EQUAL S$道具名称 源泉·七宝莲
+EQUAL S$道具名称 怒刃·番天印
+EQUAL S$道具名称 玄奥·伏羲琴
+EQUAL S$道具名称 阴阳·判官笔
+EQUAL S$道具名称 锋刃·八卦炉
+EQUAL S$道具名称 破法·混元伞
+#ACT
+INC S$选择显示 <Text|x=135.0|y=140.0|color=11073|size=18|text=你这件物品颇有些价值，可以拆解>
+INC S$选择显示 <Text|x=135.0|y=165.0|color=11073|size=18|text=得到3级玉胚*1>
+INC S$选择显示 <Button|x=410.0|y=165.0|color=11008|size=18|nimg=public/buyan.png|text=确定拆解|link=@拆解佩饰>
+
+#OR
+EQUAL S$道具名称 源泉·补天石
+EQUAL S$道具名称 怒刃·崆峒印
+EQUAL S$道具名称 玄奥·混沌莲
+EQUAL S$道具名称 阴阳·宝莲灯
+EQUAL S$道具名称 锋刃·东皇钟
+EQUAL S$道具名称 破法·社稷图
+#ACT
+INC S$选择显示 <Text|x=135.0|y=140.0|color=11073|size=18|text=你这件物品颇有些价值，可以拆解>
+INC S$选择显示 <Text|x=135.0|y=165.0|color=11073|size=18|text=得到4级玉胚*1>
+INC S$选择显示 <Button|x=410.0|y=150.0|color=11008|size=18|nimg=public/buyan.png|text=确定拆解|link=@拆解佩饰>
+
+
+#IF
+#ACT
+GOTO @回收界面
+BREAK
+
+[@选择数据]
+#IF
+#ACT
+GetItemNameByMakeIndex <$STR(S0)> S$道具名称
+
+#OR
+EQUAL S$道具名称 源泉·天魔琴
+EQUAL S$道具名称 怒刃·撼地锤
+EQUAL S$道具名称 玄奥·玉如意
+EQUAL S$道具名称 阴阳·无尘佛
+EQUAL S$道具名称 锋刃·碧血钗
+EQUAL S$道具名称 破法·鬼元盾
+EQUAL S$道具名称 源泉·混天绫
+EQUAL S$道具名称 怒刃·弑神枪
+EQUAL S$道具名称 玄奥·轮回盘
+EQUAL S$道具名称 阴阳·和氏璧
+EQUAL S$道具名称 锋刃·雷音鼓
+EQUAL S$道具名称 破法·燃魂灯
+EQUAL S$道具名称 源泉·七宝莲
+EQUAL S$道具名称 怒刃·番天印
+EQUAL S$道具名称 玄奥·伏羲琴
+EQUAL S$道具名称 阴阳·判官笔
+EQUAL S$道具名称 锋刃·八卦炉
+EQUAL S$道具名称 破法·混元伞
+EQUAL S$道具名称 源泉·补天石
+EQUAL S$道具名称 怒刃·崆峒印
+EQUAL S$道具名称 玄奥·混沌莲
+EQUAL S$道具名称 阴阳·宝莲灯
+EQUAL S$道具名称 锋刃·东皇钟
+EQUAL S$道具名称 破法·社稷图
+#ACT
+MOV S$道具ID <$STR(S0)>
+GOTO @加载选择数据
+BREAK
+#ELSEACT
+MOV S0
+MOV S$道具ID
+MOV S$道具名称
+SENDMSG 9 我不喜欢你选择的这件物品！
+GOTO @加载选择数据
+BREAK
+
+[@拆解佩饰]
+#IF
+EQUAL S$道具ID
+#ACT
+SENDMSG 9 请选择你要拆解的装备！
+MOV S0
+MOV S$道具ID
+GOTO @加载选择数据
+BREAK
+
+#IF
+NOT CheckBagItem <$STR(S$道具ID)>
+#ACT
+SENDMSG 9 我没有找到需要拆解的道具啊！
+MOV S0
+MOV S$道具ID
+GOTO @加载选择数据
+BREAK
+
+#IF
+#ACT
+GetItemNameByMakeIndex <$STR(S$道具ID)> S$道具名称
+
+#OR
+EQUAL S$道具名称 源泉·天魔琴
+EQUAL S$道具名称 怒刃·撼地锤
+EQUAL S$道具名称 玄奥·玉如意
+EQUAL S$道具名称 阴阳·无尘佛
+EQUAL S$道具名称 锋刃·碧血钗
+EQUAL S$道具名称 破法·鬼元盾
+#ACT
+DelItemByMakeIndex <$STR(S$道具ID)>
+GiveStateItem 1级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 你成功将<$STR(S$道具名称)>拆解成一枚1级玉胚！
+MOV S0
+MOV S$道具ID
+MOV S$道具名称
+GOTO @加载选择数据
+BREAK
+
+#OR
+EQUAL S$道具名称 源泉·混天绫
+EQUAL S$道具名称 怒刃·弑神枪
+EQUAL S$道具名称 玄奥·轮回盘
+EQUAL S$道具名称 阴阳·和氏璧
+EQUAL S$道具名称 锋刃·雷音鼓
+EQUAL S$道具名称 破法·燃魂灯
+#ACT
+DelItemByMakeIndex <$STR(S$道具ID)>
+GiveStateItem 2级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 你成功将<$STR(S$道具名称)>拆解成一枚2级玉胚！
+MOV S0
+MOV S$道具ID
+MOV S$道具名称
+GOTO @加载选择数据
+BREAK
+
+#OR
+EQUAL S$道具名称 源泉·七宝莲
+EQUAL S$道具名称 怒刃·番天印
+EQUAL S$道具名称 玄奥·伏羲琴
+EQUAL S$道具名称 阴阳·判官笔
+EQUAL S$道具名称 锋刃·八卦炉
+EQUAL S$道具名称 破法·混元伞
+#ACT
+DelItemByMakeIndex <$STR(S$道具ID)>
+GiveStateItem 3级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 你成功将<$STR(S$道具名称)>拆解成一枚3级玉胚！
+MOV S0
+MOV S$道具ID
+MOV S$道具名称
+GOTO @加载选择数据
+BREAK
+
+#OR
+EQUAL S$道具名称 源泉·补天石
+EQUAL S$道具名称 怒刃·崆峒印
+EQUAL S$道具名称 玄奥·混沌莲
+EQUAL S$道具名称 阴阳·宝莲灯
+EQUAL S$道具名称 锋刃·东皇钟
+EQUAL S$道具名称 破法·社稷图
+#ACT
+DelItemByMakeIndex <$STR(S$道具ID)>
+GiveStateItem 4级玉胚 1 1 1 0 0 1 1 1 1
+SENDMSG 6 你成功将<$STR(S$道具名称)>拆解成一枚4级玉胚！
+MOV S0
+MOV S$道具ID
+MOV S$道具名称
+GOTO @加载选择数据
+BREAK

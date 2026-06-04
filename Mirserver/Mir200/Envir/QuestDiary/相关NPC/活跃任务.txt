@@ -1,0 +1,673 @@
+[@每日活跃]
+{
+
+;J53	每日女儿红
+;J54	地牢一层西2杀1只怪物
+;J55	祖玛寺庙3层杀10只怪物
+;J56	押镖一次
+;J57	制作食材
+;J58	龙珠许愿
+;J59	祖龙神活动
+;J60	使用金币卷
+;J61	使用上古卷轴
+;J62	夺宝奇兵
+;J63	隐藏地图
+;J64	天外陨铁
+;J65	每日活跃度
+;J66	30活跃奖励
+;J67	50活跃奖励
+;J68	70活跃奖励
+;J69	80活跃奖励
+;J70	105活跃奖励
+;U43	累计活跃度
+
+
+
+;j65
+;u43
+
+#IF
+#ACT
+MOV S$活跃内容
+MOV N$进度条宽 0
+
+INC S$活跃内容 <Layout|id=2|children={201,202,203,204,205,206}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=201|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=202|x=5.0|y=8.0|color=11007|size=16|text=药店兑换女儿红>
+INC S$活跃内容 <Text|id=203|x=215.0|y=8.0|color=11073|size=16|text=4>
+INC S$活跃内容 <Text|id=204|x=345.0|y=8.0|color=11073|size=16|text=20>
+INC S$活跃内容 <Text|id=205|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J53)>>
+
+INC S$活跃内容 <Layout|id=3|children={301,302,303,304,305,306}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=301|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=302|x=5.0|y=8.0|color=11007|size=16|text=使用一块声望令牌>
+INC S$活跃内容 <Text|id=303|x=215.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=304|x=345.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=305|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J54)>>
+
+INC S$活跃内容 <Layout|id=4|children={401,402,403,404,405,406}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=401|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=402|x=5.0|y=8.0|color=11007|size=16|text=使用一张经验卷>
+INC S$活跃内容 <Text|id=403|x=215.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=404|x=345.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=405|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J55)>>
+
+INC S$活跃内容 <Layout|id=5|children={501,502,503,504,505,506}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=501|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=502|x=5.0|y=8.0|color=11007|size=16|text=押送一次镖车>
+INC S$活跃内容 <Text|id=503|x=215.0|y=8.0|color=11073|size=16|text=10>
+INC S$活跃内容 <Text|id=504|x=345.0|y=8.0|color=11073|size=16|text=10>
+INC S$活跃内容 <Text|id=505|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J56)>>
+
+INC S$活跃内容 <Layout|id=6|children={601,602,603,604,605,606}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=601|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=602|x=5.0|y=8.0|color=11007|size=16|text=制作一次美食>
+INC S$活跃内容 <Text|id=603|x=215.0|y=8.0|color=11073|size=16|text=10>
+INC S$活跃内容 <Text|id=604|x=345.0|y=8.0|color=11073|size=16|text=10>
+INC S$活跃内容 <Text|id=605|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J57)>>
+
+INC S$活跃内容 <Layout|id=7|children={701,702,703,704,705,706}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=701|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=702|x=5.0|y=8.0|color=11007|size=16|text=使用龙珠许愿>
+INC S$活跃内容 <Text|id=703|x=215.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=704|x=345.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=705|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J58)>>
+
+INC S$活跃内容 <Layout|id=8|children={801,802,803,804,805,806}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=801|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=802|x=5.0|y=8.0|color=11007|size=16|text=参与祖龙神活动>
+INC S$活跃内容 <Text|id=803|x=215.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=804|x=345.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=805|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J59)>>
+
+INC S$活跃内容 <Layout|id=9|children={901,902,903,904,905,906}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=901|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=902|x=5.0|y=8.0|color=11007|size=16|text=使用一次金币卷>
+INC S$活跃内容 <Text|id=903|x=215.0|y=8.0|color=11073|size=16|text=10>
+INC S$活跃内容 <Text|id=904|x=345.0|y=8.0|color=11073|size=16|text=10>
+INC S$活跃内容 <Text|id=905|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J60)>>
+
+INC S$活跃内容 <Layout|id=10|children={1001,1002,1003,1004,1005,1006}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=1001|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=1002|x=5.0|y=8.0|color=11007|size=16|text=使用一次上古卷轴>
+INC S$活跃内容 <Text|id=1003|x=215.0|y=8.0|color=11073|size=16|text=25>
+INC S$活跃内容 <Text|id=1004|x=345.0|y=8.0|color=11073|size=16|text=25>
+INC S$活跃内容 <Text|id=1005|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J61)>>
+
+INC S$活跃内容 <Layout|id=11|children={1101,1102,1103,1104,1105,1106}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=1101|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=1102|x=5.0|y=8.0|color=11007|size=16|text=参与夺宝奇兵>
+INC S$活跃内容 <Text|id=1103|x=215.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=1104|x=345.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=1105|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J62)>>
+
+INC S$活跃内容 <Layout|id=12|children={1201,1202,1203,1204,1205,1206}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=1201|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=1202|x=5.0|y=8.0|color=11007|size=16|text=探访一次隐藏地图>
+INC S$活跃内容 <Text|id=1203|x=215.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=1204|x=345.0|y=8.0|color=11073|size=16|text=5>
+INC S$活跃内容 <Text|id=1205|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J63)>>
+
+INC S$活跃内容 <Layout|id=13|children={1301,1302,1303,1304,1305,1306}|x=0.0|y=0.0|width=687|height=45|color=*>
+INC S$活跃内容 <Img|id=1301|x=0.0|y=0.0|width=690|scale9b=0|scale9r=50|scale9t=0|img=public/1900015004.png|scale9l=50|esc=0>
+INC S$活跃内容 <Text|id=1302|x=5.0|y=8.0|color=11007|size=16|text=挑战玉胚秘境>
+INC S$活跃内容 <Text|id=1303|x=215.0|y=8.0|color=11073|size=16|text=10>
+INC S$活跃内容 <Text|id=1304|x=345.0|y=8.0|color=11073|size=16|text=10>
+INC S$活跃内容 <Text|id=1305|x=490.0|y=8.0|color=11003|size=16|text=<$STR(J64)>>
+
+#IF
+LARGE J53 19
+#ACT
+INC S$活跃内容 <Text|id=206|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J53 20
+#ACT
+INC S$活跃内容 <Text|id=206|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J54 4
+#ACT
+INC S$活跃内容 <Text|id=306|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J54 5
+#act
+INC S$活跃内容 <Text|id=306|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J55 4
+#ACT
+INC S$活跃内容 <Text|id=406|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J55 5
+#act
+INC S$活跃内容 <Text|id=406|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J56 9
+#ACT
+INC S$活跃内容 <Text|id=506|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J56 10
+#act
+INC S$活跃内容 <Text|id=506|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J57 9
+#ACT
+INC S$活跃内容 <Text|id=606|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J57 10
+#act
+INC S$活跃内容 <Text|id=606|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J58 4
+#ACT
+INC S$活跃内容 <Text|id=706|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J58 5
+#act
+INC S$活跃内容 <Text|id=706|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J59 4
+#ACT
+INC S$活跃内容 <Text|id=806|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J59 5
+#act
+INC S$活跃内容 <Text|id=806|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J60 9
+#ACT
+INC S$活跃内容 <Text|id=906|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J60 10
+#act
+INC S$活跃内容 <Text|id=906|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J61 24
+#ACT
+INC S$活跃内容 <Text|id=1006|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J61 25
+#act
+INC S$活跃内容 <Text|id=1006|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J62 4
+#ACT
+INC S$活跃内容 <Text|id=1106|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J62 5
+#act
+INC S$活跃内容 <Text|id=1106|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J63 4
+#ACT
+INC S$活跃内容 <Text|id=1206|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J63 5
+#act
+INC S$活跃内容 <Text|id=1206|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+#IF
+LARGE J64 4
+#ACT
+INC S$活跃内容 <Text|id=1306|x=600.0|y=7.0|color=11003|size=18|text=已完成>
+#IF
+small J64 5
+#act
+INC S$活跃内容 <Text|id=1306|x=600.0|y=7.0|color=11023|size=18|text=未完成> 
+
+#IF
+EQUAL J65 0
+#ACT
+MOV N$文本坐标X 88
+
+#IF
+large J65 0
+SMALL J65 100
+#ACT
+MOV N$文本坐标X 80
+
+#IF
+large J65 99
+#ACT
+MOV N$文本坐标X  70
+
+#IF
+SMALL J65 30
+SMALL J66 1
+#ACT
+INC S$活跃内容 <Text|x=200.0|y=133.0|color=11023|size=16|text=未达成>
+#IF
+LARGE J65 29
+SMALL J66 1
+#ACT
+INC S$活跃内容 <Text|x=200.0|y=133.0|color=251|size=16|outline=1|outlinecolor=0|text=可领取|link=@30活跃奖励>
+#IF
+LARGE J65 29
+LARGE J66 0
+#ACT
+INC S$活跃内容 <Text|x=200.0|y=133.0|color=249|size=16|outline=1|outlinecolor=0|text=已领取>
+
+#IF
+SMALL J65 50
+SMALL J67 1
+#ACT
+INC S$活跃内容 <Text|x=312.0|y=133.0|color=11023|size=16|text=未达成>
+#IF
+LARGE J65 49
+SMALL J67 1
+#ACT
+INC S$活跃内容 <Text|x=312.0|y=133.0|color=251|size=16|outline=1|outlinecolor=0|text=可领取|link=@50活跃奖励>
+#IF
+LARGE J65 49
+LARGE J67 0
+#ACT
+INC S$活跃内容 <Text|x=312.0|y=133.0|color=249|size=16|outline=1|outlinecolor=0|text=已领取>
+
+#IF
+SMALL J65 70
+SMALL J68 1
+#ACT
+INC S$活跃内容 <Text|x=425.0|y=133.0|color=11023|size=16|text=未达成>
+#IF
+LARGE J65 69
+SMALL J68 1
+#ACT
+INC S$活跃内容 <Text|x=425.0|y=133.0|color=251|size=16|outline=1|outlinecolor=0|text=可领取|link=@70活跃奖励>
+#IF
+LARGE J65 69
+LARGE J68 0
+#ACT
+INC S$活跃内容 <Text|x=425.0|y=133.0|color=249|size=16|outline=1|outlinecolor=0|text=已领取>
+
+#IF
+SMALL J65 80
+SMALL J69 1
+#ACT
+INC S$活跃内容 <Text|x=535.0|y=133.0|color=11023|size=16|text=未达成>
+#IF
+LARGE J65 79
+SMALL J69 1
+#ACT
+INC S$活跃内容 <Text|x=535.0|y=133.0|color=251|size=16|outline=1|outlinecolor=0|text=可领取|link=@80活跃奖励>
+#IF
+LARGE J65 79
+LARGE J69 0
+#ACT
+INC S$活跃内容 <Text|x=535.0|y=133.0|color=249|size=16|outline=1|outlinecolor=0|text=已领取>
+
+#IF
+SMALL J65 105
+SMALL J70 1
+#ACT
+INC S$活跃内容 <Text|x=650.0|y=133.0|color=11023|size=16|text=未达成>
+#IF
+LARGE J65 104
+SMALL J70 1
+#ACT
+INC S$活跃内容 <Text|x=650.0|y=133.0|color=251|size=16|outline=1|outlinecolor=0|text=可领取|link=@105活跃奖励>
+#IF
+LARGE J65 104
+LARGE J70 0
+#ACT
+INC S$活跃内容 <Text|x=650.0|y=133.0|color=249|size=16|outline=1|outlinecolor=0|text=已领取>
+
+
+#IF
+SMALL J65 30
+#ACT
+MOV N$进度条宽 300
+
+#IF
+LARGE J65 29
+SMALL J65 50
+#ACT
+MOV N$进度条宽 410
+
+#IF
+LARGE J65 49
+SMALL J65 70
+#ACT
+MOV N$进度条宽 510
+
+#IF
+LARGE J65 69
+SMALL J65 80
+#ACT
+MOV N$进度条宽 550
+
+#IF
+LARGE J65 79
+SMALL J65 100
+#ACT
+MOV N$进度条宽 580
+
+#IF
+LARGE J65 99
+#ACT
+MOV N$进度条宽 580
+
+
+#IF
+Equal <$CLIENTFLAG> 1
+#ACT
+MOV S$宝箱介绍
+INC S$宝箱介绍 <Img|x=200.0|y=85.0|img=private/hyd/hybx101.png|esc=0|tips=达成可获得女儿红*1>
+INC S$宝箱介绍 <Img|x=309.0|y=85.0|img=private/hyd/hybx201.png|esc=0|tips=达成可获得金币*15万>
+INC S$宝箱介绍 <Img|x=425.0|y=85.0|img=private/hyd/hybx301.png|esc=0|tips=达成可获得10万经验卷*5>
+INC S$宝箱介绍 <Img|x=535.0|y=85.0|img=private/hyd/hybx401.png|esc=0|tips=达成可获得精修卷轴*3>
+INC S$宝箱介绍 <Img|x=650.0|y=85.0|img=private/hyd/hybx501.png|esc=0|tips=达成可获得星石碎片*1>
+
+#IF
+Equal <$CLIENTFLAG> 2
+#ACT
+MOV S$宝箱介绍
+INC S$宝箱介绍 <Button|x=200.0|y=85.0|nimg=private/hyd/hybx101.png|esc=0|tips=达成可获得女儿红*1>
+INC S$宝箱介绍 <Button|x=309.0|y=85.0|nimg=private/hyd/hybx201.png|esc=0|tips=达成可获得金币*15万>
+INC S$宝箱介绍 <Button|x=425.0|y=85.0|nimg=private/hyd/hybx301.png|esc=0|tips=达成可获得10万经验卷*5>
+INC S$宝箱介绍 <Button|x=535.0|y=85.0|nimg=private/hyd/hybx401.png|esc=0|tips=达成可获得精修卷轴*3>
+INC S$宝箱介绍 <Button|x=650.0|y=85.0|nimg=private/hyd/hybx501.png|esc=0|tips=达成可获得星石碎片*1>
+
+#IF
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=0.0|width=770|height=600|reset=1|scale9r=100|scale9t=100|bg=1|scale9b=100|move=0|scale9l=100|loadDelay=0|esc=1|img=private/hyd/hydbg.png|show=4>
+<Layout|x=698.0|y=-13.0|width=80|height=80|link=@exit>
+<Img|x=326.0|y=7.0|img=private/biaoti/01071.png|esc=0>
+<Button|x=721.0|y=18.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=25.0|y=163.0|width=718|scale9r=10|scale9l=10|esc=0|img=private/hyd/0011.png|scale9b=10|scale9t=10>
+<Img|x=33.0|y=70.0|width=705|height=95|esc=0|img=private/hyd/010.png>
+<PercentImg|x=135.0|y=108.0|width=<$STR(N$进度条宽)>|maxValue=110|minValue=<$STR(J65)>|direction=0|img=public/bg_szjm_03_2.png|esc=0>
+<TextAtlas|x=<$STR(N$文本坐标X)>.0|y=105.0|img=public/word_tywz_01.png|schar=0|iheight=28|iwidth=18|text=<$STR(J65)>>
+<Text|x=65.0|y=165.0|color=11032|size=16|text=任务信息>
+<Text|x=230.0|y=165.0|color=11032|size=16|text=活跃奖励>
+<Text|x=355.0|y=165.0|color=11032|size=16|text=活跃上限>
+<Text|x=500.0|y=165.0|color=11032|size=16|text=当日获得>
+<ListView|children={2,3,4,5,6,7,8,9,10,11,12,13}|x=40.0|y=195.0|width=700|height=290|bounce=0|direction=1|reload=0|margin=1>
+<Layout|x=195.0|y=135.0|width=60|height=30|rotate=0|color=*|link=@30活跃奖励>
+<Layout|x=305.0|y=135.0|width=60|height=30|color=*|link=@50活跃奖励>
+<Layout|x=420.0|y=135.0|width=60|height=30|color=*|link=@70活跃奖励>
+<Layout|x=530.0|y=135.0|width=60|height=30|color=*|link=@80活跃奖励>
+<Layout|x=645.0|y=135.0|width=60|height=30|color=*|link=@105活跃奖励>
+<Img|x=38.0|y=489.0|width=695|height=90|scale9l=5|scale9b=5|img=private/xlxl/0018.png|scale9r=5|esc=0|scale9t=5>
+<Text|x=45.0|y=503.0|color=11003|size=18|text=累计活跃度：<$STR(U43)>>
+<Img|x=368.0|y=493.0|width=40|height=40|esc=0|img=public/02128.png>
+<ItemShow|x=354.0|y=478.0|width=70|height=70|itemid=10429|itemcount=1|scale=0.7|bgtype=0|showtips=1>
+<Layout|x=334.0|y=528.0|width=110|height=50|rotate=0|color=x|link=@兑换588活跃>
+<Text|x=365.0|y=531.0|color=11009|size=18|text=兑  换|link=@兑换588活跃>
+<Text|x=335.0|y=557.0|color=249|size=16|text=需588累计活跃>
+<Img|x=495.0|y=493.0|width=40|height=40|esc=0|img=public/02128.png>
+<ItemShow|x=482.0|y=478.0|width=70|height=70|itemid=10586|itemcount=1|scale=0.7|bgtype=0|showtips=1>
+<Layout|x=461.0|y=531.0|width=110|height=50|rotate=0|color=x|link=@兑换888活跃>
+<Text|x=493.0|y=531.0|color=11009|size=18|text=兑  换|link=@兑换888活跃>
+<Text|x=466.0|y=558.0|color=249|size=16|text=需1288累计活跃>
+<Img|x=627.0|y=493.0|width=40|height=40|esc=0|img=public/02128.png>
+<ItemShow|x=616.0|y=483.0|width=70|height=70|itemid=10610|itemcount=1|scale=0.7|bgtype=0|showtips=1>
+<Layout|x=591.0|y=531.0|width=110|height=50|rotate=0|color=x|link=@兑换8888活跃>
+<Text|x=626.0|y=531.0|color=11009|size=18|text=兑  换|link=@兑换8888活跃>
+<Text|x=596.0|y=559.0|color=249|size=16|text=需8888累计活跃>
+<Text|x=45.0|y=527.0|color=11008|size=18|text=每日活跃度可累计，活跃度达到指定\点数即可免费兑换右边道具！>
+<Text|x=217.0|y=68.0|color=11007|size=18|text=30>
+<Text|x=325.0|y=68.0|color=11007|size=18|text=50>
+<Text|x=440.0|y=68.0|color=11007|size=18|text=70>
+<Text|x=550.0|y=68.0|color=11007|size=18|text=80>
+<Text|x=660.0|y=68.0|color=11007|size=18|text=105>
+
+<$STR(S$宝箱介绍)>
+<$STR(S$活跃内容)>
+
+[@兑换女儿红]
+#IF
+CHECKMAPNAME 3
+#ACT
+OPENNPCSHOWEX 16
+BREAK
+
+[@押送镖车]
+#IF
+CHECKLEVELEX < 50
+#ACT
+SENDMSG 9 等级不足50级无法押镖！
+BREAK
+
+#IF
+CHECKMAPNAME 3
+#ACT
+MAPMOVE 3 406 327
+BREAK
+
+[@前往地图传送]
+#act
+#CALL [\相关NPC\地图传送.txt] @地图传送界面
+
+[@制作美食]
+#IF
+#ACT
+mapmove 6 126 156
+BREAK
+
+[@龙珠许愿]
+#IF
+CHECKMAPNAME 3
+#ACT
+OPENNPCSHOWEX 43
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重城使用此功能寻找NPC！
+BREAK
+
+[@祖龙活动]
+#IF
+CHECKMAPNAME 3
+#ACT
+OPENNPCSHOWEX 23
+BREAK
+
+[@夺宝奇兵]
+#IF
+CHECKMAPNAME 3
+#ACT
+OPENNPCSHOWEX 41
+BREAK
+
+[@打开背包]
+#act
+OPENHYPERLINK 7
+
+[@陨铁任务]
+#IF
+CHECKMAPNAME 3
+#ACT
+OPENNPCSHOWEX 15
+BREAK
+#ELSEACT
+SENDMSG 9 请在盟重城使用此功能寻找NPC！
+BREAK
+
+[@30活跃奖励]
+#IF
+SMALL J65 30
+#ACT
+SENDMSG 9 领取失败，今日活跃度不足30点！
+BREAK
+
+#IF
+LARGE J66 0
+#ACT
+SENDMSG 9 领取失败，你已经领取过今日的活跃奖励了！
+BREAK
+
+#IF
+CHECKBAGSIZE 5
+#ACT
+GiveStateItem 女儿红 1 1 1 0 0 1 1 1 1
+MOV J66 999
+GOTO @MAIN
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+
+[@50活跃奖励]
+#IF
+SMALL J65 50
+#ACT
+SENDMSG 9 领取失败，今日活跃度不足50点！
+BREAK
+
+#IF
+LARGE J67 0
+#ACT
+SENDMSG 9 领取失败，你已经领取过今日的活跃奖励了！
+BREAK
+
+#IF
+CHECKMONEY 金币 < 2000000000
+#ACT
+MONEY 金币 + 150000
+MOV J67 999
+GOTO @MAIN
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，金币数量已经达到上限！
+BREAK
+
+
+
+[@70活跃奖励]
+#IF
+SMALL J65 70
+#ACT
+SENDMSG 9 领取失败，今日活跃度不足70点！
+BREAK
+
+#IF
+LARGE J68 0
+#ACT
+SENDMSG 9 领取失败，你已经领取过今日的活跃奖励了！
+BREAK
+
+#IF
+CHECKBAGSIZE 5
+#ACT
+GiveStateItem 10万经验卷 5 1 1 0 0 1 1 1 1
+MOV J68 999
+GOTO @MAIN
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+
+[@80活跃奖励]
+#IF
+SMALL J65 80
+#ACT
+SENDMSG 9 领取失败，今日活跃度不足80点！
+BREAK
+
+#IF
+LARGE J69 0
+#ACT
+SENDMSG 9 领取失败，你已经领取过今日的活跃奖励了！
+BREAK
+
+#IF
+CHECKBAGSIZE 5
+#ACT
+GiveStateItem 精修卷轴 3 1 1 0 0 1 1 1 1
+MOV J69 999
+GOTO @MAIN
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+
+
+[@105活跃奖励]
+#IF
+SMALL J65 105
+#ACT
+SENDMSG 9 领取失败，今日活跃度不足105点！
+BREAK
+
+#IF
+LARGE J70 0
+#ACT
+SENDMSG 9 领取失败，你已经领取过今日的活跃奖励了！
+BREAK
+
+#IF
+CHECKBAGSIZE 5
+#ACT
+GiveStateItem 星石碎片 1 1 1 0 0 1 1 1 1
+MOV J70 999
+GOTO @MAIN
+BREAK
+#ELSEACT
+SENDMSG 9 领取失败，背包空格数量不足5格！
+BREAK
+
+
+[@兑换588活跃]
+#IF
+SMALL U43 588
+#ACT
+SENDMSG 9 兑换失败，累积活跃度不足588点！
+BREAK
+
+#IF
+CHECKBAGSIZE 5
+#ACT
+DEC U43 588
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+GOTO @MAIN
+BREAK
+#ELSEACT
+SENDMSG 9 兑换失败，背包空格数量不足5格！
+BREAK
+
+
+[@兑换888活跃]
+#IF
+SMALL U43 1288
+#ACT
+SENDMSG 9 兑换失败，累积活跃度不足1288点！
+BREAK
+
+#IF
+CHECKBAGSIZE 5
+#ACT
+DEC U43 1288
+GiveStateItem 热血征战包 1 1 1 0 0 1 1 1 1
+GOTO @MAIN
+BREAK
+#ELSEACT
+SENDMSG 9 兑换失败，背包空格数量不足5格！
+BREAK
+
+
+[@兑换8888活跃]
+#IF
+SMALL U43 8888
+#ACT
+SENDMSG 9 兑换失败，累积活跃度不足8888点！
+BREAK
+
+#IF
+CHECKBAGSIZE 5
+#ACT
+DEC U43 8888
+addbuff 50409
+MONEY 元宝 + 3500
+logact 10002 通过[活跃度兑换]悦享会员增加3500元宝，剩余元宝：<$GAMEGOLD>。
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+sendmsg 9 兑换成功！
+sendmsg 0 251 249 系统：恭喜玩家：【<$USERNAME>】使用累计活跃度兑换了悦享礼盒，每天可以领取[丰厚物资]奖励！！！
+GOTO @MAIN
+BREAK
+#ELSEACT
+SENDMSG 9 兑换失败，背包空格数量不足5格！
+BREAK
+
+
+}

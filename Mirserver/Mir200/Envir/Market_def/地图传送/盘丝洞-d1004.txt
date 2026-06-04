@@ -1,0 +1,17 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=你居然能跑来这里？>
+<Text|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=17|text=看样子消灭万恶之源指日可待！我能帮你什么忙吗？>
+<Img|x=45.0|y=176.0|width=18|height=18|esc=0|img=public/00013.png>
+<Layout|x=68.0|y=168.0|width=150|height=40|link=@进入盘丝>
+<Text|x=70.0|y=171.0|color=11009|size=18|outline=1|outlinecolor=0|text=进入盘丝洞|link=@进入盘丝>
+
+
+
+[@进入盘丝]
+#ACT
+mapmove pansi 7 36
+sendmsg 0  不怕死的<$username>进入了盘丝洞，企图铲除万恶之源！！
+sendmsg 0  不怕死的<$username>进入了盘丝洞，企图铲除万恶之源！！

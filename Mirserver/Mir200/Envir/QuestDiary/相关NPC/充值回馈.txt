@@ -1,0 +1,589 @@
+[@充值回馈]
+{
+#IF
+#ACT
+MOV N$屏宽 <$SCREENWIDTH>
+MOV N$屏高 <$SCREENHEIGHT>
+DIV N$屏宽 2
+DIV N$屏高 2
+MOV N$容器跳转 0
+GOTO @加载充值界面
+BREAK
+
+[@充值回馈界面]
+#IF
+EQUAL U222 9
+#ACT
+MOV S$额外物品显示
+INC S$额外物品显示 <Img|id=8|children={800,801,802,803,804,805,806,807,808,809,810,811,812,813}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+INC S$额外物品显示 <Img|id=801|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+INC S$额外物品显示 <RText|id=802|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=每充值<2000元/FCOLOR=250>奖励<(可重复领取)/FCOLOR=249>>
+INC S$额外物品显示 <Img|id=805|children={8050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+INC S$额外物品显示 <Img|id=806|children={8060}|x=210.0|y=40.0|img=private/psllz/02128.png|esc=0>
+INC S$额外物品显示 <Img|id=807|children={8070}|x=290.0|y=40.0|img=private/psllz/02128.png|esc=0>
+INC S$额外物品显示 <ItemShow|id=8050|x=-5.0|y=-5.0|width=70|height=70|itemid=10430|itemcount=1|showtips=1|bgtype=0>
+INC S$额外物品显示 <ItemShow|id=8060|x=-5.0|y=-5.0|width=70|height=70|itemid=10580|itemcount=1|showtips=1|bgtype=0>
+INC S$额外物品显示 <ItemShow|id=8070|x=-5.0|y=-5.0|width=70|height=70|itemid=10443|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+SMALL U222 9
+#ACT
+MOV S$额外物品显示
+INC S$额外物品显示 <Img|id=8|children={800,801,802,803,804,805,806,807,808,809,810,811}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+INC S$额外物品显示 <Img|id=801|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+INC S$额外物品显示 <RText|id=802|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=每充值<2000元/FCOLOR=250>奖励>
+INC S$额外物品显示 <Img|id=805|children={8050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+INC S$额外物品显示 <ItemShow|id=8050|x=-5.0|y=-5.0|width=70|height=70|itemid=10430|itemcount=1|showtips=1|bgtype=0>
+INC S$额外物品显示 <RText|id=811|x=200.0|y=55.0|color=58|size=18|outline=1|outlinecolor=0|text=(可重复领取)>
+#IF
+#ACT
+#SAY
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit>
+<Img|ax=0|ay=1|x=0.0|y=-1.0|width=785|height=555|loadDelay=0|scale9t=80|move=0|esc=1|img=private/psllz/00070.png|reset=1|scale9r=80|scale9b=80|scale9l=80|show=4|bg=1>
+<Img|x=35.0|y=47.0|width=715|img=public/00211.png|esc=0>
+<Layout|x=712.0|y=-15.0|width=80|height=80|link=@exit>
+<Button|x=741.0|y=13.0|pimg=public/1999000511.png|color=255|nimg=public/1999000510.png|size=18|link=@exit>
+<Img|x=342.0|y=6.0|img=private/biaoti/01057.png|esc=0>
+<Text|x=40.0|y=505.0|size=18|color=11034|text=当前已充值：<$GAMEGIRD>元>
+<Img|x=35.0|y=150.0|width=715|height=335|rotate=0|img=public/1900000651_1.png|scale9l=15|esc=0|scale9r=15|scale9t=15|scale9b=15>
+<Text|x=546.0|y=505.0|size=18|color=11009|text=向上滑动可查看更多奖励>
+<ListView|children={11,2,3,4,5,6,9,7,8,10}|x=42.0|y=155.0|width=720|height=320|direction=1|reload=1|margin=4|color=x|bounce=0|default=<$STR(N$容器跳转)>>
+
+<Img|id=11|children={1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+<Img|id=1101|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+<RText|id=1102|x=40.0|y=8.0|color=11009|size=18|outline=1|outlinecolor=0|text=每日充值<10元/FCOLOR=250>奖励：<(每日0:00刷新)/FCOLOR=11003>>
+<Img|id=1105|children={11050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=1106|children={11060}|x=210.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=1107|children={11070}|x=290.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=1108|children={11080}|x=370.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=1111|children={11110}|x=450.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=11050|x=-5.0|y=-5.0|width=70|height=70|itemid=10421|itemcount=5|showtips=1|bgtype=0>
+<ItemShow|id=11060|x=-5.0|y=-5.0|width=70|height=70|itemid=10202|itemcount=5|showtips=1|bgtype=0>
+<ItemShow|id=11070|x=-5.0|y=-5.0|width=70|height=70|itemid=10429|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=11080|x=-5.0|y=-5.0|width=70|height=70|itemid=10396|itemcount=3|showtips=1|bgtype=0>
+<ItemShow|id=11110|x=0.0|y=-5.0|width=70|height=70|itemid=1|itemcount=188800|showtips=1|bgtype=0>
+<Img|id=1112|x=330.0|y=10.0|img=public/word_jygtiao_04.png|esc=0>
+
+<Img|id=2|children={200,201,202,203,204,205,206,207,208,209,210}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+<Img|id=201|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+<RText|id=202|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=累计充值<30元/FCOLOR=250>奖励：>
+<Img|id=205|children={2050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=206|children={2060}|x=210.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=207|children={2070}|x=290.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=208|children={2080}|x=370.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=2050|x=-5.0|y=-5.0|width=70|height=70|itemid=10564|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=2060|x=-5.0|y=-5.0|width=70|height=70|itemid=10565|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=2070|x=-5.0|y=-5.0|width=70|height=70|itemid=10445|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=2080|x=-5.0|y=-5.0|width=70|height=70|itemid=10594|itemcount=1|showtips=1|bgtype=0>
+
+<Img|id=3|children={300,301,302,303,304,305,306,307,308,309,310,311}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+<Img|id=301|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+<RText|id=302|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=累计充值<50元/FCOLOR=250>奖励：>
+<Img|id=305|children={3050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=306|children={3060}|x=210.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=307|children={3070}|x=290.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=311|children={3110}|x=370.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=3050|x=-5.0|y=-5.0|width=70|height=70|itemid=50708|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=3060|x=-5.0|y=-5.0|width=70|height=70|itemid=10140|itemcount=10|showtips=1|bgtype=0>
+<ItemShow|id=3070|x=-5.0|y=-5.0|width=70|height=70|itemid=10202|itemcount=10|showtips=1|bgtype=0>
+<ItemShow|id=3110|x=-5.0|y=-5.0|width=70|height=70|itemid=10154|itemcount=1|showtips=1|bgtype=0>
+
+<Img|id=4|children={400,401,402,403,404,405,406,407,408,409,410,411}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+<Img|id=401|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+<RText|id=402|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=累计充值<100元/FCOLOR=250>奖励：>
+<Img|id=405|children={4050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=406|children={4060}|x=210.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=407|children={4070}|x=290.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=411|children={4110}|x=370.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=4050|x=-5.0|y=-5.0|width=70|height=70|itemid=10566|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=4060|x=-5.0|y=-5.0|width=70|height=70|itemid=10569|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=4070|x=-5.0|y=-5.0|width=70|height=70|itemid=10202|itemcount=30|showtips=1|bgtype=0>
+<ItemShow|id=4110|x=-5.0|y=-5.0|width=70|height=70|itemid=10154|itemcount=3|showtips=1|bgtype=0>
+
+
+<Img|id=5|children={500,501,502,503,504,505,506,507,508,509,510,511}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+<Img|id=501|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+<RText|id=502|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=累计充值<200元/FCOLOR=250>奖励：>
+<Img|id=505|children={5050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=506|children={5060}|x=210.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=507|children={5070}|x=290.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=511|children={5110}|x=370.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=5050|x=-5.0|y=-5.0|width=70|height=70|itemid=50714|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=5060|x=-5.0|y=-5.0|width=70|height=70|itemid=10202|itemcount=50|showtips=1|bgtype=0>
+<ItemShow|id=5070|x=-5.0|y=-5.0|width=70|height=70|itemid=10429|itemcount=3|showtips=1|bgtype=0>
+<ItemShow|id=5110|x=-5.0|y=-5.0|width=70|height=70|itemid=10155|itemcount=1|showtips=1|bgtype=0>
+
+
+<Img|id=6|children={600,601,602,603,604,605,606,607,608,609,610,611}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+<Img|id=601|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+<RText|id=602|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=累计充值<500元/FCOLOR=250>奖励：>
+<Img|id=605|children={6050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=606|children={6060}|x=210.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=607|children={6070}|x=290.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=611|children={6110}|x=370.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=6050|x=-5.0|y=-5.0|width=70|height=70|itemid=10583|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=6060|x=-5.0|y=-5.0|width=70|height=70|itemid=10202|itemcount=100|showtips=1|bgtype=0>
+<ItemShow|id=6070|x=-5.0|y=-5.0|width=70|height=70|itemid=10429|itemcount=5|showtips=1|bgtype=0>
+<ItemShow|id=6110|x=-5.0|y=-5.0|width=70|height=70|itemid=10155|itemcount=2|showtips=1|bgtype=0>
+
+<Img|id=9|children={900,901,902,903,904,905,906,907,908,909,910,911}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+<Img|id=901|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+<RText|id=902|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=累计充值<1000元/FCOLOR=250>奖励：>
+<Img|id=905|children={9050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=906|children={9060}|x=210.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=907|children={9070}|x=290.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<Img|id=911|children={9110}|x=370.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=9050|x=-5.0|y=-5.0|width=70|height=70|itemid=10447|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=9060|x=-5.0|y=-5.0|width=70|height=70|itemid=10598|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|id=9070|x=-5.0|y=-5.0|width=70|height=70|itemid=10440|itemcount=3|showtips=1|bgtype=0>
+<ItemShow|id=9110|x=-5.0|y=-5.0|width=70|height=70|itemid=10441|itemcount=1|showtips=1|bgtype=0>
+
+
+<Img|id=7|children={700,701,702,703,704,705,706,707,708,709,710,711}|x=0.0|y=0|width=700|height=104|rotate=0|scale9l=10|scale9t=10|img=public/0101.png|scale9r=10|esc=0|scale9b=10>
+<Img|id=701|x=25.0|y=55.0|img=public/word_jyxszy_02.png|esc=0>
+<RText|id=702|x=40.0|y=8.0|color=255|size=18|outline=1|outlinecolor=0|text=每充值<500元/FCOLOR=250>奖励>
+<Img|id=705|children={7050}|x=130.0|y=40.0|img=private/psllz/02128.png|esc=0>
+<ItemShow|id=7050|x=-5.0|y=-5.0|width=70|height=70|itemid=10404|itemcount=1|showtips=1|bgtype=0>
+<RText|id=711|x=200.0|y=55.0|color=58|size=18|outline=1|outlinecolor=0|text=(可重复领取)>
+<$STR(S$额外物品显示)>
+<$STR(S$领取按钮)>
+
+
+
+
+
+
+[@加载充值界面]
+#IF
+#ACT
+MOV S$领取按钮 
+MOV N$实际充值 <$GAMEGIRD>
+MOV N$循环500 <$STR(U220)>
+MOV N$循环2000 <$STR(U221)>
+INC N$循环500 500
+INC N$循环2000 2000
+MOV N$循环500差价 <$STR(N$循环500)>
+DEC N$循环500差价 N$实际充值
+MOV N$循环2000差价 <$STR(N$循环2000)>
+DEC N$循环2000差价 N$实际充值
+
+#IF
+SMALL J51 10
+#ACT
+INC S$领取按钮 <Button|id=1109|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值10元>
+#ELSEACT
+INC S$领取按钮 <Button|id=1109|children={122222}|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@日充领取>
+INC S$领取按钮 <Img|id=122222|img=public/hot1.png|x=95|y=0>
+
+#IF
+CHECKGAMEGIRD < 30
+#ACT
+INC S$领取按钮 <Button|id=209|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值30元>
+#ELSEACT
+INC S$领取按钮 <Button|id=209|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@首充领取>
+
+#IF
+CHECKGAMEGIRD < 50
+#ACT
+INC S$领取按钮 <Button|id=308|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值50元>
+#ELSEACT
+INC S$领取按钮 <Button|id=308|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@50领取>
+
+#IF
+CHECKGAMEGIRD < 99
+#ACT
+INC S$领取按钮 <Button|id=409|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值100元>
+#ELSEACT
+INC S$领取按钮 <Button|id=409|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@100领取>
+
+#IF
+CHECKGAMEGIRD < 199
+#ACT
+INC S$领取按钮 <Button|id=509|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值200元>
+#ELSEACT
+INC S$领取按钮 <Button|id=509|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@200领取>
+
+#IF
+CHECKGAMEGIRD < 500
+#ACT
+INC S$领取按钮 <Button|id=609|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值500元>
+#ELSEACT
+INC S$领取按钮 <Button|id=609|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@500领取>
+
+#IF
+CHECKGAMEGIRD < 1000
+#ACT
+INC S$领取按钮 <Button|id=909|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值1000元>
+#ELSEACT
+INC S$领取按钮 <Button|id=909|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@累积1000领取>
+
+
+#IF
+NOT CHECKGAMEGIRD ? <$STR(N$循环500)>
+#ACT
+INC S$领取按钮 <Button|id=709|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=充值<$STR(N$循环500差价)>元|link=@循环500冲>
+#ELSEACT
+INC S$领取按钮 <Button|id=709|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@循环500领取>
+
+#IF
+NOT CHECKGAMEGIRD ? <$STR(N$循环2000)>
+#ACT
+INC S$领取按钮 <Button|id=809|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=充值<$STR(N$循环2000差价)>元|link=@充值2000元>
+#ELSEACT
+INC S$领取按钮 <Button|id=809|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=11003|text=领取奖励|link=@2000领取>
+
+#IF
+LARGE J52 0
+#ACT
+DEC S$领取按钮 <Button|id=1109|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值10元>
+DEC S$领取按钮 <Button|id=1109|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=领取奖励|link=@日充领取>
+INC S$领取按钮 <Button|id=1109|x=585.0|y=45.0|pimg=public/ylq.png|color=255|size=18|nimg=public/ylq.png>
+
+#IF
+CHECK [50] 1
+#ACT
+DEC S$领取按钮 <Button|id=209|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值30元>
+DEC S$领取按钮 <Button|id=209|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=领取奖励|link=@首充领取>
+INC S$领取按钮 <Button|id=209|x=585.0|y=45.0|pimg=public/ylq.png|color=255|size=18|nimg=public/ylq.png>
+
+#IF
+CHECK [51] 1
+#ACT
+DEC S$领取按钮 <Button|id=308|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值50元>
+DEC S$领取按钮 <Button|id=308|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=领取奖励|link=@50领取>
+INC S$领取按钮 <Button|id=308|x=585.0|y=45.0|pimg=public/ylq.png|color=255|size=18|nimg=public/ylq.png>
+
+#IF
+CHECK [52] 1
+#ACT
+DEC S$领取按钮 <Button|id=409|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值100元>
+DEC S$领取按钮 <Button|id=409|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=领取奖励|link=@100领取>
+INC S$领取按钮 <Button|id=409|x=585.0|y=45.0|pimg=public/ylq.png|color=255|size=18|nimg=public/ylq.png>
+
+#IF
+CHECK [53] 1
+#ACT
+DEC S$领取按钮 <Button|id=509|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值200元>
+DEC S$领取按钮 <Button|id=509|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=领取奖励|link=@200领取>
+INC S$领取按钮 <Button|id=509|x=585.0|y=45.0|pimg=public/ylq.png|color=255|size=18|nimg=public/ylq.png>
+
+
+#IF
+CHECK [54] 1
+#ACT
+DEC S$领取按钮 <Button|id=609|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值500元>
+DEC S$领取按钮 <Button|id=609|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=领取奖励|link=@500领取>
+INC S$领取按钮 <Button|id=609|x=585.0|y=45.0|pimg=public/ylq.png|color=255|size=18|nimg=public/ylq.png>
+
+#IF
+CHECK [55] 1
+#ACT
+DEC S$领取按钮 <Button|id=909|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=立即充值|link=@充值1000元>
+DEC S$领取按钮 <Button|id=909|x=570.0|y=45.0|width=120|height=50|nimg=private/xlxl/0011.png|size=18|color=1025|text=领取奖励|link=@累积1000领取>
+INC S$领取按钮 <Button|id=909|x=585.0|y=45.0|pimg=public/ylq.png|color=255|size=18|nimg=public/ylq.png>
+
+
+#IF
+#ACT
+GOTO @充值回馈界面
+BREAK
+
+[@充值10元]
+#IF
+#ACT
+Pullpay 10 1 2
+BREAK
+
+[@充值30元]
+#IF
+#ACT
+Pullpay 30 1 2
+BREAK
+
+[@充值50元]
+#IF
+#ACT
+Pullpay 50 1 2
+BREAK
+
+[@充值100元]
+#IF
+#ACT
+Pullpay 100 1 2
+BREAK
+
+
+[@充值200元]
+#IF
+#ACT
+Pullpay 200 1 2
+BREAK
+
+[@充值500元]
+#IF
+#ACT
+Pullpay 500 1 2
+BREAK
+
+[@充值1000元]
+#IF
+#ACT
+Pullpay 1000 1 2
+BREAK
+
+[@循环500冲]
+#IF
+#ACT
+Pullpay <$STR(N$循环500差价)> 1 2
+BREAK
+
+[@充值2000元]
+#IF
+#ACT
+Pullpay <$STR(N$循环2000差价)> 1 2
+BREAK
+
+[@日充领取]
+#IF
+SMALL J51 10
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+SMALL J52 1
+#ACT
+MOV J52 999
+MONEY 金币 + 188800
+GiveStateItem 东坡肉 5 1 1 0 0 1 1 1 1
+GiveStateItem 精修卷轴 5 1 1 0 0 1 1 1 1
+GiveStateItem 上古卷轴 1 1 1 0 0 1 1 1 1
+GiveStateItem 女儿红 3 1 1 0 0 1 1 1 1
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+MOV N$容器跳转 1
+GOTO @加载充值界面
+BREAK
+
+[@首充领取]
+#IF
+CHECKGAMEGIRD < 30
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [50] 0
+#ACT
+SET [50] 1
+addbuff 50206 10800 1
+GiveStateItem 永久随机石 1 1 1 0 0 1 1 1 1
+GiveStateItem 永久回城石 1 1 1 0 0 1 1 1 1
+GiveStateItem 2级佩饰盒 1 1 1 0 0 1 1 1 1
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+MOV N$容器跳转 3
+GOTO @加载充值界面
+BREAK
+
+[@50领取]
+#IF
+CHECKGAMEGIRD < 50
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [51] 0
+#ACT
+SET [51] 1
+SET [451] 1
+GiveStateItem 熔岩犀牛 1 1 1 0 0 1 1 1 1
+GiveStateItem 祝福油 10 1 1 0 0 1 1 1 1
+GiveStateItem 精修卷轴 10 1 1 0 0 1 1 1 1
+GiveStateItem 金条 1 1 1 0 0 1 1 1 1
+MOV N$容器跳转 3
+GOTO @加载充值界面
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+BREAK
+
+[@100领取]
+#IF
+CHECKGAMEGIRD < 100
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 10
+#ACT
+SENDMSG 9 背包空格数量不足10格！
+BREAK
+
+#IF
+CHECK [52] 0
+#ACT
+SET [52] 1
+SET [452] 1
+GiveStateItem 双倍回收卡 1 1 1 0 0 1 1 1 1
+GiveStateItem 精修卷轴 30 1 1 0 0 1 1 1 1
+GiveStateItem 畅玩交易卷(永久) 1 1 1 0 0 1 1 1 1
+GiveStateItem 金条 3 1 1 0 0 1 1 1 1
+MOV N$容器跳转 3
+GOTO @加载充值界面
+sendmsg 0 251 249 系统：恭喜玩家：【<$USERNAME>】领取了双倍回收卡并开通了畅玩交易权限，让我们祝贺他财源广进，日进斗金！
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+BREAK
+
+
+
+[@200领取]
+#IF
+CHECKGAMEGIRD < 200
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [53] 0
+#ACT
+SET [53] 1
+SET [453] 1
+GiveStateItem 鬼狮鹰 1 1 1 0 0 1 1 1 1
+GiveStateItem 精修卷轴 50 1 1 0 0 1 1 1 1
+GiveStateItem 上古卷轴 3 1 1 0 0 1 1 1 1
+GiveStateItem 金砖 1 1 1 0 0 1 1 1 1
+MOV N$容器跳转 3
+GOTO @加载充值界面
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+BREAK
+
+[@500领取]
+#IF
+CHECKGAMEGIRD < 500
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 10
+#ACT
+SENDMSG 9 背包空格数量不足10格！
+BREAK
+
+#IF
+CHECK [54] 0
+#ACT
+SET [54] 1
+SET [454] 1
+GiveStateItem 白金礼包 1 1 1 0 0 1 1 1 1
+GiveStateItem 上古卷轴 5 1 1 0 0 1 1 1 1
+GiveStateItem 精修卷轴 100 1 1 0 0 1 1 1 1
+GiveStateItem 金砖 2 1 1 0 0 1 1 1 1
+MOV N$容器跳转 6
+GOTO @加载充值界面
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+BREAK
+
+[@累积1000领取]
+#IF
+CHECKGAMEGIRD < 1000
+#ACT
+BREAK
+
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECK [55] 0
+#ACT
+SET [55] 1
+GiveStateItem 4级佩饰盒 1 1 1 0 0 1 1 1 1
+GiveStateItem 热血福利包 1 1 1 0 0 1 1 1 1
+GiveStateItem 高级升华符 3 1 1 0 0 1 1 1 1
+GiveStateItem 蕴灵符 1 1 1 0 0 1 1 1 1
+MOV N$容器跳转 6
+GOTO @加载充值界面
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+BREAK
+
+[@循环500领取]
+#IF
+NOT CHECKBAGSIZE 5
+#ACT
+SENDMSG 9 背包空格数量不足5格！
+BREAK
+
+#IF
+CHECKGAMEGIRD ? <$STR(N$循环500)>
+#ACT
+INC U220 500
+GiveStateItem 紫薇星石 1 1 1 0 0 1 1 1 1
+MOV N$容器跳转 8
+GOTO @加载充值界面
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+BREAK
+
+[@2000领取]
+#IF
+NOT CHECKBAGSIZE 10
+#ACT
+SENDMSG 9 背包空格数量不足10格！
+BREAK
+
+#IF
+CHECKGAMEGIRD ? <$STR(N$循环2000)>
+CHECK [356] 0
+#ACT
+SET [356] 1
+MailGIVE 忘忧专属礼包 1 0#1#3#4#5#6#8
+SendMail 1 尊敬的老板： 恭喜您成为我们尊贵的超级VIP客户，请扫码添加游戏管家微信，完成信息认证后，即可领取您的专属礼包，同时后续更多福利和服务都是通过VIP微信通知，麻烦老板添加哦~
+
+#IF
+CHECKGAMEGIRD ? <$STR(N$循环2000)>
+EQUAL U222 9
+#ACT
+INC U221 2000
+MOV U222 0
+GiveStateItem 神之卷轴 1 1 1 0 0 1 1 1 1
+GiveStateItem 幸运石 1 1 1 0 0 1 1 1 1
+GiveStateItem 化龙符 1 1 1 0 0 1 1 1 1
+MOV N$容器跳转 8
+GOTO @加载充值界面
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+BREAK
+
+
+#IF
+CHECKGAMEGIRD ? <$STR(N$循环2000)>
+SMALL U222 9
+#ACT
+INC U221 2000
+INC U222 1
+GiveStateItem 神之卷轴 1 1 1 0 0 1 1 1 1
+MOV N$容器跳转 8
+GOTO @加载充值界面
+SENDMSG 9 您的充值奖励已经发放至包裹内，请注意查收！
+BREAK
+
+}

@@ -1,0 +1,119 @@
+[@MAIN]
+#IF
+CHECK [312] 1
+CHECK [313] 0
+#ACT
+SET [313] 1
+NEWDELETETASK 11
+
+#IF
+CHECKLEVELEX > 89
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|size=17|color=255|text=阁下修为已至登峰造极之境。且已突破天命限制！>
+<Text|x=45.0|y=95.0|size=17|color=255|text=从此跳出六道外，不在五行中，真实可喜可贺！>
+#ACT
+BREAK
+
+#IF
+CHECKLEVELEX > 79
+CHECKLEVELEX < 90
+#SAY
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|size=17|color=11073|text=你在人间的修行已至登峰造极之境。如今天劫将近，>
+<Text|x=45.0|y=95.0|size=18|color=11073|text=需历经天劫考验，涅槃重生以突破更高等级。>
+<RText|x=45.0|y=120.0|size=17|color=11073|text=突破等级需要：<精修卷轴*<$cfg_jing_yan(<$LEVEL>_2)>，声望值*<$cfg_jing_yan(<$LEVEL>_3)>，天命神石*<$cfg_jing_yan(<$LEVEL>_4)>/FCOLOR=11003>>
+<Layout|x=35.0|y=155.0|width=150|height=45|color=x|link=@突破等级>
+<Text|x=45.0|y=165.0|color=11009|size=18|text=突破当前等级|link=@突破等级>
+<Layout|x=295.0|y=155.0|width=150|height=45|color=x|link=@突破详情>
+<Text|x=305.0|y=165.0|color=11009|size=18|text=关于等级突破|link=@突破详情>
+<Text|x=45.0|y=195.0|size=18|color=11003|text=当前累积经验点数：<$EXP>>
+<Text|x=45.0|y=220.0|size=18|color=11043|text=突破需要经验点数：<$cfg_jing_yan(<$LEVEL>_1)>>
+#ACT
+BREAK
+
+
+[@突破等级]
+#IF
+CHECKLEVELEX < 80
+#ACT
+BREAK
+#IF
+CHECKLEVELEX > 89
+#ACT
+BREAK
+
+#IF
+SMALL <$EXP> <$cfg_jing_yan(<$LEVEL>_1)>
+#ACT
+SENDMSG 9 阁下经验池尚未凝聚足够的经验，暂时还不能突破限制！
+BREAK
+
+#IF
+CHECKITEM 精修卷轴 <$cfg_jing_yan(<$LEVEL>_2)>
+CHECKCREDITPOINT ? <$cfg_jing_yan(<$LEVEL>_3)>
+CHECKITEM 天命神石 <$cfg_jing_yan(<$LEVEL>_4)>
+#ACT
+MOV N$等级索引 <$LEVEL>
+TAKE 精修卷轴 <$cfg_jing_yan(<$LEVEL>_2)>
+CREDITPOINT - <$cfg_jing_yan(<$LEVEL>_3)>
+TAKE 天命神石 <$cfg_jing_yan(<$LEVEL>_4)>
+CHANGEEXP = 1
+CHANGELEVEL + 1
+GOTO @数据检测
+BREAK
+#ELSEACT
+SENDMSG 9 没有准备好足够的材料是无法突破当前桎梏的！
+BREAK
+
+[@数据检测]
+#IF
+CHECKJOB Warrior
+#ACT
+USEBONUSPOINT 1 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 2 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 3 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 6 = <$cfg_jing_yan(<$LEVEL>_6)>
+USEBONUSPOINT 7 = <$cfg_jing_yan(<$LEVEL>_7)>
+
+#IF
+CHECKJOB Wizard
+#ACT
+USEBONUSPOINT 1 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 2 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 3 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 6 = <$cfg_jing_yan(<$LEVEL>_8)>
+USEBONUSPOINT 7 = <$cfg_jing_yan(<$LEVEL>_9)>
+
+#IF
+CHECKJOB Taoist
+#ACT
+USEBONUSPOINT 1 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 2 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 3 = <$cfg_jing_yan(<$LEVEL>_5)>
+USEBONUSPOINT 6 = <$cfg_jing_yan(<$LEVEL>_10)>
+USEBONUSPOINT 7 = <$cfg_jing_yan(<$LEVEL>_11)>
+
+#IF
+#ACT
+GOTO @MAIN
+BREAK
+
+
+
+
+[@突破详情]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<RText|x=45.0|y=70.0|size=17|color=11073|text=角色等级达到<80级/FCOLOR=11003>即可凝聚经验，经验凝聚满可以在我这里>
+<RText|x=45.0|y=95.0|size=17|color=11073|text=突破等级的桎梏！突破等级达到<83级/FCOLOR=11003>可开启景门试炼，突>
+<RText|x=45.0|y=120.0|size=17|color=11073|text=破等级达到<86级/FCOLOR=11003>可开启死门试炼，突破等级达到<90级/FCOLOR=11003>可以>
+<Text|x=45.0|y=145.0|size=17|color=11073|text=开启惊门试炼！>
+<RText|x=45.0|y=170.0|size=17|color=11073|text=<战士每次突破加成：/FCOLOR=11009>3点攻魔道，HP上限+130，MP上限+5>
+<RText|x=45.0|y=195.0|size=17|color=11073|text=<法师每次突破加成：/FCOLOR=11009>3点攻魔道，HP上限+35，MP上限+100>
+<RText|x=45.0|y=220.0|size=17|color=11073|text=<道士每次突破加成：/FCOLOR=11009>3点攻魔道，HP上限+80，MP上限+60>

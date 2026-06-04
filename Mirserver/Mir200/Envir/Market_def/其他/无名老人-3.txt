@@ -1,0 +1,729 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Text|x=45.0|y=70.0|outlinecolor=0|color=255|outline=1|size=17|text=老夫行走玛法大陆多年，见多识广，这位少侠行走江湖降妖>
+<Text|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=17|text=除魔，帮我找到黑铁矿，老夫便可祝你一臂之力。>
+<Img|x=50.0|y=208.0|width=18|height=18|esc=0|img=public/00021.png>
+<Layout|x=65.0|y=200.0|width=100|height=40|link=@接受帮助>
+<Text|x=75.0|y=203.0|color=11009|size=18|outline=1|outlinecolor=0|text=接受帮助|link=@接受帮助#锻造唯一ID=*#矿石类型=*#身上按钮颜色=160#背包按钮颜色=160#身上按钮ID=3#背包按钮ID=3>
+<Img|x=222.0|y=209.0|width=18|height=18|esc=0|img=public/00022.png>
+<Layout|x=232.0|y=200.0|width=100|height=35|color=x|link=@购买黑铁矿>
+<Text|x=242.0|y=203.0|color=11009|size=18|text=购买黑铁矿|link=@购买黑铁矿>
+
+[@接受帮助]
+#IF
+#ACT
+MOV S$锻造物品名称 
+MOV N$物品类型 0
+MOV S$容器跳转
+MOV S$矿石选择界面
+MOV S$锻造副页索引 介绍
+GOTO @加载锻造数据
+BREAK
+
+[@加载锻造数据]
+#IF
+EQUAL S$锻造唯一ID *
+#ACT
+MOV S$锻造唯一ID
+
+#IF
+EQUAL S$矿石类型 *
+#ACT
+MOV S$矿石类型
+
+#IF
+#ACT
+MOV N$绑定项目 0
+MOV N$基础数值 0
+MOV N$矿石数量 0
+MOV N$锻造次数 0
+MOV N$成功几率 0
+
+#IF
+EQUAL S$锻造副页索引 介绍
+#ACT
+MOV S$副页内容
+INC S$副页内容 <Text|x=385.0|y=90.0|color=11004|text=极品锻造说明：>
+INC S$副页内容 <Text|x=385.0|y=120.0|color=11007|text=1、使用黑铁矿锻造可获得1点小极品属性>
+INC S$副页内容 <Text|x=385.0|y=150.0|color=11007|text=2、每件装备最多可以锻造3次小极品属性>
+INC S$副页内容 <Text|x=385.0|y=180.0|color=11007|text=2、矿石纯度越高成功率越高，几率如下：>
+INC S$副页内容 <Text|x=385.0|y=210.0|color=11007|text=3、第1点几率最高可达：90%>
+INC S$副页内容 <Text|x=385.0|y=240.0|color=11007|text=4、第2点几率最高可达：15%>
+INC S$副页内容 <Text|x=385.0|y=270.0|color=11007|text=5、第3次几率最高可达：3%>
+
+#IF
+EQUAL S$锻造副页索引 背包
+#ACT
+MOV S$副页内容
+INC S$副页内容 <Img|x=378.0|y=82.0|width=300|img=private/xlxl/021600.png|esc=0>
+INC S$副页内容 <Img|x=401.0|y=87.0|img=private/xlxl/0014.png|esc=0>
+INC S$副页内容 <Text|x=432.0|y=89.0|color=1025|size=18|text=背包装备>
+INC S$副页内容 <ListView|children={2}|x=390|y=120|width=349|height=295|direction=1|bounce=0|margin=1|reload=0|default=8>
+INC S$副页内容 <BAGITEMS|id=2|condition=5#*,6#*,10#*,11#*,15#*,19#*,20#*,21#*,22#*,23#*,24#*,26#*,30#*,52#*,54#*|select=<$STR(S0)>|selecttype=1|conditionEx=1|conditionParam=7|conditionOnOff=1|count=126|row=32|x=385|y=111|link=@背包锻造物品#强化项目=*>
+
+#IF
+EQUAL S$锻造副页索引 身上
+#ACT
+MOV S$副页内容
+INC S$副页内容 <Img|x=378.0|y=82.0|width=300|img=private/xlxl/021600.png|esc=0>
+INC S$副页内容 <Img|x=401.0|y=87.0|img=private/xlxl/0015.png|esc=0>
+INC S$副页内容 <Text|x=432.0|y=89.0|color=1025|size=18|text=身上装备>
+INC S$副页内容 <ListView|children={2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17}|x=380|y=120|width=295|height=300|direction=1|bounce=0|margin=1|reload=0|default=<$STR(S$容器跳转)>>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 0
+#ACT
+INC S$副页内容 <Img|id=2|children={21,22,23,24}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$DRESSID>#强化项目=*#选择属性=*#容器跳转=2>
+INC S$副页内容 <EquipShow|id=21|x=3|y=5|index=0|showtips=1> 
+INC S$副页内容 <Text|id=22|x=80.0|y=5.0|color=255|size=19|outline=1|outlinecolor=0|text=<$DRESS>>
+INC S$副页内容 <Text|id=23|x=80.0|y=40.0|color=150|size=17|outline=1|outlinecolor=0|text=衣服>
+
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 1
+#ACT
+INC S$副页内容 <Img|id=3|children={31,32,33,34}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$WEAPONID>#强化项目=*#选择属性=*#容器跳转=3>
+INC S$副页内容 <EquipShow|id=31|x=3|y=5|index=1|showtips=1> 
+INC S$副页内容 <Text|id=32|x=80.0|y=5.0|color=255|size=18|text=<$WEAPON>>
+INC S$副页内容 <Text|id=33|x=80.0|y=40.0|color=1003|size=16|text=武器>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 2
+#ACT
+INC S$副页内容 <Img|id=4|children={41,42,43,44}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$RIGHTHANDID>#强化项目=*#选择属性=*#容器跳转=4>
+INC S$副页内容 <EquipShow|id=41|x=3|y=5|index=2|showtips=1> 
+INC S$副页内容 <Text|id=42|x=80.0|y=5.0|color=255|size=18|text=<$RIGHTHAND>>
+INC S$副页内容 <Text|id=43|x=80.0|y=40.0|color=1003|size=16|text=勋章>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 3
+#ACT
+INC S$副页内容 <Img|id=5|children={51,52,53,54}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$NECKLACEID>#强化项目=*#选择属性=*#容器跳转=5>
+INC S$副页内容 <EquipShow|id=51|x=3|y=5|index=3|showtips=1> 
+INC S$副页内容 <Text|id=52|x=80.0|y=5.0|color=255|size=18|text=<$NECKLACE>>
+INC S$副页内容 <Text|id=53|x=80.0|y=40.0|color=1003|size=16|text=项链>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 4
+#ACT
+INC S$副页内容 <Img|id=6|children={61,62,63,64}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$HELMETID>#强化项目=*#选择属性=*#容器跳转=6>
+INC S$副页内容 <EquipShow|id=61|x=3|y=5|index=4|showtips=1> 
+INC S$副页内容 <Text|id=62|x=80.0|y=5.0|color=255|size=18|text=<$HELMET>>
+INC S$副页内容 <Text|id=63|x=80.0|y=40.0|color=1003|size=16|text=头盔>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 5
+#ACT
+INC S$副页内容 <Img|id=7|children={71,72,73,74}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$ARMRING_RID>#强化项目=*#选择属性=*#容器跳转=7>
+INC S$副页内容 <EquipShow|id=71|x=3|y=5|index=5|showtips=1> 
+INC S$副页内容 <Text|id=72|x=80.0|y=5.0|color=255|size=18|text=<$ARMRING_R>>
+INC S$副页内容 <Text|id=73|x=80.0|y=40.0|color=1003|size=16|text=右手镯>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 6
+#ACT
+INC S$副页内容 <Img|id=8|children={81,82,83,84}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$ARMRING_LID>#强化项目=*#选择属性=*#容器跳转=8>
+INC S$副页内容 <EquipShow|id=81|x=3|y=5|index=6|showtips=1> 
+INC S$副页内容 <Text|id=82|x=80.0|y=5.0|color=255|size=18|text=<$ARMRING_L>>
+INC S$副页内容 <Text|id=83|x=80.0|y=40.0|color=1003|size=16|text=左手镯>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 7
+#ACT
+INC S$副页内容 <Img|id=9|children={91,92,93,94}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$RING_RID>#强化项目=*#选择属性=*#容器跳转=9>
+INC S$副页内容 <EquipShow|id=91|x=3|y=5|index=7|showtips=1> 
+INC S$副页内容 <Text|id=92|x=80.0|y=5.0|color=255|size=18|text=<$RING_R>>
+INC S$副页内容 <Text|id=93|x=80.0|y=40.0|color=1003|size=16|text=右戒指>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 8
+#ACT
+INC S$副页内容 <Img|id=10|children={101,102,103,104}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$RING_LID>#强化项目=*#选择属性=*#容器跳转=10>
+INC S$副页内容 <EquipShow|id=101|x=3|y=5|index=8|showtips=1> 
+INC S$副页内容 <Text|id=102|x=80.0|y=5.0|color=255|size=18|text=<$RING_L>>
+INC S$副页内容 <Text|id=103|x=80.0|y=40.0|color=1003|size=16|text=左戒指>
+
+;#IF
+;EQUAL S$锻造副页索引 身上
+;CHECKUSEITEM 9
+;#ACT
+;INC S$副页内容 <Img|id=11|children={111,112,113,114}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$BUJUKID>#强化项目=*#选择属性=*#容器跳转=11>
+;INC S$副页内容 <EquipShow|id=111|x=3|y=5|index=9|showtips=1> 
+;INC S$副页内容 <Text|id=112|x=80.0|y=5.0|color=255|size=18|text=<$BUJUK>>
+;INC S$副页内容 <Text|id=113|x=80.0|y=40.0|color=1003|size=16|text=毒符>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 10
+#ACT
+INC S$副页内容 <Img|id=12|children={121,122,123,124}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$BELTID>#强化项目=*#选择属性=*#容器跳转=12>
+INC S$副页内容 <EquipShow|id=121|x=3|y=5|index=10|showtips=1> 
+INC S$副页内容 <Text|id=122|x=80.0|y=5.0|color=255|size=18|text=<$BELT>>
+INC S$副页内容 <Text|id=123|x=80.0|y=40.0|color=1003|size=16|text=腰带>
+
+#IF
+EQUAL S$锻造副页索引 身上
+CHECKUSEITEM 11
+#ACT
+INC S$副页内容 <Img|id=13|children={131,132,133,134}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$BOOTSID>#强化项目=*#选择属性=*#容器跳转=13>
+INC S$副页内容 <EquipShow|id=131|x=3|y=5|index=11|showtips=1> 
+INC S$副页内容 <Text|id=132|x=80.0|y=5.0|color=255|size=18|text=<$BOOTS>>
+INC S$副页内容 <Text|id=133|x=80.0|y=40.0|color=1003|size=16|text=靴子>
+
+;#IF
+;EQUAL S$锻造副页索引 身上
+;CHECKUSEITEM 12
+;#ACT
+;INC S$副页内容 <Img|id=14|children={141,142,143,144}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$CHARMID>#强化项目=*#选择属性=*#容器跳转=14>
+;INC S$副页内容 <EquipShow|id=141|x=3|y=5|index=12|showtips=1> 
+;INC S$副页内容 <Text|id=142|x=80.0|y=5.0|color=255|size=18|text=<$CHARM>>
+;INC S$副页内容 <Text|id=143|x=80.0|y=40.0|color=1003|size=16|text=宝石>
+
+;#IF
+;EQUAL S$锻造副页索引 身上
+;CHECKUSEITEM 13
+;#ACT
+;INC S$副页内容 <Img|id=15|children={151,152,153,154}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$HATID>#强化项目=*#选择属性=*#容器跳转=15>
+;INC S$副页内容 <EquipShow|id=151|x=3|y=5|index=13|showtips=1> 
+;INC S$副页内容 <Text|id=152|x=80.0|y=5.0|color=255|size=18|text=<$HAT>>
+;INC S$副页内容 <Text|id=153|x=80.0|y=40.0|color=1003|size=16|text=斗笠>
+
+
+;#IF
+;EQUAL S$锻造副页索引 身上
+;CHECKUSEITEM 14
+;#ACT
+;INC S$副页内容 <Img|id=16|children={161,162,163,164}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$DRUMID>#强化项目=*#选择属性=*#容器跳转=16>
+;INC S$副页内容 <EquipShow|id=161|x=3|y=5|index=14|showtips=1> 
+;INC S$副页内容 <Text|id=162|x=60.0|y=5.0|color=255|size=18|text=<$DRUM>>
+;INC S$副页内容 <Text|id=163|x=60.0|y=30.0|color=1003|size=16|text=军鼓>
+
+;#IF
+;EQUAL S$锻造副页索引 身上
+;CHECKUSEITEM 15
+;#ACT
+;INC S$副页内容 <Img|id=17|children={171,172,173,174}|x=0.0|y=0.0|width=295|esc=0|img=private/xlxl/0017.png|scale9r=100|scale9t=30|scale9b=30|scale9l=100|link=@身上锻造物品#锻造唯一ID=<$HORSEID>#强化项目=*#选择属性=*#容器跳转=17>
+;INC S$副页内容 <EquipShow|id=171|x=3|y=5|index=15|showtips=1> 
+;INC S$副页内容 <Text|id=172|x=80.0|y=5.0|color=255|size=18|text=<$HORSE>>
+;INC S$副页内容 <Text|id=173|x=80.0|y=40.0|color=1003|size=16|text=马牌>
+
+#IF
+EQUAL S$锻造唯一ID
+#ACT
+MOV S$材料界面 
+INC S$材料界面 <Text|x=155.0|y=270.0|color=11034|text=成功几率：0%>
+INC S$材料界面 <Button|x=179.0|y=323.0|color=255|size=18|nimg=private/psllz/02130.png|link=@选择矿石>
+INC S$材料界面 <Text|x=100.0|y=392.0|color=255|size=16|outline=1|outlinecolor=0|text=需要金币：8880000>
+
+#IF
+NOT EQUAL S$锻造唯一ID
+#ACT
+LINKITEMBYMAKEINDEX <$STR(S$锻造唯一ID)>
+GetItemNameByMakeIndex <$STR(S$锻造唯一ID)> S$锻造物品名称
+GetDBItemFieldValue <$str(S$锻造物品名称)> stdmode N$物品类型
+
+#IF
+NOT EQUAL S$锻造唯一ID
+CheckItemFlag -1 3
+#ACT
+INC N$锻造次数 1
+
+#IF
+NOT EQUAL S$锻造唯一ID
+CheckItemFlag -1 4
+#ACT
+INC N$锻造次数 1
+
+#IF
+NOT EQUAL S$锻造唯一ID
+CheckItemFlag -1 5
+#ACT
+INC N$锻造次数 1
+
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度10)
+EQUAL N$锻造次数 0
+#ACT
+MOV N$成功几率 5
+MOV N$实际几率 5
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度10)
+EQUAL N$锻造次数 1
+#ACT
+MOV N$成功几率 1
+MOV N$实际几率 1
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度10)
+EQUAL N$锻造次数 2
+#ACT
+MOV N$成功几率 0
+MOV N$实际几率 0
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度15)
+EQUAL N$锻造次数 0
+#ACT
+MOV N$成功几率 10
+MOV N$实际几率 10
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度15)
+EQUAL N$锻造次数 1
+#ACT
+MOV N$成功几率 2
+MOV N$实际几率 2
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度15)
+EQUAL N$锻造次数 2
+#ACT
+MOV N$成功几率 0
+MOV N$实际几率 0
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度20)
+EQUAL N$锻造次数 0
+#ACT
+MOV N$成功几率 20
+MOV N$实际几率 20
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度20)
+EQUAL N$锻造次数 1
+#ACT
+MOV N$成功几率 5
+MOV N$实际几率 3
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度20)
+EQUAL N$锻造次数 2
+#ACT
+MOV N$成功几率 1
+MOV N$实际几率 1
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度25)
+EQUAL N$锻造次数 0
+#ACT
+MOV N$成功几率 90
+MOV N$实际几率 75
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度25)
+EQUAL N$锻造次数 1
+#ACT
+MOV N$成功几率 15
+MOV N$实际几率 10
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度25)
+EQUAL N$锻造次数 2
+#ACT
+MOV N$成功几率 3
+MOV N$实际几率 2
+#IF
+EQUAL N$锻造次数 3
+#ACT
+MOV N$成功几率 0
+
+#IF
+NOT EQUAL S$矿石类型
+NOT EQUAL S$锻造唯一ID
+#ACT
+MOV S$材料界面 
+INC S$材料界面 <Text|x=155.0|y=270.0|color=11034|text=成功几率：<$STR(N$成功几率)>%>
+INC S$材料界面 <Button|x=179.0|y=323.0|color=255|size=18|nimg=private/psllz/02130.png|link=@选择矿石>
+INC S$材料界面 <Text|x=100.0|y=392.0|color=255|size=16|outline=1|outlinecolor=0|text=需要金币：8880000>
+
+#IF
+NOT EQUAL S$矿石类型
+#ACT
+INC S$材料界面 <ItemShow|x=175.0|y=320.0|width=70|height=70|itemid=<$str(S$矿石id)>|itemcount=8|showtips=1|bgtype=0|link=@选择矿石>
+
+#IF
+#ACT
+GOTO @锻造界面
+BREAK
+
+
+[@选择矿石]
+#IF
+#ACT
+MOV S$矿石选择界面
+INC S$矿石选择界面 <Layout|width=720|height=500|link=@关闭矿石选择>
+INC S$矿石选择界面 <Img|x=54.0|y=211.0|children={K_1,K_2,K_3,K_4}|width=310|height=80|scale9r=15|scale9t=15|esc=0|img=private/zbj/003.png|scale9b=15|scale9l=15|link=@防穿透>
+INC S$矿石选择界面 <Img|id=K_1|children={Ks_1}|x=13.0|y=10.0|img=public/04006.png|esc=0>
+INC S$矿石选择界面 <Img|id=K_2|children={Ks_2}|x=88.0|y=10.0|img=public/04006.png|esc=0>
+INC S$矿石选择界面 <Img|id=K_3|children={Ks_3}|x=163.0|y=10.0|img=public/04006.png|esc=0>
+INC S$矿石选择界面 <Img|id=K_4|children={Ks_4}|x=238.0|y=10.0|img=public/04006.png|esc=0>
+INC S$矿石选择界面 <ItemShow|id=Ks_1|x=-3.0|y=0.0|itemid=10456|itemcount=1|showtips=1|bgtype=0|scale=0.9|link=@矿石选择#矿石类型=黑铁矿(纯度10)#矿石id=10456>
+INC S$矿石选择界面 <ItemShow|id=Ks_2|x=-3.0|y=0.0|itemid=10457|itemcount=1|showtips=1|bgtype=0|scale=0.9|link=@矿石选择#矿石类型=黑铁矿(纯度15)#矿石id=10457>
+INC S$矿石选择界面 <ItemShow|id=Ks_3|x=-3.0|y=0.0|itemid=10458|itemcount=1|showtips=1|bgtype=0|scale=0.9|link=@矿石选择#矿石类型=黑铁矿(纯度20)#矿石id=10458>
+INC S$矿石选择界面 <ItemShow|id=Ks_4|x=-3.0|y=0.0|itemid=10459|itemcount=1|showtips=1|bgtype=0|scale=0.9|link=@矿石选择#矿石类型=黑铁矿(纯度25)#矿石id=10459>
+
+GOTO @锻造界面
+
+[@关闭矿石选择]
+#IF
+#ACT
+MOV S$矿石选择界面
+GOTO @锻造界面
+
+[@身上锻造物品]
+#IF
+#ACT
+MOV S$选择属性
+MOV S0 <$STR(S$锻造唯一ID)>
+GOTO @加载锻造数据
+
+[@背包锻造物品]
+#IF
+#ACT
+MOV S$选择属性
+MOV S$锻造唯一ID <$STR(S0)>
+GOTO @加载锻造数据
+
+[@矿石选择]
+#IF
+#ACT
+MOV S$矿石选择界面
+GOTO @加载锻造数据
+BREAK
+
+
+[@锻造界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|link=@exit#锻造唯一ID=*#矿石类型=*>
+<Img|x=7.0|y=0.0|width=720|height=500|bg=1|loadDelay=0|scale9r=35|scale9t=35|scale9b=30|move=0|reset=1|esc=1|scale9l=35|img=private/xlxl/0000.png|show=4|link=@防穿透>
+;<Img|x=320.0|y=10.0|img=private/biaoti/01049.png|esc=0>
+<Layout|x=674.0|y=-20.0|width=80|height=80|link=@exit#锻造唯一ID=*#矿石类型=*>
+<Img|x=360.0|y=71.0|height=366|img=private/psllz/00010.png|esc=0>
+<Button|x=688.0|y=18.0|pimg=public/1990000511.png|color=255|nimg=public/1990000510.png|size=18|link=@exit#锻造唯一ID=*#矿石类型=*>
+<Img|x=55.0|y=80.0|width=310|height=350|esc=0|img=private/xlxl/0004.png>
+<ListView|x=380|y=120|width=295|height=300|reload=0|margin=2|color=x|direction=1|bounce=0>
+<DBItemShow|x=178.0|y=128.0|width=70|height=70|makeindex=<$STR(S$锻造唯一ID)>|dblink=@加载锻造数据#锻造唯一ID=*>
+<Button|x=158.0|y=440.0|nimg=private/xlxl/0011.png|outlinecolor=0|outline=1|size=17|color=251|text=锻造|link=@开始锻造>
+<Button|x=410.0|y=440.0|width=110|height=35|outlinecolor=0|nimg=private/psllz/0213<$STR(S$身上按钮ID)>.png|outline=1|color=<$STR(S$身上按钮颜色)>|size=16|text=选择身上|link=@加载锻造数据#锻造副页索引=身上#锻造唯一ID=*#身上按钮颜色=100#背包按钮颜色=160#身上按钮ID=4#背包按钮ID=3>
+<Button|x=550.0|y=440.0|width=110|height=35|outlinecolor=0|nimg=private/psllz/0213<$STR(S$背包按钮ID)>.png|outline=1|color=<$STR(S$背包按钮颜色)>|size=16|text=选择背包|link=@加载锻造数据#锻造副页索引=背包#锻造唯一ID=*#身上按钮颜色=160#背包按钮颜色=100#身上按钮ID=3#背包按钮ID=4>
+
+<$STR(S$副页内容)>
+<$STR(S$材料界面)>
+<$STR(S$锻造项目)>
+<$STR(S$矿石选择界面)>
+
+
+[@开始锻造]
+#IF
+EQUAL S$锻造唯一ID
+#ACT
+SENDMSG 9 请先选择你要锻造的物品！
+BREAK
+
+#IF
+EQUAL S$矿石类型
+#ACT
+SENDMSG 9 请选择黑铁矿！
+BREAK
+
+#IF
+NOT EQUAL S$锻造唯一ID
+#ACT
+MOV S$锻造物品名称 
+MOV N$物品类型 0
+LINKITEMBYMAKEINDEX <$STR(S$锻造唯一ID)>
+GetItemNameByMakeIndex <$STR(S$锻造唯一ID)> S$锻造物品名称
+GetDBItemFieldValue <$str(S$锻造物品名称)> stdmode N$物品类型
+MOV N$锻造次数 0
+
+#IF
+NOT EQUAL S$锻造唯一ID
+CheckItemFlag -1 3
+#ACT
+INC N$锻造次数 1
+
+#IF
+NOT EQUAL S$锻造唯一ID
+CheckItemFlag -1 4
+#ACT
+INC N$锻造次数 1
+
+#IF
+NOT EQUAL S$锻造唯一ID
+CheckItemFlag -1 5
+#ACT
+INC N$锻造次数 1
+
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度10)
+EQUAL N$锻造次数 0
+#ACT
+MOV N$成功几率 5
+MOV N$实际几率 5
+MOV S$锻造权重 攻击#20|防御#80
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度10)
+EQUAL N$锻造次数 1
+#ACT
+MOV N$成功几率 1
+MOV N$实际几率 1
+MOV S$锻造权重 攻击#20|防御#80
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度10)
+EQUAL N$锻造次数 2
+#ACT
+MOV N$成功几率 0
+MOV N$实际几率 0
+MOV S$锻造权重 攻击#20|防御#80
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度15)
+EQUAL N$锻造次数 0
+#ACT
+MOV N$成功几率 10
+MOV N$实际几率 10
+MOV S$锻造权重 攻击#25|防御#75
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度15)
+EQUAL N$锻造次数 1
+#ACT
+MOV N$成功几率 2
+MOV N$实际几率 2
+MOV S$锻造权重 攻击#25|防御#75
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度15)
+EQUAL N$锻造次数 2
+#ACT
+MOV N$成功几率 0
+MOV N$实际几率 0
+MOV S$锻造权重 攻击#25|防御#75
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度20)
+EQUAL N$锻造次数 0
+#ACT
+MOV N$成功几率 20
+MOV N$实际几率 20
+MOV S$锻造权重 攻击#30|防御#70
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度20)
+EQUAL N$锻造次数 1
+#ACT
+MOV N$成功几率 5
+MOV N$实际几率 3
+MOV S$锻造权重 攻击#30|防御#70
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度20)
+EQUAL N$锻造次数 2
+#ACT
+MOV N$成功几率 1
+MOV N$实际几率 1
+MOV S$锻造权重 攻击#30|防御#70
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度25)
+EQUAL N$锻造次数 0
+#ACT
+MOV N$成功几率 90
+MOV N$实际几率 75
+MOV S$锻造权重 攻击#50|防御#50
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度25)
+EQUAL N$锻造次数 1
+#ACT
+MOV N$成功几率 15
+MOV N$实际几率 10
+MOV S$锻造权重 攻击#50|防御#50
+#IF
+EQUAL S$矿石类型 黑铁矿(纯度25)
+EQUAL N$锻造次数 2
+#ACT
+MOV N$成功几率 3
+MOV N$实际几率 2
+MOV S$锻造权重 攻击#50|防御#50
+#IF
+EQUAL N$锻造次数 3
+#ACT
+MOV N$成功几率 0
+MOV S$锻造权重 
+
+#OR
+equal N$物品类型 5
+equal N$物品类型 6
+#act
+MOV S$锻造权重 攻击#100
+
+#IF
+EQUAL N$锻造次数 3
+#ACT
+SENDMSG 9 这个装备的锻造次数已经用完了！
+BREAK 
+
+#IF
+NOT CHECKITEM <$str(S$矿石类型)> 8
+#ACT
+SENDMSG 9 <$str(S$矿石类型)>数量不足8个！
+BREAK
+
+#IF
+CHECKMONEY 金币 < 8880000
+#ACT
+SENDMSG 9 金币数量不足！
+BREAK
+
+
+#IF
+NOT CheckItemFlag -1 3
+RANDOMEX <$STR(N$实际几率)> 100
+#ACT
+TAKE <$str(S$矿石类型)> 8
+MONEY 金币 - 8880000
+RANSJSTR <$STR(S$锻造权重)> 1 3 S$锻造取出属性 S$锻造剩余属性
+SetItemFlag -1 3 1
+GOTO @极品升级
+BREAK
+
+
+#IF
+NOT CheckItemFlag -1 4
+RANDOMEX <$STR(N$实际几率)> 100
+#ACT
+TAKE <$str(S$矿石类型)> 8
+MONEY 金币 - 8880000
+RANSJSTR <$STR(S$锻造权重)>  1 3 S$锻造取出属性 S$锻造剩余属性
+SetItemFlag -1 4 1
+GOTO @极品升级
+BREAK
+
+#IF
+NOT CheckItemFlag -1 5
+RANDOMEX <$STR(N$实际几率)> 100
+#ACT
+TAKE <$str(S$矿石类型)> 8
+MONEY 金币 - 8880000
+RANSJSTR <$STR(S$锻造权重)>  1 3 S$锻造取出属性 S$锻造剩余属性
+SetItemFlag -1 5 1
+GOTO @极品升级
+BREAK
+
+#IF
+#ACT
+TAKE <$str(S$矿石类型)> 8
+MONEY 金币 - 8880000
+SENDMSG 9 <font color='#ff0000'>很遗憾，本次锻造失败了</font>
+GOTO @加载锻造数据
+BREAK
+
+[@极品升级]
+#IF
+EQUAL S$锻造取出属性 攻击
+#ACT
+RANSJSTR 道属性|魔属性|攻属性  0 1 S$锻造极品属性 S$无用
+
+#IF
+EQUAL S$锻造取出属性 防御
+#ACT
+RANSJSTR 防御属性|魔御属性  0 1 S$锻造极品属性 S$无用
+
+#IF
+EQUAL S$锻造极品属性 道属性
+#ACT
+CHANGEITEMADDVALUE -1 4 + 1
+UpDateBoxItem -1
+SENDMSG 9 <font color='#00ff4e'>恭喜你为该装备成功锻造出1点道术极品属性！</font>
+GOTO @加载锻造数据
+break
+#IF
+EQUAL S$锻造极品属性 魔属性
+#ACT
+CHANGEITEMADDVALUE -1 3 + 1
+UpDateBoxItem -1
+SENDMSG 9 <font color='#00ff4e'>恭喜你为该装备成功锻造出1点魔法极品属性！</font>
+GOTO @加载锻造数据
+break
+#IF
+EQUAL S$锻造极品属性 攻属性
+#ACT
+CHANGEITEMADDVALUE -1 2 + 1
+UpDateBoxItem -1
+SENDMSG 9 <font color='#00ff4e'>恭喜你为该装备成功锻造出1点攻击极品属性！</font>
+GOTO @加载锻造数据
+break
+#IF
+EQUAL S$锻造极品属性 防御属性
+#ACT
+CHANGEITEMADDVALUE -1 0 + 1
+UpDateBoxItem -1
+SENDMSG 9 <font color='#00ff4e'>恭喜你为该装备成功锻造出1点防御极品属性！</font>
+GOTO @加载锻造数据
+break
+#IF
+EQUAL S$锻造极品属性 魔御属性
+#ACT
+CHANGEITEMADDVALUE -1 1 + 1
+UpDateBoxItem -1
+SENDMSG 9 <font color='#00ff4e'>恭喜你为该装备成功锻造出1点魔御极品属性！</font>
+GOTO @加载锻造数据
+break
+
+
+
+[@购买黑铁矿]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@main>
+<Button|x=500.0|y=40.0|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|color=255|link=@main>
+<Text|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=黑铁矿石因拥有者强化武器的特性，大受勇士们的喜爱。>
+<Text|x=45.0|y=95.0|color=255|size=17|outline=1|outlinecolor=0|text=据说纯度越高的黑铁矿，强化武器的成功率也就越高！>
+<Img|x=45.0|y=135.0|img=public/02128.png|esc=0>
+<Img|x=155.0|y=135.0|img=public/02128.png|esc=0>
+<Img|x=265.0|y=135.0|img=public/02128.png|esc=0>
+<Img|x=375.0|y=135.0|img=public/02128.png|esc=0>
+<ItemShow|x=40.0|y=130.0|width=70|height=70|itemid=10456|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=150.0|y=130.0|width=70|height=70|itemid=10457|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=260.0|y=130.0|width=70|height=70|itemid=10458|itemcount=1|showtips=1|bgtype=0>
+<ItemShow|x=370.0|y=130.0|width=70|height=70|itemid=10459|itemcount=1|showtips=1|bgtype=0>
+<Layout|x=35.0|y=200.0|width=80|height=35|color=*|link=@购买矿石1>
+<Text|x=40.0|y=200.0|color=11007|size=18|text=20万金币|link=@购买矿石1>
+<Layout|x=150.0|y=200.0|width=60|height=35|color=*|link=@购买矿石2#材料=黑铁矿(纯度15)#货币=20>
+<Text|x=157.0|y=200.0|color=11007|size=18|text=20元宝|link=@购买矿石2#材料=黑铁矿(纯度15)#货币=20>
+<Layout|x=260.0|y=200.0|width=65|height=35|color=*|link=@购买矿石2#材料=黑铁矿(纯度20)#货币=100>
+<Text|x=264.0|y=200.0|color=11007|size=18|text=100元宝|link=@购买矿石2#材料=黑铁矿(纯度20)#货币=100>
+<Layout|x=370.0|y=200.0|width=70|height=35|color=*|link=@购买矿石2#材料=黑铁矿(纯度25)#货币=500>
+<Text|x=375.0|y=200.0|color=11007|size=18|text=500元宝|link=@购买矿石2#材料=黑铁矿(纯度25)#货币=500>
+
+[@购买矿石1]
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 购买失败，背包空格数量不足！
+BREAK
+
+#IF
+CHECKMONEY 金币 > 199999
+#ACT
+MONEY 金币 - 200000
+logact 10001 通过[武器库]消耗200000金币，剩余金币：<$MONEY(金币)>。
+GIVE 黑铁矿(纯度10) 1
+SENDMSG 9 购买成功！
+BREAK
+#ELSEACT
+SENDMSG 9 购买失败，金币数量不足！
+BREAK
+
+[@购买矿石2]
+#IF
+NOT CHECKBAGSIZE 2
+#ACT
+SENDMSG 9 购买失败，背包空格数量不足！
+BREAK
+
+#IF
+CHECKGAMEGOLD ? <$STR(S$货币)>
+#ACT
+GAMEGOLD - <$STR(S$货币)>
+logact 10002 通过[武器库]消耗<$STR(S$货币)>元宝，剩余元宝：<$GAMEGOLD>。
+GIVE <$STR(S$材料)> 1
+SENDMSG 9 购买成功！
+BREAK
+#ELSEACT
+SENDMSG 9 购买失败，元宝数量不足！
+BREAK
+

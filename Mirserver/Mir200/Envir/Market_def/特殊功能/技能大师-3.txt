@@ -1,0 +1,3 @@
+[@main]
+#ACT
+#CALL [\相关NPC\技能流派.txt] @三职六派

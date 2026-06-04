@@ -1,0 +1,508 @@
+[@装备技能提升]
+{
+
+#IF
+#ACT
+MOV N$施毒伤害值 0
+MOV N$冰咆伤害值 0
+MOV N$冰雷伤害值 0
+MOV N$烈火伤害值 0
+MOV N$火符伤害值 0
+MOV N$火雨伤害值 0
+MOV N$真实伤害值 6
+
+MOV N$刺杀百分比 0
+MOV N$雷电百分比 0
+MOV N$冰雷伤害百分比 0
+MOV N$斩月百分比 0
+MOV N$烈火百分比 0
+MOV N$火符百分比 0
+MOV N$火墙百分比 0
+MOV N$火雨百分比 0
+MOV N$开天百分比 0
+MOV N$十步百分比 0
+MOV N$冰咆百分比 0
+MOV N$灭天火百分比 0
+MOV N$玄冰百分比 0
+MOV N$群雷域百分比 0
+MOV N$寒冰掌百分比 0
+
+
+MOV N$冰冻时长数 2
+MOV N$火雨减免百分比 0
+MOV N$群雷减免百分比 0
+MOV N$冰雷减免百分比 0
+MOV N$烈火减免百分比 0
+
+#IF
+#ACT
+SetMagicDefPower 火墙 0 1
+SetMagicDefPower 灵魂火符 0 1
+SetMagicDefPower 雷电术 0 1
+
+#IF
+CHECKJOB Warrior
+#ACT
+SetMagicPower 攻杀剑术 0 1
+SetMagicPower 刺杀剑术 0 1
+SetMagicPower 烈火剑法 0 1
+SetMagicPower 斩月烈火 0 1
+SetMagicPower 开天斩 0 1
+SetMagicPower 十步一杀 0 1
+
+#IF
+CHECKJOB Wizard
+#ACT
+SetMagicPower 雷电术 0 1
+SetMagicPower 疾光电影 0 1
+SetMagicPower 火墙 0 1
+SetMagicPower 冰咆哮 0 1
+SetMagicPower 流星火雨 0 1
+SetMagicPower 灭天火 0 1
+
+#IF
+CHECKJOB Taoist
+#ACT
+SetMagicPower 施毒术 0 0
+SetMagicPower 群体施毒术 0 0
+SetMagicPower 灵魂火符 0 1
+
+;==========================================================================
+#IF
+CHECKITEMW 冰龙头盔
+#ACT
+INC N$冰咆伤害值 5
+INC N$冰雷伤害值 5
+#IF
+CHECKITEMW 冰龙项链
+#ACT
+INC N$冰咆伤害值 5
+INC N$冰雷伤害值 5
+#IF
+EQUAL <$ARMRING_R> 冰龙手镯
+#ACT
+INC N$冰咆伤害值 5
+INC N$冰雷伤害值 5
+#IF
+EQUAL <$ARMRING_L> 冰龙手镯
+#ACT
+INC N$冰咆伤害值 5
+INC N$冰雷伤害值 5
+#IF
+EQUAL <$RING_R> 冰龙戒指
+#ACT
+INC N$冰咆伤害值 5
+INC N$冰雷伤害值 5
+#IF
+EQUAL <$RING_L> 冰龙戒指
+#ACT
+INC N$冰咆伤害值 5
+INC N$冰雷伤害值 5
+#IF
+CHECKITEMW 冰龙腰带
+#ACT
+INC N$冰咆伤害值 5
+INC N$冰雷伤害值 5
+#IF
+CHECKITEMW 冰龙靴子
+#ACT
+INC N$冰咆伤害值 5
+INC N$冰雷伤害值 5
+
+#IF
+CHECKITEMW 千年虫盔
+#ACT
+INC N$施毒伤害值 2
+#IF
+CHECKITEMW 千年虫链
+#ACT
+INC N$施毒伤害值 2
+#IF
+CHECKITEMW 千年虫带
+#ACT
+INC N$施毒伤害值 2
+#IF
+CHECKITEMW 千年虫靴
+#ACT
+INC N$施毒伤害值 2
+#IF
+EQUAL <$ARMRING_R> 千年虫镯
+#ACT
+INC N$施毒伤害值 2
+#IF
+EQUAL <$ARMRING_L> 千年虫镯
+#ACT
+INC N$施毒伤害值 2
+#IF
+EQUAL <$RING_R> 千年虫指
+#ACT
+INC N$施毒伤害值 2
+#IF
+EQUAL <$RING_L> 千年虫指
+#ACT
+INC N$施毒伤害值 2
+
+#IF
+CHECKITEMW 毒龙
+#ACT
+INC N$施毒伤害值 10
+
+#IF
+CHECKITEMW 独角兽
+#ACT
+INC N$施毒伤害值 2
+
+#IF
+CHECKITEMW 青龙大帝
+#ACT
+INC N$施毒伤害值 10
+
+;双头魔龙增加20%火雨
+#IF
+CHECKITEMW 双头魔龙
+#ACT
+INC N$火雨百分比 20
+
+;火龙杖增加15%火雨
+;#IF
+;CHECKITEMW 火龙杖
+;#ACT
+;INC N$m百分比 15
+
+#IF
+CHECKITEMW 后羿之手
+#ACT
+INC N$火雨百分比 8
+#IF
+CHECKITEMW 熔岩之心
+#ACT
+INC N$火雨百分比 15
+#IF
+CHECKITEMW 朱雀大帝
+#ACT
+INC N$火雨百分比 10
+
+#IF
+EQUAL S$离火燎原 激活
+#ACT
+INC N$火墙百分比 20
+
+;战魂套烈火剑法伤害+10%
+#IF
+LARGE N$战魂套装 0
+#ACT
+INC N$烈火百分比 10
+INC N$斩月百分比 10
+
+;魅影虎增加10点火戏伤害
+#IF
+CHECKITEMW 魅影虎
+#ACT
+INC N$烈火伤害值 10
+INC N$火符伤害值 10
+INC N$火雨伤害值 10
+
+;凤凰の飞增加全系火伤害10%，因为属性是唯一属性，所以只计算是否佩戴此装备即可。
+#IF
+CHECKITEMW 凤凰の飞
+#ACT
+INC N$烈火百分比 10
+INC N$斩月百分比 10
+INC N$火符百分比 10
+INC N$火墙百分比 10
+INC N$火雨百分比 10
+INC N$群雷域百分比 10
+INC N$玄冰百分比  10
+
+#IF
+LARGE N$天玑套装 0
+#ACT
+INC N$火雨百分比 20
+INC N$群雷域百分比 20
+INC N$玄冰百分比  20
+
+;诅咒の亡增加施毒伤害值5点，因为属性是唯一属性，所以只计算是否佩戴此装备即可。
+#IF
+CHECKITEMW 诅咒の亡
+#ACT
+INC N$施毒伤害值 10
+
+;#IF
+;CHECKITEMW 玄武大帝
+;#ACT
+;INC N$火雨减免百分比 40
+;#IF
+;CHECKITEMW 【神】玄武大帝
+;#ACT
+;INC N$火雨减免百分比 50
+
+#IF
+CHECKITEMW 神器·雷霆
+#ACT
+INC N$冰雷伤害百分比 20
+#IF
+CHECKITEMW 星落摇光链
+#ACT
+INC N$冰雷伤害百分比 15
+#IF
+CHECKITEMW 海神戟
+#ACT
+INC N$玄冰百分比 10
+#IF
+CHECKITEMW 星落摇光镯
+#ACT
+INC N$玄冰百分比 10
+
+#IF
+EQUAL U50 6
+LARGE U77 0
+#ACT
+INC N$冰雷伤害百分比 15
+INC N$玄冰百分比 15
+INC N$冰咆百分比 15
+INC N$寒冰掌百分比 15
+
+#IF
+NOT EQUAL <$DRUM>
+#ACT
+GETHUMCUSTOMITEMVALUE 14 86   N$无效  N$烈火减免 1 2
+DIV N$烈火减免 100
+INC N$烈火减免百分比  N$烈火减免
+
+#IF
+CHECK [148] 1
+#ACT
+INC N$烈火减免百分比  3
+
+;佩饰火墙伤害减免
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,8)> 0
+#ACT
+SetMagicDefPower 火墙 <$GETSTRVALUE(T145,8)> 1
+
+;佩饰冰咆伤害增加
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,3)> 0
+#ACT
+INC N$冰咆百分比 <$GETSTRVALUE(T145,3)> 
+
+;佩饰雷电伤害增加
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,4)> 0
+#ACT
+INC N$雷电百分比 <$GETSTRVALUE(T145,4)> 
+INC N$冰雷伤害百分比 <$GETSTRVALUE(T145,4)>
+
+;佩饰火墙伤害增加
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,5)> 0
+#ACT
+INC N$火墙百分比 <$GETSTRVALUE(T145,5)> 
+
+;佩饰火符伤害增加
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,6)> 0
+#ACT
+INC N$火符百分比 <$GETSTRVALUE(T145,6)> 
+
+;佩饰火符伤害减免
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,7)> 0
+#ACT
+SetMagicDefPower 灵魂火符 <$GETSTRVALUE(T145,7)> 1
+
+;佩饰雷电伤害减免
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,9)> 0
+#ACT
+SetMagicDefPower 雷电术 <$GETSTRVALUE(T145,9)> 1
+INC N$冰雷减免百分比 <$GETSTRVALUE(T145,9)>
+
+;佩饰火雨伤害减免
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,10)> 0
+#ACT
+INC N$火雨减免百分比 <$GETSTRVALUE(T145,10)>
+
+;佩饰群雷伤害减免
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,11)> 0
+#ACT
+INC N$群雷减免百分比 <$GETSTRVALUE(T145,11)>
+
+;佩饰火雨伤害增加
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,12)> 0
+#ACT
+INC N$火雨百分比 <$GETSTRVALUE(T145,12)>
+
+;佩饰刺杀伤害加成
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,1)> 0
+#ACT
+INC N$刺杀百分比 <$GETSTRVALUE(T145,1)>
+;佩饰烈火伤害加成
+#IF
+LARGE <$CUSTABIL[248]> 0
+LARGE <$GETSTRVALUE(T145,2)> 0
+#ACT
+INC N$烈火百分比 <$GETSTRVALUE(T145,2)>
+INC N$斩月百分比 <$GETSTRVALUE(T145,2)>
+
+;上古苍龙7件套属性：辟地斩/寒冰斩/十步一杀威力+50%
+#IF
+LARGE N$上古苍龙套装 0
+#ACT
+INC N$开天百分比 50
+INC N$十步百分比 50
+
+;千年虫3件套属性：毒伤增加数值提升8
+#IF
+LARGE N$千虫套装 0
+#ACT
+INC N$施毒伤害值 8
+
+;冰龙3件套属性：玄冰刃伤害提升25%。
+#IF
+LARGE N$冰龙套装 0
+#ACT
+INC N$玄冰百分比 25
+
+;静寂6件套属性：烈火剑法伤害加成提升20%
+#IF
+LARGE N$静寂套装 0
+#ACT
+INC N$烈火百分比 20
+INC N$斩月百分比 20
+
+;疾风劲火每提高5%攻击速度增加1%烈火剑法伤害
+#IF
+EQUAL S$疾风劲火 激活
+#ACT
+GETABILVALUE 20 S$攻击速度
+MOV N$烈火计算 0
+MOV N$攻速数值 <$STR(S$攻击速度)>
+DIV N$烈火计算 <$STR(N$攻速数值)> 5
+
+#IF
+EQUAL S$疾风劲火 激活
+LARGE N$烈火计算 0
+#ACT
+INC N$烈火百分比 <$str(N$烈火计算)>
+INC N$斩月百分比 <$str(N$烈火计算)>
+
+#IF
+CHECKJOB Warrior
+EQUAL U50 1
+#ACT
+INC N$开天百分比 26
+
+#IF
+EQUAL U50 3
+EQUAL U63 1
+#act
+INC N$刺杀百分比 40
+
+#IF
+EQUAL U50 5
+LARGE U71 0
+#act
+INC N$火墙百分比 20
+
+;暴君刺杀强化
+#IF
+EQUAL U50 3
+EQUAL U62 1
+#ACT
+MOV N$暴君攻速 0
+GETABILVALUE 20 N$暴君攻速
+
+#IF
+EQUAL U50 3
+EQUAL U62 1
+LARGE N$暴君攻速 10
+#ACT
+DIV N$暴君攻速 N$暴君攻速 10
+MUL N$真实伤害值 N$暴君攻速
+
+#IF
+CHECKJOB Warrior
+EQUAL U57 0
+#ACT
+SetMagicPower 攻杀剑术 48 1
+SetMagicPower 烈火剑法 <$STR(N$烈火百分比)> 1
+SetMagicPower 斩月烈火 <$STR(N$烈火百分比)> 1
+SetMagicPower 开天斩   <$STR(N$开天百分比)> 1
+SetMagicPower 十步一杀 <$STR(N$十步百分比)> 1
+SetMagicPower 刺杀剑术 <$STR(N$刺杀百分比)> 1
+
+#IF
+CHECKJOB Warrior
+LARGE U57 0
+#ACT
+SetMagicPower 攻杀剑术 85 1
+SetMagicPower 烈火剑法 <$STR(N$烈火百分比)> 1
+SetMagicPower 斩月烈火 <$STR(N$烈火百分比)> 1
+SetMagicPower 开天斩   <$STR(N$开天百分比)> 1
+SetMagicPower 十步一杀 <$STR(N$十步百分比)> 1
+SetMagicPower 刺杀剑术 <$STR(N$刺杀百分比)> 1
+
+#IF
+CHECKJOB Wizard
+#ACT
+SetMagicPower 雷电术     <$STR(N$雷电百分比)> 1
+SetMagicPower 火墙       <$STR(N$火墙百分比)> 1
+SetMagicPower 冰咆哮     <$STR(N$冰咆百分比)> 1
+SetMagicPower 灭天火     <$STR(N$灭天火百分比)> 1
+SetMagicPower 寒冰掌     <$STR(N$寒冰掌百分比)> 1
+
+#IF
+CHECKJOB Taoist
+#ACT
+SetMagicPower 灵魂火符   <$STR(N$火符百分比)> 1
+SetMagicPower 施毒术     <$STR(N$施毒伤害值)> 0
+SetMagicPower 群体施毒术 <$STR(N$施毒伤害值)> 0
+
+#IF
+#ACT
+MOV N$施毒术等级 3
+
+#IF
+EQUAL U50 8
+LARGE U87 0
+#ACT
+MOV N$施毒术等级 4
+
+#IF
+EQUAL U50 8
+LARGE U87 0
+#ACT
+MOV N$施毒术等级 4
+
+#IF
+CHECKITEMW 【神】青龙大帝
+#ACT
+INC N$施毒术等级 1
+
+#IF
+CheckMagicName 施毒术
+#ACT
+SKILLLEVEL 施毒术 = <$STR(N$施毒术等级)>
+
+#IF
+CheckMagicName 群体施毒术
+#ACT
+SKILLLEVEL 群体施毒术 = <$STR(N$施毒术等级)>
+
+}

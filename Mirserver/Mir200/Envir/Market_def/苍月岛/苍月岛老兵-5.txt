@@ -1,0 +1,43 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01017.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=苍月岛岛主早已携带<“弱水旗”/FCOLOR=254>消失多年，据说最近又出现在玛>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=法大陆，如果你非要见他一面，我可以送你过去！>
+<RText|x=95.0|y=145.0|color=11033|size=17|outline=1|outlinecolor=0|text=击杀苍月岛岛主必获得霸主信物：<弱水旗/FCOLOR=254>>
+<Text|x=45.0|y=120.0|color=11033|size=17|outline=1|outlinecolor=0|text=提示：苍月岛岛主只会在每天11点、14点、18点出现！>
+<Img|x=45.0|y=205.0|width=18|height=18|esc=0|img=public/00025.png>
+<Layout|x=68.0|y=195.0|width=110|height=40|rotate=0|link=@苍月信使之地>
+<Text|x=70.0|y=198.0|color=11009|text=前往信使之地|link=@苍月信使之地>
+
+<Img|x=257.0|y=205.0|width=18|height=18|esc=0|img=public/00025.png>
+<Layout|x=280.0|y=195.0|width=110|height=40|rotate=0|link=@返回土城>
+<Text|x=282.0|y=198.0|color=11009|size=18|text=返回土城|link=@返回土城>
+
+[@返回土城]
+#IF
+#ACT
+MAPMOVE 3 330 330 5
+
+
+[@苍月信使之地]
+#IF
+CHECKMONEY 金币 > 9999
+#ACT
+MONEY 金币 - 10000
+logact 10001 通过[苍月岛老兵]消耗10000金币，剩余金币：<$MONEY(金币)>。
+MAPMOVE cybz 14 32
+GOTO @祭坛活跃
+break
+#ELSEACT
+MESSAGEBOX 1万金币都没有，我怎么送你过去！
+break
+
+[@祭坛活跃]
+#IF
+SMALL J59 5
+#ACT
+INC J59 5
+INC J65 5
+INC U43 5

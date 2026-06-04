@@ -1,0 +1,710 @@
+[@包裹拓展界面]
+{
+#IF
+EQUAL N$拓展包裹展开 1
+#ACT
+MOV N$拓展包裹展开 0
+MOV S$包裹拓展
+DELBUTTON 7 20
+BREAK
+
+#IF
+EQUAL N$拓展包裹展开 0
+#ACT
+MOV N$拓展包裹展开 1
+
+#IF
+EQUAL <$CLIENTFLAG> 2
+#ACT
+MOV S$包裹拓展
+INC S$包裹拓展 <Img|children={包裹背景_1,包裹背景_2,包裹背景_3,包裹背景_4,包裹格子_1,包裹格子_2,包裹格子_3,包裹格子_4,2,3,4,5,6,7,8,9,10,11,12}|x=0.0|y=460.0|width=295|height=123|scale9t=10|scale9b=10|scale9l=10|scale9r=10|esc=0|img=private/bag_ui/bag_ui_mobile/sj-10011.png|link=@空>
+;INC S$包裹拓展 <Text|id=2|x=50.0|y=12.0|color=255|size=18|text=点击+号放入拓展包裹道具>
+
+
+INC S$包裹拓展 <Layout|id=11|x=250.0|y=0.0|width=50|height=50|color=x|link=@拓展包裹>
+INC S$包裹拓展 <Button|id=12|x=260.0|y=10.0|pimg=public/1990000511.png|size=18|color=255|nimg=public/1990000510.png|link=@拓展包裹>
+INC S$包裹拓展 <Img|id=包裹背景_1|x=25.0|y=60.0|width=55|height=55|esc=0|img=public/kzbggz.png>
+INC S$包裹拓展 <Img|id=包裹背景_2|x=90.0|y=60.0|width=55|height=55|esc=0|img=public/kzbggz.png>
+INC S$包裹拓展 <Img|id=包裹背景_3|x=155.0|y=60.0|width=55|height=55|esc=0|img=public/kzbggz.png>
+INC S$包裹拓展 <Img|id=包裹背景_4|x=220.0|y=60.0|width=55|height=55|esc=0|img=public/kzbggz.png>
+INC S$包裹拓展 <Layout|id=7|x=25.0|y=60.0|width=55|height=55|color=x|link=@1号放入>
+INC S$包裹拓展 <Layout|id=8|x=90.0|y=60.0|width=55|height=55|color=x|link=@2号放入>
+INC S$包裹拓展 <Layout|id=9|x=155.0|y=60.0|width=55|height=55|color=x|link=@3号放入>
+INC S$包裹拓展 <Layout|id=10|x=220.0|y=60.0|width=55|height=55|color=x|link=@4号放入>
+
+
+#IF
+EQUAL <$CLIENTFLAG> 1
+#ACT
+MOV S$包裹拓展
+INC S$包裹拓展 <Img|children={包裹背景_1,包裹背景_2,包裹背景_3,包裹背景_4,包裹格子_1,包裹格子_2,包裹格子_3,包裹格子_4,2,3,4,5,6,7,8,9,10,11,12}|x=5.0|y=345.0|width=295|height=123|scale9t=10|scale9b=10|scale9l=10|scale9r=10|esc=0|img=private/bag_ui/bag_ui_mobile/sj-10011.png|link=@空>
+INC S$包裹拓展 <Layout|id=11|x=250.0|y=0.0|width=50|height=50|color=x|link=@拓展包裹>
+INC S$包裹拓展 <Button|id=12|x=260.0|y=10.0|pimg=public/1990000511.png|size=18|color=255|nimg=public/1990000510.png|link=@拓展包裹>
+INC S$包裹拓展 <Img|id=包裹背景_1|x=25.0|y=60.0|width=55|height=55|esc=0|img=public/kzbggz.png>
+INC S$包裹拓展 <Img|id=包裹背景_2|x=90.0|y=60.0|width=55|height=55|esc=0|img=public/kzbggz.png>
+INC S$包裹拓展 <Img|id=包裹背景_3|x=155.0|y=60.0|width=55|height=55|esc=0|img=public/kzbggz.png>
+INC S$包裹拓展 <Img|id=包裹背景_4|x=220.0|y=60.0|width=55|height=55|esc=0|img=public/kzbggz.png>
+INC S$包裹拓展 <Layout|id=7|x=25.0|y=60.0|width=55|height=55|color=x|link=@1号放入>
+INC S$包裹拓展 <Layout|id=8|x=90.0|y=60.0|width=55|height=55|color=x|link=@2号放入>
+INC S$包裹拓展 <Layout|id=9|x=155.0|y=60.0|width=55|height=55|color=x|link=@3号放入>
+INC S$包裹拓展 <Layout|id=10|x=220.0|y=60.0|width=55|height=55|color=x|link=@4号放入>
+
+#IF
+EQUAL U210 0
+#ACT
+INC S$包裹拓展 <Img|id=包裹格子_1|x=23.0|y=60.0|img=private/psllz/02130.png|esc=0>
+
+#IF
+EQUAL U210 1
+#ACT
+INC S$包裹拓展 <ItemShow|id=3|x=20.0|y=55.0|width=70|height=70|itemid=10324|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U210 2
+#ACT
+INC S$包裹拓展 <ItemShow|id=3|x=20.0|y=55.0|width=70|height=70|itemid=10325|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U210 3
+#ACT
+INC S$包裹拓展 <ItemShow|id=3|x=20.0|y=55.0|width=70|height=70|itemid=10326|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U210 4
+#ACT
+INC S$包裹拓展 <ItemShow|id=3|x=20.0|y=55.0|width=70|height=70|itemid=10327|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U210 5
+#ACT
+INC S$包裹拓展 <ItemShow|id=3|x=20.0|y=55.0|width=70|height=70|itemid=10328|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U210 6
+#ACT
+INC S$包裹拓展 <ItemShow|id=3|x=20.0|y=55.0|width=70|height=70|itemid=10329|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U210 7
+#ACT
+INC S$包裹拓展 <ItemShow|id=3|x=20.0|y=55.0|width=70|height=70|itemid=10330|itemcount=1|showtips=1|bgtype=0>
+
+
+;==============================
+#IF
+EQUAL U211 0
+#ACT
+INC S$包裹拓展 <Img|id=包裹格子_2|x=87.0|y=60.0|img=private/psllz/02130.png|esc=0>
+
+#IF
+EQUAL U211 1
+#ACT
+INC S$包裹拓展 <ItemShow|id=4|x=85.0|y=55.0|width=70|height=70|itemid=10324|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U211 2
+#ACT
+INC S$包裹拓展 <ItemShow|id=4|x=85.0|y=55.0|width=70|height=70|itemid=10325|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U211 3
+#ACT
+INC S$包裹拓展 <ItemShow|id=4|x=85.0|y=55.0|width=70|height=70|itemid=10326|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U211 4
+#ACT
+INC S$包裹拓展 <ItemShow|id=4|x=85.0|y=55.0|width=70|height=70|itemid=10327|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U211 5
+#ACT
+INC S$包裹拓展 <ItemShow|id=4|x=85.0|y=55.0|width=70|height=70|itemid=10328|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U211 6
+#ACT
+INC S$包裹拓展 <ItemShow|id=4|x=85.0|y=55.0|width=70|height=70|itemid=10329|itemcount=1|showtips=1|bgtype=0>
+
+
+#IF
+EQUAL U211 7
+#ACT
+INC S$包裹拓展 <ItemShow|id=4|x=85.0|y=55.0|width=70|height=70|itemid=10330|itemcount=1|showtips=1|bgtype=0>
+
+
+;==============================
+#IF
+EQUAL U212 0
+#ACT
+INC S$包裹拓展 <Img|id=包裹格子_3|x=152.0|y=60.0|img=private/psllz/02130.png|esc=0>
+
+#IF
+EQUAL U212 1
+#ACT
+INC S$包裹拓展 <ItemShow|id=5|x=150.0|y=55.0|width=70|height=70|itemid=10324|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U212 2
+#ACT
+INC S$包裹拓展 <ItemShow|id=5|x=150.0|y=55.0|width=70|height=70|itemid=10325|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U212 3
+#ACT
+INC S$包裹拓展 <ItemShow|id=5|x=150.0|y=55.0|width=70|height=70|itemid=10326|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U212 4
+#ACT
+INC S$包裹拓展 <ItemShow|id=5|x=150.0|y=55.0|width=70|height=70|itemid=10327|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U212 5
+#ACT
+INC S$包裹拓展 <ItemShow|id=5|x=150.0|y=55.0|width=70|height=70|itemid=10328|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U212 6
+#ACT
+INC S$包裹拓展 <ItemShow|id=5|x=150.0|y=55.0|width=70|height=70|itemid=10329|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U212 7
+#ACT
+INC S$包裹拓展 <ItemShow|id=5|x=150.0|y=55.0|width=70|height=70|itemid=10330|itemcount=1|showtips=1|bgtype=0>
+
+;==============================
+#IF
+EQUAL U213 0
+#ACT
+INC S$包裹拓展 <Img|id=包裹格子_4|x=217.0|y=60.0|img=private/psllz/02130.png|esc=0>
+
+#IF
+EQUAL U213 1
+#ACT
+INC S$包裹拓展 <ItemShow|id=6|x=215.0|y=55.0|width=70|height=70|itemid=10324|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U213 2
+#ACT
+INC S$包裹拓展 <ItemShow|id=6|x=215.0|y=55.0|width=70|height=70|itemid=10325|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U213 3
+#ACT
+INC S$包裹拓展 <ItemShow|id=6|x=215.0|y=55.0|width=70|height=70|itemid=10326|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U213 4
+#ACT
+INC S$包裹拓展 <ItemShow|id=6|x=215.0|y=55.0|width=70|height=70|itemid=10327|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U213 5
+#ACT
+INC S$包裹拓展 <ItemShow|id=6|x=215.0|y=55.0|width=70|height=70|itemid=10328|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U213 6
+#ACT
+INC S$包裹拓展 <ItemShow|id=6|x=215.0|y=55.0|width=70|height=70|itemid=10329|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+EQUAL U213 7
+#ACT
+INC S$包裹拓展 <ItemShow|id=6|x=215.0|y=55.0|width=70|height=70|itemid=10330|itemcount=1|showtips=1|bgtype=0>
+
+#IF
+#ACT
+DELBUTTON 7 20
+ADDBUTTON 7 20 <$STR(S$包裹拓展)>
+BREAK
+
+[@1号放入]
+#IF
+LARGE U210 0
+#ACT
+MESSAGEBOX 是否确认取下当前拓展包裹道具？ @确认取下1号包裹  @取消
+break
+
+#IF
+EQUAL U210 0
+#ACT
+Collimator  1
+sendmsg 9 <font color='#fff600'>请对准需要放入的包裹袋子双击</font>
+BREAK 
+
+[@2号放入]
+#IF
+LARGE U211 0
+#ACT
+MESSAGEBOX 是否确认取下当前拓展包裹道具？ @确认取下2号包裹  @取消
+break
+
+#IF
+EQUAL U211 0
+#ACT
+Collimator  2
+sendmsg 9 <font color='#fff600'>请对准需要放入的包裹袋子双击</font>
+BREAK 
+
+[@3号放入]
+#IF
+LARGE U212 0
+#ACT
+MESSAGEBOX 是否确认取下当前拓展包裹道具？ @确认取下3号包裹  @取消
+break
+
+#IF
+EQUAL U212 0
+#ACT
+Collimator  3
+sendmsg 9 <font color='#fff600'>请对准需要放入的包裹袋子双击</font>
+BREAK 
+
+[@4号放入]
+#IF
+LARGE U213 0
+#ACT
+MESSAGEBOX 是否确认取下当前拓展包裹道具？ @确认取下4号包裹  @取消
+break
+
+#IF
+EQUAL U213 0
+#ACT
+Collimator  4
+sendmsg 9 <font color='#fff600'>请对准需要放入的包裹袋子双击</font>
+BREAK 
+
+[@确认取下1号包裹]
+#If
+NOT CHECKBAGSIZE 5 
+#Act
+SENDMSG 9 请预留5个空格
+BREAK 
+
+#IF
+EQUAL U210 1
+#ACT
+MOV U210 0
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U210 2
+#ACT
+MOV U210 0
+GiveStateItem 麻布袋(8格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U210 3
+#ACT
+MOV U210 0
+GiveStateItem 麻布袋(10格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U210 4
+#ACT
+MOV U210 0
+GiveStateItem 丝绸袋(14格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U210 5
+#ACT
+MOV U210 0
+GiveStateItem 绫罗袋(18格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U210 6
+#ACT
+MOV U210 0
+GiveStateItem 绫罗袋(22格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U210 7
+#ACT
+MOV U210 0
+GIVE 乾坤袋(20格) 1
+GOTO @包裹格子增加
+break
+
+[@确认取下2号包裹]
+#If
+NOT CHECKBAGSIZE 5 
+#Act
+SENDMSG 9 请预留5个空格
+BREAK 
+
+#IF
+EQUAL U211 1
+#ACT
+MOV U211 0
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U211 2
+#ACT
+MOV U211 0
+GiveStateItem 麻布袋(8格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U211 3
+#ACT
+MOV U211 0
+GiveStateItem 麻布袋(10格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U211 4
+#ACT
+MOV U211 0
+GiveStateItem 丝绸袋(14格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U211 5
+#ACT
+MOV U211 0
+GiveStateItem 绫罗袋(18格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U211 6
+#ACT
+MOV U211 0
+GiveStateItem 绫罗袋(22格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U211 7
+#ACT
+MOV U211 0
+Give 乾坤袋(20格) 1
+GOTO @包裹格子增加
+break
+
+[@确认取下3号包裹]
+#If
+NOT CHECKBAGSIZE 5 
+#Act
+SENDMSG 9 请预留5个空格
+BREAK 
+
+#IF
+EQUAL U212 1
+#ACT
+MOV U212 0
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U212 2
+#ACT
+MOV U212 0
+GiveStateItem 麻布袋(8格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U212 3
+#ACT
+MOV U212 0
+GiveStateItem 麻布袋(10格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U212 4
+#ACT
+MOV U212 0
+GiveStateItem 丝绸袋(14格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U212 5
+#ACT
+MOV U212 0
+GiveStateItem 绫罗袋(18格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U212 6
+#ACT
+MOV U212 0
+GiveStateItem 绫罗袋(22格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U212 7
+#ACT
+MOV U212 0
+Give 乾坤袋(20格) 1
+GOTO @包裹格子增加
+break
+
+
+[@确认取下4号包裹]
+#If
+NOT CHECKBAGSIZE 5 
+#Act
+SENDMSG 9 请预留5个空格
+BREAK 
+
+#IF
+EQUAL U213 1
+#ACT
+MOV U213 0
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U213 2
+#ACT
+MOV U213 0
+GiveStateItem 麻布袋(8格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U213 3
+#ACT
+MOV U213 0
+GiveStateItem 麻布袋(10格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U213 4
+#ACT
+MOV U213 0
+GiveStateItem 丝绸袋(14格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U213 5
+#ACT
+MOV U213 0
+GiveStateItem 绫罗袋(18格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U213 6
+#ACT
+MOV U213 0
+GiveStateItem 绫罗袋(22格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+break
+
+#IF
+EQUAL U213 7
+#ACT
+MOV U213 0
+Give 乾坤袋(20格) 1
+GOTO @包裹格子增加
+break
+
+}
+
+
+
+[@双击包裹功能]
+
+{
+
+#If
+EQUAL U210 0
+#ACT
+MOV U210 <$STR(N$包裹等级)>
+GOTO @包裹格子增加
+BREAK
+#If
+EQUAL U211 0
+#ACT
+MOV U211 <$STR(N$包裹等级)>
+GOTO @包裹格子增加
+BREAK
+#If
+EQUAL U212 0
+#ACT
+MOV U212 <$STR(N$包裹等级)>
+GOTO @包裹格子增加
+BREAK
+#If
+EQUAL U213 0
+#ACT
+MOV U213 <$STR(N$包裹等级)>
+GOTO @包裹格子增加
+BREAK
+
+#If
+#ACT
+MOV S$一号位置 <$STR(U210)>
+MOV S$二号位置 <$STR(U211)>
+MOV S$三号位置 <$STR(U212)>
+MOV S$四号位置 <$STR(U213)>
+MOV S$包裹统计 <$STR(S$一号位置)>|<$STR(S$二号位置)>|<$STR(S$三号位置)>|<$STR(S$四号位置)>
+JZSortString <$STR(S$包裹统计)> | <$STR(S$包裹排序)> 0
+GETVALIDSTRSUPER <$STR(S$包裹排序)> | S$包裹分割
+
+#If
+NOT LARGE N$包裹等级 <$STR(S$包裹分割1)>
+#ACT
+SENDMSG 9 请先取下已扩展的背包再使用！
+STOP
+BREAK
+
+#If
+EQUAL U210 <$STR(S$包裹分割1)>
+#ACT
+MOV U210 <$STR(N$包裹等级)>
+GOTO @包裹返还
+BREAK
+
+#If
+EQUAL U211 <$STR(S$包裹分割1)>
+#ACT
+MOV U211 <$STR(N$包裹等级)>
+GOTO @包裹返还
+BREAK
+
+#If
+EQUAL U212 <$STR(S$包裹分割1)>
+#ACT
+MOV U212 <$STR(N$包裹等级)>
+GOTO @包裹返还
+BREAK
+
+#If
+EQUAL U213 <$STR(S$包裹分割1)>
+#ACT
+MOV U213 <$STR(N$包裹等级)>
+GOTO @包裹返还
+BREAK
+
+[@包裹返还]
+#If
+EQUAL S$包裹分割1 1
+#ACT
+MOV S$包裹分割1
+MOV S$包裹分割2
+MOV S$包裹分割3
+MOV S$包裹分割4
+MOV S$包裹统计
+MOV S$包裹排序
+MOV S$包裹分割
+GiveStateItem 麻布袋(5格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+BREAK
+
+#If
+EQUAL S$包裹分割1 2
+#ACT
+MOV S$包裹分割1
+MOV S$包裹分割2
+MOV S$包裹分割3
+MOV S$包裹分割4
+MOV S$包裹统计
+MOV S$包裹排序
+MOV S$包裹分割
+GiveStateItem 麻布袋(8格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+BREAK
+
+#If
+EQUAL S$包裹分割1 3
+#ACT
+MOV S$包裹分割1
+MOV S$包裹分割2
+MOV S$包裹分割3
+MOV S$包裹分割4
+MOV S$包裹统计
+MOV S$包裹排序
+MOV S$包裹分割
+GiveStateItem 麻布袋(10格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+BREAK
+
+#If
+EQUAL S$包裹分割1 4
+#ACT
+MOV S$包裹分割1
+MOV S$包裹分割2
+MOV S$包裹分割3
+MOV S$包裹分割4
+MOV S$包裹统计
+MOV S$包裹排序
+MOV S$包裹分割
+GiveStateItem 丝绸袋(14格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+BREAK
+
+#If
+EQUAL S$包裹分割1 5
+#ACT
+MOV S$包裹分割1
+MOV S$包裹分割2
+MOV S$包裹分割3
+MOV S$包裹分割4
+MOV S$包裹统计
+MOV S$包裹排序
+MOV S$包裹分割
+GiveStateItem 绫罗袋(18格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+BREAK
+
+#If
+EQUAL S$包裹分割1 6
+#ACT
+MOV S$包裹分割1
+MOV S$包裹分割2
+MOV S$包裹分割3
+MOV S$包裹分割4
+MOV S$包裹统计
+MOV S$包裹排序
+MOV S$包裹分割
+GiveStateItem 绫罗袋(22格) 1 1 1 0 0 1 1 1 1
+GOTO @包裹格子增加
+BREAK
+
+#If
+EQUAL S$包裹分割1 7
+#ACT
+MOV S$包裹分割1
+MOV S$包裹分割2
+MOV S$包裹分割3
+MOV S$包裹分割4
+MOV S$包裹统计
+MOV S$包裹排序
+MOV S$包裹分割
+Give 乾坤袋(20格) 1
+GOTO @包裹格子增加
+BREAK
+
+}

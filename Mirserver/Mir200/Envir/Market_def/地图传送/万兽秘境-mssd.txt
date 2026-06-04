@@ -1,0 +1,25 @@
+[@main]
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01023.png|esc=0>
+<Text|x=45.0|y=70.0|color=255|size=18|outlinecolor=0|outline=1|text=消灭迷失神殿内所有的怪物即可使用传送门，>
+<Text|x=45.0|y=95.0|color=255|size=18|outlinecolor=0|outline=1|text=通过传送门能够达到迷失神殿深处的万兽秘境。>
+<Text|x=45.0|y=120.0|color=255|size=18|outlinecolor=0|outline=1|text=如果你已经将这里的怪物清理干净并且做好了准备>
+<RText|x=45.0|y=145.0|color=255|size=18|outlinecolor=0|outline=1|text=那就开始前进吧！>
+<Layout|x=80.0|y=185.0|width=100|height=35|color=*|link=@传送地图>
+<Button|x=85.0|y=186.0|color=251|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=传送|link=@传送地图>
+<Layout|x=305.0|y=185.0|width=100|height=35|color=*|link=@EXIT>
+<Button|x=310.0|y=186.0|color=251|size=18|nimg=private/pmh/006.png|pimg=private/pmh/005.png|text=我害怕|link=@EXIT>
+
+[@传送地图]
+#IF
+CheckMonMap mssd 1
+#ACT
+SENDMSG 9 进入失败，当前地图内还有剩余的怪物未清理！
+BREAK
+#ELSEACT
+MAPMOVE hf005 40 61
+SENDMSG 0 %s通过迷失神殿的传送门成功进入万兽秘境！
+BREAK
+

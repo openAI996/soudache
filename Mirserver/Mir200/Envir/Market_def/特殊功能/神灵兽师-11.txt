@@ -1,0 +1,956 @@
+[@main]
+;#IF
+;CHECKLEVELEX < 75 
+;#ACT
+;MESSAGEBOX 当前实力不足以查看，请75级再来找我吧！
+;BREAK
+
+#IF
+#ACT
+#SAY
+<Img|x=0.0|y=20.0|height=280|show=0|esc=1|scale9t=50|scale9r=50|bg=1|move=0|reset=1|scale9b=50|img=public/bg_npc_01.png|scale9l=50|loadDelay=1>
+<Layout|x=489.0|y=3.0|width=80|height=80|link=@exit>
+<Button|x=505.0|y=40.0|nimg=public/1900000510.png|pimg=public/1900000511.png|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01033.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outline=1|outlinecolor=0|text=传说在神魔起舞的时代，玛法大陆上诞生了一批难以计数的>
+<RText|x=45.0|y=95.0|outlinecolor=0|color=255|outline=1|size=17|text=<“灵兽”/FCOLOR=11009>，在这里你可以合成<“神级灵兽”/FCOLOR=250>以及对神级灵兽\进行分解。>
+<Layout|x=68.0|y=220.0|width=100|height=40|rotate=0|link=@加载灵兽选择数据#道具ID=*>
+<Text|x=81.0|y=225.0|color=11009|size=18|text=神级灵兽分解|link=@加载灵兽选择数据#道具ID=*>
+<Layout|x=70.0|y=143.0|width=100|height=45|link=@开始合成灵兽>
+<Text|x=83.0|y=153.0|color=11009|size=18|text=灵兽合成|link=@开始合成灵兽>
+<Img|x=53.0|y=158.0|width=20|height=20|esc=0|img=public/00028.png>
+<Img|x=53.0|y=228.0|width=20|height=20|esc=0|img=public/00021.png>
+
+
+[@开始合成灵兽]
+#IF
+#ACT
+MOV N$背包橙色 0
+LoopBagItems @获取当前背包橙色灵兽  N$物品唯一ID S$物品的名称 
+
+#IF
+SMALL N$背包橙色 5
+#ACT
+MESSAGEBOX 请准备好5个橙色级别灵兽再来进行合成！
+BREAK
+
+#IF
+#ACT
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <RText|x=424.0|y=80.0|outlinecolor=0|color=255|outline=1|size=17|text=如果你有多余的橙色灵兽，可以找我合成>
+INC S$灵兽合成介绍 <RText|x=424.0|y=110.0|outlinecolor=0|color=255|outline=1|size=17|text=更高级的<“神级灵兽”/FCOLOR=251>>
+INC S$灵兽合成介绍 <Text|x=424.0|y=150.0|color=243|outlinecolor=0|outline=1|size=18|text=【灵兽合成介绍】：>
+
+
+;INC S$灵兽合成介绍 <Text|x=424.0|y=110.0|color=250|outlinecolor=0|outline=1|size=17|text=使用5只任意白色的灵兽可以随机合成1只\绿色灵兽。>
+;INC S$灵兽合成介绍 <Text|x=424.0|y=170.0|color=250|outlinecolor=0|outline=1|size=17|text=使用5只任意绿色的灵兽可以随机合成1只\紫色灵兽。>
+;INC S$灵兽合成介绍 <Text|x=424.0|y=230.0|color=250|outlinecolor=0|outline=1|size=17|text=使用5只任意紫色的灵兽可以随机合成1只\橙色灵兽。>
+
+INC S$灵兽合成介绍 <Text|x=424.0|y=185.0|color=250|outlinecolor=0|outline=1|size=17|text=1、使用5只任意22级以上橙色的灵兽可以\随机合成一只橙色【神】灵兽。>
+INC S$灵兽合成介绍 <Text|x=424.0|y=230.0|color=249|outlinecolor=0|outline=1|size=17|text=2、合成神级灵兽均为随机给与。>
+INC S$灵兽合成介绍 <Text|x=424.0|y=255.0|color=249|outlinecolor=0|outline=1|size=17|text=3、不同颜色的灵兽无法进行合成。>
+INC S$灵兽合成介绍 <Text|x=424.0|y=280.0|color=249|outlinecolor=0|outline=1|size=17|text=4、神级灵兽为橙色灵兽属性进阶版，差距\不算很大。>
+INC S$灵兽合成介绍 <Text|x=424.0|y=325.0|color=249|outlinecolor=0|outline=1|size=17|text=5、神级灵兽最好使用多余橙色灵兽进阶，\建议中后期合成。>
+INC S$灵兽合成介绍 <Button|x=522.0|y=450.0|width=110|rotate=0|size=18|color=251|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|text=背包灵兽|link=@放入背包灵兽>
+
+MOV S$灵兽1号位置框 
+MOV S$灵兽2号位置框 
+MOV S$灵兽3号位置框 
+MOV S$灵兽4号位置框 
+MOV S$灵兽5号位置框 
+MOV S0
+MOV S$灵兽1号物品ID 
+MOV S$灵兽2号物品ID 
+MOV S$灵兽3号物品ID 
+MOV S$灵兽4号物品ID 
+MOV S$灵兽5号物品ID 
+MOV S$灵兽1号物品名称
+MOV S$灵兽2号物品名称
+MOV S$灵兽3号物品名称
+MOV S$灵兽4号物品名称
+MOV S$灵兽5号物品名称
+MOV S$灵兽1号物品种类
+MOV S$灵兽2号物品种类
+MOV S$灵兽3号物品种类
+MOV S$灵兽4号物品种类
+MOV S$灵兽5号物品种类
+MOV S$灵兽1号等级
+MOV S$灵兽2号等级
+MOV S$灵兽3号等级
+MOV S$灵兽4号等级
+MOV S$灵兽5号等级
+GOTO @灵兽合成主界面
+
+[@灵兽合成主界面]
+<Img|a=4|x=<$STR(N$屏宽)>|y=<$STR(N$屏高)>|width=3000|height=3000|move=0|scale9t=20|img=public/1900000651_1.png|reset=1|show=0|scale9b=20|loadDelay=1|bg=0|scale9l=20|scale9r=20|esc=1>
+<Layout|a=4|x=-40.0|y=0.0|width=3000|height=3000|link=@exit>
+<Img|x=0.0|y=-1.0|width=780|height=520|bg=1|loadDelay=0|scale9r=150|scale9t=150|scale9b=150|move=0|esc=1|reset=1|scale9l=150|img=private/psllz/00070.png|show=4>
+<Layout|x=724.0|y=-18.0|width=80|height=80|link=@exit>
+<Button|x=739.0|y=18.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Img|x=340.0|y=6.0|img=private/biaoti/01033.png|esc=0>
+<Img|x=154.0|y=97.0|img=public/021611.png|esc=0>
+<Img|x=398.0|y=58.0|height=450|img=private/psllz/00010.png|esc=0>
+<Img|x=70.0|y=75.0|width=300|height=300|rotate=0|esc=0|img=private/zbhc/002.png>
+<Img|x=40.0|y=72.0|width=358|height=315|rotate=0|scale9t=5|scale9r=5|esc=0|scale9b=5|img=private/xlxl/0018.png|scale9l=5>
+<Img|x=40.0|y=386.0|width=358|height=110|rotate=0|scale9t=5|scale9r=5|esc=0|scale9b=5|img=private/xlxl/0018.png|scale9l=5>
+<Text|x=101.0|y=390.0|size=18|color=11023|text=请同时放入五个同颜色的灵兽>
+<Text|x=92.0|y=415.0|size=18|color=11023|text=双击框内灵兽可返回包裹重新选择>
+<Button|x=168.0|y=450.0|width=110|rotate=0|pimg=private/psllz/02134.png|nimg=private/psllz/02133.png|size=18|color=251|text=随机合成|link=@开始随机合成>
+<Img|children={灵兽物品_1}|x=185.0|y=105.0|width=70|height=70|img=private/zbhc/003.png|esc=0>
+<DBItemShow|id=灵兽物品_1|x=1|y=3|makeindex=<$STR(S$灵兽1号物品ID)>|dblink=@灵兽物品返回#灵兽物品位置=灵兽1号>
+<Img|children={灵兽物品_2}|x=95.0|y=185.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<DBItemShow|id=灵兽物品_2|x=1|y=3|makeindex=<$STR(S$灵兽2号物品ID)>|dblink=@灵兽物品返回#灵兽物品位置=灵兽2号>
+<Img|children={灵兽物品_3}|x=275.0|y=185.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<DBItemShow|id=灵兽物品_3|x=1|y=3|makeindex=<$STR(S$灵兽3号物品ID)>|dblink=@灵兽物品返回#灵兽物品位置=灵兽3号>
+<Img|children={灵兽物品_4}|x=120.0|y=285.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<DBItemShow|id=灵兽物品_4|x=1|y=3|makeindex=<$STR(S$灵兽4号物品ID)>|dblink=@灵兽物品返回#灵兽物品位置=灵兽4号>
+<Img|children={灵兽物品_5}|x=255.0|y=285.0|width=70|height=70|esc=0|img=private/zbhc/003.png>
+<DBItemShow|id=灵兽物品_5|x=1|y=3|makeindex=<$STR(S$灵兽5号物品ID)>|dblink=@灵兽物品返回#灵兽物品位置=灵兽5号>
+
+<$STR(S$灵兽合成介绍)>
+<$STR(S$灵兽物品展示)>
+
+[@获取当前背包橙色灵兽]
+#IF
+equal S$物品的名称 鬼狮鹰
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  天马
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	赤烟驹
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	青鸾
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	鲲鹏
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	咕噜神象
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	嗜血飞龙
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	寒霜巨龙
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  上古火龙
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	青龙大帝
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	金甲象
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	飞天狮
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	白虎大帝
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	玄武大帝
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	勾陈
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  玉麒麟
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	双头魔龙
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	雷霄巨蝎
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	七彩兽
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	黄金宝马
+#ACT
+INC N$背包橙色 1
+#IF
+equal S$物品的名称  	穷奇
+#ACT
+INC N$背包橙色 1
+
+
+[@放入背包灵兽]
+#IF
+#ACT
+MOV S$放入灵兽类型 28
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+MOV S$已选择灵兽过滤
+GOTO @灵兽合成主界面
+
+
+[@灵兽显示跳转]
+#IF
+#ACT
+MOV S$灵兽物品ID <$STR(S0)>
+GetItemNameByMakeIndex <$STR(S$灵兽物品ID)> S$物品名称检测
+
+#if
+NOT CHECKTEXTLIST ..\QuestDiary\数据文件\可合成灵兽.txt <$str(S$物品名称检测)>
+#ACT
+MOV S0 
+SENDMSG 9 请放入21级以上橙色灵兽
+BREAK 
+
+#IF
+EQUAL S$灵兽1号位置框 
+EQUAL S$灵兽2号位置框 
+EQUAL S$灵兽3号位置框 
+EQUAL S$灵兽4号位置框 
+EQUAL S$灵兽5号位置框 
+#ACT
+MOV S$灵兽1号位置框 已放入
+MOV S$灵兽1号物品ID <$STR(S0)>
+INC S$已选择灵兽过滤 <$STR(S$灵兽1号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$灵兽1号物品ID)> S$灵兽1号物品名称
+GetDBItemFieldValue <$STR(S$灵兽1号物品名称)> Color S$灵兽1号物品种类
+MOV S$1号灵兽物品行 <$GetTypeBRow(cfg_lshc,1,<$STR(S$灵兽1号物品名称)>)>  
+MOV S$灵兽物品过滤 <$cfg_lshc(<$STR(S$1号灵兽物品行)>_2)> 
+LINKITEMBYMAKEINDEX <$str(S$灵兽1号物品ID)>
+GOTO @1号灵兽等级判断
+BREAK
+
+#IF
+EQUAL S$灵兽1号位置框 
+#ACT
+MOV S$灵兽1号位置框 已放入
+MOV S$灵兽1号物品ID <$STR(S0)>
+INC S$已选择灵兽过滤 <$STR(S$灵兽1号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$灵兽1号物品ID)> S$灵兽1号物品名称
+GetDBItemFieldValue <$STR(S$灵兽1号物品名称)> Color S$灵兽1号物品种类
+MOV S$1号灵兽物品行 <$GetTypeBRow(cfg_lshc,1,<$STR(S$灵兽1号物品名称)>)>  
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择灵兽过滤)>|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|filter3=<$STR(S$灵兽物品过滤)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+LINKITEMBYMAKEINDEX <$str(S$灵兽1号物品ID)>
+GOTO @1号灵兽等级判断
+BREAK
+
+#IF
+EQUAL S$灵兽2号位置框 
+#ACT
+MOV S$灵兽2号位置框 已放入
+MOV S$灵兽2号物品ID <$STR(S0)>
+INC S$已选择灵兽过滤 <$STR(S$灵兽2号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$灵兽2号物品ID)> S$灵兽2号物品名称
+GetDBItemFieldValue <$STR(S$灵兽2号物品名称)> Color S$灵兽2号物品种类
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择灵兽过滤)>|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|filter3=<$STR(S$灵兽物品过滤)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+LINKITEMBYMAKEINDEX <$str(S$灵兽2号物品ID)>
+GOTO @2号灵兽等级判断
+BREAK
+
+#IF
+EQUAL S$灵兽3号位置框 
+#ACT
+MOV S$灵兽3号位置框 已放入
+MOV S$灵兽3号物品ID <$STR(S0)>
+INC S$已选择灵兽过滤 <$STR(S$灵兽3号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$灵兽3号物品ID)> S$灵兽3号物品名称
+GetDBItemFieldValue <$STR(S$灵兽3号物品名称)> Color S$灵兽3号物品种类
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择灵兽过滤)>|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|filter3=<$STR(S$灵兽物品过滤)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+LINKITEMBYMAKEINDEX <$str(S$灵兽3号物品ID)>
+GOTO @3号灵兽等级判断
+BREAK
+
+#IF
+EQUAL S$灵兽4号位置框 
+#ACT
+MOV S$灵兽4号位置框 已放入
+MOV S$灵兽4号物品ID <$STR(S0)>
+INC S$已选择灵兽过滤 <$STR(S$灵兽4号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$灵兽4号物品ID)> S$灵兽4号物品名称
+GetDBItemFieldValue <$STR(S$灵兽4号物品名称)> Color S$灵兽4号物品种类
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择灵兽过滤)>|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|filter3=<$STR(S$灵兽物品过滤)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+LINKITEMBYMAKEINDEX <$str(S$灵兽4号物品ID)>
+GOTO @4号灵兽等级判断
+BREAK
+
+#IF
+EQUAL S$灵兽5号位置框 
+#ACT
+MOV S$灵兽5号位置框 已放入
+MOV S$灵兽5号物品ID <$STR(S0)>
+INC S$已选择灵兽过滤 <$STR(S$灵兽5号物品ID)>,
+GetItemNameByMakeIndex <$STR(S$灵兽5号物品ID)> S$灵兽5号物品名称
+GetDBItemFieldValue <$STR(S$灵兽5号物品名称)> Color S$灵兽5号物品种类
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择灵兽过滤)>|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|filter3=<$STR(S$灵兽物品过滤)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+LINKITEMBYMAKEINDEX <$str(S$灵兽5号物品ID)>
+GOTO @5号灵兽等级判断
+BREAK
+
+[@1号灵兽等级判断]
+#IF
+NOT EQUAL S$灵兽1号位置框
+EQUAL S$灵兽1号物品种类 70
+CHECKCUSTOMITEMPROGRESSBARVALUE -1 0 0 > 21
+#ACT
+MOV S$灵兽1号等级 满足
+GOTO @等级判断返回
+BREAK
+#ELSEACT
+GOTO @等级判断返回
+BREAK
+
+[@2号灵兽等级判断]
+#IF
+NOT EQUAL S$灵兽2号位置框
+EQUAL S$灵兽2号物品种类 70
+CHECKCUSTOMITEMPROGRESSBARVALUE -1 0 0 > 21
+#ACT
+MOV S$灵兽2号等级 满足
+GOTO @等级判断返回
+BREAK
+#ELSEACT
+GOTO @等级判断返回
+BREAK
+
+[@3号灵兽等级判断]
+#IF
+NOT EQUAL S$灵兽3号位置框
+EQUAL S$灵兽3号物品种类 70
+CHECKCUSTOMITEMPROGRESSBARVALUE -1 0 0 > 21
+#ACT
+MOV S$灵兽3号等级 满足
+GOTO @等级判断返回
+BREAK
+#ELSEACT
+GOTO @等级判断返回
+BREAK
+
+[@4号灵兽等级判断]
+#IF
+NOT EQUAL S$灵兽4号位置框
+EQUAL S$灵兽4号物品种类 70
+CHECKCUSTOMITEMPROGRESSBARVALUE -1 0 0 > 21
+#ACT
+MOV S$灵兽4号等级 满足
+GOTO @等级判断返回
+BREAK
+#ELSEACT
+GOTO @等级判断返回
+BREAK
+
+[@5号灵兽等级判断]
+#IF
+NOT EQUAL S$灵兽5号位置框
+EQUAL S$灵兽5号物品种类 70
+CHECKCUSTOMITEMPROGRESSBARVALUE -1 0 0 > 21
+#ACT
+MOV S$灵兽5号等级 满足
+GOTO @等级判断返回
+BREAK
+#ELSEACT
+GOTO @等级判断返回
+BREAK
+
+
+[@等级判断返回]
+#IF
+#ACT
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择灵兽过滤)>|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|filter3=<$STR(S$灵兽物品过滤)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+GOTO @灵兽合成主界面
+break
+
+
+[@灵兽物品返回]
+#IF
+EQUAL S$灵兽1号位置框 
+EQUAL S$灵兽2号位置框 
+EQUAL S$灵兽3号位置框 
+EQUAL S$灵兽4号位置框 
+NOT EQUAL S$灵兽5号位置框 
+#ACT
+DEC S$已选择灵兽过滤 <$STR(S$<$STR(S$灵兽物品位置)>物品ID)>,
+MOV S$<$STR(S$灵兽物品位置)>位置框 
+MOV S0
+MOV S$<$STR(S$灵兽物品位置)>物品ID 
+MOV S$<$STR(S$灵兽物品位置)>物品名称
+MOV S$<$STR(S$灵兽物品位置)>物品种类
+
+MOV S$放入灵兽类型 28
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+MOV S$灵兽物品展示
+MOV S$已选择灵兽过滤
+GOTO @灵兽合成主界面
+BREAK
+
+#IF
+EQUAL S$灵兽1号位置框 
+EQUAL S$灵兽2号位置框 
+EQUAL S$灵兽3号位置框 
+NOT EQUAL S$灵兽4号位置框 
+EQUAL S$灵兽5号位置框 
+#ACT
+DEC S$已选择灵兽过滤 <$STR(S$<$STR(S$灵兽物品位置)>物品ID)>,
+MOV S$<$STR(S$灵兽物品位置)>位置框 
+MOV S0
+MOV S$<$STR(S$灵兽物品位置)>物品ID 
+MOV S$<$STR(S$灵兽物品位置)>物品名称
+MOV S$<$STR(S$灵兽物品位置)>物品种类
+
+MOV S$放入灵兽类型 28
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+MOV S$灵兽物品展示
+MOV S$已选择灵兽过滤
+GOTO @灵兽合成主界面
+BREAK
+
+#IF
+EQUAL S$灵兽1号位置框 
+EQUAL S$灵兽2号位置框 
+NOT EQUAL S$灵兽3号位置框 
+EQUAL S$灵兽4号位置框 
+EQUAL S$灵兽5号位置框 
+#ACT
+DEC S$已选择灵兽过滤 <$STR(S$<$STR(S$灵兽物品位置)>物品ID)>,
+MOV S$<$STR(S$灵兽物品位置)>位置框 
+MOV S0
+MOV S$<$STR(S$灵兽物品位置)>物品ID 
+MOV S$<$STR(S$灵兽物品位置)>物品名称
+MOV S$<$STR(S$灵兽物品位置)>物品种类
+
+MOV S$放入灵兽类型 28
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+MOV S$灵兽物品展示
+MOV S$已选择灵兽过滤
+GOTO @灵兽合成主界面
+BREAK
+
+#IF
+EQUAL S$灵兽1号位置框 
+NOT EQUAL S$灵兽2号位置框 
+EQUAL S$灵兽3号位置框 
+EQUAL S$灵兽4号位置框 
+EQUAL S$灵兽5号位置框 
+#ACT
+DEC S$已选择灵兽过滤 <$STR(S$<$STR(S$灵兽物品位置)>物品ID)>,
+MOV S$<$STR(S$灵兽物品位置)>位置框 
+MOV S0
+MOV S$<$STR(S$灵兽物品位置)>物品ID 
+MOV S$<$STR(S$灵兽物品位置)>物品名称
+MOV S$<$STR(S$灵兽物品位置)>物品种类
+
+MOV S$放入灵兽类型 28
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+MOV S$灵兽物品展示
+MOV S$已选择灵兽过滤
+GOTO @灵兽合成主界面
+BREAK
+
+#IF
+NOT EQUAL S$灵兽1号位置框 
+EQUAL S$灵兽2号位置框 
+EQUAL S$灵兽3号位置框 
+EQUAL S$灵兽4号位置框 
+EQUAL S$灵兽5号位置框 
+#ACT
+DEC S$已选择灵兽过滤 <$STR(S$<$STR(S$灵兽物品位置)>物品ID)>,
+MOV S$<$STR(S$灵兽物品位置)>位置框 
+MOV S0
+MOV S$<$STR(S$灵兽物品位置)>物品ID 
+MOV S$<$STR(S$灵兽物品位置)>物品名称
+MOV S$<$STR(S$灵兽物品位置)>物品种类
+
+MOV S$放入灵兽类型 28
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+MOV S$灵兽物品展示
+MOV S$已选择灵兽过滤
+GOTO @灵兽合成主界面
+BREAK
+
+#if
+not EQUAL S$<$STR(S$灵兽物品位置)>位置框 
+#ACT
+DEC S$已选择灵兽过滤 <$STR(S$<$STR(S$灵兽物品位置)>物品ID)>,
+MOV S$<$STR(S$灵兽物品位置)>位置框 
+MOV S0
+MOV S$<$STR(S$灵兽物品位置)>物品ID 
+MOV S$<$STR(S$灵兽物品位置)>物品名称
+MOV S$<$STR(S$灵兽物品位置)>物品种类
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Img|x=415.0|y=67.0|width=330|esc=0|img=private/xlxl/021600.png>
+INC S$灵兽合成介绍 <Img|x=440.0|y=72.0|width=30|height=30|esc=0|img=private/xlxl/0014.png>
+INC S$灵兽合成介绍 <Text|x=470.0|y=73.0|color=251|size=18|outline=1|outlinecolor=0|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|exclude=<$str(S$已选择灵兽过滤)>|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|filter3=<$STR(S$灵兽物品过滤)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+GOTO @灵兽合成主界面
+BREAK
+
+
+[@开始随机合成]
+#OR
+EQUAL S$灵兽1号位置框 
+EQUAL S$灵兽2号位置框 
+EQUAL S$灵兽3号位置框 
+EQUAL S$灵兽4号位置框 
+EQUAL S$灵兽5号位置框
+#ACT
+SENDMSG 9 请放入五件同颜色的灵兽！
+break
+
+#IF
+EQUAL S$灵兽1号物品种类 70
+EQUAL S$灵兽2号物品种类 70
+EQUAL S$灵兽3号物品种类 70
+EQUAL S$灵兽4号物品种类 70
+EQUAL S$灵兽5号物品种类 70
+#ACT
+GOTO @神级灵兽合成
+break
+
+;#IF
+;EQUAL S$灵兽2号物品种类 <$STR(S$灵兽1号物品种类)>
+;EQUAL S$灵兽3号物品种类 <$STR(S$灵兽1号物品种类)>
+;EQUAL S$灵兽4号物品种类 <$STR(S$灵兽1号物品种类)>
+;EQUAL S$灵兽5号物品种类 <$STR(S$灵兽1号物品种类)>
+;CHECKITEMS <$STR(S$灵兽1号物品名称)>#1&<$STR(S$灵兽2号物品名称)>#1&<$STR(S$灵兽3号物品名称)>#1&<$STR(S$灵兽4号物品名称)>#1&<$STR(S$灵兽5号物品名称)>#1 0 0
+;#ACT
+;TAKES <$STR(S$灵兽1号物品名称)>#1&<$STR(S$灵兽2号物品名称)>#1&<$STR(S$灵兽3号物品名称)>#1&<$STR(S$灵兽4号物品名称)>#1&<$STR(S$灵兽5号物品名称)>#1 N0 0
+;RANSJSTR <$cfg_lshc(<$STR(S$1号灵兽物品行)>_3)> 1 3 S$权重随机灵兽 S$权重剩余
+;GIVE <$STR(S$权重随机灵兽)>  1
+;SENDMSG 9 恭喜你成功合成1个【<$STR(S$权重随机灵兽)>】
+;GOTO @灵兽数据清空
+;BREAK
+
+[@判断检测]
+#IF
+EQUAL S$权重随机灵兽  【神】白虎大帝#90
+#ACT
+MOV T123 |<$STR(S$权重随机灵兽)>
+
+#IF
+not EQUAL S$权重随机灵兽 【神】白虎大帝#90
+#ACT
+MOV T123 <$STR(S$权重随机灵兽)>|
+
+[@判断检测2]
+#IF
+EQUAL S$权重随机灵兽值  【神】白虎大帝#90
+EQUAL T120 
+#ACT
+mov T120 |<$STR(S$权重随机灵兽值)>
+BREAK
+#IF
+EQUAL S$权重随机灵兽值  【神】白虎大帝#90
+EQUAL T121 
+#ACT
+mov T121 |<$STR(S$权重随机灵兽值)>
+BREAK
+#IF
+EQUAL S$权重随机灵兽值  【神】白虎大帝#90
+EQUAL T122 
+#ACT
+mov T122 |<$STR(S$权重随机灵兽值)>
+BREAK
+#IF
+NOT EQUAL S$权重随机灵兽值  【神】白虎大帝#90
+EQUAL T120 
+#ACT
+mov T120 <$STR(S$权重随机灵兽值)>|
+BREAK
+#IF
+NOT EQUAL S$权重随机灵兽值  【神】白虎大帝#90
+EQUAL T121 
+#ACT
+mov T121 <$STR(S$权重随机灵兽值)>|
+BREAK
+#IF
+NOT EQUAL S$权重随机灵兽值  【神】白虎大帝#90
+EQUAL T122 
+#ACT
+mov T122 <$STR(S$权重随机灵兽值)>|
+BREAK
+
+[@神级灵兽合成]
+#OR
+EQUAL S$灵兽1号等级 
+EQUAL S$灵兽2号等级 
+EQUAL S$灵兽3号等级 
+EQUAL S$灵兽4号等级 
+EQUAL S$灵兽5号等级 
+#ACT
+MESSAGEBOX 5个达到22级及以上的橙色灵兽才可进行合成！
+BREAK
+
+#IF
+EQUAL S$灵兽1号等级 满足
+EQUAL S$灵兽2号等级 满足 
+EQUAL S$灵兽3号等级 满足 
+EQUAL S$灵兽4号等级 满足
+EQUAL S$灵兽5号等级 满足
+EQUAL S$灵兽2号物品名称 <$STR(S$灵兽1号物品名称)>
+EQUAL S$灵兽3号物品名称 <$STR(S$灵兽1号物品名称)>
+EQUAL S$灵兽4号物品名称 <$STR(S$灵兽1号物品名称)>
+EQUAL S$灵兽5号物品名称 <$STR(S$灵兽1号物品名称)>
+equal <$cfg_lshc(<$STR(S$1号灵兽物品行)>_4)> 1
+CHECKITEMS <$STR(S$灵兽1号物品名称)>#1&<$STR(S$灵兽2号物品名称)>#1&<$STR(S$灵兽3号物品名称)>#1&<$STR(S$灵兽4号物品名称)>#1&<$STR(S$灵兽5号物品名称)>#1 0 0
+#ACT
+TAKES <$STR(S$灵兽1号物品名称)>#1&<$STR(S$灵兽2号物品名称)>#1&<$STR(S$灵兽3号物品名称)>#1&<$STR(S$灵兽4号物品名称)>#1&<$STR(S$灵兽5号物品名称)>#1 N0 0
+GIVE <$cfg_lshc(<$STR(S$1号灵兽物品行)>_5)>  1
+logact 10000 玩家：<$username>通过灵兽合成测试扣除<$STR(S$灵兽1号物品名称)>+<$STR(S$灵兽2号物品名称)>+<$STR(S$灵兽3号物品名称)>+<$STR(S$灵兽4号物品名称)>+<$STR(S$灵兽5号物品名称)>#1获得<$cfg_lshc(<$STR(S$1号灵兽物品行)>_5)>*1
+SENDMSG 9 恭喜你成功合成1个【<$cfg_lshc(<$STR(S$1号灵兽物品行)>_5)>】
+GOTO @灵兽数据清空
+BREAK
+
+#IF
+EQUAL S$灵兽1号等级 满足
+EQUAL S$灵兽2号等级 满足 
+EQUAL S$灵兽3号等级 满足 
+EQUAL S$灵兽4号等级 满足
+EQUAL S$灵兽5号等级 满足
+EQUAL S$灵兽2号物品种类 <$STR(S$灵兽1号物品种类)>
+EQUAL S$灵兽3号物品种类 <$STR(S$灵兽1号物品种类)>
+EQUAL S$灵兽4号物品种类 <$STR(S$灵兽1号物品种类)>
+EQUAL S$灵兽5号物品种类 <$STR(S$灵兽1号物品种类)>
+CHECKITEMS <$STR(S$灵兽1号物品名称)>#1&<$STR(S$灵兽2号物品名称)>#1&<$STR(S$灵兽3号物品名称)>#1&<$STR(S$灵兽4号物品名称)>#1&<$STR(S$灵兽5号物品名称)>#1 0 0
+SMALL U6 3
+#ACT
+TAKES <$STR(S$灵兽1号物品名称)>#1&<$STR(S$灵兽2号物品名称)>#1&<$STR(S$灵兽3号物品名称)>#1&<$STR(S$灵兽4号物品名称)>#1&<$STR(S$灵兽5号物品名称)>#1 N0 0
+INC U6 1
+MOV S$基础灵兽权重 <$cfg_lshc(<$STR(S$1号灵兽物品行)>_3)>
+DEC S$基础灵兽权重 T120
+DEC S$基础灵兽权重 T121
+DEC S$基础灵兽权重 T122
+RANSJSTR <$str(S$基础灵兽权重)> 1 0 S$权重随机灵兽值 S$权重剩余值
+goto @判断检测2
+GetValidstr <$STR(S$权重随机灵兽值)> # s$灵兽名字 S$灵兽权重
+GIVE <$STR(s$灵兽名字)>  1
+logact 10000 玩家：<$username>通过灵兽合成测试扣除<$STR(S$灵兽1号物品名称)>+<$STR(S$灵兽2号物品名称)>+<$STR(S$灵兽3号物品名称)>+<$STR(S$灵兽4号物品名称)>+<$STR(S$灵兽5号物品名称)>#1获得<$STR(S$灵兽名字)>*1
+SENDMSG 9 恭喜你成功合成1个【<$STR(s$灵兽名字)>】
+GOTO @灵兽数据清空
+BREAK
+
+#IF
+EQUAL S$灵兽1号等级 满足
+EQUAL S$灵兽2号等级 满足 
+EQUAL S$灵兽3号等级 满足 
+EQUAL S$灵兽4号等级 满足
+EQUAL S$灵兽5号等级 满足
+EQUAL S$灵兽2号物品种类 <$STR(S$灵兽1号物品种类)>
+EQUAL S$灵兽3号物品种类 <$STR(S$灵兽1号物品种类)>
+EQUAL S$灵兽4号物品种类 <$STR(S$灵兽1号物品种类)>
+EQUAL S$灵兽5号物品种类 <$STR(S$灵兽1号物品种类)>
+CHECKITEMS <$STR(S$灵兽1号物品名称)>#1&<$STR(S$灵兽2号物品名称)>#1&<$STR(S$灵兽3号物品名称)>#1&<$STR(S$灵兽4号物品名称)>#1&<$STR(S$灵兽5号物品名称)>#1 0 0
+large U6 2
+#ACT
+TAKES <$STR(S$灵兽1号物品名称)>#1&<$STR(S$灵兽2号物品名称)>#1&<$STR(S$灵兽3号物品名称)>#1&<$STR(S$灵兽4号物品名称)>#1&<$STR(S$灵兽5号物品名称)>#1 N0 0
+
+MOV S$基础灵兽权重 <$cfg_lshc(<$STR(S$1号灵兽物品行)>_3)>
+DEC S$基础灵兽权重 T123
+
+RANSJSTR <$str(S$基础灵兽权重)> 1 0 S$权重随机灵兽 S$权重剩余
+goto @判断检测
+
+GetValidstr <$STR(S$权重随机灵兽)> # s$灵兽名字 S$灵兽权重
+GIVE <$STR(s$灵兽名字)>  1
+
+logact 10000 玩家：<$username>通过灵兽合成测试扣除<$STR(S$灵兽1号物品名称)>+<$STR(S$灵兽2号物品名称)>+<$STR(S$灵兽3号物品名称)>+<$STR(S$灵兽4号物品名称)>+<$STR(S$灵兽5号物品名称)>#1获得<$STR(S$灵兽名字)>*1
+SENDMSG 9 恭喜你成功合成1个【<$STR(S$灵兽名字)>】
+GOTO @灵兽数据清空
+BREAK
+
+[@灵兽数据清空]
+#IF
+#ACT
+MOV S$灵兽名字
+MOV S$权重随机灵兽值
+MOV S$权重随机灵兽
+MOV S$灵兽1号位置框 
+MOV S$灵兽2号位置框 
+MOV S$灵兽3号位置框 
+MOV S$灵兽4号位置框 
+MOV S$灵兽5号位置框 
+MOV S0
+MOV S$灵兽1号物品ID 
+MOV S$灵兽2号物品ID 
+MOV S$灵兽3号物品ID 
+MOV S$灵兽4号物品ID 
+MOV S$灵兽5号物品ID 
+MOV S$灵兽1号物品名称
+MOV S$灵兽2号物品名称
+MOV S$灵兽3号物品名称
+MOV S$灵兽4号物品名称
+MOV S$灵兽5号物品名称
+MOV S$灵兽1号物品种类
+MOV S$灵兽2号物品种类
+MOV S$灵兽3号物品种类
+MOV S$灵兽4号物品种类
+MOV S$灵兽5号物品种类
+MOV S$灵兽1号等级
+MOV S$灵兽2号等级
+MOV S$灵兽3号等级
+MOV S$灵兽4号等级
+MOV S$灵兽5号等级
+MOV S$已选择灵兽过滤
+MOV S$放入灵兽类型 28
+MOV S$灵兽合成介绍
+INC S$灵兽合成介绍 <Text|x=480.0|y=78.0|color=255|size=18|text=请选择5件同颜色灵兽放入>
+INC S$灵兽合成介绍 <ListView|children={2}|x=440.0|y=105.0|width=320|height=380|direction=1|bounce=0|margin=1|reload=0>
+INC S$灵兽合成介绍 <BAGITEMS|id=2|condition=<$STR(S$放入灵兽类型)>|select=<$STR(S0)>|count=126|row=32|selecttype=1|link=@灵兽显示跳转>
+MOV S$已选择灵兽过滤
+GOTO @灵兽合成主界面
+BREAK
+
+
+[@回收界面]
+<Img|x=0.0|y=20.0|height=200|img=public/bg_npc_01.png|move=0|loadDelay=0|scale9t=20|reset=1|show=0|scale9r=0|scale9l=0|scale9b=0|bg=1|esc=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|size=18|pimg=public/1900000511.png|nimg=public/1900000510.png|link=@exit>
+<Layout|x=455.0|y=224.0|width=40|height=40|color=*|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01033.png|esc=0>
+<Text|x=45.0|y=70.0|color=11008|size=17|outlinecolor=0|outline=1|text=我喜欢那些特殊的灵兽，如果你有多余的灵兽可以交给我>
+<Text|x=45.0|y=95.0|color=11008|size=17|outlinecolor=0|outline=1|text=我愿意用天命神石和你交换！>
+<Img|x=60.0|y=137.0|img=public/02128.png|esc=0>
+<Img|x=20.0|y=218.0|width=480|height=270|scale9r=50|scale9l=50|scale9b=50|img=private/psllz/021604.png|scale9t=50|esc=0>
+<Text|x=60.0|y=232.0|color=11058|size=18|text=请选择下方背包内多余的灵兽>
+<ListView|children={2}|x=35|y=263|width=450|height=190|default=8|margin=1|direction=1|bounce=0|reload=0>
+<BAGITEMS|id=2|x=2.0|y=0.0|exclude=<$STR(S$道具ID)>|select=<$STR(S$道具ID)>|row=30|count=180|selecttype=1|condition=28#*|link=@选择数据>
+<$STR(S$选择显示)>
+
+[@加载灵兽选择数据]
+#IF
+EQUAL S$道具ID *
+#ACT
+MOV S$道具ID
+
+#IF
+EQUAL S$道具ID
+#ACT
+MOV S$选择显示
+MOV S$道具名称
+
+#IF
+NOT EQUAL S$道具ID
+#ACT
+MOV S$选择显示
+INC S$选择显示 <DBItemShow|x=55|y=133|makeindex=<$STR(S$道具ID)>|dblink=@加载灵兽选择数据#道具ID=*>
+GetItemNameByMakeIndex <$STR(S$道具ID)> S$道具名称
+
+#OR
+EQUAL S$道具名称	 【神】七彩兽
+EQUAL S$道具名称	 【神】飞天狮
+EQUAL S$道具名称	 【神】双头魔龙
+EQUAL S$道具名称	 【神】金甲象
+EQUAL S$道具名称	 【神】寒霜巨龙
+EQUAL S$道具名称	 【神】天马
+EQUAL S$道具名称	 【神】玉麒麟
+EQUAL S$道具名称	 【神】九尾冰狐
+EQUAL S$道具名称	 【神】勾陈
+EQUAL S$道具名称	 【神】三头狼
+EQUAL S$道具名称	 【神】谛听
+EQUAL S$道具名称	 【神】玄武大帝
+EQUAL S$道具名称	 【神】青龙大帝
+EQUAL S$道具名称	 【神】黄金宝马
+EQUAL S$道具名称	 【神】白虎大帝
+EQUAL S$道具名称	 【神】鬼狮鹰
+EQUAL S$道具名称	 【神】狻猊
+#ACT
+INC S$选择显示 <RText|x=135.0|y=140.0|color=11073|size=18|text=你这件<<$str(S$道具名称)>/FCOLOR=249>灵兽颇有些价值，可以分解>
+INC S$选择显示 <RText|x=135.0|y=165.0|color=11073|size=18|text=得到<天命神石*30/FCOLOR=250>>
+INC S$选择显示 <Button|x=410.0|y=165.0|color=11008|size=18|nimg=public/buyan.png|text=确定分解|link=@拆解灵兽>
+
+#IF
+#ACT
+GOTO @回收界面
+BREAK
+
+[@选择数据]
+#IF
+#ACT
+GetItemNameByMakeIndex <$STR(S0)> S$道具名称
+
+#OR
+EQUAL S$道具名称	 【神】七彩兽
+EQUAL S$道具名称	 【神】飞天狮
+EQUAL S$道具名称	 【神】双头魔龙
+EQUAL S$道具名称	 【神】金甲象
+EQUAL S$道具名称	 【神】寒霜巨龙
+EQUAL S$道具名称	 【神】天马
+EQUAL S$道具名称	 【神】玉麒麟
+EQUAL S$道具名称	 【神】九尾冰狐
+EQUAL S$道具名称	 【神】勾陈
+EQUAL S$道具名称	 【神】三头狼
+EQUAL S$道具名称	 【神】谛听
+EQUAL S$道具名称	 【神】玄武大帝
+EQUAL S$道具名称	 【神】青龙大帝
+EQUAL S$道具名称	 【神】黄金宝马
+EQUAL S$道具名称	 【神】白虎大帝
+EQUAL S$道具名称	 【神】鬼狮鹰
+EQUAL S$道具名称	 【神】狻猊
+#ACT
+MOV S$道具ID <$STR(S0)>
+GOTO @加载灵兽选择数据
+BREAK
+#ELSEACT
+MOV S0
+MOV S$道具ID
+MOV S$道具名称
+SENDMSG 9 我不喜欢你选择的这件物品！
+GOTO @加载灵兽选择数据
+BREAK
+
+
+[@拆解灵兽]
+#OR
+EQUAL S$道具名称	 【神】七彩兽
+EQUAL S$道具名称	 【神】飞天狮
+EQUAL S$道具名称	 【神】双头魔龙
+EQUAL S$道具名称	 【神】金甲象
+EQUAL S$道具名称	 【神】寒霜巨龙
+EQUAL S$道具名称	 【神】天马
+EQUAL S$道具名称	 【神】玉麒麟
+EQUAL S$道具名称	 【神】九尾冰狐
+EQUAL S$道具名称	 【神】勾陈
+EQUAL S$道具名称	 【神】三头狼
+EQUAL S$道具名称	 【神】谛听
+EQUAL S$道具名称	 【神】玄武大帝
+EQUAL S$道具名称	 【神】青龙大帝
+EQUAL S$道具名称	 【神】黄金宝马
+EQUAL S$道具名称	 【神】白虎大帝
+EQUAL S$道具名称	 【神】鬼狮鹰
+EQUAL S$道具名称	 【神】狻猊
+#ACT
+MESSAGEBOX 你确定要分解神级灵兽<$str(S$道具名称)>吗？灵兽一经分解就无法退回，请谨慎分解！  @确定拆解神灵兽 @取消
+BREAK 
+
+#IF
+#ACT
+GOTO @确定拆解神灵兽
+BREAK
+
+[@确定拆解神灵兽]
+#IF
+EQUAL S$道具ID
+#ACT
+SENDMSG 9 请选择你要分解的灵兽！
+MOV S0
+MOV S$道具ID
+GOTO @加载灵兽选择数据
+BREAK
+
+#IF
+NOT CheckBagItem <$STR(S$道具ID)>
+#ACT
+SENDMSG 9 我没有找到需要拆解的灵兽啊！
+MOV S0
+MOV S$道具ID
+GOTO @加载灵兽选择数据
+BREAK
+
+#IF
+#ACT
+GetItemNameByMakeIndex <$STR(S$道具ID)> S$道具名称
+
+#OR
+EQUAL S$道具名称	 【神】七彩兽
+EQUAL S$道具名称	 【神】飞天狮
+EQUAL S$道具名称	 【神】双头魔龙
+EQUAL S$道具名称	 【神】金甲象
+EQUAL S$道具名称	 【神】寒霜巨龙
+EQUAL S$道具名称	 【神】天马
+EQUAL S$道具名称	 【神】玉麒麟
+EQUAL S$道具名称	 【神】九尾冰狐
+EQUAL S$道具名称	 【神】勾陈
+EQUAL S$道具名称	 【神】三头狼
+EQUAL S$道具名称	 【神】谛听
+EQUAL S$道具名称	 【神】玄武大帝
+EQUAL S$道具名称	 【神】青龙大帝
+EQUAL S$道具名称	 【神】黄金宝马
+EQUAL S$道具名称	 【神】白虎大帝
+EQUAL S$道具名称	 【神】鬼狮鹰
+EQUAL S$道具名称	 【神】狻猊
+#ACT
+DelItemByMakeIndex <$STR(S$道具ID)>
+GIVE 天命神石 30
+SENDMSG 6 你成功将<$STR(S$道具名称)>分解成天命神石*30！
+MOV S0
+MOV S$道具ID
+MOV S$道具名称
+GOTO @加载灵兽选择数据
+BREAK
+

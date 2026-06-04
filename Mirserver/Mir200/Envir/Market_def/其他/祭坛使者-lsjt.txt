@@ -1,0 +1,68 @@
+[@main]
+#IF
+#ACT
+MOV N$召唤间隔 3600
+MOV N$此次击杀时间 <$str(G199)>
+MOV N$计算时间差 <$UTCNOW8>
+DEC N$计算时间差 <$STR(N$此次击杀时间)>
+
+#IF
+SMALL N$计算时间差 <$str(N$召唤间隔)>
+#ACT
+DEC N$召唤间隔 <$STR(N$计算时间差)>
+MOV S$召唤时间显示 <COUNTDOWN|x=327.0|y=195.0|outlinecolor=0|count=0|outline=1|showWay=1|size=17|color=149|time=<$str(N$召唤间隔)>>
+#ELSEACT
+MOV S$召唤时间显示 <Text|x=324.0|y=195.0|outlinecolor=0|color=11008|outline=1|size=17|text=可以召唤>
+
+#if
+#act
+#say
+<Img|x=0.0|y=20.0|bg=1|show=0|move=0|img=public/bg_npc_01.png|loadDelay=1|reset=1>
+<Layout|x=489.0|y=1.0|width=80|height=80|link=@exit>
+<Button|x=500.0|y=40.0|color=255|pimg=public/1900000511.png|nimg=public/1900000510.png|size=18|link=@exit>
+<Img|x=215.0|y=30.0|img=private/biaoti/01016.png|esc=0>
+<RText|x=45.0|y=70.0|color=255|size=17|outlinecolor=0|outline=1|text=如果你非要见到那位神明，只需交给我<1枚祖龙召唤令/FCOLOR=11053>！>
+<RText|x=45.0|y=95.0|color=255|size=17|outlinecolor=0|outline=1|text=我的能力有限，每次召唤需要<休整1个小时/FCOLOR=11053>，如果你带了就\赶快交给我吧！>
+<Text|x=45.0|y=145.0|color=11003|size=17|text=提示：召唤祖龙的间隔为1小时，按祖龙神死亡开始计时！>
+<Img|x=45.0|y=200.0|width=20|height=20|esc=0|img=public/00014.png>
+<Layout|x=70.0|y=185.0|width=100|height=50|link=@召唤祖龙>
+<Text|x=70.0|y=195.0|color=11008|size=17|outline=1|outlinecolor=0|text=召唤祖龙神|link=@召唤祖龙>
+<Text|x=240.0|y=195.0|size=17|color=255|outlinecolor=0|outline=1|text=召唤间隔：>
+<$str(S$召唤时间显示)>
+
+
+[@召唤祖龙]
+#IF
+large <$HOUR> 9
+small <$HOUR> 22
+#act
+#ELSEACT
+MESSAGEBOX 当前时间段无法召唤祖龙
+BREAK
+
+#IF
+#ACT
+MOV N$召唤间隔 3600
+MOV N$此次击杀时间 <$str(G199)>
+MOV N$计算时间差 <$UTCNOW8>
+DEC N$计算时间差 <$STR(N$此次击杀时间)>
+
+#IF
+SMALL N$计算时间差 <$str(N$召唤间隔)>
+#ACT
+SENDMSG 9 召唤失败，距离上次召唤祖龙间隔不到1小时！
+break
+
+#IF
+CHECKITEM 祖龙召唤令 1
+#ACT
+TAKE 祖龙召唤令 1
+MOV G199 <$UTCNOW8>
+MonGenEx lsjt 34 33 祖龙神 0 1 0 249 祖龙神 1
+Gmexecute 开始提问 @召唤祖龙神
+SENDMSG 9 祖龙神已经苏醒，请小心！！！
+BREAK
+#ELSEACT
+MESSAGEBOX 请将祖龙召唤令交给我，别浪费我时间！
+break
+

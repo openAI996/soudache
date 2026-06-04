@@ -1,0 +1,837 @@
+[@Settings]
+{
+#IF
+#ACT
+
+Mov S$名字 <Text|text=<$NPCNAME>|x=30|y=20|size=18|color=1005>
+Mov S$内容1 <Text|text=需要帮什么忙吗？|x=30|y=60|size=16>
+Mov S$内容2 <Text|text=目前不收保管费，请多利用。|x=30|y=80|size=16>
+
+#SAY
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=55|y=120|width=100|height=50|link=@getback>
+<Text|text=使用仓库|x=60|y=133|size=16|color=1001|link=@getback>
+
+<Img|img=public/btn_npcfh_03.png|x=165|y=138>
+<Layout|x=190|y=120|width=120|height=50|link=@Mbind_2>
+<Text|text=捆绑金币|x=190|y=133|size=16|color=1001|link=@Mbind_2>
+
+
+
+<Img|img=public/btn_npcfh_03.png|x=345|y=138>
+<Layout|x=370|y=120|width=120|height=50|link=@金砖>
+<Text|text=捆绑金砖|x=370|y=133|size=16|color=1001|link=@金砖>
+
+<$STR(S$名字)>
+<$STR(S$内容1)>
+<$STR(S$内容2)>
+<$STR(S$内容3)>
+
+
+[@金砖]
+<Text|text=你知道我是什么人吗？ 我做的是这样的事情...|x=30|y=60|size=16>
+<Text|text=你要试一下吗？有什么要拜托的就说吧|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=55|y=120|width=100|height=50|link=@砖1>
+<Text|text=金砖交换金条|x=60|y=133|size=16|color=1001|link=@砖1>
+
+<Img|img=public/btn_npcfh_03.png|x=175|y=138>
+<Layout|x=200|y=120|width=120|height=50|link=@砖2>
+<Text|text=金条交换金砖|x=200|y=133|size=16|color=1001|link=@砖2>
+[@砖2]
+#if
+checkitem 金条 5
+#act
+take 金条 5
+give 金砖 1
+break
+#elseact
+MessageBox 您的金条不足5个！！！
+
+[@砖1]
+#if
+checkitem 金砖 1
+CHECKBAGSIZE 5
+#act
+take 金砖 1
+give 金条 5
+break
+#elseact
+MessageBox 您的背包格不足5个无法使用！！！
+
+[@Mbind_2]
+
+<Text|text=你知道我是什么人吗？ 我做的是这样的事情...|x=30|y=60|size=16>
+<Text|text=你要试一下吗？有什么要拜托的就说吧|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=55|y=120|width=100|height=50|link=@changeGold_2>
+<Text|text=金币交换金条|x=60|y=133|size=16|color=1001|link=@changeGold_2>
+
+<$STR(S$名字)>
+
+
+[@changeGold_2]
+#IF
+   checkgold 1002000
+#SAY
+
+<Text|text=你说你要用金币换成金条? 好的，我帮你换|x=30|y=60|size=16>
+<Text|text=但是要支付手续费用是2000金币，你还换吗？|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@changeGold_1_2>
+<Text|text=交换|x=60|y=133|size=16|color=1001|link=@changeGold_1_2>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你连这点钱都没有，还换什么？|x=30|y=60|size=16>
+<Text|text=等你有足够的钱，再来找我吧！|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@Main>
+<Text|text=返回|x=60|y=133|size=16|color=1001|link=@Main>
+
+<$STR(S$名字)>
+
+[@changeGold_1_2]
+#IF 
+CHECKBAGSIZE  1
+checkgold 1002000
+#ACT
+take 金币 1002000
+give 金条 1
+#SAY
+
+<Text|text=金币已经换好金条了.|x=30|y=60|size=16>
+<Text|text=还换吗？|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@changeGold_2>
+<Text|text=交换|x=60|y=133|size=16|color=1001|link=@changeGold_2>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你的包里东西已经满了，或者你没有足够的钱支付手续费|x=30|y=60|size=16>
+<Text|text=你再确认一下吧！|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+
+[@changeMoney_2_2]
+#IF
+checkitem 金条 1
+#SAY 
+<Text|text=你要把金条换成金币? 好的，我给你换|x=30|y=60|size=16>
+<Text|text=不过需要支付手续费用是2000金币，你还换吗？|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@changeMoney_1_2>
+<Text|text=交换|x=60|y=133|size=16|color=1001|link=@changeMoney_1_2>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有金条还换什么?|x=30|y=60|size=16>
+<Text|text=你再确认一下吧！|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@changeMoney_1_2]
+#IF
+checkitem 金条 1
+checkgold 500000000
+#SAY
+<Text|text=我也很想给你换|x=30|y=60|size=16>
+<Text|text=但是你钱太多了，我没办法给你换|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSEACT
+goto @changeMoney_2_2_2
+
+[@changeMoney_2_2_2]
+#IF 
+checkitem 金条 1
+#ACT
+take 金条 1
+give 金币 998000
+#SAY
+<Text|id=6|text=金条已经换好金币了.|x=30|y=60|size=16>
+<Text|id=7|text=还换吗？|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@changeMoney_2>
+<Text|text=交换|x=60|y=133|size=16|color=1001|link=@changeMoney_2>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+
+[@bind_2]
+
+<Text|text=目前我能捆的只有卷书和药水，你要捆吗？|x=30|y=60|size=16>
+<Text|text=要捆东西需要100金币.|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=100|height=50|link=@P_bind_2>
+<Text|text=捆药水|x=60|y=133|size=16|color=1001|link=@P_bind_2>
+
+<Img|img=public/btn_npcfh_03.png|x=175|y=138>
+<Layout|x=200|y=120|width=100|height=50|link=@Z_bind_2>
+<Text|text=捆卷书|x=200|y=133|size=16|color=1001|link=@Z_bind_2>
+
+<Img|img=public/btn_npcfh_03.png|x=320|y=138>
+<Layout|x=345|y=120|width=100|height=50|link=@Mbind_2>
+<Text|text=返回|x=345|y=133|size=16|color=1001|link=@Mbind_2>
+
+<$STR(S$名字)>
+ 
+[@P_bind_2]
+
+<Text|text=捆|x=63|y=63|size=16>
+<Layout|x=83|y=60|width=100|height=35|link=@ch_bind1_2>
+<Text|text=疗伤药|x=83|y=62|size=16|color=151|link=@捆疗伤>
+
+<Text|text=捆|x=63|y=102|size=16>
+<Layout|x=83|y=100|width=100|height=35|link=@ma_bind1_2>
+<Text|text=强效太阳水|x=83|y=102|size=16|color=151|link=@捆强效太阳水>
+
+<Text|text=捆|x=233|y=63|size=16>
+<Layout|x=253|y=60|width=100|height=35|link=@ch_bind2_2>
+<Text|text=万年雪霜|x=253|y=62|size=16|color=151|link=@捆雪霜>
+
+<Text|text=捆|x=233|y=102|size=16>
+<Layout|x=253|y=100|width=100|height=35|link=@ch_bind2_2>
+<Text|text=太阳水|x=253|y=102|size=16|color=151|link=@捆太阳水>
+
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=55|y=138|width=100|height=40|link=@bind_2>
+<Text|text=返回|x=60|y=133|size=16|color=1001|link=@bind_2>
+
+<$STR(S$名字)>
+
+[@捆太阳水]
+#if
+checkitem 太阳水 6
+#act
+take 太阳水 6
+give 太阳水包 1
+goto @P_bind_2
+break
+#elseact
+MessageBox 您的太阳水数量不足
+
+
+
+[@捆强效太阳水]
+#if
+checkitem 强效太阳水 6
+#act
+take 强效太阳水 6
+give 强效太阳包 1
+goto @P_bind_2
+break
+#elseact
+MessageBox 您的强效太阳水数量不足
+
+
+
+[@捆雪霜]
+#if
+checkitem 万年雪霜 6
+#act
+take 万年雪霜 6
+give 雪霜包 1
+goto @P_bind_2
+break
+#elseact
+MessageBox 您的万年雪霜数量不足
+
+
+[@捆疗伤]
+#if
+checkitem 疗伤药 6
+#act
+take 疗伤药 6
+give 疗伤药包 1
+goto @P_bind_2
+break
+#elseact
+MessageBox 您的疗伤药数量不足
+
+ 
+ 
+[@Z_bind_2]
+
+<Text|text=捆|x=63|y=63|size=16>
+<Layout|x=83|y=60|width=100|height=35|link=@zum_bind1_2>
+<Text|text=地牢逃脱卷|x=83|y=62|size=16|color=151|link=@zum_bind1_2>
+
+<Text|text=捆|x=63|y=102|size=16>
+<Layout|x=83|y=100|width=100|height=35|link=@zum_bind2_2>
+<Text|text=随机传送卷|x=83|y=102|size=16|color=151|link=@zum_bind2_2>
+
+<Text|text=捆|x=233|y=102|size=16>
+<Layout|x=253|y=60|width=100|height=35|link=@zum_bind3_2>
+<Text|text=回城卷|x=253|y=62|size=16|color=151|link=@zum_bind3_2>
+
+<Text|text=捆|x=233|y=63|size=16>
+<Layout|x=253|y=100|width=100|height=35|link=@zum_bind4_2>
+<Text|text=行会回城卷|x=253|y=102|size=16|color=151|link=@zum_bind4_2>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=55|y=138|width=100|height=40|link=@bind_2>
+<Text|text=返回|x=60|y=133|size=16|color=1001|link=@bind_2>
+
+<$STR(S$名字)>
+
+[@ch_bind1_2]
+#IF
+checkitem 强效金创药 6
+#ACT
+goto @ch_bind1_1_1
+#ELSESAY
+
+<Text|text=你都没有要捆的药水，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好药水之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ch_bind1_1_2]
+#IF 
+checkgold 100
+checkitem 强效金创药 6
+#ACT
+take 金币 100
+take 强效金创药 6
+give 超级金创药 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=还有要捆的就拿给我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@P_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@P_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ma_bind1_2]
+#IF
+checkitem 强效魔法药 6
+#ACT
+goto @ma_bind1_1
+#ELSESAY
+
+<Text|text=你都没有要捆的药水，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好药水之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ma_bind1_2_1]
+#IF 
+checkgold 100
+checkitem 强效魔法药 6
+#ACT
+take 金币 100
+take 强效魔法药 6
+give 超级魔法药 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@P_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@P_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ch_bind2_2]
+#IF
+checkitem 金创药(中量) 6
+#ACT
+goto @ch_bind2_1
+#ELSESAY
+
+<Text|text=你都没有要捆的药水，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好药水之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ch_bind2_2_1]
+#IF 
+checkgold 100
+checkitem 金创药(中量) 6
+#ACT
+take 金币 100
+take 金创药(中量) 6
+give 金创药(中)包 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@P_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@P_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ma_bind2_2]
+#IF
+checkitem 魔法药(中量) 6
+#ACT
+goto @ma_bind2_1_1
+#ELSESAY
+
+<Text|id=6|text=你都没有要捆的药水，还捆什么?|x=30|y=60|size=16>
+<Text|id=7|text=等准备好药水之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ma_bind2_2_1]
+#IF 
+checkgold 100
+checkitem 魔法药(中量) 6
+#ACT
+take 金币 100
+take 魔法药(中量) 6
+give 魔法药(中)包 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@P_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@P_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+
+[@ch_bind3_2]
+#IF
+checkitem 金创药 6
+#ACT
+goto @ch_bind3_1_1
+#ELSESAY
+
+<Text|text=你都没有要捆的药水，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好药水之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ch_bind3_2_1]
+#IF 
+checkgold 100
+checkitem 金创药 6
+#ACT
+take 金币 100
+take 金创药 6
+give 金创药(小)包 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@P_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@P_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ma_bind3_2]
+#IF
+checkitem 魔法药 6
+#ACT
+goto @ma_bind3_1_1
+#ELSESAY
+
+<Text|text=你都没有要捆的药水，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好药水之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@ma_bind3_2_1]
+#IF 
+checkgold 100
+checkitem 魔法药 6
+#ACT
+take 金币 100
+take 魔法药 6
+give 魔法药(小)包 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@P_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@P_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@zum_bind1_2]
+#IF
+checkitem 地牢逃脱卷 6
+#ACT
+goto @zum_bind1_1_1
+#ELSESAY
+
+<Text|text=你都没有要捆的卷书，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好卷书之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@zum_bind1_1_2]
+#IF 
+checkgold 100
+checkitem 地牢逃脱卷 6
+#ACT
+take 金币 100
+take 地牢逃脱卷 6
+give 地牢逃脱卷包 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@z_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@z_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@zum_bind2_2]
+#IF
+checkitem 随机传送卷 6
+#ACT
+goto @zum_bind2_1_1
+#ELSESAY
+
+<Text|text=你都没有要捆的卷书，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好卷书之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@zum_bind2_2_1]
+#IF 
+checkgold 100
+checkitem 随机传送卷 6
+#ACT
+take 金币 100
+take 随机传送卷 6
+give 随机传送卷包 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@z_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@z_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@zum_bind3_2]
+#IF
+checkitem 回城卷 6
+#ACT
+goto @zum_bind3_1
+#ELSESAY
+
+<Text|text=你都没有要捆的卷书，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好卷书之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@zum_bind3_2_1]
+#IF 
+checkgold 100
+checkitem 回城卷 6
+#ACT
+take 金币 100
+take 回城卷 6
+give 回城卷包 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@z_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@z_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+
+
+[@zum_bind4_2]
+#IF
+checkitem 行会回城卷 6
+#ACT
+goto @zum_bind4_1_1
+#ELSESAY
+
+<Text|text=你都没有要捆的卷书，还捆什么?|x=30|y=60|size=16>
+<Text|text=等准备好卷书之后再来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+[@zum_bind4_2_1]
+#IF 
+checkgold 100
+checkitem 行会回城卷 6
+#ACT
+take 金币 100
+take 行会回城卷 6
+give 行会回城卷包 1
+#SAY
+
+<Text|text=已经捆好了... 我的技术不错吧..|x=30|y=60|size=16>
+<Text|text=以后还有要捆的，就来找我吧..|x=30|y=80|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@z_bind_1>
+<Text|text=继续捆|x=60|y=133|size=16|color=1001|link=@z_bind_1>
+
+<Img|img=public/btn_npcfh_03.png|x=200|y=138>
+<Layout|x=230|y=120|width=80|height=50|link=@exit>
+<Text|text=离开|x=230|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+#ELSESAY
+
+<Text|text=你都没有钱捆东西|x=30|y=60|size=16>
+<Text|text=还捆什么?|x=30|y=80|size=16>
+<Text|text=快走吧....|x=30|y=100|size=16>
+
+<Img|img=public/btn_npcfh_03.png|x=35|y=138>
+<Layout|x=60|y=120|width=120|height=50|link=@exit>
+<Text|text=离开|x=60|y=133|size=16|color=1001|link=@exit>
+
+<$STR(S$名字)>
+
+}
