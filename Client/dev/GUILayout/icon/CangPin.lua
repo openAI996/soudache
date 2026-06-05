@@ -238,6 +238,9 @@ function CangPin.createItemCell(parent, type1, type2, type3, itemConfig)
         GUI:setAnchorPoint(button, 0.50, 0.50)
         GUI:setTouchEnabled(button, true)
         GUI:setTag(button, 0)
+        if CL:ItemCount(itemConfig.name) > 0 then
+            CL:AddRedPoint(button, 46, 12)
+        end
 
         local clickType1 = type1
         local clickType2 = type2

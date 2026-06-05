@@ -110,7 +110,7 @@ function attackmonster(player,target,skillid,damage,times,monsterName)
 
     local num = ServerCache.Players[player].NumberVars["µ¶µ¶ÇÐ¸î"] or 0
     if num > 0 then
-        humanhp(target,"-",num,106,0,player,0,1)
+        humanhp(target,"-",num,60,0,player,0,1)
     end
 
     return damage
@@ -196,7 +196,6 @@ function struckdamage(player,hiter,target,skillid,damage,model)
             for k, v in pairs(ServerCache.Players[player].StruckEquip or {}) do
                 if times - lualib:GetVar(player,"N$¿ç·þCD") >= ServerCache.Players[player].StruckEquip[k].cd then
                     if times - lualib:GetVar(player,"N$"..k) >= ServerCache.Players[player].StruckEquip[k].cd then
-
                         if functionOtherEquip[k] ~= nil then
                             ---print("±»¹¥»÷´¥·¢×°±¸£º"..k)
                             damage = functionOtherEquip[k](hiter,target,damage,skillid,times,flag,k,model)

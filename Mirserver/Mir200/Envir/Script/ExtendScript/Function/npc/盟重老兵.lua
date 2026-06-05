@@ -113,7 +113,13 @@ function mengZhongLaoBing.window(player,page)
             ]]
         end
     elseif page == 3 then
+        local num = data[page] + 1
+
         local config = mengZhongLaoBing.config[page]
+        if num > #config then
+            num = data[page]
+        end
+
         str = str .. [[
 <Img|x=0.0|y=211.0|esc=0|img=public_win32/bg_npc_01.png>
 <Img|x=58.0|y=153.0|esc=0|img=public/btn_npcfh_03.png>
@@ -126,9 +132,9 @@ function mengZhongLaoBing.window(player,page)
 <Button|x=411.0|y=248.0|size=18|nimg=public/1900000660.png|text=确定提升|link=@click,盟重老兵_click,3>
         ]]
 
-        for i=1,#config[1].need do
+        for i=1,#config[num].need do
             str = str .. [[
-<ItemShow|x=]]..(270 + (i-1)*70)..[[|y=235|width=70|height=70|itemid=]]..getstditeminfo(config[1].need[i][1],0)..[[|itemcount=]]..config[1].need[i][2]..[[|showtips=1|bgtype=1>
+<ItemShow|x=]]..(270 + (i-1)*70)..[[|y=235|width=70|height=70|itemid=]]..getstditeminfo(config[num].need[i][1],0)..[[|itemcount=]]..config[num].need[i][2]..[[|showtips=1|bgtype=1>
             ]]
         end
     end
@@ -145,16 +151,11 @@ function mengZhongLaoBing.click(player,page)
 
     local data = mengZhongLaoBing.getData(player)
     local num = data[page] + 1
-    if page == 3 then
-        num = 1
-    end
 
     local config = mengZhongLaoBing.config[page]
-    if page < 3 then
-        if num > #config then
-            lualib:SendMsgGetColor(player,9,"#eeff00|已经满级了！！！")
-            return ""
-        end
+    if num > #config then
+        lualib:SendMsgGetColor(player,9,"#eeff00|已经满级了！！！")
+        return ""
     end
 
     if not lualib:CheckNeedItems(player,config[num].need) then
@@ -170,8 +171,8 @@ function mengZhongLaoBing.click(player,page)
     elseif page == 3 then
         ---只提升U13保存的基础负重，实际负重由setFuZhong写入229属性
         local fuZhong = tonumber(getplaydef(player,VarCfg["负重"])) or 0
-        if fuZhong < 100 then
-            fuZhong = 100
+        if fuZhong < 40 then
+            fuZhong = 40
         end
         lualib:SetVar(player,VarCfg["负重"],fuZhong + 1)
     end
@@ -183,9 +184,11 @@ function mengZhongLaoBing.getData(player)
     local data = {}
     data[1] = lualib:GetVar(player,VarCfg["背包格子"])
     data[2] = lualib:GetVar(player,VarCfg["仓库格子"])
-    data[3] = lualib:GetVar(player,VarCfg["负重"]) - 100
+    ---U13保存永久基础负重，升级次数按基础负重计算，避免藏品229加成影响显示
+    local fuZhong = tonumber(getplaydef(player,VarCfg["负重"])) or 0
+    data[3] = fuZhong - 40
     if data[3] < 0 then
-        lualib:SetVar(player,VarCfg["负重"],100)
+        lualib:SetVar(player,VarCfg["负重"],40)
         data[3] = 0
     end
 

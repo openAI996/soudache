@@ -35,16 +35,16 @@ function sheZhiDengJi.setLevel(player)
 end
 
 sheZhiDengJi.job = {
-    {100},
-    {100},
-    {100}
+    {40},
+    {40},
+    {40}
 }
 
 function sheZhiDengJi.setFuZhong(player)
     ---U13只保存永久基础负重，实际生效和显示统一走229属性
     local level = tonumber(getplaydef(player,VarCfg["负重"])) or 0
     local job = lualib:Job(player)
-    local minLevel = 100
+    local minLevel = 40
     if sheZhiDengJi.job[job] ~= nil and sheZhiDengJi.job[job][1] ~= nil then
         minLevel = sheZhiDengJi.job[job][1]
     end

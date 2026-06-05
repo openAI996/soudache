@@ -1502,6 +1502,14 @@ function chouKa.setZhuoSao(player,target)
 
 end
 ------- µ¯Éä»ð·û  ---------------------------------------------
+local huoFu_no_mon = {
+    ["Ì´Ä¾±¦Ïä"] = true,
+    ["°×Òø±¦Ïä"] = true,
+    ["»Æ½ð±¦Ïä"] = true,
+    ["ÉñÊÞ"] = true,
+    ["½ð¼×÷è÷ë"] = true,
+    ["ÔÂÁé"] = true,
+}
 function chouKa.huoFu(actor,Target,damage,zs,num)
     local cfg_posM = {}
     cfg_posM[1] = getbaseinfo(actor,2)
@@ -1519,8 +1527,8 @@ function chouKa.huoFu(actor,Target,damage,zs,num)
     for i, mon in ipairs(mons or {}) do
         if Target ~= mon and not ismob(mon) then
             local monsterName = lualib:Name(mon)
-            if monsterName ~= "Ì´Ä¾±¦Ïä" and monsterName ~= "°×Òø±¦Ïä" and monsterName ~= "»Æ½ð±¦Ïä" then
-                cfg_posM[#cfg_posM + 1] = mon--getbaseinfo(mon,2)
+            if huoFu_no_mon[monsterName] ~= true then
+                cfg_posM[#cfg_posM + 1] = mon
             end
         end
     end
